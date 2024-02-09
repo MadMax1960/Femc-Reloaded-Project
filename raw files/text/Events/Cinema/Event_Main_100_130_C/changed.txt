@@ -1,0 +1,7 @@
+[msg MSG_009_0_0 [Yukari Takeba]]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 6 65535 65535 0 0][uf 3 1 1 0 0 12 0 0]There you go again, acting like everybody's best friend...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 6 65535 65535 0 0][uf 3 1 1 0 0 13 0 0]Try not to make her uncomfortable, okay?[n][uf 1 1][e]
+
+[msg MSG_027_3_0 [Yukari Takeba]]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 65535 0 0][uf 3 1 1 0 0 36 0 0]Listen![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 65535 0 0][uf 3 1 1 0 0 37 0 0]I just met her yesterday, and there's absolutely nothing between us![n][uf 1 1][e]
