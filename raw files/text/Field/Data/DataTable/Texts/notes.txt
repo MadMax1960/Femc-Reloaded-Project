@@ -14,21 +14,12 @@ DT_FldPlaceName
 	0x1755 - Men's Room
 	0x17AA - Women's Room
 
-the strings in these files appear to be null-terminated (meaning that the byte after the last
-character of the string will be 0x0) however they also have an additional byte after that;
-not quite sure what it's for but probably a good idea to maintain that formatting
-when making edits to be sure nothing breaks)
-	DT_FldDailyHitName seems to use 0x08 as this extra byte, DT_FldPlaceName uses 0x70
-
-note as well that the last 4 bytes of a "chunk" in the file will also define the length in bytes
-(including the 0x00 null-terminating byte) of the next string, so make sure to change those as well
-
 ideally some kind of merging or dumping solution to more easily make these files editable & mergeable
 in the future should be made but that's outside the scope of this project LMAO :naosmiley:
 
 
 DT_FldDailyHitName format notes:
-	names are stored in chunks which start with a 0x08 byte
+	names are stored in chunks which start with a 0x08 byte (probably an identifier?)
 	and contain data defining the properties of the name, ending off with the string itself
 	0x42 bytes from the 0x08 byte is the index value of the name
 
@@ -38,4 +29,4 @@ DT_FldPlaceName ROF size:
 
 DT_FldPlaceName format notes:
 	number of strings defined at 0xB8D in uasset (unsure of where file data actually starts)
-	formatted by chunks: header (starting byte 0x70) followed by length of string followed by string
+	formatted by chunks: header (starting byte 0x70, probable identifier) followed by length of string (u32) followed by null-terminated string
