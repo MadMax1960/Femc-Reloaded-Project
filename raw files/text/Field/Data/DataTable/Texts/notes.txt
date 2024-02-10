@@ -1,0 +1,32 @@
+these ought to be templated properly with 010 or ImHex to make editing them easier,
+but for now we'll have to edit these files manually.
+
+
+the offsets for names of the bathroom locations are listed below in hex + the specfic file to edit
+
+DT_FldDailyHitName
+	0x2DBB - Men's Room
+	0x2E2D - Women's Room
+	0x3FCF - Men's Room
+	0x4041 - Women's Room
+
+DT_FldPlaceName
+	0x1755 - Men's Room
+	0x17AA - Women's Room
+
+ideally some kind of merging or dumping solution to more easily make these files editable & mergeable
+in the future should be made but that's outside the scope of this project LMAO :naosmiley:
+
+
+DT_FldDailyHitName format notes:
+	names are stored in chunks which start with a 0x08 byte (probably an identifier?)
+	and contain data defining the properties of the name, ending off with the string itself
+	0x42 bytes from the 0x08 byte is the index value of the name
+
+DT_FldPlaceName ROF size:
+	offset to start selection for size value: 0xB64
+	offset for size value: 0xB08
+
+DT_FldPlaceName format notes:
+	number of strings defined at 0xB8D in uasset (unsure of where file data actually starts)
+	formatted by chunks: header (starting byte 0x70, probable identifier) followed by length of string (u32) followed by null-terminated string

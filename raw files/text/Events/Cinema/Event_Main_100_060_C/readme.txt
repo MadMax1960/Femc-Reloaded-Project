@@ -1,0 +1,1 @@
+The .uasset is the original game's file, used as a "donor" to be able to compile the .msg

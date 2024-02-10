@@ -1,0 +1,2 @@
+Voice_dungeon.awb filter=lfs diff=lfs merge=lfs -text
+voice_singleword.awb filter=lfs diff=lfs merge=lfs -text

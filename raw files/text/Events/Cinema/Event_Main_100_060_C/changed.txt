@@ -1,0 +1,9 @@
+[msg MSG_001_0_0 [First Girl]]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 3 51 65535 0 0][uf 3 1 1 0 0 3 0 0]...Who's she?[n][uf 1 1][e]
+
+[msg MSG_002_0_0 [Mitsuru Kirijo]]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 51 65535 0 0][uf 3 1 1 0 0 4 0 0]She's a transfer student. It was a last-minute decision to assign her here.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 51 65535 0 0][uf 3 1 1 0 0 5 0 0]She'll eventually be moved to a room in the girls' dorm.[n][uf 1 1][e]
+
+[msg MSG_003_0_0 [First Girl]]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 3 51 65535 0 0][uf 3 1 1 0 0 6 0 0]Is it okay for her to be here?[n][uf 1 1][e]
