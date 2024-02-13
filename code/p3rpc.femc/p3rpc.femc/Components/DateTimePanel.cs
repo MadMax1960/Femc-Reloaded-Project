@@ -24,8 +24,8 @@ namespace p3rpc.femc.Components
 
         private unsafe void UAgePanel_UpdateAgePanelParametersImpl(UAgePanel* self, float deltaTime)
         {
-            self->BottomColorNormal.SetColor(_context._config.UIMidColor);
-            self->TopColorNormal.SetColor(_context._config.UIDarkColor);
+            self->TopColorNormal.SetColor(_context._config.DateTimePanelTopTextColor);
+            self->BottomColorNormal.SetColor(_context._config.DateTimePanelBottomTextColor);
             _updateAgePanelParameters.OriginalFunction(self, deltaTime);
         }
 

@@ -29,27 +29,28 @@ namespace p3rpc.femc.Components
             // final param refers to entries in SPR_UI_MAIL.uasset (tex T_UI_Mail_00_texture.uasset)
             var itemMask = _uiCommon._getSpriteItemMaskInstance() + 0x20;
             _uiCommon._setSpriteDrawMaskMode(itemMask, 0);
+            var circlePos = new FVector2D(80, 74);
             // Static Outer Circle
             var staticOuterCircle = new SprDefStruct1(
                 0,
-                new FVector2D(80, 74),
-                new FSprColor(_context._config.UIMidColor),
+                circlePos,
+                new FSprColor(_context._config.MailIconOuterCircleColor),
                 self->Field368, 0, 0);
             _uiCommon._spriteFunc1(&staticOuterCircle, itemMask, self->Sprite_, 0, 0);
             // Pulsing Inner Circle
-            var pulsateColor = new FSprColor(_context._config.UILightColor);
+            var pulsateColor = new FSprColor(_context._config.MailIconInnerCircleColor);
             pulsateColor.A = (byte)(self->Field408 * 255);
             var pulsateInnerCircle = new SprDefStruct1(
                 0,
-                new FVector2D(80, 74), // Pulsating Inner Ring
+                circlePos,
                 pulsateColor,
                 (float)(self->Field318 * 0.6 + self->Field3B8), 0, 0);
             _uiCommon._spriteFunc1(&pulsateInnerCircle, itemMask, self->Sprite_, 0, 0);
             // Static Inner Circle
             var staticInnerCircle = new SprDefStruct1(
                 0,
-                new FVector2D(80, 74), // Pulsating Inner Ring
-                new FSprColor(_context._config.UILightColor),
+                circlePos,
+                new FSprColor(_context._config.MailIconInnerCircleColor),
                 (float)(self->Field318 * 0.695), 0, 0);
             _uiCommon._spriteFunc1(&staticInnerCircle, itemMask, self->Sprite_, 0, 0);
             // Mail Icon

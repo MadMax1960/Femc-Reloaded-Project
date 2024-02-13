@@ -57,7 +57,7 @@ namespace p3rpc.femc.Components
                 _uiCommon._setSpriteDrawMaskMode(itemMask, 0);
                 //_context._logger.WriteLineAsync($"[RESEARCH] SPR {_context.g_namePool->GetString(((UObjectBase*)self->MsgSpr_)->NamePrivate)}, PLG {_context.g_namePool->GetString(((UObjectBase*)self->MsgPlg_)->NamePrivate)}");
 
-                var color1 = new FSprColor(_context._config.UIMidColor);
+                var color1 = new FSprColor(_context._config.MessageWindowColor);
                 color1.A = (byte)((1.0f - self->BgPieceTransparency) * self->Opacity * 102.0f);
                 ;
                 var pos1 = new FVector2D(
@@ -110,5 +110,17 @@ namespace p3rpc.femc.Components
 
         private unsafe delegate void UMsgProcWindow_Simple_DrawMessageBox(UMsgProcWindow_Simple* self);
         private unsafe delegate bool UMsgProcWindow_Simple_Vtable278(UMsgProcWindow_Simple* self);
+    }
+
+    public class MsgWindowSelectSimple : ModuleBase
+    {
+        public unsafe MsgWindowSelectSimple(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        {
+        }
+
+        public override void Register()
+        {
+
+        }
     }
 }

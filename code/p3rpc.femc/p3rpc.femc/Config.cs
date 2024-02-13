@@ -6,14 +6,39 @@ namespace p3rpc.femc.Configuration
 {
     public class Config : Configurable<Config>
     {
-        [DisplayName("UI Kit: Light Color")]
-        public ConfigColor UILightColor { get; set; } = ConfigColor.LightColor;
 
-        [DisplayName("UI Kit: Mid Color")]
-        public ConfigColor UIMidColor { get; set; } = ConfigColor.MidColor;
+        [DisplayName("Mail Icon: Outer Color")]
+        public ConfigColor MailIconOuterCircleColor { get; set; } = ConfigColor.MidColor;
 
-        [DisplayName("UI Kit: Dark Color")]
-        public ConfigColor UIDarkColor { get; set; } = ConfigColor.DarkColor;
+        [DisplayName("Mail Icon: Inner Color")]
+        public ConfigColor MailIconInnerCircleColor { get; set; } = ConfigColor.LightColor;
+
+        [DisplayName("Camp: High Color")]
+        public ConfigColor CampHighColor { get; set; } = ConfigColor.CampHighColor;
+
+        [DisplayName("Camp: Middle Color")]
+        public ConfigColor CampMiddleColor { get; set; } = ConfigColor.LightColor;
+
+        [DisplayName("Camp: Low Color")]
+        public ConfigColor CampLowColor { get; set; } = ConfigColor.LightColor;
+
+        [DisplayName("Date Time Panel: Top Text Color")]
+        public ConfigColor DateTimePanelTopTextColor { get; set; } = ConfigColor.DarkColor;
+
+        [DisplayName("Date Time Panel: Bottom Text Color")]
+        public ConfigColor DateTimePanelBottomTextColor { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Message Window: Color")]
+        public ConfigColor MessageWindowColor { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Mind Window: Outer Border")]
+        public ConfigColor MindWindowOuterBorder { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Mind Window: Inner Color")]
+        public ConfigColor MindWindowInnerColor { get; set; } = ConfigColor.DarkColor;
+
+        [DisplayName("Mind Window: Outer Haze")]
+        public ConfigColor MindWindowOuterHaze { get; set; } = new ConfigColor(ConfigColor.MidColor.R, ConfigColor.MidColor.G, ConfigColor.MidColor.B, 128);
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -32,6 +57,11 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool EnableTextbox { get; set; } = true;
 
+        [DisplayName("Enable Mind Message Box (WIP)")]
+        [Category("UI Components")]
+        [DefaultValue(false)]
+        public bool EnableMindMessageBox { get; set; } = true;
+
     }
 
     /// <summary>
@@ -48,6 +78,7 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor LightColor = new ConfigColor(0xff, 0xbf, 0xfc, 0xff);
         public static readonly ConfigColor DarkColor = new ConfigColor(0xd4, 0x15, 0x5b, 0xff);
         public static readonly ConfigColor MidColor = new ConfigColor(0xff, 0x8f, 0xec, 0xff);
+        public static readonly ConfigColor CampHighColor = new ConfigColor(0xe8, 0x64, 0xbc, 0xff);
 
         public byte R { get; set; }
         public byte G { get; set; }

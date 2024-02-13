@@ -31,5 +31,7 @@ namespace p3rpc.femc.Components
             if (module == null) throw new Exception($"No module exists with the name \"{typeof(T).Name}\"");
             return (T)module;
         }
+
+        public void OnConfigUpdated(Config newConfig) => _context._config = newConfig;
     }
 }

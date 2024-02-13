@@ -25,12 +25,12 @@ namespace p3rpc.femc.Components
         private unsafe FCampParamTableCommonRow* ACmpMainActor_GetCampParamTableCommonImpl(ACmpMainActor* self)
         {
             var return_value = _getCmpMainParams.OriginalFunction(self);
-            return_value->AoItaColorHigh.SetColor(_context._config.UILightColor);
-            return_value->AoItaColorMid.SetColor(_context._config.UILightColor);
-            return_value->AoItaColorLow.SetColor(_context._config.UILightColor);
-            return_value->GradADownColorHigh.SetColor(_context._config.UILightColor);
-            return_value->GradADownColorMid.SetColor(_context._config.UILightColor);
-            return_value->GradADownColorLow.SetColor(_context._config.UILightColor);
+            return_value->AoItaColorHigh.SetColor(_context._config.CampHighColor);
+            return_value->AoItaColorMid.SetColor(_context._config.CampMiddleColor);
+            return_value->AoItaColorLow.SetColor(_context._config.CampLowColor);
+            return_value->GradADownColorHigh.SetColor(_context._config.CampHighColor);
+            return_value->GradADownColorMid.SetColor(_context._config.CampMiddleColor);
+            return_value->GradADownColorLow.SetColor(_context._config.CampLowColor);
             return return_value;
         }
 
