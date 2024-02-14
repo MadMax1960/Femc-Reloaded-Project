@@ -1330,9 +1330,11 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0320)] public UBmdAsset* m_pBmdAsset;
         //[FieldOffset(0x0328)] public UUILocationSelect* m_pLocationSelect;
         [FieldOffset(0x0330)] public UPlgAsset* m_pPlacePlg;
-        //[FieldOffset(0x0E00)] public FGetUIParameter m_tagUip;
-        //[FieldOffset(0x0E78)] public FCurveFloatAnimation m_tagFadeInCurve;
-        //[FieldOffset(0x0EA8)] public FCurveFloatAnimation m_tagFadeOutCurve;
+        [FieldOffset(0x0E00)] public FGetUIParameter m_tagUip;
+        [FieldOffset(0x0E78)] public FCurveFloatAnimation m_tagFadeInCurve;
+        [FieldOffset(0x0EA8)] public FCurveFloatAnimation m_tagFadeOutCurve;
+        [FieldOffset(0xee0)] public FVector2D PlaceInfoBgPosition;
+        [FieldOffset(0xf04)] public FSprColor PlaceInfoBgColor;
         [FieldOffset(0x0F30)] public UDataTable* LayoutData;
         [FieldOffset(0x0F38)] public UUILayoutDataTable* LayoutDataTable;
         [FieldOffset(0x0F40)] public UDataTable* LayoutParamData;
@@ -1380,8 +1382,8 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0098)] public UMaterial* m_pVelvetRoomIconMat;
         [FieldOffset(0x00A0)] public UMaterialInstanceDynamic* m_pVelvetRoomIconMID;
         //[FieldOffset(0x00A8)] public UMiniMapIconListTable* m_pFldMiniMapIconTable;
-        //[FieldOffset(0x00B0)] public UAssetLoader* m_pIconLoader;
-        //[FieldOffset(0x00B8)] public UAssetLoader* m_pMapLoader;
+        [FieldOffset(0x00B0)] public UAssetLoader* m_pIconLoader;
+        [FieldOffset(0x00B8)] public UAssetLoader* m_pMapLoader;
         [FieldOffset(0x00C0)] public TArray<nint> m_pMapLoaders;
         [FieldOffset(0xF250)] public UTexture* m_pMapParts;
         [FieldOffset(0xF660)] public UTexture* m_pWallTex;
@@ -1430,7 +1432,7 @@ namespace p3rpc.femc.Native
         //[FieldOffset(0x03F0)] public FCurveVectorAnimation m_curveWhiteDiamondAnim;
         //[FieldOffset(0x0420)] public FCurveVectorAnimation m_curveInfoInAnim;
         //[FieldOffset(0x0450)] public FCurveVectorAnimation m_curveIconAnim;
-        //[FieldOffset(0x0480)] public UUILocationSelect* m_pLocationSelect;
+        [FieldOffset(0x0480)] public UUILocationSelect* m_pLocationSelect;
         //[FieldOffset(0x0488)] public AFldAnimObj* m_pSymbolRefList;
         //[FieldOffset(0x04B8)] public USkinnedMeshComponent* m_pSymbolSkinnedRefList;
         [FieldOffset(0x04E8)] public AActor* m_pFieldCamera;
@@ -2068,4 +2070,115 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0140)] public UDataTable* OkNextMaskLayoutData;
         [FieldOffset(0x0148)] public UUILayoutDataTable* OkNextMaskLayoutDataTable;
     }; // Size: 0x158
+
+    public struct FSaveSlotItem
+    {
+        int SlotNo;                                                                     // 0x0000 (size: 0x4)
+        int Month;                                                                      // 0x0004 (size: 0x4)
+        int Day;                                                                        // 0x0008 (size: 0x4)
+        int PLV;                                                                        // 0x000C (size: 0x4)
+        int Week;                                                                       // 0x0010 (size: 0x4)
+        bool bHoliday;                                                                    // 0x0014 (size: 0x1)
+        int PTimeHour;                                                                  // 0x0018 (size: 0x4)
+        int PTimeMin;                                                                   // 0x001C (size: 0x4)
+        int Diff;                                                                       // 0x0020 (size: 0x4)
+        int MoonAge;                                                                    // 0x0024 (size: 0x4)
+        int TimeZone;                                                                   // 0x0028 (size: 0x4)
+        FString PlayerName;                                                               // 0x0030 (size: 0x10)
+        FString LocationName;                                                             // 0x0040 (size: 0x10)
+        bool bIsGoodEnd;                                                                  // 0x0050 (size: 0x1)
+        bool bIsBadEnd;                                                                   // 0x0051 (size: 0x1)
+        bool bIsLoaded;                                                                   // 0x0052 (size: 0x1)
+        bool bHasData;                                                                    // 0x0053 (size: 0x1)
+        bool bUseDefaultHeroName;                                                         // 0x0054 (size: 0x1)
+
+    }; // Size: 0x58
+
+    public enum ESaveDrawOpenType
+    {
+        TYPE_FIELD = 0,
+        TYPE_CAMP = 1,
+        TYPE_TITLE = 2,
+    };
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x338)]
+    public unsafe struct ASaveLoadDraw //: public AUIDrawBaseActor
+    {
+        [FieldOffset(0x02EC)] public int BootMode;
+        [FieldOffset(0x02F0)] public bool bIsStartInAnim;
+        [FieldOffset(0x02F1)] public bool bIsUseCapture;
+        [FieldOffset(0x02F2)] public bool bIsOpenCamp;
+        [FieldOffset(0x02F3)] public bool bIsUseScrollBar;
+        [FieldOffset(0x02F4)] public bool bIsStartCloseAnim;
+        [FieldOffset(0x02F8)] public int CursorIndex;
+        [FieldOffset(0x02FC)] public int ListTopIndex;
+        [FieldOffset(0x0300)] public int CurrentIndex;
+        [FieldOffset(0x0308)] public TArray<FSaveSlotItem> SaveSlotItems;
+        [FieldOffset(0x0318)] public ESaveDrawOpenType OpenType;
+        [FieldOffset(0x031C)] public int AllSlotNum;
+        [FieldOffset(0x0320)] public int CheckOverListIndex;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x78)]
+    public unsafe struct FGetUIParameter
+    {
+        //[FieldOffset(0x0018)] public UUIParameterAsset* ParameterAsset;                                          //  (size: 0x8)
+        [FieldOffset(0x0020)] public TMap ParameterMap;                                                //  (size: 0x50)
+        [FieldOffset(0x0070)] public UAssetLoader* AssetLoader;                                                  //  (size: 0x8)
+    }; // Size: 0x78
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x30)]
+    public unsafe struct FCurveLinearColorAnimation //: public FBaseCurveAnimation
+    {
+        [FieldOffset(0x0028)] UCurveLinearColor* m_pCurveLinearColor;                                     //  (size: 0x8)
+
+    }; // Size: 0x30
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x11c0)]
+    public unsafe struct AUIMiscCheckDraw //: public AUIBaseActor
+    {
+        [FieldOffset(0x02B8)] public USprAsset* m_pAlphaSpr;
+        [FieldOffset(0x02C0)] public USprAsset* m_pKeySpr;
+        [FieldOffset(0x02C8)] public UAssetLoader* m_pLoader;
+        [FieldOffset(0x02D0)] public FCurveLinearColorAnimation m_tagMaxColorWave;
+        [FieldOffset(0x0300)] public FGetUIParameter m_uip;
+        [FieldOffset(0x1198)] public UDataTable* LayoutData;
+        [FieldOffset(0x11A0)] public UDataTable* TextLayoutData;
+        [FieldOffset(0x11A8)] public UUILayoutDataTable* LayoutDataTable;
+        [FieldOffset(0x11B0)] public UUILayoutDataTable* TextLayoutDataTable;
+    };
+
+    public unsafe struct FCurveFloatAnimation //: public FBaseCurveAnimation
+    {
+        //UCurveFloat* m_pCurveFloat;                                                 // 0x0028 (size: 0x8)
+    }; // Size: 0x30
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x30)]
+    public struct FFldShortcutData
+    {
+        [FieldOffset(0x0000)] public short mShortcutIndex;                                                             //  (size: 0x2)
+        [FieldOffset(0x0008)] public FString mName;                                                                    //  (size: 0x10)
+        [FieldOffset(0x0018)] public bool mEnable;                                                                     //  (size: 0x1)
+
+    }; // Size: 0x30
+
+    [StructLayout(LayoutKind.Explicit, Size = 0xf0)]
+    public struct FShortcutItem
+    {
+        [FieldOffset(0x0)] FFldShortcutData Data;                                                            // 0x0000 (size: 0x30)
+    }; // Size: 0xF0
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x358)]
+    public unsafe struct UUILocationSelect //: public UObject
+    {
+        [FieldOffset(0x0048)] public USprAsset* m_pMiniMapSpr;
+        [FieldOffset(0x0050)] public UAssetLoader* m_pLoader;
+        [FieldOffset(0x0058)] public FGetUIParameter m_tagUip;
+        [FieldOffset(0x00D0)] public TArray<FShortcutItem> m_aShortcutList;
+        [FieldOffset(0x0308)] public UDataTable* m_pLayoutData;
+        [FieldOffset(0x0310)] public UUILayoutDataTable* m_pLayoutDataTable;
+        [FieldOffset(0x0318)] public UDataTable* m_pLayoutData2;
+        [FieldOffset(0x0320)] public UUILayoutDataTable* m_pLayoutDataTable2;
+
+    }; // Size: 0x358
 }

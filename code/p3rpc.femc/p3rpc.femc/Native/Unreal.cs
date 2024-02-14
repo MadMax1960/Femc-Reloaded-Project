@@ -753,6 +753,14 @@ namespace p3rpc.femc.Native
             B = (byte)((color >> 0x8) & 0xff);
             A = (byte)(color & 0xff);
         }
+
+        public void SetColor(Configuration.ConfigColor configColor)
+        {
+            R = configColor.R;
+            G = configColor.G;
+            B = configColor.B;
+            A = configColor.A;
+        }
     }
     [StructLayout(LayoutKind.Sequential, Size = 0x10)]
     public struct FLinearColor
@@ -1258,4 +1266,80 @@ namespace p3rpc.femc.Native
         //[FieldOffset(0x05E0)] public UWorldComposition* WorldComposition;
         //[FieldOffset(0x0678)] public FWorldPSCPool PSCPool;
     };
+
+    public enum ERichCurveExtrapolation : byte
+    {
+        RCCE_Cycle = 0,
+        RCCE_CycleWithOffset = 1,
+        RCCE_Oscillate = 2,
+        RCCE_Linear = 3,
+        RCCE_Constant = 4,
+        RCCE_None = 5,
+    };
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x70)]
+    public unsafe struct FRealCurve //: public FIndexedCurve
+    {
+        [FieldOffset(0x0068)] public float DefaultValue;                                                               //  (size: 0x4)
+        [FieldOffset(0x006C)] public ERichCurveExtrapolation PreInfinityExtrap;                           //  (size: 0x1)
+        [FieldOffset(0x006D)] public ERichCurveExtrapolation PostInfinityExtrap;                          //  (size: 0x1)
+
+    }; // Size: 0x70
+
+    public enum ERichCurveInterpMode : byte
+    {
+        RCIM_Linear = 0,
+        RCIM_Constant = 1,
+        RCIM_Cubic = 2,
+        RCIM_None = 3,
+    };
+
+    public enum ERichCurveTangentMode : byte
+    {
+        RCTM_Auto = 0,
+        RCTM_User = 1,
+        RCTM_Break = 2,
+        RCTM_None = 3,
+    };
+
+    public enum ERichCurveTangentWeightMode : byte
+    {
+        RCTWM_WeightedNone = 0,
+        RCTWM_WeightedArrive = 1,
+        RCTWM_WeightedLeave = 2,
+        RCTWM_WeightedBoth = 3,
+    };
+
+    public unsafe struct FRichCurveKey
+    {
+        ERichCurveInterpMode InterpMode;                                     // 0x0000 (size: 0x1)
+        ERichCurveTangentMode TangentMode;                                   // 0x0001 (size: 0x1)
+        ERichCurveTangentWeightMode TangentWeightMode;                       // 0x0002 (size: 0x1)
+        float Time;                                                                       // 0x0004 (size: 0x4)
+        float Value;                                                                      // 0x0008 (size: 0x4)
+        float ArriveTangent;                                                              // 0x000C (size: 0x4)
+        float ArriveTangentWeight;                                                        // 0x0010 (size: 0x4)
+        float LeaveTangent;                                                               // 0x0014 (size: 0x4)
+        float LeaveTangentWeight;                                                         // 0x0018 (size: 0x4)
+
+    }; // Size: 0x1C
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x80)]
+    public struct FRichCurve //: public FRealCurve
+    {
+        [FieldOffset(0x0070)] TArray <FRichCurveKey> Keys;                                                       // 0x0070 (size: 0x10)
+    }; // Size: 0x80
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x250)]
+    public unsafe struct UCurveLinearColor //: public UCurveBase
+    {
+        [FieldOffset(0x0030)] public FRichCurve FloatCurves;
+        [FieldOffset(0x0230)] public float AdjustHue;
+        [FieldOffset(0x0234)] public float AdjustSaturation;
+        [FieldOffset(0x0238)] public float AdjustBrightness;
+        [FieldOffset(0x023C)] public float AdjustBrightnessCurve;
+        [FieldOffset(0x0240)] public float AdjustVibrance;
+        [FieldOffset(0x0244)] public float AdjustMinAlpha;
+        [FieldOffset(0x0248)] public float AdjustMaxAlpha;
+    }; // Size: 0x250
 }

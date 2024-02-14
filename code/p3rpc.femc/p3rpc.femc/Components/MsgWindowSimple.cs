@@ -103,8 +103,9 @@ namespace p3rpc.femc.Components
                 _uiCommon._spriteFunc1(&sprite1, itemMask, self->MsgSpr_, 0, 0);
                 _uiCommon._spriteMaskFunc1(itemMask, 0, 0, 1, 0, 1, 0, 0xf, 0x23);
                 _uiCommon._spriteFunc1(&sprite1, itemMask, self->MsgSpr_, 0, 0);
+                _uiCommon._spriteMaskFunc1(itemMask, 0, 0, 1, 4, 1, 1, 0xf, 0x23);
 
-                _drawMessageText(self, itemMask, self->Field164, self->OffsetX + 482, 883);
+                //_drawMessageText(self, itemMask, self->Field164, self->OffsetX + 482, 883);
             }
         }
 

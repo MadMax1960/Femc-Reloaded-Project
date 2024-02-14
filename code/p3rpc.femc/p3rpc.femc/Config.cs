@@ -17,10 +17,10 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CampHighColor { get; set; } = ConfigColor.CampHighColor;
 
         [DisplayName("Camp: Middle Color")]
-        public ConfigColor CampMiddleColor { get; set; } = ConfigColor.LightColor;
+        public ConfigColor CampMiddleColor { get; set; } = ConfigColor.CampHighColor;
 
         [DisplayName("Camp: Low Color")]
-        public ConfigColor CampLowColor { get; set; } = ConfigColor.LightColor;
+        public ConfigColor CampLowColor { get; set; } = ConfigColor.CampHighColor;
 
         [DisplayName("Date Time Panel: Top Text Color")]
         public ConfigColor DateTimePanelTopTextColor { get; set; } = ConfigColor.DarkColor;
@@ -39,6 +39,9 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Mind Window: Outer Haze")]
         public ConfigColor MindWindowOuterHaze { get; set; } = new ConfigColor(ConfigColor.MidColor.R, ConfigColor.MidColor.G, ConfigColor.MidColor.B, 128);
+
+        [DisplayName("Minimap: Place Name Background Color")]
+        public ConfigColor MinimapPlaceNameBgColor { get; set; } = ConfigColor.DarkColor;
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -61,6 +64,15 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         [DefaultValue(false)]
         public bool EnableMindMessageBox { get; set; } = true;
+
+        [DisplayName("Enable Interact Prompt (WIP)")]
+        [Category("UI Components")]
+        [DefaultValue(false)]
+        public bool EnableInteractPrompt { get; set; } = true;
+
+        [DisplayName("Enable Minimap")]
+        [Category("UI Components")]
+        public bool EnableMinimap { get; set; } = true;
 
     }
 

@@ -68,12 +68,14 @@ namespace p3rpc.femc
             if (_configuration.EnableMailIcon) AddModule<MailIcon>();
             if (_configuration.EnableCampMenu) AddModule<Camp>();
             if (_configuration.EnableCampMenu) AddModule<DateTimePanel>();
-            //if (_configuration.EnableTextbox) AddModule<MsgWindowSimple>();
+            if (_configuration.EnableTextbox) AddModule<MsgWindowSimple>();
             if (_configuration.EnableMindMessageBox)
             {
                 AddModule<MsgWindowMind>();
                 //AddModule<MsgWindowSelectMind>();
             }
+            if (_configuration.EnableInteractPrompt) AddModule<MiscCheckDraw>();
+            if (_configuration.EnableMinimap) AddModule<Minimap>();
 
             foreach (var mod in _modules.Values) mod.Register();
         }
