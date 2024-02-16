@@ -1673,31 +1673,23 @@ namespace p3rpc.femc.Native
     [StructLayout(LayoutKind.Explicit, Size = 0x40)]
     public unsafe struct PlgDefStruct1
     {
-        [FieldOffset(0x0)] public FVector2D Position;
-        [FieldOffset(0x8)] public float Field08;
-        [FieldOffset(0xc)] public FVector2D Stretch;
-        [FieldOffset(0x14)] public float Field14;
-        [FieldOffset(0x18)] public float Field18;
-        [FieldOffset(0x1c)] public float Rotation;
-        [FieldOffset(0x20)] public float Field20;
+        [FieldOffset(0x0)] public FVector Position;
+        [FieldOffset(0xc)] public FVector Stretch;
+        [FieldOffset(0x18)] public FVector Rotation;
         [FieldOffset(0x24)] public FSprColor Color;
         [FieldOffset(0x28)] public int VertexIndex;
         [FieldOffset(0x2c)] public FVector4 Size;
         [FieldOffset(0x3c)] public int Field3C;
 
-        public PlgDefStruct1(FVector2D position, FSprColor color, int vertexIndex, float rotation, FVector2D stretch)
+        public PlgDefStruct1(FVector position, FVector stretch, FVector rotation, FSprColor color, int vertexIndex)
         {
-            Size = new FVector4(960, 540, 0, 1);
-            Field3C = 0;
-            Field08 = 0;
-            Field14 = 1;
             Position = position;
-            VertexIndex = vertexIndex;
             Stretch = stretch;
             Rotation = rotation;
-            Field18 = 0;
-            Field20 = 0;
             Color = color;
+            VertexIndex = vertexIndex;
+            Size = new FVector4(960, 540, 0, 1);
+            Field3C = 0;
         }
 
         public void SetColor(FSprColor color) => Color = color;
@@ -1714,14 +1706,15 @@ namespace p3rpc.femc.Native
     public unsafe struct UMsgProcWindowBase //: public UObject
     {
         [FieldOffset(0x88)] public byte MessageBoxStatus;
-        [FieldOffset(0x90)] UMsgItem* pMsgWork;                                                         // 0x0090 (size: 0x8)
-        [FieldOffset(0x98)] UTutorialManager* pTutorialManager;                                         // 0x0098 (size: 0x8)
+        [FieldOffset(0x90)] public UMsgItem* pMsgWork;                                                         // 0x0090 (size: 0x8)
+        [FieldOffset(0x98)] public UTutorialManager* pTutorialManager;                                         // 0x0098 (size: 0x8)
 
     }; // Size: 0x108
 
     [StructLayout(LayoutKind.Explicit, Size = 0xB0)]
     public unsafe struct UMsgItem //: public UObject
     {
+        [FieldOffset(0x30)] public nint CurrentSpeaker;
         [FieldOffset(0x0068)] public TArray<FMsgItemInfo> MssageList;
         [FieldOffset(0x0078)] public TArray<FMsgItemInfo> SpeakerList;
         [FieldOffset(0x0088)] public UMsgProcWindowBase* mpMsgProcWindow;
@@ -2027,6 +2020,7 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0108)] public UAssetLoader* Loader_;
         [FieldOffset(0x0110)] public USprAsset* MsgSpr_;
         [FieldOffset(0x0118)] public UPlgAsset* MsgPlg_;
+        [FieldOffset(0x144)] public float Field144;
         [FieldOffset(0x158)] public float OffsetX;
         [FieldOffset(0x15c)] public float SizeX;
         [FieldOffset(0x160)] public float Opacity;
@@ -2040,6 +2034,19 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x18c)] public int MessageBoxSubWidth;
         [FieldOffset(0x190)] public int MessageBoxSubHeight;
         [FieldOffset(0x01B0)] public UUILayoutDataTable* LayoutDataTable;
+
+        public unsafe bool ShowSpeakerName()
+        {
+            fixed (UMsgProcWindow_Simple* self = &this) { return self->IsMsgBoxSpeakerStatusValid() && self->HasSpeakerName(); }
+        }
+        public unsafe bool IsMsgBoxSpeakerStatusValid()
+        {
+            fixed (UMsgProcWindow_Simple* self = &this) { return (self->MsgProcWindowStatus & 4) != 0 && ((UMsgProcWindowBase*)self)->MessageBoxStatus != 3; }
+        }
+        public unsafe bool HasSpeakerName()
+        {
+            fixed (UMsgProcWindow_Simple* self = &this) { return ((UMsgProcWindowBase*)self)->pMsgWork->CurrentSpeaker != nint.Zero; }
+        }
 
     }; // Size: 0x1B8
 
@@ -2134,6 +2141,12 @@ namespace p3rpc.femc.Native
 
     }; // Size: 0x30
 
+    [StructLayout(LayoutKind.Explicit, Size = 0x74)]
+    public unsafe struct LocationSelectParams1
+    {
+        [FieldOffset(0x3c)] public FSprColor Color;
+    }
+
     [StructLayout(LayoutKind.Explicit, Size = 0x11c0)]
     public unsafe struct AUIMiscCheckDraw //: public AUIBaseActor
     {
@@ -2142,6 +2155,15 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x02C8)] public UAssetLoader* m_pLoader;
         [FieldOffset(0x02D0)] public FCurveLinearColorAnimation m_tagMaxColorWave;
         [FieldOffset(0x0300)] public FGetUIParameter m_uip;
+        [FieldOffset(0x354)] public SprDefStruct1 sprDefParamsAlpha;
+        [FieldOffset(0x448)] public SprDefStruct1 sprDefAlphaSpr1;
+        [FieldOffset(0x4b0)] public SprDefStruct1 sprDefAlphaSpr2;
+        [FieldOffset(0x518)] public SprDefStruct1 sprDefParamsKey1;
+        [FieldOffset(0x580)] public SprDefStruct1 sprDefParamsKey2;
+        [FieldOffset(0x808)] public LocationSelectParams1 checkBgFront;
+        [FieldOffset(0x87c)] public LocationSelectParams1 checkBgBack;
+        [FieldOffset(0x988)] public FSprColor CheckBgFrontBorderColor;
+        [FieldOffset(0xae0)] public CheckDrawUIStruct1 FieldAE0;
         [FieldOffset(0x1198)] public UDataTable* LayoutData;
         [FieldOffset(0x11A0)] public UDataTable* TextLayoutData;
         [FieldOffset(0x11A8)] public UUILayoutDataTable* LayoutDataTable;
@@ -2181,4 +2203,11 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0320)] public UUILayoutDataTable* m_pLayoutDataTable2;
 
     }; // Size: 0x358
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x30)]
+    public unsafe struct CheckDrawUIStruct1
+    {
+        [FieldOffset(0x20)] public float Field20;
+        [FieldOffset(0x28)] public float Field28;
+    }
 }

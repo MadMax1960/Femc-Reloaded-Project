@@ -28,8 +28,14 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Date Time Panel: Bottom Text Color")]
         public ConfigColor DateTimePanelBottomTextColor { get; set; } = ConfigColor.MidColor;
 
-        [DisplayName("Message Window: Color")]
-        public ConfigColor MessageWindowColor { get; set; } = ConfigColor.MidColor;
+        [DisplayName("Text Box: Back Fill Color")]
+        public ConfigColor TextBoxBackFillColor { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Text Box: Front Fill Color")]
+        public ConfigColor TextBoxFrontFillColor { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Text Box: Front Fill Border Color")]
+        public ConfigColor TextBoxFrontBorderColor { get; set; } = ConfigColor.DarkColor;
 
         [DisplayName("Mind Window: Outer Border")]
         public ConfigColor MindWindowOuterBorder { get; set; } = ConfigColor.MidColor;
@@ -42,6 +48,15 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Minimap: Place Name Background Color")]
         public ConfigColor MinimapPlaceNameBgColor { get; set; } = ConfigColor.DarkColor;
+
+        [DisplayName("Interact Prompt: Background Color")]
+        public ConfigColor CheckDrawBgColor { get; set; } = ConfigColor.DarkColor;
+
+        [DisplayName("Interact Prompt: Foreground Border Color")]
+        public ConfigColor CheckDrawFgBorderColor { get; set; } = ConfigColor.DarkColor;
+
+        [DisplayName("Interact Prompt: Foregorund Color")]
+        public ConfigColor CheckDrawFgColor { get; set; } = ConfigColor.MidColor;
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -65,9 +80,8 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool EnableMindMessageBox { get; set; } = true;
 
-        [DisplayName("Enable Interact Prompt (WIP)")]
+        [DisplayName("Enable Interact Prompt")]
         [Category("UI Components")]
-        [DefaultValue(false)]
         public bool EnableInteractPrompt { get; set; } = true;
 
         [DisplayName("Enable Minimap")]
@@ -91,6 +105,8 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor DarkColor = new ConfigColor(0xd4, 0x15, 0x5b, 0xff);
         public static readonly ConfigColor MidColor = new ConfigColor(0xff, 0x8f, 0xec, 0xff);
         public static readonly ConfigColor CampHighColor = new ConfigColor(0xe8, 0x64, 0xbc, 0xff);
+        public static readonly ConfigColor Black = new ConfigColor(0x0, 0x0, 0x0, 0xff);
+        public static readonly ConfigColor White = new ConfigColor(0xff, 0xff, 0xff, 0xff);
 
         public byte R { get; set; }
         public byte G { get; set; }

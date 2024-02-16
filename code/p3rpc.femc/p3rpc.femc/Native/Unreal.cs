@@ -1343,3 +1343,4 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0248)] public float AdjustMaxAlpha;
     }; // Size: 0x250
 }
+ 
