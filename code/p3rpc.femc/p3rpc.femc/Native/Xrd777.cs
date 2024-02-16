@@ -1297,13 +1297,17 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0050)] public UMaterialInterface* _readMatInst;                                     // 0x0050 (size: 0x10)
         [FieldOffset(0x0058)] public UMaterialInstanceDynamic* _readMatInstDyn;                                     // 0x0050 (size: 0x10)
         //FCurveVectorAnimation _fadeCurve;                                                 // 0x0060 (size: 0x30)
-        //UAssetLoader* Loader_;                                                      // 0x02E8 (size: 0x8)
+        [FieldOffset(0xa8)] public bool bIsDarkHour;
         [FieldOffset(0x270)] public UAgePanelSection BottomMaterial;
         [FieldOffset(0x2a0)] public UAgePanelSection TopMaterial;
+        [FieldOffset(0x2e8)] public UAssetLoader* Loader_;                                                      // 0x02E8 (size: 0x8)
+        [FieldOffset(0x2f0)] public uint ActiveDrawTypeId;
         [FieldOffset(0x310)] public FLinearColor BottomColorNormal;
         [FieldOffset(0x320)] public FLinearColor BottomColorDarkHour;
         [FieldOffset(0x330)] public FLinearColor TopColorNormal;
         [FieldOffset(0x340)] public FLinearColor TopColorDarkHour;
+        [FieldOffset(0x350)] public FLinearColor WaterColorNormal;
+        [FieldOffset(0x360)] public FLinearColor WaterColorDarkHour;
     };
 
     [StructLayout(LayoutKind.Explicit, Size = 0x7e0)]
@@ -1311,6 +1315,8 @@ namespace p3rpc.femc.Native
     {
         [FieldOffset(0x02A8)] public UAgePanel* m_pAgePanel;
         [FieldOffset(0x02B0)] public USprAsset* m_pFieldSpr;
+        [FieldOffset(0x400)] public SprDefStruct1 TimeOfDayParams;
+        [FieldOffset(0x7ad)] public byte TimeOfDay;
         [FieldOffset(0x07D0)] public UDataTable* LayoutData;
         [FieldOffset(0x07D8)] public UUILayoutDataTable* LayoutDataTable;
 
@@ -2014,19 +2020,26 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x01A8)] public UUILayoutDataTable* LayoutDataTable;
     }; // Size: 0x1D0
 
+    [StructLayout(LayoutKind.Explicit, Size = 0x24)]
+    public unsafe struct UMsgProcWindow_Simple_NextPageParams
+    {
+        [FieldOffset(0x1c)] public FSprColor NextPageColor;
+    }
+
     [StructLayout(LayoutKind.Explicit, Size = 0x1B8)]
     public unsafe struct UMsgProcWindow_Simple //: public UMsgProcWindowBase
     {
         [FieldOffset(0x0108)] public UAssetLoader* Loader_;
         [FieldOffset(0x0110)] public USprAsset* MsgSpr_;
         [FieldOffset(0x0118)] public UPlgAsset* MsgPlg_;
+        [FieldOffset(0x120)] public UMsgProcWindow_Simple_NextPageParams NextPageParams;
         [FieldOffset(0x144)] public float Field144;
         [FieldOffset(0x158)] public float OffsetX;
         [FieldOffset(0x15c)] public float SizeX;
         [FieldOffset(0x160)] public float Opacity;
         [FieldOffset(0x164)] public float Field164;
         [FieldOffset(0x168)] public float BgPieceRotation;
-        [FieldOffset(0x170)] public float Field170;
+        [FieldOffset(0x170)] public float PositionLerp;
         [FieldOffset(0x174)] public float BgPieceTransparency;
         [FieldOffset(0x180)] public uint MsgProcWindowStatus;
         [FieldOffset(0x184)] public int MessageBoxWidth;
@@ -2209,5 +2222,23 @@ namespace p3rpc.femc.Native
     {
         [FieldOffset(0x20)] public float Field20;
         [FieldOffset(0x28)] public float Field28;
+    }
+
+    // https://helpx.adobe.com/au/photoshop/using/blending-modes.html
+    public enum UIComponentBlendType : uint
+    {
+        None = 0,
+        Multiply = 1,
+        Add = 2,
+        Subtract = 3,
+        Divide = 4,
+        Type5 = 5,
+        NoneAddAlpha = 6,
+        Add2 = 7,
+        NoneAddAlpha2 = 8,
+        Type9 = 9,
+        None4 = 10,
+        Multiply2 = 11,
+        Add3 = 12
     }
 }

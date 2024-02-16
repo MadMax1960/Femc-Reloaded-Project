@@ -50,6 +50,7 @@ namespace p3rpc.femc
         public void Log(string text) => _logger.WriteLineAsync($"[FEMC PROJECT] {text}", System.Drawing.Color.Thistle);
         public nuint GetDirectAddress(int offset) => (nuint)(_baseAddress + offset);
         public nuint GetIndirectAddressShort(int offset) => GetGlobalAddress((nint)_baseAddress + offset + 1);
+        public nuint GetIndirectAddressShort2(int offset) => GetGlobalAddress((nint)_baseAddress + offset + 2);
         public nuint GetIndirectAddressLong(int offset) => GetGlobalAddress((nint)_baseAddress + offset + 3);
         public nuint GetIndirectAddressLong4(int offset) => GetGlobalAddress((nint)_baseAddress + offset + 4);
         public IHook<T> MakeHooker<T>(T delegateMethod, long address) => _hooks.CreateHook(delegateMethod, address).Activate();

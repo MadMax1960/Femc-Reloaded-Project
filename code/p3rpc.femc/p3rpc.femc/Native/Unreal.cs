@@ -1207,7 +1207,10 @@ namespace p3rpc.femc.Native
     [StructLayout(LayoutKind.Explicit, Size = 0x360)]
     public unsafe struct UMaterialInstanceDynamic // : public UMaterialInstance
     {
+        public void SetVectorParamteterValue(FName name, FLinearColor* vector)
+        {
 
+        }
     }
 
     // FOR BLUEPRINTS

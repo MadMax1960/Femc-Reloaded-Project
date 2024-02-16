@@ -28,14 +28,23 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Date Time Panel: Bottom Text Color")]
         public ConfigColor DateTimePanelBottomTextColor { get; set; } = ConfigColor.MidColor;
 
+        [DisplayName("Date Time Panel: Water Color")]
+        public ConfigColor DateTimePanelWaterColor { get; set; } = ConfigColor.MidColor;
+
         [DisplayName("Text Box: Back Fill Color")]
-        public ConfigColor TextBoxBackFillColor { get; set; } = ConfigColor.MidColor;
+        public ConfigColor TextBoxBackFillColor { get; set; } = ConfigColor.TextBoxBackFillColor;
 
         [DisplayName("Text Box: Front Fill Color")]
-        public ConfigColor TextBoxFrontFillColor { get; set; } = ConfigColor.MidColor;
+        public ConfigColor TextBoxFrontFillColor { get; set; } = ConfigColor.TextBoxFrontFillColor;
 
         [DisplayName("Text Box: Front Fill Border Color")]
         public ConfigColor TextBoxFrontBorderColor { get; set; } = ConfigColor.DarkColor;
+
+        [DisplayName("Text Box: Speaker Name Triangle Color")]
+        public ConfigColor TextBoxSpeakerNameTriangle { get; set; } = ConfigColor.DarkColor;
+
+        [DisplayName("Text Box: Left Haze Color")]
+        public ConfigColor TextBoxLeftHaze { get; set; } = ConfigColor.DarkColor;
 
         [DisplayName("Mind Window: Outer Border")]
         public ConfigColor MindWindowOuterBorder { get; set; } = ConfigColor.MidColor;
@@ -105,8 +114,8 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor DarkColor = new ConfigColor(0xd4, 0x15, 0x5b, 0xff);
         public static readonly ConfigColor MidColor = new ConfigColor(0xff, 0x8f, 0xec, 0xff);
         public static readonly ConfigColor CampHighColor = new ConfigColor(0xe8, 0x64, 0xbc, 0xff);
-        public static readonly ConfigColor Black = new ConfigColor(0x0, 0x0, 0x0, 0xff);
-        public static readonly ConfigColor White = new ConfigColor(0xff, 0xff, 0xff, 0xff);
+        public static readonly ConfigColor TextBoxBackFillColor = new ConfigColor(0x6c, 0x7, 0x39, 0xff);
+        public static readonly ConfigColor TextBoxFrontFillColor = new ConfigColor(0x49, 0x4, 0x21, 0xff);
 
         public byte R { get; set; }
         public byte G { get; set; }
