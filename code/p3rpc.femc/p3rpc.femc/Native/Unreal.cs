@@ -1345,5 +1345,12 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0244)] public float AdjustMinAlpha;
         [FieldOffset(0x0248)] public float AdjustMaxAlpha;
     }; // Size: 0x250
+
+    public enum EFindType : int
+    {
+        FNAME_Find = 0,
+        FNAME_Add = 1,
+        FNAME_Replace_Not_Safe_For_Threading = 2
+    }
 }
  

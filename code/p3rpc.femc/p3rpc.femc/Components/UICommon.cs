@@ -30,6 +30,7 @@ namespace p3rpc.femc.Components
         private string DrawComponentMask_FUN_14bffbdd0_SIG = "48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC 50 31 F6";
         private string SpriteMaskType_ActiveDrawTypeId_SIG = "89 0D ?? ?? ?? ?? 41 8B CF"; // 0x141118a1f
         private string DrawSingleLineText_SIG = "E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 48 8D 8D ?? ?? ?? ?? F3 44 0F 58 0D ?? ?? ?? ??";
+
         public unsafe UICommon(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
             // Common drawing primitives

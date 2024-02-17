@@ -1,6 +1,7 @@
 ﻿using p3rpc.femc.Template.Configuration;
 using Reloaded.Mod.Interfaces.Structs;
 using System.ComponentModel;
+using System.Reflection.Metadata.Ecma335;
 
 namespace p3rpc.femc.Configuration
 {
@@ -67,6 +68,18 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Interact Prompt: Foregorund Color")]
         public ConfigColor CheckDrawFgColor { get; set; } = ConfigColor.MidColor;
 
+        [DisplayName("Bustup: Shadow Color")]
+        public ConfigColor BustupShadowColor { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Camp: Menu Item Color 1 (Requires Restart)")]
+        public ConfigColor CampMenuItemColor1 { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Camp: Menu Item Color 2 (Requires Restart)")]
+        public ConfigColor CampMenuItemColor2 { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Camp: Menu Item Color 3 (Requires Restart)")]
+        public ConfigColor CampMenuItemColor3 { get; set; } = ConfigColor.MidColor;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         public bool EnableMailIcon { get; set; } = true;
@@ -97,6 +110,10 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         public bool EnableMinimap { get; set; } = true;
 
+        [DisplayName("Enable Bustup")]
+        [Category("UI Components")]
+        public bool EnableBustup { get; set; } = true;
+
     }
 
     /// <summary>
@@ -123,5 +140,7 @@ namespace p3rpc.femc.Configuration
         public byte A { get; set; }
 
         public ConfigColor(byte R, byte G, byte B, byte A) { this.R = R; this.G = G; this.B = B; this.A = A; }
+
+        public uint ToU32() => (uint)(R << 0x18) | (uint)(G << 0x10) | (uint)(B << 0x8) | A;
     }
 }

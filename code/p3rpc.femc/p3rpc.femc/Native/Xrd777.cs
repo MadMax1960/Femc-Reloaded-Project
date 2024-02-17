@@ -1940,6 +1940,7 @@ namespace p3rpc.femc.Native
     {
         [FieldOffset(0x0028)] public UMaterialInterface* BaseMaterial_;
         [FieldOffset(0x0030)] public UMaterialInstanceDynamic* DrawableMaterial_;
+        [FieldOffset(0x0038)] public UMaterialInstanceDynamic* ShadowMaterial;
         [FieldOffset(0x0040)] public UTexture* BaseTex_;
         [FieldOffset(0x0048)] public UTexture* ShadowMask_;
         [FieldOffset(0x0050)] public UTexture* RimLightMask_;
@@ -1950,6 +1951,7 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0098)] public UTexture* BaseMask_;
         [FieldOffset(0x00A0)] public UTexture* DropMask_;
         [FieldOffset(0x00A8)] public UAssetLoader* Loader_;
+        [FieldOffset(0xb0)] public byte FieldB0;
         [FieldOffset(0x0118)] public UBustupAnimDataAsset* BustupAnim_;
         [FieldOffset(0x0120)] public USupportBustupDataAsset* SupportBustupOffset_;
 
@@ -2241,4 +2243,19 @@ namespace p3rpc.femc.Native
         Multiply2 = 11,
         Add3 = 12
     }
+    [StructLayout(LayoutKind.Sequential, Size = 0x10)]
+    public unsafe struct FBustupObjectBuffer
+    {
+        UBustupObject* BustupObject;                                                // 0x0000 (size: 0x8)
+
+    }; // Size: 0x10
+
+    [StructLayout(LayoutKind.Explicit, Size = 0xf0)]
+    public unsafe struct UBustupDraw //: public UObject
+    {
+        [FieldOffset(0x0038)] public UBustupObject* BustupObject_;                                               //  (size: 0x8)
+        [FieldOffset(0x0040)] public UBustupObject* PrevBustupObject_;                                           //  (size: 0x8)
+        [FieldOffset(0x0048)] public TArray<FBustupObjectBuffer> ObjectBuffer_;                                        //  (size: 0x10)
+
+    }; // Size: 0xF0
 }

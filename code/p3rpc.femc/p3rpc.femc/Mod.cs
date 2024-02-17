@@ -84,6 +84,10 @@ namespace p3rpc.femc
                 AddModule<Minimap>();
                 //AddModule<LocationSelect>();
             }
+            if (_configuration.EnableBustup)
+            {
+                AddModule<Bustup>();
+            }
 
             foreach (var mod in _modules.Values) mod.Register();
         }
