@@ -80,6 +80,24 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Menu Item Color 3 (Requires Restart)")]
         public ConfigColor CampMenuItemColor3 { get; set; } = ConfigColor.MidColor;
 
+        [DisplayName("Camp: Skill Text Color (Requires Restart)")]
+        public ConfigColor CampSkillTextColor { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Social Stats: Academics Circle Color")]
+        public ConfigColor SocialStatsCircleAcademicsColor { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Social Stats: Charm Circle Color")]
+        public ConfigColor SocialStatsCircleCharmColor { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Social Stats: Courage Circle Color")]
+        public ConfigColor SocialStatsCircleCourageColor { get; set; } = ConfigColor.MidColor;
+
+        [DisplayName("Camp: Item Menu Character Top Color (Requires Restart)")]
+        public ConfigColor CampItemMenuCharacterTopColor { get; set; } = ConfigColor.DarkColor;
+
+        [DisplayName("Camp: Item Menu Character Bottom Color (Requires Restart)")]
+        public ConfigColor CampItemMenuCharacterBottomColor { get; set; } = ConfigColor.DarkColor;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         public bool EnableMailIcon { get; set; } = true;
@@ -133,6 +151,9 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor CampHighColor = new ConfigColor(0xe8, 0x64, 0xbc, 0xff);
         public static readonly ConfigColor TextBoxBackFillColor = new ConfigColor(0x6c, 0x7, 0x39, 0xff);
         public static readonly ConfigColor TextBoxFrontFillColor = new ConfigColor(0x49, 0x4, 0x21, 0xff);
+        public static readonly ConfigColor CampMenuItemColor1 = new ConfigColor(0xff, 0x8f, 0xec, 0xff);
+        public static readonly ConfigColor CampMenuItemColor2 = new ConfigColor(0xf7, 0x83, 0xe4, 0xff);
+        public static readonly ConfigColor CampMenuItemColor3 = new ConfigColor(0xe0, 0x79, 0xcf, 0xff);
 
         public byte R { get; set; }
         public byte G { get; set; }

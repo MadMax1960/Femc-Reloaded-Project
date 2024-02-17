@@ -66,8 +66,18 @@ namespace p3rpc.femc
             _modules = new();
             AddModule<UICommon>();
             if (_configuration.EnableMailIcon) AddModule<MailIcon>();
-            if (_configuration.EnableCampMenu) AddModule<Camp>();
-            if (_configuration.EnableCampMenu) AddModule<DateTimePanel>();
+            if (_configuration.EnableCampMenu)
+            {
+                AddModule<CampCommon>();
+                AddModule<CampRoot>();
+                AddModule<CampSkill>();
+                AddModule<CampItem>();
+                AddModule<CampEquip>();
+                AddModule<CampPersona>();
+                AddModule<CampSystem>();
+                AddModule<SocialStats>();
+            }
+            if (_configuration.EnableDateTimePanel) AddModule<DateTimePanel>();
             if (_configuration.EnableTextbox)
             {
                 AddModule<MsgWindowSimple>();

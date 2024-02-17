@@ -9,6 +9,7 @@ namespace p3rpc.femc.Native
 {
     // ===================================
     // GENERATED FROM UE4SS CXX HEADER DUMP
+    // Also thanks Ryn!
     // ===================================
 
     public enum EAppPauseObjectFlag : byte
@@ -2258,4 +2259,124 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0048)] public TArray<FBustupObjectBuffer> ObjectBuffer_;                                        //  (size: 0x10)
 
     }; // Size: 0xF0
+
+    // CAMP SYSTEM SUBMENU
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x118)]
+    public unsafe struct UCmpSystem // : UCmpMenuBase
+    {
+        [FieldOffset(0x0000)] public UCmpMenuBase baseObj;
+        [FieldOffset(0x00A8)] public UCmpSystemDraw* pSystemDraw;
+        [FieldOffset(0x00B0)] public UCmpSystemSystem* pSystemSystem;
+        //[FieldOffset(0x00B8)] public AUISaveLoad* pSaveMenu;
+        //[FieldOffset(0x00C0)] public AUITutorial* pTutorial;
+        //[FieldOffset(0x00C8)] public AUIDictionary* pDictionary;
+        //[FieldOffset(0x00D0)] public TSubclassOf<AUITutorialDraw> pTutorialDrawClass;
+        //[FieldOffset(0x00D8)] public AUIConfiguration* pConfig;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x1408)]
+    public unsafe struct UCmpSystemDraw // : UObject
+    {
+        [FieldOffset(0x0000)] public UObjectBase baseObj;
+        [FieldOffset(0x0048)] public TArray<nint> SubMenuMateDynamicAry;
+        [FieldOffset(0x13F8)] public ACmpMainActor* pMainActor;
+        [FieldOffset(0x1400)] public UCmpSystem* pParent;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x58)]
+    public unsafe struct UCmpSystemSystem // : UObject
+    {
+        [FieldOffset(0x0000)] public UObjectBase baseObj;
+        [FieldOffset(0x0040)] public ACmpMainActor* pCmpMainActor;
+        //[FieldOffset(0x0048)] public AUISaveLoad* pSaveMenu;
+        //[FieldOffset(0x0050)] public AUIRestore* pRestoreMenu;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x160)]
+    public unsafe struct UCmpSkill // : UCmpMenuBase
+    {
+        [FieldOffset(0x0000)] public UCmpMenuBase baseObj;
+        [FieldOffset(0x0100)] public UCmpSkillDraw* pSkillDraw;
+        [FieldOffset(0x0108)] public UCmpSkillSystem* pSkillSystem;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x548)]
+    public unsafe struct UCmpSkillDraw // : UObject
+    {
+        [FieldOffset(0x0000)] public UObjectBase baseObj;
+        [FieldOffset(0x0038)] public ACmpMainActor* pMainActor;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x58)]
+    public unsafe struct UCmpSkillSystem // : UObject
+    {
+        [FieldOffset(0x0000)] public UObjectBase baseObj;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x240)]
+    public unsafe struct UCmpItem // : UCmpMenuBase
+    {
+        [FieldOffset(0x0000)] public UCmpMenuBase baseObj;
+        [FieldOffset(0x0188)] public UCmpItemSystem* PSystem;
+        [FieldOffset(0x0190)] public UCmpItemDraw* pDraw;
+        //[FieldOffset(0x0198)] public APersonaStatus* pPersonaStatus;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x608)]
+    public unsafe struct UCmpItemDraw // : UObject
+    {
+        [FieldOffset(0x0000)] public UObjectBase baseObj;
+        [FieldOffset(0x0038)] public ACmpMainActor* pMainActor;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x10)]
+    public struct FItemListItem
+    {
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x798)]
+    public unsafe struct UCmpItemSystem // : UObject
+    {
+        [FieldOffset(0x0000)] public UObjectBase baseObj;
+        [FieldOffset(0x0768)] public TArray<short> PartyMemberList;
+        [FieldOffset(0x0778)] public TArray<int> PersonaStockIDList;
+        [FieldOffset(0x0788)] public TArray<FItemListItem> ItemList;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x248)]
+    public unsafe struct UCmpStatus // : UCmpMenuBase
+    {
+        [FieldOffset(0x0000)] public UCmpMenuBase baseObj;
+        [FieldOffset(0x0058)] public UUICmpStatus* Actor_;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x118)]
+    public unsafe struct UCmpStatusCharacterList // : UUIScene
+    {
+        //[FieldOffset(0x0000)] public UUIScene baseObj;
+        [FieldOffset(0x00B8)] public UUICmpStatus* Owner_;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x870)]
+    public unsafe struct UCmpStatusCharacterListDraw // : UObject
+    {
+        [FieldOffset(0x0000)] public UObjectBase baseObj;
+        [FieldOffset(0x0028)] public UUICmpStatus* pParent;
+        [FieldOffset(0x0030)] public ACmpMainActor* pMainActor;
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0x348)]
+    public unsafe struct UUICmpStatus // : UObject
+    {
+        [FieldOffset(0x0000)] public UObjectBase baseObj;
+        //[FieldOffset(0x02B0)] public UUISceneFSM* SceneFSM_;
+        //[FieldOffset(0x02B8)] public TMap<int, UUIScene*> Scenes_;
+        //[FieldOffset(0x0308)] public APersonaStatus* PSStatusActor_;
+        //[FieldOffset(0x0310)] public AUIDialogSingle* SingleDialog_;
+        [FieldOffset(0x0318)] public UCmpStatusCharacterListDraw* CharaListDraw_;
+        //[FieldOffset(0x0320)] public UCmpCharacterStatusDraw* CharaStatusDraw_;
+        [FieldOffset(0x0330)] public ACmpMainActor* pMainActor;
+        [FieldOffset(0x0338)] public UCmpStatus* pParent;
+    }
 }
