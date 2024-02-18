@@ -55,6 +55,6 @@ namespace p3rpc.femc.Components
         public unsafe delegate void DrawComponentMask_FUN_140cb27f0(nint masker, float posX, float posY, float sizeX, float sizeY, FSprColor a6, int drawTypeId);
         public unsafe delegate void UMsgProcWindow_Simple_DrawMessageText(UMsgProcWindow_Simple* self, nint masker, byte opacity, float posX, float posY);
         public unsafe delegate void DrawComponentMask_FUN_14bffbdd0(nint masker, int a2, int a3);
-        public unsafe delegate void DrawSingleLineText(float posX, float posY, float posZ, FSprColor color, float a5, nint a6, int drawTypeId, int a8, long a9, byte a10);
+        public unsafe delegate void DrawSingleLineText(float posX, float posY, float posZ, FSprColor color, nint a6, int drawTypeId, int a8, long a9, byte a10);
     }
 }

@@ -160,46 +160,51 @@ namespace p3rpc.femc.Components
 
                 if (self->HasSpeakerName())
                 {
-                    if (self->IsMsgBoxSpeakerStatusValid())
-                    {
-                        _uiCommon._plgFunc1(&speakerNameTriangle, itemMask, self->MsgPlg_, 0, 0);
-                        var speakerNameTriangleFrontColor =
+                    if (self->IsMsgBoxSpeakerStatusValid()) _uiCommon._plgFunc1(&speakerNameTriangle, itemMask, self->MsgPlg_, 0, 0);
+                    _uiCommon._setSpriteDrawMaskMode(itemMask, 0);
+                    var speakerNameTriangleFrontColor =
                             ((self->MsgProcWindowStatus & 0x20) != 0) ?
                             new FSprColor(_context._config.TextBoxFrontFillColor) :
                             new FSprColor(_context._config.TextBoxFrontFillColor)
                         ;
-                        var speakerNameTriangleFrontPos =
-                            ((self->MsgProcWindowStatus & 0x4) != 0) ?
-                            new FVector(
-                                msgBaseX + 67 + 2,
-                                Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 + 12,
-                                0) :
-                            new FVector(
-                                msgBaseX + 67 + 67,
-                                Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 + 26,
-                                0)
-                        ;
-                        var speakerNameTriangleFrontVertexIndex = ((self->MsgProcWindowStatus & 0x4) != 0) ? 5 : 6;
-                        var speakerNameTriangleFrontStretch = new FVector(1, 1, 1);
-                        var speakerNameTriangleFront = new PlgDefStruct1(
-                            speakerNameTriangleFrontPos, speakerNameTriangleFrontStretch, msgBoxFillFrontRot,
-                            speakerNameTriangleFrontColor, speakerNameTriangleFrontVertexIndex
-                        );
-                        _uiCommon._plgFunc1(&speakerNameTriangleFront, itemMask, self->MsgPlg_, 0, 0);
+                    var speakerNameTriangleFrontPos =
+                        ((self->MsgProcWindowStatus & 0x4) != 0) ?
+                        new FVector(
+                            msgBaseX + 67 + 2,
+                            Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 + 12,
+                            0) :
+                        new FVector(
+                            msgBaseX + 67 + 67,
+                            Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 + 26,
+                            0)
+                    ;
+                    var speakerNameTriangleFrontVertexIndex = ((self->MsgProcWindowStatus & 0x4) != 0) ? 5 : 6;
+                    var speakerNameTriangleFrontStretch = new FVector(1, 1, 1);
+                    var speakerNameTriangleFront = new PlgDefStruct1(
+                        speakerNameTriangleFrontPos, speakerNameTriangleFrontStretch, msgBoxFillFrontRot,
+                        speakerNameTriangleFrontColor, speakerNameTriangleFrontVertexIndex
+                    );
+                    _uiCommon._plgFunc1(&speakerNameTriangleFront, itemMask, self->MsgPlg_, 0, 0);
 
-                        var speakerNametriangleColor2 =
-                            ((self->MsgProcWindowStatus & 0x20) != 0) ?
-                            new FSprColor(_context._config.TextBoxSpeakerNameTriangle) :
-                            new FSprColor(_context._config.TextBoxSpeakerNameTriangle)
-                        ;
-                    }
-                    _uiCommon._setSpriteDrawMaskMode(itemMask, 0);
-                    /*
+                    /* currently crashes
                     _uiCommon._drawSingleLineText(
-                        msgBaseX, Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 - 2, 0,
-                        new FSprColor(_context.ColorBlack), 1, (*(nint*)(((UMsgProcWindowBase*)self)->pMsgWork->CurrentSpeaker + 0x28)) + 0x48, 0x23, 0x3, 0, 0
+                        msgBaseX, 
+                        Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 810, 
+                        0,
+                        new FSprColor(_context.ColorBlack),
+                        (*(nint*)(((UMsgProcWindowBase*)self)->pMsgWork->CurrentSpeaker + 0x28)) + 0x48, 
+                        0x23, 0x3, 0, 0
                     );
                     */
+                    var speakerNameTriangleSprColor =
+                        ((self->MsgProcWindowStatus & 0x20) != 0) ?
+                        new FSprColor(_context._config.TextBoxSpeakerNameTriangle) :
+                        new FSprColor(_context._config.TextBoxSpeakerNameTriangle)
+                    ;
+                    speakerNameTriangleSprColor.A = (byte)(self->Opacity * 179);
+                    var speakerNameTriangleSprPos = new FVector2D(msgBaseX + 67, Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 + 27);
+                    var speakerNameTriangleSpr = new SprDefStruct1(1, speakerNameTriangleSprPos, speakerNameTriangleSprColor, 1, 1, 0);
+                    _uiCommon._spriteFunc1(&speakerNameTriangleSpr, itemMask, self->MsgSpr_, 0, 0);
                 }
                 _drawMessageText(self, itemMask, (byte)(self->Field164 * 255), msgBaseX, msgBaseY);
 

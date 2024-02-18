@@ -2379,4 +2379,24 @@ namespace p3rpc.femc.Native
         [FieldOffset(0x0330)] public ACmpMainActor* pMainActor;
         [FieldOffset(0x0338)] public UCmpStatus* pParent;
     }
+
+    [StructLayout(LayoutKind.Explicit, Size = 0xE8)]
+    public unsafe struct UUIResources // : UGameInstanceSubsystem
+    {
+        //[FieldOffset(0x0000)] public UGameInstanceSubsystem baseObj;
+        [FieldOffset(0x30)] public byte bIsReady;
+        [FieldOffset(0x0038)] public UAssetLoader* Loader_;
+        [FieldOffset(0x0040)] public TArray<nint> Assets_;
+        [FieldOffset(0x00D0)] public UDataTable* HandwritingLayoutData_;
+        //[FieldOffset(0x00D8)] public UFontStyleAsset* FontStyleAsset_;
+        //[FieldOffset(0x00E0)] public UFont* SystemFont_;
+
+        public UObjectBase* GetAssetEntry(byte index)
+        {
+            UObjectBase* asset = null;
+            if ((bIsReady & 1) != 0 && index < Assets_.arr_num)
+                asset = (UObjectBase*)Assets_.allocator_instance[index];
+            return asset;
+        }
+    }
 }
