@@ -8,7 +8,7 @@ _ⓒAtlus ⓒSega All Rights reserved, this mod is not associated with Sega or A
 ![Kotone in Pink](img/readmeimg.png)
 
 ## Introduction
-<foo style="color:pink;">Step into the world of Persona 3 Reload, where we're on a mission to bring Kotone to the forefront, drenched in an authentic pink aura. This mod is crafted for the PC version and is available as **english first**.</foo>
+<foo style="color:pink;">Step into the world of Persona 3 Reload, where we're on a mission to bring Kotone to the forefront, drenched in an authentic pink aura. This mod is crafted for the PC version and is available as **english first**, all languages are welcome tho.</foo>
 
 <foo style="color:pink;">Within these digital pages lies your roadmap to contributing to a grand vision. This document will evolve, staying in step with our journey. </foo>
 
