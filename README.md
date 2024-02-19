@@ -68,29 +68,23 @@ Please contact the Discord so we can align on where this is in the mod for prope
 <br/>
 
 
-
 ## IMPORTANT: Copyright and License
 
-This project is a fan-made modification created as a tribute to the Persona series. It is important to note:
+This project is a fan-made mod (modification) created as a tribute to the Persona series. It is important to note:
 
-- **Not for Sale**: This mod is not and will never be for sale. It is developed by fans for fans, purely out of appreciation for the original game and its creators. No monetary gain is sought from this project.
+- **Not for Sale**: This mod is not and will never be for sale. It is developed by fans for fans, purely out of love for the original game, Persona 3, and its creators. No monetary gain is sought from this project.
 - **License**: This project and all its contents are licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (BY-NC-SA 4.0)**. This means:
 -**Attribution (BY)**: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 -**NonCommercial (NC)**: You may not use the material for commercial purposes.
 -**ShareAlike (SA)**: If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
 
-- **Respect for Original Copyright Holders**: All rights, titles, and interests in the Persona series and its elements, including characters, logos, assets, and trademarks, remain the property of Atlus, Sega, or their respective copyright holders. This project does not claim any ownership over Persona's intellectual property and acknowledges that all such rights are reserved to their respective owners. The assets created for this mod are developed from scratch and are designed to respect the original work, enhancing the fan experience without infringing on the original copyrights.
+- **Respect for Original Copyright Holders**: All rights, titles, and interests in the Persona series and its elements, including characters, logos, assets, and trademarks, remain the property of Atlus, Sega, or their respective copyright holders. This project does not claim any ownership over Persona's intellectual property and acknowledges that all such rights are reserved to their respective owners. The assets created for this mod are developed from scratch and are designed to respect the original work, enhancing the fan experience without infringing on the original copyright.
 
-- **Transformational Use**: This project operates under the principles of transformational use, aiming to create something new and valuable for the fan community, without negatively impacting the original work or its market.
+- **Transformational Use**: This project operates under the principles of transformational use, aiming to create something new and valuable for the fan community, without negatively impacting the original work, its market, or its creators in any way.
+
+Atlus, Sega, or any related parties do not affiliate with, endorse, or sponsor this project. All contributions are made under the understanding that this project is a non-commercial, fan-based tribute. You've been warned; any attempt to go against this ruling will have an immediate ban, and removed from the project entirely.
 
 By contributing to this project, participants affirm their intention to abide by these terms and the spirit of fandom. This mod is a labor of love, created to celebrate the Persona series and share our collective creativity within the fan community, not to infringe on the rights of the original creators.
-
-Atlus, Sega, or any related parties do not affiliate with, endorse, or sponsor this project.
-
- All contributions are made under the understanding that this project is a non-commercial, fan-based tribute. You've been warned, and any attempt to go against this will result in an immediate ban.
-
-
-
 
 
 ## Make It Pink!
