@@ -66,13 +66,37 @@ namespace p3rpc.femc
             _modules = new();
             AddModule<UICommon>();
             if (_configuration.EnableMailIcon) AddModule<MailIcon>();
-            if (_configuration.EnableCampMenu) AddModule<Camp>();
-            if (_configuration.EnableCampMenu) AddModule<DateTimePanel>();
-            //if (_configuration.EnableTextbox) AddModule<MsgWindowSimple>();
+            if (_configuration.EnableCampMenu)
+            {
+                AddModule<CampCommon>();
+                AddModule<CampRoot>();
+                AddModule<CampSkill>();
+                AddModule<CampItem>();
+                AddModule<CampEquip>();
+                AddModule<CampPersona>();
+                AddModule<CampSystem>();
+                AddModule<SocialStats>();
+            }
+            if (_configuration.EnableDateTimePanel) AddModule<DateTimePanel>();
+            if (_configuration.EnableTextbox)
+            {
+                AddModule<MsgWindowSimple>();
+                AddModule<MsgWindowSelectSimple>();
+            }
             if (_configuration.EnableMindMessageBox)
             {
                 AddModule<MsgWindowMind>();
-                //AddModule<MsgWindowSelectMind>();
+                AddModule<MsgWindowSelectMind>();
+            }
+            if (_configuration.EnableInteractPrompt) AddModule<MiscCheckDraw>();
+            if (_configuration.EnableMinimap)
+            {
+                AddModule<Minimap>();
+                //AddModule<LocationSelect>();
+            }
+            if (_configuration.EnableBustup)
+            {
+                AddModule<Bustup>();
             }
 
             foreach (var mod in _modules.Values) mod.Register();
