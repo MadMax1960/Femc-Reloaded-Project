@@ -55,5 +55,5 @@ Please contact the Discord so we can align on where this is in the mod for propp
 - **Producer/Manager**: Fernando Holguin (@Fernhw), Tasks management. 
 - (More to come)
 
-## Make It Pink!</
-<foo style="color:pink;">Your participation in the Femc Reloaded Project showcases the power of community and passion for Persona 3. Together, we're not merely altering a game; we're _**painting it pink**_ or so they say.foo>
+## Make It Pink!
+<foo style="color:pink;">Your participation in the Femc Reloaded Project showcases the power of community and passion for Persona 3. Together, we're not merely altering a game; we're _**painting it pink**_ or so they say.</foo>
