@@ -2,7 +2,7 @@
 
 
 ![Kotone in Pink](readmeimg.png)
-## _"Fine I'll Do I Myself"_
+## _"Fine I'll Do It Myself"_
 
 ## Introduction
 <foo style="color:pink;">Step into the world of Persona 3 Reload, where we're on a mission to bring Kotone to the forefront, drenched in an authentic pink aura. This mod is crafted for the PC version and is available solely in English.</foo>
