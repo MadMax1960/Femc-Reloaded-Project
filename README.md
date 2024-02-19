@@ -1,6 +1,7 @@
 # Persona 3 Reload Mod Project: Femc Reloaded Project
 
 ![logo in Pink](img/readmelogo.png)
+
 _ⓒAtlus ⓒSega All Rights reserved, this mod is not associated with Sega or Atlus, all rights reserved, read the full Readme before any contributions_
 
 ## _"Fine I'll Do It Myself"_
