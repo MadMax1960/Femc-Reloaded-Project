@@ -1,4 +1,4 @@
-﻿using p3rpc.femc.Native;
+﻿using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -66,7 +66,7 @@ namespace p3rpc.femc.Components
                     var blTriPlgPos = new FVector(offsetX + 267, offsetY + 1180, 0);
                     var blTriPlgStretch = new FVector(1, 1, 1);
                     var blTriPlgRot = new FVector(0, rotY + 20.6f, 0);
-                    var blTriPlgColor = new FSprColor(_context._config.BustupShadowColor);
+                    var blTriPlgColor = _uiCommon.ToFSprColor(_context._config.BustupShadowColor);
                     blTriPlgColor.A = (byte)(alpha * 255);
                     var blTriPlg = new PlgDefStruct1(blTriPlgPos, blTriPlgStretch, blTriPlgRot, blTriPlgColor, 0);
                     *_uiCommon._ActiveDrawTypeId = queueId;

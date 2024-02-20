@@ -1,4 +1,4 @@
-﻿using p3rpc.femc.Native;
+﻿using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,8 @@ namespace p3rpc.femc.Components
         private string AUIDateDraw_UpdateParams_SIG = "40 53 48 83 EC 70 4C 8B 81 ?? ?? ?? ??";
         private IHook<UAgePanel_UpdateAgePanelParameters> _updateAgePanelParameters;
         private IHook<AUIDateDraw_UpdateParams> _drawActorInner;
+
+        private UICommon _uiCommon;
         public unsafe DateTimePanel(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
             _context._utils.SigScan(UAgePanel_UpdateAgePanelParameters_SIG, "UAgePanel::UpdateAgePanelParameters", _context._utils.GetDirectAddress, addr => _updateAgePanelParameters = _context._utils.MakeHooker<UAgePanel_UpdateAgePanelParameters>(UAgePanel_UpdateAgePanelParametersImpl, addr));
@@ -22,21 +24,21 @@ namespace p3rpc.femc.Components
 
         public override void Register()
         {
-            
+            _uiCommon = GetModule<UICommon>();
         }
 
         private unsafe void UAgePanel_UpdateAgePanelParametersImpl(UAgePanel* self, float deltaTime)
         {
-            self->TopColorNormal.SetColor(_context._config.DateTimePanelTopTextColor);
-            self->BottomColorNormal.SetColor(_context._config.DateTimePanelBottomTextColor);
-            self->WaterColorNormal.SetColor(_context._config.DateTimePanelWaterColor);
+            _uiCommon.SetColor(ref self->TopColorNormal, _context._config.DateTimePanelTopTextColor);
+            _uiCommon.SetColor(ref self->BottomColorNormal, _context._config.DateTimePanelBottomTextColor);
+            _uiCommon.SetColor(ref self->WaterColorNormal, _context._config.DateTimePanelWaterColor);
             _updateAgePanelParameters.OriginalFunction(self, deltaTime);
         }
 
         private unsafe void AUIDateDraw_UpdateParamsImpl(AUIDateDraw* self, long a2, long a3, long a4)
         {
             _drawActorInner.OriginalFunction(self, a2, a3, a4);
-            if (self->TimeOfDay != 8) self->TimeOfDayParams.color = new FSprColor(_context._config.DateTimePanelBottomTextColor);
+            if (self->TimeOfDay != 8) self->TimeOfDayParams.color = _uiCommon.ToFSprColor(_context._config.DateTimePanelBottomTextColor);
         }
 
         private unsafe delegate void UAgePanel_UpdateAgePanelParameters(UAgePanel* self, float deltaTime);

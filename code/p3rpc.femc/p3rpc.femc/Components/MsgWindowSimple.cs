@@ -1,4 +1,4 @@
-﻿using p3rpc.femc.Native;
+﻿using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -70,7 +70,7 @@ namespace p3rpc.femc.Components
                 var opacityByteAlpha = (byte)(self->Opacity * 255);
                 _uiCommon._setSpriteDrawMaskMode(itemMask, UIComponentBlendType.None);
 
-                var msgBoxBackColor = new FSprColor(_context._config.TextBoxBackFillColor);
+                var msgBoxBackColor = _uiCommon.ToFSprColor(_context._config.TextBoxBackFillColor);
                 msgBoxBackColor.A = (byte)((1.0f - self->BgPieceTransparency) * self->Opacity * 102.0f);
                 ;
                 var msgBoxBackPos = new FVector(
@@ -87,12 +87,12 @@ namespace p3rpc.femc.Components
                 var msgBoxBack = new PlgDefStruct1(msgBoxBackPos, msgBoxBackStretch, msgBoxBackRotation, msgBoxBackColor, 0xb);
                 _uiCommon._plgFunc1(&msgBoxBack, itemMask, self->MsgPlg_, 0.0f, 0.0f);
                 _uiCommon._setSpriteDrawMaskMode(itemMask, UIComponentBlendType.Add);
-                msgBoxBackColor = new FSprColor(_context._config.TextBoxBackFillColor);
+                msgBoxBackColor = _uiCommon.ToFSprColor(_context._config.TextBoxBackFillColor);
                 msgBoxBackColor.A = (byte)((1.0f - self->BgPieceTransparency) * self->Opacity * 255);
                 _uiCommon._plgFunc1(&msgBoxBack, itemMask, self->MsgPlg_, 0.0f, 0.0f);
                 _uiCommon._spriteMaskFunc1(itemMask, 0, 0, 1, 0, 0, 0, 0xf, drawStyleId);
 
-                _uiCommon._spriteMaskFunc2(itemMask, 0, 570, 1920, 1080, new FSprColor(_context.ColorBlack), drawStyleId);
+                _uiCommon._spriteMaskFunc2(itemMask, 0, 570, 1920, 1080, _uiCommon.ToFSprColor(_context.ColorBlack), drawStyleId);
                 var msgBoxFillFrontPos = new FVector(
                     Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 2], MessageBoxHeights[self->MessageBoxHeight, 2], self->PositionLerp) + msgBaseX,
                     Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 3], MessageBoxHeights[self->MessageBoxHeight, 3], self->PositionLerp) + msgBaseY,
@@ -103,7 +103,7 @@ namespace p3rpc.femc.Components
                     Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 4], MessageBoxHeights[self->MessageBoxHeight, 4], self->PositionLerp),
                     1
                 );
-                var msgBoxFillFrontColor = new FSprColor(_context._config.TextBoxFrontFillColor);
+                var msgBoxFillFrontColor = _uiCommon.ToFSprColor(_context._config.TextBoxFrontFillColor);
                 msgBoxFillFrontColor.A = (byte)(self->Opacity * 229);
                 var msgBoxFillFrontRot = new FVector(_messageBoxFloats1[0], _messageBoxFloats1[1], _messageBoxFloats1[2]);
                 var msgBoxFillFront = new PlgDefStruct1(msgBoxFillFrontPos, msgBoxFillFrontStretch, msgBoxFillFrontRot, msgBoxFillFrontColor, 0x9);
@@ -111,7 +111,7 @@ namespace p3rpc.femc.Components
                 _uiCommon._plgFunc1(&msgBoxFillFront, itemMask, self->MsgPlg_, 0, 0);
                 
                 var msgBoxLeftHazePos = new FVector2D(msgBaseX + 308, msgBaseY - 19);
-                var msgBoxLeftHazeColor = new FSprColor(_context._config.TextBoxLeftHaze);
+                var msgBoxLeftHazeColor = _uiCommon.ToFSprColor(_context._config.TextBoxLeftHaze);
                 msgBoxLeftHazeColor.A = (byte)(self->Opacity * 255 * 0.4);
                 var msgBoxLeftHazeSpr = new SprDefStruct1(0, msgBoxLeftHazePos, msgBoxLeftHazeColor, 1.5f, 0, 0);
                 msgBoxLeftHazeSpr.Field10 = 70;
@@ -128,7 +128,7 @@ namespace p3rpc.femc.Components
                     0
                 );
                 var speakerNameTriangleStretch = new FVector(1, 1, 1);
-                var speakerNameTriangleColor = new FSprColor(_context._config.TextBoxSpeakerNameTriangle);
+                var speakerNameTriangleColor = _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerNameTriangle);
                 speakerNameTriangleColor.A = (byte)(self->Opacity * 255);
                 var speakerNameTriangle = new PlgDefStruct1(speakerNameTrianglePos, speakerNameTriangleStretch, msgBoxFillFrontRot, speakerNameTriangleColor, 0x7);
 
@@ -149,7 +149,7 @@ namespace p3rpc.femc.Components
                     Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 7], MessageBoxHeights[self->MessageBoxHeight, 7], self->PositionLerp),
                     1
                 );
-                var msgBoxBorderFrontColor = new FSprColor(_context._config.TextBoxFrontFillColor);
+                var msgBoxBorderFrontColor = _uiCommon.ToFSprColor(_context._config.TextBoxFrontFillColor);
                 msgBoxBorderFrontColor.A = (byte)(self->Opacity * 229);
                 var msgBoxBorderFront = new PlgDefStruct1(msgBoxBorderFrontPos, msgBoxBorderFrontStretch, msgBoxFillFrontRot, msgBoxBorderFrontColor, 0xa);
                 _uiCommon._plgFunc1(&msgBoxBorderFront, itemMask, self->MsgPlg_, 0, 0);
@@ -164,8 +164,8 @@ namespace p3rpc.femc.Components
                     _uiCommon._setSpriteDrawMaskMode(itemMask, 0);
                     var speakerNameTriangleFrontColor =
                             ((self->MsgProcWindowStatus & 0x20) != 0) ?
-                            new FSprColor(_context._config.TextBoxFrontFillColor) :
-                            new FSprColor(_context._config.TextBoxFrontFillColor)
+                            _uiCommon.ToFSprColor(_context._config.TextBoxFrontFillColor) :
+                            _uiCommon.ToFSprColor(_context._config.TextBoxFrontFillColor)
                         ;
                     var speakerNameTriangleFrontPos =
                         ((self->MsgProcWindowStatus & 0x4) != 0) ?
@@ -198,8 +198,8 @@ namespace p3rpc.femc.Components
                     */
                     var speakerNameTriangleSprColor =
                         ((self->MsgProcWindowStatus & 0x20) != 0) ?
-                        new FSprColor(_context._config.TextBoxSpeakerNameTriangle) :
-                        new FSprColor(_context._config.TextBoxSpeakerNameTriangle)
+                        _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerNameTriangle) :
+                        _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerNameTriangle)
                     ;
                     speakerNameTriangleSprColor.A = (byte)(self->Opacity * 179);
                     var speakerNameTriangleSprPos = new FVector2D(msgBaseX + 67, Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 + 27);
@@ -209,7 +209,7 @@ namespace p3rpc.femc.Components
                 _drawMessageText(self, itemMask, (byte)(self->Field164 * 255), msgBaseX, msgBaseY);
 
                 // next page indicator
-                self->NextPageParams.NextPageColor = new FSprColor(_context._config.TextBoxFrontFillColor);
+                self->NextPageParams.NextPageColor = _uiCommon.ToFSprColor(_context._config.TextBoxFrontFillColor);
                 _drawNextPage(&self->NextPageParams, self->MsgPlg_, msgBaseX + MessageBoxWidths[self->MessageBoxSubWidth, 4] - 2, msgBaseY + MessageBoxHeights[self->MessageBoxSubHeight, 10]);
             }
         }

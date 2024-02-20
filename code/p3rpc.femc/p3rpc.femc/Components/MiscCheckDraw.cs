@@ -1,4 +1,4 @@
-﻿using p3rpc.femc.Native;
+﻿using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -36,19 +36,19 @@ namespace p3rpc.femc.Components
             {
                 var checkBgBackColor = _context._config.CheckDrawBgColor;
                 checkBgBackColor.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 255);
-                self->checkBgBack.Color.SetColor(checkBgBackColor);
+                _uiCommon.SetColor(ref self->checkBgBack.Color, checkBgBackColor);
 
                 var checkBgFrontBorderColor = _context._config.CheckDrawFgBorderColor;
                 checkBgFrontBorderColor.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 255);
-                self->CheckBgFrontBorderColor.SetColor(checkBgFrontBorderColor);
+                _uiCommon.SetColor(ref self->CheckBgFrontBorderColor, checkBgFrontBorderColor);
 
                 var checkBgFrontColor = _context._config.CheckDrawFgColor;
                 checkBgFrontColor.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 204);
-                self->checkBgFront.Color.SetColor(checkBgFrontColor);
+                _uiCommon.SetColor(ref self->checkBgFront.Color, checkBgFrontColor);
 
                 var defParamsAlpha = _context._config.CheckDrawBgColor;
                 defParamsAlpha.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 127.5);
-                self->sprDefParamsAlpha.color.SetColor(defParamsAlpha);
+                _uiCommon.SetColor(ref self->sprDefParamsAlpha.color, defParamsAlpha);
             }
             _drawInteractPrompt.OriginalFunction(self);
         }

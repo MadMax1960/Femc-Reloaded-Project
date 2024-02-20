@@ -1,4 +1,4 @@
-﻿using p3rpc.femc.Native;
+﻿using p3rpc.nativetypes.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +30,33 @@ namespace p3rpc.femc.Components
         private string DrawComponentMask_FUN_14bffbdd0_SIG = "48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC 50 31 F6";
         private string SpriteMaskType_ActiveDrawTypeId_SIG = "89 0D ?? ?? ?? ?? 41 8B CF"; // 0x141118a1f
         private string DrawSingleLineText_SIG = "E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 48 8D 8D ?? ?? ?? ?? F3 44 0F 58 0D ?? ?? ?? ??";
+
+        public FColor ToFColor(Configuration.ConfigColor cfgColor) => new FColor(cfgColor.R, cfgColor.G, cfgColor.B, cfgColor.A);
+        public FSprColor ToFSprColor(Configuration.ConfigColor cfgColor) => new FSprColor(cfgColor.R, cfgColor.G, cfgColor.B, cfgColor.A);
+        public FLinearColor ToFLinearColor(Configuration.ConfigColor cfgColor) => new FLinearColor((float)cfgColor.R / 256, (float)cfgColor.G / 256, (float)cfgColor.B / 256, (float)cfgColor.A / 256);
+        public void SetColor(ref FSprColor color, Configuration.ConfigColor cfgColor)
+        {
+            color.R = cfgColor.R;
+            color.G = cfgColor.G;
+            color.B = cfgColor.B;
+            color.A = cfgColor.A;
+        }
+
+        public void SetColor(ref FColor color, Configuration.ConfigColor cfgColor)
+        {
+            color.R = cfgColor.R;
+            color.G = cfgColor.G;
+            color.B = cfgColor.B;
+            color.A = cfgColor.A;
+        }
+
+        public void SetColor(ref FLinearColor color, Configuration.ConfigColor cfgColor)
+        {
+            color.R = (float)cfgColor.R / 256;
+            color.G = (float)cfgColor.G / 256;
+            color.B = (float)cfgColor.B / 256;
+            color.A = (float)cfgColor.A / 256;
+        }
 
         public unsafe UICommon(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {

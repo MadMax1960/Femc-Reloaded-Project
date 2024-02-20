@@ -1,4 +1,5 @@
 ﻿using p3rpc.femc.Configuration;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
@@ -20,8 +21,8 @@ namespace p3rpc.femc
         public Utils _utils { get; }
 
         public string ModLocation;
-        public unsafe Native.FNamePool* g_namePool { get; private set; }
-        public unsafe Native.FUObjectArray* g_objectArray { get; private set; }
+        public unsafe FNamePool* g_namePool { get; private set; }
+        public unsafe FUObjectArray* g_objectArray { get; private set; }
 
         public readonly ConfigColor ColorBlack = new ConfigColor(0x0, 0x0, 0x0, 0xff);
         public readonly ConfigColor ColorWhite = new ConfigColor(0xff, 0xff, 0xff, 0xff);
@@ -42,8 +43,8 @@ namespace p3rpc.femc
             _utils = utils;
             unsafe
             {
-                _utils.SigScan(FUObjectArray_SIG, "FUObjectArray", TransformAddressForFUObjectArray, addr => g_objectArray = (Native.FUObjectArray*)addr);
-                _utils.SigScan(FGlobalNamePool_SIG, "FGlobalNamePool", _utils.GetIndirectAddressLong, addr => g_namePool = (Native.FNamePool*)addr);
+                _utils.SigScan(FUObjectArray_SIG, "FUObjectArray", TransformAddressForFUObjectArray, addr => g_objectArray = (FUObjectArray*)addr);
+                _utils.SigScan(FGlobalNamePool_SIG, "FGlobalNamePool", _utils.GetIndirectAddressLong, addr => g_namePool = (FNamePool*)addr);
             }
         }
     }
