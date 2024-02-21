@@ -55,7 +55,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 1 0 0 23 0 0]When it finally hit me, I lost my shit and snapped at you.[n][uf 1 1][e]
 
 [msg MSG_014_0_0 [Junpei Iori]]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 1 0 0 24 0 0]I'm really sorry about that.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 1 0 0 24 0 0]I'm really sorry about that, man.[n][uf 1 1][e]
 
 [msg MSG_015_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 65535 0 0][uf 3 1 1 0 0 25 0 0]H-Hey, c'mon, eat up! Don't want cold takoyaki, do ya?[n][uf 1 1][e]
@@ -85,7 +85,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 1 0 0 32 0 0]But whatever we say, go with your own gut. You've dealt with enough as it is, y'know?[n][uf 1 1][e]
 
 [msg MSG_023_0_0 [Junpei Iori]]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 1 0 0 33 0 0]I've... always been jealous of you. You're special, and everyone's always countin' on you.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 1 0 0 33 0 0]I've... always been jealous of you. You're a special dude, and everyone's always countin' on you.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 1 0 0 34 0 0]But at the same time, I knew you were the one making all the tough calls.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 1 0 0 35 0 0]You're always lookin' out for everyone around you, even people like me.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 1 0 0 36 0 0]Sure, I was jealous, but watchin' you... I knew I could never be you.[n][uf 1 1][e]
