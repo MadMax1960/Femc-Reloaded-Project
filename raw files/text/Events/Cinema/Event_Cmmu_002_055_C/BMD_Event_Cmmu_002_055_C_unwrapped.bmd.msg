@@ -74,7 +74,7 @@
 [sel SEL_020_0_0 top]
 [uf 0 5 65278][uf 2 1]I'm sorry.[e]
 [uf 0 5 65278][uf 2 1]It's okay to rely on others.[e]
-[uf 0 5 65278][uf 2 1]We're both girls, so...[uf 2 9 1 1 70][e]
+[uf 0 5 65278][uf 2 1]You're a girl, so...[uf 2 9 1 1 70][e]
 
 [msg MSG_021_0_0 [Yukari Takeba]]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 3 65535 65535 0 0][uf 3 1 0 0 0 24 0 0]......[n][uf 1 1][e]
@@ -86,7 +86,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 2 3 65535 65535 0 0][uf 3 1 1 0 0 28 0 0]See you...[n][uf 1 1][e]
 
 [msg MSG_023_0_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 65535 0 0][uf 3 1 1 0 0 29 0 0]No it isn't! I'm telling you, I don't want to spend my life relying on others![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 65535 0 0][uf 3 1 1 0 0 29 0 0]No it isn't! I'm telling you, I don't want to spend my life relying on men![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 65535 0 0][uf 3 1 1 0 0 30 0 0]I...[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 3 65535 65535 0 0][uf 3 1 0 0 0 31 0 0][uf 4 23 0 2 3 25 25]......[n][uf 1 1][e]
 
@@ -101,8 +101,8 @@
 [uf 0 5 65278][uf 2 1][uf 4 17 2 2 1][e]
 
 [msg MSG_025_0_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 65535 0 0][uf 3 1 1 0 0 35 0 0]What's that supposed to mean!?[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 65535 0 0][uf 3 1 1 0 0 36 0 0]Am I supposed to just hide all my life, like my mom!?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 65535 0 0][uf 3 1 1 0 0 35 0 0]What's that supposed to mean!? So what if I'm a girl!?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 65535 0 0][uf 3 1 1 0 0 36 0 0]Am I supposed to just hide behind others all my life, like my mom!?[n][uf 1 1][e]
 
 [msg MSG_026_0_0 [Yukari Takeba]]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 10 65535 65535 0 0][uf 3 1 1 0 0 37 0 0]Don't mock me like this...[n][uf 1 1][e]

@@ -33,7 +33,7 @@
 [uf 0 5 65278][uf 2 1]I learned a little more about her today.[n][uf 1 1][e]
 
 [msg MSG_007_0_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 4 5 2 4 65535 65535 0 0][uf 3 1 3 0 65535 1062 0 0]Wow, what a modest choice. Well, I guess that's typical.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 4 65535 65535 0 0][uf 3 1 3 0 65535 1062 0 0]Wow, what a modest choice. Well, I guess that's typical for boys.[n][uf 1 1][e]
 
 [msg MSG_007_5_0 [Yukari Takeba]]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 0 65535 65535 0 0][uf 3 1 3 0 65535 1061 0 0]Let's see... "People who chose black"...[n][uf 1 1][e]
