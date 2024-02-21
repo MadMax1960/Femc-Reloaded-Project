@@ -109,7 +109,7 @@
 [msg MSG_028_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 43 0 0]Alright! That's enough serious stuff![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 44 0 0]Chats like this make my throat all dry. Or maybe it's just the takoyaki?[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 45 0 0]Let's grab a drink somewhere and head back. That okay with you, Mrs. Leader?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 45 0 0]Let's grab a drink somewhere and head back. That okay with you, Miss Leader?[n][uf 1 1][e]
 
 [msg MND_029_0_0]
 [uf 0 5 65278][uf 2 1]Junpei and I chatted all the way home.[n][uf 1 1][e]
