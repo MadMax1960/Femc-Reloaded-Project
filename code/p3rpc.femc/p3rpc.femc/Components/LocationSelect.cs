@@ -1,4 +1,4 @@
-﻿using p3rpc.femc.Native;
+﻿using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,8 @@ namespace p3rpc.femc.Components
         private string UUILocationSelect_DrawLocationSelect_SIG = "40 55 56 57 41 56 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 88 04 00 00";
         private IHook<UUILocationSelect_DrawLocationSelect> _drawLocationSelect;
 
+        private UICommon _uiCommon;
+
         public unsafe LocationSelect(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
             _context._utils.SigScan(UUILocationSelect_DrawLocationSelect_SIG, "UUILocationSelect::DrawLocationSelect", _context._utils.GetDirectAddress, addr => _drawLocationSelect = _context._utils.MakeHooker<UUILocationSelect_DrawLocationSelect>(UUILocationSelect_DrawLocationSelectImpl, addr));
@@ -20,6 +22,7 @@ namespace p3rpc.femc.Components
 
         public override void Register()
         {
+            _uiCommon = GetModule<UICommon>();
         }
 
         private unsafe void UUILocationSelect_DrawLocationSelectImpl(UUILocationSelect* self)

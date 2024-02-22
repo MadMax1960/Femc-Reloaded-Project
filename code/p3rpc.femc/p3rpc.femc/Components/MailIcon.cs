@@ -1,4 +1,4 @@
-﻿using p3rpc.femc.Native;
+﻿using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -34,11 +34,11 @@ namespace p3rpc.femc.Components
             var staticOuterCircle = new SprDefStruct1(
                 0,
                 circlePos,
-                new FSprColor(_context._config.MailIconOuterCircleColor),
+                _uiCommon.ToFSprColor(_context._config.MailIconOuterCircleColor),
                 self->Field368, 0, 0);
             _uiCommon._spriteFunc1(&staticOuterCircle, itemMask, self->Sprite_, 0, 0);
             // Pulsing Inner Circle
-            var pulsateColor = new FSprColor(_context._config.MailIconInnerCircleColor);
+            var pulsateColor = _uiCommon.ToFSprColor(_context._config.MailIconInnerCircleColor);
             pulsateColor.A = (byte)(self->Field408 * 255);
             var pulsateInnerCircle = new SprDefStruct1(
                 0,
@@ -50,19 +50,19 @@ namespace p3rpc.femc.Components
             var staticInnerCircle = new SprDefStruct1(
                 0,
                 circlePos,
-                new FSprColor(_context._config.MailIconInnerCircleColor),
+                _uiCommon.ToFSprColor(_context._config.MailIconInnerCircleColor),
                 (float)(self->Field318 * 0.695), 0, 0);
             _uiCommon._spriteFunc1(&staticInnerCircle, itemMask, self->Sprite_, 0, 0);
             // Mail Icon
             var mailIcon = new SprDefStruct1(
                 1,
                 new FVector2D(80, 68),
-                new FSprColor(0xffffffff),
+                _uiCommon.ToFSprColor(_context.ColorWhite),
                 1, 0, 0
             );
             _uiCommon._spriteFunc1(&mailIcon, itemMask, self->Sprite_, 0, 0);
             // Mail Notification Indicator
-            var mailHasNotificationsColor = new FSprColor(0xffffffff);
+            var mailHasNotificationsColor = _uiCommon.ToFSprColor(_context.ColorWhite);
             mailHasNotificationsColor.A = (byte)(self->Field318 * 255);
             var mailHasNotifications = new SprDefStruct1(
                 2,

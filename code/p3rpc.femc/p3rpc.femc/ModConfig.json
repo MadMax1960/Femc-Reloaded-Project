@@ -89,6 +89,7 @@
   "IsUniversalMod": false,
   "ModDependencies": [
     "p3rpc.essentials",
+    "p3rpc.nativetypes",
     "reloaded.sharedlib.hooks",
     "Reloaded.Memory.SigScan.ReloadedII"
   ],

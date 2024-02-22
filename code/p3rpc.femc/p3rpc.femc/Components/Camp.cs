@@ -1,4 +1,4 @@
-﻿using p3rpc.femc.Native;
+﻿using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
@@ -31,6 +31,7 @@ namespace p3rpc.femc.Components
         private IHook<ACmpMainActor_GetCampParamTableCommon> _getCmpMainParams;
         private IAsmHook _setMenuItemColorsHook;
 
+        private UICommon _uiCommon;
         private CampCommon _campCommon;
 
         public unsafe CampRoot(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
@@ -51,18 +52,19 @@ namespace p3rpc.femc.Components
 
         public override void Register()
         {
+            _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
         private unsafe FCampParamTableCommonRow* ACmpMainActor_GetCampParamTableCommonImpl(ACmpMainActor* self)
         {
             // dynamically change color values for Xrd777/UI/Camp/Param/DT_CampParamCommon.uasset
             var return_value = _getCmpMainParams.OriginalFunction(self);
-            return_value->AoItaColorHigh.SetColor(_context._config.CampHighColor);
-            return_value->AoItaColorMid.SetColor(_context._config.CampMiddleColor);
-            return_value->AoItaColorLow.SetColor(_context._config.CampLowColor);
-            return_value->GradADownColorHigh.SetColor(_context._config.CampHighColor);
-            return_value->GradADownColorMid.SetColor(_context._config.CampMiddleColor);
-            return_value->GradADownColorLow.SetColor(_context._config.CampLowColor);
+            _uiCommon.SetColor(ref return_value->AoItaColorHigh, _context._config.CampHighColor);
+            _uiCommon.SetColor(ref return_value->AoItaColorMid, _context._config.CampMiddleColor);
+            _uiCommon.SetColor(ref return_value->AoItaColorLow, _context._config.CampLowColor);
+            _uiCommon.SetColor(ref return_value->GradADownColorHigh, _context._config.CampHighColor);
+            _uiCommon.SetColor(ref return_value->GradADownColorMid, _context._config.CampMiddleColor);
+            _uiCommon.SetColor(ref return_value->GradADownColorLow, _context._config.CampLowColor);
             return return_value;
         }
 
@@ -80,6 +82,7 @@ namespace p3rpc.femc.Components
 
         private IReverseWrapper<UCmpSkillDraw_DrawNoUsableSkillNoneGraphic> _drawNoUsableSkillNoneGraphicWrapper;
 
+        private UICommon _uiCommon;
         private CampCommon _campCommon;
         public unsafe CampSkill(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
@@ -105,9 +108,10 @@ namespace p3rpc.femc.Components
 
         public override void Register()
         {
+            _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
-        private FSprColor UCmpSkillDraw_DrawNoUsableSkillNoneGraphicImpl() => new FSprColor(_context._config.CampSkillTextColor);
+        private FSprColor UCmpSkillDraw_DrawNoUsableSkillNoneGraphicImpl() => _uiCommon.ToFSprColor(_context._config.CampSkillTextColor);
 
         [Function(new Register[] { }, FunctionAttribute.Register.r9, false)]
         private delegate FSprColor UCmpSkillDraw_DrawNoUsableSkillNoneGraphic();
@@ -116,9 +120,11 @@ namespace p3rpc.femc.Components
     public class CampItem : ModuleBase
     {
         private string ACmpMainActor_SetHeroTexTintItemMenu_SIG = "0F 44 D8 41 80 BF ?? ?? ?? ?? 06"; // bottom color, then top color
-        private CampCommon _campCommon;
 
         private IAsmHook _texTintColor;
+
+        private UICommon _uiCommon;
+        private CampCommon _campCommon;
         public unsafe CampItem(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
             _context._utils.SigScan(ACmpMainActor_SetHeroTexTintItemMenu_SIG, "ACmpMainActor::SetHeroTexTintItemMenu", _context._utils.GetDirectAddress, addr =>
@@ -135,12 +141,14 @@ namespace p3rpc.femc.Components
 
         public override void Register()
         {
+            _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
     }
 
     public class CampEquip : ModuleBase
     {
+        private UICommon _uiCommon;
         private CampCommon _campCommon;
 
         public unsafe CampEquip(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
@@ -149,12 +157,14 @@ namespace p3rpc.femc.Components
         }
         public override void Register()
         {
+            _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
     }
 
     public class CampPersona : ModuleBase
     {
+        private UICommon _uiCommon;
         private CampCommon _campCommon;
 
         public unsafe CampPersona(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
@@ -163,6 +173,7 @@ namespace p3rpc.femc.Components
         }
         public override void Register()
         {
+            _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
     }
@@ -176,6 +187,7 @@ namespace p3rpc.femc.Components
         private unsafe FSprColor* _systemOptionColors;
         private static int SystemOptionCount = 7;
 
+        private UICommon _uiCommon;
         private CampCommon _campCommon;
         public unsafe CampSystem(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
@@ -185,14 +197,15 @@ namespace p3rpc.femc.Components
 
         public override void Register()
         {
+            _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
 
         private unsafe FSprColor GetMatchingColorForEntry(int entryId)
         {
-            if (entryId % 3 == 0) return new FSprColor(_context._config.CampMenuItemColor1);
-            else if (entryId % 3 == 1) return new FSprColor(_context._config.CampMenuItemColor2);
-            else /*(entryId % 3 == 2)*/ return new FSprColor(_context._config.CampMenuItemColor3);
+            if (entryId % 3 == 0) return _uiCommon.ToFSprColor(_context._config.CampMenuItemColor1);
+            else if (entryId % 3 == 1) return _uiCommon.ToFSprColor(_context._config.CampMenuItemColor2);
+            else /*(entryId % 3 == 2)*/ return _uiCommon.ToFSprColor(_context._config.CampMenuItemColor3);
         }
 
         private unsafe void UCmpSystemDraw_DrawUnhighlightedMenuOptionsImpl(UCmpSystemDraw* self, UCmpSystemSystem* sys, uint activeId, uint queueId)

@@ -44,6 +44,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Text Box: Speaker Name Triangle Color")]
         public ConfigColor TextBoxSpeakerNameTriangle { get; set; } = ConfigColor.TextBoxSpeakerNameTriangle;
 
+        [DisplayName("Text Box: Speaker Name")]
+        public ConfigColor TextBoxSpeakerName { get; set; } = ConfigColor.LightColor;
+
         [DisplayName("Text Box: Left Haze Color")]
         public ConfigColor TextBoxLeftHaze { get; set; } = ConfigColor.TextBoxLeftHaze;
 
@@ -55,6 +58,9 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Mind Window: Outer Haze")]
         public ConfigColor MindWindowOuterHaze { get; set; } = new ConfigColor(ConfigColor.MidColor.R, ConfigColor.MidColor.G, ConfigColor.MidColor.B, 128);
+
+        [DisplayName("Mind Window: Background Dots")]
+        public ConfigColor MindWindowBgDots { get; set; } = ConfigColor.MidColor;
 
         [DisplayName("Minimap: Place Name Background Color")]
         public ConfigColor MinimapPlaceNameBgColor { get; set; } = ConfigColor.DarkColor;
@@ -110,12 +116,12 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         public bool EnableCampMenu { get; set; } = true;
 
-        [DisplayName("Enable Standard Message Box (WIP)")]
+        [DisplayName("Enable Standard Message Box")]
         [Category("UI Components")]
         [DefaultValue(false)]
         public bool EnableTextbox { get; set; } = true;
 
-        [DisplayName("Enable Mind Message Box (WIP)")]
+        [DisplayName("Enable Mind Message Box")]
         [Category("UI Components")]
         [DefaultValue(false)]
         public bool EnableMindMessageBox { get; set; } = true;
@@ -131,6 +137,10 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Enable Bustup")]
         [Category("UI Components")]
         public bool EnableBustup { get; set; } = true;
+
+        [DisplayName("Enable MessageScript")]
+        [Category("UI Components")]
+        public bool EnableMessageScript { get; set; } = true;
 
     }
 
@@ -164,6 +174,7 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor DateTimeWaterColor = new ConfigColor(0xf0, 0x7c, 0xcd, 0xff);
         public static readonly ConfigColor TextBoxLeftHaze = new ConfigColor(0x83, 0x06, 0x51, 0xff);
         public static readonly ConfigColor TextBoxSpeakerNameTriangle = new ConfigColor(0xc8, 0x05, 0x4b, 0xff);
+
 
         public byte R { get; set; }
         public byte G { get; set; }

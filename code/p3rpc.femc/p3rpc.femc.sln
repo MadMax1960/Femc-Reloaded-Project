@@ -1,9 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p3rpc.femc", "p3rpc.femc\p3rpc.femc.csproj", "{93BBD2A6-9397-4512-B0BB-E3D0FDE4E926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p3rpc.femc", "p3rpc.femc\p3rpc.femc.csproj", "{93BBD2A6-9397-4512-B0BB-E3D0FDE4E926}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
