@@ -78,7 +78,7 @@
 
 [msg MSG_014_0_0 [Mitsuru Kirijo]]
 [uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 1 0][uf 3 1 1 0 0 27 0 0]Hypothetically, let's say that I was... interested in someone right now.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 1 0][uf 3 1 1 0 0 28 0 0]I knew I could never be with him, but even so, I couldn't help but harbor these feelings...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 1 0][uf 3 1 1 0 0 28 0 0]I knew I could never be with them, but even so, I couldn't help but harbor these feelings...[n][uf 1 1][e]
 
 [msg MSG_014_5_0 [Mitsuru Kirijo]]
 [uf 0 5 65278][uf 2 1][uf 4 5 5 3 65535 65535 1 0][uf 3 1 1 0 0 29 0 0]Would that be... wrong?[n][uf 1 1][e]
