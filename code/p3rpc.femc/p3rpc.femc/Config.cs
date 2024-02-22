@@ -56,6 +56,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Mind Window: Outer Haze")]
         public ConfigColor MindWindowOuterHaze { get; set; } = new ConfigColor(ConfigColor.MidColor.R, ConfigColor.MidColor.G, ConfigColor.MidColor.B, 128);
 
+        [DisplayName("Mind Window: Background Dots")]
+        public ConfigColor MindWindowBgDots { get; set; } = ConfigColor.MidColor;
+
         [DisplayName("Minimap: Place Name Background Color")]
         public ConfigColor MinimapPlaceNameBgColor { get; set; } = ConfigColor.DarkColor;
 
@@ -132,6 +135,10 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         public bool EnableBustup { get; set; } = true;
 
+        [DisplayName("Enable MessageScript")]
+        [Category("UI Components")]
+        public bool EnableMessageScript { get; set; } = true;
+
     }
 
     /// <summary>
@@ -164,6 +171,7 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor DateTimeWaterColor = new ConfigColor(0xf0, 0x7c, 0xcd, 0xff);
         public static readonly ConfigColor TextBoxLeftHaze = new ConfigColor(0x83, 0x06, 0x51, 0xff);
         public static readonly ConfigColor TextBoxSpeakerNameTriangle = new ConfigColor(0xc8, 0x05, 0x4b, 0xff);
+
 
         public byte R { get; set; }
         public byte G { get; set; }

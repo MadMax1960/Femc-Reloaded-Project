@@ -51,6 +51,13 @@ namespace p3rpc.femc.Components
             { 0.0f, 1.0f, 17.0f, 0.0f, 1.0f, 22.0f, 0.0f, 1.0f, 14.0f, -23.0f, 78.0f,  },
         };
 
+        private enum ProcWindowStatus : byte
+        {
+            AltSpeakerName = 1 << 2,
+            ShowMessageBox = 1 << 3,
+            GrayMessageText = 1 << 5,
+        }
+
         private unsafe float Lerp(float a, float b, float c) => (1 - c) * a + b * c;
 
         private unsafe void UMsgProcWindow_Simple_DrawMessageBoxImpl(UMsgProcWindow_Simple* self) // FUN_14141c8e0

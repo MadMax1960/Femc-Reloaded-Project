@@ -98,6 +98,10 @@ namespace p3rpc.femc
             {
                 AddModule<Bustup>();
             }
+            if (_configuration.EnableMessageScript)
+            {
+                AddModule<MessageScript>();
+            }
 
             foreach (var mod in _modules.Values) mod.Register();
         }
