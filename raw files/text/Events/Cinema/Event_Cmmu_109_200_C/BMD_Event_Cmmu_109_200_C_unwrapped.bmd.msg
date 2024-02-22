@@ -67,7 +67,7 @@
 
 [msg MSG_014_0_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0][uf 3 1 1 0 0 27 0 0]Thank you.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0][uf 3 1 1 0 0 28 0 0]I'm so lucky to have met you, [uf 4 1]-san. That book couldn't be in better hands.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0][uf 3 1 1 0 0 28 0 0]I'm so lucky to have met you, [uf 4 1]-chan. That book couldn't be in better hands.[n][uf 1 1][e]
 
 [msg SYS_015_0_0]
 [uf 0 5 65278][uf 2 1]The Justice Social Link reached its maximum level! You can now fuse [uf 0 1 35]Melchizedek[uf 0 1 27], the hand of justice![n][uf 1 1][e]
@@ -89,7 +89,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0][uf 3 1 1 0 0 34 0 0]Of course. I can help with that.[n][uf 1 1][e]
 
 [msg MSG_020_5_0 [Chihiro Fushimi]]
-[uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0][uf 3 1 1 0 0 35 0 0]Oh, thank you again for helping me today, [uf 4 1]-san.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0][uf 3 1 1 0 0 35 0 0]Oh, thank you again for helping me today, [uf 4 1]-chan.[n][uf 1 1][e]
 
 [msg MSG_020_7_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 0 65535 65535 0 0][uf 3 1 1 0 0 36 0 0]I'm sorry I ended up taking so much of your time...[n][uf 1 1][e]

@@ -31,7 +31,7 @@
 
 [msg MSG_008_0_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0][uf 3 1 3 0 65535 11424 0 0][uf 5 13 9 15 109]Yes, it's really good. I highly recommend it.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0]Oh, and it's really intriguing[n]topic for girls in general. Maybe,[n]you'll have a different perspective than me when you read it.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0]Oh, it's an really intriguing[n]topic for girls in general. Maybe,[n]you'll have a different perspective than me when you read it.[n][uf 1 1][e]
 
 [msg MND_009_0_0]
 [uf 0 5 65278][uf 2 1]Chihiro seems to be having fun.[n][uf 1 1][e]

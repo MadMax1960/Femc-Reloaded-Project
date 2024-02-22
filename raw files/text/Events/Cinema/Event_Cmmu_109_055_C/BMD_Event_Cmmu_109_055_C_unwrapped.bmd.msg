@@ -4,7 +4,7 @@
 
 [msg MSG_000_5_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 0 65535 65535 0 0][uf 3 1 1 0 0 3 0 0]So far, I can only talk to boys I know, but... I can almost look them in the eye![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 109 0 65535 65535 0 0][uf 3 1 1 0 0 4 0 0]But with you, [uf 4 1]-san, I... I think I can do even better![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 109 0 65535 65535 0 0][uf 3 1 1 0 0 4 0 0]But with you, [uf 4 1]-san, I... I think I can be even better![n][uf 1 1][e]
 
 [msg MSG_001_0_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 0 65535 65535 0 0][uf 3 1 1 0 0 5 0 0]As long as it's nothing too scary... G-Go ahead![n][uf 1 1][e]

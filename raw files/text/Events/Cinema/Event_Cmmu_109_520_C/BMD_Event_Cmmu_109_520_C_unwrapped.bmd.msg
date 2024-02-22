@@ -21,6 +21,6 @@
 [uf 0 5 65278][uf 2 1]I feel an unbreakable bond between us...[n][uf 1 1][e]
 
 [msg MSG_005_0_0 [Chihiro Fushimi]]
-[uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 1 0][uf 3 1 1 0 0 11 0 0]I love you, [uf 4 1]-san.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 1 0][uf 3 1 1 0 0 11 0 0]I love you, [uf 4 1]-chan.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 1 0][uf 3 1 1 0 0 12 0 0]And I always will...[n][uf 1 1][e]
 
