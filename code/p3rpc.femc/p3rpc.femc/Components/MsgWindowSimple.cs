@@ -208,22 +208,19 @@ namespace p3rpc.femc.Components
                         current_speaker_inner2,
                         0x23, 0x3, 0, 0
                     );
-                    /*
-                    var speakerNameTriangleSprColor =
+                    var speakerNameTalkSpriteColor =
                         ((self->MsgProcWindowStatus & 0x20) != 0) ?
-                        _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerNameTriangle) :
-                        _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerNameTriangle)
+                        _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerName) :
+                        _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerName)
                     ;
-                    speakerNameTriangleSprColor.A = (byte)(self->Opacity * 179);
-                    var speakerNameTriangleSprColor = new FSprColor(0, 255, 0, 64);
-                    var speakerNameTriangleSprPos = new FVector2D(msgBaseX + 67, Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 + 27);
-                    var speakerNameTriangleSpr = new SprDefStruct1(
-                        1, 
-                        speakerNameTriangleSprPos, 
-                        speakerNameTriangleSprColor, 
-                        self->Opacity * 0.5f, 0, 0);
-                    _uiCommon._spriteFunc1(&speakerNameTriangleSpr, itemMask, self->MsgSpr_, 0, 0);
-                    */
+                    speakerNameTalkSpriteColor.A = (byte)(self->Opacity * 179);
+                    var speakerNameTalkSpritePos = new FVector2D(msgBaseX + 67 + 57, Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 + 27);
+                    var speakerNameTalkSprite = new SprDefStruct1(
+                        1,
+                        speakerNameTalkSpritePos,
+                        speakerNameTalkSpriteColor, 
+                        1, 0, 0);
+                    _uiCommon._spriteFunc1(&speakerNameTalkSprite, itemMask, self->MsgSpr_, 0, 0);
                 }
                 _drawMessageText(self, itemMask, (byte)(self->Field164 * 255), msgBaseX, msgBaseY);
 
