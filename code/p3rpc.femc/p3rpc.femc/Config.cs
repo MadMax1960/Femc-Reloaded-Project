@@ -44,6 +44,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Text Box: Speaker Name Triangle Color")]
         public ConfigColor TextBoxSpeakerNameTriangle { get; set; } = ConfigColor.TextBoxSpeakerNameTriangle;
 
+        [DisplayName("Text Box: Speaker Name")]
+        public ConfigColor TextBoxSpeakerName { get; set; } = ConfigColor.LightColor;
+
         [DisplayName("Text Box: Left Haze Color")]
         public ConfigColor TextBoxLeftHaze { get; set; } = ConfigColor.TextBoxLeftHaze;
 
@@ -113,12 +116,12 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         public bool EnableCampMenu { get; set; } = true;
 
-        [DisplayName("Enable Standard Message Box (WIP)")]
+        [DisplayName("Enable Standard Message Box")]
         [Category("UI Components")]
         [DefaultValue(false)]
         public bool EnableTextbox { get; set; } = true;
 
-        [DisplayName("Enable Mind Message Box (WIP)")]
+        [DisplayName("Enable Mind Message Box")]
         [Category("UI Components")]
         [DefaultValue(false)]
         public bool EnableMindMessageBox { get; set; } = true;

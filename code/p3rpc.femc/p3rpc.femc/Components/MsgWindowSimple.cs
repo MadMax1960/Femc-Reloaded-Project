@@ -174,6 +174,7 @@ namespace p3rpc.femc.Components
                             _uiCommon.ToFSprColor(_context._config.TextBoxFrontFillColor) :
                             _uiCommon.ToFSprColor(_context._config.TextBoxFrontFillColor)
                         ;
+                    speakerNameTriangleFrontColor.A = (byte)(self->Opacity * 255);
                     var speakerNameTriangleFrontPos =
                         ((self->MsgProcWindowStatus & 0x4) != 0) ?
                         new FVector(
@@ -193,25 +194,36 @@ namespace p3rpc.femc.Components
                     );
                     _uiCommon._plgFunc1(&speakerNameTriangleFront, itemMask, self->MsgPlg_, 0, 0);
 
-                    /* currently crashes
+                    var current_speaker = (nint)((UMsgProcWindowBase*)self)->pMsgWork->CurrentSpeaker;
+                    var current_speaker_inner = *(nint*)(current_speaker + 0x28);
+                    var current_speaker_inner2 = *(nint*)(current_speaker_inner + 0x48);
+                    var current_speaker_color = _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerName);
+                    current_speaker_color.A = (byte)(self->Opacity * 255);
                     _uiCommon._drawSingleLineText(
-                        msgBaseX, 
+                        msgBaseX + 67, 
                         Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 810, 
                         0,
-                        new FSprColor(_context.ColorBlack),
-                        (*(nint*)(((UMsgProcWindowBase*)self)->pMsgWork->CurrentSpeaker + 0x28)) + 0x48, 
+                        current_speaker_color,
+                        1,
+                        current_speaker_inner2,
                         0x23, 0x3, 0, 0
                     );
-                    */
+                    /*
                     var speakerNameTriangleSprColor =
                         ((self->MsgProcWindowStatus & 0x20) != 0) ?
                         _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerNameTriangle) :
                         _uiCommon.ToFSprColor(_context._config.TextBoxSpeakerNameTriangle)
                     ;
                     speakerNameTriangleSprColor.A = (byte)(self->Opacity * 179);
+                    var speakerNameTriangleSprColor = new FSprColor(0, 255, 0, 64);
                     var speakerNameTriangleSprPos = new FVector2D(msgBaseX + 67, Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 9], MessageBoxHeights[self->MessageBoxHeight, 9], self->PositionLerp) + 812 + 27);
-                    var speakerNameTriangleSpr = new SprDefStruct1(1, speakerNameTriangleSprPos, speakerNameTriangleSprColor, 1, 1, 0);
+                    var speakerNameTriangleSpr = new SprDefStruct1(
+                        1, 
+                        speakerNameTriangleSprPos, 
+                        speakerNameTriangleSprColor, 
+                        self->Opacity * 0.5f, 0, 0);
                     _uiCommon._spriteFunc1(&speakerNameTriangleSpr, itemMask, self->MsgSpr_, 0, 0);
+                    */
                 }
                 _drawMessageText(self, itemMask, (byte)(self->Field164 * 255), msgBaseX, msgBaseY);
 
