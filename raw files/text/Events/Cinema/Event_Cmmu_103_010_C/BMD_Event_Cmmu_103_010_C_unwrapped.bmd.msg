@@ -22,11 +22,11 @@
 
 [msg MSG_007_0_0 [Elderly Man]]
 [uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 9 0 0]I knew it![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 10 0 0]I knew right from the start that you were a kind young woman![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 10 0 0]I knew right from the start that you were a kind young lady![n][uf 1 1][e]
 
 [msg MSG_008_0_0 [Elderly Man]]
 [uf 0 5 65278][uf 2 1][uf 4 5 103 0 65535 65535 0 0][uf 3 1 1 0 0 11 0 0]Eh? You're pulling my leg.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 12 0 0][uf 4 23 0 1 1 25 25]I've known from the start that you were a kind young woman![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 12 0 0][uf 4 23 0 1 1 25 25]I've known from the start that you were a kind young lady![n][uf 1 1][e]
 
 [msg MSG_009_0_0 [Elderly Man]]
 [uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 13 0 0]I've been meaning to go see that tree for a while now, but I'm not sure if these stumpy old legs will make it that far...[n][uf 1 1][e]
