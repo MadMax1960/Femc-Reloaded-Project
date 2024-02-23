@@ -52,7 +52,7 @@
 
 [msg MSG_012_0_0 [Bunkichi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]Stop by again anytime, all right?[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 20 0 0]My wife feels like she's back in her days in a girls' high school whenever you're around.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 20 0 0]My wife would always be happy to see such a pretty young lady.[n][uf 1 1][e]
 
 [msg MSG_012_5_0 [Bunkichi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 103 1 65535 65535 0 0][uf 3 1 1 0 0 21 0 0]Here, take this for when you get hungry.[n][uf 1 1][e]
