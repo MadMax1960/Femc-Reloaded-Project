@@ -6,7 +6,7 @@
 [uf 0 5 65278][uf 2 1]What's the matter?[e]
 
 [msg MSG_002_0_0 [Keisuke Hiraga]]
-[uf 0 5 65278][uf 2 1][uf 4 5 108 0 65535 65535 0 0][uf 3 1 1 0 0 2 0 0]Is that what it seems like to you, [uf 4 1]-kun? That I'm working hard?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 108 0 65535 65535 0 0][uf 3 1 1 0 0 2 0 0]Is that what it seems like to you, [uf 4 1]-chan? That I'm working hard?[n][uf 1 1][e]
 
 [msg MSG_003_0_0 [Keisuke Hiraga]]
 [uf 0 5 65278][uf 2 1][uf 4 5 108 0 65535 65535 0 0][uf 3 1 1 0 0 3 0 0]Ah, sorry. I just wanted you to lend me an ear.[n][uf 1 1][e]
