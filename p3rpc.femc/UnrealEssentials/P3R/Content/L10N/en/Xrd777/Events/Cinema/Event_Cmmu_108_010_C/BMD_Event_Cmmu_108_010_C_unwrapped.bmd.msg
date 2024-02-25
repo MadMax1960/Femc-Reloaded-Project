@@ -22,7 +22,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 108 1 65535 65535 0 0][uf 3 1 1 0 0 9 0 0]And, um, I'm Keisuke Hiraga. P-Pleased to meet you![n][uf 1 1][e]
 
 [msg MSG_006_0_0 [Male Club Member]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 10 0 0][uf 5 21 0 100]She should be the one introducing himself to you, Keisuke-senpai.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 10 0 0][uf 5 21 0 100]She should be the one introducing herself to you, Keisuke-senpai.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 11 0 0][uf 5 21 0 100]You're the club leader, aren't you?[n][uf 1 1][e]
 
 [msg MSG_007_0_0 [Keisuke Hiraga]]
