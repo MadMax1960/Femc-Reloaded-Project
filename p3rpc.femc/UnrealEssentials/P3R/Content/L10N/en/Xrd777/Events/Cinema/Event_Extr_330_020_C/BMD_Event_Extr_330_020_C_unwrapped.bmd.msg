@@ -13,7 +13,7 @@
 
 [msg MSG_003_0_0 [Mr. Ono]]
 [uf 0 5 65278][uf 2 1][uf 4 5 1083 0 65535 65535 0 0][uf 5 21 0 100]Next is... the Jomon period? When do the samurai get their day in the sun!?[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 1083 0 65535 65535 0 0][uf 3 1 3 0 65535 15216 0 0][uf 5 21 0 100]I'll just ask a question at random and call it a day. Hmm... [uf 4 1]-chan.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 1083 0 65535 65535 0 0][uf 3 1 3 0 65535 15216 0 0][uf 5 21 0 100]I'll just ask a question at random and call it a day. Hmm... [uf 4 1]-san.[n][uf 1 1][e]
 
 [msg MSG_004_0_0 [Mr. Ono]]
 [uf 0 5 65278][uf 2 1][uf 4 5 1083 0 65535 65535 0 0][uf 5 21 0 100]The places where people dumped their waste in the Jomon period—what are they called nowadays?[n][uf 1 1][e]
@@ -128,7 +128,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]Let's see... Junpei's shifting in his seat a bit too much, so instead...[n][uf 1 1][e]
 
 [msg MSG_032_0_0 [Ms. Toriumi]]
-[uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 3 0 65535 15803 0 0][uf 5 21 0 100]How about you, [uf 4 1]-chan?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 3 0 65535 15803 0 0][uf 5 21 0 100]How about you, [uf 4 1]-san?[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]Which phrase means, "able to see things for what they really are"?[n][uf 1 1][e]
 
 [sel SEL_033_0_0 top]
@@ -250,7 +250,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]A comma splice is when two independent clauses are incorrectly joined by a comma instead of a conjunction.[n][uf 1 1][e]
 
 [msg MSG_053_0_0 [Ms. Toriumi]]
-[uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 3 0 65535 15845 0 0][uf 5 21 0 100]Here's a question for you all! Dun dun dunnn... [uf 4 1]-chan![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 3 0 65535 15845 0 0][uf 5 21 0 100]Here's a question for you all! Dun dun dunnn... [uf 4 1]-san![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]Where is the comma splice found in the following sentence?[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]"Because it is 10:30 right now, we will not reach the theater in time, it's already started, to my dismay."[n][uf 1 1][e]
 
@@ -634,7 +634,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 1085 0 65535 65535 0 0][uf 5 21 0 100]Anyway, wasn't that fun? Numbers are so interesting![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 1085 0 65535 65535 0 0][uf 5 21 0 100]Even with a difficult problem like this one—once it's solved, it becomes such a simple concept.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 1085 0 65535 65535 0 0][uf 5 21 0 100]Our entire reality is made up of numbers. Civilization owes its very existence to math![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 1085 0 65535 65535 0 0][uf 3 1 3 0 65535 15415 0 0][uf 5 21 0 100]All right, [uf 4 1]-chan, you seem like a math fan—here's a question for you.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 1085 0 65535 65535 0 0][uf 3 1 3 0 65535 15415 0 0][uf 5 21 0 100]All right, [uf 4 1]-san, you seem like a math fan—here's a question for you.[n][uf 1 1][e]
 
 [msg MSG_123_0_0 [Ms. Miyahara]]
 [uf 0 5 65278][uf 2 1][uf 4 5 1085 0 65535 65535 0 0][uf 5 21 0 100]We used the number "zero" a lot. Do you know where it originally came from, though?[n][uf 1 1][e]
@@ -691,7 +691,7 @@
 
 [msg MSG_136_0_0 [Ms. Toriumi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]Is it because of the month? Ugh... I still can't get over it![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 3 0 65535 15803 0 0][uf 5 21 0 100]Who should I ask this one...? You, [uf 4 1]-chan.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 3 0 65535 15803 0 0][uf 5 21 0 100]Who should I ask this one...? You, [uf 4 1]-san.[n][uf 1 1][e]
 
 [msg MSG_137_0_0 [Ms. Toriumi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]In most of Japan, October is considered "the month without gods" because they're not around...[n][uf 1 1][e]
@@ -991,7 +991,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]But since it's a new year, here's a relevant question for you all.[n][uf 1 1][e]
 
 [msg MSG_193_0_0 [Ms. Toriumi]]
-[uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 3 0 65535 15803 0 0][uf 5 21 0 100]Let's see... [uf 4 1]-chan![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 3 0 65535 15803 0 0][uf 5 21 0 100]Let's see... [uf 4 1]-san![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]Do you know about the monk named Ikkyu? He's the one who's famous enough that they made a show based on his life.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]Well, this is what he said about New Year's...[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 5 21 0 100]"The new year is the index of a journey to a certain place." Where is this "certain place" he's referring to?[n][uf 1 1][e]
