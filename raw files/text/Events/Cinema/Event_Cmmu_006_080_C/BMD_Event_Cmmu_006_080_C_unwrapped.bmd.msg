@@ -47,7 +47,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 65535 1 0][uf 3 1 1 0 0 21 0 0][uf 4 23 0 6 3 25 25]It's because... you're you.[n][uf 1 1][e]
 
 [msg MSG_008_5_0 [Fuuka Yamagishi]]
-[uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 65535 1 0][uf 3 1 1 0 0 22 0 0]It needs to be you, [uf 4 1]-kun...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 65535 1 0][uf 3 1 1 0 0 22 0 0]It needs to be you, [uf 4 1]-chan...[n][uf 1 1][e]
 
 [msg MND_009_0_0]
 [uf 0 5 65278][uf 2 1]I understand Fuuka's heartfelt words.[n][uf 1 1][e]
@@ -72,7 +72,7 @@
 
 [msg MSG_014_0_0 [Fuuka Yamagishi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 65535 0 0][uf 3 1 1 0 0 30 0 0][uf 5 13 3 5 6]But it wouldn't be the same. There's other people at the dorm...[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 65535 0 0][uf 3 1 1 0 0 31 0 0]And I know how everyone depends on you, [uf 4 1]-kun.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 65535 0 0][uf 3 1 1 0 0 31 0 0]And I know how everyone depends on you, [uf 4 1]-chan.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 65535 0 0][uf 3 1 1 0 0 32 0 0]I can't get in the way of that.[n][uf 1 1][e]
 
 [msg MSG_015_0_0 [Fuuka Yamagishi]]

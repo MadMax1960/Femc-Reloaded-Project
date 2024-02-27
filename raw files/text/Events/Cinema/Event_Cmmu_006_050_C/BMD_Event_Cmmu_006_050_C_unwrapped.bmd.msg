@@ -44,7 +44,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 65535 0 0][uf 3 1 1 0 0 17 0 0]But then, everyone in the class told me they were really good, though![n][uf 1 1][e]
 
 [msg MSG_009_0_0 [Fuuka Yamagishi]]
-[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 65535 0 0][uf 3 1 1 0 0 18 0 0]Anyways, I've been really looking forward to have you try one, [uf 4 1]-kun.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 65535 0 0][uf 3 1 1 0 0 18 0 0]Anyways, I've been really looking forward to have you try one, [uf 4 1]-chan.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]I wanted you to see how much progress I've made.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 65535 0 0][uf 3 1 1 0 0 20 0 0]Because, I don't think I could have made it this far without you.[n][uf 1 1][e]
 
