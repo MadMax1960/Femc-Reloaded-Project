@@ -13,6 +13,10 @@ Notes on what the different "tags" (ie [uf ...], [n], [e] etc. etc.) do in the .
 
 [uf 2 1] - Unknown; most likely toggles between instant text display and scrolling text
 
+(probably never needed by us but still nice to know)
+[uf 4 1] - last name of your character
+[uf 4 2] - first name of your character
+
 [uf 4 5 x x x x x x] - Sets bustup to display for message box
 
 [uf 4 17 x x x] - Unknown; most likely determines cut-in texture to display

@@ -20,7 +20,7 @@
 
 [msg MSG_004_0_0 [Fuuka Yamagishi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 65535 0 0][uf 3 1 1 0 0 9 0 0]I'm still having a lot of trouble getting things right.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 65535 0 0][uf 3 1 1 0 0 10 0 0][uf 4 23 0 6 1 25 25]But I can't give up yet. Not after all your support, [uf 4 1]-kun.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 65535 0 0][uf 3 1 1 0 0 10 0 0][uf 4 23 0 6 1 25 25]But I can't give up yet. Not after all your support, [uf 4 1]-chan.[n][uf 1 1][e]
 
 [msg MSG_005_0_0 [Fuuka Yamagishi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 65535 0 0][uf 3 1 1 0 0 11 0 0]And it's not like I have any other redeeming qualities.[n][uf 1 1][e]
