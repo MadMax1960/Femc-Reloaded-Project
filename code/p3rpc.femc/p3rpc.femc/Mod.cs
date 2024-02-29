@@ -82,6 +82,7 @@ namespace p3rpc.femc
             {
                 AddModule<MsgWindowSimple>();
                 AddModule<MsgWindowSelectSimple>();
+                AddModule<MsgWindowAssist>();
             }
             if (_configuration.EnableMindMessageBox)
             {

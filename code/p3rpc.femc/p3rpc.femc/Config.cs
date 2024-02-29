@@ -104,6 +104,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Item Menu Character Bottom Color (Requires Restart)")]
         public ConfigColor CampItemMenuCharacterBottomColor { get; set; } = ConfigColor.DarkColor;
 
+        [DisplayName("Assist Message Box: Background Color")]
+        public ConfigColor MsgAssistBgColor { get; set; } = ConfigColor.MellodiColorMid2;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         public bool EnableMailIcon { get; set; } = true;
@@ -174,6 +177,17 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor DateTimeWaterColor = new ConfigColor(0xf0, 0x7c, 0xcd, 0xff);
         public static readonly ConfigColor TextBoxLeftHaze = new ConfigColor(0x83, 0x06, 0x51, 0xff);
         public static readonly ConfigColor TextBoxSpeakerNameTriangle = new ConfigColor(0xc8, 0x05, 0x4b, 0xff);
+        // I'd put the discord attachment here but they're time limited now
+        public static readonly ConfigColor MellodiColorLight1 = new ConfigColor(0xff, 0xbd, 0xce, 0xff);
+        public static readonly ConfigColor MellodiColorLight2 = new ConfigColor(0xfe, 0x9d, 0xb6, 0xff);
+        public static readonly ConfigColor MellodiColorLight3 = new ConfigColor(0xff, 0x89, 0xa6, 0xff);
+        public static readonly ConfigColor MellodiColorMid1 = new ConfigColor(0xd4, 0x15, 0x5b, 0xff);
+        public static readonly ConfigColor MellodiColorMid2 = new ConfigColor(0xff, 0x4a, 0x77, 0xff);
+        public static readonly ConfigColor MellodiColorMid3 = new ConfigColor(0xcd, 0x62, 0x90, 0xff);
+        public static readonly ConfigColor MellodiColorMid4 = new ConfigColor(0xd4, 0x45, 0x92, 0xff);
+        public static readonly ConfigColor MellodiColorDark1 = new ConfigColor(0xb6, 0x3f, 0x67, 0xff);
+        public static readonly ConfigColor MellodiColorDark2 = new ConfigColor(0x81, 0x0, 0x6, 0xff);
+        public static readonly ConfigColor MellodiColorDark3 = new ConfigColor(0x49, 0x4, 0x21, 0xff);
 
 
         public byte R { get; set; }
