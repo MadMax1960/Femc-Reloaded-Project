@@ -28,7 +28,7 @@ namespace p3rpc.femc.Components
         {
             // final param refers to entries in SPR_UI_MAIL.uasset (tex T_UI_Mail_00_texture.uasset)
             var itemMask = _uiCommon._getSpriteItemMaskInstance() + 0x20;
-            _uiCommon._setSpriteDrawMaskMode(itemMask, 0);
+            _uiCommon._setPresetBlendState(itemMask, 0);
             var circlePos = new FVector2D(80, 74);
             // Static Outer Circle
             var staticOuterCircle = new SprDefStruct1(

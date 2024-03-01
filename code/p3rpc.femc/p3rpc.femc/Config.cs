@@ -86,6 +86,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Menu Item Color 3 (Requires Restart)")]
         public ConfigColor CampMenuItemColor3 { get; set; } = ConfigColor.CampMenuItemColor3;
 
+        [DisplayName("Camp: Menu Item Color No Select (Requires Restart)")]
+        public ConfigColor CampMenuItemColorNoSel { get; set; } = ConfigColor.CampMenuItemColorNoSel;
+
         [DisplayName("Camp: Skill Text Color (Requires Restart)")]
         public ConfigColor CampSkillTextColor { get; set; } = ConfigColor.MidColor;
 
@@ -106,6 +109,12 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Assist Message Box: Background Color")]
         public ConfigColor MsgAssistBgColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Town Map: Border Color")]
+        public ConfigColor TownMapBorderColor { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Town Map: Text Color")]
+        public ConfigColor TownMapTextColor { get; set; } = ConfigColor.MellodiColorMid1;
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -145,6 +154,10 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         public bool EnableMessageScript { get; set; } = true;
 
+        [DisplayName("Enable Town Map")]
+        [Category("UI Components")]
+        public bool EnableTownMap { get; set; } = true;
+
     }
 
     /// <summary>
@@ -169,6 +182,7 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor CampMenuItemColor1 = new ConfigColor(0xff, 0x8f, 0xec, 0xff);
         public static readonly ConfigColor CampMenuItemColor2 = new ConfigColor(0xf7, 0x83, 0xe4, 0xff);
         public static readonly ConfigColor CampMenuItemColor3 = new ConfigColor(0xe0, 0x79, 0xcf, 0xff);
+        public static readonly ConfigColor CampMenuItemColorNoSel = new ConfigColor(0xcf, 0x7c, 0xc1, 0xff);
         public static readonly ConfigColor CheckFgBorder = new ConfigColor(0x9b, 0x0b, 0x47, 0xff);
         public static readonly ConfigColor SocialStatsCourage = new ConfigColor(0xf5, 0x62, 0xa7, 0xff);
         public static readonly ConfigColor SocialStatsCharm = new ConfigColor(0xff, 0x8f, 0xec, 0xff); // same as mid color

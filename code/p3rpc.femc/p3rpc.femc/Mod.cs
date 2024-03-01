@@ -103,6 +103,7 @@ namespace p3rpc.femc
             {
                 AddModule<MessageScript>();
             }
+            if (_configuration.EnableTownMap) AddModule<TownMap>();
 
             foreach (var mod in _modules.Values) mod.Register();
         }
