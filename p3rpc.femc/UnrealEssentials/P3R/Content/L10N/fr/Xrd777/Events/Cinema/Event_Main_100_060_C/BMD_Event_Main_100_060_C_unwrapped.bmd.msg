@@ -25,7 +25,7 @@
 [sel SEL_007_0_0 top]
 [uf 0 5 65278][uf 2 1]Enchantée.[e]
 [uf 0 5 65278][uf 2 1]Pourquoi tu as une arme ?[e]
-[uf 0 5 65278][uf 2 1]C'est le dortoir seulement des filles ?[e]
+[uf 0 5 65278][uf 2 1]C'est le dortoir des filles ?[e]
 
 [msg MSG_008_0_0 [Yukari Takeba]]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 0 51 65535 0 0][uf 3 1 1 0 0 11 0 0]Euh, ouais...[n][uf 1 1][e]

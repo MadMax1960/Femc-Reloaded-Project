@@ -5,7 +5,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 5 0 52 65535 0 0][uf 3 1 1 0 0 2 0 0][uf 4 23 0 4 0 25 25]Did Nyx create this place...? Or was it her?[n][uf 1 1][e]
 
 [msg MSG_002_0_0 [Akihiko Sanada]]
-[uf 0 5 65278][uf 2 1][uf 4 5 4 4 52 65535 0 0][uf 3 1 1 0 0 3 0 0][uf 4 23 0 3 4 25 25]Yamagishi, is he all right!? What happened!?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 4 52 65535 0 0][uf 3 1 1 0 0 3 0 0][uf 4 23 0 3 4 25 25]Yamagishi, is she all right!? What happened!?[n][uf 1 1][e]
 
 [msg MSG_003_0_0 [Fuuka Yamagishi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 6 3 52 65535 0 0][uf 3 1 1 0 0 4 0 0][uf 4 23 0 5 3 25 25]Everything disappeared after being covered in that light. I don't sense anything now...[n][uf 1 1][e]

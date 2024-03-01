@@ -2,14 +2,14 @@
 [uf 0 5 65278][uf 2 1]I'm in Shinagawa Dungeon...[n][uf 1 1][e]
 
 [msg MSG_001_0_0 [Maya]]
-[uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0][uf 3 1 3 0 65535 17001 0 0]i hope tatsuya gets here soon ＞_＞[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0][uf 3 1 3 0 65535 17001 0 0]i hope tatsuya gets here soon ＞_＞[n][uf 1 1][e]
 
 [msg MND_002_0_0]
 [uf 0 5 65278][uf 2 1]Maya is walking nearby.[n][uf 1 1][e]
 
 [msg MSG_003_0_0 [Maya]]
 [uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0][uf 3 1 3 0 65535 17002 0 0]i'm not even complaining today or ne thing... so rare =P[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0]but i have to tell tatsu cuz she's my MMO partner! i'll be brave ;_;[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0]but i have to tell tatsu cuz he's my MMO partner! i'll be brave ;_;[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0][uf 4 25 107]........................ :O[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0]...im so lame! im blushing 4 reals!![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0]oh noes... now im starting to get sweaty =/[n][uf 1 1][e]
