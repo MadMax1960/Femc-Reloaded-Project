@@ -116,6 +116,30 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Town Map: Text Color")]
         public ConfigColor TownMapTextColor { get; set; } = ConfigColor.MellodiColorMid1;
 
+        [DisplayName("Camp Social Link: Light Color")]
+        public ConfigColor CampSocialLinkLight { get; set; } = ConfigColor.MellodiColorLight2;
+
+        [DisplayName("Camp Social Link: Dark Color")]
+        public ConfigColor CampSocialLinkDark { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Camp Social Link: Desc BG")]
+        public ConfigColor CampSocialLinkDetailDescBg { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Camp Social Link: Desc Triangle")]
+        public ConfigColor CampSocialLinkDetailDescTriangle { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Camp Social Link: Desc Name")]
+        public ConfigColor CampSocialLinkDetailDescName { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Arcana Card Fall Color 1")]
+        public ConfigColor ArcanaCardFallColor1 { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Arcana Card Fall Color 2")]
+        public ConfigColor ArcanaCardFallColor2 { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Arcana Card Fall Color 3")]
+        public ConfigColor ArcanaCardFallColor3 { get; set; } = ConfigColor.MellodiColorMid3;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         public bool EnableMailIcon { get; set; } = true;
@@ -212,5 +236,6 @@ namespace p3rpc.femc.Configuration
         public ConfigColor(byte R, byte G, byte B, byte A) { this.R = R; this.G = G; this.B = B; this.A = A; }
 
         public uint ToU32() => (uint)(R << 0x18) | (uint)(G << 0x10) | (uint)(B << 0x8) | A;
+        public uint ToU32ARGB() => (uint)(A << 0x18) | (uint)(R << 0x10) | (uint)(G << 0x8) | B;
     }
 }

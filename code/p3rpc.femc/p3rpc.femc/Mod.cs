@@ -2,6 +2,7 @@
 using p3rpc.femc.Configuration;
 using p3rpc.femc.Template;
 using Reloaded.Hooks.ReloadedII.Interfaces;
+using Reloaded.Memory;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using System;
@@ -62,7 +63,8 @@ namespace p3rpc.femc
             _modLoader.GetController<IStartupScanner>().TryGetTarget(out var startupScanner);
             if (startupScanner == null || _hooks == null) throw new Exception("Missing dependencies : startup scanner, hooks");
             Utils utils = new(startupScanner, _logger, _hooks, baseAddress);
-            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils);
+            var memory = new Memory();
+            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory);
             _modules = new();
             AddModule<UICommon>();
             if (_configuration.EnableMailIcon) AddModule<MailIcon>();
@@ -74,6 +76,8 @@ namespace p3rpc.femc
                 AddModule<CampItem>();
                 AddModule<CampEquip>();
                 AddModule<CampPersona>();
+                AddModule<CampSocialLink>();
+                AddModule<CampCalendar>();
                 AddModule<CampSystem>();
                 AddModule<SocialStats>();
             }

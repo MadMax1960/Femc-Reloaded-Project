@@ -32,6 +32,6 @@ namespace p3rpc.femc.Components
             return (T)module;
         }
 
-        public void OnConfigUpdated(Config newConfig) => _context._config = newConfig;
+        public virtual void OnConfigUpdated(Config newConfig) => _context._config = newConfig;
     }
 }
