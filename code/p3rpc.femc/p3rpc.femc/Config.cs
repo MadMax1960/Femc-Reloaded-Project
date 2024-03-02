@@ -140,6 +140,21 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Arcana Card Fall Color 3")]
         public ConfigColor ArcanaCardFallColor3 { get; set; } = ConfigColor.MellodiColorMid3;
 
+        [DisplayName("Camp Calendar: Sunday Color (Requires Restart)")]
+        public ConfigColor CampCalendarSundayColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp Calendar: Sunday Color 2 (Requires Restart)")]
+        public ConfigColor CampCalendarSundayColor2 { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Camp Calendar: Text Color (Requires Restart)")]
+        public ConfigColor CampCalendarTextColor { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Camp Calendar: Highlight Color (Requires Restart)")]
+        public ConfigColor CampCalendarHighlightColor { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Camp Calendar: Part Time Job Background")]
+        public ConfigColor CampCalendarPartTimeJobBackground { get; set; } = ConfigColor.MellodiColorDark1;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         public bool EnableMailIcon { get; set; } = true;

@@ -422,8 +422,117 @@ namespace p3rpc.femc.Components
         private UICommon _uiCommon;
         private CampCommon _campCommon;
 
+        private List<AddressToMemoryWrite> _asmMemWrites;
+
+        // Inside UUICmpCalendarDraw::DrawCalendarGrid
+        private string UUICmpCalendarDraw_DrawCalendarGrid_SundayHeader_SIG = "F3 0F 2C FE 66 C7 85 ?? ?? ?? ?? FF FF";
+        private string UUICmpCalendarDraw_DrawCalendarGrid_SundayDay_SIG = "44 88 BD ?? ?? ?? ?? 89 5D ??";
+        // Inside UUICmpCalendarDraw::DrawMonthDisplay
+        private string UUICmpCalendarDraw_DrawMonthDisplay_PrevMonthColor_SIG = "40 88 BD ?? ?? ?? ?? 48 89 44 24 ?? E8 ?? ?? ?? ?? 41 8B 86 ?? ?? ?? ??";
+        private string UUICmpCalendarDraw_DrawMonthDisplay_CurrMonthColor_SIG = "40 88 BD ?? ?? ?? ?? 48 89 44 24 ?? E8 ?? ?? ?? ?? 40 84 F6";
+        private string UUICmpCalendarDraw_DrawMonthDisplay_NextMonthColor_SIG = "40 88 BD ?? ?? ?? ?? 48 89 44 24 ?? E8 ?? ?? ?? ?? 41 0F B6 86 ?? ?? ?? ??";
+        // Inside UUICmpCalendarDraw::DrawDayEvents
+        private string UUICmpCalendar_DrawDayEvents_DateBg_SIG = "66 0F 6E C8 8B 87 ?? ?? ?? ?? 03 87 ?? ?? ?? ??";
+        private string UUICmpCalendar_DrawDayEvents_DrawTextColor_SIG = "";
+        // UUICmpCalendarDraw::DrawPartTimeJobDescBg
+        private string UUICmpCalendarDraw_PartTimeJobDescBgColor_SIG = "C7 84 24 ?? ?? ?? ?? 62 15 00 FF";
+        private string UUICmpCalendarDraw_PartTimeJobDescBg_SIG = "48 8B C4 48 89 70 ?? 57 48 81 EC D0 00 00 00 44 0F 29 40 ??";
+        // UUICmpCalendarDraw::DrawPartTimeJobDescHeader
+        private string UUICmpCalendarDraw_PartTimeJobTextColor_SIG = "C7 84 24 ?? ?? ?? ?? 43 04 08 FF";
+        private string UUICmpCalendarDraw_PartTimeJobHeader_SIG = "48 8B C4 48 89 58 ?? 48 89 68 ?? 48 89 70 ?? 57 48 81 EC B0 00 00 00 0F 29 70 ?? 48 8B F9";
+
+        private string FAppCalculationItem_Lerp_SIG = "E8 ?? ?? ?? ?? 8B 86 ?? ?? ?? ?? F3 44 0F 58 C0";
+
+        private IAsmHook _calendarSundayColor;
+        private IAsmHook _calendarSundayDay;
+        private IAsmHook _monthsPrevMonth;
+        private IAsmHook _monthsCurrMonth;
+        private IAsmHook _monthsNextMonth;
+        private IAsmHook _dateBg;
+
+        private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeJobBg;
+        private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeHeader;
+
+        private FAppCalculationItem_Lerp _appCalcLerp;
+
         public unsafe CampCalendar(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
+            _asmMemWrites = new();
+            _context._utils.SigScan(UUICmpCalendarDraw_DrawCalendarGrid_SundayHeader_SIG, "UUICmpCalendarDraw::DrawCalendarGrid_SundayHeader", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rbp + 0x88], {_context._config.CampCalendarSundayColor.ToU32ARGB()}"
+                };
+                _calendarSundayColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UUICmpCalendarDraw_DrawCalendarGrid_SundayDay_SIG, "UUICmpCalendarDraw::DrawCalendarGrid_SundayDay", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rbp + 0x80], {_context._config.CampCalendarSundayColor.ToU32ARGB()}",
+                    $"mov byte [rbp + 0x83], r15b", // opacity
+                    $"mov dword [rbp + 0x84], {_context._config.CampCalendarSundayColor2.ToU32ARGB()}"
+                };
+                _calendarSundayDay = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UUICmpCalendarDraw_DrawMonthDisplay_PrevMonthColor_SIG, "UUICmpCalendarDraw::DrawMonthDisplay_PrevMonth", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rbp + 0xe8], {_context._config.CampCalendarTextColor.ToU32ARGB()}"
+                };
+                _monthsPrevMonth = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_DrawMonthDisplay_CurrMonthColor_SIG, "UUICmpCalendarDraw::DrawMonthDisplay_CurrMonth", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rbp + 0xe8], {_context._config.CampCalendarTextColor.ToU32ARGB()}"
+                };
+                _monthsCurrMonth = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_DrawMonthDisplay_NextMonthColor_SIG, "UUICmpCalendarDraw::DrawMonthDisplay_NextMonth", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rbp + 0xe8], {_context._config.CampCalendarTextColor.ToU32ARGB()}"
+                };
+                _monthsNextMonth = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendar_DrawDayEvents_DateBg_SIG, "UUICmpCalendarDraw::DrawDayEvents_DateBg", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rbp + 0x6f], {_context._config.CampCalendarHighlightColor.ToU32ARGB()}"
+                };
+                _dateBg = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            // TODO: Rewrite DrawPartTimeBg and DrawPartTimeHeader to more easily adjust the color + blend state
+            /*
+            _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobDescBgColor_SIG, "UCmpCommuDetails::PartTimeJobDescBgColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CampCalendarPartTimeJobBackground.ToU32ARGB())));
+            });
+
+            _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobTextColor_SIG, "UCmpCommuDetails::PartTimeJobTextColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CampCalendarTextColor.ToU32ARGB())));
+            });
+            */
+
+            _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobDescBg_SIG, "UUICmpCalendarDraw::PartTimeJobDescBg", _context._utils.GetDirectAddress, addr => _drawPartTimeJobBg = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobDescBg, addr));
+            _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobHeader_SIG, "UUICmpCalendarDraw::PartTimeJobHeader", _context._utils.GetDirectAddress, addr => _drawPartTimeHeader = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobHeader, addr));
+            _context._utils.SigScan(FAppCalculationItem_Lerp_SIG, "FAppCalculationItem::Lerp", _context._utils.GetIndirectAddressShort, addr => _appCalcLerp = _context._utils.MakeWrapper<FAppCalculationItem_Lerp>(addr));
 
         }
         public override void Register()
@@ -431,6 +540,69 @@ namespace p3rpc.femc.Components
             _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
+
+        public override void OnConfigUpdated(Configuration.Config newConfig)
+        {
+            base.OnConfigUpdated(newConfig);
+            foreach (var mem in _asmMemWrites) mem.WriteAtAddress(mem.Address);
+        }
+
+        private unsafe void UUICmpCalendarDraw_PartTimeJobDescBg(UUICmpCalendarDraw* self, float x, float y, float angle)
+        {
+            var uiResrc = _uiCommon._globalWorkGetUIResources();
+            var plgEntry = (UPlgAsset*)uiResrc->GetAssetEntry(0x33);
+            if (plgEntry != null && self->PartTimeJobs.arr_num > 0)
+            {
+                var v1 = new FAppCalculationItem(-400, 0, self->PartJobBgInAnimDelay, self->Field70, appCalculationType.DEC);
+                var f1 = _appCalcLerp(self->Field248, &v1, 1, 0);
+                var v2 = new FAppCalculationItem(0, 1, 0, self->PartJobBgInAnimDstFrame, appCalculationType.DEC);
+                var f2 = _appCalcLerp(self->TimePartTimeJobOpen, &v2, 1, 0);
+                var v3 = new FAppCalculationItem(1, 0, self->PartJobBgOutAnimDelay, self->PartJobBgOutAnimDstFrame, appCalculationType.DEC);
+                f2 *= _appCalcLerp(self->TimePartTimeJobClosed, &v3, 1, 0);
+                var f4 = UICommon.Lerp(502, 0, f2);
+                var f5 = UICommon.Lerp(-720, 0, f2);
+                var f6 = UICommon.Lerp(23, 0, f2);
+                var masker = _uiCommon._getSpriteItemMaskInstance() + 0x20;
+                _uiCommon._setBlendState(masker, 
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_SourceColor, 
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, self->CalendarDrawQueue);
+                self->DrawSpr.Flag2Set_141301af0(1);
+                var bgColor = _uiCommon.ToFColorBP(_context._config.CampCalendarPartTimeJobBackground);
+                _uiCommon._drawPlg(&self->DrawSpr, x + f4, y + f1 + f5, 0, &bgColor, 0xa4, 1, 1, angle + f6, plgEntry, self->CalendarDrawQueue);
+                self->DrawSpr.Flag2Set_141301af0(0);
+                _uiCommon._setBlendState(masker, // setup for PartTimeJobHeader
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_SourceAlpha, EUIBlendFactor.UI_BF_InverseSourceAlpha,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, self->CalendarDrawQueue);
+            }
+        }
+
+        private unsafe void UUICmpCalendarDraw_PartTimeJobHeader(UUICmpCalendarDraw* self, float x, float y, float angle)
+        {
+            var uiResrc = _uiCommon._globalWorkGetUIResources();
+            var campSpr = (USprAsset*)uiResrc->GetAssetEntry(0x32);
+            var campPlg = (UPlgAsset*)uiResrc->GetAssetEntry(0x33);
+            if (campSpr != null && campPlg != null && self->PartTimeJobs.arr_num > 0)
+            {
+                var v1 = new FAppCalculationItem(-400, 0, self->PartJobBgInAnimDelay, self->Field70, appCalculationType.DEC);
+                var f1 = _appCalcLerp(self->Field248, &v1, 1, 0);
+                var fy = y + f1;
+                var gWork = _uiCommon._getUGlobalWork();
+                var bgColor = gWork->Calendar.TimeOfDay switch
+                {
+                    ECldTimeZone.Night | ECldTimeZone.Shadow | ECldTimeZone.Midnight 
+                    => _uiCommon.ToFColorBP(_context._config.CampCalendarHighlightColor),
+                    _ => _uiCommon.ToFColorBP(_context._config.CampCalendarHighlightColor),
+                };
+                _uiCommon._drawPlg(&self->DrawSpr, x - 4, fy - 4, 0, &bgColor, 0xa3, 1, 1, 0, campPlg, self->CalendarDrawQueue);
+                var textColor = _uiCommon.ToFColorBP(_context._config.CampCalendarTextColor);
+                var layoutTable2 = self->pMainActor->OthersLayoutDataTable->GetLayoutDataTableEntry(2);
+                var textPos = new FVector2D(x + layoutTable2->angle, fy + layoutTable2->scale);
+                _uiCommon._drawSpr(&self->DrawSpr, textPos.X, textPos.Y, 0, &textColor, 0x4fc, 1, 1, 0, campSpr, EUI_DRAW_POINT.UI_DRAW_RIGHT_TOP, self->CalendarDrawQueue);
+            }
+        }
+
+        private unsafe delegate void UUICmpCalendarDraw_DrawUIComponent(UUICmpCalendarDraw* self, float x, float y, float angle); // angle, degrees
+        private unsafe delegate float FAppCalculationItem_Lerp(float source, FAppCalculationItem* values, int count, byte bIsLoop);
     }
 
     public class CampSystem : ModuleBase 

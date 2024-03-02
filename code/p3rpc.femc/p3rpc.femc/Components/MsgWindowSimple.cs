@@ -58,8 +58,6 @@ namespace p3rpc.femc.Components
             GrayMessageText = 1 << 5,
         }
 
-        private unsafe float Lerp(float a, float b, float c) => (1 - c) * a + b * c;
-
         private unsafe void UMsgProcWindow_Simple_DrawMessageBoxImpl(UMsgProcWindow_Simple* self) // FUN_14141c8e0
         {
             var vtable278 = _context._hooks.CreateWrapper<UMsgProcWindow_Simple_Vtable278>(*(nint*)(*(nint*)self + 0x278), out _);

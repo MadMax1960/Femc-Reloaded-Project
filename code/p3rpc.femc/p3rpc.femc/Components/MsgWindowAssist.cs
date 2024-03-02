@@ -12,15 +12,6 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    [StructLayout(LayoutKind.Explicit, Size = 0x1D8)]
-    public unsafe struct UMsgProcWindow_Assist
-    {
-        [FieldOffset(0x0000)] public UMsgProcWindowBase baseObj;
-        [FieldOffset(0x0108)] public UAssetLoader* Loader_;
-        [FieldOffset(0x0110)] public USprAsset* MsgSpr_;
-        [FieldOffset(0x0118)] public TArray<FVector> SupportPos;
-        [FieldOffset(0x18c)] public float Opacity;
-    }
     public class MsgWindowAssist : ModuleBase
     {
         private string UMsgProcWindow_Assist_SetBgColor_SIG = "F3 0F 10 83 ?? ?? ?? ?? 44 8B C0 8B D0";

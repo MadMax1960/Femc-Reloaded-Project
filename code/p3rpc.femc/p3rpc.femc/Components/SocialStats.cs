@@ -9,14 +9,6 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    [StructLayout(LayoutKind.Explicit, Size = 0x4138)]
-    public unsafe struct UCmpHeroHumanStatusDraw
-    {
-        [FieldOffset(0x0000)] public UObject baseObj;
-        [FieldOffset(0x38)] public uint MenuState;
-        [FieldOffset(0x4048)] public ACmpMainActor* pMainActor;
-        [FieldOffset(0x4050)] public UUICmpStatus* pParent;
-    }
     public class SocialStats : ModuleBase
     {
         private string ACmpMainActor_GetParamRankUpTable_SIG = "E8 ?? ?? ?? ?? 4C 8B E8 48 89 45 ?? E8 ?? ?? ?? ??";
