@@ -1,5 +1,5 @@
 [msg MSG_000_0_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 4 5 2 1 2 65535 0 0][uf 3 1 1 0 0 1 0 0]Oh, [uf 4 1]-kun.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 1 2 65535 0 0][uf 3 1 1 0 0 1 0 0]Oh, [uf 4 1]-chan.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 1 2 65535 0 0][uf 3 1 1 0 0 2 0 0]Sorry, I don't really have a reason to be up here, I just sorta felt like it.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 0 2 65535 0 0][uf 3 1 1 0 0 3 0 0][uf 4 23 0 2 0 25 25]Only to find Junpei here, as well.[n][uf 1 1][e]
 
@@ -70,7 +70,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 2 65535 0 0][uf 3 1 1 0 0 28 0 0]Hell yeah! I'm gonna make the final ball a home run![n][uf 1 1][e]
 
 [msg MSG_019_0_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 4 5 2 1 2 65535 0 0][uf 3 1 1 0 0 29 0 0]Don't spoil him, [uf 4 1]-kun. He's gonna let it go to his head again.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 1 2 65535 0 0][uf 3 1 1 0 0 29 0 0]Don't spoil him, [uf 4 1]-chan. He's gonna let it go to his head again.[n][uf 1 1][e]
 
 [msg MSG_020_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 2 65535 0 0][uf 3 1 1 0 0 30 0 0]That's right! I'm a man with a plan! You're not gonna wanna miss this![n][uf 1 1][e]
@@ -118,7 +118,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 2 65535 0 0][uf 3 1 1 0 0 45 0 0]Yeah. Let's send 'em packin'.[n][uf 1 1][e]
 
 [msg MSG_033_0_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 4 5 2 6 2 65535 0 0][uf 3 1 1 0 0 46 0 0]There you go again... Do you even get the situation we're in, [uf 4 1]-kun?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 6 2 65535 0 0][uf 3 1 1 0 0 46 0 0]There you go again... Do you even get the situation we're in, [uf 4 1]-chan?[n][uf 1 1][e]
 
 [msg MSG_034_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 2 65535 0 0][uf 3 1 1 0 0 47 0 0][uf 4 2] gets the job done when you need her to.[n][uf 1 1][e]
@@ -146,3 +146,4 @@
 [msg MSG_040_0_0 [Yukari Takeba]]
 
 [msg MSG_041_0_0 [Yukari Takeba]]
+
