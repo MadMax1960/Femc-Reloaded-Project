@@ -4,7 +4,7 @@
 
 [sel SEL_001_0_0 top]
 [uf 0 5 65278][uf 2 1]Thanks...[e]
-[uf 0 5 65278][uf 2 1]Who's skill..?[e]
+[uf 0 5 65278][uf 2 1]Who's skill...?[e]
 
 [msg MSG_002_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 3 0 65535 2082 0 0]You got it! Just sit back, relax, and enjoy the show, alright?[n][uf 1 1][e]
@@ -65,8 +65,8 @@
 
 [msg MSG_015_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 3 0 65535 2032 0 0]Uh, you serious? I wouldn't if I were you.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 65535 0 0]Besides, it'd be just you and me there. As much as that wouldn't bother me....[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]C'mon, let's just be good kids and stay in, Tartarus'll; really ruin that romantic flair anyway.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 65535 0 0]Besides. it'd be just you and me. As much as that wouldn't bother me....[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]C'mon, let's just be good kid's and stay in, Tartarus'll really ruin any romantic flair anyway.[n][uf 1 1][e]
 
 [msg MSG_015_5_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 3 0 65535 2062 0 0]Well, let's just chill for tonight since we can't go to Tartarus anyways.[n][uf 1 1][e]
@@ -499,7 +499,7 @@
 [msg MSG_117_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 3 0 65535 2098 0 0]Exam scores!? Tch, I don't care about that![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]Defeating Shadows is more important than getting good grades![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]Any time spent studying could be used to go to Tartarus and—[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]Any time spent studying could be used to go to Tartarus and—[n][uf 1 1][e]
 
 [msg MSG_118_0_0 [Mitsuru Kirijo]]
 [uf 0 5 65278][uf 2 1][uf 4 5 5 6 65535 65535 0 0][uf 3 1 3 0 65535 4075 0 0]Don't get carried away, Iori. You should still study.[n][uf 1 1][e]
