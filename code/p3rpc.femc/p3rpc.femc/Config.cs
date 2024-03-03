@@ -57,7 +57,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor MindWindowInnerColor { get; set; } = ConfigColor.DarkColor;
 
         [DisplayName("Mind Window: Outer Haze")]
-        public ConfigColor MindWindowOuterHaze { get; set; } = new ConfigColor(ConfigColor.MidColor.R, ConfigColor.MidColor.G, ConfigColor.MidColor.B, 128);
+        public ConfigColor MindWindowOuterHazeEx { get; set; } = new ConfigColor(ConfigColor.MellodiColorLight3.R, ConfigColor.MellodiColorLight3.G, ConfigColor.MellodiColorLight3.B, 128);
 
         [DisplayName("Mind Window: Background Dots")]
         public ConfigColor MindWindowBgDots { get; set; } = ConfigColor.MidColor;
@@ -89,8 +89,14 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Menu Item Color No Select (Requires Restart)")]
         public ConfigColor CampMenuItemColorNoSel { get; set; } = ConfigColor.CampMenuItemColorNoSel;
 
-        [DisplayName("Camp: Skill Text Color (Requires Restart)")]
-        public ConfigColor CampSkillTextColor { get; set; } = ConfigColor.MidColor;
+        [DisplayName("Camp: Skill Text Color")]
+        public ConfigColor CampSkillTextColor { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Camp: Skill Text Color No Select")]
+        public ConfigColor CampSkillTextColorNoSel { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Skill Text Color Current Select")]
+        public ConfigColor CampSkillTextColorCurrSel { get; set; } = ConfigColor.MellodiColorDark2;
 
         [DisplayName("Social Stats: Academics Circle Color")]
         public ConfigColor SocialStatsCircleAcademicsColor { get; set; } = ConfigColor.SocialStatsAcademics;
@@ -155,47 +161,63 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp Calendar: Part Time Job Background")]
         public ConfigColor CampCalendarPartTimeJobBackground { get; set; } = ConfigColor.MellodiColorDark1;
 
+        [DisplayName("Party Panel Background Color")]
+        public ConfigColor PartyPanelBgColor { get; set; } = ConfigColor.MellodiColorMid2;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
+        [DefaultValue(true)]
         public bool EnableMailIcon { get; set; } = true;
 
         [DisplayName("Enable Date Time Panel")]
         [Category("UI Components")]
+        [DefaultValue(true)]
         public bool EnableDateTimePanel { get; set; } = true;
 
         [DisplayName("Enable Camp Menu")]
         [Category("UI Components")]
+        [DefaultValue(true)]
         public bool EnableCampMenu { get; set; } = true;
 
         [DisplayName("Enable Standard Message Box")]
         [Category("UI Components")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool EnableTextbox { get; set; } = true;
 
         [DisplayName("Enable Mind Message Box")]
         [Category("UI Components")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool EnableMindMessageBox { get; set; } = true;
 
         [DisplayName("Enable Interact Prompt")]
         [Category("UI Components")]
+        [DefaultValue(true)]
         public bool EnableInteractPrompt { get; set; } = true;
 
         [DisplayName("Enable Minimap")]
         [Category("UI Components")]
+        [DefaultValue(true)]
         public bool EnableMinimap { get; set; } = true;
 
         [DisplayName("Enable Bustup")]
         [Category("UI Components")]
+        [DefaultValue(true)]
         public bool EnableBustup { get; set; } = true;
 
         [DisplayName("Enable MessageScript")]
         [Category("UI Components")]
+        [DefaultValue(true)]
         public bool EnableMessageScript { get; set; } = true;
 
         [DisplayName("Enable Town Map")]
         [Category("UI Components")]
+        [DefaultValue(true)]
         public bool EnableTownMap { get; set; } = true;
+
+        [DisplayName("Enable Party Panel")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnablePartyPanel { get; set; } = true;
 
     }
 

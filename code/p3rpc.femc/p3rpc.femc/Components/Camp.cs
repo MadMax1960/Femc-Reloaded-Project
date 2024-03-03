@@ -98,11 +98,12 @@ namespace p3rpc.femc.Components
         private unsafe delegate FLinearColor* UCmpRootDraw_DrawMenuItems_SetColorsNoSel(byte opacity, FLinearColor* colorOut);
     }
 
-    public class CampSkill : ModuleBase
+    public class CampSkill : ModuleAsmInlineColorEdit
     {
         private string UCmpSkillDraw_DrawNoUsableSkillNoneGraphic_SIG = "41 B9 FF EF DB 00"; // UCmpSkillDraw::DrawUseSkillOptions
         private string UCmpSkillDraw_DrawNoUsableSkillDescription_SIG = "C7 45 ?? FF EF DB 00"; // UCmpSkillDraw::DrawUseSkillOptions
-        // TODO: UCmpSkillDraw::DrawPartyMemberHealSkillEntries
+        private string UCmpSkillDraw_DrawPartyMemberHealSkillEntries_SIG = "BF FF FF FF 00 C7 44 24 ?? FF FF FF FF"; // UCmpSkillDraw::DrawPartyMemberHealSkillEntries
+        private string UCmpSkillDraw_DrawPartyMemberHealSkillDesc_SIG = "81 CF 00 FF FF 00 44 8B CF"; // UCmpSkillDraw::DrawUseSkillOptions
 
         private IAsmHook _drawNoUsableSkillNoneGraphic;
         private IAsmHook _drawNoUsableSkillDescription;
@@ -122,6 +123,7 @@ namespace p3rpc.femc.Components
                 };
                 _drawNoUsableSkillNoneGraphic = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
             });
+            /*
             _context._utils.SigScan(UCmpSkillDraw_DrawNoUsableSkillDescription_SIG, "UCmpSkillDraw::DrawNoUsableSkillDescription", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
@@ -130,6 +132,19 @@ namespace p3rpc.femc.Components
                     $"mov dword [rbp - 0x24], {_context._config.CampSkillTextColor.ToU32()}",
                 };
                 _drawNoUsableSkillDescription = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
+            });
+            */
+            _context._utils.SigScan(UCmpSkillDraw_DrawNoUsableSkillDescription_SIG, "UCmpSkillDraw::DrawNoUsableSkillDescription", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampSkillTextColor.ToU32())));
+            });
+            _context._utils.SigScan(UCmpSkillDraw_DrawPartyMemberHealSkillEntries_SIG, "UCmpSkillDraw::DrawPartyMemberHealSkillEntries", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillTextColor.ToU32())));
+            });
+            _context._utils.SigScan(UCmpSkillDraw_DrawPartyMemberHealSkillDesc_SIG, "UCmpSkillDraw::DrawUseSkillOptions", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSkillTextColor.ToU32())));
             });
         }
 
@@ -144,9 +159,13 @@ namespace p3rpc.femc.Components
         private delegate FSprColor UCmpSkillDraw_DrawNoUsableSkillNoneGraphic();
     }
 
-    public class CampItem : ModuleBase
+    public class CampItem : ModuleAsmInlineColorEdit
     {
         private string ACmpMainActor_SetHeroTexTintItemMenu_SIG = "0F 44 D8 41 80 BF ?? ?? ?? ?? 06"; // bottom color, then top color
+        private string UCmpItemDraw_SetNoItemColor_SIG = "41 81 CC 00 EF DB 00";
+        private string UCmpItemDraw_ListTextNoSelect_SIG = "81 CB 00 EA C2 08 F3 0F 10 35 ?? ?? ?? ??";
+        private string UCmpItemDraw_ListTextCanSelect_SIG = "81 CB 00 FF FF 00";
+        private string UCmpItemDraw_ListTextCurrNoSel_SIG = "81 CB 00 53 53 53";
 
         private IAsmHook _texTintColor;
 
@@ -163,6 +182,23 @@ namespace p3rpc.femc.Components
                     $"mov eax, {_context._config.CampItemMenuCharacterBottomColor.ToU32()}",
                 };
                 _texTintColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UCmpItemDraw_SetNoItemColor_SIG, "UCmpItemDraw::SetNoItemColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampSkillTextColor.ToU32())));
+            });
+            _context._utils.SigScan(UCmpItemDraw_ListTextCanSelect_SIG, "UCmpSkillDraw::ListTextCanSelect", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSkillTextColor.ToU32())));
+            });
+            _context._utils.SigScan(UCmpItemDraw_ListTextNoSelect_SIG, "UCmpItemDraw::ListTextNoSelect", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSkillTextColorNoSel.ToU32())));
+            });
+            _context._utils.SigScan(UCmpItemDraw_ListTextCurrNoSel_SIG, "UCmpItemDraw::ListTextCurrSelected", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSkillTextColorCurrSel.ToU32())));
             });
         }
 
@@ -237,7 +273,7 @@ namespace p3rpc.femc.Components
         }
     }
 
-    public class CampSocialLink : ModuleBase
+    public class CampSocialLink : ModuleAsmInlineColorEdit
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
@@ -279,11 +315,8 @@ namespace p3rpc.femc.Components
 
         private IAsmHook _borderBottomRightColor;
 
-        private List<AddressToMemoryWrite> _asmMemWrites;
-
         public unsafe CampSocialLink(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
-            _asmMemWrites = new();
             // UCmpCommuList::DrawSocialLinkList
             _context._utils.SigScan(UCmpCommuList_DrawSocialLinkList_GetSocialLinkColors_SIG, "UCmpCommuList::GetSocialLinkColors", _context._utils.GetDirectAddress, addr =>
             {
@@ -381,11 +414,6 @@ namespace p3rpc.femc.Components
             _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
-        public override void OnConfigUpdated(Configuration.Config newConfig)
-        {
-            base.OnConfigUpdated(newConfig);
-            foreach (var mem in _asmMemWrites) mem.WriteAtAddress(mem.Address);
-        }
         private unsafe FSprColor UCmpCommuList_GetSocialLinkLightColorImpl() => _uiCommon.ToFSprColor(_context._config.CampSocialLinkLight);
         private unsafe FSprColor UCmpCommuList_GetSocialLinkDarkColorImpl() => _uiCommon.ToFSprColor(_context._config.CampSocialLinkDark);
 
@@ -417,12 +445,10 @@ namespace p3rpc.femc.Components
         private unsafe delegate void ABtlShuffleMainBase_CardFallUpdateInner(nint a1, float deltaTime, byte a3, int a4, int a5, int a6, int a7, float a8, float a9, float a10, float a11, float a12, float a13, float a14, float a15);
     }
 
-    public class CampCalendar : ModuleBase
+    public class CampCalendar : ModuleAsmInlineColorEdit
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
-
-        private List<AddressToMemoryWrite> _asmMemWrites;
 
         // Inside UUICmpCalendarDraw::DrawCalendarGrid
         private string UUICmpCalendarDraw_DrawCalendarGrid_SundayHeader_SIG = "F3 0F 2C FE 66 C7 85 ?? ?? ?? ?? FF FF";
@@ -457,7 +483,6 @@ namespace p3rpc.femc.Components
 
         public unsafe CampCalendar(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
-            _asmMemWrites = new();
             _context._utils.SigScan(UUICmpCalendarDraw_DrawCalendarGrid_SundayHeader_SIG, "UUICmpCalendarDraw::DrawCalendarGrid_SundayHeader", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
@@ -539,12 +564,6 @@ namespace p3rpc.femc.Components
         {
             _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
-        }
-
-        public override void OnConfigUpdated(Configuration.Config newConfig)
-        {
-            base.OnConfigUpdated(newConfig);
-            foreach (var mem in _asmMemWrites) mem.WriteAtAddress(mem.Address);
         }
 
         private unsafe void UUICmpCalendarDraw_PartTimeJobDescBg(UUICmpCalendarDraw* self, float x, float y, float angle)
