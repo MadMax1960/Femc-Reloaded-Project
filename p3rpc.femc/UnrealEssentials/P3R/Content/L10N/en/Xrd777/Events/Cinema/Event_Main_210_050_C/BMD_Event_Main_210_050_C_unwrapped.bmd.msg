@@ -35,8 +35,8 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 2 65535 0 0][uf 3 1 1 0 0 18 0 0][uf 4 23 0 3 0 25 25]I guess this won't be one of those, "Oh, it was just a dream" moments...[n][uf 1 1][e]
 
 [sel SEL_009_0_0 top]
-[uf 0 5 65278][uf 2 1]We're on the case.[e]
-[uf 0 5 65278][uf 2 1]Everyone's scared.[e]
+[uf 0 5 65278][uf 2 1]We'll figure out something.[e]
+[uf 0 5 65278][uf 2 1]There's still time.[e]
 
 [msg MSG_010_0_0 [Yukari Takeba]]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 0 2 65535 0 0][uf 3 1 1 0 0 19 0 0]Yeah, that's the plan.[n][uf 1 1][e]
@@ -62,7 +62,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 2 65535 0 0][uf 3 1 1 0 0 27 0 0][uf 4 23 0 3 1 25 25]You think so too, right, [uf 4 2]?[n][uf 1 1][e]
 
 [sel SEL_017_0_0 top]
-[uf 0 5 65278][uf 2 1]Of Course![e]
+[uf 0 5 65278][uf 2 1]I can always count on you.[e]
 [uf 0 5 65278][uf 2 1]I'm expecting great things.[e]
 [uf 0 5 65278][uf 2 1]No comment.[e]
 
