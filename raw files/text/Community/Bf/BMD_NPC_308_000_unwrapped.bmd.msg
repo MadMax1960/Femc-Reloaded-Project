@@ -1,20 +1,20 @@
 [msg MSG_000_0_0 [Pubescent Student]]
 [uf 0 5 65278][uf 2 1][uf 5 21 1 308]Hey, new girl...[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 5 21 1 308]Thanks for being here, are schools definitely moving up thanks to your addition.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 5 21 1 308]Thanks for being here. The schools definitely moving up thanks to your addition.[n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
 [uf 0 5 65278][uf 2 1]What're you talking about?[e]
-[uf 0 5 65278][uf 2 1]They're all cute.[e]
-[uf 0 5 65278][uf 2 1]They're about the same.[e]
+[uf 0 5 65278][uf 2 1]......?[e]
+[uf 0 5 65278][uf 2 1]Is something important going on?[e]
 
 [msg MSG_002_0_0 [Pubescent Student]]
 [uf 0 5 65278][uf 2 1][uf 5 21 1 308]Talking about how many hot chicks there are! Our school's girls rank pretty high, and it's even higher. Thanks to you.[n][uf 1 1][e]
 
 [msg MSG_003_0_0 [Pubescent Student]]
-[uf 0 5 65278][uf 2 1][uf 5 21 1 308]I know, right? Our school has tons of hot chicks. And now... Well welcome to the ranks.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 5 21 1 308]Our school has tons of hot chicks. And now... Well welcome to the ranks![n][uf 1 1][e]
 
 [msg MSG_004_0_0 [Pubescent Student]]
-[uf 0 5 65278][uf 2 1][uf 5 21 1 308]So your old school had lots of hot chicks too? Well, I guess I believe you. Since your pretty cute after all.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 5 21 1 308]Your old school must've had lots of hot chicks too? Well, you wouldn't really understand then...[n][uf 1 1][e]
 
 [msg MSG_005_0_0 [Pubescent Student]]
 [uf 0 5 65278][uf 2 1][uf 5 21 1 308]Dude, there are some seriously hot chicks at this school...[n][uf 1 1][e]

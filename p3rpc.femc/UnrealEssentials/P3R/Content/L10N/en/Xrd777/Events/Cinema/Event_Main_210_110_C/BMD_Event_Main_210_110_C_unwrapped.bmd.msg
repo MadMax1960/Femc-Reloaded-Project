@@ -5,9 +5,9 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 1 0 0 4 0 0][uf 5 21 0 1581]After you graduate, are you planning on going to college, or getting a job?[n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
-[uf 0 5 65278][uf 2 1]I want to go to college.[e]
-[uf 0 5 65278][uf 2 1]I want to get a job.[e]
-[uf 0 5 65278][uf 2 1]I haven't decided yet...[e]
+[uf 0 5 65278][uf 2 1]Go to college[e]
+[uf 0 5 65278][uf 2 1]Get a job[e]
+[uf 0 5 65278][uf 2 1]Undecided[e]
 
 [msg MSG_002_0_0 [Ms. Toriumi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 1 0 0 5 0 0][uf 5 21 0 1581]...I see.[n][uf 1 1][e]
@@ -29,9 +29,9 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 1581 0 65535 65535 0 0][uf 3 1 1 0 0 15 0 0][uf 5 21 0 1581]What do you think has helped to bring about this change the most?[n][uf 1 1][e]
 
 [sel SEL_006_0_0 top]
-[uf 0 5 65278][uf 2 1]Responsibility[e]
+[uf 0 5 65278][uf 2 1]Working hard[e]
 [uf 0 5 65278][uf 2 1]Meeting people[e]
-[uf 0 5 65278][uf 2 1]Losing a loved one[e]
+[uf 0 5 65278][uf 2 1]Losing a friend[e]
 [uf 0 5 65278][uf 2 1]Nothing[e]
 
 [msg MSG_007_0_0 [Ms. Toriumi]]
