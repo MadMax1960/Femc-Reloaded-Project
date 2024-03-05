@@ -84,8 +84,8 @@
 
 [msg MSG_018_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 65535 0 0][uf 3 1 3 0 65535 2103 0 0]At this rate, I'm gonna spend Golden Week the same way I always have![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]Lazing around, hanging out with dudes— Er, not that I don't love your company, my dude, but...[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]It's just sad... Too sad! Even though I'm a changed man this year![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]Lazing around, hanging out with dudes— Er, would you mind hanging out with- well... Forget it.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]It's just so sad... Too sad! Even though I'm a changed man this year![n][uf 1 1][e]
 
 [msg MSG_019_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 3 0 65535 2002 0 0]'Sup? You got no plans today either?[n][uf 1 1][e]
