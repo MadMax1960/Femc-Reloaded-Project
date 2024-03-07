@@ -46,7 +46,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 19 0 0][uf 4 1]-chan, what do you think I should do?[n][uf 1 1][e]
 
 [sel SEL_012_0_0 top]
-[uf 0 5 65278][uf 2 1]Why not give it a try?[e]
+[uf 0 5 65278][uf 2 1]Go for it![e]
 [uf 0 5 65278][uf 2 1]That's for you to decide.[e]
 
 [msg MSG_013_0_0 [Yuko Nishiwaki]]

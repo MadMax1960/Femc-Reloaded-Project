@@ -5,7 +5,7 @@
 [uf 0 5 65278][uf 2 1]The foreign exchange student I met[n]at the bookstore is busy sewing.[n][uf 1 1][e]
 
 [sel SEL_002_0_0 top]
-[uf 0 5 65278][uf 2 1]I should say hi.[e]
+[uf 0 5 65278][uf 2 1]Hello?[e]
 [uf 0 5 65278][uf 2 1]Better leave him alone.[e]
 
 [msg MSG_003_0_0 [Bebe]]
@@ -41,7 +41,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 112 0 65535 65535 0 0][uf 3 1 1 0 0 13 0 0]If I may be so bold, would you sign up for my club?[n][uf 1 1][e]
 
 [sel SEL_011_0_0 top]
-[uf 0 5 65278][uf 2 1]Sure, I'll join.[e]
+[uf 0 5 65278][uf 2 1]Maybe I should try.[e]
 [uf 0 5 65278][uf 2 1]No thanks.[e]
 
 [msg MSG_012_0_0 [Bebe]]

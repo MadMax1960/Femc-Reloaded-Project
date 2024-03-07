@@ -4,7 +4,7 @@
 
 [sel SEL_001_0_0 top]
 [uf 0 5 65278][uf 2 1]What happened?[e]
-[uf 0 5 65278][uf 2 1]Whose face?[e]
+[uf 0 5 65278][uf 2 1]Who?[e]
 
 [msg MSG_002_0_0 [President Tanaka]]
 [uf 0 5 65278][uf 2 1][uf 4 5 113 2 65535 65535 0 0][uf 3 1 1 0 0 3 0 0][uf 4 23 0 1 2 25 25]He really did it! He betrayed me! I won't sleep a wink tonight![n][uf 1 1][e]
@@ -19,7 +19,7 @@
 
 [sel SEL_005_0_0 top]
 [uf 0 5 65278][uf 2 1]I feel sorry for him.[e]
-[uf 0 5 65278][uf 2 1]What happened to him?[e]
+[uf 0 5 65278][uf 2 1]What's he doing now?[e]
 
 [msg MSG_006_0_0 [President Tanaka]]
 [uf 0 5 65278][uf 2 1][uf 4 5 113 2 65535 65535 0 0][uf 3 1 1 0 0 8 0 0][uf 4 23 0 1 2 25 25]What are you talking about!? You should feel sorry for me![n][uf 1 1][e]

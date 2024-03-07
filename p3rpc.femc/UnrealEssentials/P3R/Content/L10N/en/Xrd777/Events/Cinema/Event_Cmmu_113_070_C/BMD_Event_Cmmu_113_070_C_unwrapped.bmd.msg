@@ -4,7 +4,7 @@
 
 [sel SEL_001_0_0 top]
 [uf 0 5 65278][uf 2 1]Like what?[e]
-[uf 0 5 65278][uf 2 1]Sort of...[e]
+[uf 0 5 65278][uf 2 1]Kind of...[e]
 
 [msg MSG_002_0_0 [President Tanaka]]
 [uf 0 5 65278][uf 2 1][uf 4 5 113 3 65535 65535 0 0][uf 3 1 1 0 0 3 0 0][uf 4 23 0 1 3 25 25]Uh... Are you blind?[n][uf 1 1][e]

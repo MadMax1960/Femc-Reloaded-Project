@@ -2,7 +2,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 113 1 65535 65535 0 0][uf 3 1 1 0 0 1 0 0][uf 4 23 0 1 1 25 25]Just the other day, my high school organized a class reunion.[n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
-[uf 0 5 65278][uf 2 1]Sounds fun.[e]
+[uf 0 5 65278][uf 2 1]Sounds like fun![e]
 [uf 0 5 65278][uf 2 1]Sounds like a hassle.[e]
 
 [msg MSG_002_0_0 [President Tanaka]]

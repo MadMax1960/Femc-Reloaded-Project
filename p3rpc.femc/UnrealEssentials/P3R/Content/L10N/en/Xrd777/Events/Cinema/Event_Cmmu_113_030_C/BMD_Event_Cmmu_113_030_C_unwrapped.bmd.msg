@@ -3,7 +3,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 113 0 65535 65535 0 0][uf 3 1 1 0 0 2 0 0][uf 4 23 0 113 0 25 25]These days, even a grade-schooler knows how to buy stocks online. How about you? Interested in stock trading?[n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
-[uf 0 5 65278][uf 2 1]Maybe a little.[e]
+[uf 0 5 65278][uf 2 1]I am.[e]
 [uf 0 5 65278][uf 2 1]Not at all.[e]
 
 [msg MSG_002_0_0 [President Tanaka]]

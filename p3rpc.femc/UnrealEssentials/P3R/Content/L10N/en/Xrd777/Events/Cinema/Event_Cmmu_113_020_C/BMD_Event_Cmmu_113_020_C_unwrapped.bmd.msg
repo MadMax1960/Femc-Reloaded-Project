@@ -7,7 +7,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 113 1 65535 65535 0 0][uf 3 1 1 0 0 4 0 0][uf 4 23 0 1 1 25 25]"Placebo"! The stress is on the middle syllable.[n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
-[uf 0 5 65278][uf 2 1]"Placebo."[e]
+[uf 0 5 65278][uf 2 1]Placebo![e]
 [uf 0 5 65278][uf 2 1]......[e]
 
 [msg MSG_002_0_0 [President Tanaka]]
@@ -28,7 +28,7 @@
 
 [sel SEL_005_0_0 top]
 [uf 0 5 65278][uf 2 1]Wow.[e]
-[uf 0 5 65278][uf 2 1]Can you even sell those?[e]
+[uf 0 5 65278][uf 2 1]Is that legal?[e]
 
 [msg MSG_006_0_0 [President Tanaka]]
 [uf 0 5 65278][uf 2 1][uf 4 5 113 0 65535 65535 0 0][uf 3 1 1 0 0 11 0 0][uf 4 23 0 1 0 25 25][uf 5 13 16 5 113]Huh? You're really wowed by those bogus products...?[n][uf 1 1][e]

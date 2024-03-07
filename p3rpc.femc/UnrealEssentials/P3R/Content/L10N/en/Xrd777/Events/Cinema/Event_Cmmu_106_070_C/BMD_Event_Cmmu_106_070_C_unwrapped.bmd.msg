@@ -48,7 +48,7 @@
 
 [sel SEL_014_0_0 top]
 [uf 0 5 65278][uf 2 1]Wanna make that true?[uf 2 9 1 1 346][e]
-[uf 0 5 65278][uf 2 1]It's embarrassing.[e]
+[uf 0 5 65278][uf 2 1]It's a little embarrassing.[e]
 [uf 0 5 65278][uf 2 1]They're just joking.[e]
 
 [msg MSG_015_0_0 [Yuko Nishiwaki]]

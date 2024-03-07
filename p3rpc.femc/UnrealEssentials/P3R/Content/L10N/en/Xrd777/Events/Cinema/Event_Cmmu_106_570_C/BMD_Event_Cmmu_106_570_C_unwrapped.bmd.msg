@@ -3,7 +3,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 2 0 0]Don't you think I'd look good in one?[n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
-[uf 0 5 65278][uf 2 1]I'm sure you would.[e]
+[uf 0 5 65278][uf 2 1]Totally![e]
 [uf 0 5 65278][uf 2 1]I like your usual clothes too.[e]
 
 [msg MSG_002_0_0 [Yuko Nishiwaki]]

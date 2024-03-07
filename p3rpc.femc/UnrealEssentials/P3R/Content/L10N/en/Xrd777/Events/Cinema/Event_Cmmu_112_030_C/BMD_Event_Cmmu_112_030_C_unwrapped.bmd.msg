@@ -9,7 +9,7 @@
 
 [sel SEL_002_0_0 top]
 [uf 0 5 65278][uf 2 1]I can do better.[e]
-[uf 0 5 65278][uf 2 1]Thanks.[e]
+[uf 0 5 65278][uf 2 1]Thank you![e]
 
 [msg MSG_003_0_0 [Bebe]]
 [uf 0 5 65278][uf 2 1][uf 4 5 112 4 65535 65535 0 0][uf 3 1 1 0 0 4 0 0][uf 5 13 15 5 112]Oooh, so humble! That is very admirable! Kanshin![n][uf 1 1][e]

@@ -20,7 +20,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 9 0 0]And before I knew it, I'd dozed off. I ended up handing in a blank paper.[n][uf 1 1][e]
 
 [sel SEL_005_0_0 top]
-[uf 0 5 65278][uf 2 1]That's bad.[e]
+[uf 0 5 65278][uf 2 1]Ouch, that sucks.[e]
 [uf 0 5 65278][uf 2 1]It wasn't your fault.[e]
 
 [msg MSG_006_0_0 [Yuko Nishiwaki]]

@@ -3,7 +3,7 @@
 
 [sel SEL_001_0_0 top]
 [uf 0 5 65278][uf 2 1]Who are you?[e]
-[uf 0 5 65278][uf 2 1]I don't want an autograph.[e]
+[uf 0 5 65278][uf 2 1]No, I don't need one.[e]
 [uf 0 5 65278][uf 2 1]You look familiar...[e]
 
 [msg MSG_002_0_0 [Man in a Suit]]
@@ -36,7 +36,7 @@
 [uf 0 5 65278][uf 2 1]It sounds like he's talking about me...[n][uf 1 1][e]
 
 [sel SEL_010_0_0 top]
-[uf 0 5 65278][uf 2 1]Talk to him.[e]
+[uf 0 5 65278][uf 2 1]I can hear you.[e]
 [uf 0 5 65278][uf 2 1]Ignore him[e]
 
 [msg MSG_011_0_0 [President Tanaka]]
@@ -56,7 +56,7 @@
 
 [sel SEL_014_0_0 top]
 [uf 0 5 65278][uf 2 1]Got it.[e]
-[uf 0 5 65278][uf 2 1]Whatever you say.[e]
+[uf 0 5 65278][uf 2 1]I'll tell everyone.[e]
 
 [msg MSG_015_0_0 [President Tanaka]]
 [uf 0 5 65278][uf 2 1][uf 4 5 113 1 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]...Blind obedience has a price attached. Better learn that before it bites ya, kiddo.[n][uf 1 1][e]
@@ -71,7 +71,7 @@
 
 [sel SEL_018_0_0 top]
 [uf 0 5 65278][uf 2 1]All right.[e]
-[uf 0 5 65278][uf 2 1]I don't care.[e]
+[uf 0 5 65278][uf 2 1]That's okay.[e]
 
 [msg MSG_019_0_0 [President Tanaka]]
 [uf 0 5 65278][uf 2 1][uf 4 5 113 0 65535 65535 0 0][uf 3 1 1 0 0 24 0 0]Er— Really? You promise? You better be ready to cross your heart and hope to die if you're lying to me![n][uf 1 1][e]

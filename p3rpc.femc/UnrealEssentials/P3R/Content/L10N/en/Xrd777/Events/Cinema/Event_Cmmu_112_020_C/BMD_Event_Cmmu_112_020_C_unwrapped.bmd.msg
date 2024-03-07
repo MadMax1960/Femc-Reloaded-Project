@@ -8,7 +8,7 @@
 
 [sel SEL_002_0_0 top]
 [uf 0 5 65278][uf 2 1]Sure, let's go.[e]
-[uf 0 5 65278][uf 2 1]You lik4 sweets?[e]
+[uf 0 5 65278][uf 2 1]You're into sweets?[e]
 [uf 0 5 65278][uf 2 1]There's nothing to show.[e]
 
 [msg MSG_003_0_0 [Bebe]]

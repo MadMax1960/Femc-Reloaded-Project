@@ -28,7 +28,7 @@
 [sel SEL_007_0_0 top]
 [uf 0 5 65278][uf 2 1]You're right, it's impressive.[e]
 [uf 0 5 65278][uf 2 1]That's not normal?[e]
-[uf 0 5 65278][uf 2 1]It's because you teach so well.[e]
+[uf 0 5 65278][uf 2 1]It's because you're such a good teacher![e]
 
 [msg MSG_008_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 14 0 0][uf 5 13 12 5 106]I know, they have so much room to grow![n][uf 1 1][e]

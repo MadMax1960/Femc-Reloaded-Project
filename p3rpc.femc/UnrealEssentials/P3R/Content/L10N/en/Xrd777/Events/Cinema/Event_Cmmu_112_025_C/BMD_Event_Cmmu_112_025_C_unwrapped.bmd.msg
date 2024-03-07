@@ -3,7 +3,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 112 1 65535 65535 0 0][uf 3 1 1 0 0 2 0 0][uf 4 23 0 1 1 25 25]I love the culture of Nihon! Japan is sugoi—amazing![n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
-[uf 0 5 65278][uf 2 1]I totally agree.[e]
+[uf 0 5 65278][uf 2 1]It sure is![e]
 [uf 0 5 65278][uf 2 1]What about your country?[e]
 [uf 0 5 65278][uf 2 1]It's not that great.[e]
 
