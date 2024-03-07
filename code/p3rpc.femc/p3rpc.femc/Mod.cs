@@ -97,7 +97,7 @@ namespace p3rpc.femc
             if (_configuration.EnableMinimap)
             {
                 AddModule<Minimap>();
-                //AddModule<LocationSelect>();
+                AddModule<LocationSelect>();
             }
             if (_configuration.EnableBustup)
             {

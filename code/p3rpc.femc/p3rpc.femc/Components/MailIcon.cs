@@ -34,11 +34,11 @@ namespace p3rpc.femc.Components
             var staticOuterCircle = new SprDefStruct1(
                 0,
                 circlePos,
-                _uiCommon.ToFSprColor(_context._config.MailIconOuterCircleColor),
+                _uiCommon.ToFSprColor(_context._config.MailIconOuterCircleColorEx),
                 self->Field368, 0, 0);
             _uiCommon._spriteFunc1(&staticOuterCircle, itemMask, self->Sprite_, 0, 0);
             // Pulsing Inner Circle
-            var pulsateColor = _uiCommon.ToFSprColor(_context._config.MailIconInnerCircleColor);
+            var pulsateColor = _uiCommon.ToFSprColor(_context._config.MailIconInnerCircleColorEx);
             pulsateColor.A = (byte)(self->Field408 * 255);
             var pulsateInnerCircle = new SprDefStruct1(
                 0,
@@ -50,7 +50,7 @@ namespace p3rpc.femc.Components
             var staticInnerCircle = new SprDefStruct1(
                 0,
                 circlePos,
-                _uiCommon.ToFSprColor(_context._config.MailIconInnerCircleColor),
+                _uiCommon.ToFSprColor(_context._config.MailIconInnerCircleColorEx),
                 (float)(self->Field318 * 0.695), 0, 0);
             _uiCommon._spriteFunc1(&staticInnerCircle, itemMask, self->Sprite_, 0, 0);
             // Mail Icon

@@ -9,10 +9,10 @@ namespace p3rpc.femc.Configuration
     {
 
         [DisplayName("Mail Icon: Outer Color")]
-        public ConfigColor MailIconOuterCircleColor { get; set; } = ConfigColor.DarkColor;
+        public ConfigColor MailIconOuterCircleColorEx { get; set; } = ConfigColor.MellodiColorMid1;
 
         [DisplayName("Mail Icon: Inner Color")]
-        public ConfigColor MailIconInnerCircleColor { get; set; } = ConfigColor.MailIconInnerColor;
+        public ConfigColor MailIconInnerCircleColorEx { get; set; } = ConfigColor.MailIconInnerColor;
 
         [DisplayName("Camp: High Color")]
         public ConfigColor CampHighColor { get; set; } = ConfigColor.CampBgColor;
@@ -187,6 +187,15 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Back Log Text/Icon Color Unselected")]
         public ConfigColor BackLogTexColorUnselectedEx { get; set; } = ConfigColor.MellodiColorDark1;
+
+        [DisplayName("Location Select Background Color")]
+        public ConfigColor LocationSelectBgColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Location Select Marker Color")]
+        public ConfigColor LocationSelectMarkerColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Location Select Selected Item Color (Requires Restart)")]
+        public ConfigColor LocationSelectSelColor { get; set; } = ConfigColor.MellodiColorMid1;
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
