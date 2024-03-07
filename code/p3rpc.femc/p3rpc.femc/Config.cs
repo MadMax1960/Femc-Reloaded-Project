@@ -182,6 +182,12 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Back Log Title Color (Requires Restart)")]
         public ConfigColor BackLogTitleColor { get; set; } = ConfigColor.MellodiColorMid2;
 
+        [DisplayName("Back Log Text/Icon Color Selected")]
+        public ConfigColor BackLogTexColorSelected { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Back Log Text/Icon Color Unselected")]
+        public ConfigColor BackLogTexColorUnselectedEx { get; set; } = ConfigColor.MellodiColorDark1;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]

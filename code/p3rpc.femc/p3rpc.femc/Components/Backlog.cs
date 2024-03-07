@@ -65,13 +65,17 @@ namespace p3rpc.femc.Components
         //[FieldOffset(0x05C8)] public UFrameBufferCapture* captureBackGround;
         [FieldOffset(0x0A58)] public UUILayoutDataTable* pLayoutDataTable;
     }
-    public class Backlog : ModuleBase
+    public class Backlog : ModuleAsmInlineColorEdit
     {
         private UICommon _uiCommon;
 
         private string AUIBackLogDraw_DrawBackgroundColor_SIG = "48 8B C4 53 57 48 81 EC 18 01 00 00 0F 29 70 ?? 48 8B F9";
         private string AUIBackLogDraw_DrawLogTitleColor_SIG = "F3 0F 59 05 ?? ?? ?? ?? F3 0F 2C C0 F3 0F 10 83 ?? ?? ?? ??";
         private string AUIBackLogDraw_DrawCalendarTimeOfDayColor_SIG = "48 8B 40 ?? 44 8B 84 24 ?? ?? ?? ?? 66 C7 44 24 ?? 76 FF";
+        private string AUIBackLogDraw_DrawTitleColorUnselected_SIG = "41 BD 00 8F 91 03 66 66 66 0F 1F 84 ?? 00 00 00 00";
+        private string AUIBackLogDraw_DrawTitleColorUnselected2_SIG = "41 BD 00 8F 91 03 8B 8D ?? ?? ?? ??";
+        private string AUIBackLogDraw_DrawTitleColorSelected_SIG = "BE 00 DC DF 05";
+        private string AUIBackLogDraw_DrawSpeakerHighlight_SIG = "8B 44 24 ?? F3 0F 5C 05 ?? ?? ?? ??";
         private IHook<AUIBackLogDraw_DrawBackgroundColor> _drawBgColor;
 
         private IAsmHook _drawLogTitleColor;
@@ -103,6 +107,29 @@ namespace p3rpc.femc.Components
                 };
                 _drawCalendarTimeOfDay = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
+            _context._utils.SigScan(AUIBackLogDraw_DrawTitleColorUnselected_SIG, "AUIBackLogDraw::DrawTitleColorUnselected", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.BackLogTexColorUnselectedEx.ToU32())));
+            });
+            _context._utils.SigScan(AUIBackLogDraw_DrawTitleColorUnselected2_SIG, "AUIBackLogDraw::DrawTitleColorUnselected2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.BackLogTexColorUnselectedEx.ToU32())));
+            });
+            _context._utils.SigScan(AUIBackLogDraw_DrawTitleColorSelected_SIG, "AUIBackLogDraw::DrawTitleColorSelected", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.BackLogTexColorSelected.ToU32())));
+            });
+            _context._utils.SigScan(AUIBackLogDraw_DrawSpeakerHighlight_SIG, "AUIBackLogDraw::DrawSpeakerHighlight", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rsp + 0x72], ${_context._config.BackLogTexColorSelected.R:X}",
+                    $"mov byte [rsp + 0x71], ${_context._config.BackLogTexColorSelected.G:X}",
+                    $"mov byte [rsp + 0x70], ${_context._config.BackLogTexColorSelected.B:X}",
+                };
+                _drawCalendarTimeOfDay = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
 
         public override void Register()
@@ -112,6 +139,8 @@ namespace p3rpc.femc.Components
 
         public unsafe void AUIBackLogDraw_DrawBackgroundColorImpl(AUIBackLogDraw* self, uint a2, uint a3, uint a4, uint a5)
         {
+            if (self->IconColor.arr_num >= 2)
+                _uiCommon.SetColor(ref self->IconColor.allocator_instance[1], _context._config.BackLogTexColorSelected);
             _uiCommon.SetColorIgnoreAlpha(ref self->GladationBoardColor, _context._config.BackLogGladationColor);
             _uiCommon.SetColorIgnoreAlpha(ref self->BlackBoardColor, _context._config.BackLogBlackboardColor);
             _uiCommon.SetColorIgnoreAlpha(ref self->BlueBoardColor, _context._config.BackLogBlueboardColorEx);
