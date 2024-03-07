@@ -13,7 +13,7 @@
 
 [msg MSG_003_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 6 0 0]I couldn't help it! My mom's cooking is just too good to pass up.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 7 0 0][uf 4 1]-chan, do you wanna come over next time and try it? Kaz does all the time.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 7 0 0][uf 4 1]-kun, do you wanna come over next time and try it? Kaz does all the time.[n][uf 1 1][e]
 
 [msg MSG_004_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 8 0 0]...Oh, wait, that's not what I wanted to talk about today.[n][uf 1 1][e]
@@ -46,7 +46,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 17 0 0][uf 5 13 12 5 106]I did consider that one too, but I decided I should focus on one thing specifically.[n][uf 1 1][e]
 
 [msg MSG_010_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 18 0 0][uf 5 13 12 5 106]Come on, [uf 4 1]-chan, are you that dense? Or did I not give you enough clues?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 18 0 0][uf 5 13 12 5 106]Come on, [uf 4 1]-kun, are you that dense? Or did I not give you enough clues?[n][uf 1 1][e]
 
 [msg MSG_011_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]I'm thinking of becoming an athletic trainer.[n][uf 1 1][e]
@@ -88,11 +88,11 @@
 
 [msg MSG_017_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 35 0 0]...Really? I'm gonna remember you said that, okay!?[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 36 0 0]Man... [uf 4 1]-chan, you're the best! You can bet I'll be counting on you in the future.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 36 0 0]Man... [uf 4 1]-kun, you're the best! You can bet I'll be counting on you in the future.[n][uf 1 1][e]
 
 [msg MSG_018_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 37 0 0]But also, I've got your back too. You know that, right?[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 38 0 0]Unlike Kaz, you never show your emotions up front, [uf 4 1]-chan.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 38 0 0]Unlike Kaz, you never show your emotions up front, [uf 4 1]-kun.[n][uf 1 1][e]
 
 [msg MSG_018_5_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 39 0 0]You seem more like the type to keep things bottled up, so I'm a little worried about you.[n][uf 1 1][e]

@@ -822,8 +822,9 @@
 
 [msg MSG_167_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 3 0 65535 2042 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]Alright... Thanks, man.[n][uf 1 1][e]
+
 [msg MSG_168_0_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 4 5 2 0 65535 65535 0 0][uf 3 1 3 0 65535 1016 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]Morning, [uf 4 1]-kun.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 0 65535 65535 0 0][uf 3 1 3 0 65535 1016 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]Morning, [uf 4 1]-chan.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 0 65535 65535 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]So... there's something bothering me lately.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 0 65535 65535 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]Why did Aragaki-senpai suddenly decide to come back?[n][uf 1 1][e]
 
@@ -927,7 +928,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 65535 0 0][uf 3 1 3 0 65535 5015 0 0][uf 5 21 0 100][uf 4 23 0 100 1 25 25]Good morning.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 65535 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]It's already mid-October, and we're about two weeks away from the final battle...[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 65535 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]So much has happened, and it all went by so fast. But it made me realize...[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 65535 0 0][uf 5 21 0 100][uf 4 23 0 100 1 25 25]I'm so glad everyone welcomed me to the team... Thank you, [uf 4 1]-kun.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 65535 0 0][uf 5 21 0 100][uf 4 23 0 100 1 25 25]I'm so glad everyone welcomed me to the team... Thank you, [uf 4 1]-chan.[n][uf 1 1][e]
 
 [sel SEL_193_0_0 top]
 [uf 0 5 65278][uf 2 1]Say that after the battle.[e]
@@ -1007,7 +1008,7 @@
 [msg MSG_212_0_0 [Aigis]]
 [uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 65535 0 0][uf 3 1 3 0 65535 6013 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]Good morning.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 65535 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]...I intend to do my best to protect everyone.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 65535 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]Even if that means I—[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 65535 0 0][uf 5 21 0 100][uf 4 23 0 100 0 25 25]Even if that means I—[n][uf 1 1][e]
 
 [sel SEL_213_0_0 top]
 [uf 0 5 65278][uf 2 1]What's up?[e]

@@ -28,7 +28,7 @@
 [sel SEL_007_0_0 top]
 [uf 0 5 65278][uf 2 1]You're right, it's impressive.[e]
 [uf 0 5 65278][uf 2 1]That's not normal?[e]
-[uf 0 5 65278][uf 2 1]It's because you're such a good teacher![e]
+[uf 0 5 65278][uf 2 1]It's because you teach so well.[e]
 
 [msg MSG_008_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 14 0 0][uf 5 13 12 5 106]I know, they have so much room to grow![n][uf 1 1][e]
@@ -66,7 +66,7 @@
 
 [msg MSG_016_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 30 0 0]Hmm, I suppose we do only have so many days to train here...[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 31 0 0]I don't know... What do you think, [uf 4 1]-chan?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 31 0 0]I don't know... What do you think, [uf 4 1]-kun?[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 32 0 0]Should I change the training routine? Maybe they should be running more.[n][uf 1 1][e]
 
 [sel SEL_017_0_0 top]
@@ -83,7 +83,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 36 0 0]Our number one priority is not getting hurt. All right![n][uf 1 1][e]
 
 [msg MSG_020_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 37 0 0][uf 5 13 12 5 106][uf 4 1]-chan...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 37 0 0][uf 5 13 12 5 106][uf 4 1]-kun...[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 38 0 0]You know what, you're right. I am the one who did all the research on how to avoid straining yourself. All right, listen up![n][uf 1 1][e]
 
 [msg MSG_021_0_0 [Yuko Nishiwaki]]
@@ -113,7 +113,7 @@
 
 [msg MSG_028_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 48 0 0]...So, um, thanks for giving your input earlier. Honestly, if I was on my own, I would've let them keep running.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 49 0 0]I'm glad I asked you to coach with me. It means a lot having you here, [uf 4 1]-chan.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 49 0 0]I'm glad I asked you to coach with me. It means a lot having you here, [uf 4 1]-kun.[n][uf 1 1][e]
 
 [msg MND_029_0_0]
 [uf 0 5 65278][uf 2 1]Yuko is starting to trust me more.[n][uf 1 1][e]
