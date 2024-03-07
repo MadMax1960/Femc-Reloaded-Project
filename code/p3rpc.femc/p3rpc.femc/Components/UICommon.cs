@@ -71,6 +71,13 @@ namespace p3rpc.femc.Components
             color.A = cfgColor.A;
         }
 
+        public void SetColorIgnoreAlpha(ref FColor color, Configuration.ConfigColor cfgColor)
+        {
+            color.R = cfgColor.R;
+            color.G = cfgColor.G;
+            color.B = cfgColor.B;
+        }
+
         public void SetColor(ref FLinearColor color, Configuration.ConfigColor cfgColor)
         {
             color.R = (float)cfgColor.R / 256;

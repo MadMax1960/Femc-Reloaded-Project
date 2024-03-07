@@ -170,6 +170,18 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Button Prompt Triangle Color")]
         public ConfigColor ButtonPromptTriangleColor { get; set; } = ConfigColor.MellodiColorMid2;
 
+        [DisplayName("Back Log Blackboard Color")]
+        public ConfigColor BackLogBlackboardColor { get; set; } = ConfigColor.BackLogBlackBoard;
+
+        [DisplayName("Back Log Haze Color")]
+        public ConfigColor BackLogGladationColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Back Log Blueboard Color")]
+        public ConfigColor BackLogBlueboardColorEx { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Back Log Title Color (Requires Restart)")]
+        public ConfigColor BackLogTitleColor { get; set; } = ConfigColor.MellodiColorMid2;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -270,7 +282,7 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor MellodiColorDark2 = new ConfigColor(0x81, 0x0, 0x6, 0xff);
         public static readonly ConfigColor MellodiColorDark3 = new ConfigColor(0x49, 0x4, 0x21, 0xff);
 
-
+        public static readonly ConfigColor BackLogBlackBoard = new ConfigColor(0x09, 0x03, 0x09, 0xff);
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }
