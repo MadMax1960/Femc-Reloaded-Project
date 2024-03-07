@@ -109,6 +109,9 @@ namespace p3rpc.femc
             }
             if (_configuration.EnableTownMap) AddModule<TownMap>();
             if (_configuration.EnablePartyPanel) AddModule<PartyPanel>();
+            AddModule<Backlog>();
+            AddModule<KeyHelp>();
+            AddModule<MiscGetItemDraw>();
 
             foreach (var mod in _modules.Values) mod.Register();
         }

@@ -164,6 +164,12 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Party Panel Background Color")]
         public ConfigColor PartyPanelBgColor { get; set; } = ConfigColor.MellodiColorMid2;
 
+        [DisplayName("Button Prompt Fill Color (Requires Restart)")]
+        public ConfigColor ButtonPromptHighlightColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Button Prompt Triangle Color")]
+        public ConfigColor ButtonPromptTriangleColor { get; set; } = ConfigColor.MellodiColorMid2;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
