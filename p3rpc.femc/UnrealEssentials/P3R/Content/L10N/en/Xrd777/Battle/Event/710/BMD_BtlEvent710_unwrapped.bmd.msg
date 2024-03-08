@@ -14,7 +14,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 6 4 65535 65 0 0][uf 3 1 1 0 2 5 0 6]I don't believe it... She's going to face it all alone![n][uf 1 1][e]
 
 [msg MSG_710_600 [Junpei Iori]]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 2 65535 65 0 0][uf 3 1 1 0 2 6 0 3]No, he's not alone! I'm not letting her die![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 2 65535 65 0 0][uf 3 1 1 0 2 6 0 3]No, she's not alone! I'm not letting her die![n][uf 1 1][e]
 
 [msg MSG_710_700 [Koromaru]]
 [uf 0 5 65278][uf 2 1][uf 4 5 9 8 65535 65 0 0][uf 3 1 1 0 2 7 0 9]*bark* *bark*[n][uf 1 1][e]
