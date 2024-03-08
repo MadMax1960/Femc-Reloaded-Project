@@ -63,6 +63,7 @@ namespace p3rpc.femc.Components
             0xff690aff,
             0x45feffff,
             0xffea35ff,
+            0xffea35ff,
         };
 
         private IHook<MsgToken_GetTextColor> _getTextColor;

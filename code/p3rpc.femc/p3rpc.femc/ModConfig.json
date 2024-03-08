@@ -2,7 +2,7 @@
   "ModId": "p3rpc.femc",
   "ModName": "Femc Project",
   "ModAuthor": "A Mudkip",
-  "ModVersion": "1.0.0",
+  "ModVersion": "1.0.6",
   "ModDescription": "Template for a Reloaded Mod Configuration",
   "ModDll": "p3rpc.femc.dll",
   "ModIcon": "",
@@ -24,6 +24,20 @@
             "ItemId": 494020
           },
           "ReleaseMetadataName": "p3rpc.essentials.ReleaseMetadata.json"
+        },
+        "Ryo.Reloaded": {
+          "Config": {
+            "ItemType": "Mod",
+            "ItemId": 495507
+          },
+          "ReleaseMetadataName": "Ryo.Reloaded.ReleaseMetadata.json"
+        },
+        "SharedScans.Reloaded": {
+          "Config": {
+            "ItemType": "Mod",
+            "ItemId": 495507
+          },
+          "ReleaseMetadataName": "SharedScans.Reloaded.ReleaseMetadata.json"
         }
       }
     },
@@ -82,6 +96,15 @@
             "AssetFileName": "Mod.zip"
           },
           "ReleaseMetadataName": "Reloaded.Universal.FileEmulationFramework.ReleaseMetadata.json"
+        },
+        "p3rpc.nativetypes": {
+          "Config": {
+            "UserName": "Rirurin",
+            "RepositoryName": "p3rpc.nativetypes",
+            "UseReleaseTag": true,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "p3rpc.nativetypes.ReleaseMetadata.json"
         }
       }
     }

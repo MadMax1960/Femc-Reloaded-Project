@@ -32,6 +32,22 @@ namespace p3rpc.femc.Components
             return (T)module;
         }
 
-        public void OnConfigUpdated(Config newConfig) => _context._config = newConfig;
+        public virtual void OnConfigUpdated(Config newConfig) => _context._config = newConfig;
+    }
+
+    public abstract class ModuleAsmInlineColorEdit : ModuleBase
+    {
+        protected List<AddressToMemoryWrite> _asmMemWrites;
+
+        public unsafe ModuleAsmInlineColorEdit(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        {
+            _asmMemWrites = new();
+        }
+
+        public override void OnConfigUpdated(Config newConfig)
+        {
+            base.OnConfigUpdated(newConfig);
+            foreach (var mem in _asmMemWrites) mem.WriteAtAddress(mem.Address);
+        }
     }
 }

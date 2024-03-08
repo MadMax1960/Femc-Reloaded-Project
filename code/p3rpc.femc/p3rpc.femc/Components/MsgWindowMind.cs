@@ -60,7 +60,7 @@ namespace p3rpc.femc.Components
         {
             _uiCommon.SetColor(ref self->OuterBorderColor, _context._config.MindWindowOuterBorder);
             _uiCommon.SetColor(ref self->InnerContentsColor, _context._config.MindWindowInnerColor);
-            _uiCommon.SetColor(ref self->OutsideMistColor, _context._config.MindWindowOuterHaze);
+            _uiCommon.SetColor(ref self->OutsideMistColor, _context._config.MindWindowOuterHazeEx);
             _uiCommon.SetColor(ref self->NextPage.NextPageColor, _context._config.TextBoxFrontFillColor); // see MsgWindowSimple
             _drawMessageBox.OriginalFunction(self);
         }

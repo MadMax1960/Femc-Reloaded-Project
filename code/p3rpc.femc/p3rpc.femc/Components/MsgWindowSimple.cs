@@ -58,8 +58,6 @@ namespace p3rpc.femc.Components
             GrayMessageText = 1 << 5,
         }
 
-        private unsafe float Lerp(float a, float b, float c) => (1 - c) * a + b * c;
-
         private unsafe void UMsgProcWindow_Simple_DrawMessageBoxImpl(UMsgProcWindow_Simple* self) // FUN_14141c8e0
         {
             var vtable278 = _context._hooks.CreateWrapper<UMsgProcWindow_Simple_Vtable278>(*(nint*)(*(nint*)self + 0x278), out _);
@@ -75,7 +73,7 @@ namespace p3rpc.femc.Components
                 var msgBaseY = 883;
                 var drawStyleId = 0x23; // did they just copy paste this UI drawing code from GFD? lmao???
                 var opacityByteAlpha = (byte)(self->Opacity * 255);
-                _uiCommon._setSpriteDrawMaskMode(itemMask, UIComponentBlendType.None);
+                _uiCommon._setPresetBlendState(itemMask, EUIOTPRESET_BLEND_TYPE.UI_OT_PRESET_BLEND_OPAQUE);
 
                 var msgBoxBackColor = _uiCommon.ToFSprColor(_context._config.TextBoxBackFillColor);
                 msgBoxBackColor.A = (byte)((1.0f - self->BgPieceTransparency) * self->Opacity * 102.0f);
@@ -93,11 +91,13 @@ namespace p3rpc.femc.Components
                 var msgBoxBackRotation = new FVector(0, (float)(self->BgPieceRotation - 4.2), 0);
                 var msgBoxBack = new PlgDefStruct1(msgBoxBackPos, msgBoxBackStretch, msgBoxBackRotation, msgBoxBackColor, 0xb);
                 _uiCommon._plgFunc1(&msgBoxBack, itemMask, self->MsgPlg_, 0.0f, 0.0f);
-                _uiCommon._setSpriteDrawMaskMode(itemMask, UIComponentBlendType.Add);
+                _uiCommon._setPresetBlendState(itemMask, EUIOTPRESET_BLEND_TYPE.UI_OT_PRESET_BLEND_ADDTRANS);
                 msgBoxBackColor = _uiCommon.ToFSprColor(_context._config.TextBoxBackFillColor);
                 msgBoxBackColor.A = (byte)((1.0f - self->BgPieceTransparency) * self->Opacity * 255);
                 _uiCommon._plgFunc1(&msgBoxBack, itemMask, self->MsgPlg_, 0.0f, 0.0f);
-                _uiCommon._spriteMaskFunc1(itemMask, 0, 0, 1, 0, 0, 0, 0xf, drawStyleId);
+                _uiCommon._setBlendState(itemMask, 
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One, 
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, drawStyleId);
 
                 _uiCommon._spriteMaskFunc2(itemMask, 0, 570, 1920, 1080, _uiCommon.ToFSprColor(_context.ColorBlack), drawStyleId);
                 var msgBoxFillFrontPos = new FVector(
@@ -114,7 +114,9 @@ namespace p3rpc.femc.Components
                 msgBoxFillFrontColor.A = (byte)(self->Opacity * 229);
                 var msgBoxFillFrontRot = new FVector(_messageBoxFloats1[0], _messageBoxFloats1[1], _messageBoxFloats1[2]);
                 var msgBoxFillFront = new PlgDefStruct1(msgBoxFillFrontPos, msgBoxFillFrontStretch, msgBoxFillFrontRot, msgBoxFillFrontColor, 0x9);
-                _uiCommon._spriteMaskFunc1(itemMask, 0, 4, 5, 0, 1, 0, 0xf, drawStyleId);
+                _uiCommon._setBlendState(itemMask, 
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_SourceAlpha, EUIBlendFactor.UI_BF_InverseSourceAlpha, 
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_One, EUIBlendFactor.UI_BF_Zero, 0xf, drawStyleId);
                 _uiCommon._plgFunc1(&msgBoxFillFront, itemMask, self->MsgPlg_, 0, 0);
                 
                 var msgBoxLeftHazePos = new FVector2D(msgBaseX + 308, msgBaseY - 19);
@@ -122,11 +124,17 @@ namespace p3rpc.femc.Components
                 msgBoxLeftHazeColor.A = (byte)(self->Opacity * 255 * 0.4);
                 var msgBoxLeftHazeSpr = new SprDefStruct1(0, msgBoxLeftHazePos, msgBoxLeftHazeColor, 1.5f, 0, 0);
                 msgBoxLeftHazeSpr.Field10 = 70;
-                _uiCommon._spriteMaskFunc1(itemMask, 0, 0, 1, 0, 6, 0, 0xf, drawStyleId);
+                _uiCommon._setBlendState(itemMask, 
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One, 
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_Zero, 0xf, drawStyleId);
                 _uiCommon._spriteFunc1(&msgBoxLeftHazeSpr, itemMask, self->MsgSpr_, 0, 0);
-                _uiCommon._spriteMaskFunc1(itemMask, 0, 6, 1, 0, 0, 0, 0xf, drawStyleId);
+                _uiCommon._setBlendState(itemMask, 
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_One,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, drawStyleId);
                 _uiCommon._spriteFunc1(&msgBoxLeftHazeSpr, itemMask, self->MsgSpr_, 0, 0);
-                _uiCommon._spriteMaskFunc1(itemMask, 0, 0, 1, 0, 1, 0, 0xf, drawStyleId);
+                _uiCommon._setBlendState(itemMask,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_One, EUIBlendFactor.UI_BF_Zero, 0xf, drawStyleId);
                 _uiCommon._plgFunc1(&msgBoxFillFront, itemMask, self->MsgPlg_, 0, 0);
                 
                 var speakerNameTrianglePos = new FVector(
@@ -141,10 +149,14 @@ namespace p3rpc.femc.Components
 
                 if (self->ShowSpeakerName())
                 {
-                    _uiCommon._spriteMaskFunc1(itemMask, 0, 0, 1, 0, 1, 1, 0xf, drawStyleId);
+                    _uiCommon._setBlendState(itemMask,
+                        EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
+                        EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_One, EUIBlendFactor.UI_BF_One, 0xf, drawStyleId);
                     _uiCommon._plgFunc1(&speakerNameTriangle, itemMask, self->MsgPlg_, 0, 0);
                 }
-                _uiCommon._spriteMaskFunc1(itemMask, 0, 0, 1, 4, 1, 1, 0xf, drawStyleId);
+                _uiCommon._setBlendState(itemMask,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
+                    EUIBlendOperation.UI_BO_ReverseSubtract, EUIBlendFactor.UI_BF_One, EUIBlendFactor.UI_BF_One, 0xf, drawStyleId);
 
                 var msgBoxBorderFrontPos = new FVector(
                     Lerp(MessageBoxHeights[self->MessageBoxSubHeight, 5], MessageBoxHeights[self->MessageBoxHeight, 5], self->PositionLerp) + msgBaseX,
@@ -160,7 +172,9 @@ namespace p3rpc.femc.Components
                 msgBoxBorderFrontColor.A = (byte)(self->Opacity * 229);
                 var msgBoxBorderFront = new PlgDefStruct1(msgBoxBorderFrontPos, msgBoxBorderFrontStretch, msgBoxFillFrontRot, msgBoxBorderFrontColor, 0xa);
                 _uiCommon._plgFunc1(&msgBoxBorderFront, itemMask, self->MsgPlg_, 0, 0);
-                _uiCommon._spriteMaskFunc1(itemMask, 0, 6, 7, 0, 0, 1, 0xf, drawStyleId);
+                _uiCommon._setBlendState(itemMask,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_InverseDestAlpha,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One, 0xf, drawStyleId);
 
                 msgBoxFillFrontColor.A = (byte)(self->Opacity * 229);
                 _uiCommon._plgFunc1(&msgBoxFillFront, itemMask, self->MsgPlg_, 0, 0);
@@ -168,7 +182,7 @@ namespace p3rpc.femc.Components
                 if (self->HasSpeakerName())
                 {
                     if (self->IsMsgBoxSpeakerStatusValid()) _uiCommon._plgFunc1(&speakerNameTriangle, itemMask, self->MsgPlg_, 0, 0);
-                    _uiCommon._setSpriteDrawMaskMode(itemMask, 0);
+                    _uiCommon._setPresetBlendState(itemMask, EUIOTPRESET_BLEND_TYPE.UI_OT_PRESET_BLEND_OPAQUE);
                     var speakerNameTriangleFrontColor =
                             ((self->MsgProcWindowStatus & 0x20) != 0) ?
                             _uiCommon.ToFSprColor(_context._config.TextBoxFrontFillColor) :

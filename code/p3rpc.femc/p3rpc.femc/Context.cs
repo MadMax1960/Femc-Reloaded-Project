@@ -1,6 +1,7 @@
 ﻿using p3rpc.femc.Configuration;
 using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
+using Reloaded.Memory;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
 using System;
@@ -19,6 +20,7 @@ namespace p3rpc.femc
         public IStartupScanner _startupScanner { get; }
         public IReloadedHooks _hooks { get; }
         public Utils _utils { get; }
+        public Memory _memory { get; }
 
         public string ModLocation;
         public unsafe FNamePool* g_namePool { get; private set; }
@@ -32,7 +34,7 @@ namespace p3rpc.femc
 
         private nuint TransformAddressForFUObjectArray(int offset) => Utils.GetGlobalAddress((nint)(_baseAddress + offset + 3)) - 0x10;
 
-        public Context(long baseAddress, Config config, ILogger logger, IStartupScanner startupScanner, IReloadedHooks hooks, string modLocation, Utils utils)
+        public Context(long baseAddress, Config config, ILogger logger, IStartupScanner startupScanner, IReloadedHooks hooks, string modLocation, Utils utils, Memory memory)
         {
             _baseAddress = baseAddress;
             _config = config;
@@ -41,6 +43,7 @@ namespace p3rpc.femc
             _hooks = hooks;
             ModLocation = modLocation;
             _utils = utils;
+            _memory = memory;
             unsafe
             {
                 _utils.SigScan(FUObjectArray_SIG, "FUObjectArray", TransformAddressForFUObjectArray, addr => g_objectArray = (FUObjectArray*)addr);
