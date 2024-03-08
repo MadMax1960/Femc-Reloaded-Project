@@ -4,7 +4,7 @@
 
 _ⓒAtlus ⓒSega All Rights reserved, this mod is not associated with Sega or Atlus, all rights reserved, read the full Readme before any contributions_
 
-## _"Fine I'll Do It Myself"_
+## _"Femc True"_
 ![Kotone in Pink](img/readmeimg.png)
 
 ## Introduction
@@ -21,7 +21,7 @@ _ⓒAtlus ⓒSega All Rights reserved, this mod is not associated with Sega or A
 Contributions come in all shapes and sizes, and here, all are welcome. If your masterpiece isn't quite ready for the main stage, your fork awaits. It's a place for refinement and creativity.
 
 ### The Key Quests
-Our quests span across realms - from 3D modeling to UI design, from rewriting texts to reanimating cutscenes. Each task is a notch in the pathway for. We did, what Atlusn't.
+Our quests span across different assets - from 3D modeling to UI design, from rewriting texts to reanimating cutscenes. Each task is a notch in the pathway for. 
 
 - Document your 3D modeling escapades, breathing life into Kotone's character.
 - Paint the UI with Kotone's essence, making every pixel count.
