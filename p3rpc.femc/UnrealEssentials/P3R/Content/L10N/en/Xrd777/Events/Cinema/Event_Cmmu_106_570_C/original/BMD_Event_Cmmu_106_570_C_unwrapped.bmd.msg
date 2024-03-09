@@ -3,7 +3,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 2 0 0]Don't you think I'd look good in one?[n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
-[uf 0 5 65278][uf 2 1]Totally![e]
+[uf 0 5 65278][uf 2 1]I'm sure you would.[e]
 [uf 0 5 65278][uf 2 1]I like your usual clothes too.[e]
 
 [msg MSG_002_0_0 [Yuko Nishiwaki]]
@@ -32,7 +32,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 13 0 0]Mmm, something smells good...[n][uf 1 1][e]
 
 [msg MSG_006_5_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 14 0 0]Hey, are you hungry, [uf 4 1]-chan?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 14 0 0]Hey, are you hungry, [uf 4 1]-kun?[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 15 0 0]Let's eat some takoyaki! I'll split it with you.[n][uf 1 1][e]
 
 [msg MSG_007_0_0 [Yuko Nishiwaki]]
@@ -48,7 +48,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 21 0 0]...Here you go, one order of takoyaki![n][uf 1 1][e]
 
 [msg MSG_010_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 22 0 0]Here, have some, [uf 4 1]-chan.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 22 0 0]Here, have some, [uf 4 1]-kun.[n][uf 1 1][e]
 
 [msg MSG_011_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 6 65535 0 0][uf 3 1 1 0 0 23 0 0]Phew... Mm... Mm! Ack! Ooh, hot! Hot, hot![n][uf 1 1][e]
@@ -70,7 +70,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 31 0 0][uf 5 21 0 11]Make some nice memories, whaddaya say? Odds are lookin' good—lots of winning tickets left![n][uf 1 1][e]
 
 [msg MSG_014_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 32 0 0]Hey, [uf 4 1]-chan, look! A lucky draw![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 32 0 0]Hey, [uf 4 1]-kun, look! A lucky draw![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 33 0 0]That sounds fun, doesn't it? Let's give it a try. I am a sucker for games like this.[n][uf 1 1][e]
 
 [msg MND_015_0_0]
@@ -104,7 +104,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 6 65535 0 0][uf 3 1 1 0 0 42 0 0]Oh, look at the time. We should start heading back.[n][uf 1 1][e]
 
 [msg MSG_022_5_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 43 0 0]Thanks, [uf 4 1]-chan. I had a great time today![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 43 0 0]Thanks, [uf 4 1]-kun. I had a great time today![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 6 65535 0 0][uf 3 1 1 0 0 44 0 0]Let's go to more fun events like this in the future![n][uf 1 1][e]
 
 [msg MND_023_0_0]

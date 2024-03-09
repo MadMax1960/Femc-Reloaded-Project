@@ -46,7 +46,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 19 0 0][uf 4 1]-kun, what do you think I should do?[n][uf 1 1][e]
 
 [sel SEL_012_0_0 top]
-[uf 0 5 65278][uf 2 1]Go for it![e]
+[uf 0 5 65278][uf 2 1]Why not give it a go?[e]
 [uf 0 5 65278][uf 2 1]That's for you to decide.[e]
 
 [msg MSG_013_0_0 [Yuko Nishiwaki]]
@@ -75,7 +75,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 30 0 0]Got it, Coach Yuko![n][uf 1 1][e]
 
 [msg MSG_019_0_0 [Mature-Looking Girl]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 31 0 0][uf 5 21 0 1003]Hey, is she gonna teach us, too? Is she your girlfriend, Coach?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 31 0 0][uf 5 21 0 1003]Hey, is he gonna teach us, too? Is he your boyfriend, Coach?[n][uf 1 1][e]
 
 [msg MSG_020_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 32 0 0]Never you mind about that.[n][uf 1 1][e]
@@ -109,7 +109,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 41 0 0]I mean, why not, right? Please? Honestly, I don't think I can handle it on my own...[n][uf 1 1][e]
 
 [sel SEL_026_0_0 top]
-[uf 0 5 65278][uf 2 1]Sure thing![e]
+[uf 0 5 65278][uf 2 1]Sure thing.[e]
 [uf 0 5 65278][uf 2 1]It's kind of a hassle.[e]
 
 [msg MSG_027_0_0 [Yuko Nishiwaki]]

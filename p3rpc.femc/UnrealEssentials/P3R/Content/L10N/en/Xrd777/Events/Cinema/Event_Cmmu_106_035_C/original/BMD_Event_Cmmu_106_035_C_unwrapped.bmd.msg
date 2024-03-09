@@ -6,14 +6,14 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 3 0 0][uf 5 21 0 10]Heeey, look over there. It's Nishiwaki-san.[n][uf 1 1][e]
 
 [msg MSG_002_0_0 [Girl in Black Tights]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 4 0 0][uf 5 21 0 11]Is that your new girlfriend?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 4 0 0][uf 5 21 0 11]Is that your new boyfriend?[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 5 0 0][uf 5 21 0 11]On to the next one already, I see. Impressive, Nishiwaki-san.[n][uf 1 1][e]
 
 [msg MSG_003_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 6 0 0]We're not dating. She's just a friend from the team.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 6 0 0]We're not dating. He's just a friend from the team.[n][uf 1 1][e]
 
 [msg MSG_004_0_0 [Girl in Black Tights]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 7 0 0][uf 5 21 0 11]Come on, no need to act all polite in front of her. Just tell it how it is.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 7 0 0][uf 5 21 0 11]Come on, no need to act all polite in front of him. Just tell it how it is.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 8 0 0][uf 5 21 0 11]I'm surprised you could even get such a handsome guy. Maybe I should become a team manager, too.[n][uf 1 1][e]
 
 [msg MSG_005_0_0 [Yuko Nishiwaki]]
@@ -24,10 +24,10 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 11 0 0][uf 5 21 0 10]And it's not very attractive for a girl to be so muscular, you know?[n][uf 1 1][e]
 
 [msg MSG_007_0_0 [Girl in Black Tights]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 12 0 0][uf 5 21 0 11]Hey, not so loud, her girlfriend's like, right here. I kinda feel bad for her.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 12 0 0][uf 5 21 0 11]Hey, not so loud, her boyfriend's like, right here. I kinda feel bad for her.[n][uf 1 1][e]
 
 [msg MSG_008_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 2 65535 65535 0 0][uf 3 1 1 0 0 13 0 0]If that's really what you want to do, I won't stop you. But you're better off looking for a girlfriend elsewhere.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 2 65535 65535 0 0][uf 3 1 1 0 0 13 0 0]If that's really what you want to do, I won't stop you. But you're better off looking for a boyfriend elsewhere.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 2 65535 65535 0 0][uf 3 1 1 0 0 14 0 0]A manager is a busy job. You won't have time to go around sticking gum on people's shoe lockers.[n][uf 1 1][e]
 
 [msg MSG_009_0_0 [Girl with Bright Hair]]
@@ -90,7 +90,7 @@
 
 [msg MSG_024_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 4 65535 65535 0 0][uf 3 1 1 0 0 37 0 0]...Oh! That reminds me, sorry for what they said about you...[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 38 0 0][uf 4 23 0 1 3 25 25]They called you my girlfriend. That must have made you feel awkward, huh?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 38 0 0][uf 4 23 0 1 3 25 25]They called you my boyfriend. That must have made you feel awkward, huh?[n][uf 1 1][e]
 
 [sel SEL_025_0_0 top]
 [uf 0 5 65278][uf 2 1]I'm honored.[uf 2 9 1 1 346][e]
@@ -110,12 +110,12 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 44 0 0]Y-You don't have to be so blunt about it...[n][uf 1 1][e]
 
 [msg MSG_029_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 45 0 0]Huh, why do I feel this way...? I mean, you're just a girl on the same team as me, right?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 45 0 0]Huh, why do I feel this way...? I mean, you're just a guy on the same team as me, right?[n][uf 1 1][e]
 
 [msg MSG_030_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 46 0 0]Oh, right.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 47 0 0]Make sure you don't tell Kaz or anyone else about the two-timing thing, okay?[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 48 0 0]You're the only one I've told, [uf 4 1]-chan.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 48 0 0]You're the only one I've told, [uf 4 1]-kun.[n][uf 1 1][e]
 
 [msg MSG_031_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 4 65535 65535 0 0][uf 3 1 1 0 0 49 0 0]Oh, also![n][uf 1 1][e]

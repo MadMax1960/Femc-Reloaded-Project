@@ -1,6 +1,6 @@
 [msg MSG_000_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 1 0 0]Okay, shopping for club stuff is done![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 2 0 0]Good thing you came with me, [uf 4 1]-chan. I didn't realize there was so much to buy...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 2 0 0]Good thing you came with me, [uf 4 1]-kun. I didn't realize there was so much to buy...[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 3 0 0][uf 4 23 0 1 3 25 25]Also, I wasn't really in the mental state to do this alone today.[n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
@@ -20,7 +20,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 9 0 0]And before I knew it, I'd dozed off. I ended up handing in a blank paper.[n][uf 1 1][e]
 
 [sel SEL_005_0_0 top]
-[uf 0 5 65278][uf 2 1]Ouch, that sucks.[e]
+[uf 0 5 65278][uf 2 1]That's bad.[e]
 [uf 0 5 65278][uf 2 1]It wasn't your fault.[e]
 
 [msg MSG_006_0_0 [Yuko Nishiwaki]]
@@ -46,7 +46,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 18 0 0][uf 4 23 0 1 3 25 25]Honestly, I haven't really thought about my future at all.[n][uf 1 1][e]
 
 [msg MSG_011_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 4 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]Seriously? I didn't know you cared so much about school, [uf 4 1]-chan.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 4 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]Seriously? I didn't know you cared so much about school, [uf 4 1]-kun.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 20 0 0][uf 4 23 0 1 3 25 25]I... still haven't really thought much about my future.[n][uf 1 1][e]
 
 [msg MSG_012_0_0 [Yuko Nishiwaki]]
@@ -72,8 +72,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 28 0 0]Owww...[n][uf 1 1][e]
 
 [msg MSG_018_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 2 65535 65535 0 0][uf 3 1 1 0 0 29 0 0]Hey! It's dangerous to be running around here—
-[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 2 65535 65535 0 0][uf 3 1 1 0 0 29 0 0]Hey! It's dangerous to be running around here—[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 30 0 0][uf 4 23 0 1 0 25 25]Wait, aren't you...?[n][uf 1 1][e]
 
 [msg MSG_019_0_0 [Spunky Boy]]
@@ -95,7 +94,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 38 0 0]I mean, it's dangerous, right? They should go play in the schoolyard or something.[n][uf 1 1][e]
 
 [msg MSG_024_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 4 65535 65535 0 0][uf 3 1 1 0 0 39 0 0]Oh no, the school gate is gonna close soon! I'll see you at practice, [uf 4 1]-chan![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 4 65535 65535 0 0][uf 3 1 1 0 0 39 0 0]Oh no, the school gate is gonna close soon! I'll see you at practice, [uf 4 1]-kun![n][uf 1 1][e]
 
 [msg MND_025_0_0]
 [uf 0 5 65278][uf 2 1]After saying goodbye to Yuko,[n]I decided to go back to the dorm.[n][uf 1 1][e]

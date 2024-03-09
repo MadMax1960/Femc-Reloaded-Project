@@ -1,7 +1,7 @@
 [msg MSG_000_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 1 0 0]I'm having trouble deciding which restaurant to go to.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 2 0 0][uf 4 23 0 1 0 25 25]This place looks cute, but this one looks a bit more reasonable...[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 3 0 0]Which one sounds better to you, [uf 4 1]-chan?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 3 0 0]Which one sounds better to you, [uf 4 1]-kun?[n][uf 1 1][e]
 
 [sel SEL_001_0_0 top]
 [uf 0 5 65278][uf 2 1]The cute one.[e]
@@ -26,21 +26,21 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 10 0 0][uf 5 21 0 10]Oh, Nishiwaki-san.[n][uf 1 1][e]
 
 [msg MSG_007_0_0 [Girl with Bright Hair]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 11 0 0][uf 5 21 0 11]With your girlfriend again, huh? You just love to show off, don't you?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 11 0 0][uf 5 21 0 11]With your boyfriend again, huh? You just love to show off, don't you?[n][uf 1 1][e]
 
 [msg MSG_008_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 3 1 1 0 0 12 0 0]I already said it's not like that.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 13 0 0][uf 4 23 0 1 0 25 25]She's just a friend from the team. That's all.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 13 0 0][uf 4 23 0 1 0 25 25]He's just a friend from the team. That's all.[n][uf 1 1][e]
 
 [msg MSG_009_0_0 [Girl in Black Tights]]
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 14 0 0][uf 5 21 0 10]You know you don't have to try so hard to hide it.[n][uf 1 1][e]
 
 [msg MSG_010_0_0 [Girl with Bright Hair]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 15 0 0][uf 5 21 0 11]I bet there's a reason she has to keep quiet about it. Like, maybe she stole her from someone again?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 15 0 0][uf 5 21 0 11]I bet there's a reason she has to keep quiet about it. Like, maybe she stole him from someone again?[n][uf 1 1][e]
 
 [msg MSG_011_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 2 65535 65535 0 0][uf 3 1 1 0 0 16 0 0]Geez, give it a rest already![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 2 65535 65535 0 0][uf 3 1 1 0 0 17 0 0]Is that all you can think of when you see a girl and a girl together? You need to grow up.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 2 65535 65535 0 0][uf 3 1 1 0 0 17 0 0]Is that all you can think of when you see a guy and a girl together? You need to grow up.[n][uf 1 1][e]
 
 [msg MSG_012_0_0 [Girl with Bright Hair]]
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 18 0 0][uf 5 21 0 11]Wha...?[n][uf 1 1][e]
@@ -62,8 +62,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 0 0 0 26 0 0]......[n][uf 1 1][e]
 
 [msg MSG_017_0_0 [Girl with Bright Hair]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 27 0 0][uf 5 21 0 11]Excuse me? You're the one who started—
-[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 27 0 0][uf 5 21 0 11]Excuse me? You're the one who started—[n][uf 1 1][e]
 
 [msg MSG_018_0_0 [Girl in Black Tights]]
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 28 0 0][uf 5 21 0 10]It's fine. Let's just go.[n][uf 1 1][e]
