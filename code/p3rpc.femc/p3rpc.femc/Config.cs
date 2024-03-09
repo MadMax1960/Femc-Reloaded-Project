@@ -224,6 +224,18 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Shop Payment Unselect Color")]
         public ConfigColor ShopPayUnselColor { get; set; } = ConfigColor.MellodiColorMid4;
 
+        [DisplayName("Get Item Background Mask Color")]
+        public ConfigColor GetItemBgMaskColor { get; set; } = ConfigColor.GetItemFillMask;
+
+        [DisplayName("Get Item Background Color")]
+        public ConfigColor GetItemBgColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Get Item Got Text Color")]
+        public ConfigColor GetItemGotTextColor { get; set; } = ConfigColor.GetItemGotTextColor;
+
+        [DisplayName("Get Item Got Item Count Background")]
+        public ConfigColor GetItemCountBgColor { get; set; } = ConfigColor.MellodiColorMid1;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -289,6 +301,11 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableMoneyDraw { get; set; } = true;
 
+        [DisplayName("Enable Get Item")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableGetItem { get; set; } = true;
+
     }
 
     /// <summary>
@@ -338,6 +355,8 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor DayChangeMoonShadow = new ConfigColor(0xa3, 0x26, 0x50, 0xff);
         public static readonly ConfigColor ShopFillColor = new ConfigColor(0xaf, 0xf, 0x6e, 0xff);
         public static readonly ConfigColor ShopShadowColor = new ConfigColor(0xff, 0x4e, 0xdc, 0xff);
+        public static readonly ConfigColor GetItemFillMask = new ConfigColor(0x54, 0xd, 0x54, 0xff);
+        public static readonly ConfigColor GetItemGotTextColor = new ConfigColor(0xff, 0x4a, 0xff, 0xff);
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }

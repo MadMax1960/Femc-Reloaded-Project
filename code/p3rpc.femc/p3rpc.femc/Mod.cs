@@ -111,7 +111,7 @@ namespace p3rpc.femc
             if (_configuration.EnablePartyPanel) AddModule<PartyPanel>();
             AddModule<Backlog>();
             AddModule<KeyHelp>();
-            AddModule<MiscGetItemDraw>();
+            if (_configuration.EnableGetItem) AddModule<MiscGetItemDraw>();
             if (_configuration.EnableTimeSkip)
             {
                 AddModule<DayChange>();
