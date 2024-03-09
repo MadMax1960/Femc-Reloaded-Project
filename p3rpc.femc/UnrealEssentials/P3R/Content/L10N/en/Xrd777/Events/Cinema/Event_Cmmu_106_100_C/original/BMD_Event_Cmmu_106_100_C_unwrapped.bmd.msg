@@ -6,7 +6,7 @@
 [msg MSG_001_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 4 0 0]She probably didn't get what I was saying, but ever since I figured it out for myself, I feel like I've been able to see the bigger picture.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 5 0 0][uf 4 23 0 106 1 25 25]I mean, I kinda used to be the same as her, you know? I guess I've learned how to empathize better now.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 1 0][uf 3 1 1 0 0 6 0 0][uf 4 23 0 106 0 25 25]Not to mention, you did end up becoming my girlfriend, so...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 1 0][uf 3 1 1 0 0 6 0 0][uf 4 23 0 106 0 25 25]Not to mention, you did end up becoming my boyfriend, so...[n][uf 1 1][e]
 
 [msg MSG_002_0_0 [Yuko Nishiwaki]]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 1 0][uf 3 1 1 0 0 7 0 0]But uh, that's not what why I invited you here![n][uf 1 1][e]
@@ -32,7 +32,7 @@
 [uf 0 5 65278][uf 2 1]Not really.[e]
 
 [msg MSG_008_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 14 0 0][uf 5 13 12 5 106]Oh, [uf 4 1]-chan, you're so sweet.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 14 0 0][uf 5 13 12 5 106]Oh, [uf 4 1]-kun, you're so sweet.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 15 0 0][uf 4 23 0 106 0 25 25]Sometimes I can't believe how open-minded you are... I think I need to learn from you.[n][uf 1 1][e]
 
 [msg MSG_009_0_0 [Yuko Nishiwaki]]
@@ -46,7 +46,7 @@
 [uf 0 5 65278][uf 2 1]I got (ITEM NAME)![n][uf 1 1][e]
 
 [msg MSG_012_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]The kids told me to "give it to my girlfriend"... Aren't they cute?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]The kids told me to "give it to my boyfriend"... Aren't they cute?[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 20 0 0]That's what I invited you here for.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 1 0][uf 3 1 0 0 0 21 0 0][uf 4 23 0 106 0 25 25]......[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 1 0][uf 3 1 1 0 0 22 0 0]Well, actually, that was just an excuse.[n][uf 1 1][e]

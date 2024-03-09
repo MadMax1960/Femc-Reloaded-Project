@@ -1,14 +1,14 @@
 [msg MSG_000_0_0 [Kids]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 1 0 0]Coach and the girlfriend![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 1 0 0]Coach and the boyfriend![n][uf 1 1][e]
 
 [msg MSG_001_0_0 [(SE) Spunky Boy]]
-[uf 0 5 65278][uf 2 1]Coach and the girlfriend![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]Coach and the boyfriend![n][uf 1 1][e]
 
 [msg MSG_002_0_0 [(SE) Energetic Boy]]
-[uf 0 5 65278][uf 2 1]Coach and the girlfriend![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]Coach and the boyfriend![n][uf 1 1][e]
 
 [msg MSG_003_0_0 [(SE) Meek-Looking Girl]]
-[uf 0 5 65278][uf 2 1]Coach and the girlfriend![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]Coach and the boyfriend![n][uf 1 1][e]
 
 [msg MSG_004_0_0 [Meek-Looking Girl]]
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 5 0 0][uf 5 21 0 1001]Coach! We raced 'em all one-on-one, and two of us actually won![n][uf 1 1][e]
@@ -32,23 +32,23 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 13 0 0][uf 5 21 0 1002]One, two, three...![n][uf 1 1][e]
 
 [msg MSG_009_5_0 [Kids]]
-[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 14 0 0]Good luck with your girlfriend![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 1 0 0 14 0 0]Good luck with your boyfriend![n][uf 1 1][e]
 
 [msg MSG_010_0_0 [(SE) Spunky Boy]]
-[uf 0 5 65278][uf 2 1]Good luck with your girlfriend![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]Good luck with your boyfriend![n][uf 1 1][e]
 
 [msg MSG_011_0_0 [(SE) Energetic Boy]]
-[uf 0 5 65278][uf 2 1]Good luck with your girlfriend![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]Good luck with your boyfriend![n][uf 1 1][e]
 
 [msg MSG_012_0_0 [(SE) Meek-Looking Girl]]
-[uf 0 5 65278][uf 2 1]Good luck with your girlfriend![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]Good luck with your boyfriend![n][uf 1 1][e]
 
 [msg MSG_013_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 18 0 0]They called you my girlfriend till the very end...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 18 0 0]They called you my boyfriend till the very end...[n][uf 1 1][e]
 
 [sel SEL_014_0_0 top]
 [uf 0 5 65278][uf 2 1]Wanna make that true?[uf 2 9 1 1 346][e]
-[uf 0 5 65278][uf 2 1]It's a little embarrassing.[e]
+[uf 0 5 65278][uf 2 1]It's embarrassing.[e]
 [uf 0 5 65278][uf 2 1]They're just joking.[e]
 
 [msg MSG_015_0_0 [Yuko Nishiwaki]]
@@ -105,7 +105,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 41 0 0]It kinda made me think. About the things I should do for my future, I mean.[n][uf 1 1][e]
 
 [msg MSG_026_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 42 0 0]Oh! By the way, I wanted to thank you, [uf 4 1]-chan.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 42 0 0]Oh! By the way, I wanted to thank you, [uf 4 1]-kun.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 43 0 0]Maybe we should throw a little party. You know, to celebrate our first attempt at coaching.[n][uf 1 1][e]
 
 [sel SEL_027_0_0 top]
@@ -127,8 +127,7 @@
 [uf 0 5 65278][uf 2 1]I feel like our relationship has grown...[n][uf 1 1][e]
 
 [msg MSG_032_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 48 0 0]I didn't have much confidence at the beginning, so you being here with me was really—
-[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 0 65535 65535 0 0][uf 3 1 1 0 0 48 0 0]I didn't have much confidence at the beginning, so you being here with me was really—[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 49 0 0][uf 4 23 0 1 1 25 25]...Well, let's talk about that next time. We'll have plenty of time at the party.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 1 0 0 50 0 0]Shall we head home?[n][uf 1 1][e]
 

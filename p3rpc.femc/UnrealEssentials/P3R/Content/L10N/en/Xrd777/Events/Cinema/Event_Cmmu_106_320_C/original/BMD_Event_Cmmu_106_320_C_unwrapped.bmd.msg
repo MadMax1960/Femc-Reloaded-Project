@@ -2,7 +2,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0][uf 3 1 3 0 65535 11093 0 0]Ahh, finally... I'm glad we made time to hang out instead of settling for rushed hellos between classes.[n][uf 1 1][e]
 
 [msg MSG_001_0_0 [Yuko Nishiwaki]]
-[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0]Nice threads, [uf 4 1]-chan. You got some pretty good taste.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 106 1 65535 65535 0 0]Nice threads, [uf 4 1]-kun. You got some pretty good taste.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 106 3 65535 65535 0 0][uf 4 23 0 106 3 25 25]Unlike Kaz, who just wears his track jacket everywhere... Embarrassing, honestly. Like, you gotta have clothes that aren't school swag.[n][uf 1 1][e]
 
 [msg MSG_002_0_0 [Yuko Nishiwaki]]
