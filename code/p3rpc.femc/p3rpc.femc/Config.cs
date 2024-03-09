@@ -197,6 +197,21 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Location Select Selected Item Color (Requires Restart)")]
         public ConfigColor LocationSelectSelColor { get; set; } = ConfigColor.MellodiColorMid1;
 
+        [DisplayName("Time Skip Color")]
+        public ConfigColor TimeSkipColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Next Day Band Color")]
+        public ConfigColor NextDayBandColor { get; set; } = ConfigColor.MellodiColorDark1;
+
+        [DisplayName("Next Day Text Color")]
+        public ConfigColor NextDayTextColor { get; set; } = ConfigColor.MellodiColorMid3;
+
+        [DisplayName("Next Day Moon Shadow Color")]
+        public ConfigColor NextDayMoonShadowColor { get; set; } = ConfigColor.DayChangeMoonShadow;
+
+        [DisplayName("Next Day Ripple")]
+        public ConfigColor NextDayRipple { get; set; } = ConfigColor.MellodiColorMid1;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -252,6 +267,11 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnablePartyPanel { get; set; } = true;
 
+        [DisplayName("Enable Time Skip")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableTimeSkip { get; set; } = true;
+
     }
 
     /// <summary>
@@ -298,6 +318,7 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor MellodiColorDark3 = new ConfigColor(0x49, 0x4, 0x21, 0xff);
 
         public static readonly ConfigColor BackLogBlackBoard = new ConfigColor(0x09, 0x03, 0x09, 0xff);
+        public static readonly ConfigColor DayChangeMoonShadow = new ConfigColor(0xa3, 0x26, 0x50, 0xff);
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }

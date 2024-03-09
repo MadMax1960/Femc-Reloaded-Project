@@ -112,6 +112,11 @@ namespace p3rpc.femc
             AddModule<Backlog>();
             AddModule<KeyHelp>();
             AddModule<MiscGetItemDraw>();
+            if (_configuration.EnableTimeSkip)
+            {
+                AddModule<DayChange>();
+                AddModule<TimeChange>();
+            }
 
             foreach (var mod in _modules.Values) mod.Register();
         }
