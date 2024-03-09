@@ -1,5 +1,8 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.femc.Configuration;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
+using Reloaded.Hooks.Definitions.Enums;
+using Reloaded.Hooks.Definitions.X64;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -267,9 +270,35 @@ namespace p3rpc.femc.Components
             { -236f, 1.596000f, 23f, 35f, 1.567000f, 18f, 32f, 1.583000f, -399f}
         };
 
+        // At least until I feel like rewriting the entire function like I did with the text box lol
+        private string UMsgProcWindow_Select_Simple_SelBgShadow1_SIG = "4D 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 41 0F 28 DB F3 44 0F 11 5C 24 ?? 49 8B D7 89 45 ?? E8 ?? ?? ?? ?? BA 02 00 00 00";
+        private string UMsgProcWindow_Select_Simple_SelBgShadow2_SIG = "4D 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 41 0F 28 DB F3 44 0F 11 5C 24 ?? 49 8B D7 89 45 ?? E8 ?? ?? ?? ?? 33 D2";
+        private IAsmHook _selBgShadow1;
+        private IAsmHook _selBgShadow2;
+        private IReverseWrapper<UMsgProcWindow_Select_Simple_SetColorPassthrough> _selBgShadow1Wrapper;
+        private IReverseWrapper<UMsgProcWindow_Select_Simple_SetColorPassthrough> _selBgShadow2Wrapper;
+
         public unsafe MsgWindowSelectSimple(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
             _context._utils.SigScan(UMsgProcWindow_Select_Simple_DrawListBox_SIG, "UMsgProcWindow_Select_Simple::DrawListBox", _context._utils.GetDirectAddress, addr => _drawListBox = _context._utils.MakeHooker<UMsgProcWindow_Select_Simple_DrawListBox>(UMsgProcWindow_Select_Simple_DrawListBoxImpl, addr));
+            _context._utils.SigScan(UMsgProcWindow_Select_Simple_SelBgShadow1_SIG, "UMsgProcWindow_Select_Simple::SelBgShadow1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UMsgProcWindow_Select_Simple_SetColorPassthroughImpl, out _selBgShadow1Wrapper)}",
+                };
+                _selBgShadow1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UMsgProcWindow_Select_Simple_SelBgShadow2_SIG, "UMsgProcWindow_Select_Simple::SelBgShadow2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UMsgProcWindow_Select_Simple_SetColorPassthroughImpl, out _selBgShadow2Wrapper)}",
+                };
+                _selBgShadow2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
 
         public override void Register()
@@ -288,7 +317,18 @@ namespace p3rpc.femc.Components
             _drawListBox.OriginalFunction(self);
         }
 
+        private unsafe FSprColor UMsgProcWindow_Select_Simple_SetColorPassthroughImpl(FSprColor source)
+        {
+            var oldAlpha = source.A;
+            var newColor = _uiCommon.ToFSprColor(_context._config.TextBoxBackFillColor);
+            newColor.A = oldAlpha;
+            return newColor;
+        }
+
         private unsafe delegate bool UMsgProcWindow_Select_Simple_Vtable278(UMsgProcWindow_Select_Simple* self);
         private unsafe delegate void UMsgProcWindow_Select_Simple_DrawListBox(UMsgProcWindow_Select_Simple* self);
+
+        [Function(FunctionAttribute.Register.rax, FunctionAttribute.Register.rax, false)]
+        private unsafe delegate FSprColor UMsgProcWindow_Select_Simple_SetColorPassthrough(FSprColor source);
     }
 }

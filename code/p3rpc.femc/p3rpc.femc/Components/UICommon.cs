@@ -63,6 +63,14 @@ namespace p3rpc.femc.Components
             color.A = cfgColor.A;
         }
 
+        public void SetColorCustomAlpha(ref FSprColor color, Configuration.ConfigColor cfgColor, byte alpha)
+        {
+            color.R = cfgColor.R;
+            color.G = cfgColor.G;
+            color.B = cfgColor.B;
+            color.A = alpha;
+        }
+
         public void SetColor(ref FColor color, Configuration.ConfigColor cfgColor)
         {
             color.R = cfgColor.R;

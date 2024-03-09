@@ -212,6 +212,18 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Next Day Ripple")]
         public ConfigColor NextDayRipple { get; set; } = ConfigColor.MellodiColorMid1;
 
+        [DisplayName("Shop Payment Color")]
+        public ConfigColor ShopPayColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Shop Fill Color")]
+        public ConfigColor ShopFillColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Shop Shadow Color")]
+        public ConfigColor ShopShadowColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Shop Payment Unselect Color")]
+        public ConfigColor ShopPayUnselColor { get; set; } = ConfigColor.MellodiColorMid4;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -272,6 +284,11 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableTimeSkip { get; set; } = true;
 
+        [DisplayName("Enable Money Draw")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableMoneyDraw { get; set; } = true;
+
     }
 
     /// <summary>
@@ -319,6 +336,8 @@ namespace p3rpc.femc.Configuration
 
         public static readonly ConfigColor BackLogBlackBoard = new ConfigColor(0x09, 0x03, 0x09, 0xff);
         public static readonly ConfigColor DayChangeMoonShadow = new ConfigColor(0xa3, 0x26, 0x50, 0xff);
+        public static readonly ConfigColor ShopFillColor = new ConfigColor(0xaf, 0xf, 0x6e, 0xff);
+        public static readonly ConfigColor ShopShadowColor = new ConfigColor(0xff, 0x4e, 0xdc, 0xff);
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }
