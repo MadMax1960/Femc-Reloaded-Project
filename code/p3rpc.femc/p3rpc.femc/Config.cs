@@ -236,6 +236,18 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Get Item Got Item Count Background")]
         public ConfigColor GetItemCountBgColor { get; set; } = ConfigColor.MellodiColorMid1;
 
+        [DisplayName("Mind Select: Selected Text Color")]
+        public ConfigColor MindSelActiveTextColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Mind Select Window Fill (Requires Restart)")]
+        public ConfigColor MindSelWindowFill { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Mind Select Window Border (Requires Restart)")]
+        public ConfigColor MindSelWindowBorder { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Mind Select Dot Color (Requires Restart)")]
+        public ConfigColor MindSelectDotColor { get; set; } = ConfigColor.MindSelectDotColor;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -357,6 +369,7 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor ShopShadowColor = new ConfigColor(0xff, 0x4e, 0xdc, 0xff);
         public static readonly ConfigColor GetItemFillMask = new ConfigColor(0x54, 0xd, 0x54, 0xff);
         public static readonly ConfigColor GetItemGotTextColor = new ConfigColor(0xff, 0x4a, 0xff, 0xff);
+        public static readonly ConfigColor MindSelectDotColor = new ConfigColor(0x67, 0x00, 0x00, 0xff);
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }
@@ -365,6 +378,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor(byte R, byte G, byte B, byte A) { this.R = R; this.G = G; this.B = B; this.A = A; }
 
         public uint ToU32() => (uint)(R << 0x18) | (uint)(G << 0x10) | (uint)(B << 0x8) | A;
+        public uint ToU32IgnoreAlpha() => (uint)(R << 0x18) | (uint)(G << 0x10) | (uint)(B << 0x8);
         public uint ToU32ARGB() => (uint)(A << 0x18) | (uint)(R << 0x10) | (uint)(G << 0x8) | B;
     }
 }

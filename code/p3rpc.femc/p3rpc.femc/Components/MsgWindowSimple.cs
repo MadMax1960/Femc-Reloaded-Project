@@ -281,6 +281,7 @@ namespace p3rpc.femc.Components
         public unsafe MsgWindowSelectSimple(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
             _context._utils.SigScan(UMsgProcWindow_Select_Simple_DrawListBox_SIG, "UMsgProcWindow_Select_Simple::DrawListBox", _context._utils.GetDirectAddress, addr => _drawListBox = _context._utils.MakeHooker<UMsgProcWindow_Select_Simple_DrawListBox>(UMsgProcWindow_Select_Simple_DrawListBoxImpl, addr));
+            /*
             _context._utils.SigScan(UMsgProcWindow_Select_Simple_SelBgShadow1_SIG, "UMsgProcWindow_Select_Simple::SelBgShadow1", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
@@ -299,6 +300,7 @@ namespace p3rpc.femc.Components
                 };
                 _selBgShadow2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
+            */
         }
 
         public override void Register()
