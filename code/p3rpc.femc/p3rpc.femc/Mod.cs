@@ -84,6 +84,7 @@ namespace p3rpc.femc
             if (_configuration.EnableDateTimePanel) AddModule<DateTimePanel>();
             if (_configuration.EnableTextbox)
             {
+                AddModule<MsgWindowSimpleCommon>();
                 AddModule<MsgWindowSimple>();
                 AddModule<MsgWindowSelectSimple>();
                 AddModule<MsgWindowAssist>();

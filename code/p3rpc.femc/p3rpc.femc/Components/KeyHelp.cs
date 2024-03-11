@@ -11,46 +11,6 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    [StructLayout(LayoutKind.Explicit, Size = 0x24)]
-    public struct FKeyHelpInterpolate
-    {
-        [FieldOffset(0x1c)] public float Field1C;
-        [FieldOffset(0x20)] public float Field20;
-    }
-
-    [StructLayout(LayoutKind.Explicit, Size = 0x68)]
-    public struct FKeyHelpButtonUILayout
-    {
-        [FieldOffset(0x0)] public FSprColor Color;
-    }
-    [StructLayout(LayoutKind.Explicit, Size = 0x508)]
-    public unsafe struct FKeyHelpButtonBase
-    {
-        [FieldOffset(0x10)] public USprAsset* keyHelpSpr;
-        [FieldOffset(0x18)] public USprAsset* keyHelpSpr2;
-        [FieldOffset(0x20)] public UPlgAsset* keyHelpPlg;
-        //[FieldOffset(0x48)] public FKeyHelpButtonUILayout Sprites;
-        [FieldOffset(0x1e8)] public FKeyHelpButtonUILayout TextLayout;
-        [FieldOffset(0x244)] public float KeyHelpTransparency;
-        [FieldOffset(0x258)] public int SpriteCount;
-
-        public FKeyHelpButtonUILayout* GetSpriteLayout(int i) { fixed (FKeyHelpButtonBase* self = &this) { return &((FKeyHelpButtonUILayout*)((nint)self + 0x48))[i]; } }
-    }
-    [StructLayout(LayoutKind.Explicit, Size = 0x598)]
-    public unsafe struct FKeyHelpButtonAuto
-    {
-        [FieldOffset(0x0)] public FKeyHelpButtonBase Super;
-        [FieldOffset(0x540)] public FKeyHelpInterpolate Field540;
-        [FieldOffset(0x590)] public int ActivationState;
-    }
-    [StructLayout(LayoutKind.Explicit, Size = 0x590)]
-    public unsafe struct FKeyHelpButtonFastForward
-    {
-        [FieldOffset(0x0)] public FKeyHelpButtonBase Super;
-        [FieldOffset(0x538)] public FKeyHelpInterpolate Field538;
-        [FieldOffset(0x588)] public int ActivationState;
-    }
-
     public class KeyHelp : ModuleBase
     {
         private UICommon _uiCommon;

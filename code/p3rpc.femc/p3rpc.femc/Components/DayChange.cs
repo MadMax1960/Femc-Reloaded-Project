@@ -12,63 +12,6 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    [StructLayout(LayoutKind.Explicit, Size = 0xFA8)]
-    public unsafe struct AUIDayChange
-    {
-        //[FieldOffset(0x0000)] public AUIBaseActor baseObj;
-        [FieldOffset(0x02B0)] public UAssetLoader* m_pLoader;
-        [FieldOffset(0x02B8)] public USprAsset* m_pSpr;
-        [FieldOffset(0x02C0)] public UPlgAsset* m_pPlg;
-        [FieldOffset(0x02C8)] public FGetUIParameter m_tagUip;
-        //[FieldOffset(0x0340)] public FDayChangeRipple m_tagRipple;
-        //[FieldOffset(0x0370)] public FDayChangeRipple m_tagLoadRipple;
-        [FieldOffset(0x03A0)] public FCurveFloatAnimation m_curveInAnim;
-        [FieldOffset(0x03D0)] public FCurveFloatAnimation m_curveInRectMaskAnim;
-        [FieldOffset(0x0400)] public FCurveFloatAnimation m_curveCenterBlueBandMaskAnim;
-        [FieldOffset(0x0430)] public FCurveFloatAnimation m_curve1DaySpeedAnim;
-        [FieldOffset(0x0460)] public FCurveFloatAnimation m_curveSkipSpeedAnim;
-        [FieldOffset(0x0490)] public FCurveFloatAnimation m_curveSuperSkipSpeedAnim;
-        //[FieldOffset(0x04C0)] public FCurveVectorAnimation m_curveCenterMoonAgeInOutAnim;
-        //[FieldOffset(0x04F0)] public FCurveVectorAnimation m_curveBigMoonAgeInOutAnim;
-        [FieldOffset(0x0520)] public FCurveFloatAnimation m_curveCommonMoveAnim;
-        //[FieldOffset(0x0550)] public FCurveVectorAnimation m_curveDaysGroupInAnim;
-        //[FieldOffset(0x0580)] public FCurveVectorAnimation m_curveDayInAnim;
-        //[FieldOffset(0x05B0)] public FCurveVectorAnimation m_curveDayOutAnim;
-        [FieldOffset(0x05E0)] public FCurveFloatAnimation m_curveBlueBandAnim;
-        //[FieldOffset(0x0610)] public FCurveVectorAnimation m_curveSkipMoonAgeFadeAnim;
-        [FieldOffset(0x0640)] public UDataTable* m_pLayoutData;
-        [FieldOffset(0x0648)] public UUILayoutDataTable* m_pLayoutDataParam;
-        [FieldOffset(0x870)] public FSprColor LimitTextColor; // #3664ad
-        [FieldOffset(0x924)] public FSprColor MoonColor; // #474343
-        [FieldOffset(0xae4)] public FSprColor BandColorPrevDay; // #0049a2
-        [FieldOffset(0xb58)] public FSprColor BandColorNextDay; // #0049a2
-        // CurrentDayMoonShadowColor // #003e7c
-        // DayCounterColor // #3664ad
-        // RippleEffectColor // #488ef0
-
-    }
-
-    [StructLayout(LayoutKind.Explicit, Size = 0x8D8)]
-    public unsafe struct AUITimeChange
-    {
-        //[FieldOffset(0x0000)] public AUIBaseActor baseObj;
-        [FieldOffset(0x02B0)] public UAssetLoader* m_pLoader;
-        [FieldOffset(0x02B8)] public USprAsset* m_pSpr;
-        //[FieldOffset(0x02C0)] public FCurveVectorAnimation m_curveRotateAnim1;
-        //[FieldOffset(0x02F0)] public FCurveVectorAnimation m_curveRotateAnim2;
-        //[FieldOffset(0x0320)] public FCurveVectorAnimation m_curveRotateAnim3;
-        //[FieldOffset(0x0350)] public FCurveVectorAnimation m_curveRotateAnim4;
-        //[FieldOffset(0x0380)] public FCurveVectorAnimation m_curveRotateAnim5;
-        //[FieldOffset(0x03B0)] public FCurveVectorAnimation m_curveOutAnim;
-        [FieldOffset(0x03E0)] public FGetUIParameter m_uip;
-        [FieldOffset(0x0458)] public UDataTable* m_pTimeChangeUIDT;
-        [FieldOffset(0x740)] public FSprColor MainBarColor;
-        [FieldOffset(0x828)] public FSprColor TopBarColor;
-        [FieldOffset(0x08B8)] public UDataTable* m_pTimeChangeDataTable;
-        [FieldOffset(0x08C0)] public UUILayoutDataTable* m_pTimeChangeLayoutDataTable;
-        [FieldOffset(0x08C8)] public UDataTable* m_pTimeChangeMaskDataTable;
-        [FieldOffset(0x08D0)] public UUILayoutDataTable* m_pTimeChangeMaskLayoutDataTable;
-    }
     public class DayChange : ModuleBase
     {
         private UICommon _uiCommon;

@@ -602,7 +602,7 @@ namespace p3rpc.femc.Components
                 _uiCommon._drawPlg(&self->DrawSpr, x - 4, fy - 4, 0, &bgColor, 0xa3, 1, 1, 0, campPlg, self->CalendarDrawQueue);
                 var textColor = _uiCommon.ToFColorBP(_context._config.CampCalendarTextColor);
                 var layoutTable2 = self->pMainActor->OthersLayoutDataTable->GetLayoutDataTableEntry(2);
-                var textPos = new FVector2D(x + layoutTable2->angle, fy + layoutTable2->scale);
+                var textPos = new FVector2D(x + layoutTable2->position.X, fy + layoutTable2->position.Y);
                 _uiCommon._drawSpr(&self->DrawSpr, textPos.X, textPos.Y, 0, &textColor, 0x4fc, 1, 1, 0, campSpr, EUI_DRAW_POINT.UI_DRAW_RIGHT_TOP, self->CalendarDrawQueue);
             }
         }

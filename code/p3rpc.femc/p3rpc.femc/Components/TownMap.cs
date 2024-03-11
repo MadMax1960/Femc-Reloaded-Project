@@ -12,11 +12,6 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    [StructLayout(LayoutKind.Explicit, Size = 0x428)]
-    public unsafe struct FTownMapMarker2
-    {
-        [FieldOffset(0xf0)] public FSprColor IconColor;
-    }
     public class TownMap : ModuleBase
     {
         // In AUITownMapActor::DrawTownMapUIInner

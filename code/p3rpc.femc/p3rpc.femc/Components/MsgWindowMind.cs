@@ -65,26 +65,18 @@ namespace p3rpc.femc.Components
             _drawMessageBox.OriginalFunction(self);
         }
 
-        private unsafe FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBgImpl(nint self)
+        private unsafe FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBgImpl(UMsgProcWindow_Mind* self)
         {
             var configColorRaw = _uiCommon.ToFSprColor(_context._config.MindWindowBgDots);
-            configColorRaw.A = (byte)((1.0 - *(float*)(self + 0x1a4)) * 102 * *(float*)(self + 0x190));
+            configColorRaw.A = (byte)((1.0 - self->leftSpotBgOpacity2) * 102 * self->leftSpotBgOpacity1);
             return configColorRaw;
         }
 
         private unsafe delegate void UMsgProcWindow_Mind_DrawMessageBox(UMsgProcWindow_Mind* self);
         [Function(new Register[] { FunctionAttribute.Register.rdi }, FunctionAttribute.Register.rax, false)]
-        private unsafe delegate FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg(nint self);
+        private unsafe delegate FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg(UMsgProcWindow_Mind* self);
     }
 
-    [StructLayout(LayoutKind.Explicit, Size = 0x34)]
-    public unsafe struct DrawCircle
-    {
-        [FieldOffset(0x0)] public FVector position;
-        [FieldOffset(0xc)] public FVector2D radius;
-        [FieldOffset(0x18)] public float Antialiasing;
-        [FieldOffset(0x1c)] public FSprColor Color;
-    }
     public class MsgWindowSelectMind : ModuleAsmInlineColorEdit
     {
         private string UMsgProcWindow_Select_Mind_DrawMessageBox_SIG = "48 8B C4 48 89 58 ?? 48 89 70 ?? 48 89 78 ?? 55 41 54 41 55 41 56 41 57 48 8D A8 ?? ?? ?? ?? 48 81 EC B0 02 00 00 0F 29 70 ?? 0F 29 78 ??";

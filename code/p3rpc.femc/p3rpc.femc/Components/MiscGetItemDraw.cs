@@ -9,27 +9,6 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    [StructLayout(LayoutKind.Explicit, Size = 0xE38)]
-    public unsafe struct AUIMiscGetItemDraw
-    {
-        //[FieldOffset(0x0000)] public AUIBaseActor baseObj;
-        [FieldOffset(0x0308)] public USprAsset* m_pGetItemSpr;
-        [FieldOffset(0x0310)] public UPlgAsset* m_pGetPlg;
-        [FieldOffset(0x0318)] public UDataTable* m_pItemGetDT;
-        [FieldOffset(0x0320)] public USprAsset* m_pSpecialKeyHelpSpr;
-        [FieldOffset(0x0328)] public USprAsset* m_pSpecialKeyHelpTextSpr;
-        [FieldOffset(0x0330)] public UDataTable* m_pLayoutTextColDT;
-        [FieldOffset(0x0338)] public UDataTable* m_pLayoutOkNextDT;
-        [FieldOffset(0x0340)] public UDataTable* m_pLayoutOkNextMaskDT;
-        [FieldOffset(0x0348)] public UUILayoutDataTable* m_pLayoutTextCol;
-        [FieldOffset(0x0350)] public UUILayoutDataTable* m_pLayoutOkNext;
-        [FieldOffset(0x0358)] public UUILayoutDataTable* m_pLayoutOkNextMask;
-        [FieldOffset(0x440)] public SprDefStruct1 ItemCountBg;
-        [FieldOffset(0x7e8)] public LocationSelectParams1 FirstArrowBg;
-        [FieldOffset(0x85c)] public LocationSelectParams1 SecondArrowBg;
-        [FieldOffset(0xaa0)] public PlgDefStruct1 GotGraphicLeftOutline;
-        [FieldOffset(0xae0)] public PlgDefStruct1 GotGraphicRightFill;
-    }
     public class MiscGetItemDraw : ModuleBase
     {
         private string AUIMiscGetItemDraw_DrawGetItem_SIG = "48 89 5C 24 ?? 48 89 74 24 ?? 55 57 41 54 41 56 41 57 48 8B EC 48 81 EC 80 00 00 00 8B 81 ?? ?? ?? ??";

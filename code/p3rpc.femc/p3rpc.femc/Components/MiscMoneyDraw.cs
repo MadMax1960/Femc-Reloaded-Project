@@ -9,23 +9,6 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    [StructLayout(LayoutKind.Explicit, Size = 0x858)]
-    public unsafe struct AUIMiscMoneyDraw
-    {
-        //[FieldOffset(0x0000)] public AUIBaseActor baseObj;
-        [FieldOffset(0x02D8)] public USprAsset* m_pMoneySpr;
-        [FieldOffset(0x310)] public FSprColor PayMoneyMarginColor;
-        [FieldOffset(0x378)] public FSprColor BuyItemAmountSubtractColor;
-        [FieldOffset(0x3e0)] public FSprColor White3E0;
-        [FieldOffset(0x448)] public FSprColor BuyItemBlankAmountColor;
-        [FieldOffset(0x4d4)] public FSprColor BgImageTintColorFill;
-        [FieldOffset(0x548)] public FSprColor BgImageTintColorBorder;
-        [FieldOffset(0x5bc)] public FSprColor MoneyTiltShadowColor;
-        [FieldOffset(0x630)] public FSprColor Field630;
-        [FieldOffset(0x67c)] public FSprColor White67C;
-        [FieldOffset(0x6cc)] public FSprColor BuyItemAmountSubtractNumberColor;
-        [FieldOffset(0x708)] public int MoneyDialogType;
-    }
     public class MiscMoneyDraw : ModuleBase
     {
         private UICommon _uiCommon;
