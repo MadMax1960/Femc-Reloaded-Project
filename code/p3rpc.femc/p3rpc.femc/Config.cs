@@ -266,6 +266,27 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Generic Select Character Shadow (Requires Restart)")]
         public ConfigColor GenericSelectCharacterShadow { get; set; } = ConfigColor.MellodiColorMid4;
 
+        [DisplayName("Message Box Select Text Color")]
+        public ConfigColor MsgSimpleSelectTextColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Message Box Select Box Shadow Color")]
+        public ConfigColor MsgSimpleSelectBoxShadow { get; set; } = ConfigColor.MellodiColorDark1;
+
+        [DisplayName("Message Box Shadow Color")]
+        public ConfigColor MsgSimpleSelectShadowEx { get; set; } = ConfigColor.TextBoxFrontFillColor;
+
+        [DisplayName("Message Box Border Color")]
+        public ConfigColor MsgSimpleSelectBorderColorEx { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("System Message Light Color (Requires Restart)")]
+        public ConfigColor MsgSimpleSystemLightColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("System Message Dark Color")]
+        public ConfigColor MsgSimpleSystemDarkColor { get; set; } = ConfigColor.MsgWindowSystemDark;
+
+        [DisplayName("System Message Dark Haze Color")]
+        public ConfigColor MsgSimpleSystemGradationColor { get; set; } = ConfigColor.MellodiColorDark3;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -388,6 +409,7 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor GetItemFillMask = new ConfigColor(0x54, 0xd, 0x54, 0xff);
         public static readonly ConfigColor GetItemGotTextColor = new ConfigColor(0xff, 0x4a, 0xff, 0xff);
         public static readonly ConfigColor MindSelectDotColor = new ConfigColor(0x67, 0x00, 0x00, 0xff);
+        public static readonly ConfigColor MsgWindowSystemDark = new ConfigColor(0x2f, 0x00, 0x14, 0xff);
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }

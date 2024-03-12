@@ -270,7 +270,6 @@ namespace p3rpc.femc.Components
     {
         private string UMsgProcWindow_Select_Simple_DrawListBox_SIG = "40 55 41 56 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 68 04 00 00";
         private string USelItem_CopySelEntries_SIG = "48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC 20 8B 41 ?? 48 89 D3";
-        //private string FUN_1413320c0_SIG = "48 89 6C 24 ?? 56 48 83 EC 70 0F 29 74 24 ??";
         private string SelBoxStruct2_14105cd80_SIG = "4C 8B DC 56 41 56 48 81 EC 88 00 00 00 33 C0";
         private string LocationSelectParam1_DrawSelectMapBg_SIG = "E8 ?? ?? ?? ?? 33 C0 C7 44 24 ?? 24 00 00 00 C7 44 24 ?? 0F 00 00 00 45 33 C0";
         private string UMsgProcWindow_Select_Simple_DrawSelectText_SIG = "48 8B C4 48 89 58 ?? 48 89 70 ?? 55 57 41 54 41 56 41 57 48 8D A8 ?? ?? ?? ?? 48 81 EC 30 02 00 00";
@@ -281,6 +280,7 @@ namespace p3rpc.femc.Components
         private SelBoxStruct2_14105cd80 _selBoxFunc1;
         private LocationSelectParam1_DrawSelectMapBg _drawSelectMapBg;
         private UMsgProcWindow_Select_Simple_DrawSelectText _drawSelectText;
+        private DrawRoundRectangle_1414e8450 _drawRoundRect;
 
         private UICommon _uiCommon;
         private Bustup _bustup;
@@ -297,14 +297,6 @@ namespace p3rpc.femc.Components
             { -236f, 1.596000f, 23f, 35f, 1.567000f, 18f, 32f, 1.583000f, -399f}
         };
 
-        // At least until I feel like rewriting the entire function like I did with the text box lol
-        //private string UMsgProcWindow_Select_Simple_SelBgShadow1_SIG = "4D 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 41 0F 28 DB F3 44 0F 11 5C 24 ?? 49 8B D7 89 45 ?? E8 ?? ?? ?? ?? BA 02 00 00 00";
-        //private string UMsgProcWindow_Select_Simple_SelBgShadow2_SIG = "4D 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 41 0F 28 DB F3 44 0F 11 5C 24 ?? 49 8B D7 89 45 ?? E8 ?? ?? ?? ?? 33 D2";
-        //private IAsmHook _selBgShadow1;
-        //private IAsmHook _selBgShadow2;
-        //private IReverseWrapper<UMsgProcWindow_Select_Simple_SetColorPassthrough> _selBgShadow1Wrapper;
-        //private IReverseWrapper<UMsgProcWindow_Select_Simple_SetColorPassthrough> _selBgShadow2Wrapper;
-
         public unsafe MsgWindowSelectSimple(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
             _context._utils.SigScan(UMsgProcWindow_Select_Simple_DrawListBox_SIG, "UMsgProcWindow_Select_Simple::DrawListBox", _context._utils.GetDirectAddress, addr => _drawListBox = _context._utils.MakeHooker<UMsgProcWindow_Select_Simple_DrawListBox>(UMsgProcWindow_Select_Simple_DrawListBoxImpl, addr));
@@ -312,6 +304,7 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(SelBoxStruct2_14105cd80_SIG, "SelBoxStruct2::FUN_14105cd80", _context._utils.GetDirectAddress, addr => _selBoxFunc1 = _context._utils.MakeWrapper<SelBoxStruct2_14105cd80>(addr));
             _context._utils.SigScan(LocationSelectParam1_DrawSelectMapBg_SIG, "LocationSelectParams1::DrawSelectMapBg", _context._utils.GetIndirectAddressShort, addr => _drawSelectMapBg = _context._utils.MakeWrapper<LocationSelectParam1_DrawSelectMapBg>(addr));
             _context._utils.SigScan(UMsgProcWindow_Select_Simple_DrawSelectText_SIG, "UMsgProcWindow_Select_Simple_::DrawSelectText", _context._utils.GetDirectAddress, addr => _drawSelectText = _context._utils.MakeWrapper<UMsgProcWindow_Select_Simple_DrawSelectText>(addr));
+            _context._utils.SigScan(DrawRoundRectangle_1414e8450_SIG, "DrawRoundRectangle_1414e8450", _context._utils.GetDirectAddress, addr => _drawRoundRect = _context._utils.MakeWrapper<DrawRoundRectangle_1414e8450>(addr));
         }
 
         public override void Register()
@@ -348,13 +341,13 @@ namespace p3rpc.femc.Components
                     _selBoxFunc1((SelBoxStruct2*)selEntries->selEntries.allocator_instance[i], &entryAllocTL[i].X, &entryAllocTL[i].Y, 0, null);
                     _selBoxFunc1((SelBoxStruct2*)selEntries->selEntries.allocator_instance[i], &entryAllocBR[i].X, &entryAllocBR[i].Y, 1, null);
                 }
-                //for (int i = 0; i < selEntries->selCount; i++) _context._logger.WriteLine($"index {i}: top left {entriesTL[i]}, bottom right {entriesBR[i]}");
                 var posYTrack = ProgressTrackFraction(entryAllocBR[visibleEntries].X, 314, 532, 0);
-
+                // draw bustup
                 _uiCommon._setRenderTarget(masker, 0, *_uiCommon._ActiveDrawTypeId);
                 _bustup.UBustupObject_DrawBustupShadowImpl(self->BustupObject_, self->bustupShadowX + 1106, -151, 1, *_uiCommon._ActiveDrawTypeId, 1);
                 _bustup._drawBustupMain(self->BustupObject_, self->bustupMainX + 1122, -136, 1, *_uiCommon._ActiveDrawTypeId, 1);
-                _uiCommon._setPresetBlendState((nint)masker, EUIOTPRESET_BLEND_TYPE.UI_OT_PRESET_BLEND_ADDTRANS);
+                // draw speech box shadow
+                _uiCommon._setPresetBlendState((nint)masker, EUIOTPRESET_BLEND_TYPE.UI_OT_PRESET_BLEND_OPAQUE);
                 var speechShadowX = self->speechShadowOffsetX + 1554;
                 var speechShadow = new PlgDefStruct1(
                     new FVector(
@@ -364,8 +357,11 @@ namespace p3rpc.femc.Components
                         Lerp(0.777f, 1, posYTrack) * self->speechShadowMod.X,
                         ListBoxFloats[visibleEntries, 1] * self->speechShadowMod.Y, 0), 
                     new FVector(0, self->speechShadowRotation + 4.6f, 0),
-                    new FSprColor(0, 0x23, 0xf7, (byte)(self->speechShadowOpacity * 255)), 
+                    _uiCommon.ToFSprColorWithAlpha(_context._config.MsgSimpleSelectShadowEx, (byte)(self->speechShadowOpacity * 102)),
                     0x17);
+                _uiCommon._plgFunc1(&speechShadow, (nint)masker, self->MsgPlg_, 0, 0);
+                _uiCommon._setPresetBlendState((nint)masker, EUIOTPRESET_BLEND_TYPE.UI_OT_PRESET_BLEND_ADDTRANS);
+                speechShadow.Color = _uiCommon.ToFSprColorWithAlpha(_context._config.MsgSimpleSelectShadowEx, (byte)(self->speechShadowOpacity * 255));
                 _uiCommon._plgFunc1(&speechShadow, (nint)masker, self->MsgPlg_, 0, 0);
                 // yeah idk what LocationSelectParams1 really does
                 var speechBgData = (LocationSelectParams1*)NativeMemory.AllocZeroed((nuint)sizeof(LocationSelectParams1));
@@ -383,7 +379,7 @@ namespace p3rpc.femc.Components
                 speechBgData->Field5C = ulong.MaxValue;
                 speechBgData->Field70 = uint.MaxValue;
                 speechBgData->Color = new FSprColor(0x12, 0x14, 0x23, (byte)(self->speechShadowOpacity * 255 * 0.9));
-
+                // draw main speech box
                 var speechBgMain = new PlgDefStruct1(
                     new FVector(
                         ListBoxFloats[visibleEntries, 2] * self->speechShadowMod.X + speechShadowX,
@@ -399,7 +395,6 @@ namespace p3rpc.femc.Components
                     new FVector(_msgWindowCommon._messageBoxFloats1[0], _msgWindowCommon._messageBoxFloats1[1], _msgWindowCommon._messageBoxFloats1[2]),
                     new FSprColor(0x12, 0x14, 0x23, (byte)(self->speechShadowOpacity * 255 * 0.9)),
                     0x14);
-
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
                 _drawSelectMapBg(speechBgData, (nint)masker, 0, 0);
@@ -412,10 +407,10 @@ namespace p3rpc.femc.Components
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_InverseDestAlpha,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
                 _drawSelectMapBg(speechBgData, (nint)masker, 0, 0);
-
+                
                 var bgFillTexSprite = new SprDefStruct1(
                     new FVector2D(speechShadowX - 243, 594), 0, 1.5f, 86.15f, 0, 
-                    new FSprColor(0xe, 0, 0xcf, (byte)(self->speechShadowOpacity * 255 * 0.4)), 
+                    new FSprColor(0xd4, 0x15, 0x5f, (byte)(self->speechShadowOpacity * 255 * 0.4)), 
                     1, new FVector4(960, 540, 0, 1), 0, 0, 0, 1, 1, 0, 0);
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
@@ -429,7 +424,9 @@ namespace p3rpc.femc.Components
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
                     EUIBlendOperation.UI_BO_Max, EUIBlendFactor.UI_BF_One, EUIBlendFactor.UI_BF_One, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
                 _uiCommon._plgFunc1(&speechBgTip, (nint)masker, self->MsgPlg_, 0, 0);
-
+                _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
+                    EUIBlendOperation.UI_BO_ReverseSubtract, EUIBlendFactor.UI_BF_One, EUIBlendFactor.UI_BF_One, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
+                
                 var bgFillPlg2 = new PlgDefStruct1(
                     new FVector(
                         ListBoxFloats[visibleEntries, 5] * self->speechShadowMod.X + speechShadowX,
@@ -449,34 +446,64 @@ namespace p3rpc.femc.Components
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_InverseDestAlpha,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
 
-                speechBgMain.SetColor(new FSprColor(0x30, 0x35, 0x9b, (byte)(self->speechShadowOpacity * 255 * 0.9)));
-                speechBgTip.SetColor(new FSprColor(0x30, 0x35, 0x9b, (byte)(self->speechShadowOpacity * 255 * 0.9)));
+                speechBgMain.SetColor(_uiCommon.ToFSprColorWithAlpha(_context._config.MsgSimpleSelectBorderColorEx, (byte)(self->speechShadowOpacity * 255 * 0.9)));
+                speechBgTip.SetColor (_uiCommon.ToFSprColorWithAlpha(_context._config.MsgSimpleSelectBorderColorEx, (byte)(self->speechShadowOpacity * 255 * 0.9)));
                 _uiCommon._plgFunc1(&speechBgMain, (nint)masker, self->MsgPlg_, 0, 0);
                 _uiCommon._plgFunc1(&speechBgTip, (nint)masker, self->MsgPlg_, 0, 0);
                 _uiCommon._setPresetBlendState((nint)masker, EUIOTPRESET_BLEND_TYPE.UI_OT_PRESET_BLEND_OPAQUE);
-
-                // DT_UILayout_MsgProcWindowSELECT.uasset
+                
+                // get params from DT_UILayout_MsgProcWindowSELECT.uasset
                 var selTextCol = self->LayoutDataTable != null ? self->LayoutDataTable->GetLayoutDataTableEntry(0)->position : new FVector2D(0, 0);
                 var nonSelTextCol = self->LayoutDataTable != null ? self->LayoutDataTable->GetLayoutDataTableEntry(1)->position : new FVector2D(0, 0);
                 var selTexOffset = self->LayoutDataTable != null ? self->LayoutDataTable->GetLayoutDataTableEntry(2)->position : new FVector2D(0, 0);
                 var nonSelTexOffset = self->LayoutDataTable != null ? self->LayoutDataTable->GetLayoutDataTableEntry(3)->position : new FVector2D(0, 0);
+                var textEntries = selEntries->selCount < 8 ? selEntries->selCount : 7;
 
-                //_context._logger.WriteLine($"{selTextCol}, {nonSelTextCol}, {selTexOffset}, {nonSelTexOffset}");
-
-                if (selEntries->selCount - 1 > 6)
+                if (selEntries->selCount - 1 > 6) // Draw scrollbar
                 {
-                    // scrollbar
+                    if (selEntries->field04 != 0)
+                    {
+                        var scrollSpr1 = new SprDefStruct1(2, 
+                            new FVector2D(self->scrollbarOffset1.X - posYTrack - 11, self->scrollbarOffset1.Y + ListBoxFloats[visibleEntries, 8] + 751),
+                            new FSprColor(0xff, 0xff, 0xff, (byte)(self->speechShadowOpacity * 255 * 0.9)), 1, 0, 0);
+                        _uiCommon._spriteFunc1(&scrollSpr1, (nint)masker, self->MsgSpr_, 0, 0);
+                    }
+                    if (selEntries->field04 != selEntries->selCount - textEntries)
+                    {
+                        var scrollSpr2 = new SprDefStruct1(2,
+                            new FVector2D(self->scrollbarOffset2.X - posYTrack - 40, self->scrollbarOffset1.Y + ListBoxFloats[visibleEntries, 8] + 1228),
+                            new FSprColor(0xff, 0xff, 0xff, (byte)(self->speechShadowOpacity * 255 * 0.9)), 1, 0, 180);
+                        _uiCommon._spriteFunc1(&scrollSpr2, (nint)masker, self->MsgSpr_, 0, 0);
+                    }
                 }
 
+                // Draw selection entry text + selection rectangle
+                var textPos = new FVector2D(speechShadowX - 252, ListBoxFloats[visibleEntries, 8] + 811);
+                var selBoxLength = entryAllocBR[self->BRIndex1 + self->BRIndex2].X > 314 ? entryAllocBR[self->BRIndex1 + self->BRIndex2].X + 120 : 434;
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_SourceAlpha, EUIBlendFactor.UI_BF_InverseSourceAlpha,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
+                _drawSelectText(self, selEntries, textEntries, &entryTL, &entryBR, textPos.X, textPos.Y, 
+                    new FSprColor(0xf0, 0xf3, 0xfc, (byte)(self->speechShadowOpacity * 255 * 0.9)), selTextCol, nonSelTextCol, selTexOffset, nonSelTexOffset);
 
-                var textEntries = selEntries->selCount < 8 ? selEntries->selCount : 7;
-                var textPos = new FVector2D(speechShadowX - 252, ListBoxFloats[visibleEntries, 8] + 811);
+                var selBoxShadow = _uiCommon.ToFSprColorWithAlpha(_context._config.MsgSimpleSelectTextColor, (byte)(self->speechShadowOpacity * 255 * 0.9));
+                _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_SourceAlpha, EUIBlendFactor.UI_BF_One,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
+                _drawRoundRect(textPos.X + self->selBoxShadow.X - selBoxLength / 2, textPos.Y + self->selBoxShadow.Y - 34, 0, 
+                    selBoxLength, 54, 6, selBoxShadow, 0, 0, 0, *(int*)_uiCommon._ActiveDrawTypeId, 1);
 
-                _drawSelectText(
-                    self, selEntries, textEntries, &entryTL, &entryBR, textPos.X, textPos.Y, new FSprColor(0xff, 0x00, 0x00, 0xff), 
-                    selTextCol, nonSelTextCol, selTexOffset, nonSelTexOffset);
+                _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_SourceAlpha, EUIBlendFactor.UI_BF_InverseSourceAlpha,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_One, EUIBlendFactor.UI_BF_One, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
+                _drawRoundRect(textPos.X + self->selBoxShadow.X - selBoxLength / 2, textPos.Y + self->selBoxShadow.Y - 27, 0,
+                    selBoxLength, 54, 6, new FSprColor(0xff, 0xff, 0xff, (byte)(self->speechShadowOpacity * 255 * 0.9)), 0, 0, 0, *(int*)_uiCommon._ActiveDrawTypeId, 1);
+
+                var selTextColor = _uiCommon.ToFSprColorWithAlpha(_context._config.MsgSimpleSelectTextColor, (byte)(self->speechShadowOpacity * 255 * 0.9));
+                _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
+                _drawSelectText(self, selEntries, textEntries, &entryTL, &entryBR, textPos.X, textPos.Y, selTextColor, selTextCol, nonSelTextCol, selTexOffset, nonSelTexOffset);
+
+                _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_InverseDestAlpha,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
+                _drawSelectText(self, selEntries, textEntries, &entryTL, &entryBR, textPos.X, textPos.Y, selTextColor, selTextCol, nonSelTextCol, selTexOffset, nonSelTexOffset);
 
 
                 NativeMemory.Free(speechBgData);
@@ -484,7 +511,7 @@ namespace p3rpc.femc.Components
                 NativeMemory.Free(entryAllocBR);
                 NativeMemory.Free(selEntries);
             }
-            //rawListBox.OriginalFunction(self);
+            //_drawListBox.OriginalFunction(self);
         }
 
         private unsafe FSprColor UMsgProcWindow_Select_Simple_SetColorPassthroughImpl(FSprColor source)
@@ -503,5 +530,7 @@ namespace p3rpc.femc.Components
         private unsafe delegate void UMsgProcWindow_Select_Simple_DrawSelectText(
             UMsgProcWindow_Select_Simple* self, SelBoxStruct1* entries, int count, TArray<FVector2D>* topLeft, TArray<FVector2D>* bottomRight, float posX, 
             float posY, FSprColor color, FVector2D selTexCol, FVector2D unSelTexCol, FVector2D selTexOffset, FVector2D nonSelTexOffset);
+        private unsafe delegate void DrawRoundRectangle_1414e8450(float x, float y, float z, float sX, float sY, int a6,
+            FSprColor color, float a8, float a9, float a10, int queueId, int a12);
     }
 }

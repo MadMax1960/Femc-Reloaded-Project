@@ -54,7 +54,9 @@ namespace p3rpc.femc.Components
         };
 
         public FColor ToFColor(Configuration.ConfigColor cfgColor) => new FColor(cfgColor.R, cfgColor.G, cfgColor.B, cfgColor.A);
+        public FColor ToFColorWithAlpha(Configuration.ConfigColor cfgColor, byte alpha) => new FColor(cfgColor.R, cfgColor.G, cfgColor.B, alpha);
         public FSprColor ToFSprColor(Configuration.ConfigColor cfgColor) => new FSprColor(cfgColor.R, cfgColor.G, cfgColor.B, cfgColor.A);
+        public FSprColor ToFSprColorWithAlpha(Configuration.ConfigColor cfgColor, byte alpha) => new FSprColor(cfgColor.R, cfgColor.G, cfgColor.B, alpha);
         public FLinearColor ToFLinearColor(Configuration.ConfigColor cfgColor) => new FLinearColor((float)cfgColor.R / 256, (float)cfgColor.G / 256, (float)cfgColor.B / 256, (float)cfgColor.A / 256);
         public FColor ToFColorBP(Configuration.ConfigColor cfgColor) => new FColor(cfgColor.A, cfgColor.R, cfgColor.G, cfgColor.B);
         public void SetColor(ref FSprColor color, Configuration.ConfigColor cfgColor)
