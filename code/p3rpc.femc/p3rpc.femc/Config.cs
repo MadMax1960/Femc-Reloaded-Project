@@ -197,6 +197,96 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Location Select Selected Item Color (Requires Restart)")]
         public ConfigColor LocationSelectSelColor { get; set; } = ConfigColor.MellodiColorMid1;
 
+        [DisplayName("Time Skip Color")]
+        public ConfigColor TimeSkipColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Next Day Band Color")]
+        public ConfigColor NextDayBandColor { get; set; } = ConfigColor.MellodiColorDark1;
+
+        [DisplayName("Next Day Text Color")]
+        public ConfigColor NextDayTextColor { get; set; } = ConfigColor.MellodiColorMid3;
+
+        [DisplayName("Next Day Moon Shadow Color")]
+        public ConfigColor NextDayMoonShadowColor { get; set; } = ConfigColor.DayChangeMoonShadow;
+
+        [DisplayName("Next Day Ripple")]
+        public ConfigColor NextDayRipple { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Shop Payment Color")]
+        public ConfigColor ShopPayColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Shop Fill Color")]
+        public ConfigColor ShopFillColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Shop Shadow Color")]
+        public ConfigColor ShopShadowColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Shop Payment Unselect Color")]
+        public ConfigColor ShopPayUnselColor { get; set; } = ConfigColor.MellodiColorMid4;
+
+        [DisplayName("Get Item Background Mask Color")]
+        public ConfigColor GetItemBgMaskColor { get; set; } = ConfigColor.GetItemFillMask;
+
+        [DisplayName("Get Item Background Color")]
+        public ConfigColor GetItemBgColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Get Item Got Text Color")]
+        public ConfigColor GetItemGotTextColor { get; set; } = ConfigColor.GetItemGotTextColor;
+
+        [DisplayName("Get Item Got Item Count Background")]
+        public ConfigColor GetItemCountBgColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Mind Select: Selected Text Color")]
+        public ConfigColor MindSelActiveTextColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Mind Select Window Fill (Requires Restart)")]
+        public ConfigColor MindSelWindowFill { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Mind Select Window Border (Requires Restart)")]
+        public ConfigColor MindSelWindowBorder { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Mind Select Dot Color (Requires Restart)")]
+        public ConfigColor MindSelectDotColor { get; set; } = ConfigColor.MindSelectDotColor;
+
+        [DisplayName("Generic Select Character Backplate Color ")]
+        public ConfigColor GenericSelectCharacterBackplate { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Generic Select List Color Morning")]
+        public ConfigColor GenericSelectListColorMorning { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Generic Select List Color After School")]
+        public ConfigColor GenericSelectListColorAfterSchool { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Generic Select List Color Night")]
+        public ConfigColor GenericSelectListColorNight { get; set; } = ConfigColor.MellodiColorMid3;
+
+        [DisplayName("Generic Select Title Color")]
+        public ConfigColor GenericSelectTitle { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Generic Select Character Shadow (Requires Restart)")]
+        public ConfigColor GenericSelectCharacterShadow { get; set; } = ConfigColor.MellodiColorMid4;
+
+        [DisplayName("Message Box Select Text Color")]
+        public ConfigColor MsgSimpleSelectTextColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Message Box Select Box Shadow Color")]
+        public ConfigColor MsgSimpleSelectBoxShadow { get; set; } = ConfigColor.MellodiColorDark1;
+
+        [DisplayName("Message Box Shadow Color")]
+        public ConfigColor MsgSimpleSelectShadowEx { get; set; } = ConfigColor.TextBoxFrontFillColor;
+
+        [DisplayName("Message Box Border Color")]
+        public ConfigColor MsgSimpleSelectBorderColorEx { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("System Message Light Color (Requires Restart)")]
+        public ConfigColor MsgSimpleSystemLightColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("System Message Dark Color")]
+        public ConfigColor MsgSimpleSystemDarkColor { get; set; } = ConfigColor.MsgWindowSystemDark;
+
+        [DisplayName("System Message Dark Haze Color")]
+        public ConfigColor MsgSimpleSystemGradationColor { get; set; } = ConfigColor.MellodiColorDark3;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -252,6 +342,21 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnablePartyPanel { get; set; } = true;
 
+        [DisplayName("Enable Time Skip")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableTimeSkip { get; set; } = true;
+
+        [DisplayName("Enable Money Draw")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableMoneyDraw { get; set; } = true;
+
+        [DisplayName("Enable Get Item")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableGetItem { get; set; } = true;
+
     }
 
     /// <summary>
@@ -298,6 +403,13 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor MellodiColorDark3 = new ConfigColor(0x49, 0x4, 0x21, 0xff);
 
         public static readonly ConfigColor BackLogBlackBoard = new ConfigColor(0x09, 0x03, 0x09, 0xff);
+        public static readonly ConfigColor DayChangeMoonShadow = new ConfigColor(0xa3, 0x26, 0x50, 0xff);
+        public static readonly ConfigColor ShopFillColor = new ConfigColor(0xaf, 0xf, 0x6e, 0xff);
+        public static readonly ConfigColor ShopShadowColor = new ConfigColor(0xff, 0x4e, 0xdc, 0xff);
+        public static readonly ConfigColor GetItemFillMask = new ConfigColor(0x54, 0xd, 0x54, 0xff);
+        public static readonly ConfigColor GetItemGotTextColor = new ConfigColor(0xff, 0x4a, 0xff, 0xff);
+        public static readonly ConfigColor MindSelectDotColor = new ConfigColor(0x67, 0x00, 0x00, 0xff);
+        public static readonly ConfigColor MsgWindowSystemDark = new ConfigColor(0x2f, 0x00, 0x14, 0xff);
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }
@@ -306,6 +418,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor(byte R, byte G, byte B, byte A) { this.R = R; this.G = G; this.B = B; this.A = A; }
 
         public uint ToU32() => (uint)(R << 0x18) | (uint)(G << 0x10) | (uint)(B << 0x8) | A;
+        public uint ToU32IgnoreAlpha() => (uint)(R << 0x18) | (uint)(G << 0x10) | (uint)(B << 0x8);
         public uint ToU32ARGB() => (uint)(A << 0x18) | (uint)(R << 0x10) | (uint)(G << 0x8) | B;
     }
 }

@@ -65,28 +65,64 @@ namespace p3rpc.femc.Components
             _drawMessageBox.OriginalFunction(self);
         }
 
-        private unsafe FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBgImpl(nint self)
+        private unsafe FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBgImpl(UMsgProcWindow_Mind* self)
         {
             var configColorRaw = _uiCommon.ToFSprColor(_context._config.MindWindowBgDots);
-            configColorRaw.A = (byte)((1.0 - *(float*)(self + 0x1a4)) * 102 * *(float*)(self + 0x190));
+            configColorRaw.A = (byte)((1.0 - self->leftSpotBgOpacity2) * 102 * self->leftSpotBgOpacity1);
             return configColorRaw;
         }
 
         private unsafe delegate void UMsgProcWindow_Mind_DrawMessageBox(UMsgProcWindow_Mind* self);
         [Function(new Register[] { FunctionAttribute.Register.rdi }, FunctionAttribute.Register.rax, false)]
-        private unsafe delegate FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg(nint self);
+        private unsafe delegate FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg(UMsgProcWindow_Mind* self);
     }
 
-    public class MsgWindowSelectMind : ModuleBase
+    public class MsgWindowSelectMind : ModuleAsmInlineColorEdit
     {
         private string UMsgProcWindow_Select_Mind_DrawMessageBox_SIG = "48 8B C4 48 89 58 ?? 48 89 70 ?? 48 89 78 ?? 55 41 54 41 55 41 56 41 57 48 8D A8 ?? ?? ?? ?? 48 81 EC B0 02 00 00 0F 29 70 ?? 0F 29 78 ??";
-        private IHook<UMsgProcWindow_Select_Mind_DrawMessageBox> _drawMessageBox;
+        private string UMsgProcWindow_Select_Mind_MessageBoxBgDotSel_SIG = "F3 41 0F 59 C0 F3 0F 2C C0 88 44 24 ?? 48 8B 83 ?? ?? ?? ??";
+        private string UMsgProcWindow_Select_Mind_SelectedTextColor_SIG = "81 C9 00 FF 00 18 89 4D ??";
+        private string UMsgProcWindow_Select_Mind_MindWindowBorderColor_SIG = "F3 0F 2C C0 F3 0F 10 05 ?? ?? ?? ?? 88 44 24 ?? 48 8D 44 24 ?? 48 89 44 24 ?? F3 0F 11 44 24 ?? F3 0F 10 05 ?? ?? ?? ??";
+        private string UMsgProcWindow_Select_Mind_MindWindowInnerColor_SIG = "F3 0F 2C C0 F3 0F 10 05 ?? ?? ?? ?? 88 44 24 ?? 48 8D 44 24 ?? 48 89 44 24 ?? F3 44 0F 11 6C 24 ??";
 
+        private IHook<UMsgProcWindow_Select_Mind_DrawMessageBox> _drawMessageBox;
+        private IAsmHook _msgBoxBgDotSel;
         private UICommon _uiCommon;
 
         public unsafe MsgWindowSelectMind(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
-            _context._utils.SigScan(UMsgProcWindow_Select_Mind_DrawMessageBox_SIG, "UMsgProcWindow_Select_Mind::DrawMessageBox", _context._utils.GetDirectAddress, addr => _drawMessageBox = _context._utils.MakeHooker<UMsgProcWindow_Select_Mind_DrawMessageBox>(UMsgProcWindow_Select_Mind_DrawMessageBoxImpl, addr));
+            //_context._utils.SigScan(UMsgProcWindow_Select_Mind_DrawMessageBox_SIG, "UMsgProcWindow_Select_Mind::DrawMessageBox", _context._utils.GetDirectAddress, addr => _drawMessageBox = _context._utils.MakeHooker<UMsgProcWindow_Select_Mind_DrawMessageBox>(UMsgProcWindow_Select_Mind_DrawMessageBoxImpl, addr));
+            _context._utils.SigScan(UMsgProcWindow_Select_Mind_MessageBoxBgDotSel_SIG, "UMsgProcWindow_Select_Mind::MessageBoxBgDotSel", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rsp + 0x60], {_context._config.MindSelectDotColor.ToU32ARGB()}",
+                };
+                _msgBoxBgDotSel = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UMsgProcWindow_Select_Mind_SelectedTextColor_SIG, "UMsgProcWindow_Select_Mind::SelectedTextColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.MindSelActiveTextColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UMsgProcWindow_Select_Mind_MindWindowBorderColor_SIG, "UMsgProcWindow_Select_Mind::MindWindowBorderColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rsp + 0x60], {_context._config.MindSelWindowBorder.ToU32ARGB()}",
+                };
+                _msgBoxBgDotSel = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UMsgProcWindow_Select_Mind_MindWindowInnerColor_SIG, "UMsgProcWindow_Select_Mind::MindWindowInnerColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rsp + 0x60], {_context._config.MindSelWindowFill.ToU32ARGB()}",
+                };
+                _msgBoxBgDotSel = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
 
         public override void Register()

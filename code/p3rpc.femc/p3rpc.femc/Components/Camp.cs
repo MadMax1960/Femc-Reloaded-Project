@@ -542,19 +542,6 @@ namespace p3rpc.femc.Components
                 _dateBg = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
 
-            // TODO: Rewrite DrawPartTimeBg and DrawPartTimeHeader to more easily adjust the color + blend state
-            /*
-            _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobDescBgColor_SIG, "UCmpCommuDetails::PartTimeJobDescBgColor", _context._utils.GetDirectAddress, addr =>
-            {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CampCalendarPartTimeJobBackground.ToU32ARGB())));
-            });
-
-            _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobTextColor_SIG, "UCmpCommuDetails::PartTimeJobTextColor", _context._utils.GetDirectAddress, addr =>
-            {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CampCalendarTextColor.ToU32ARGB())));
-            });
-            */
-
             _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobDescBg_SIG, "UUICmpCalendarDraw::PartTimeJobDescBg", _context._utils.GetDirectAddress, addr => _drawPartTimeJobBg = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobDescBg, addr));
             _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobHeader_SIG, "UUICmpCalendarDraw::PartTimeJobHeader", _context._utils.GetDirectAddress, addr => _drawPartTimeHeader = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobHeader, addr));
             _context._utils.SigScan(FAppCalculationItem_Lerp_SIG, "FAppCalculationItem::Lerp", _context._utils.GetIndirectAddressShort, addr => _appCalcLerp = _context._utils.MakeWrapper<FAppCalculationItem_Lerp>(addr));
@@ -615,7 +602,7 @@ namespace p3rpc.femc.Components
                 _uiCommon._drawPlg(&self->DrawSpr, x - 4, fy - 4, 0, &bgColor, 0xa3, 1, 1, 0, campPlg, self->CalendarDrawQueue);
                 var textColor = _uiCommon.ToFColorBP(_context._config.CampCalendarTextColor);
                 var layoutTable2 = self->pMainActor->OthersLayoutDataTable->GetLayoutDataTableEntry(2);
-                var textPos = new FVector2D(x + layoutTable2->angle, fy + layoutTable2->scale);
+                var textPos = new FVector2D(x + layoutTable2->position.X, fy + layoutTable2->position.Y);
                 _uiCommon._drawSpr(&self->DrawSpr, textPos.X, textPos.Y, 0, &textColor, 0x4fc, 1, 1, 0, campSpr, EUI_DRAW_POINT.UI_DRAW_RIGHT_TOP, self->CalendarDrawQueue);
             }
         }

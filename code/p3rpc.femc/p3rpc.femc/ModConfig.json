@@ -1,8 +1,8 @@
 {
   "ModId": "p3rpc.femc",
   "ModName": "Femc Project",
-  "ModAuthor": "A Mudkip",
-  "ModVersion": "1.0.6",
+  "ModAuthor": "Femc Reloaded Team",
+  "ModVersion": "1.0.8",
   "ModDescription": "Template for a Reloaded Mod Configuration",
   "ModDll": "p3rpc.femc.dll",
   "ModIcon": "",

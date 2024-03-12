@@ -11,28 +11,6 @@ namespace p3rpc.femc.Components
 {
     public class PartyPanel : ModuleBase
     {
-        [StructLayout(LayoutKind.Explicit, Size = 0xCA0)]
-        public unsafe struct FBaseHeadPanel
-        {
-            [FieldOffset(0x10)] public ushort PlayerId; // P3RE colorful party panel when????
-        }
-
-        [StructLayout(LayoutKind.Explicit, Size = 0x4010)]
-        public unsafe struct FBattleHeadPanel
-        {
-            [FieldOffset(0x0000)] public FBaseHeadPanel baseObj;
-            [FieldOffset(0xca0)] public SprDefStruct1 cardBlueBgTrans;
-            [FieldOffset(0xd08)] public SprDefStruct1 lineShadowBgTrans;
-            [FieldOffset(0x12C8)] public UMaterialInstanceDynamic* materialSmokeInst;
-            [FieldOffset(0x12D0)] public UMaterialInstanceDynamic* materialSmokeInstGrey;
-        }
-
-        [StructLayout(LayoutKind.Explicit, Size = 0xEF0)]
-        public unsafe struct FFieldHeadPanel
-        {
-            [FieldOffset(0x0000)] public FBaseHeadPanel baseObj;
-            [FieldOffset(0xca0)] public SprDefStruct1 cardBlueBgTrans;
-        }
 
         private string FBattleHeadPanel_PartyPanelHeadUpdate_SIG = "4C 8B DC 49 89 4B ?? 55 53 49 8D 6B ??";
         private string FFieldHeadPanel_PartyPanelHeadUpdate_SIG = "48 8B C4 48 89 58 ?? 55 48 8D 68 ?? 48 81 EC C0 00 00 00 0F 29 70 ??";
