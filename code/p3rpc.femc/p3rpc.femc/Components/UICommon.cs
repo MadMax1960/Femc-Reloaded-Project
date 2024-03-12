@@ -24,6 +24,7 @@ namespace p3rpc.femc.Components
         public AUIDrawBaseActor_DrawPlg _drawPlg;
         public GetUGlobalWork _getUGlobalWork;
         public AUIDrawBaseActor_DrawSpr _drawSpr;
+        public AUIDrawBaseActor_SetRenderTarget _setRenderTarget;
 
         public unsafe uint* _ActiveDrawTypeId; // this is literally from GFD lol
 
@@ -42,6 +43,7 @@ namespace p3rpc.femc.Components
         private string AUIDrawBaseActor_DrawPlg_SIG = "E8 ?? ?? ?? ?? 33 D2 48 8D 4E ?? E8 ?? ?? ?? ?? 0F B6 86 ?? ?? ?? ??";
         private string GetUGlobalWork_SIG = "48 89 5C 24 ?? 57 48 83 EC 20 48 8B 0D ?? ?? ?? ?? 33 DB";
         private string AUIDrawBaseActor_DrawSpr_SIG = "48 8B C4 48 89 58 ?? 48 89 70 ?? 48 89 78 ?? 55 48 8D 68 ?? 48 81 EC C0 00 00 00 48 8B 5D ??";
+        private string AUIDrawBaseActor_SetRenderTarget_SIG = "48 89 5C 24 ?? 57 48 83 EC 20 41 8B F8 45 8B C8 45 33 C0";
 
         public static FVector4[] IdentityMatrix = // 0x145361ae0
         {
@@ -52,7 +54,9 @@ namespace p3rpc.femc.Components
         };
 
         public FColor ToFColor(Configuration.ConfigColor cfgColor) => new FColor(cfgColor.R, cfgColor.G, cfgColor.B, cfgColor.A);
+        public FColor ToFColorWithAlpha(Configuration.ConfigColor cfgColor, byte alpha) => new FColor(cfgColor.R, cfgColor.G, cfgColor.B, alpha);
         public FSprColor ToFSprColor(Configuration.ConfigColor cfgColor) => new FSprColor(cfgColor.R, cfgColor.G, cfgColor.B, cfgColor.A);
+        public FSprColor ToFSprColorWithAlpha(Configuration.ConfigColor cfgColor, byte alpha) => new FSprColor(cfgColor.R, cfgColor.G, cfgColor.B, alpha);
         public FLinearColor ToFLinearColor(Configuration.ConfigColor cfgColor) => new FLinearColor((float)cfgColor.R / 256, (float)cfgColor.G / 256, (float)cfgColor.B / 256, (float)cfgColor.A / 256);
         public FColor ToFColorBP(Configuration.ConfigColor cfgColor) => new FColor(cfgColor.A, cfgColor.R, cfgColor.G, cfgColor.B);
         public void SetColor(ref FSprColor color, Configuration.ConfigColor cfgColor)
@@ -61,6 +65,21 @@ namespace p3rpc.femc.Components
             color.G = cfgColor.G;
             color.B = cfgColor.B;
             color.A = cfgColor.A;
+        }
+
+        public void SetColorIgnoreAlpha(ref FSprColor color, Configuration.ConfigColor cfgColor)
+        {
+            color.R = cfgColor.R;
+            color.G = cfgColor.G;
+            color.B = cfgColor.B;
+        }
+
+        public void SetColorCustomAlpha(ref FSprColor color, Configuration.ConfigColor cfgColor, byte alpha)
+        {
+            color.R = cfgColor.R;
+            color.G = cfgColor.G;
+            color.B = cfgColor.B;
+            color.A = alpha;
         }
 
         public void SetColor(ref FColor color, Configuration.ConfigColor cfgColor)
@@ -78,6 +97,14 @@ namespace p3rpc.femc.Components
             color.B = cfgColor.B;
         }
 
+        public void SetColorCustomAlpha(ref FColor color, Configuration.ConfigColor cfgColor, byte alpha)
+        {
+            color.R = cfgColor.R;
+            color.G = cfgColor.G;
+            color.B = cfgColor.B;
+            color.A = alpha;
+        }
+
         public void SetColor(ref FLinearColor color, Configuration.ConfigColor cfgColor)
         {
             color.R = (float)cfgColor.R / 256;
@@ -85,6 +112,8 @@ namespace p3rpc.femc.Components
             color.B = (float)cfgColor.B / 256;
             color.A = (float)cfgColor.A / 256;
         }
+
+        public unsafe BPDrawSpr* GetDrawer() => (BPDrawSpr*)(_getSpriteItemMaskInstance() + 0x20);
 
         public unsafe UICommon(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
@@ -104,9 +133,30 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(AUIDrawBaseActor_DrawPlg_SIG, "AUIDrawBaseActor::DrawPlg", _context._utils.GetIndirectAddressShort, addr => _drawPlg = _context._utils.MakeWrapper<AUIDrawBaseActor_DrawPlg>(addr));
             _context._utils.SigScan(GetUGlobalWork_SIG, "GetUGlobalWork", _context._utils.GetDirectAddress, addr => _getUGlobalWork = _context._utils.MakeWrapper<GetUGlobalWork>(addr));
             _context._utils.SigScan(AUIDrawBaseActor_DrawSpr_SIG, "AUIDrawBaseActor::DrawSpr", _context._utils.GetDirectAddress, addr => _drawSpr = _context._utils.MakeWrapper<AUIDrawBaseActor_DrawSpr>(addr));
+            _context._utils.SigScan(AUIDrawBaseActor_SetRenderTarget_SIG, "AUIDrawBaseActor::SetRenderTarget", _context._utils.GetDirectAddress, addr => _setRenderTarget = _context._utils.MakeWrapper<AUIDrawBaseActor_SetRenderTarget>(addr));
         }
 
         public static float Lerp(float a, float b, float c) => (1 - c) * a + b * c; // FUN_14117cd40
+
+        public static float ProgressTrackFraction(float value, float min, float max, uint mode) // FUN_1414e8310
+        {
+            if (value > max) return 1;
+            else if (value < min) return 0;
+            else
+            {
+                var fraction = (value - min) / (max - min);
+                return mode switch
+                {
+                    1 => 1 - (1 - fraction) * (1 - fraction),
+                    2 => fraction * fraction,
+                    3 | 9 => (1 - (float)Math.Cos(fraction * 3.141593)) * 0.5f,
+                    4 => 1 - (1 - fraction) * (1 - fraction) * (1 - fraction),
+                    5 => fraction * fraction * fraction,
+                    7 => (float)Math.Sin(fraction),
+                    _ => fraction
+                };
+            }
+        }
 
         public override void Register() {}
 
@@ -125,5 +175,6 @@ namespace p3rpc.femc.Components
         public unsafe delegate void AUIDrawBaseActor_DrawPlg(BPDrawSpr* drawer, float X, float Y, float Z, FColor* color, uint plgId, float scaleX, float scaleY, float angle, UPlgAsset* plgHandle, int queueId);
         public unsafe delegate UGlobalWork* GetUGlobalWork();
         public unsafe delegate void AUIDrawBaseActor_DrawSpr(BPDrawSpr* drawer, float X, float Y, float Z, FColor* color, uint sprId, float scaleX, float scaleY, float angle, USprAsset* sprHandle, EUI_DRAW_POINT drawPoint, int queueId);
+        public unsafe delegate void AUIDrawBaseActor_SetRenderTarget(BPDrawSpr* drawer, nint kernelCanvas, uint queueId); // FRenderTargetCanvas*
     }
 }
