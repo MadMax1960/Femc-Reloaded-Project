@@ -248,6 +248,24 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Mind Select Dot Color (Requires Restart)")]
         public ConfigColor MindSelectDotColor { get; set; } = ConfigColor.MindSelectDotColor;
 
+        [DisplayName("Generic Select Character Backplate Color ")]
+        public ConfigColor GenericSelectCharacterBackplate { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Generic Select List Color Morning")]
+        public ConfigColor GenericSelectListColorMorning { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Generic Select List Color After School")]
+        public ConfigColor GenericSelectListColorAfterSchool { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Generic Select List Color Night")]
+        public ConfigColor GenericSelectListColorNight { get; set; } = ConfigColor.MellodiColorMid3;
+
+        [DisplayName("Generic Select Title Color")]
+        public ConfigColor GenericSelectTitle { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Generic Select Character Shadow (Requires Restart)")]
+        public ConfigColor GenericSelectCharacterShadow { get; set; } = ConfigColor.MellodiColorMid4;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]

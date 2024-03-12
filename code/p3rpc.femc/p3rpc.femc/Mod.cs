@@ -119,6 +119,7 @@ namespace p3rpc.femc
                 AddModule<TimeChange>();
             }
             if (_configuration.EnableMoneyDraw) AddModule<MiscMoneyDraw>();
+            AddModule<GenericSelect>();
 
             foreach (var mod in _modules.Values) mod.Register();
         }
