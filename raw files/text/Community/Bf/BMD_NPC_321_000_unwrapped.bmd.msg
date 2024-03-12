@@ -27,8 +27,8 @@
 [uf 0 5 65278][uf 2 1][uf 5 21 1 321]Isn't it a pain having to reply to messages from people you don't care about?[n][uf 1 1][e]
 
 [sel SEL_008_0_0 top]
-[uf 0 5 65278][uf 2 1]Yeah, your a pain.[e]
-[uf 0 5 65278][uf 2 1]It's fine to me.[e]
+[uf 0 5 65278][uf 2 1]Yeah, you're a pain.[e]
+[uf 0 5 65278][uf 2 1]It's fine... For me.[e]
 
 [msg MSG_009_0_0 [Phone-Addicted Student]]
 [uf 0 5 65278][uf 2 1][uf 5 21 1 321]Yeah, you got that right... hey.[n][uf 1 1][e]

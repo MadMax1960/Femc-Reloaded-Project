@@ -29,7 +29,7 @@
 [sel SEL_006_0_0 top]
 [uf 0 5 65278][uf 2 1]Half the school are guys.[e]
 [uf 0 5 65278][uf 2 1]Half the world are guys.[e]
-[uf 0 5 65278][uf 2 1]I hope you get better![e]
+[uf 0 5 65278][uf 2 1]I hope you'll get better![e]
 
 [msg MSG_007_0_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 3 65535 65535 0 0][uf 3 1 3 0 65535 11472 0 0]T-True... I should've gone to an all-girls school.[n][uf 1 1][e]
@@ -58,11 +58,11 @@
 
 [msg MSG_013_0_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0][uf 3 1 3 0 65535 11493 0 0]I was able to say hello to you![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 109 3 65535 65535 0 0]Although...it wasn't a boy, but I still  feel more prepared![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 109 3 65535 65535 0 0]Although... It wasn't a boy, but I still feel more prepared![n][uf 1 1][e]
 
 [msg MSG_014_0_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 1 65535 65535 0 0][uf 3 1 3 0 65535 11493 0 0]I was able to say hello to you![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 109 3 65535 65535 0 0]Although...it wasn't a boy, but I still  feel more prepared![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 109 3 65535 65535 0 0]Although... It wasn't a boy, but I still feel more prepared![n][uf 1 1][e]
 
 [msg MSG_015_0_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 0 65535 65535 0 0][uf 3 1 3 0 65535 11450 0 0]I hope I can get better at this somehow...[n][uf 1 1][e]
@@ -93,7 +93,7 @@
 
 [sel SEL_022_0_0 top]
 [uf 0 5 65278][uf 2 1]Let's walk home together.[e]
-[uf 0 5 65278][uf 2 1]Sorry, I'm busy today.[e]
+[uf 0 5 65278][uf 2 1]Sorry. I'm busy today.[e]
 
 [msg MSG_023_0_0 [Chihiro Fushimi]]
 [uf 0 5 65278][uf 2 1][uf 4 5 109 4 65535 65535 0 0][uf 3 1 3 0 65535 11423 0 0]O-O-O-Okay![n][uf 1 1][e]
@@ -551,7 +551,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 5 1 65535 65535 0 0]I got you a gift to acknowledge all your hard work. Here, take it.[n][uf 1 1][e]
 
 [msg MND_GENERAL_EXAMREWARD_0_5]
-[uf 0 5 65278][uf 2 1]未使用ラベルです。[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]未使用ラベルです。[n][uf 1 1][e]
 
 [msg MSG_GENERAL_EXAMREWARD_0_6 [Mitsuru Kirijo]]
 [uf 0 5 65278][uf 2 1][uf 4 5 5 0 6 65535 0 0][uf 3 1 3 0 65535 4029 0 0]Ah, [uf 4 1].[n][uf 1 1][e]
