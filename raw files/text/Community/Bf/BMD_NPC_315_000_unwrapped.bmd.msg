@@ -48,7 +48,7 @@
 [uf 0 5 65278][uf 2 1][uf 5 21 1 315]...That anyone hoping to get with Kirijo-senpai would have to be as intelligent as she is.[n][uf 1 1][e]
 
 [msg MSG_011_0_0 [Mitsuru Superfan]]
-[uf 0 5 65278][uf 2 1][uf 5 21 1 315]Kirijo-senpai would want studious somebody.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 5 21 1 315]Kirijo-senpai would want someone studious.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 5 21 1 315]Maybe I should study more...[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 5 21 1 315]If I became the smartest in my class, she might accept me, even though I'm a girl...[n][uf 1 1][e]
 
