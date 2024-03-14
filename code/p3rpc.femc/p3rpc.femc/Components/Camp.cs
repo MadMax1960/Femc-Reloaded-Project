@@ -76,12 +76,12 @@ namespace p3rpc.femc.Components
         {
             // dynamically change color values for Xrd777/UI/Camp/Param/DT_CampParamCommon.uasset
             var return_value = _getCmpMainParams.OriginalFunction(self);
-            _uiCommon.SetColor(ref return_value->AoItaColorHigh, _context._config.CampHighColor);
-            _uiCommon.SetColor(ref return_value->AoItaColorMid, _context._config.CampMiddleColor);
-            _uiCommon.SetColor(ref return_value->AoItaColorLow, _context._config.CampLowColor);
-            _uiCommon.SetColor(ref return_value->GradADownColorHigh, _context._config.CampHighColor);
-            _uiCommon.SetColor(ref return_value->GradADownColorMid, _context._config.CampMiddleColor);
-            _uiCommon.SetColor(ref return_value->GradADownColorLow, _context._config.CampLowColor);
+            _uiCommon.SetColorIgnoreAlpha(ref return_value->AoItaColorHigh, _context._config.CampHighColor);
+            _uiCommon.SetColorIgnoreAlpha(ref return_value->AoItaColorMid, _context._config.CampMiddleColor);
+            _uiCommon.SetColorIgnoreAlpha(ref return_value->AoItaColorLow, _context._config.CampLowColor);
+            _uiCommon.SetColorIgnoreAlpha(ref return_value->GradADownColorHigh, _context._config.CampHighColorGradation);
+            _uiCommon.SetColorIgnoreAlpha(ref return_value->GradADownColorMid, _context._config.CampMiddleColor);
+            _uiCommon.SetColorIgnoreAlpha(ref return_value->GradADownColorLow, _context._config.CampLowColor);
             return return_value;
         }
         private unsafe FLinearColor* UCmpRootDraw_DrawMenuItems_SetColorsNoSelImpl(byte opacity, FLinearColor* colorOut)

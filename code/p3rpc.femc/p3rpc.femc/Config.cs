@@ -1,7 +1,6 @@
 ﻿using p3rpc.femc.Template.Configuration;
 using Reloaded.Mod.Interfaces.Structs;
 using System.ComponentModel;
-using System.Reflection.Metadata.Ecma335;
 
 namespace p3rpc.femc.Configuration
 {
@@ -16,6 +15,9 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Camp: High Color")]
         public ConfigColor CampHighColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: High Color Gradation")]
+        public ConfigColor CampHighColorGradation { get; set; } = ConfigColor.CampBgColor;
 
         [DisplayName("Camp: Middle Color")]
         public ConfigColor CampMiddleColor { get; set; } = ConfigColor.CampBgColor;
