@@ -121,6 +121,7 @@ namespace p3rpc.femc
             }
             if (_configuration.EnableMoneyDraw) AddModule<MiscMoneyDraw>();
             AddModule<GenericSelect>();
+            AddModule<PersonaStatus>();
 
             foreach (var mod in _modules.Values) mod.Register();
         }

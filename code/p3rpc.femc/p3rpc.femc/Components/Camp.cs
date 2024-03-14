@@ -467,8 +467,6 @@ namespace p3rpc.femc.Components
         private string UUICmpCalendarDraw_PartTimeJobTextColor_SIG = "C7 84 24 ?? ?? ?? ?? 43 04 08 FF";
         private string UUICmpCalendarDraw_PartTimeJobHeader_SIG = "48 8B C4 48 89 58 ?? 48 89 68 ?? 48 89 70 ?? 57 48 81 EC B0 00 00 00 0F 29 70 ?? 48 8B F9";
 
-        private string FAppCalculationItem_Lerp_SIG = "E8 ?? ?? ?? ?? 8B 86 ?? ?? ?? ?? F3 44 0F 58 C0";
-
         private IAsmHook _calendarSundayColor;
         private IAsmHook _calendarSundayDay;
         private IAsmHook _monthsPrevMonth;
@@ -478,8 +476,6 @@ namespace p3rpc.femc.Components
 
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeJobBg;
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeHeader;
-
-        private FAppCalculationItem_Lerp _appCalcLerp;
 
         public unsafe CampCalendar(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
         {
@@ -544,7 +540,6 @@ namespace p3rpc.femc.Components
 
             _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobDescBg_SIG, "UUICmpCalendarDraw::PartTimeJobDescBg", _context._utils.GetDirectAddress, addr => _drawPartTimeJobBg = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobDescBg, addr));
             _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobHeader_SIG, "UUICmpCalendarDraw::PartTimeJobHeader", _context._utils.GetDirectAddress, addr => _drawPartTimeHeader = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobHeader, addr));
-            _context._utils.SigScan(FAppCalculationItem_Lerp_SIG, "FAppCalculationItem::Lerp", _context._utils.GetIndirectAddressShort, addr => _appCalcLerp = _context._utils.MakeWrapper<FAppCalculationItem_Lerp>(addr));
 
         }
         public override void Register()
@@ -560,11 +555,11 @@ namespace p3rpc.femc.Components
             if (plgEntry != null && self->PartTimeJobs.arr_num > 0)
             {
                 var v1 = new FAppCalculationItem(-400, 0, self->PartJobBgInAnimDelay, self->Field70, appCalculationType.DEC);
-                var f1 = _appCalcLerp(self->Field248, &v1, 1, 0);
+                var f1 = _uiCommon._appCalcLerp(self->Field248, &v1, 1, 0);
                 var v2 = new FAppCalculationItem(0, 1, 0, self->PartJobBgInAnimDstFrame, appCalculationType.DEC);
-                var f2 = _appCalcLerp(self->TimePartTimeJobOpen, &v2, 1, 0);
+                var f2 = _uiCommon._appCalcLerp(self->TimePartTimeJobOpen, &v2, 1, 0);
                 var v3 = new FAppCalculationItem(1, 0, self->PartJobBgOutAnimDelay, self->PartJobBgOutAnimDstFrame, appCalculationType.DEC);
-                f2 *= _appCalcLerp(self->TimePartTimeJobClosed, &v3, 1, 0);
+                f2 *= _uiCommon._appCalcLerp(self->TimePartTimeJobClosed, &v3, 1, 0);
                 var f4 = UICommon.Lerp(502, 0, f2);
                 var f5 = UICommon.Lerp(-720, 0, f2);
                 var f6 = UICommon.Lerp(23, 0, f2);
@@ -590,7 +585,7 @@ namespace p3rpc.femc.Components
             if (campSpr != null && campPlg != null && self->PartTimeJobs.arr_num > 0)
             {
                 var v1 = new FAppCalculationItem(-400, 0, self->PartJobBgInAnimDelay, self->Field70, appCalculationType.DEC);
-                var f1 = _appCalcLerp(self->Field248, &v1, 1, 0);
+                var f1 = _uiCommon._appCalcLerp(self->Field248, &v1, 1, 0);
                 var fy = y + f1;
                 var gWork = _uiCommon._getUGlobalWork();
                 var bgColor = gWork->Calendar.TimeOfDay switch
@@ -600,15 +595,19 @@ namespace p3rpc.femc.Components
                     _ => _uiCommon.ToFColorBP(_context._config.CampCalendarHighlightColor),
                 };
                 _uiCommon._drawPlg(&self->DrawSpr, x - 4, fy - 4, 0, &bgColor, 0xa3, 1, 1, 0, campPlg, self->CalendarDrawQueue);
+                var textPos = new FVector2D(x, fy);
                 var textColor = _uiCommon.ToFColorBP(_context._config.CampCalendarTextColor);
-                var layoutTable2 = self->pMainActor->OthersLayoutDataTable->GetLayoutDataTableEntry(2);
-                var textPos = new FVector2D(x + layoutTable2->position.X, fy + layoutTable2->position.Y);
+                if (self->pMainActor != null)
+                {
+                    var layoutTable2 = self->pMainActor->OthersLayoutDataTable->GetLayoutDataTableEntry(2);
+                    textPos.X += layoutTable2->position.X;
+                    textPos.Y += layoutTable2->position.Y;
+                }
                 _uiCommon._drawSpr(&self->DrawSpr, textPos.X, textPos.Y, 0, &textColor, 0x4fc, 1, 1, 0, campSpr, EUI_DRAW_POINT.UI_DRAW_RIGHT_TOP, self->CalendarDrawQueue);
             }
         }
 
         private unsafe delegate void UUICmpCalendarDraw_DrawUIComponent(UUICmpCalendarDraw* self, float x, float y, float angle); // angle, degrees
-        private unsafe delegate float FAppCalculationItem_Lerp(float source, FAppCalculationItem* values, int count, byte bIsLoop);
     }
 
     public class CampSystem : ModuleBase 

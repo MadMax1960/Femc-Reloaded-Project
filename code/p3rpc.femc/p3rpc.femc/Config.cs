@@ -289,6 +289,33 @@ namespace p3rpc.femc.Configuration
         [DisplayName("System Message Dark Haze Color")]
         public ConfigColor MsgSimpleSystemGradationColor { get; set; } = ConfigColor.MellodiColorDark3;
 
+        [DisplayName("Persona Status Skill List Background")]
+        public ConfigColor PersonaStatusSkillListBg { get; set; } = ConfigColor.PersonaStatusSkillListBg;
+
+        [DisplayName("Persona Status Skill List Checkerboard")]
+        public ConfigColor PersonaStatusSkillListCheckboardAlt { get; set; } = ConfigColor.PersonaStatusSkillListCheckboardAlt;
+
+        [DisplayName("Persona Status Skill List Next Skill Color")]
+        public ConfigColor PersonaSkillListNextSkillColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Persona Status Skill List Level Color")]
+        public ConfigColor PersonaSkillListNextLevelColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Persona Status Skill List Next Skill Name Color")]
+        public ConfigColor PersonaSkillListNextSkillInfoName { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Persona Status Info Color")]
+        public ConfigColor PersonaStatusPlayerInfoColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Persona Status Info Selected Persona Color 1")]
+        public ConfigColor PersonaStatusInfoSelPersonaColor1 { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Persona Status Info Selected Persona Color 2")]
+        public ConfigColor PersonaStatusInfoSelPersonaColor2 { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Persona Status Param Background Color")]
+        public ConfigColor PersonaStatusParamColor { get; set; } = ConfigColor.MellodiColorDark3;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -412,6 +439,9 @@ namespace p3rpc.femc.Configuration
         public static readonly ConfigColor GetItemGotTextColor = new ConfigColor(0xff, 0x4a, 0xff, 0xff);
         public static readonly ConfigColor MindSelectDotColor = new ConfigColor(0x67, 0x00, 0x00, 0xff);
         public static readonly ConfigColor MsgWindowSystemDark = new ConfigColor(0x2f, 0x00, 0x14, 0xff);
+
+        public static readonly ConfigColor PersonaStatusSkillListBg = new ConfigColor(0x2a, 0x00, 0x12, 0xff);
+        public static readonly ConfigColor PersonaStatusSkillListCheckboardAlt = new ConfigColor(0x5c, 0x27, 0x3e, 0xff);
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }

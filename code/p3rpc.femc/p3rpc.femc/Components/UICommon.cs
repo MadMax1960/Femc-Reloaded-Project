@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +26,10 @@ namespace p3rpc.femc.Components
         public GetUGlobalWork _getUGlobalWork;
         public AUIDrawBaseActor_DrawSpr _drawSpr;
         public AUIDrawBaseActor_SetRenderTarget _setRenderTarget;
+        public AUIDrawBaseActor_DrawRect _drawRect;
+        public FAppCalculationItem_Lerp _appCalcLerp;
+        private BPDrawSpr_TransformMatrixDel? _transformMtx = null;
+        private BPDrawSpr_RotateMatrixDel? _rotateMtx = null;
 
         public unsafe uint* _ActiveDrawTypeId; // this is literally from GFD lol
 
@@ -44,6 +49,8 @@ namespace p3rpc.femc.Components
         private string GetUGlobalWork_SIG = "48 89 5C 24 ?? 57 48 83 EC 20 48 8B 0D ?? ?? ?? ?? 33 DB";
         private string AUIDrawBaseActor_DrawSpr_SIG = "48 8B C4 48 89 58 ?? 48 89 70 ?? 48 89 78 ?? 55 48 8D 68 ?? 48 81 EC C0 00 00 00 48 8B 5D ??";
         private string AUIDrawBaseActor_SetRenderTarget_SIG = "48 89 5C 24 ?? 57 48 83 EC 20 41 8B F8 45 8B C8 45 33 C0";
+        private string AUIDrawBaseActor_DrawRect_SIG = "4C 8B DC 48 81 EC C8 00 00 00 0F B6 84 24 ?? ?? ?? ??";
+        private string FAppCalculationItem_Lerp_SIG = "E8 ?? ?? ?? ?? 8B 86 ?? ?? ?? ?? F3 44 0F 58 C0";
 
         public static FVector4[] IdentityMatrix = // 0x145361ae0
         {
@@ -53,12 +60,15 @@ namespace p3rpc.femc.Components
             new FVector4(0, 0, 0, 1)
         };
 
+        public static unsafe float* IdentityMatrixNative;
+
         public FColor ToFColor(Configuration.ConfigColor cfgColor) => new FColor(cfgColor.R, cfgColor.G, cfgColor.B, cfgColor.A);
         public FColor ToFColorWithAlpha(Configuration.ConfigColor cfgColor, byte alpha) => new FColor(cfgColor.R, cfgColor.G, cfgColor.B, alpha);
         public FSprColor ToFSprColor(Configuration.ConfigColor cfgColor) => new FSprColor(cfgColor.R, cfgColor.G, cfgColor.B, cfgColor.A);
         public FSprColor ToFSprColorWithAlpha(Configuration.ConfigColor cfgColor, byte alpha) => new FSprColor(cfgColor.R, cfgColor.G, cfgColor.B, alpha);
         public FLinearColor ToFLinearColor(Configuration.ConfigColor cfgColor) => new FLinearColor((float)cfgColor.R / 256, (float)cfgColor.G / 256, (float)cfgColor.B / 256, (float)cfgColor.A / 256);
         public FColor ToFColorBP(Configuration.ConfigColor cfgColor) => new FColor(cfgColor.A, cfgColor.R, cfgColor.G, cfgColor.B);
+        public FColor ToFColorBPWithAlpha(Configuration.ConfigColor cfgColor, byte alpha) => new FColor(alpha, cfgColor.R, cfgColor.G, cfgColor.B);
         public void SetColor(ref FSprColor color, Configuration.ConfigColor cfgColor)
         {
             color.R = cfgColor.R;
@@ -134,6 +144,14 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(GetUGlobalWork_SIG, "GetUGlobalWork", _context._utils.GetDirectAddress, addr => _getUGlobalWork = _context._utils.MakeWrapper<GetUGlobalWork>(addr));
             _context._utils.SigScan(AUIDrawBaseActor_DrawSpr_SIG, "AUIDrawBaseActor::DrawSpr", _context._utils.GetDirectAddress, addr => _drawSpr = _context._utils.MakeWrapper<AUIDrawBaseActor_DrawSpr>(addr));
             _context._utils.SigScan(AUIDrawBaseActor_SetRenderTarget_SIG, "AUIDrawBaseActor::SetRenderTarget", _context._utils.GetDirectAddress, addr => _setRenderTarget = _context._utils.MakeWrapper<AUIDrawBaseActor_SetRenderTarget>(addr));
+            _context._utils.SigScan(AUIDrawBaseActor_DrawRect_SIG, "AUIDrawBaseActor::DrawRect", _context._utils.GetDirectAddress, addr => _drawRect = _context._utils.MakeWrapper<AUIDrawBaseActor_DrawRect>(addr));
+            _context._utils.SigScan(FAppCalculationItem_Lerp_SIG, "FAppCalculationItem::Lerp", _context._utils.GetIndirectAddressShort, addr => _appCalcLerp = _context._utils.MakeWrapper<FAppCalculationItem_Lerp>(addr));
+
+            IdentityMatrixNative = (float*)NativeMemory.Alloc(sizeof(float) * 16);
+            IdentityMatrixNative[0] = 1;
+            IdentityMatrixNative[5] = 1;
+            IdentityMatrixNative[10] = 1;
+            IdentityMatrixNative[15] = 1;
         }
 
         public static float Lerp(float a, float b, float c) => (1 - c) * a + b * c; // FUN_14117cd40
@@ -158,6 +176,18 @@ namespace p3rpc.femc.Components
             }
         }
 
+        public unsafe void BPDrawSpr_TransformMatrix(BPDrawSpr* self, float* mtx, FVector* pos)
+        {
+            if (_transformMtx == null) _transformMtx = _context._hooks.CreateWrapper<BPDrawSpr_TransformMatrixDel>(**(nint**)self, out _);
+            _transformMtx(self, mtx, pos);
+        }
+
+        public unsafe void BPDrawSpr_RotateMatrix(BPDrawSpr* self, float* mtx, FVector* center, float angle)
+        {
+            if (_rotateMtx == null) _rotateMtx = _context._hooks.CreateWrapper<BPDrawSpr_RotateMatrixDel>(*(nint*)(*(nint*)self + 0x8), out _);
+            _rotateMtx(self, mtx, center, angle);
+        }
+
         public override void Register() {}
 
         public unsafe delegate nint GetSpriteItemMaskInstance();
@@ -176,5 +206,9 @@ namespace p3rpc.femc.Components
         public unsafe delegate UGlobalWork* GetUGlobalWork();
         public unsafe delegate void AUIDrawBaseActor_DrawSpr(BPDrawSpr* drawer, float X, float Y, float Z, FColor* color, uint sprId, float scaleX, float scaleY, float angle, USprAsset* sprHandle, EUI_DRAW_POINT drawPoint, int queueId);
         public unsafe delegate void AUIDrawBaseActor_SetRenderTarget(BPDrawSpr* drawer, nint kernelCanvas, uint queueId); // FRenderTargetCanvas*
+        public unsafe delegate void AUIDrawBaseActor_DrawRect(BPDrawSpr* drawer, float X, float Y, float Z, float width, float height, FColor* color, float sX, float sY, float angle, float antialias, EUI_DRAW_POINT drawPoint, int queueId);
+        public unsafe delegate float FAppCalculationItem_Lerp(float source, FAppCalculationItem* values, int count, byte bIsLoop);
+        public unsafe delegate void BPDrawSpr_TransformMatrixDel(BPDrawSpr* self, float* mtx, FVector* pos);
+        public unsafe delegate void BPDrawSpr_RotateMatrixDel(BPDrawSpr* self, float* mtx, FVector* center, float angle);
     }
 }

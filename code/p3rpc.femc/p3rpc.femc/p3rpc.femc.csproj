@@ -36,7 +36,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.0.4" />
+    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.0.5" />
     <PackageReference Include="Reloaded.Memory" Version="9.4.0" />
     <PackageReference Include="Reloaded.Memory.SigScan.ReloadedII.Interfaces" Version="1.2.0" />
     <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.4.0" ExcludeAssets="runtime" />
