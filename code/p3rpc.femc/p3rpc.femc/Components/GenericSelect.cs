@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    public class GenericSelect : ModuleAsmInlineColorEdit
+    public class GenericSelect : ModuleAsmInlineColorEdit<FemcContext>
     {
         private UICommon _uiCommon;
         private string AUIGenericSelectDraw_UpdateTimes_SIG = "48 8B C4 56 48 81 EC B0 00 00 00 48 8B F1";
@@ -18,7 +19,7 @@ namespace p3rpc.femc.Components
         private IHook<AUIGenericSelectDraw_UpdateTimes> _updateTimes;
         private IAsmHook _characterShadowColor;
 
-        public unsafe GenericSelect(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe GenericSelect(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(AUIGenericSelectDraw_UpdateTimes_SIG, "AUIGenericSelectDraw::UpdateTimes", _context._utils.GetDirectAddress, addr => _updateTimes = _context._utils.MakeHooker<AUIGenericSelectDraw_UpdateTimes>(AUIGenericSelectDraw_UpdateTimesImpl, addr));
             _context._utils.SigScan(AUIGenericSelectDraw_DrawTitleColor_SIG, "AUIGenericSelectDraw::DrawTitleColor", _context._utils.GetDirectAddress, addr =>
@@ -43,15 +44,15 @@ namespace p3rpc.femc.Components
         public unsafe void AUIGenericSelectDraw_UpdateTimesImpl(AUIGenericSelectDraw* self, float deltaTime)
         {
             _updateTimes.OriginalFunction(self, deltaTime);
-            _uiCommon.SetColor(ref self->Edit_CharacterBackPlate_MorninColor, _context._config.GenericSelectCharacterBackplate);
-            _uiCommon.SetColor(ref self->Edit_CharacterBackPlate_AfterschoolColor, _context._config.GenericSelectCharacterBackplate);
-            _uiCommon.SetColor(ref self->Edit_CharacterBackPlate_NightColor, _context._config.GenericSelectCharacterBackplate);
-            _uiCommon.SetColor(ref self->Edit_ListAndCharacter_MorninColor, _context._config.GenericSelectListColorMorning);
-            _uiCommon.SetColor(ref self->Edit_ListAndCharacter_AfterschoolColor, _context._config.GenericSelectListColorAfterSchool);
-            _uiCommon.SetColor(ref self->Edit_ListAndCharacter_NightColor, _context._config.GenericSelectListColorNight);
-            _uiCommon.SetColor(ref self->Edit_TitleLogo_MorninColor, _context._config.GenericSelectListColorMorning);
-            _uiCommon.SetColor(ref self->Edit_TitleLogo_AfterschoolColor, _context._config.GenericSelectListColorAfterSchool);
-            _uiCommon.SetColor(ref self->Edit_TitleLogo_NightColor, _context._config.GenericSelectListColorNight);
+            ConfigColor.SetColor(ref self->Edit_CharacterBackPlate_MorninColor, _context._config.GenericSelectCharacterBackplate);
+            ConfigColor.SetColor(ref self->Edit_CharacterBackPlate_AfterschoolColor, _context._config.GenericSelectCharacterBackplate);
+            ConfigColor.SetColor(ref self->Edit_CharacterBackPlate_NightColor, _context._config.GenericSelectCharacterBackplate);
+            ConfigColor.SetColor(ref self->Edit_ListAndCharacter_MorninColor, _context._config.GenericSelectListColorMorning);
+            ConfigColor.SetColor(ref self->Edit_ListAndCharacter_AfterschoolColor, _context._config.GenericSelectListColorAfterSchool);
+            ConfigColor.SetColor(ref self->Edit_ListAndCharacter_NightColor, _context._config.GenericSelectListColorNight);
+            ConfigColor.SetColor(ref self->Edit_TitleLogo_MorninColor, _context._config.GenericSelectListColorMorning);
+            ConfigColor.SetColor(ref self->Edit_TitleLogo_AfterschoolColor, _context._config.GenericSelectListColorAfterSchool);
+            ConfigColor.SetColor(ref self->Edit_TitleLogo_NightColor, _context._config.GenericSelectListColorNight);
         }
 
         public unsafe delegate void AUIGenericSelectDraw_UpdateTimes(AUIGenericSelectDraw* self, float deltaTime);

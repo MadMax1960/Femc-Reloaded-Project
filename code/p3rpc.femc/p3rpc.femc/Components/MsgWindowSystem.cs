@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
@@ -12,7 +13,7 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    public class MsgWindowSystem : ModuleBase // also used by MsgWindowPerformance
+    public class MsgWindowSystem : ModuleBase<FemcContext> // also used by MsgWindowPerformance
     {
         // Background color is stored in BP_TutrialWindow
         //private string AitfMsgProgWindow_TUTRIALDraw_DrawInfoTextColor_SIG = "E8 ?? ?? ?? ?? 0F B6 93 ?? ?? ?? ?? 44 0F 28 4C 24 ??";
@@ -26,7 +27,9 @@ namespace p3rpc.femc.Components
         private IAsmHook _drawBottomRightColor;
         //private IReverseWrapper<AitfMsgProgWindow_TUTRIALDraw_SetElementColor> _drawInfoTextColorWrapper;
         //private IReverseWrapper<AitfMsgProgWindow_TUTRIALDraw_SetElementColor> _drawBottomRightColorWrapper;
-        public unsafe MsgWindowSystem(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+
+        //private bool firstTime = false;
+        public unsafe MsgWindowSystem(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(AitfMsgProgWindow_TUTRIALDraw_DrawInfoTextColor_SIG, "AitfMsgProgWindow_TUTRIALDraw::DrawInfoTextColor", _context._utils.GetDirectAddress, addr =>
             {
@@ -59,9 +62,16 @@ namespace p3rpc.femc.Components
         //private unsafe FColor AitfMsgProgWindow_TUTRIALDraw_DrawElementLightColor(FColor color) => _uiCommon.ToFColorWithAlpha(_context._config.MsgSimpleSystemLightColor, color.A);
         private unsafe void AitfMsgProgWindow_TUTRIALDraw_UpdateImpl(AitfMsgProgWindow_TUTRIALDraw* self, float deltaTime)
         {
+            /*
+            if (!firstTime)
+            {
+                _context.FindObject("a");
+                firstTime = true;
+            }
+            */
             _update.OriginalFunction(self, deltaTime);
-            _uiCommon.SetColorIgnoreAlpha(ref self->NavyColor, _context._config.MsgSimpleSystemDarkColor);
-            _uiCommon.SetColorIgnoreAlpha(ref self->GradationColor, _context._config.MsgSimpleSystemGradationColor);
+            ConfigColor.SetColorIgnoreAlpha(ref self->NavyColor, _context._config.MsgSimpleSystemDarkColor);
+            ConfigColor.SetColorIgnoreAlpha(ref self->GradationColor, _context._config.MsgSimpleSystemGradationColor);
         }
 
         [Function(FunctionAttribute.Register.r8, FunctionAttribute.Register.r8, false)]

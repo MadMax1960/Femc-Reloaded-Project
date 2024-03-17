@@ -2,7 +2,7 @@
   "ModId": "p3rpc.femc",
   "ModName": "Femc Project",
   "ModAuthor": "Femc Reloaded Team",
-  "ModVersion": "1.0.8",
+  "ModVersion": "1.0.9",
   "ModDescription": "Template for a Reloaded Mod Configuration",
   "ModDll": "p3rpc.femc.dll",
   "ModIcon": "EmbeddedImage.png",
@@ -121,7 +121,8 @@
     "p3rpc.nativetypes",
     "Reloaded.Memory.SigScan.ReloadedII",
     "reloaded.sharedlib.hooks",
-    "Ryo.Reloaded"
+    "Ryo.Reloaded",
+    "SharedScans.Reloaded"
   ],
   "OptionalDependencies": [],
   "SupportedAppId": [

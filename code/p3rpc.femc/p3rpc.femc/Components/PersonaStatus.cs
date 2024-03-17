@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {   
-    public class PersonaStatus : ModuleAsmInlineColorEdit
+    public class PersonaStatus : ModuleAsmInlineColorEdit<FemcContext>
     {
         // so many hooks....
         private string APersonaStatusDraw_GetDefaultPersonaInfoBgInner_SIG = "48 8B C4 55 53 56 57 41 56 48 8D A8 ?? ?? ?? ?? 48 81 EC B0 01 00 00";
@@ -53,7 +54,7 @@ namespace p3rpc.femc.Components
         private APersonaStatusDraw_DrawGradientRectangle _drawGradRect;
 
         private IHook<APersonaStatusDraw_DrawDefaultStatusParameterInner> _drawStatParam;
-        public unsafe PersonaStatus(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe PersonaStatus(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(APersonaStatusDraw_GetSkillListBgColor_SIG, "APersonaStatusDraw::GetSkillListBgColor", _context._utils.GetDirectAddress, addr =>
             {
@@ -168,11 +169,11 @@ namespace p3rpc.femc.Components
         {
             FVector2D cPos = new FVector2D(X + 480, Y - 62);
             float cAngle = Angle - 11.2f;
-            var topLeftColor = _uiCommon.ToFColorBP(_context._config.PersonaStatusSkillListBg);
+            var topLeftColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusSkillListBg);
             _uiCommon._drawRect(&self->baseObj.drawer, cPos.X - 550, cPos.Y - 87, 0, 810, 200, &topLeftColor, 1, 1, cAngle, 1.5f, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
-            var lineColor = _uiCommon.ToFColorBP(_context._config.PersonaStatusPlayerInfoColor);
+            var lineColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusPlayerInfoColor);
             _uiCommon._drawRect(&self->baseObj.drawer, cPos.X - 16, cPos.Y - 89, 0, 2310, 57, &lineColor, 1, 1, cAngle, 1.5f, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
-            var bottomColor = _uiCommon.ToFColorBP(_context._config.PersonaStatusSkillListBg);
+            var bottomColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusSkillListBg);
             var bottomModX = new FAppCalculationItem(0, -134, self->Edit_Commentary_Affinity_SlideOut_Delay, self->Edit_Commentary_Affinity_SlideOut_Frame, appCalculationType.DEC);
             var bottomModY = new FAppCalculationItem(0, -128, self->Edit_Commentary_Affinity_SlideOut_Delay, self->Edit_Commentary_Affinity_SlideOut_Frame, appCalculationType.DEC);
             var lx = _uiCommon._appCalcLerp(self->PersonaInfoBottomBarMod, &bottomModX, 1, 0);
@@ -181,16 +182,16 @@ namespace p3rpc.femc.Components
             
             if (self->PlayerId == 1 && CurrentPersonaIsEquipped(self))
             {
-                PersonaInfoBgColors[0].midR = _uiCommon.ToFColorBP(_context._config.PersonaStatusInfoSelPersonaColor1);
-                PersonaInfoBgColors[0].farR = _uiCommon.ToFColorBP(_context._config.PersonaStatusInfoSelPersonaColor2);
-                PersonaInfoBgColors[1].midR = _uiCommon.ToFColorBP(_context._config.PersonaStatusInfoSelPersonaColor1);
-                PersonaInfoBgColors[1].farR = _uiCommon.ToFColorBP(_context._config.PersonaStatusInfoSelPersonaColor2);
+                PersonaInfoBgColors[0].midR = ConfigColor.ToFColorBP(_context._config.PersonaStatusInfoSelPersonaColor1);
+                PersonaInfoBgColors[0].farR = ConfigColor.ToFColorBP(_context._config.PersonaStatusInfoSelPersonaColor2);
+                PersonaInfoBgColors[1].midR = ConfigColor.ToFColorBP(_context._config.PersonaStatusInfoSelPersonaColor1);
+                PersonaInfoBgColors[1].farR = ConfigColor.ToFColorBP(_context._config.PersonaStatusInfoSelPersonaColor2);
             } else
             {
-                PersonaInfoBgColors[0].midR = _uiCommon.ToFColorBP(_context.ColorWhite);
-                PersonaInfoBgColors[0].farR = _uiCommon.ToFColorBP(_context.ColorWhite);
-                PersonaInfoBgColors[1].midR = _uiCommon.ToFColorBP(_context.ColorWhite);
-                PersonaInfoBgColors[1].farR = _uiCommon.ToFColorBP(_context.ColorWhite);
+                PersonaInfoBgColors[0].midR = ConfigColor.ToFColorBP(_context.ColorWhite);
+                PersonaInfoBgColors[0].farR = ConfigColor.ToFColorBP(_context.ColorWhite);
+                PersonaInfoBgColors[1].midR = ConfigColor.ToFColorBP(_context.ColorWhite);
+                PersonaInfoBgColors[1].farR = ConfigColor.ToFColorBP(_context.ColorWhite);
             }
             var mtxPos = new FVector(0, 0, 1);
             var tgtMtx = (float*)NativeMemory.Alloc(sizeof(float) * 16);
@@ -201,13 +202,14 @@ namespace p3rpc.femc.Components
             _uiCommon.BPDrawSpr_TransformMatrix(&self->baseObj.drawer, tgtMtx, &mtxPos);
             _drawGradRect(self, cPos.X, cPos.Y, 0, PersonaInfoBgPoints, (FSprColor*)PersonaInfoBgColors, tgtMtx);
             NativeMemory.Free(tgtMtx);
+            //_drawInfoBg.OriginalFunction(self, X, Y, Angle);
         }
 
         private unsafe void APersonaStatusDraw_DrawDefaultStatusParameterInnerImpl(APersonaStatusDraw* self, float X, float Y, float Angle, float a5)
         {
             if (self->Field7BC > 0 && self->Field7C0 <= 0) return;
-            var statBgCenter = _uiCommon.ToFColorBPWithAlpha(_context._config.PersonaStatusParamColor, 0xff);
-            var statBgOuter = _uiCommon.ToFColorBPWithAlpha(_context._config.PersonaStatusParamColor, 0x0);
+            var statBgCenter = ConfigColor.ToFColorBPWithAlpha(_context._config.PersonaStatusParamColor, 0xff);
+            var statBgOuter = ConfigColor.ToFColorBPWithAlpha(_context._config.PersonaStatusParamColor, 0x0);
             PersonaStatParamBgColors[0].farL = statBgOuter;
             PersonaStatParamBgColors[0].midL = statBgCenter;
             PersonaStatParamBgColors[0].midR = statBgCenter;
@@ -232,12 +234,12 @@ namespace p3rpc.femc.Components
                     statIconPosLayout.X += statIconLayoutParam->position.X;
                     statIconPosLayout.Y += statIconLayoutParam->position.Y;
                 }
-                var statIconShadowCol = _uiCommon.ToFColorBP(_context._config.PersonaSkillListNextLevelColor);
+                var statIconShadowCol = ConfigColor.ToFColorBP(_context._config.PersonaSkillListNextLevelColor);
                 _uiCommon._drawSpr(&self->baseObj.drawer, statIconPosLayout.X, statIconPosLayout.Y, 0, &statIconShadowCol, (uint)(i + 0x1bf), 1, 1, Angle, campSpr, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
                 var statIconFillCol = new FColor(0xcc, 0x0, 0x0, 0x0);
                 _uiCommon._drawSpr(&self->baseObj.drawer, statIconPosLayout.X, statIconPosLayout.Y, 0, &statIconFillCol, (uint)(i + 0x1ba), 1, 1, Angle, campSpr, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
                 var personaStatLevel = self->GetBasePersonaStat(i) + self->pPersonaEquipEffect->GetEquipBonusStat(i);
-                var personaStatLevelColor = _uiCommon.ToFColorBP(_context.ColorWhite);
+                var personaStatLevelColor = ConfigColor.ToFColorBP(_context.ColorWhite);
                 if (personaStatLevel > 99) personaStatLevel = 99;
                 string personaStatLevelStr = $"{personaStatLevel}";
                 for (int j = 0; j < personaStatLevelStr.Length; j++)
@@ -245,10 +247,18 @@ namespace p3rpc.femc.Components
                     _uiCommon._drawSpr(&self->baseObj.drawer, statIconPos.X - 64 + j * 40, statIconPos.Y - 12 - 8 * j, 0, &personaStatLevelColor,
                         (uint)(personaStatLevelStr[j] + 0x13a), 0.85f, 0.85f, Angle - 11.45f, campSpr, EUI_DRAW_POINT.UI_DRAW_LEFT_TOP, self->baseObj.QueueId);
                 }
-                var barShadowColor = _uiCommon.ToFColorBP(_context._config.PersonaStatusSkillListBg);
+                var barShadowColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusSkillListBg);
                 _uiCommon._drawSpr(&self->baseObj.drawer, statIconPos.X + 251, statIconPos.Y - 40, 0, &barShadowColor, 0x1c9, 1, 1, Angle - 11, campSpr, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
-                var barContentColor = _uiCommon.ToFColorBP(_context._config.PersonaStatusSkillListCheckboardAlt);
+                var barContentColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusSkillListCheckboardAlt);
                 _uiCommon._drawSpr(&self->baseObj.drawer, statIconPos.X + 234, statIconPos.Y - 45, 0, &barContentColor, 0x1c9, 1, 1, Angle - 11, campSpr, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
+
+                // draw next level stat increase
+                // draw equip item stat increase
+                if (self->pPersonaEquipEffect->GetEquipBonusStat(i) > 0)
+                {
+
+                }
+                // draw base stat
             }
             //_drawStatParam.OriginalFunction(self, X, Y, Angle, a5);
         }

@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    public class Minimap : ModuleBase
+    public class Minimap : ModuleBase<FemcContext>
     {
         private string AUIAccessInfoDraw_UpdateMinimapState_SIG = "40 55 53 48 8D 6C 24 ?? 48 81 EC F8 00 00 00 48 8B 81 ?? ?? ?? ??";
         private string UUIMinimapDraw_DrawMinimapBgCircle_SIG = "48 89 E0 48 89 70 ?? 57 48 81 EC C0 00 00 00";
@@ -16,7 +17,7 @@ namespace p3rpc.femc.Components
         private IHook<AUIAccessInfoDraw_UpdateMinimapState> _updateMinimapState;
 
         private UICommon _uiCommon;
-        public unsafe Minimap(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe Minimap(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(AUIAccessInfoDraw_UpdateMinimapState_SIG, "AUIAccessInfoDraw::UpdateMinimapState", _context._utils.GetDirectAddress, addr => _updateMinimapState = _context._utils.MakeHooker<AUIAccessInfoDraw_UpdateMinimapState>(AUIAccessInfoDraw_UpdateMinimapStateImpl, addr));
         }
@@ -29,7 +30,7 @@ namespace p3rpc.femc.Components
         private unsafe void AUIAccessInfoDraw_UpdateMinimapStateImpl(AUIAccessInfoDraw* self)
         {
             _updateMinimapState.OriginalFunction(self);
-            _uiCommon.SetColor(ref self->PlaceInfoBgColor, _context._config.MinimapPlaceNameBgColor);
+            ConfigColor.SetColor(ref self->PlaceInfoBgColor, _context._config.MinimapPlaceNameBgColor);
         }
 
         private unsafe delegate void AUIAccessInfoDraw_UpdateMinimapState(AUIAccessInfoDraw* self);

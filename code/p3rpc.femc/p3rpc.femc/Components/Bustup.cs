@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    public class Bustup : ModuleBase
+    public class Bustup : ModuleBase<FemcContext>
     {
         private string UBustupObject_SetBustupShadowColor_SIG = "40 53 48 83 EC 30 F3 0F 10 05 ?? ?? ?? ?? 48 89 CB";
         private string UBustupDraw_DrawBustup_SIG = "40 57 48 83 EC 60 48 8B F9 E8 ?? ?? ?? ?? 48 8B C8";
@@ -23,7 +24,7 @@ namespace p3rpc.femc.Components
         public UBustupObject_DrawBustupMain _drawBustupMain;
 
         private UICommon _uiCommon;
-        public unsafe Bustup(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe Bustup(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(UBustupObject_SetBustupShadowColor_SIG, "UBustupObject::SetBustupShadowColor", _context._utils.GetDirectAddress, addr => _setBustupShadowColor = _context._utils.MakeWrapper<UBustupObject_SetBustupShadowColor>(addr));
             _context._utils.SigScan(UBustupObject_DrawBustupShadow_SIG, "UBustupObject::DrawBustupShadow", _context._utils.GetDirectAddress, addr => _drawBustupShadow = _context._utils.MakeHooker<UBustupObject_DrawBustupShadow>(UBustupObject_DrawBustupShadowImpl, addr));
@@ -66,7 +67,7 @@ namespace p3rpc.femc.Components
                     var blTriPlgPos = new FVector(offsetX + 267, offsetY + 1180, 0);
                     var blTriPlgStretch = new FVector(1, 1, 1);
                     var blTriPlgRot = new FVector(0, rotY + 20.6f, 0);
-                    var blTriPlgColor = _uiCommon.ToFSprColor(_context._config.BustupShadowColor);
+                    var blTriPlgColor = ConfigColor.ToFSprColor(_context._config.BustupShadowColor);
                     blTriPlgColor.A = (byte)(alpha * 255);
                     var blTriPlg = new PlgDefStruct1(blTriPlgPos, blTriPlgStretch, blTriPlgRot, blTriPlgColor, 0);
                     *_uiCommon._ActiveDrawTypeId = queueId;

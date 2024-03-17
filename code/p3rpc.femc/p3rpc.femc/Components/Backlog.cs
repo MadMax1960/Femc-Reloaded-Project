@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    public class Backlog : ModuleAsmInlineColorEdit
+    public class Backlog : ModuleAsmInlineColorEdit<FemcContext>
     {
         private UICommon _uiCommon;
 
@@ -26,7 +27,7 @@ namespace p3rpc.femc.Components
         private IAsmHook _drawLogTitleColor;
         private IAsmHook _drawCalendarTimeOfDay;
 
-        public unsafe Backlog(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe Backlog(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(AUIBackLogDraw_DrawBackgroundColor_SIG, "AUIBackLogDraw::DrawBackgroundColor", _context._utils.GetDirectAddress, addr => _drawBgColor = _context._utils.MakeHooker<AUIBackLogDraw_DrawBackgroundColor>(AUIBackLogDraw_DrawBackgroundColorImpl, addr));
 
@@ -85,10 +86,10 @@ namespace p3rpc.femc.Components
         public unsafe void AUIBackLogDraw_DrawBackgroundColorImpl(AUIBackLogDraw* self, uint a2, uint a3, uint a4, uint a5)
         {
             if (self->IconColor.arr_num >= 2)
-                _uiCommon.SetColor(ref self->IconColor.allocator_instance[1], _context._config.BackLogTexColorSelected);
-            _uiCommon.SetColorIgnoreAlpha(ref self->GladationBoardColor, _context._config.BackLogGladationColor);
-            _uiCommon.SetColorIgnoreAlpha(ref self->BlackBoardColor, _context._config.BackLogBlackboardColor);
-            _uiCommon.SetColorIgnoreAlpha(ref self->BlueBoardColor, _context._config.BackLogBlueboardColorEx);
+                ConfigColor.SetColor(ref self->IconColor.allocator_instance[1], _context._config.BackLogTexColorSelected);
+            ConfigColor.SetColorIgnoreAlpha(ref self->GladationBoardColor, _context._config.BackLogGladationColor);
+            ConfigColor.SetColorIgnoreAlpha(ref self->BlackBoardColor, _context._config.BackLogBlackboardColor);
+            ConfigColor.SetColorIgnoreAlpha(ref self->BlueBoardColor, _context._config.BackLogBlueboardColorEx);
             _drawBgColor.OriginalFunction(self, a2, a3, a4, a5);
         }
         public unsafe delegate void AUIBackLogDraw_DrawBackgroundColor(AUIBackLogDraw* self, uint a2, uint a3, uint a4, uint a5);

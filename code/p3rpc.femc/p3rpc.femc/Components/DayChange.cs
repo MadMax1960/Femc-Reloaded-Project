@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
@@ -12,7 +13,7 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    public class DayChange : ModuleBase
+    public class DayChange : ModuleBase<FemcContext>
     {
         private UICommon _uiCommon;
         private string AUIDayChange_UpdateParams_SIG = "48 8B C4 55 53 56 57 41 54 41 55 48 8D 6C 24 ??";
@@ -39,7 +40,7 @@ namespace p3rpc.femc.Components
         private IReverseWrapper<AUIDayChange_SetColorPassthrough> _drawDaysUntilFullMoon3Wrapper;
         private IReverseWrapper<AUIDayChange_SetColorPassthrough> _drawNextDayRipple1Wrapper;
         private IReverseWrapper<AUIDayChange_SetColorPassthrough> _drawNextDayRipple2Wrapper;
-        public unsafe DayChange(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe DayChange(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(AUIDayChange_UpdateParams_SIG, "AUIDayChange::UpdateParams", _context._utils.GetDirectAddress, addr => _updateParams = _context._utils.MakeHooker<AUIDayChange_UpdateParams>(AUIDayChange_UpdateParamsImpl, addr));
             _context._utils.SigScan(AUIDayChange_CurrentDayMoonShadowColor_SIG, "AUIDayChange::CurrentDayMoonSahdowColor", _context._utils.GetDirectAddress, addr =>
@@ -105,15 +106,15 @@ namespace p3rpc.femc.Components
         public unsafe void AUIDayChange_UpdateParamsImpl(AUIDayChange* self, float deltaTime)
         {
             _updateParams.OriginalFunction(self, deltaTime);
-            _uiCommon.SetColor(ref self->BandColorPrevDay, _context._config.NextDayBandColor);
-            _uiCommon.SetColor(ref self->BandColorNextDay, _context._config.NextDayBandColor);
-            _uiCommon.SetColor(ref self->LimitTextColor, _context._config.NextDayTextColor);
+            ConfigColor.SetColor(ref self->BandColorPrevDay, _context._config.NextDayBandColor);
+            ConfigColor.SetColor(ref self->BandColorNextDay, _context._config.NextDayBandColor);
+            ConfigColor.SetColor(ref self->LimitTextColor, _context._config.NextDayTextColor);
         }
 
-        private unsafe FSprColor AUIDayChange_SetColorIgnoreAlpha(FSprColor source, Configuration.ConfigColor confColor)
+        private unsafe FSprColor AUIDayChange_SetColorIgnoreAlpha(FSprColor source, ConfigColor confColor)
         {
             var oldAlpha = source.A;
-            var newColor = _uiCommon.ToFSprColor(confColor);
+            var newColor = ConfigColor.ToFSprColor(confColor);
             newColor.A = oldAlpha;
             return newColor;
         }
@@ -126,7 +127,7 @@ namespace p3rpc.femc.Components
         private unsafe delegate FSprColor AUIDayChange_SetColorPassthrough(FSprColor source);
     }
 
-    public class TimeChange : ModuleBase
+    public class TimeChange : ModuleBase<FemcContext>
     {
         private UICommon _uiCommon;
         private string AUITimeChange_UpdateParams_SIG = "48 8B C4 48 89 58 ?? 48 89 70 ?? 48 89 78 ?? 55 41 56 41 57 48 8D 68 ?? 48 81 EC E0 00 00 00 0F 29 70 ??";
@@ -135,7 +136,7 @@ namespace p3rpc.femc.Components
         private IHook<AUITimeChange_UpdateParams> _updateParams;
         private IAsmHook _todOverlapColor;
         private IReverseWrapper<AUITimeChange_TimeOfDayOverlapColor> _todOverlapColorWrapper;
-        public unsafe TimeChange(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe TimeChange(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(AUITimeChange_UpdateParams_SIG, "AUITimeChange::UpdateParams", _context._utils.GetDirectAddress, addr => _updateParams = _context._utils.MakeHooker<AUITimeChange_UpdateParams>(AUITimeChange_UpdateParamsImpl, addr));
             _context._utils.SigScan(AUITimeChange_TimeOfDayOverlapColor_SIG, "AUITimeChange::TimeOfDayOverlapColor", _context._utils.GetDirectAddress, addr =>
@@ -156,10 +157,10 @@ namespace p3rpc.femc.Components
         public unsafe void AUITimeChange_UpdateParamsImpl(AUITimeChange* self, float deltaTime)
         {
             _updateParams.OriginalFunction(self, deltaTime);
-            _uiCommon.SetColor(ref self->MainBarColor, _context._config.TimeSkipColor);
-            _uiCommon.SetColor(ref self->TopBarColor, _context._config.TimeSkipColor);
+            ConfigColor.SetColor(ref self->MainBarColor, _context._config.TimeSkipColor);
+            ConfigColor.SetColor(ref self->TopBarColor, _context._config.TimeSkipColor);
         }
-        private unsafe FSprColor AUITimeChange_TimeOfDayOverlapColorImpl() => _uiCommon.ToFSprColor(_context._config.TimeSkipColor);
+        private unsafe FSprColor AUITimeChange_TimeOfDayOverlapColorImpl() => ConfigColor.ToFSprColor(_context._config.TimeSkipColor);
         public unsafe delegate void AUITimeChange_UpdateParams(AUITimeChange* self, float deltaTime);
         [Function(new Register[] { }, FunctionAttribute.Register.rax, false)]
         private unsafe delegate FSprColor AUITimeChange_TimeOfDayOverlapColor();

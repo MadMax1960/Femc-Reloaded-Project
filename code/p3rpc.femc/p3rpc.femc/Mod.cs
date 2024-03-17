@@ -1,10 +1,12 @@
-﻿using p3rpc.femc.Components;
+﻿using p3rpc.commonmodutils;
+using p3rpc.femc.Components;
 using p3rpc.femc.Configuration;
 using p3rpc.femc.Template;
-using Reloaded.Hooks.ReloadedII.Interfaces;
+using Reloaded.Hooks.Definitions;
 using Reloaded.Memory;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
+using SharedScans.Interfaces;
 using System;
 using System.Diagnostics;
 using System.Reflection;
@@ -47,8 +49,8 @@ namespace p3rpc.femc
         /// </summary>
         private readonly IModConfig _modConfig;
 
-        private Context _context;
-        private Dictionary<string, ModuleBase> _modules;
+        private FemcContext _context;
+        private ModuleRuntime<FemcContext> _modRuntime;
 
         public Mod(ModContext context)
         {
@@ -61,90 +63,74 @@ namespace p3rpc.femc
 
             var baseAddress = Process.GetCurrentProcess().MainModule.BaseAddress;
             _modLoader.GetController<IStartupScanner>().TryGetTarget(out var startupScanner);
-            if (startupScanner == null || _hooks == null) throw new Exception("Missing dependencies : startup scanner, hooks");
-            Utils utils = new(startupScanner, _logger, _hooks, baseAddress);
+            if (startupScanner == null) throw new Exception("[Femc Project] Could not get controller for Reloaded startup scanner");
+            if (_hooks == null) throw new Exception("[Femc Project] Could not get controller for Reloaded hooks");
+            _modLoader.GetController<ISharedScans>().TryGetTarget(out var sharedScans);
+            if (sharedScans == null) throw new Exception("[Femc Project] Could not get controller for Shared Scans");
+            Utils utils = new(startupScanner, _logger, _hooks, baseAddress, "Femc Project", System.Drawing.Color.Thistle);
             var memory = new Memory();
-            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory);
-            _modules = new();
-            AddModule<UICommon>();
-            if (_configuration.EnableMailIcon) AddModule<MailIcon>();
+            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans);
+            //_modules = new();
+            _modRuntime = new(_context);
+            _modRuntime.AddModule<UICommon>();
+            if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
+            
             if (_configuration.EnableCampMenu)
             {
-                AddModule<CampCommon>();
-                AddModule<CampRoot>();
-                AddModule<CampSkill>();
-                AddModule<CampItem>();
-                AddModule<CampEquip>();
-                AddModule<CampPersona>();
-                AddModule<CampSocialLink>();
-                AddModule<CampCalendar>();
-                AddModule<CampSystem>();
-                AddModule<SocialStats>();
+                _modRuntime.AddModule<CampCommon>();
+                _modRuntime.AddModule<CampRoot>();
+                _modRuntime.AddModule<CampSkill>();
+                _modRuntime.AddModule<CampItem>();
+                _modRuntime.AddModule<CampEquip>();
+                _modRuntime.AddModule<CampPersona>();
+                _modRuntime.AddModule<CampSocialLink>();
+                _modRuntime.AddModule<CampCalendar>();
+                _modRuntime.AddModule<CampSystem>();
+                _modRuntime.AddModule<SocialStats>();
             }
-            if (_configuration.EnableDateTimePanel) AddModule<DateTimePanel>();
+            if (_configuration.EnableDateTimePanel) _modRuntime.AddModule<DateTimePanel>();
             if (_configuration.EnableTextbox)
             {
-                AddModule<MsgWindowSimpleCommon>();
-                AddModule<MsgWindowSimple>();
-                AddModule<MsgWindowSelectSimple>();
-                AddModule<MsgWindowAssist>();
-                AddModule<MsgWindowSystem>();
+                _modRuntime.AddModule<MsgWindowSimpleCommon>();
+                _modRuntime.AddModule<MsgWindowSimple>();
+                _modRuntime.AddModule<MsgWindowSelectSimple>();
+                _modRuntime.AddModule<MsgWindowAssist>();
+                _modRuntime.AddModule<MsgWindowSystem>();
             }
             if (_configuration.EnableMindMessageBox)
             {
-                AddModule<MsgWindowMind>();
-                AddModule<MsgWindowSelectMind>();
+                _modRuntime.AddModule<MsgWindowMind>();
+                _modRuntime.AddModule<MsgWindowSelectMind>();
             }
-            if (_configuration.EnableInteractPrompt) AddModule<MiscCheckDraw>();
+            if (_configuration.EnableInteractPrompt) _modRuntime.AddModule<MiscCheckDraw>();
             if (_configuration.EnableMinimap)
             {
-                AddModule<Minimap>();
-                AddModule<LocationSelect>();
+                _modRuntime.AddModule<Minimap>();
+                _modRuntime.AddModule<LocationSelect>();
             }
             if (_configuration.EnableBustup)
             {
-                AddModule<Bustup>();
+                _modRuntime.AddModule<Bustup>();
             }
             if (_configuration.EnableMessageScript)
             {
-                AddModule<MessageScript>();
+                _modRuntime.AddModule<MessageScript>();
             }
-            if (_configuration.EnableTownMap) AddModule<TownMap>();
-            if (_configuration.EnablePartyPanel) AddModule<PartyPanel>();
-            AddModule<Backlog>();
-            AddModule<KeyHelp>();
-            if (_configuration.EnableGetItem) AddModule<MiscGetItemDraw>();
+            if (_configuration.EnableTownMap) _modRuntime.AddModule<TownMap>();
+            if (_configuration.EnablePartyPanel) _modRuntime.AddModule<PartyPanel>();
+            _modRuntime.AddModule<Backlog>();
+            _modRuntime.AddModule<KeyHelp>();
+            if (_configuration.EnableGetItem) _modRuntime.AddModule<MiscGetItemDraw>();
             if (_configuration.EnableTimeSkip)
             {
-                AddModule<DayChange>();
-                AddModule<TimeChange>();
+                _modRuntime.AddModule<DayChange>();
+                _modRuntime.AddModule<TimeChange>();
             }
-            if (_configuration.EnableMoneyDraw) AddModule<MiscMoneyDraw>();
-            AddModule<GenericSelect>();
-            AddModule<PersonaStatus>();
-
-            foreach (var mod in _modules.Values) mod.Register();
+            if (_configuration.EnableMoneyDraw) _modRuntime.AddModule<MiscMoneyDraw>();
+            _modRuntime.AddModule<GenericSelect>();
+            _modRuntime.AddModule<PersonaStatus>();
+            _modRuntime.RegisterModules();
         }
-
-        private void AddModule<T>() where T : ModuleBase
-        {
-            Type typeInfo = typeof(T);
-            ConstructorInfo construct = typeInfo.GetConstructor(
-                BindingFlags.Instance | BindingFlags.Public, null, CallingConventions.HasThis,
-                new Type[] { typeof(Context), typeof(Dictionary<string, ModuleBase>)}, null
-            );
-            if (construct != null)
-            {
-                T newModule = (T)construct.Invoke(new object[] { _context, _modules });
-                _modules.Add(typeInfo.Name, newModule);
-                _context._utils.Log($"Added module {typeInfo.Name}");
-            }
-            else
-            {
-                throw new Exception($"Could not find appropriate constructor for type {typeInfo.Name}");
-            }
-        }
-
         #region Standard Overrides
         public override void ConfigurationUpdated(Config configuration)
         {
@@ -152,7 +138,7 @@ namespace p3rpc.femc
             // ... your code here.
             _configuration = configuration;
             _logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
-            foreach (var mod in _modules.Values) mod.OnConfigUpdated(configuration);
+            _modRuntime.UpdateConfiguration(configuration);
         }
         #endregion
 
