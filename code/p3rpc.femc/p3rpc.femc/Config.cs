@@ -1,4 +1,5 @@
 ﻿using p3rpc.commonmodutils;
+using p3rpc.femc.Components;
 using p3rpc.femc.Template.Configuration;
 using Reloaded.Mod.Interfaces.Structs;
 using System.ComponentModel;
@@ -59,8 +60,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Mind Window: Inner Color")]
         public ConfigColor MindWindowInnerColor { get; set; } = ConfigColor.DarkColor;
 
-        [DisplayName("Mind Window: Outer Haze")]
+        /*[DisplayName("Mind Window: Outer Haze")] i'm hardcoding this it's broken for too many people lol
         public ConfigColor MindWindowOuterHazeEx { get; set; } = new ConfigColor(ConfigColor.MellodiColorLight3.R, ConfigColor.MellodiColorLight3.G, ConfigColor.MellodiColorLight3.B, 128);
+        */
 
         [DisplayName("Mind Window: Background Dots")]
         public ConfigColor MindWindowBgDots { get; set; } = ConfigColor.MidColor;
@@ -317,6 +319,30 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Persona Status Param Background Color")]
         public ConfigColor PersonaStatusParamColor { get; set; } = ConfigColor.MellodiColorDark3;
 
+        [DisplayName("Network: Daily Action Sticky Note Background Color 1")]
+        public ConfigColor NetworkDailyActionStickyNoteBgColor1 { get; set; } = UICommon.NetStickyNoteBgColor1;
+
+        [DisplayName("Network: Daily Action Sticky Note Background Color 2")]
+        public ConfigColor NetworkDailyActionStickyNoteBgColor2 { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Network: Daily Action Sticky Note Dotpoint Color 1")]
+        public ConfigColor NetworkDailyActionStickyNoteDotColor1 { get; set; } = ConfigColor.MellodiColorLight2;
+
+        [DisplayName("Network: Daily Action Sticky Note Dotpoint Color 2")]
+        public ConfigColor NetworkDailyActionStickyNoteDotColor2 { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Network: Daily Action Sticky Note Text Color 1")]
+        public ConfigColor NetworkDailyActionStickyNoteTextColor1 { get; set; } = UICommon.NetStickyNoteTextColor1;
+
+        [DisplayName("Network: Daily Action Sticky Note Text Color 2")]
+        public ConfigColor NetworkDailyActionStickyNoteTextColor2 { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Network: Daily Action Blue Background Color")]
+        public ConfigColor NetworkDailyActionBlueBgColor { get; set; } = ConfigColor.MellodiColorMid4;
+
+        [DisplayName("Network: Daily Action Network Icon Color")]
+        public ConfigColor NetworkDailyActionNetworkIcon { get; set; } = ConfigColor.MellodiColorMid1;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -386,6 +412,11 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         [DefaultValue(true)]
         public bool EnableGetItem { get; set; } = true;
+
+        [DisplayName("Enable Network Features")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableNetworkFeatures { get; set; } = true;
 
     }
 

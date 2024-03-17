@@ -61,7 +61,8 @@ namespace p3rpc.femc.Components
         {
             ConfigColor.SetColor(ref self->OuterBorderColor, _context._config.MindWindowOuterBorder);
             ConfigColor.SetColor(ref self->InnerContentsColor, _context._config.MindWindowInnerColor);
-            ConfigColor.SetColor(ref self->OutsideMistColor, _context._config.MindWindowOuterHazeEx);
+            var MindWindowOuterHaze = new ConfigColor(0xff, 0x89, 0xa6, 0x80);
+            ConfigColor.SetColor(ref self->OutsideMistColor, MindWindowOuterHaze);
             ConfigColor.SetColor(ref self->NextPage.NextPageColor, _context._config.TextBoxFrontFillColor); // see MsgWindowSimple
             _drawMessageBox.OriginalFunction(self);
         }

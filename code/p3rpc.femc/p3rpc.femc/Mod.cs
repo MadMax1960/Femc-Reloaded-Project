@@ -129,6 +129,11 @@ namespace p3rpc.femc
             if (_configuration.EnableMoneyDraw) _modRuntime.AddModule<MiscMoneyDraw>();
             _modRuntime.AddModule<GenericSelect>();
             _modRuntime.AddModule<PersonaStatus>();
+            if (_configuration.EnableNetworkFeatures)
+            {
+                _modRuntime.AddModule<VoiceAction>();
+                _modRuntime.AddModule<VoiceAnswer>();
+            }
             _modRuntime.RegisterModules();
         }
         #region Standard Overrides

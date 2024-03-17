@@ -46,6 +46,9 @@ namespace p3rpc.femc.Components
             new FVector4(0, 0, 0, 1)
         };
 
+        public static readonly ConfigColor NetStickyNoteBgColor1 = new ConfigColor(0xd8, 0x3d, 0x76, 0xff);
+        public static readonly ConfigColor NetStickyNoteTextColor1 = new ConfigColor(0xff, 0xd1, 0xdc, 0xff);
+
         public static unsafe float* IdentityMatrixNative; // 0x145361ae0
         public unsafe BPDrawSpr* GetDrawer() => (BPDrawSpr*)(_getSpriteItemMaskInstance() + 0x20);
 

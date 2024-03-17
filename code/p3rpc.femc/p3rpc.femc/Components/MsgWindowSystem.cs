@@ -18,6 +18,7 @@ namespace p3rpc.femc.Components
         // Background color is stored in BP_TutrialWindow
         //private string AitfMsgProgWindow_TUTRIALDraw_DrawInfoTextColor_SIG = "E8 ?? ?? ?? ?? 0F B6 93 ?? ?? ?? ?? 44 0F 28 4C 24 ??";
         private string AitfMsgProgWindow_TUTRIALDraw_DrawInfoTextColor_SIG = "40 88 BC 24 ?? ?? ?? ?? 44 8B 84 24 ?? ?? ?? ?? F3 0F 11 74 24 ?? F3 0F 11 74 24 ?? E8 ?? ?? ?? ?? 0F B6 93 ?? ?? ?? ??";
+        private string AitfMsgProgWindow_TUTRIALDraw_DrawGekkokuanEmblem_SIG = "40 88 BC 24 ?? ?? ?? ?? 44 8B 84 24 ?? ?? ?? ?? 0F 14 C1";
         //private string AitfMsgProgWindow_TUTRIALDraw_DrawBottomRightColor_SIG = "E8 ?? ?? ?? ?? 44 38 B6 ?? ?? ?? ?? 0F 84 ?? ?? ?? ?? 48 8B 86d ?? ?? ?? ??";
         private string AitfMsgProgWindow_TUTRIALDraw_DrawBottomRightColor_SIG = "44 8B 45 ?? F3 44 0F 11 44 24 ??";
         private string AitfMsgProgWindow_TUTRIALDraw_Update_SIG = "80 B9 ?? ?? ?? ?? 00 0F 28 C1 F3 0F 58 81 ?? ?? ?? ?? 0F 28 D1";
@@ -25,10 +26,9 @@ namespace p3rpc.femc.Components
         private IHook<AitfMsgProgWindow_TUTRIALDraw_Update> _update;
         private IAsmHook _drawInfoTextColor;
         private IAsmHook _drawBottomRightColor;
+        private IAsmHook _drawGekkoukanEmblem;
         //private IReverseWrapper<AitfMsgProgWindow_TUTRIALDraw_SetElementColor> _drawInfoTextColorWrapper;
         //private IReverseWrapper<AitfMsgProgWindow_TUTRIALDraw_SetElementColor> _drawBottomRightColorWrapper;
-
-        //private bool firstTime = false;
         public unsafe MsgWindowSystem(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(AitfMsgProgWindow_TUTRIALDraw_DrawInfoTextColor_SIG, "AitfMsgProgWindow_TUTRIALDraw::DrawInfoTextColor", _context._utils.GetDirectAddress, addr =>
@@ -40,6 +40,16 @@ namespace p3rpc.femc.Components
                     //$"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(AitfMsgProgWindow_TUTRIALDraw_DrawElementLightColor, out _drawInfoTextColorWrapper)}",
                 };
                 _drawInfoTextColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AitfMsgProgWindow_TUTRIALDraw_DrawGekkokuanEmblem_SIG, "AitfMsgProgWindow_TUTRIALDraw::DrawGekkokuanEmblem", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rsp + 0xa8], {_context._config.MsgSimpleSystemLightColor.ToU32ARGB()}"
+                    //$"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(AitfMsgProgWindow_TUTRIALDraw_DrawElementLightColor, out _drawInfoTextColorWrapper)}",
+                };
+                _drawGekkoukanEmblem = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             _context._utils.SigScan(AitfMsgProgWindow_TUTRIALDraw_DrawBottomRightColor_SIG, "AitfMsgProgWindow_TUTRIALDraw::DrawBottomRightColor", _context._utils.GetDirectAddress, addr =>
             {
@@ -62,13 +72,6 @@ namespace p3rpc.femc.Components
         //private unsafe FColor AitfMsgProgWindow_TUTRIALDraw_DrawElementLightColor(FColor color) => _uiCommon.ToFColorWithAlpha(_context._config.MsgSimpleSystemLightColor, color.A);
         private unsafe void AitfMsgProgWindow_TUTRIALDraw_UpdateImpl(AitfMsgProgWindow_TUTRIALDraw* self, float deltaTime)
         {
-            /*
-            if (!firstTime)
-            {
-                _context.FindObject("a");
-                firstTime = true;
-            }
-            */
             _update.OriginalFunction(self, deltaTime);
             ConfigColor.SetColorIgnoreAlpha(ref self->NavyColor, _context._config.MsgSimpleSystemDarkColor);
             ConfigColor.SetColorIgnoreAlpha(ref self->GradationColor, _context._config.MsgSimpleSystemGradationColor);
