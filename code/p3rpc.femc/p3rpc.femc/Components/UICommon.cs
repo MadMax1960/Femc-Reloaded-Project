@@ -36,6 +36,8 @@ namespace p3rpc.femc.Components
         public ICommonMethods.GetUGlobalWork _getUGlobalWork;
         public ICommonMethods.FAppCalculationItem_Lerp _appCalcLerp;
 
+        public AUIDrawBaseActor_DrawRectV4Inner _drawRectV4Inner;
+
         public unsafe uint* _ActiveDrawTypeId; // this is literally from GFD lol
 
         public static FVector4[] IdentityMatrix = 
@@ -46,11 +48,14 @@ namespace p3rpc.femc.Components
             new FVector4(0, 0, 0, 1)
         };
 
+        // i forgot to add this to commonutils lol
         public static readonly ConfigColor NetStickyNoteBgColor1 = new ConfigColor(0xd8, 0x3d, 0x76, 0xff);
         public static readonly ConfigColor NetStickyNoteTextColor1 = new ConfigColor(0xff, 0xd1, 0xdc, 0xff);
 
         public static unsafe float* IdentityMatrixNative; // 0x145361ae0
         public unsafe BPDrawSpr* GetDrawer() => (BPDrawSpr*)(_getSpriteItemMaskInstance() + 0x20);
+
+        private string AUIDrawBaseActor_DrawRectV4Inner_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 4D ?? 41 0F 28 D1";
 
         public unsafe UICommon(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
@@ -73,8 +78,9 @@ namespace p3rpc.femc.Components
             _context._sharedScans.CreateListener<IUIMethods.AUIDrawBaseActor_DrawRect>(addr => _context._utils.AfterSigScan(addr, _context._utils.GetDirectAddress, addr => _drawRect = _context._utils.MakeWrapper<IUIMethods.AUIDrawBaseActor_DrawRect>(addr)));
             _context._sharedScans.CreateListener<ICommonMethods.FAppCalculationItem_Lerp>(addr => _context._utils.AfterSigScan(addr, _context._utils.GetIndirectAddressShort, addr => _appCalcLerp = _context._utils.MakeWrapper<ICommonMethods.FAppCalculationItem_Lerp>(addr)));
             _context._sharedScans.CreateListener<IUIMethods.AUIDrawBaseActor_DrawRectV4>(addr => _context._utils.AfterSigScan(addr, _context._utils.GetDirectAddress, addr => _drawRectV4 = _context._utils.MakeWrapper<IUIMethods.AUIDrawBaseActor_DrawRectV4>(addr)));
-            
-            IdentityMatrixNative = (float*)NativeMemory.Alloc(sizeof(float) * 16);
+            _context._utils.SigScan(AUIDrawBaseActor_DrawRectV4Inner_SIG, "AUIDrawBaseActor::DrawRectV4Inner", _context._utils.GetIndirectAddressShort, addr => _drawRectV4Inner = _context._utils.MakeWrapper<AUIDrawBaseActor_DrawRectV4Inner>(addr));
+
+            IdentityMatrixNative = (float*)NativeMemory.AllocZeroed(sizeof(float) * 16);
             IdentityMatrixNative[0] = 1;
             IdentityMatrixNative[5] = 1;
             IdentityMatrixNative[10] = 1;
@@ -116,5 +122,7 @@ namespace p3rpc.femc.Components
         }
 
         public override void Register() {}
+
+        public unsafe delegate void AUIDrawBaseActor_DrawRectV4Inner(BPDrawSpr* drawer, float X, float Y, float Z, FVector* v0, FVector* v1, FVector* v2, FVector* v3, FColor* color, float* transMtx, float antiAlias, int queueId);
     }
 }

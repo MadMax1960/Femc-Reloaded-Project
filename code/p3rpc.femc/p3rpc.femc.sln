@@ -4,7 +4,7 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p3rpc.femc", "p3rpc.femc\p3rpc.femc.csproj", "{93BBD2A6-9397-4512-B0BB-E3D0FDE4E926}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedScans.Interfaces", "..\..\..\p3rpc.nativetypes\include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj", "{28BF3DA7-B49B-45F9-9C82-F92C93345CDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedScans.Interfaces", "include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj", "{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +16,10 @@ Global
 		{93BBD2A6-9397-4512-B0BB-E3D0FDE4E926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93BBD2A6-9397-4512-B0BB-E3D0FDE4E926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93BBD2A6-9397-4512-B0BB-E3D0FDE4E926}.Release|Any CPU.Build.0 = Release|Any CPU
-		{28BF3DA7-B49B-45F9-9C82-F92C93345CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{28BF3DA7-B49B-45F9-9C82-F92C93345CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{28BF3DA7-B49B-45F9-9C82-F92C93345CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{28BF3DA7-B49B-45F9-9C82-F92C93345CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -70,7 +70,6 @@ namespace p3rpc.femc
             Utils utils = new(startupScanner, _logger, _hooks, baseAddress, "Femc Project", System.Drawing.Color.Thistle);
             var memory = new Memory();
             _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans);
-            //_modules = new();
             _modRuntime = new(_context);
             _modRuntime.AddModule<UICommon>();
             if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
@@ -96,6 +95,7 @@ namespace p3rpc.femc
                 _modRuntime.AddModule<MsgWindowSelectSimple>();
                 _modRuntime.AddModule<MsgWindowAssist>();
                 _modRuntime.AddModule<MsgWindowSystem>();
+                _modRuntime.AddModule<GenericSelect>();
             }
             if (_configuration.EnableMindMessageBox)
             {
@@ -118,21 +118,24 @@ namespace p3rpc.femc
             }
             if (_configuration.EnableTownMap) _modRuntime.AddModule<TownMap>();
             if (_configuration.EnablePartyPanel) _modRuntime.AddModule<PartyPanel>();
-            _modRuntime.AddModule<Backlog>();
-            _modRuntime.AddModule<KeyHelp>();
+            if (_configuration.EnableBacklog) _modRuntime.AddModule<Backlog>();
+            if (_configuration.EnableButtonPrompts) _modRuntime.AddModule<KeyHelp>();
             if (_configuration.EnableGetItem) _modRuntime.AddModule<MiscGetItemDraw>();
             if (_configuration.EnableTimeSkip)
             {
                 _modRuntime.AddModule<DayChange>();
                 _modRuntime.AddModule<TimeChange>();
             }
-            if (_configuration.EnableMoneyDraw) _modRuntime.AddModule<MiscMoneyDraw>();
-            _modRuntime.AddModule<GenericSelect>();
-            _modRuntime.AddModule<PersonaStatus>();
+            if (_configuration.EnablePersonaStatus) _modRuntime.AddModule<PersonaStatus>();
             if (_configuration.EnableNetworkFeatures)
             {
                 _modRuntime.AddModule<VoiceAction>();
                 _modRuntime.AddModule<VoiceAnswer>();
+            }
+            if (_configuration.EnableShop)
+            {
+                _modRuntime.AddModule<SimpleShop>();
+                _modRuntime.AddModule<MiscMoneyDraw>();
             }
             _modRuntime.RegisterModules();
         }

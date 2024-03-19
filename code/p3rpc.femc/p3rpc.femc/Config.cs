@@ -292,8 +292,11 @@ namespace p3rpc.femc.Configuration
         [DisplayName("System Message Dark Haze Color")]
         public ConfigColor MsgSimpleSystemGradationColor { get; set; } = ConfigColor.MellodiColorDark3;
 
-        [DisplayName("Persona Status Skill List Background")]
+        [DisplayName("Persona Status Skill List Background Top Left")]
         public ConfigColor PersonaStatusSkillListBg { get; set; } = ConfigColor.PersonaStatusSkillListBg;
+
+        [DisplayName("Persona Status Skill List Background Lower Line")]
+        public ConfigColor PersonaStatusSkillListBg2 { get; set; } = ConfigColor.MellodiColorMid1;
 
         [DisplayName("Persona Status Skill List Checkerboard")]
         public ConfigColor PersonaStatusSkillListCheckboardAlt { get; set; } = ConfigColor.PersonaStatusSkillListCheckboardAlt;
@@ -319,6 +322,15 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Persona Status Param Background Color")]
         public ConfigColor PersonaStatusParamColor { get; set; } = ConfigColor.MellodiColorDark3;
 
+        [DisplayName("Persona Status Lore Title Color")]
+        public ConfigColor PersonaStatusCommentaryTitleColor { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Persona Status Base Stat Color")]
+        public ConfigColor PersonaStatusBaseStat { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Persona Status Skill Affinity Outline Color (Requires Restart)")]
+        public ConfigColor PersonaStatusAttributeOutline { get; set; } = ConfigColor.MellodiColorMid1;
+
         [DisplayName("Network: Daily Action Sticky Note Background Color 1")]
         public ConfigColor NetworkDailyActionStickyNoteBgColor1 { get; set; } = UICommon.NetStickyNoteBgColor1;
 
@@ -342,6 +354,9 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Network: Daily Action Network Icon Color")]
         public ConfigColor NetworkDailyActionNetworkIcon { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Simple Shop: Info Color")]
+        public ConfigColor SimpleShopInfoColor { get; set; } = ConfigColor.MellodiColorMid1;
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -403,11 +418,6 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableTimeSkip { get; set; } = true;
 
-        [DisplayName("Enable Money Draw")]
-        [Category("UI Components")]
-        [DefaultValue(true)]
-        public bool EnableMoneyDraw { get; set; } = true;
-
         [DisplayName("Enable Get Item")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -417,6 +427,26 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         [DefaultValue(true)]
         public bool EnableNetworkFeatures { get; set; } = true;
+
+        [DisplayName("Enable Shop")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableShop { get; set; } = true;
+
+        [DisplayName("Enable Persona Status")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnablePersonaStatus { get; set; } = true;
+
+        [DisplayName("Enable Backlog")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableBacklog { get; set; } = true;
+
+        [DisplayName("Enable Button Prompts")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableButtonPrompts { get; set; } = true;
 
     }
 

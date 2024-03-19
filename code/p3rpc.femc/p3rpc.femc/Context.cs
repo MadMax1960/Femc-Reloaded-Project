@@ -19,5 +19,7 @@ namespace p3rpc.femc
         {
             _config = (Config)config;
         }
+
+        public override void OnConfigUpdated(IConfigurable newConfig) => _config = (Config)newConfig;
     }
 }
