@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    public class MiscCheckDraw : ModuleBase
+    public class MiscCheckDraw : ModuleBase<FemcContext>
     {
         private string AUIMiscCheckDraw_DrawInteractPrompt_SIG = "40 55 56 48 8D 6C 24 ?? 48 81 EC 18 01 00 00 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 45 ?? 48 8B F1 E8 ?? ?? ?? ??";
         private string AUIMiscCheckDraw_GetCheckDrawAssets_SIG = "40 57 48 83 EC 60 48 83 B9 ?? ?? ?? ?? 00 48 8B F9 75 ?? B0 01";
@@ -16,7 +17,7 @@ namespace p3rpc.femc.Components
         private AUIMiscCheckDraw_GetCheckDrawAssets _getCheckDrawAssets;
         private UICommon _uiCommon;
 
-        public unsafe MiscCheckDraw(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe MiscCheckDraw(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(AUIMiscCheckDraw_DrawInteractPrompt_SIG, "AUIMiscCheckDraw::DrawInteractPrompt", _context._utils.GetDirectAddress, addr => _drawInteractPrompt = _context._utils.MakeHooker<AUIMiscCheckDraw_DrawInteractPrompt>(AUIMiscCheckDraw_DrawInteractPromptImpl, addr));
             _context._utils.SigScan(AUIMiscCheckDraw_GetCheckDrawAssets_SIG, "AUIMiscCheckDraw::GetCheckDrawAssets", _context._utils.GetDirectAddress, addr => _getCheckDrawAssets = _context._utils.MakeWrapper<AUIMiscCheckDraw_GetCheckDrawAssets>(addr));
@@ -36,19 +37,19 @@ namespace p3rpc.femc.Components
             {
                 var checkBgBackColor = _context._config.CheckDrawBgColor;
                 checkBgBackColor.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 255);
-                _uiCommon.SetColor(ref self->checkBgBack.Color, checkBgBackColor);
+                ConfigColor.SetColor(ref self->checkBgBack.Color, checkBgBackColor);
 
                 var checkBgFrontBorderColor = _context._config.CheckDrawFgBorderColor;
                 checkBgFrontBorderColor.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 255);
-                _uiCommon.SetColor(ref self->CheckBgFrontBorderColor, checkBgFrontBorderColor);
+                ConfigColor.SetColor(ref self->CheckBgFrontBorderColor, checkBgFrontBorderColor);
 
                 var checkBgFrontColor = _context._config.CheckDrawFgColor;
                 checkBgFrontColor.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 204);
-                _uiCommon.SetColor(ref self->checkBgFront.Color, checkBgFrontColor);
+                ConfigColor.SetColor(ref self->checkBgFront.Color, checkBgFrontColor);
 
                 var defParamsAlpha = _context._config.CheckDrawBgColor;
                 defParamsAlpha.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 127.5);
-                _uiCommon.SetColor(ref self->sprDefParamsAlpha.color, defParamsAlpha);
+                ConfigColor.SetColor(ref self->sprDefParamsAlpha.color, defParamsAlpha);
             }
             _drawInteractPrompt.OriginalFunction(self);
         }

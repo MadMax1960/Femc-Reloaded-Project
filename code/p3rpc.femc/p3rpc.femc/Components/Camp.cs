@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
@@ -13,10 +14,10 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    public class CampCommon : ModuleBase
+    public class CampCommon : ModuleBase<FemcContext>
     {
 
-        public unsafe CampCommon(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampCommon(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
 
         }
@@ -26,7 +27,7 @@ namespace p3rpc.femc.Components
 
         }
     }
-    public class CampRoot : ModuleBase
+    public class CampRoot : ModuleBase<FemcContext>
     {
         private string ACmpMainActor_GetCampParamTableCommon_SIG = "E8 ?? ?? ?? ?? 48 8B D8 83 FF 0C"; // inside of ACmpMainActor::DrawBackgroundUpdateInner
         private string UCmpRootDraw_DrawMenuItems_SetColorsASM_SIG = "89 7D ?? 44 8B F8 89 5D ??";
@@ -40,7 +41,7 @@ namespace p3rpc.femc.Components
         private UICommon _uiCommon;
         private CampCommon _campCommon;
 
-        public unsafe CampRoot(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampRoot(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(ACmpMainActor_GetCampParamTableCommon_SIG, "ACmpMainActor::GetCmpMainParams", _context._utils.GetIndirectAddressShort, addr => _getCmpMainParams = _context._utils.MakeHooker<ACmpMainActor_GetCampParamTableCommon>(ACmpMainActor_GetCampParamTableCommonImpl, addr));
             _context._utils.SigScan(UCmpRootDraw_DrawMenuItems_SetColorsASM_SIG, "UCmpRootDraw::SetMenuItemColors", _context._utils.GetDirectAddress, addr =>
@@ -76,12 +77,12 @@ namespace p3rpc.femc.Components
         {
             // dynamically change color values for Xrd777/UI/Camp/Param/DT_CampParamCommon.uasset
             var return_value = _getCmpMainParams.OriginalFunction(self);
-            _uiCommon.SetColor(ref return_value->AoItaColorHigh, _context._config.CampHighColor);
-            _uiCommon.SetColor(ref return_value->AoItaColorMid, _context._config.CampMiddleColor);
-            _uiCommon.SetColor(ref return_value->AoItaColorLow, _context._config.CampLowColor);
-            _uiCommon.SetColor(ref return_value->GradADownColorHigh, _context._config.CampHighColor);
-            _uiCommon.SetColor(ref return_value->GradADownColorMid, _context._config.CampMiddleColor);
-            _uiCommon.SetColor(ref return_value->GradADownColorLow, _context._config.CampLowColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->AoItaColorHigh, _context._config.CampHighColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->AoItaColorMid, _context._config.CampMiddleColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->AoItaColorLow, _context._config.CampLowColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorHigh, _context._config.CampHighColorGradation);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorMid, _context._config.CampMiddleColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorLow, _context._config.CampLowColor);
             return return_value;
         }
         private unsafe FLinearColor* UCmpRootDraw_DrawMenuItems_SetColorsNoSelImpl(byte opacity, FLinearColor* colorOut)
@@ -98,7 +99,7 @@ namespace p3rpc.femc.Components
         private unsafe delegate FLinearColor* UCmpRootDraw_DrawMenuItems_SetColorsNoSel(byte opacity, FLinearColor* colorOut);
     }
 
-    public class CampSkill : ModuleAsmInlineColorEdit
+    public class CampSkill : ModuleAsmInlineColorEdit<FemcContext>
     {
         private string UCmpSkillDraw_DrawNoUsableSkillNoneGraphic_SIG = "41 B9 FF EF DB 00"; // UCmpSkillDraw::DrawUseSkillOptions
         private string UCmpSkillDraw_DrawNoUsableSkillDescription_SIG = "C7 45 ?? FF EF DB 00"; // UCmpSkillDraw::DrawUseSkillOptions
@@ -112,7 +113,7 @@ namespace p3rpc.femc.Components
 
         private UICommon _uiCommon;
         private CampCommon _campCommon;
-        public unsafe CampSkill(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampSkill(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(UCmpSkillDraw_DrawNoUsableSkillNoneGraphic_SIG, "UCmpSkillDraw::DrawNoUsableSkillNoneGraphic", _context._utils.GetDirectAddress, addr =>
             {
@@ -153,13 +154,13 @@ namespace p3rpc.femc.Components
             _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
-        private FSprColor UCmpSkillDraw_DrawNoUsableSkillNoneGraphicImpl() => _uiCommon.ToFSprColor(_context._config.CampSkillTextColor);
+        private FSprColor UCmpSkillDraw_DrawNoUsableSkillNoneGraphicImpl() => ConfigColor.ToFSprColor(_context._config.CampSkillTextColor);
 
         [Function(new Register[] { }, FunctionAttribute.Register.r9, false)]
         private delegate FSprColor UCmpSkillDraw_DrawNoUsableSkillNoneGraphic();
     }
 
-    public class CampItem : ModuleAsmInlineColorEdit
+    public class CampItem : ModuleAsmInlineColorEdit<FemcContext>
     {
         private string ACmpMainActor_SetHeroTexTintItemMenu_SIG = "0F 44 D8 41 80 BF ?? ?? ?? ?? 06"; // bottom color, then top color
         private string UCmpItemDraw_SetNoItemColor_SIG = "41 81 CC 00 EF DB 00";
@@ -171,7 +172,7 @@ namespace p3rpc.femc.Components
 
         private UICommon _uiCommon;
         private CampCommon _campCommon;
-        public unsafe CampItem(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampItem(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(ACmpMainActor_SetHeroTexTintItemMenu_SIG, "ACmpMainActor::SetHeroTexTintItemMenu", _context._utils.GetDirectAddress, addr =>
             {
@@ -209,12 +210,12 @@ namespace p3rpc.femc.Components
         }
     }
 
-    public class CampEquip : ModuleBase
+    public class CampEquip : ModuleBase<FemcContext>
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
 
-        public unsafe CampEquip(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampEquip(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
 
         }
@@ -225,12 +226,12 @@ namespace p3rpc.femc.Components
         }
     }
 
-    public class CampPersona : ModuleBase
+    public class CampPersona : ModuleBase<FemcContext>
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
 
-        public unsafe CampPersona(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampPersona(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
 
         }
@@ -241,12 +242,12 @@ namespace p3rpc.femc.Components
         }
     }
 
-    public class CampStats : ModuleBase
+    public class CampStats : ModuleBase<FemcContext>
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
 
-        public unsafe CampStats(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampStats(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
 
         }
@@ -257,12 +258,12 @@ namespace p3rpc.femc.Components
         }
     }
 
-    public class CampQuest : ModuleBase
+    public class CampQuest : ModuleBase<FemcContext>
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
 
-        public unsafe CampQuest(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampQuest(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
 
         }
@@ -273,7 +274,7 @@ namespace p3rpc.femc.Components
         }
     }
 
-    public class CampSocialLink : ModuleAsmInlineColorEdit
+    public class CampSocialLink : ModuleAsmInlineColorEdit<FemcContext>
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
@@ -315,7 +316,7 @@ namespace p3rpc.femc.Components
 
         private IAsmHook _borderBottomRightColor;
 
-        public unsafe CampSocialLink(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampSocialLink(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             // UCmpCommuList::DrawSocialLinkList
             _context._utils.SigScan(UCmpCommuList_DrawSocialLinkList_GetSocialLinkColors_SIG, "UCmpCommuList::GetSocialLinkColors", _context._utils.GetDirectAddress, addr =>
@@ -414,10 +415,10 @@ namespace p3rpc.femc.Components
             _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
-        private unsafe FSprColor UCmpCommuList_GetSocialLinkLightColorImpl() => _uiCommon.ToFSprColor(_context._config.CampSocialLinkLight);
-        private unsafe FSprColor UCmpCommuList_GetSocialLinkDarkColorImpl() => _uiCommon.ToFSprColor(_context._config.CampSocialLinkDark);
+        private unsafe FSprColor UCmpCommuList_GetSocialLinkLightColorImpl() => ConfigColor.ToFSprColor(_context._config.CampSocialLinkLight);
+        private unsafe FSprColor UCmpCommuList_GetSocialLinkDarkColorImpl() => ConfigColor.ToFSprColor(_context._config.CampSocialLinkDark);
 
-        private unsafe FSprColor UCmpCommuDetails_GetMultiCharacterListTextColorImpl() => _uiCommon.ToFSprColor(_context._config.CampSocialLinkDetailDescName);
+        private unsafe FSprColor UCmpCommuDetails_GetMultiCharacterListTextColorImpl() => ConfigColor.ToFSprColor(_context._config.CampSocialLinkDetailDescName);
 
         [Function(new Register[] { }, FunctionAttribute.Register.rcx, false)]
         private unsafe delegate FSprColor UCmpCommuList_GetSocialLinkLightColor();
@@ -429,9 +430,9 @@ namespace p3rpc.femc.Components
 
         private FSprColor GetTargetArcanaCardColor(int i)
         {
-            if (i % 3 == 0) return _uiCommon.ToFSprColor(_context._config.ArcanaCardFallColor1);
-            else if (i % 3 == 1) return _uiCommon.ToFSprColor(_context._config.ArcanaCardFallColor2);
-            else return _uiCommon.ToFSprColor(_context._config.ArcanaCardFallColor3);
+            if (i % 3 == 0) return ConfigColor.ToFSprColor(_context._config.ArcanaCardFallColor1);
+            else if (i % 3 == 1) return ConfigColor.ToFSprColor(_context._config.ArcanaCardFallColor2);
+            else return ConfigColor.ToFSprColor(_context._config.ArcanaCardFallColor3);
         }
 
         private unsafe void ABtlShuffleMainBase_CardFallUpdateInnerImpl(nint a1, float deltaTime, byte a3, int a4, int a5, int a6, int a7, float a8, float a9, float a10, float a11, float a12, float a13, float a14, float a15)
@@ -445,7 +446,7 @@ namespace p3rpc.femc.Components
         private unsafe delegate void ABtlShuffleMainBase_CardFallUpdateInner(nint a1, float deltaTime, byte a3, int a4, int a5, int a6, int a7, float a8, float a9, float a10, float a11, float a12, float a13, float a14, float a15);
     }
 
-    public class CampCalendar : ModuleAsmInlineColorEdit
+    public class CampCalendar : ModuleAsmInlineColorEdit<FemcContext>
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
@@ -467,8 +468,6 @@ namespace p3rpc.femc.Components
         private string UUICmpCalendarDraw_PartTimeJobTextColor_SIG = "C7 84 24 ?? ?? ?? ?? 43 04 08 FF";
         private string UUICmpCalendarDraw_PartTimeJobHeader_SIG = "48 8B C4 48 89 58 ?? 48 89 68 ?? 48 89 70 ?? 57 48 81 EC B0 00 00 00 0F 29 70 ?? 48 8B F9";
 
-        private string FAppCalculationItem_Lerp_SIG = "E8 ?? ?? ?? ?? 8B 86 ?? ?? ?? ?? F3 44 0F 58 C0";
-
         private IAsmHook _calendarSundayColor;
         private IAsmHook _calendarSundayDay;
         private IAsmHook _monthsPrevMonth;
@@ -479,9 +478,7 @@ namespace p3rpc.femc.Components
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeJobBg;
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeHeader;
 
-        private FAppCalculationItem_Lerp _appCalcLerp;
-
-        public unsafe CampCalendar(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampCalendar(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(UUICmpCalendarDraw_DrawCalendarGrid_SundayHeader_SIG, "UUICmpCalendarDraw::DrawCalendarGrid_SundayHeader", _context._utils.GetDirectAddress, addr =>
             {
@@ -544,7 +541,6 @@ namespace p3rpc.femc.Components
 
             _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobDescBg_SIG, "UUICmpCalendarDraw::PartTimeJobDescBg", _context._utils.GetDirectAddress, addr => _drawPartTimeJobBg = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobDescBg, addr));
             _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobHeader_SIG, "UUICmpCalendarDraw::PartTimeJobHeader", _context._utils.GetDirectAddress, addr => _drawPartTimeHeader = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobHeader, addr));
-            _context._utils.SigScan(FAppCalculationItem_Lerp_SIG, "FAppCalculationItem::Lerp", _context._utils.GetIndirectAddressShort, addr => _appCalcLerp = _context._utils.MakeWrapper<FAppCalculationItem_Lerp>(addr));
 
         }
         public override void Register()
@@ -560,11 +556,11 @@ namespace p3rpc.femc.Components
             if (plgEntry != null && self->PartTimeJobs.arr_num > 0)
             {
                 var v1 = new FAppCalculationItem(-400, 0, self->PartJobBgInAnimDelay, self->Field70, appCalculationType.DEC);
-                var f1 = _appCalcLerp(self->Field248, &v1, 1, 0);
+                var f1 = _uiCommon._appCalcLerp(self->Field248, &v1, 1, 0);
                 var v2 = new FAppCalculationItem(0, 1, 0, self->PartJobBgInAnimDstFrame, appCalculationType.DEC);
-                var f2 = _appCalcLerp(self->TimePartTimeJobOpen, &v2, 1, 0);
+                var f2 = _uiCommon._appCalcLerp(self->TimePartTimeJobOpen, &v2, 1, 0);
                 var v3 = new FAppCalculationItem(1, 0, self->PartJobBgOutAnimDelay, self->PartJobBgOutAnimDstFrame, appCalculationType.DEC);
-                f2 *= _appCalcLerp(self->TimePartTimeJobClosed, &v3, 1, 0);
+                f2 *= _uiCommon._appCalcLerp(self->TimePartTimeJobClosed, &v3, 1, 0);
                 var f4 = UICommon.Lerp(502, 0, f2);
                 var f5 = UICommon.Lerp(-720, 0, f2);
                 var f6 = UICommon.Lerp(23, 0, f2);
@@ -573,7 +569,7 @@ namespace p3rpc.femc.Components
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_SourceColor, 
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, self->CalendarDrawQueue);
                 self->DrawSpr.Flag2Set_141301af0(1);
-                var bgColor = _uiCommon.ToFColorBP(_context._config.CampCalendarPartTimeJobBackground);
+                var bgColor = ConfigColor.ToFColorBP(_context._config.CampCalendarPartTimeJobBackground);
                 _uiCommon._drawPlg(&self->DrawSpr, x + f4, y + f1 + f5, 0, &bgColor, 0xa4, 1, 1, angle + f6, plgEntry, self->CalendarDrawQueue);
                 self->DrawSpr.Flag2Set_141301af0(0);
                 _uiCommon._setBlendState(masker, // setup for PartTimeJobHeader
@@ -590,28 +586,32 @@ namespace p3rpc.femc.Components
             if (campSpr != null && campPlg != null && self->PartTimeJobs.arr_num > 0)
             {
                 var v1 = new FAppCalculationItem(-400, 0, self->PartJobBgInAnimDelay, self->Field70, appCalculationType.DEC);
-                var f1 = _appCalcLerp(self->Field248, &v1, 1, 0);
+                var f1 = _uiCommon._appCalcLerp(self->Field248, &v1, 1, 0);
                 var fy = y + f1;
                 var gWork = _uiCommon._getUGlobalWork();
                 var bgColor = gWork->Calendar.TimeOfDay switch
                 {
                     ECldTimeZone.Night | ECldTimeZone.Shadow | ECldTimeZone.Midnight 
-                    => _uiCommon.ToFColorBP(_context._config.CampCalendarHighlightColor),
-                    _ => _uiCommon.ToFColorBP(_context._config.CampCalendarHighlightColor),
+                    => ConfigColor.ToFColorBP(_context._config.CampCalendarHighlightColor),
+                    _ => ConfigColor.ToFColorBP(_context._config.CampCalendarHighlightColor),
                 };
                 _uiCommon._drawPlg(&self->DrawSpr, x - 4, fy - 4, 0, &bgColor, 0xa3, 1, 1, 0, campPlg, self->CalendarDrawQueue);
-                var textColor = _uiCommon.ToFColorBP(_context._config.CampCalendarTextColor);
-                var layoutTable2 = self->pMainActor->OthersLayoutDataTable->GetLayoutDataTableEntry(2);
-                var textPos = new FVector2D(x + layoutTable2->position.X, fy + layoutTable2->position.Y);
+                var textPos = new FVector2D(x, fy);
+                var textColor = ConfigColor.ToFColorBP(_context._config.CampCalendarTextColor);
+                if (self->pMainActor != null)
+                {
+                    var layoutTable2 = self->pMainActor->OthersLayoutDataTable->GetLayoutDataTableEntry(2);
+                    textPos.X += layoutTable2->position.X;
+                    textPos.Y += layoutTable2->position.Y;
+                }
                 _uiCommon._drawSpr(&self->DrawSpr, textPos.X, textPos.Y, 0, &textColor, 0x4fc, 1, 1, 0, campSpr, EUI_DRAW_POINT.UI_DRAW_RIGHT_TOP, self->CalendarDrawQueue);
             }
         }
 
         private unsafe delegate void UUICmpCalendarDraw_DrawUIComponent(UUICmpCalendarDraw* self, float x, float y, float angle); // angle, degrees
-        private unsafe delegate float FAppCalculationItem_Lerp(float source, FAppCalculationItem* values, int count, byte bIsLoop);
     }
 
-    public class CampSystem : ModuleBase 
+    public class CampSystem : ModuleBase<FemcContext>
     {
         private string UCmpSystemDraw_GetMenuColors_SIG = "43 8B 94 ?? ?? ?? ?? ?? 41 0F 28 D4";
         private string UCmpSystemDraw_DrawUnhighlightedMenuOptions_SIG = "48 8B C4 48 89 58 ?? 44 89 48 ?? 44 89 40 ?? 55 56 57 41 54 41 55 41 56 41 57 48 81 EC 40 01 00 00";
@@ -627,7 +627,7 @@ namespace p3rpc.femc.Components
 
         private UICommon _uiCommon;
         private CampCommon _campCommon;
-        public unsafe CampSystem(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe CampSystem(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(UCmpSystemDraw_DrawUnhighlightedMenuOptions_SIG, "UCmpSystemDraw::DrawUnhighlightedMenuOptions", _context._utils.GetDirectAddress, addr => _drawUnhighlightOptions = _context._utils.MakeHooker<UCmpSystemDraw_DrawUnhighlightedMenuOptions>(UCmpSystemDraw_DrawUnhighlightedMenuOptionsImpl, addr));
             _context._utils.SigScan(UCmpSystemDraw_GetMenuColors_SIG, "UCmpSystemDraw_MenuOptionColors", trans => (nuint)(_context._baseAddress + *(int*)(_context._baseAddress + trans + 4)), addr => _systemOptionColors = (FSprColor*)addr);
@@ -651,12 +651,12 @@ namespace p3rpc.femc.Components
 
         private unsafe FSprColor GetMatchingColorForEntry(int entryId)
         {
-            if (entryId % 3 == 0) return _uiCommon.ToFSprColor(_context._config.CampMenuItemColor1);
-            else if (entryId % 3 == 1) return _uiCommon.ToFSprColor(_context._config.CampMenuItemColor2);
-            else /*(entryId % 3 == 2)*/ return _uiCommon.ToFSprColor(_context._config.CampMenuItemColor3);
+            if (entryId % 3 == 0) return ConfigColor.ToFSprColor(_context._config.CampMenuItemColor1);
+            else if (entryId % 3 == 1) return ConfigColor.ToFSprColor(_context._config.CampMenuItemColor2);
+            else /*(entryId % 3 == 2)*/ return ConfigColor.ToFSprColor(_context._config.CampMenuItemColor3);
         }
 
-        private unsafe FSprColor UCmpSystemDraw_GetMenuColorNoSelectImpl() => _uiCommon.ToFSprColor(_context._config.CampMenuItemColorNoSel);
+        private unsafe FSprColor UCmpSystemDraw_GetMenuColorNoSelectImpl() => ConfigColor.ToFSprColor(_context._config.CampMenuItemColorNoSel);
 
         private unsafe void UCmpSystemDraw_DrawUnhighlightedMenuOptionsImpl(UCmpSystemDraw* self, UCmpSystemSystem* sys, uint activeId, uint queueId)
         {

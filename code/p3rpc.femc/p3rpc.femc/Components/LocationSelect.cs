@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    public class LocationSelect : ModuleBase
+    public class LocationSelect : ModuleBase<FemcContext>
     {
         //private string UUILocationSelect_DrawLocationSelect_SIG = "40 55 56 57 41 56 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 88 04 00 00";
         private string UUILocationSelect_DrawLocationSelectBaseColor_SIG = "0F 57 DB 89 85 ?? ?? ?? ?? 0F 57 D2 48 8D 4D ?? 49 8B D6 E8 ?? ?? ?? ?? BA 01 00 00 00";
@@ -32,7 +33,7 @@ namespace p3rpc.femc.Components
 
         private UICommon _uiCommon;
 
-        public unsafe LocationSelect(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe LocationSelect(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             //_context._utils.SigScan(UUILocationSelect_DrawLocationSelect_SIG, "UUILocationSelect::DrawLocationSelect", _context._utils.GetDirectAddress, addr => _drawLocationSelect = _context._utils.MakeHooker<UUILocationSelect_DrawLocationSelect>(UUILocationSelect_DrawLocationSelectImpl, addr));
             _context._utils.SigScan(UUILocationSelect_DrawLocationSelectBaseColor_SIG, "UUILocationSelect::DrawLocationSelectBaseColor", _context._utils.GetDirectAddress, addr =>
@@ -91,14 +92,14 @@ namespace p3rpc.femc.Components
         */
         private unsafe FSprColor UUILocationSelect_DrawLocationSelectBaseColor(UUILocationSelect* self)
         {
-            var white = _uiCommon.ToFSprColor(_context.ColorWhite);
+            var white = ConfigColor.ToFSprColor(_context.ColorWhite);
             white.A = 0x66;
             return white;
         }
 
-        private unsafe FSprColor UUILocationSelect_DrawLocationSelectTintColor(UUILocationSelect* self) => _uiCommon.ToFSprColor(_context._config.LocationSelectBgColor);
-        private unsafe FSprColor UUILocationSelect_DrawLocationSelectMarkerColor(UUILocationSelect* self) => _uiCommon.ToFSprColor(_context._config.LocationSelectMarkerColor);
-        //private unsafe FSprColor FShortcutItem_SelectedShortcutColor(UUILocationSelect* self) => _uiCommon.ToFSprColor(_context._config.LocationSelectSelColor);
+        private unsafe FSprColor UUILocationSelect_DrawLocationSelectTintColor(UUILocationSelect* self) => ConfigColor.ToFSprColor(_context._config.LocationSelectBgColor);
+        private unsafe FSprColor UUILocationSelect_DrawLocationSelectMarkerColor(UUILocationSelect* self) => ConfigColor.ToFSprColor(_context._config.LocationSelectMarkerColor);
+        //private unsafe FSprColor FShortcutItem_SelectedShortcutColor(UUILocationSelect* self) => ConfigColor.ToFSprColor(_context._config.LocationSelectSelColor);
 
         [Function(FunctionAttribute.Register.rax, FunctionAttribute.Register.rdi, false)]
         private unsafe delegate FSprColor UUILocationSelect_SetElementColor(UUILocationSelect* self);

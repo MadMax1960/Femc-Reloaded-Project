@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    public class PartyPanel : ModuleBase
+    public class PartyPanel : ModuleBase<FemcContext>
     {
 
         private string FBattleHeadPanel_PartyPanelHeadUpdate_SIG = "4C 8B DC 49 89 4B ?? 55 53 49 8D 6B ??";
@@ -17,7 +18,7 @@ namespace p3rpc.femc.Components
         private IHook<FBattleHeadPanel_PartyPanelHeadUpdate> _btlHeadUpdate;
         private IHook<FFieldHeadPanel_PartyPanelHeadUpdate> _fldHeadUpdate;
         private UICommon _uiCommon;
-        public unsafe PartyPanel(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe PartyPanel(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(FBattleHeadPanel_PartyPanelHeadUpdate_SIG, "FBattleHeadPanel::PartyPanelHeadUpdate", _context._utils.GetDirectAddress, addr => _btlHeadUpdate = _context._utils.MakeHooker<FBattleHeadPanel_PartyPanelHeadUpdate>(FBattleHeadPanel_PartyPanelHeadUpdateImpl, addr));
             _context._utils.SigScan(FFieldHeadPanel_PartyPanelHeadUpdate_SIG, "FFieldHeadPanel::PartyPanelHeadUpdate", _context._utils.GetDirectAddress, addr => _fldHeadUpdate = _context._utils.MakeHooker<FFieldHeadPanel_PartyPanelHeadUpdate>(FFieldHeadPanel_PartyPanelHeadUpdateImpl, addr));
@@ -31,13 +32,13 @@ namespace p3rpc.femc.Components
         private unsafe void FBattleHeadPanel_PartyPanelHeadUpdateImpl(FBattleHeadPanel* self, float deltaTime, float x, float y, int count)
         {
             _btlHeadUpdate.OriginalFunction(self, deltaTime, x, y, count);
-            _uiCommon.SetColor(ref self->cardBlueBgTrans.color, _context._config.PartyPanelBgColor);
-            _uiCommon.SetColor(ref self->lineShadowBgTrans.color, _context._config.PartyPanelBgColor);
+            ConfigColor.SetColor(ref self->cardBlueBgTrans.color, _context._config.PartyPanelBgColor);
+            ConfigColor.SetColor(ref self->lineShadowBgTrans.color, _context._config.PartyPanelBgColor);
         }
         private unsafe void FFieldHeadPanel_PartyPanelHeadUpdateImpl(FFieldHeadPanel* self, float deltaTime, float x, float y, int count)
         {
             _fldHeadUpdate.OriginalFunction(self, deltaTime, x, y, count);
-            _uiCommon.SetColor(ref self->cardBlueBgTrans.color, _context._config.PartyPanelBgColor);
+            ConfigColor.SetColor(ref self->cardBlueBgTrans.color, _context._config.PartyPanelBgColor);
         }
         private unsafe delegate void FBattleHeadPanel_PartyPanelHeadUpdate(FBattleHeadPanel* self, float deltaTime, float x, float y, int count);
         private unsafe delegate void FFieldHeadPanel_PartyPanelHeadUpdate(FFieldHeadPanel* self, float deltaTime, float x, float y, int count);

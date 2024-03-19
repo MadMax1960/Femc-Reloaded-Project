@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
@@ -12,7 +13,7 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    public class TownMap : ModuleBase
+    public class TownMap : ModuleBase<FemcContext>
     {
         // In AUITownMapActor::DrawTownMapUIInner
         private string AUITownMapActor_TownMapTextColor_SIG = "48 8D 54 24 ?? 89 44 24 ?? 48 8D 8F ?? ?? ?? ?? E8 ?? ?? ?? ??";
@@ -29,7 +30,7 @@ namespace p3rpc.femc.Components
 
         private IHook<FTownMapMarker2_UpdateState> _townMapMarkerUpdateState;
 
-        public unsafe TownMap(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe TownMap(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(AUITownMapActor_TownMapTextColor_SIG, "AUITownMapActor::TownMapTextColor", _context._utils.GetDirectAddress, addr =>
             {
@@ -57,13 +58,13 @@ namespace p3rpc.femc.Components
             _uiCommon = GetModule<UICommon>();
         }
 
-        private unsafe FSprColor AUITownMapActor_TownMapTextColorImpl() => _uiCommon.ToFSprColor(_context._config.TownMapTextColor);
-        private unsafe FSprColor AUITownMapActor_TownMapBorderColorImpl() => _uiCommon.ToFSprColor(_context._config.TownMapBorderColor);
+        private unsafe FSprColor AUITownMapActor_TownMapTextColorImpl() => ConfigColor.ToFSprColor(_context._config.TownMapTextColor);
+        private unsafe FSprColor AUITownMapActor_TownMapBorderColorImpl() => ConfigColor.ToFSprColor(_context._config.TownMapBorderColor);
 
         private unsafe void FTownMapMarker2_UpdateStateImpl(FTownMapMarker2* self, float deltaTime)
         {
             _townMapMarkerUpdateState.OriginalFunction(self, deltaTime);
-            _uiCommon.SetColor(ref self->IconColor, _context.ColorWhite);
+            ConfigColor.SetColor(ref self->IconColor, _context.ColorWhite);
         }
 
         [Function(new Register[] {}, FunctionAttribute.Register.rax, false)]

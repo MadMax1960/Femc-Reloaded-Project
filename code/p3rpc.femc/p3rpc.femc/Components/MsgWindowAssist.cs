@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
@@ -12,7 +13,7 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    public class MsgWindowAssist : ModuleBase
+    public class MsgWindowAssist : ModuleBase<FemcContext>
     {
         private string UMsgProcWindow_Assist_SetBgColor_SIG = "F3 0F 10 83 ?? ?? ?? ?? 44 8B C0 8B D0";
 
@@ -20,7 +21,7 @@ namespace p3rpc.femc.Components
 
         private IAsmHook _assistSetBgColor;
         private IReverseWrapper<UMsgProcWindow_Assist_SetBgColor> _assistSetBgColorWrapper;
-        public unsafe MsgWindowAssist(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe MsgWindowAssist(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(UMsgProcWindow_Assist_SetBgColor_SIG, "UMsgProcWindow_Assist::SetBgColor", _context._utils.GetDirectAddress, addr =>
             {
@@ -41,7 +42,7 @@ namespace p3rpc.femc.Components
         {
             var targetColor = _context._config.MsgAssistBgColor;
             targetColor.A = (byte)(self->Opacity * 255);
-            return _uiCommon.ToFSprColor(targetColor);
+            return ConfigColor.ToFSprColor(targetColor);
         }
 
         [Function(FunctionAttribute.Register.rbx, FunctionAttribute.Register.rax, false)]

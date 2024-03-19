@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
-    public class KeyHelp : ModuleBase
+    public class KeyHelp : ModuleBase<FemcContext>
     {
         private UICommon _uiCommon;
 
@@ -43,7 +44,7 @@ namespace p3rpc.femc.Components
 
         private IHook<FKeyHelpButtonFastForward_UpdateState> _ffwdUpdateState;
 
-        public unsafe KeyHelp(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe KeyHelp(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(FKeyHelpButtonAuto_DrawTextFillColor_SIG, "FKeyHelpButtonAuto::DrawTextFillColor", _context._utils.GetDirectAddress, addr =>
             {
@@ -120,7 +121,7 @@ namespace p3rpc.femc.Components
         {
             _uiCommon = GetModule<UICommon>();
         }
-        public unsafe FSprColor FKeyHelpButtonAuto_DrawTextFillColor(FKeyHelpButtonAuto* self) => _uiCommon.ToFSprColor(_context._config.ButtonPromptHighlightColor);
+        public unsafe FSprColor FKeyHelpButtonAuto_DrawTextFillColor(FKeyHelpButtonAuto* self) => ConfigColor.ToFSprColor(_context._config.ButtonPromptHighlightColor);
 
         private unsafe float Clamp_1413033e0(FKeyHelpInterpolate* val)
         {
@@ -132,14 +133,14 @@ namespace p3rpc.femc.Components
 
         public unsafe FSprColor FKeyHelpButtonAuto_DrawTextTriangleColor(FKeyHelpButtonAuto* self)
         {
-            var newColor = _uiCommon.ToFSprColor(_context._config.ButtonPromptTriangleColor);
+            var newColor = ConfigColor.ToFSprColor(_context._config.ButtonPromptTriangleColor);
             newColor.A = (byte)((Clamp_1413033e0(&self->Field540) * 0.7 * 255 + 76.5) * self->Super.KeyHelpTransparency);
             return newColor;
         }
 
         public unsafe FSprColor FKeyHelpButtonFastForward_DrawTextTriangleColor(FKeyHelpButtonFastForward* self)
         {
-            var newColor = _uiCommon.ToFSprColor(_context._config.ButtonPromptTriangleColor);
+            var newColor = ConfigColor.ToFSprColor(_context._config.ButtonPromptTriangleColor);
             newColor.A = (byte)((Clamp_1413033e0(&self->Field538) * 0.7 * 255 + 76.5) * self->Super.KeyHelpTransparency);
             return newColor;
         }
@@ -151,9 +152,9 @@ namespace p3rpc.femc.Components
             {
                 var newColor = _context._config.ButtonPromptHighlightColor;
                 newColor.A = (byte)(opacity * 255);
-                self->Super.TextLayout.Color = _uiCommon.ToFSprColor(newColor);
+                self->Super.TextLayout.Color = ConfigColor.ToFSprColor(newColor);
                 for (int i = 0; i < self->Super.SpriteCount; i++)
-                    self->Super.GetSpriteLayout(i)->Color = _uiCommon.ToFSprColor(newColor);
+                    self->Super.GetSpriteLayout(i)->Color = ConfigColor.ToFSprColor(newColor);
             }
         }
 
