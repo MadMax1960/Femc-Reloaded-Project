@@ -13,7 +13,7 @@
 
 [msg MSG_003_0_0 [Studious Student]]
 [uf 0 5 65278][uf 2 1][uf 5 21 1 310]I'm neither happy nor disappointed with my score, since it's about average.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 5 21 1 310]How'd you do, new guy?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 5 21 1 310]How'd you do, new girl?[n][uf 1 1][e]
 
 [msg MSG_004_0_0 [Studious Student]]
 [uf 0 5 65278][uf 2 1][uf 5 21 1 310]Did you hear about the two people who were found unconscious?[n][uf 1 1][e]
