@@ -358,6 +358,15 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Simple Shop: Info Color")]
         public ConfigColor SimpleShopInfoColor { get; set; } = ConfigColor.MellodiColorMid1;
 
+        [DisplayName("Cutin: Outer Highlight Color")]
+        public ConfigColor CutinOuterHighlight { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Cutin: Emotion Gradient Color")]
+        public ConfigColor CutinEmotionGradient { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Cutin: Emotion Tint Color")]
+        public ConfigColor CutinEmotionTint { get; set; } = ConfigColor.MellodiColorMid2;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -447,6 +456,11 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         [DefaultValue(true)]
         public bool EnableButtonPrompts { get; set; } = true;
+
+        [DisplayName("Enable Cutin")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableCutin { get; set; } = true;
 
     }
 
