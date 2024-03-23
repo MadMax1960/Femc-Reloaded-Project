@@ -137,6 +137,7 @@ namespace p3rpc.femc
                 _modRuntime.AddModule<SimpleShop>();
                 _modRuntime.AddModule<MiscMoneyDraw>();
             }
+            if (_configuration.EnableCutin) _modRuntime.AddModule<Cutin>();
             _modRuntime.RegisterModules();
         }
         #region Standard Overrides
