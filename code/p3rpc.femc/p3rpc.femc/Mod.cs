@@ -10,6 +10,8 @@ using SharedScans.Interfaces;
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using UnrealEssentials.Interfaces;
+using static p3rpc.femc.Configuration.Config;
 
 namespace p3rpc.femc
 {
@@ -73,8 +75,61 @@ namespace p3rpc.femc
             _modRuntime = new(_context);
             _modRuntime.AddModule<UICommon>();
             if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
-            
-            if (_configuration.EnableCampMenu)
+
+			var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
+
+			var unrealEssentialsController = _modLoader.GetController<IUnrealEssentials>();
+			if (unrealEssentialsController == null || !unrealEssentialsController.TryGetTarget(out var unrealEssentials))
+			{
+				_logger.WriteLine($"[My Mod] Unable to get controller for Unreal Essentials, stuff won't work :(", System.Drawing.Color.Red);
+				return;
+			}
+
+			if (_configuration.HairTrue == HairType.MudkipsHair)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "3d", "hair", "MudkipHair"));
+			else if (_configuration.HairTrue == HairType.KotoneBeanHair)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "3d", "hair", "NaobeanHair"));
+
+			if (_configuration.AOATrue == AOAType.Ainz)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOA", "Ainz"));
+			else if (_configuration.AOATrue == AOAType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOA", "Ely"));
+			else if (_configuration.AOATrue == AOAType.Chrysanthie)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOA", "Chrysanthie"));
+
+			if (_configuration.AOAText == AOATextType.DontLookBack)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOAText", "DontLookBack"));
+			else if (_configuration.AOAText == AOATextType.SorryBoutThat)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOAText", "SorryBoutThat"));
+
+			if (_configuration.BustupTrue == BustupType.Neptune)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Bustup", "Neptune"));
+			else if (_configuration.BustupTrue == BustupType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Bustup", "Ely"));
+			else if (_configuration.BustupTrue == BustupType.ElyOld)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Bustup", "ElyOld"));
+			else if (_configuration.BustupTrue == BustupType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Bustup", "Esa"));
+
+			if (_configuration.ShardTrue == ShardType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Shard", "Esa"));
+			else if (_configuration.ShardTrue == ShardType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Shard", "Ely"));
+
+			if (_configuration.LevelUpTrue == LevelUpType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "LevelUp", "Esa"));
+			else if (_configuration.LevelUpTrue == LevelUpType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "LevelUp", "Ely"));
+
+			if (_configuration.CutinTrue == CutinType.berrycha)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Cutin", "berrycha"));
+			else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Cutin", "ElyandPatmandx"));
+
+			if (_configuration.KotoneRoom == true)
+				unrealEssentials.AddFromFolder(Path.Combine(modDir, "Fun Stuff", "Kotone Room"));
+
+			if (_configuration.EnableCampMenu)
             {
                 _modRuntime.AddModule<CampCommon>();
                 _modRuntime.AddModule<CampRoot>();
