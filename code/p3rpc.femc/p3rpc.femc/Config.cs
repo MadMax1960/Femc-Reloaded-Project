@@ -468,6 +468,12 @@ namespace p3rpc.femc.Configuration
 		[Category("Ui Colors")]
 		public ConfigColor CutinEmotionTint { get; set; } = ConfigColor.MellodiColorMid2;
 
+        [DisplayName("Title Menu: Select Rectangle Color")]
+        public ConfigColor TitleMenuSelRectColor { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Localization Staff Roll: Header Color (Requires Restart)")]
+        public ConfigColor LocalStaffRollHeader { get; set; } = ConfigColor.MellodiColorLight3;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -557,6 +563,16 @@ namespace p3rpc.femc.Configuration
         [Category("UI Components")]
         [DefaultValue(true)]
         public bool EnableButtonPrompts { get; set; } = true;
+
+        [DisplayName("Enable Title Menu")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableTitleMenu { get; set; } = true;
+
+        [DisplayName("Enable Staff Roll")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableStaffRoll { get; set; } = true;
 
         [DisplayName("Enable Cutin")]
         [Category("UI Components")]
