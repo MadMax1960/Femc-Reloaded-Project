@@ -70,65 +70,68 @@ namespace p3rpc.femc
             _modLoader.GetController<ISharedScans>().TryGetTarget(out var sharedScans);
             if (sharedScans == null) throw new Exception("[Femc Project] Could not get controller for Shared Scans");
             Utils utils = new(startupScanner, _logger, _hooks, baseAddress, "Femc Project", System.Drawing.Color.Thistle);
+            var unrealEssentialsController = _modLoader.GetController<IUnrealEssentials>();
+            if (unrealEssentialsController == null || !unrealEssentialsController.TryGetTarget(out var unrealEssentials))
+            {
+                utils.Log($"Unable to get controller for Unreal Essentials, stuff won't work :(", System.Drawing.Color.Red);
+                return;
+            }
             var memory = new Memory();
             _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans);
             _modRuntime = new(_context);
+
+            try
+            {
+                if (_configuration.HairTrue == HairType.MudkipsHair)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "MudkipHair"));
+                else if (_configuration.HairTrue == HairType.KotoneBeanHair)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "NaobeanHair"));
+
+                if (_configuration.AOATrue == AOAType.Ainz)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ainz"));
+                else if (_configuration.AOATrue == AOAType.Ely)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ely"));
+                else if (_configuration.AOATrue == AOAType.Chrysanthie)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Chrysanthie"));
+
+                if (_configuration.AOAText == AOATextType.DontLookBack)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
+                else if (_configuration.AOAText == AOATextType.SorryBoutThat)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "SorryBoutThat"));
+
+                if (_configuration.BustupTrue == BustupType.Neptune)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Neptune"));
+                else if (_configuration.BustupTrue == BustupType.Ely)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Ely"));
+                else if (_configuration.BustupTrue == BustupType.ElyOld)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ElyOld"));
+                else if (_configuration.BustupTrue == BustupType.Esa)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Esa"));
+
+                if (_configuration.ShardTrue == ShardType.Esa)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Esa"));
+                else if (_configuration.ShardTrue == ShardType.Ely)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Ely"));
+
+                if (_configuration.LevelUpTrue == LevelUpType.Esa)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
+                else if (_configuration.LevelUpTrue == LevelUpType.Ely)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Ely"));
+
+                if (_configuration.CutinTrue == CutinType.berrycha)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
+                else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
+
+                if (_configuration.KotoneRoom == true)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
+            } catch (Exception ex)
+            {
+                _context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
+            }
+
             _modRuntime.AddModule<UICommon>();
             if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
-
-			var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
-
-			var unrealEssentialsController = _modLoader.GetController<IUnrealEssentials>();
-			if (unrealEssentialsController == null || !unrealEssentialsController.TryGetTarget(out var unrealEssentials))
-			{
-				_logger.WriteLine($"[My Mod] Unable to get controller for Unreal Essentials, stuff won't work :(", System.Drawing.Color.Red);
-				return;
-			}
-
-			if (_configuration.HairTrue == HairType.MudkipsHair)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "3d", "hair", "MudkipHair"));
-			else if (_configuration.HairTrue == HairType.KotoneBeanHair)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "3d", "hair", "NaobeanHair"));
-
-			if (_configuration.AOATrue == AOAType.Ainz)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOA", "Ainz"));
-			else if (_configuration.AOATrue == AOAType.Ely)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOA", "Ely"));
-			else if (_configuration.AOATrue == AOAType.Chrysanthie)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOA", "Chrysanthie"));
-
-			if (_configuration.AOAText == AOATextType.DontLookBack)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOAText", "DontLookBack"));
-			else if (_configuration.AOAText == AOATextType.SorryBoutThat)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "AOAText", "SorryBoutThat"));
-
-			if (_configuration.BustupTrue == BustupType.Neptune)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Bustup", "Neptune"));
-			else if (_configuration.BustupTrue == BustupType.Ely)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Bustup", "Ely"));
-			else if (_configuration.BustupTrue == BustupType.ElyOld)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Bustup", "ElyOld"));
-			else if (_configuration.BustupTrue == BustupType.Esa)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Bustup", "Esa"));
-
-			if (_configuration.ShardTrue == ShardType.Esa)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Shard", "Esa"));
-			else if (_configuration.ShardTrue == ShardType.Ely)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Shard", "Ely"));
-
-			if (_configuration.LevelUpTrue == LevelUpType.Esa)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "LevelUp", "Esa"));
-			else if (_configuration.LevelUpTrue == LevelUpType.Ely)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "LevelUp", "Ely"));
-
-			if (_configuration.CutinTrue == CutinType.berrycha)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Cutin", "berrycha"));
-			else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "2d", "Cutin", "ElyandPatmandx"));
-
-			if (_configuration.KotoneRoom == true)
-				unrealEssentials.AddFromFolder(Path.Combine(modDir, "Fun Stuff", "Kotone Room"));
-
 			if (_configuration.EnableCampMenu)
             {
                 _modRuntime.AddModule<CampCommon>();
@@ -193,6 +196,12 @@ namespace p3rpc.femc
                 _modRuntime.AddModule<MiscMoneyDraw>();
             }
             if (_configuration.EnableCutin) _modRuntime.AddModule<Cutin>();
+            if (_configuration.EnableTitleMenu) _modRuntime.AddModule<TitleMenu>();
+            if (_configuration.EnableStaffRoll)
+            {
+                _modRuntime.AddModule<LocalizationStaffRoll>();
+                //_modRuntime.AddModule<StaffRoll>();
+            }
             _modRuntime.RegisterModules();
         }
         #region Standard Overrides
