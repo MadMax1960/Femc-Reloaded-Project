@@ -5,7 +5,7 @@
 [uf 0 5 65278][uf 2 1]I learned the ins and outs of[n]romance and courtship...![n][uf 1 1][e]
 
 [msg MND_004_0_0]
-[uf 0 5 65278][uf 2 1]I feel like I understand how to get closer to others more[n]now after wooing the game's heroines...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]I feel like I understand a person's heart[n]now after wooing the game's heroines...[n][uf 1 1][e]
 
 [msg MND_005_0_0]
 [uf 0 5 65278][uf 2 1]I practiced some lines and[n]mannerisms that I can use to[n]make a good impression with girls...![n][uf 1 1][e]

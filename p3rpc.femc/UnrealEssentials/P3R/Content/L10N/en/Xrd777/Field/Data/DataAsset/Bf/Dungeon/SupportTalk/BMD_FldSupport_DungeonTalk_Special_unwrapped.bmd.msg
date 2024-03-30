@@ -47,7 +47,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 16 0 0]I see. So this is what you would call a "harem," correct?[n][uf 1 1][e]
 
 [msg AST_DNG_LIMITED_004_0_10_2 [Aigis]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 17 0 0]According to my data, every single man in the world fantasizes of having one.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 17 0 0]According to my data, every single man             in the world fantasizes of having one.[n][uf 1 1][e]
 
 [msg AST_DNG_LIMITED_004_0_10_3 [Yukari Takeba]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 18 0 0]Wait... Is that what you're angling for?[n][uf 1 1][e]
@@ -1097,7 +1097,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 1560 0 0]Yeah, must be pretty rare. Don'tcha think it's kinda unfair you're the only one?[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_062_05_1_2 [Fuuka Yamagishi]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 1561 0 0]But thanks to you, [uf 4 1]-kun, we have a lot of diverse battle tactics.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 1561 0 0]But thanks to you, [uf 4 1]-chan, we have a lot of diverse battle tactics.[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_062_06_0 [Fuuka Yamagishi]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 2047 0 0]Focus... Check the floor layout... And the location of the Shadows...[n][uf 1 1][e]
@@ -3269,7 +3269,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 3591 0 0]It's really encouraging to see how Koromaru is always so cheerful.[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_152_02_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 230 0 0]Hey, [uf 4 1]-kun, have you ever been to a club? Isn't it kinda scary to walk into one?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 230 0 0]Hey, [uf 4 1]-chan, have you ever been to a club? Isn't it kinda scary to walk into one?[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_152_03_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 639 0 0]...Actually, could you use the Kirijo Group's power to make some magic happen with our grades?[n][uf 1 1][e]
@@ -3980,7 +3980,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 658 0 0]What floor are we on now? I'm starting to forget what the lower levels were like.[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_180_02_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 249 0 0][uf 4 1]-kun, sometimes you summon Personas we've never seen before out of nowhere.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 249 0 0][uf 4 1]-chan, sometimes you summon Personas we've never seen before out of nowhere.[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_180_04_0 [Akihiko Sanada]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 1124 0 0]This place seems like a hallucination. I wonder if someone actually thought of something like this.[n][uf 1 1][e]
@@ -4856,7 +4856,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 3570 0 0]*pant* *pant* Woof...![n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_219_09_1 [Fuuka Yamagishi]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 3697 0 0]Koro-chan, if you feel like going back, let [uf 4 1]-kun know, okay?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 3697 0 0]Koro-chan, if you feel like going back, let [uf 4 1]-chan know, okay?[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_220_04_0 [Akihiko Sanada]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 1169 0 0]Even at a time like this, we can still feel hungry. Maybe I'll get a beef bowl at Umiushi tomorrow.[n][uf 1 1][e]
@@ -5258,7 +5258,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 3689 0 0]Did your collar get loose? Koro-chan, let's make sure you're in perfect condition, okay?[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_239_02_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 295 0 0]We should be properly equipped for what lies ahead. I'll leave it to you, [uf 4 1]-kun.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 295 0 0]We should be properly equipped for what lies ahead. I'll leave it to you, [uf 4 1]-chan.[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_239_03_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 685 0 0]I'm not really fazed by it anymore... But, dude, isn't this place insane?[n][uf 1 1][e]
@@ -5552,7 +5552,7 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 3705 0 0]I think he's saying... we're not too far from the top.[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_252_02_0 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 304 0 0][uf 4 1]-kun... All of us will follow your lead, no matter what decision you make.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 304 0 0][uf 4 1]-chan... All of us will follow your lead, no matter what decision you make.[n][uf 1 1][e]
 
 [msg AST_DNG_REGULAR_252_04_0 [Akihiko Sanada]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 1181 0 0]My body feels even lighter than usual. If you tag me in, I promise you won't regret it.[n][uf 1 1][e]

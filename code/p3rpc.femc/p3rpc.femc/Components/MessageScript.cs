@@ -1,4 +1,5 @@
-﻿using p3rpc.nativetypes.Interfaces;
+﻿using p3rpc.commonmodutils;
+using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
@@ -11,7 +12,7 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    public class MessageScript : ModuleBase
+    public class MessageScript : ModuleBase<FemcContext>
     {
         private string MsgToken_GetTextColor_SIG = "40 55 48 8D 6C 24 ?? 48 81 EC D0 00 00 00 48 8B 05 ?? ?? ?? ?? 48 31 E0";
 
@@ -63,11 +64,12 @@ namespace p3rpc.femc.Components
             0xff690aff,
             0x45feffff,
             0xffea35ff,
+            0xffea35ff,
         };
 
         private IHook<MsgToken_GetTextColor> _getTextColor;
 
-        public unsafe MessageScript(Context context, Dictionary<string, ModuleBase> modules) : base(context, modules)
+        public unsafe MessageScript(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(MsgToken_GetTextColor_SIG, "MsgToken::GetTextColor", _context._utils.GetDirectAddress, addr => _getTextColor = _context._utils.MakeHooker<MsgToken_GetTextColor>(MsgToken_GetTextColorImpl, addr));
         }

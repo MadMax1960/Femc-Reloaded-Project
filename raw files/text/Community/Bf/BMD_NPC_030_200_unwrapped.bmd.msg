@@ -84,8 +84,8 @@
 
 [msg MSG_018_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 65535 0 0][uf 3 1 3 0 65535 2103 0 0]At this rate, I'm gonna spend Golden Week the same way I always have![n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]Lazing around, hanging out with dudes— Er, not that I don't love your company, my dude, but...[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]It's just sad... Too sad! Even though I'm a changed man this year![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]Lazing around, hanging out with dudes— Er, would you mind hanging out with- well... Forget it.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]It's just so sad... Too sad! Even though I'm a changed man this year![n][uf 1 1][e]
 
 [msg MSG_019_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 3 0 65535 2002 0 0]'Sup? You got no plans today either?[n][uf 1 1][e]
@@ -211,7 +211,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 3 0 65535 2026 0 0]Right!? I Knew I wasn't the only one, though we aren't exactly on the same page, who care's![n][uf 1 1][e]
 
 [msg MSG_047_0_0 [Junpei Iori]]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 65535 0 0][uf 3 1 3 0 65535 2048 0 0]Seriously? Well, I guess you are a bit of the "I work alone" kinda girl.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 65535 0 0][uf 3 1 3 0 65535 2048 0 0]Seriously? Well, I guess you're a bit of the "I work alone" kinda girl.[n][uf 1 1][e]
 
 [msg MSG_048_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 3 65535 65535 0 0][uf 3 1 3 0 65535 2093 0 0]Yeah, my grades were... Well, they were what I expected.[n][uf 1 1][e]
@@ -311,11 +311,11 @@
 [sel SEL_069_0_0 top]
 [uf 0 5 65278][uf 2 1]She'll be a great addition.[e]
 [uf 0 5 65278][uf 2 1]I don't really care...[e]
-[uf 0 5 65278][uf 2 1]That all you think about?[e]
+[uf 0 5 65278][uf 2 1]Is that all you think about?[e]
 
 [msg MSG_070_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 3 0 65535 2031 0 0]Right!? And...most importantly a new type-[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]We have the mysterious cool but cool transfer, the mean girl and now the modest girl!?? Great.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]We have the mysterious but cool transfer, the mean girl and now the modest girl!? Great.[n][uf 1 1][e]
 
 [msg MSG_071_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 3 0 65535 2050 0 0]Seriously? stop acting like nothing moves you, I can see you smiling.[n][uf 1 1][e]
@@ -330,7 +330,7 @@
 
 [msg MSG_073_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 3 0 65535 2001 0 0]The girls said no guys allowed... But what if they need more help carrying the heavier stuff?[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]Well, I guess they'll call for us if they really need the help, well you should feel free to head up though.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0]It's cool, though. I'm just glad she's coming. She'll be here tomorrow, you know."[n][uf 1 1][e]
 
 [msg MSG_074_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 65535 0 0][uf 3 1 3 0 65535 2074 0 0]I heard Fuuka's teacher, Mr. Ekoda, got in a lot of trouble.[n][uf 1 1][e]

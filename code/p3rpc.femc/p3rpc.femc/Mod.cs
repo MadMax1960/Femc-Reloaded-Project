@@ -1,12 +1,17 @@
-﻿using p3rpc.femc.Components;
+﻿using p3rpc.commonmodutils;
+using p3rpc.femc.Components;
 using p3rpc.femc.Configuration;
 using p3rpc.femc.Template;
-using Reloaded.Hooks.ReloadedII.Interfaces;
+using Reloaded.Hooks.Definitions;
+using Reloaded.Memory;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
+using SharedScans.Interfaces;
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using UnrealEssentials.Interfaces;
+using static p3rpc.femc.Configuration.Config;
 
 namespace p3rpc.femc
 {
@@ -46,8 +51,8 @@ namespace p3rpc.femc
         /// </summary>
         private readonly IModConfig _modConfig;
 
-        private Context _context;
-        private Dictionary<string, ModuleBase> _modules;
+        private FemcContext _context;
+        private ModuleRuntime<FemcContext> _modRuntime;
 
         public Mod(ModContext context)
         {
@@ -60,71 +65,145 @@ namespace p3rpc.femc
 
             var baseAddress = Process.GetCurrentProcess().MainModule.BaseAddress;
             _modLoader.GetController<IStartupScanner>().TryGetTarget(out var startupScanner);
-            if (startupScanner == null || _hooks == null) throw new Exception("Missing dependencies : startup scanner, hooks");
-            Utils utils = new(startupScanner, _logger, _hooks, baseAddress);
-            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils);
-            _modules = new();
-            AddModule<UICommon>();
-            if (_configuration.EnableMailIcon) AddModule<MailIcon>();
-            if (_configuration.EnableCampMenu)
+            if (startupScanner == null) throw new Exception("[Femc Project] Could not get controller for Reloaded startup scanner");
+            if (_hooks == null) throw new Exception("[Femc Project] Could not get controller for Reloaded hooks");
+            _modLoader.GetController<ISharedScans>().TryGetTarget(out var sharedScans);
+            if (sharedScans == null) throw new Exception("[Femc Project] Could not get controller for Shared Scans");
+            Utils utils = new(startupScanner, _logger, _hooks, baseAddress, "Femc Project", System.Drawing.Color.Thistle);
+            var unrealEssentialsController = _modLoader.GetController<IUnrealEssentials>();
+            if (unrealEssentialsController == null || !unrealEssentialsController.TryGetTarget(out var unrealEssentials))
             {
-                AddModule<CampCommon>();
-                AddModule<CampRoot>();
-                AddModule<CampSkill>();
-                AddModule<CampItem>();
-                AddModule<CampEquip>();
-                AddModule<CampPersona>();
-                AddModule<CampSystem>();
-                AddModule<SocialStats>();
+                utils.Log($"Unable to get controller for Unreal Essentials, stuff won't work :(", System.Drawing.Color.Red);
+                return;
             }
-            if (_configuration.EnableDateTimePanel) AddModule<DateTimePanel>();
+            var memory = new Memory();
+            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans);
+            _modRuntime = new(_context);
+
+            try
+            {
+                if (_configuration.HairTrue == HairType.MudkipsHair)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "MudkipHair"));
+                else if (_configuration.HairTrue == HairType.KotoneBeanHair)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "NaobeanHair"));
+
+                if (_configuration.AOATrue == AOAType.Ainz)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ainz"));
+                else if (_configuration.AOATrue == AOAType.Ely)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ely"));
+                else if (_configuration.AOATrue == AOAType.Chrysanthie)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Chrysanthie"));
+
+                if (_configuration.AOAText == AOATextType.DontLookBack)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
+                else if (_configuration.AOAText == AOATextType.SorryBoutThat)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "SorryBoutThat"));
+
+                if (_configuration.BustupTrue == BustupType.Neptune)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Neptune"));
+                else if (_configuration.BustupTrue == BustupType.Ely)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Ely"));
+                else if (_configuration.BustupTrue == BustupType.ElyOld)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ElyOld"));
+                else if (_configuration.BustupTrue == BustupType.Esa)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Esa"));
+
+                if (_configuration.ShardTrue == ShardType.Esa)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Esa"));
+                else if (_configuration.ShardTrue == ShardType.Ely)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Ely"));
+
+                if (_configuration.LevelUpTrue == LevelUpType.Esa)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
+                else if (_configuration.LevelUpTrue == LevelUpType.Ely)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Ely"));
+
+                if (_configuration.CutinTrue == CutinType.berrycha)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
+                else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
+
+                if (_configuration.KotoneRoom == true)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
+            } catch (Exception ex)
+            {
+                _context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
+            }
+
+            _modRuntime.AddModule<UICommon>();
+            if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
+			if (_configuration.EnableCampMenu)
+            {
+                _modRuntime.AddModule<CampCommon>();
+                _modRuntime.AddModule<CampRoot>();
+                _modRuntime.AddModule<CampSkill>();
+                _modRuntime.AddModule<CampItem>();
+                _modRuntime.AddModule<CampEquip>();
+                _modRuntime.AddModule<CampPersona>();
+                _modRuntime.AddModule<CampSocialLink>();
+                _modRuntime.AddModule<CampCalendar>();
+                _modRuntime.AddModule<CampSystem>();
+                _modRuntime.AddModule<SocialStats>();
+            }
+            if (_configuration.EnableDateTimePanel) _modRuntime.AddModule<DateTimePanel>();
             if (_configuration.EnableTextbox)
             {
-                AddModule<MsgWindowSimple>();
-                AddModule<MsgWindowSelectSimple>();
+                _modRuntime.AddModule<MsgWindowSimpleCommon>();
+                _modRuntime.AddModule<MsgWindowSimple>();
+                _modRuntime.AddModule<MsgWindowSelectSimple>();
+                _modRuntime.AddModule<MsgWindowAssist>();
+                _modRuntime.AddModule<MsgWindowSystem>();
+                _modRuntime.AddModule<GenericSelect>();
             }
             if (_configuration.EnableMindMessageBox)
             {
-                AddModule<MsgWindowMind>();
-                AddModule<MsgWindowSelectMind>();
+                _modRuntime.AddModule<MsgWindowMind>();
+                _modRuntime.AddModule<MsgWindowSelectMind>();
             }
-            if (_configuration.EnableInteractPrompt) AddModule<MiscCheckDraw>();
+            if (_configuration.EnableInteractPrompt) _modRuntime.AddModule<MiscCheckDraw>();
             if (_configuration.EnableMinimap)
             {
-                AddModule<Minimap>();
-                //AddModule<LocationSelect>();
+                _modRuntime.AddModule<Minimap>();
+                _modRuntime.AddModule<LocationSelect>();
             }
             if (_configuration.EnableBustup)
             {
-                AddModule<Bustup>();
+                _modRuntime.AddModule<Bustup>();
             }
             if (_configuration.EnableMessageScript)
             {
-                AddModule<MessageScript>();
+                _modRuntime.AddModule<MessageScript>();
             }
-
-            foreach (var mod in _modules.Values) mod.Register();
-        }
-
-        private void AddModule<T>() where T : ModuleBase
-        {
-            Type typeInfo = typeof(T);
-            ConstructorInfo construct = typeInfo.GetConstructor(
-                BindingFlags.Instance | BindingFlags.Public, null, CallingConventions.HasThis,
-                new Type[] { typeof(Context), typeof(Dictionary<string, ModuleBase>)}, null
-            );
-            if (construct != null)
+            if (_configuration.EnableTownMap) _modRuntime.AddModule<TownMap>();
+            if (_configuration.EnablePartyPanel) _modRuntime.AddModule<PartyPanel>();
+            if (_configuration.EnableBacklog) _modRuntime.AddModule<Backlog>();
+            if (_configuration.EnableButtonPrompts) _modRuntime.AddModule<KeyHelp>();
+            if (_configuration.EnableGetItem) _modRuntime.AddModule<MiscGetItemDraw>();
+            if (_configuration.EnableTimeSkip)
             {
-                T newModule = (T)construct.Invoke(new object[] { _context, _modules });
-                _modules.Add(typeInfo.Name, newModule);
-                _context._utils.Log($"Added module {typeInfo.Name}");
+                _modRuntime.AddModule<DayChange>();
+                _modRuntime.AddModule<TimeChange>();
             }
-            else
+            if (_configuration.EnablePersonaStatus) _modRuntime.AddModule<PersonaStatus>();
+            if (_configuration.EnableNetworkFeatures)
             {
-                throw new Exception($"Could not find appropriate constructor for type {typeInfo.Name}");
+                _modRuntime.AddModule<VoiceAction>();
+                _modRuntime.AddModule<VoiceAnswer>();
             }
+            if (_configuration.EnableShop)
+            {
+                _modRuntime.AddModule<SimpleShop>();
+                _modRuntime.AddModule<MiscMoneyDraw>();
+            }
+            if (_configuration.EnableCutin) _modRuntime.AddModule<Cutin>();
+            if (_configuration.EnableTitleMenu) _modRuntime.AddModule<TitleMenu>();
+            if (_configuration.EnableStaffRoll)
+            {
+                _modRuntime.AddModule<LocalizationStaffRoll>();
+                //_modRuntime.AddModule<StaffRoll>();
+            }
+            _modRuntime.RegisterModules();
         }
-
         #region Standard Overrides
         public override void ConfigurationUpdated(Config configuration)
         {
@@ -132,7 +211,7 @@ namespace p3rpc.femc
             // ... your code here.
             _configuration = configuration;
             _logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
-            foreach (var mod in _modules.Values) mod.OnConfigUpdated(configuration);
+            _modRuntime.UpdateConfiguration(configuration);
         }
         #endregion
 

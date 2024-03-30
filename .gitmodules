@@ -1,0 +1,3 @@
+[submodule "code/p3rpc.femc/include/SharedScans"]
+	path = code/p3rpc.femc/include/SharedScans
+	url = https://github.com/rirurin/SharedScans.git

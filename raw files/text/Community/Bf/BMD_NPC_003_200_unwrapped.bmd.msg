@@ -269,8 +269,8 @@
 [msg MSG_054_0_0 [Mitsuru Kirijo]]
 [uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 0 0][uf 3 1 3 0 65535 4052 0 0]I apologize for not being able to go to Tartarus multiple days in a row.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 0 0]Preparing for Yamagishi's move has taken longer than I anticipated.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 0 0][uf 3 1 3 0 65535 4079 0 0]...In any case, this floor is reserved for the girls' rooms.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 0 0]Males are not permitted. Please return downstairs.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 0 0][uf 3 1 3 0 65535 4079 0 0]...As you can see, this floor is reserved for the girls' rooms.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 0 0]See to it, Akihiko and Junpei remain downstairs. Well, if you feel inclined. I understand you may be busy...[n][uf 1 1][e]
 
 [msg MSG_055_0_0 [Mitsuru Kirijo]]
 [uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 65535 0 0][uf 3 1 3 0 65535 4062 0 0]Hm? Mr. Ekoda's punishment?[n][uf 1 1][e]
