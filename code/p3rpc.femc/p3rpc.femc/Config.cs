@@ -480,6 +480,21 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Wipe Background")]
         public ConfigColor WipeBgColor { get; set; } = ConfigColor.MellodiColorDark3;
 
+        [DisplayName("Camp Equip: Item Stat Value Padding Color")]
+        public ConfigColor CampItemStatValuePadColor { get; set; } = ConfigColor.MellodiColorDark1;
+
+        [DisplayName("Camp Equip: Item Stat Value Padding Color")]
+        public ConfigColor CampItemStatValueValColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Camp Persona: Arcana Phrase Color (Requires Restart)")]
+        public ConfigColor CampPersonaArcanaPhraseColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp Persona: Name Color")]
+        public ConfigColor CampPersonaNameColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp Persona: Arcana Background Color")]
+        public ConfigColor CampPersonaArcanaBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]

@@ -37,6 +37,7 @@ namespace p3rpc.femc.Components
         public ICommonMethods.FAppCalculationItem_Lerp _appCalcLerp;
 
         public AUIDrawBaseActor_DrawRectV4Inner _drawRectV4Inner;
+        public DrawSpriteDetailedParams _drawSprDetailedParams;
 
         public unsafe uint* _ActiveDrawTypeId; // this is literally from GFD lol
 
@@ -56,6 +57,7 @@ namespace p3rpc.femc.Components
         public unsafe BPDrawSpr* GetDrawer() => (BPDrawSpr*)(_getSpriteItemMaskInstance() + 0x20);
 
         private string AUIDrawBaseActor_DrawRectV4Inner_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 4D ?? 41 0F 28 D1";
+        private string DrawSpriteDetailedParams_SIG = "48 8B C4 48 81 EC A8 00 00 00 F3 0F 10 84 24 ?? ?? ?? ?? F3 0F 10 8C 24 ?? ?? ?? ?? C6 40 ?? 00 C6 40 ?? 00 48 C7 40 ?? 00 00 00 00 C6 40 ?? 00 C6 40 ?? 00 C6 40 ?? 00";
 
         public unsafe UICommon(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
@@ -79,6 +81,7 @@ namespace p3rpc.femc.Components
             _context._sharedScans.CreateListener<ICommonMethods.FAppCalculationItem_Lerp>(addr => _context._utils.AfterSigScan(addr, _context._utils.GetIndirectAddressShort, addr => _appCalcLerp = _context._utils.MakeWrapper<ICommonMethods.FAppCalculationItem_Lerp>(addr)));
             _context._sharedScans.CreateListener<IUIMethods.AUIDrawBaseActor_DrawRectV4>(addr => _context._utils.AfterSigScan(addr, _context._utils.GetDirectAddress, addr => _drawRectV4 = _context._utils.MakeWrapper<IUIMethods.AUIDrawBaseActor_DrawRectV4>(addr)));
             _context._utils.SigScan(AUIDrawBaseActor_DrawRectV4Inner_SIG, "AUIDrawBaseActor::DrawRectV4Inner", _context._utils.GetIndirectAddressShort, addr => _drawRectV4Inner = _context._utils.MakeWrapper<AUIDrawBaseActor_DrawRectV4Inner>(addr));
+            _context._utils.SigScan(DrawSpriteDetailedParams_SIG, "DrawSpriteDetailedParams", _context._utils.GetDirectAddress, addr => _drawSprDetailedParams = _context._utils.MakeWrapper<DrawSpriteDetailedParams>(addr));
 
             IdentityMatrixNative = (float*)NativeMemory.AllocZeroed(sizeof(float) * 16);
             IdentityMatrixNative[0] = 1;
@@ -124,5 +127,6 @@ namespace p3rpc.femc.Components
         public override void Register() {}
 
         public unsafe delegate void AUIDrawBaseActor_DrawRectV4Inner(BPDrawSpr* drawer, float X, float Y, float Z, FVector* v0, FVector* v1, FVector* v2, FVector* v3, FColor* color, float* transMtx, float antiAlias, int queueId);
+        public unsafe delegate void DrawSpriteDetailedParams(USprAsset* spr, uint a2, uint id, float X, float Y, float Z, FSprColor color, int queueId, float a9, float a10, float a11, int a12, byte a13);
     }
 }
