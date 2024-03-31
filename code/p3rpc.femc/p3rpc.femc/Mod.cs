@@ -196,12 +196,17 @@ namespace p3rpc.femc
                 _modRuntime.AddModule<MiscMoneyDraw>();
             }
             if (_configuration.EnableCutin) _modRuntime.AddModule<Cutin>();
-            if (_configuration.EnableTitleMenu) _modRuntime.AddModule<TitleMenu>();
+            if (_configuration.EnableTitleMenu)
+            {
+                _modRuntime.AddModule<TitleMenu>();
+                _modRuntime.AddModule<DifficultySelection>();
+            }
             if (_configuration.EnableStaffRoll)
             {
                 _modRuntime.AddModule<LocalizationStaffRoll>();
                 //_modRuntime.AddModule<StaffRoll>();
             }
+            _modRuntime.AddModule<Wipe>();
             _modRuntime.RegisterModules();
         }
         #region Standard Overrides

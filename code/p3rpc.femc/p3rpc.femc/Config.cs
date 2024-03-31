@@ -474,6 +474,12 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Localization Staff Roll: Header Color (Requires Restart)")]
         public ConfigColor LocalStaffRollHeader { get; set; } = ConfigColor.MellodiColorLight3;
 
+        [DisplayName("Difficulty Selection Background")]
+        public ConfigColor DifficultySelectBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Wipe Background")]
+        public ConfigColor WipeBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
