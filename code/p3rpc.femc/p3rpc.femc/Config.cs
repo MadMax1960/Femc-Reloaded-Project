@@ -628,7 +628,8 @@ namespace p3rpc.femc.Configuration
 			Neptune,
 			Ely,
 			ElyOld,
-			Esa
+			Esa,
+			Betina
 		}
 
 		[DisplayName("Glass Shard")]
