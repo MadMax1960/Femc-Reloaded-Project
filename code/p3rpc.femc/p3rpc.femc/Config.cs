@@ -486,6 +486,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp Equip: Item Stat Value Padding Color")]
         public ConfigColor CampItemStatValueValColor { get; set; } = ConfigColor.MellodiColorMid2;
 
+        [DisplayName("Camp Equip: Overview List Type Color")]
+        public ConfigColor CampEquipOverviewListType { get; set; } = ConfigColor.MellodiColorMid3;
+
         [DisplayName("Camp Persona: Arcana Phrase Color (Requires Restart)")]
         public ConfigColor CampPersonaArcanaPhraseColor { get; set; } = ConfigColor.MellodiColorLight3;
 
@@ -494,6 +497,21 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Camp Persona: Arcana Background Color")]
         public ConfigColor CampPersonaArcanaBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Camp Status: Kotone Line Color")]
+        public ConfigColor CampStatusKotoneLineColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Town Map: Location Details Background Tint")]
+        public ConfigColor TownMapLocationDetailsBgTint { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Town Map: Location Details Top Left Bg")]
+        public ConfigColor TownMapLocationDetailsTopLeftBg { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Town Map: Location Details Top Left Text")]
+        public ConfigColor TownMapLocationDetailsTopLeftText { get; set; } = ConfigColor.MellodiColorMid1;
+
+		[DisplayName("Town Map: Selected Marker Outline")]
+		public ConfigColor TownMapSelectedMarkerOutline { get; set; } = ConfigColor.MellodiColorMid2;
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -600,7 +618,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableCutin { get; set; } = true;
 
-		[DisplayName("Hair Options")]
+        [DisplayName("Enable Wipe")]
+        [Category("UI Components")]
+        [DefaultValue(true)]
+        public bool EnableWipe { get; set; } = true;
+
+        [DisplayName("Hair Options")]
 		[Description("This is an enumerable.")]
 		[Category("3D Options")]
 		[DefaultValue(HairType.MudkipsHair)]

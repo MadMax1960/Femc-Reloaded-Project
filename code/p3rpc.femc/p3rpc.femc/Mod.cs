@@ -140,6 +140,7 @@ namespace p3rpc.femc
                 _modRuntime.AddModule<CampItem>();
                 _modRuntime.AddModule<CampEquip>();
                 _modRuntime.AddModule<CampPersona>();
+                _modRuntime.AddModule<CampStats>();
                 _modRuntime.AddModule<CampSocialLink>();
                 _modRuntime.AddModule<CampCalendar>();
                 _modRuntime.AddModule<CampSystem>();
@@ -206,7 +207,7 @@ namespace p3rpc.femc
                 _modRuntime.AddModule<LocalizationStaffRoll>();
                 //_modRuntime.AddModule<StaffRoll>();
             }
-            _modRuntime.AddModule<Wipe>();
+            if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
             _modRuntime.RegisterModules();
         }
         #region Standard Overrides
