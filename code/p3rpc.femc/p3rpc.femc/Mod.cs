@@ -143,6 +143,7 @@ namespace p3rpc.femc
                 _modRuntime.AddModule<CampItem>();
                 _modRuntime.AddModule<CampEquip>();
                 _modRuntime.AddModule<CampPersona>();
+                _modRuntime.AddModule<CampStats>();
                 _modRuntime.AddModule<CampSocialLink>();
                 _modRuntime.AddModule<CampCalendar>();
                 _modRuntime.AddModule<CampSystem>();
@@ -199,12 +200,17 @@ namespace p3rpc.femc
                 _modRuntime.AddModule<MiscMoneyDraw>();
             }
             if (_configuration.EnableCutin) _modRuntime.AddModule<Cutin>();
-            if (_configuration.EnableTitleMenu) _modRuntime.AddModule<TitleMenu>();
+            if (_configuration.EnableTitleMenu)
+            {
+                _modRuntime.AddModule<TitleMenu>();
+                _modRuntime.AddModule<DifficultySelection>();
+            }
             if (_configuration.EnableStaffRoll)
             {
                 _modRuntime.AddModule<LocalizationStaffRoll>();
                 //_modRuntime.AddModule<StaffRoll>();
             }
+            if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
             _modRuntime.RegisterModules();
         }
         #region Standard Overrides

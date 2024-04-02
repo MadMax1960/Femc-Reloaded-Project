@@ -35,21 +35,10 @@ namespace p3rpc.femc.Components
         {
             if (_getCheckDrawAssets(self))
             {
-                var checkBgBackColor = _context._config.CheckDrawBgColor;
-                checkBgBackColor.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 255);
-                ConfigColor.SetColor(ref self->checkBgBack.Color, checkBgBackColor);
-
-                var checkBgFrontBorderColor = _context._config.CheckDrawFgBorderColor;
-                checkBgFrontBorderColor.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 255);
-                ConfigColor.SetColor(ref self->CheckBgFrontBorderColor, checkBgFrontBorderColor);
-
-                var checkBgFrontColor = _context._config.CheckDrawFgColor;
-                checkBgFrontColor.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 204);
-                ConfigColor.SetColor(ref self->checkBgFront.Color, checkBgFrontColor);
-
-                var defParamsAlpha = _context._config.CheckDrawBgColor;
-                defParamsAlpha.A = (byte)(GetCheckDrawOpacity(&self->FieldAE0) * 127.5);
-                ConfigColor.SetColor(ref self->sprDefParamsAlpha.color, defParamsAlpha);
+                ConfigColor.SetColorIgnoreAlpha(ref self->checkBgBack.Color, _context._config.CheckPromptBackBoxColorNew);
+                ConfigColor.SetColorIgnoreAlpha(ref self->CheckBgFrontBorderColor, _context._config.CheckPromptFrontBoxColorHighNew);
+                ConfigColor.SetColorIgnoreAlpha(ref self->checkBgFront.Color, _context._config.CheckPromptFrontBoxColorNew);
+                ConfigColor.SetColorIgnoreAlpha(ref self->sprDefParamsAlphaNew.color, _context._config.CheckPromptFrontBoxColorHighNew);
             }
             _drawInteractPrompt.OriginalFunction(self);
         }
