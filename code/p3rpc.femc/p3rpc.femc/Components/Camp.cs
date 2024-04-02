@@ -338,8 +338,8 @@ namespace p3rpc.femc.Components
         private string UCmpPersona_UnselArcanaBgColorTrans_SIG = "41 81 C9 00 44 0B 00";
         private string UCmpPersona_BlankSlotColorTrans_SIG = "41 0F 28 C4 C6 44 24 ?? 01";
         private string UCmpPersona_UnselArcanaBgTextTrans_SIG = "83 C3 5E C6 44 24 ?? 01 41 0F 28 C9";
-        private string UCmpPersona_SelArcanaBgColorTrans_SIG = "";
-        private string UCmpPersona_SelArcanaBgTextTrans_SIG = "";
+        private string UCmpPersona_SelArcanaBgColorTrans_SIG = "0D 00 FF FF 00 0F 11 81 ?? ?? ?? ??";
+        private string UCmpPersona_SelArcanaBgTextTrans_SIG = "0D 00 74 0C 00";
 
         private IAsmHook _phraseColor;
         private IAsmHook _nameColor;
@@ -423,7 +423,7 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(UCmpPersona_BlankSlotColor_SIG, "UCmpPersona::BlankSlotColor", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampPersonaNameColor.ToU32())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampPersonaNameColor.ToU32IgnoreAlpha())));
             });
 
             // Transition colors
@@ -438,7 +438,7 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(UCmpPersona_UnselArcanaBgColorTrans_SIG, "UCmpPersona::UnselArcanaBgColorTrans", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampPersonaArcanaBgColor.ToU32())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampPersonaArcanaBgColor.ToU32IgnoreAlpha())));
             });
             _context._utils.SigScan(UCmpPersona_BlankSlotColorTrans_SIG, "UCmpPersona::BlankSlotColorTrans", _context._utils.GetDirectAddress, addr =>
             {
@@ -457,6 +457,14 @@ namespace p3rpc.femc.Components
                     $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_BlankSlotTransImpl, out _unselArcanaTextColorTransWrapper)}",
                 };
                 _unselArcanaTextColorTrans = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_SelArcanaBgTextTrans_SIG, "UCmpPersona::SelArcanaBgTextTrans", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampPersonaArcanaBgColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpPersona_SelArcanaBgColorTrans_SIG, "UCmpPersona::SelArcanaBgColorTrans", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampPersonaNameColor.ToU32IgnoreAlpha())));
             });
         }
         public override void Register()

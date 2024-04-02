@@ -72,17 +72,14 @@ namespace p3rpc.femc.Configuration
 		[Category("Ui Colors")]
 		public ConfigColor MinimapPlaceNameBgColor { get; set; } = ConfigColor.DarkColor;
 
-        [DisplayName("Interact Prompt: Background Color")]
-		[Category("Ui Colors")]
-		public ConfigColor CheckDrawBgColor { get; set; } = ConfigColor.CheckFgBorder;
+        [DisplayName("Interact Prompt: Back Box Color")]
+        public ConfigColor CheckPromptBackBoxColorNew { get; set; } = UICommon.CheckPromptBgBox;
 
-        [DisplayName("Interact Prompt: Foreground Border Color")]
-		[Category("Ui Colors")]
-		public ConfigColor CheckDrawFgBorderColor { get; set; } = ConfigColor.CheckFgBorder;
+        [DisplayName("Interact Prompt: Front Box Base Color")]
+        public ConfigColor CheckPromptFrontBoxColorNew { get; set; } = ConfigColor.MellodiColorDark3;
 
-        [DisplayName("Interact Prompt: Foreground Color")]
-		[Category("Ui Colors")]
-		public ConfigColor CheckDrawFgColor { get; set; } = ConfigColor.DarkColor;
+        [DisplayName("Interact Prompt: Front Box Highlight Color")]
+        public ConfigColor CheckPromptFrontBoxColorHighNew { get; set; } = UICommon.CheckPromptFgBox;
 
         [DisplayName("Bustup: Shadow Color")]
 		[Category("Ui Colors")]
@@ -512,6 +509,24 @@ namespace p3rpc.femc.Configuration
 
 		[DisplayName("Town Map: Selected Marker Outline")]
 		public ConfigColor TownMapSelectedMarkerOutline { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Social Stats: Stats Up Text")]
+        public ConfigColor SocialStatsUpText { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Social Stats: Stat Up Pulse Circle Color")]
+        public ConfigColor SocialStatsPulseCircleColorMain { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Social Stats: Stat Up Pulse Circle Fade")]
+        public ConfigColor SocialStatsPulseCircleColorFade { get; set; } = ConfigColor.MellodiColorMid1;
+
+        [DisplayName("Assist Message Box: Text Background")]
+        public ConfigColor MsgAssistTextBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Location Select: Map Background Color")]
+        public ConfigColor LocationSelMapBg { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Location Select: Map Label Color")]
+        public ConfigColor LocationSelMapLabel { get; set; } = UICommon.LocationSelectMapLabel;
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]

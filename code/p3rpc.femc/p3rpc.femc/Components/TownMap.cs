@@ -119,7 +119,7 @@ namespace p3rpc.femc.Components
         private unsafe void FTownMapMarker2_UpdateStateImpl(FTownMapMarker2* self, float deltaTime)
         {
             _townMapMarkerUpdateState.OriginalFunction(self, deltaTime);
-            ConfigColor.SetColor(ref self->IconColor, _context.ColorWhite);
+            ConfigColor.SetColorIgnoreAlpha(ref self->IconColor, _context.ColorWhite);
             ConfigColor.SetColorCustomAlpha(ref self->MarkerOutline.color, _context._config.TownMapSelectedMarkerOutline, 0x80);
         }
 

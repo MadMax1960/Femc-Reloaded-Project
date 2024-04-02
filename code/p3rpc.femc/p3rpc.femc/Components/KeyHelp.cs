@@ -127,25 +127,17 @@ namespace p3rpc.femc.Components
         }
         public unsafe FSprColor FKeyHelpButtonAuto_DrawTextFillColor(FKeyHelpButtonAuto* self) => ConfigColor.ToFSprColor(_context._config.ButtonPromptHighlightColor);
 
-        private unsafe float Clamp_1413033e0(FKeyHelpInterpolate* val)
-        {
-            var ret = val->Field1C / val->Field20;
-            if (ret < 0) return 0;
-            else if (ret > 1) return 1;
-            else return ret;
-        }
-
         public unsafe FSprColor FKeyHelpButtonAuto_DrawTextTriangleColor(FKeyHelpButtonAuto* self)
         {
             var newColor = ConfigColor.ToFSprColor(_context._config.ButtonPromptTriangleColor);
-            newColor.A = (byte)((Clamp_1413033e0(&self->Field540) * 0.7 * 255 + 76.5) * self->Super.KeyHelpTransparency);
+            newColor.A = (byte)((UICommon.Clamp_1413033e0(&self->Field540) * 0.7 * 255 + 76.5) * self->Super.KeyHelpTransparency);
             return newColor;
         }
 
         public unsafe FSprColor FKeyHelpButtonFastForward_DrawTextTriangleColor(FKeyHelpButtonFastForward* self)
         {
             var newColor = ConfigColor.ToFSprColor(_context._config.ButtonPromptTriangleColor);
-            newColor.A = (byte)((Clamp_1413033e0(&self->Field538) * 0.7 * 255 + 76.5) * self->Super.KeyHelpTransparency);
+            newColor.A = (byte)((UICommon.Clamp_1413033e0(&self->Field538) * 0.7 * 255 + 76.5) * self->Super.KeyHelpTransparency);
             return newColor;
         }
 

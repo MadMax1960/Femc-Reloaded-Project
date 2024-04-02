@@ -52,6 +52,9 @@ namespace p3rpc.femc.Components
         // i forgot to add this to commonutils lol
         public static readonly ConfigColor NetStickyNoteBgColor1 = new ConfigColor(0xd8, 0x3d, 0x76, 0xff);
         public static readonly ConfigColor NetStickyNoteTextColor1 = new ConfigColor(0xff, 0xd1, 0xdc, 0xff);
+        public static readonly ConfigColor LocationSelectMapLabel = new ConfigColor(0x1f, 0x11, 0x17, 0xff);
+        public static readonly ConfigColor CheckPromptBgBox = new ConfigColor(0xa0, 0x0e, 0x4a, 0xff);
+        public static readonly ConfigColor CheckPromptFgBox = new ConfigColor(0x7a, 0x2b, 0x45, 0xff);
 
         public static unsafe float* IdentityMatrixNative; // 0x145361ae0
         public unsafe BPDrawSpr* GetDrawer() => (BPDrawSpr*)(_getSpriteItemMaskInstance() + 0x20);
@@ -110,6 +113,14 @@ namespace p3rpc.femc.Components
                     _ => fraction
                 };
             }
+        }
+
+        public static unsafe float Clamp_1413033e0(FKeyHelpInterpolate* val)
+        {
+            var ret = val->Field1C / val->Field20;
+            if (ret < 0) return 0;
+            else if (ret > 1) return 1;
+            else return ret;
         }
 
         public unsafe void BPDrawSpr_TransformMatrix(BPDrawSpr* self, float* mtx, FVector* pos)
