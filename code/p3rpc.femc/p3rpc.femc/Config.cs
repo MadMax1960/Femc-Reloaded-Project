@@ -638,6 +638,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableWipe { get; set; } = true;
 
+        /*[DisplayName("Draw Original Select Box")]
+        [Category("Debug")]
+        [DefaultValue(true)]
+        public bool DebugDrawOgSelBox { get; set; } = true;
+        */
+
         [DisplayName("Hair Options")]
 		[Description("This is an enumerable.")]
 		[Category("3D Options")]
