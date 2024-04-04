@@ -528,6 +528,16 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Location Select: Map Label Color")]
         public ConfigColor LocationSelMapLabel { get; set; } = UICommon.LocationSelectMapLabel;
 
+        [DisplayName("System Message Picture Border Color (Requires Restart)")]
+        public ConfigColor MsgSystemPicBorderColor { get; set; } = ConfigColor.MellodiColorDark1;
+
+        [DisplayName("Tutorial List Entry Color (Requires Restart)")]
+        public ConfigColor TutorialListEntryColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Tutorial List Background Color")]
+        public ConfigColor TutorialBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
