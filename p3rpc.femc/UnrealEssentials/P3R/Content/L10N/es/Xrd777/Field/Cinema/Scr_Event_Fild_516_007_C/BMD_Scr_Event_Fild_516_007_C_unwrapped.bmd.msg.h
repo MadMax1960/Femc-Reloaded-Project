@@ -1,0 +1,25 @@
+// Decompiled by Atlus Script Tools (2017-2021) © TGE
+const int MSG_000_0_0                      = 0;
+const int MSG_000_0_1                      = 1;
+const int MSG_000_0_2                      = 2;
+const int MSG_001_0_0                      = 3;
+const int MSG_MONAD_BTL_YUKARI_0           = 4;
+const int MSG_MONAD_BTL_YUKARI_1           = 5;
+const int MSG_MONAD_BTL_JUNPEI_0           = 6;
+const int MSG_MONAD_BTL_JUNPEI_1           = 7;
+const int MSG_MONAD_BTL_SANADA_0           = 8;
+const int MSG_MONAD_BTL_SANADA_1           = 9;
+const int MSG_MONAD_BTL_MITSURU_0          = 10;
+const int MSG_MONAD_BTL_MITSURU_1          = 11;
+const int MSG_MONAD_BTL_FUKA_0             = 12;
+const int MSG_MONAD_BTL_FUKA_1             = 13;
+const int MSG_MONAD_BTL_AEGIS_0            = 14;
+const int MSG_MONAD_BTL_AEGIS_1            = 15;
+const int MSG_MONAD_BTL_AMADA_0            = 16;
+const int MSG_MONAD_BTL_AMADA_1            = 17;
+const int MSG_MONAD_BTL_KOROMARU_0         = 18;
+const int MSG_MONAD_BTL_KOROMARU_1         = 19;
+const int MSG_MONAD_BTL_ARAGAKI_0          = 20;
+const int MSG_MONAD_BTL_ARAGAKI_1          = 21;
+const int MSG_MONAD_BTL_AEGIS_2            = 22;
+const int MSG_MONAD_BTL_AEGIS_3            = 23;
