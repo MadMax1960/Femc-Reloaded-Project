@@ -149,6 +149,7 @@ namespace p3rpc.femc
                 _modRuntime.AddModule<CampSystem>();
                 _modRuntime.AddModule<SocialStats>();
                 _modRuntime.AddModule<Tutorial>();
+                _modRuntime.AddModule<MissingPerson>();
             }
             if (_configuration.EnableDateTimePanel) _modRuntime.AddModule<DateTimePanel>();
             if (_configuration.EnableTextbox)

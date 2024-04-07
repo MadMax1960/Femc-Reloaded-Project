@@ -31,7 +31,12 @@
     <Content Include="ModConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-	<!-- TODO: Once Mudkip pushes the new folder structure for addons, add 2d, 3d and Fun Stuff folders here-->
+	  <Content Include="..\..\..\p3rpc.femc\2d\**\*.*" Link="2d\%(RecursiveDir)%(Filename)%(Extension)">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="..\..\..\p3rpc.femc\Fun Stuff\**\*.*" Link="Fun Stuff\%(RecursiveDir)%(Filename)%(Extension)">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	<Content Include="..\..\..\p3rpc.femc\Ryo\**\*.*" Link="Ryo\%(RecursiveDir)%(Filename)%(Extension)">
 	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
@@ -44,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="p3rpc.commonmodutils" Version="1.2.1" />
-    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.2.5" />
+    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.2.6" />
     <PackageReference Include="Reloaded.Memory" Version="9.4.1" />
     <PackageReference Include="Reloaded.Memory.SigScan.ReloadedII.Interfaces" Version="1.2.0" />
     <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.4.0" ExcludeAssets="runtime" />

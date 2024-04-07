@@ -537,6 +537,12 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Tutorial List Background Color")]
         public ConfigColor TutorialBgColor { get; set; } = ConfigColor.MellodiColorDark3;
 
+        [DisplayName("Missing Person: Selected Person \"Last Sighted\" Color")]
+        public ConfigColor MissingLastSighted { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Missing Person: Page Background")]
+        public ConfigColor MissingPageBg { get; set; } = ConfigColor.MellodiColorDark3;
+
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -653,6 +659,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool DebugDrawOgSelBox { get; set; } = true;
         */
+
+        [DisplayName("Draw Original Missing Person")]
+        [Category("Debug")]
+        [DefaultValue(true)]
+        public bool DebugDrawMissingPerson { get; set; } = true;
+        
 
         [DisplayName("Hair Options")]
 		[Description("This is an enumerable.")]

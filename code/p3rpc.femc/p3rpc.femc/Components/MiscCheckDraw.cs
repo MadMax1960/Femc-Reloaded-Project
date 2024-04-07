@@ -28,8 +28,6 @@ namespace p3rpc.femc.Components
             _uiCommon = GetModule<UICommon>();
         }
 
-        private unsafe float GetCheckDrawOpacity(CheckDrawUIStruct1* a1) => Math.Clamp(a1->Field28 / a1->Field20, 0, 1);
-
         // use AUIMiscCheckDraw::UpdateCheckDrawState for color reference
         private unsafe void AUIMiscCheckDraw_DrawInteractPromptImpl(AUIMiscCheckDraw* self)
         {
