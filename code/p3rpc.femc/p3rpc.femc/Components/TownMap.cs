@@ -65,7 +65,6 @@ namespace p3rpc.femc.Components
                 };
                 _townMapBorderColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            // todo: recolor marker icons for T_UI_TownMap_00_texture to a color that's visible
             _context._utils.SigScan(FTownMapMarker2_UpdateState_SIG, "FTownMapMarker2::UpdateState", _context._utils.GetDirectAddress, addr => _townMapMarkerUpdateState = _context._utils.MakeHooker<FTownMapMarker2_UpdateState>(FTownMapMarker2_UpdateStateImpl, addr));
             _context._utils.SigScan(AUITownMapActor_LocationDetailsTintColor_SIG, "AUITownMapActor::LocationDetailsTintColor", _context._utils.GetDirectAddress, addr =>
             {

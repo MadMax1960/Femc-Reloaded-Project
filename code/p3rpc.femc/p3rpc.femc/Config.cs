@@ -528,6 +528,31 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Location Select: Map Label Color")]
         public ConfigColor LocationSelMapLabel { get; set; } = UICommon.LocationSelectMapLabel;
 
+        [DisplayName("System Message Picture Border Color (Requires Restart)")]
+        public ConfigColor MsgSystemPicBorderColor { get; set; } = ConfigColor.MellodiColorDark1;
+
+        [DisplayName("Tutorial List Entry Color (Requires Restart)")]
+        public ConfigColor TutorialListEntryColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Tutorial List Background Color")]
+        public ConfigColor TutorialBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Missing Person: Selected Person \"Last Sighted\" Color")]
+        public ConfigColor MissingLastSighted { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Missing Person: Page Background")]
+        public ConfigColor MissingPageBg { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Missing Person: Light Text Color")]
+        public ConfigColor MissingTextLight { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Missing Person: Dark Text Color")]
+        public ConfigColor MissingTextDark { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Missing Person: Sort by Triangle")]
+        public ConfigColor MissingSortTriangle { get; set; } = ConfigColor.MellodiColorMid2;
+
+
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
         [DefaultValue(true)]
@@ -643,6 +668,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool DebugDrawOgSelBox { get; set; } = true;
         */
+
+        [DisplayName("Draw Original Missing Person")]
+        [Category("Debug")]
+        [DefaultValue(true)]
+        public bool DebugDrawMissingPerson { get; set; } = true;
+        
 
         [DisplayName("Hair Options")]
 		[Description("This is an enumerable.")]

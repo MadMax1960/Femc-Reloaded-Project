@@ -36,8 +36,10 @@ namespace p3rpc.femc.Components
         public ICommonMethods.GetUGlobalWork _getUGlobalWork;
         public ICommonMethods.FAppCalculationItem_Lerp _appCalcLerp;
 
+        // todo: move to commonutils
         public AUIDrawBaseActor_DrawRectV4Inner _drawRectV4Inner;
         public DrawSpriteDetailedParams _drawSprDetailedParams;
+        public IUIMethods.USprAsset_FUN_141323540 _spriteFunc2;
 
         public unsafe uint* _ActiveDrawTypeId; // this is literally from GFD lol
 
@@ -61,6 +63,7 @@ namespace p3rpc.femc.Components
 
         private string AUIDrawBaseActor_DrawRectV4Inner_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 4D ?? 41 0F 28 D1";
         private string DrawSpriteDetailedParams_SIG = "48 8B C4 48 81 EC A8 00 00 00 F3 0F 10 84 24 ?? ?? ?? ?? F3 0F 10 8C 24 ?? ?? ?? ?? C6 40 ?? 00 C6 40 ?? 00 48 C7 40 ?? 00 00 00 00 C6 40 ?? 00 C6 40 ?? 00 C6 40 ?? 00";
+        private string USprAsset_DrawSpr2_SIG = "E8 ?? ?? ?? ?? 41 0F 28 C7 F3 44 0F 11 6C 24 ??";
 
         public unsafe UICommon(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
@@ -85,6 +88,7 @@ namespace p3rpc.femc.Components
             _context._sharedScans.CreateListener<IUIMethods.AUIDrawBaseActor_DrawRectV4>(addr => _context._utils.AfterSigScan(addr, _context._utils.GetDirectAddress, addr => _drawRectV4 = _context._utils.MakeWrapper<IUIMethods.AUIDrawBaseActor_DrawRectV4>(addr)));
             _context._utils.SigScan(AUIDrawBaseActor_DrawRectV4Inner_SIG, "AUIDrawBaseActor::DrawRectV4Inner", _context._utils.GetIndirectAddressShort, addr => _drawRectV4Inner = _context._utils.MakeWrapper<AUIDrawBaseActor_DrawRectV4Inner>(addr));
             _context._utils.SigScan(DrawSpriteDetailedParams_SIG, "DrawSpriteDetailedParams", _context._utils.GetDirectAddress, addr => _drawSprDetailedParams = _context._utils.MakeWrapper<DrawSpriteDetailedParams>(addr));
+            _context._utils.SigScan(USprAsset_DrawSpr2_SIG, "USprAsset::DrawSprite2", _context._utils.GetIndirectAddressShort, addr => _spriteFunc2 = _context._utils.MakeWrapper<IUIMethods.USprAsset_FUN_141323540>(addr));
 
             IdentityMatrixNative = (float*)NativeMemory.AllocZeroed(sizeof(float) * 16);
             IdentityMatrixNative[0] = 1;
@@ -134,6 +138,11 @@ namespace p3rpc.femc.Components
             if (_rotateMtx == null) _rotateMtx = _context._hooks.CreateWrapper<IUIMethods.BPDrawSpr_RotateMatrixDel>(*(nint*)(*(nint*)self + 0x8), out _);
             _rotateMtx(self, mtx, center, angle);
         }
+        
+        // FUN_141303220
+        public unsafe static float GetCheckDrawOpacity(CheckDrawUIStruct1* a1) => Math.Clamp(a1->Field28 / a1->Field20, 0, 1);
+
+        public unsafe static int FUN_14108cca0(nint a1) => *(int*)(a1 + 0x28) + *(int*)(a1 + 0x24);
 
         public override void Register() {}
 

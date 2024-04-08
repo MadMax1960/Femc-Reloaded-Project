@@ -399,7 +399,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
                     $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_SelArcanaTextColorImpl, out _selArcanaTextColorWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
                 };
                 _selArcanaTextColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
@@ -417,7 +419,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
                     $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_SelArcanaBgColorImpl, out _unselArcanaTextColorWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
                 };
                 _unselArcanaTextColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
