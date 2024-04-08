@@ -11,6 +11,9 @@ using System;
 using System.Diagnostics;
 using System.Reflection;
 using UnrealEssentials.Interfaces;
+using Unreal.ObjectsEmitter.Interfaces;
+using System;
+using System.Collections.Generic;
 using static p3rpc.femc.Configuration.Config;
 
 namespace p3rpc.femc
@@ -63,7 +66,8 @@ namespace p3rpc.femc
             _configuration = context.Configuration;
             _modConfig = context.ModConfig;
 
-            var baseAddress = Process.GetCurrentProcess().MainModule.BaseAddress;
+			_modLoader.GetController<IUnreal>().TryGetTarget(out var unreal);
+			var baseAddress = Process.GetCurrentProcess().MainModule.BaseAddress;
             _modLoader.GetController<IStartupScanner>().TryGetTarget(out var startupScanner);
             if (startupScanner == null) throw new Exception("[Femc Project] Could not get controller for Reloaded startup scanner");
             if (_hooks == null) throw new Exception("[Femc Project] Could not get controller for Reloaded hooks");
@@ -133,7 +137,9 @@ namespace p3rpc.femc
                 _context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
             }
 
-            _modRuntime.AddModule<UICommon>();
+
+
+			_modRuntime.AddModule<UICommon>();
             if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
 			if (_configuration.EnableCampMenu)
             {
@@ -213,8 +219,10 @@ namespace p3rpc.femc
             if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
             _modRuntime.RegisterModules();
         }
-        #region Standard Overrides
-        public override void ConfigurationUpdated(Config configuration)
+
+
+		#region Standard Overrides
+		public override void ConfigurationUpdated(Config configuration)
         {
             // Apply settings from configuration.
             // ... your code here.

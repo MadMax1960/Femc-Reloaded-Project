@@ -6,6 +6,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p3rpc.femc", "p3rpc.femc\p3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedScans.Interfaces", "include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj", "{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unreal.ObjectsEmitter.Interfaces", "include\Unreal.ObjectsEmitter-main\Unreal.ObjectsEmitter.Interfaces\Unreal.ObjectsEmitter.Interfaces.csproj", "{D22B09F9-A309-44BB-B1B2-BB8CB149BA18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D22B09F9-A309-44BB-B1B2-BB8CB149BA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D22B09F9-A309-44BB-B1B2-BB8CB149BA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D22B09F9-A309-44BB-B1B2-BB8CB149BA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D22B09F9-A309-44BB-B1B2-BB8CB149BA18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
