@@ -543,6 +543,15 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Missing Person: Page Background")]
         public ConfigColor MissingPageBg { get; set; } = ConfigColor.MellodiColorDark3;
 
+        [DisplayName("Missing Person: Light Text Color")]
+        public ConfigColor MissingTextLight { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Missing Person: Dark Text Color")]
+        public ConfigColor MissingTextDark { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Missing Person: Sort by Triangle")]
+        public ConfigColor MissingSortTriangle { get; set; } = ConfigColor.MellodiColorMid2;
+
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
