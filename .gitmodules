@@ -1,3 +1,6 @@
 [submodule "code/p3rpc.femc/include/SharedScans"]
 	path = code/p3rpc.femc/include/SharedScans
 	url = https://github.com/rirurin/SharedScans.git
+[submodule "code\\p3rpc.femc\\include\\Unreal.ObjectsEmitter"]
+	path = code\\p3rpc.femc\\include\\Unreal.ObjectsEmitter
+	url = https://github.com/MirrorTuneZM/Unreal.ObjectsEmitter.git
