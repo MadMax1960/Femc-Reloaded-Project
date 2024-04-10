@@ -38,6 +38,13 @@
             "ItemId": 495507
           },
           "ReleaseMetadataName": "SharedScans.Reloaded.ReleaseMetadata.json"
+        },
+        "Unreal.ObjectsEmitter.Reloaded": {
+          "Config": {
+            "ItemType": "Mod",
+            "ItemId": 500638
+          },
+          "ReleaseMetadataName": "Unreal.ObjectsEmitter.Reloaded.ReleaseMetadata.json"
         }
       }
     },
@@ -123,7 +130,8 @@
     "reloaded.sharedlib.hooks",
     "Ryo.Reloaded",
     "SharedScans.Reloaded",
-    "UnrealEssentials"
+    "UnrealEssentials",
+    "Unreal.ObjectsEmitter.Reloaded"
   ],
   "OptionalDependencies": [],
   "SupportedAppId": [

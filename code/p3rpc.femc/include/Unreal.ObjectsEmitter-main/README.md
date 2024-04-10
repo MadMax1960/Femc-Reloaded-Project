@@ -1,1 +1,0 @@
-# Unreal.ObjectsEmitter
