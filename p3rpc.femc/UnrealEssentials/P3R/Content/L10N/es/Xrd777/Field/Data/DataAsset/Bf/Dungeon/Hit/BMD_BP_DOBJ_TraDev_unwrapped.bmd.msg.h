@@ -1,0 +1,25 @@
+// Decompiled by Atlus Script Tools (2017-2021) © TGE
+const int SEL_EXPLORATION                  = 0;
+const int SEL_YESNO                        = 1;
+const int SEL_CheckFull                    = 2;
+const int MSG_ACCESS_MITSURU               = 3;
+const int MSG_ACCESS_FUKA                  = 4;
+const int MSG_THEURGIA_FUKA_OK_00          = 5;
+const int MSG_THEURGIA_FUKA_OK_02          = 6;
+const int MSG_START_MITSURU_OK_10          = 7;
+const int MSG_START_MITSURU_OK_11          = 8;
+const int MSG_START_FUKA_OK_10             = 9;
+const int MSG_START_FUKA_OK_11             = 10;
+const int MSG_ADVICE_MITSURU_MAY           = 11;
+const int MSG_ADVICE_FUKA_MAY              = 12;
+const int MND_WARP_FIRST                   = 13;
+const int MSG_WARP_FIRST_MITSURU           = 14;
+const int MSG_WARP_FIRST_FUKA              = 15;
+const int MND_WARP_NOT_BOOT                = 16;
+const int MND_WARP_NOT_BOOT_2              = 17;
+const int MSG_MITSURU_GREET                = 18;
+const int MSG_FUKA_GREET                   = 19;
+const int DESC_FLOOR21_NG_MITU             = 20;
+const int DESC_FLOOR21_NG_FUKA             = 21;
+const int MSG_Mitsuru_NotFull              = 22;
+const int MSG_Fuka_NotFull                 = 23;
