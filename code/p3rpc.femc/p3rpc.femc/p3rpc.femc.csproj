@@ -30,18 +30,6 @@
   <ItemGroup>
     <Content Include="ModConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-	  <Content Include="..\..\..\p3rpc.femc\2d\**\*.*" Link="2d\%(RecursiveDir)%(Filename)%(Extension)">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="..\..\..\p3rpc.femc\Fun Stuff\**\*.*" Link="Fun Stuff\%(RecursiveDir)%(Filename)%(Extension)">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	<Content Include="..\..\..\p3rpc.femc\Ryo\**\*.*" Link="Ryo\%(RecursiveDir)%(Filename)%(Extension)">
-	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-	<Content Include="..\..\..\p3rpc.femc\UnrealEssentials\**\*.*" Link="UnrealEssentials\%(RecursiveDir)%(Filename)%(Extension)">
-		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
     <None Update="Preview.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
