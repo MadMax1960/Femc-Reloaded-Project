@@ -768,12 +768,12 @@ namespace p3rpc.femc.Configuration
 		[DisplayName("Kotone Room")]
 		[Category("Fun Stuff")]
 		[DefaultValue(false)]
-		public bool KotoneRoom { get; set; } = true;
+		public bool KotoneRoom { get; set; } = false;
 
 		[DisplayName("Funny Anims")]
 		[Category("Fun Stuff")]
 		[DefaultValue(false)]
-		public bool FunnyAnims { get; set; } = true;
+		public bool FunnyAnims { get; set; } = false;
 
 	}
 

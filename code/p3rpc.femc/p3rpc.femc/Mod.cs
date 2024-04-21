@@ -134,11 +134,24 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
 				else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
+				
 
-				if (_configuration.KotoneRoom == true)
+				if (_configuration.KotoneRoom)
+				{
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
-				else if (_configuration.FunnyAnims == true)
+				}
+
+				if (_configuration.FunnyAnims)
+				{
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Funny Anims"));
+				}
+
+				if (!_configuration.FunnyAnims)
+				{
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Funny Animsog")); // game dies when 2 files loaded, this has the og files we had in mod but in their own folder, the ! is if the bool is disabled
+				}
+
+
 			}
 			catch (Exception ex)
 			{
