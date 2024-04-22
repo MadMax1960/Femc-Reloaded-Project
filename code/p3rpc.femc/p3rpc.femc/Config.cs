@@ -697,7 +697,10 @@ namespace p3rpc.femc.Configuration
 		{
 			Ely,
 			Ainz,
-			Chrysanthie
+			AinzOld,
+			Chrysanthie,
+			Fernando,
+			Monica
 		}
 
 		[DisplayName("AOA Text Options")]
@@ -726,7 +729,8 @@ namespace p3rpc.femc.Configuration
 			ElyOld,
 			Esa,
 			Betina,
-			Anniversary
+			Anniversary,
+			JustBlue
 		}
 
 		[DisplayName("Glass Shard")]
@@ -768,7 +772,12 @@ namespace p3rpc.femc.Configuration
 		[DisplayName("Kotone Room")]
 		[Category("Fun Stuff")]
 		[DefaultValue(false)]
-		public bool KotoneRoom { get; set; } = true;
+		public bool KotoneRoom { get; set; } = false;
+
+		[DisplayName("Funny Anims")]
+		[Category("Fun Stuff")]
+		[DefaultValue(false)]
+		public bool FunnyAnims { get; set; } = false;
 
 	}
 
