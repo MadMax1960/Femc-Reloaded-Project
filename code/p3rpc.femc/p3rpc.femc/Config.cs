@@ -730,7 +730,9 @@ namespace p3rpc.femc.Configuration
 			Esa,
 			Betina,
 			Anniversary,
-			JustBlue
+			JustBlue,
+			Sav,
+			Doodled
 		}
 
 		[DisplayName("Glass Shard")]
