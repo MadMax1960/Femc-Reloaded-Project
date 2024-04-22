@@ -697,7 +697,10 @@ namespace p3rpc.femc.Configuration
 		{
 			Ely,
 			Ainz,
-			Chrysanthie
+			AinzOld,
+			Chrysanthie,
+			Fernando,
+			Monica
 		}
 
 		[DisplayName("AOA Text Options")]
@@ -726,7 +729,8 @@ namespace p3rpc.femc.Configuration
 			ElyOld,
 			Esa,
 			Betina,
-			Anniversary
+			Anniversary,
+			JustBlue
 		}
 
 		[DisplayName("Glass Shard")]
