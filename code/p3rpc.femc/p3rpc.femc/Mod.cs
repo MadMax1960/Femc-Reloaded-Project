@@ -96,15 +96,15 @@ namespace p3rpc.femc
 
 				if (_configuration.AOATrue == AOAType.Ainz)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ainz"));
-				else if (_configuration.AOATrue == AOAType.Chrysanthie)
+				else if (_configuration.AOATrue == AOAType.AinzOld)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "AinzOld"));
 				else if (_configuration.AOATrue == AOAType.Ely)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ely"));
 				else if (_configuration.AOATrue == AOAType.Chrysanthie)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Chrysanthie"));
-				else if (_configuration.AOATrue == AOAType.Chrysanthie)
+				else if (_configuration.AOATrue == AOAType.Fernando)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Fernando"));
-				else if (_configuration.AOATrue == AOAType.Chrysanthie)
+				else if (_configuration.AOATrue == AOAType.Monica)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Monica"));
 
 				if (_configuration.AOAText == AOATextType.DontLookBack)
@@ -124,7 +124,7 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Betina"));
 				else if (_configuration.BustupTrue == BustupType.Anniversary)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "25thAnniversary"));
-				else if (_configuration.BustupTrue == BustupType.Anniversary)
+				else if (_configuration.BustupTrue == BustupType.JustBlue)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "JustBlue"));
 
 
