@@ -116,8 +116,6 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Neptune"));
 				else if (_configuration.BustupTrue == BustupType.Ely)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Ely"));
-				else if (_configuration.BustupTrue == BustupType.ElyOld)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ElyOld"));
 				else if (_configuration.BustupTrue == BustupType.Esa)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Esa"));
 				else if (_configuration.BustupTrue == BustupType.Betina)

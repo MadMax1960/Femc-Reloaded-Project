@@ -726,7 +726,6 @@ namespace p3rpc.femc.Configuration
 		{
 			Neptune,
 			Ely,
-			ElyOld,
 			Esa,
 			Betina,
 			Anniversary,
