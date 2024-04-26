@@ -370,9 +370,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"mov dword [rsp + 0x40], {colorOut.R}",
-                    $"mov dword [rsp + 0x44], {colorOut.G}",
-                    $"mov dword [rsp + 0x48], {colorOut.B}",
+                    $"mov dword [rsp + 0x40], {BitConverter.SingleToUInt32Bits(colorOut.R)}",
+                    $"mov dword [rsp + 0x44], {BitConverter.SingleToUInt32Bits(colorOut.G)}",
+                    $"mov dword [rsp + 0x48], {BitConverter.SingleToUInt32Bits(colorOut.B)}",
                 };
                 _phraseColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
