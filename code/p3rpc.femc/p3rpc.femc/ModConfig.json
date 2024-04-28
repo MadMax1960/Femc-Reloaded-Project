@@ -124,14 +124,15 @@
   },
   "IsUniversalMod": false,
   "ModDependencies": [
+    "P3R.CostumeFramework",
     "p3rpc.essentials",
     "p3rpc.nativetypes",
     "Reloaded.Memory.SigScan.ReloadedII",
     "reloaded.sharedlib.hooks",
     "Ryo.Reloaded",
     "SharedScans.Reloaded",
-    "UnrealEssentials",
-    "Unreal.ObjectsEmitter.Reloaded"
+    "Unreal.ObjectsEmitter.Reloaded",
+    "UnrealEssentials"
   ],
   "OptionalDependencies": [],
   "SupportedAppId": [
