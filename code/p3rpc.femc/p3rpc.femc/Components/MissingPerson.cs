@@ -173,11 +173,13 @@ namespace p3rpc.femc.Components
 
         public unsafe void UUIMissingPerson_DrawMissingPersonDetailsimpl(UUIMissingPerson* self, nint masker)
         {
+            /*
             if (_context._config.DebugDrawMissingPerson)
             {
                 _drawMissingPersonDetails.OriginalFunction(self, masker);
                 return;
             }
+            */
             if (self->MissingPersons.arr_num == 0) return;
             var campSprite = (USprAsset*)_uiCommon._globalWorkGetUIResources()->GetAssetEntry(0x32);
             var yposBase = (1 - UICommon.GetCheckDrawOpacity(&self->Field118)) * 20;

@@ -18,6 +18,13 @@
   "PluginData": {
     "GameBananaDependencies": {
       "IdToConfigMap": {
+        "P3R.CostumeFramework": {
+          "Config": {
+            "ItemType": "Mod",
+            "ItemId": 501833
+          },
+          "ReleaseMetadataName": "P3R.CostumeFramework.ReleaseMetadata.json"
+        },
         "p3rpc.essentials": {
           "Config": {
             "ItemType": "Mod",
@@ -50,6 +57,15 @@
     },
     "GitHubDependencies": {
       "IdToConfigMap": {
+        "p3rpc.classconstructor": {
+          "Config": {
+            "UserName": "Rirurin",
+            "RepositoryName": "p3rpc.classconstructor",
+            "UseReleaseTag": true,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "p3rpc.classconstructor.ReleaseMetadata.json"
+        },
         "p3rpc.essentials": {
           "Config": {
             "UserName": "AnimatedSwine37",
@@ -125,6 +141,7 @@
   "IsUniversalMod": false,
   "ModDependencies": [
     "P3R.CostumeFramework",
+    "p3rpc.classconstructor",
     "p3rpc.essentials",
     "p3rpc.nativetypes",
     "Reloaded.Memory.SigScan.ReloadedII",

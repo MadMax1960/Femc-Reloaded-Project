@@ -668,12 +668,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool DebugDrawOgSelBox { get; set; } = true;
         */
-
+        /*
         [DisplayName("Draw Original Missing Person")]
         [Category("Debug")]
         [DefaultValue(true)]
         public bool DebugDrawMissingPerson { get; set; } = true;
-        
+        */
 
         [DisplayName("Hair Options")]
 		[Description("This is an enumerable.")]
@@ -779,6 +779,11 @@ namespace p3rpc.femc.Configuration
 		[Category("Fun Stuff")]
 		[DefaultValue(false)]
 		public bool FunnyAnims { get; set; } = false;
+
+        [DisplayName("Debug Log Level")]
+        [Category("Debug")]
+        [DefaultValue(LogLevel.Information)]
+        public LogLevel DebugLogLevel { get; set; } = LogLevel.Information;
 
 	}
 
