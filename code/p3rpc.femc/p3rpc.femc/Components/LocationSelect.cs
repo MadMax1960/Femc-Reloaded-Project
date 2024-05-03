@@ -13,8 +13,11 @@ namespace p3rpc.femc.Components
 {
     public class LocationSelect : ModuleBase<FemcContext>
     {
-        //private string UUILocationSelect_DrawLocationSelect_SIG = "40 55 56 57 41 56 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 88 04 00 00";
-        private string AUIAccessInfoDraw_DrawMinimap_SIG = "4C 8B DC 55 57 49 8D AB ?? ?? ?? ?? 48 81 EC D8 01 00 00 45 0F 29 A3 ?? ?? ?? ??";
+        // (1.0.0, 1.0.1)
+        private string AUIAccessInfoDraw_DrawMinimap_SIG_0 = "4C 8B DC 55 57 49 8D AB ?? ?? ?? ?? 48 81 EC D8 01 00 00 45 0F 29 A3 ?? ?? ?? ??";
+        // (1.0.4)
+        private string AUIAccessInfoDraw_DrawMinimap_SIG_1 = "4C 8B DC 55 57 49 8D AB ?? ?? ?? ?? 48 81 EC 88 01 00 00 41 0F 29 7B ??"; 
+        // All versions
         private string UUILocationSelect_DrawLocationSelectBaseColor_SIG = "0F 57 DB 89 85 ?? ?? ?? ?? 0F 57 D2 48 8D 4D ?? 49 8B D6 E8 ?? ?? ?? ?? BA 01 00 00 00";
         private string UUILocationSelect_DrawLocationSelectTintColor_SIG = "0F 57 DB 89 85 ?? ?? ?? ?? 0F 57 D2 48 8D 4D ?? 49 8B D6 E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";
         private string UUILocationSelect_DrawLocationSelectMarkerSprite_SIG = "4C 8B 47 ?? 48 8D 8D ?? ?? ?? ?? 0F 57 DB";
@@ -38,10 +41,17 @@ namespace p3rpc.femc.Components
 
         private UICommon _uiCommon;
 
+        private MultiSignature _drawMinimapMS;
+
         public unsafe LocationSelect(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
-            //_context._utils.SigScan(UUILocationSelect_DrawLocationSelect_SIG, "UUILocationSelect::DrawLocationSelect", _context._utils.GetDirectAddress, addr => _drawLocationSelect = _context._utils.MakeHooker<UUILocationSelect_DrawLocationSelect>(UUILocationSelect_DrawLocationSelectImpl, addr));
-            _context._utils.SigScan(AUIAccessInfoDraw_DrawMinimap_SIG, "AUIAccessInfoDraw::DrawMinimap", _context._utils.GetDirectAddress, addr => _drawMinimap = _context._utils.MakeHooker<AUIAccessInfoDraw_DrawMinimap>(AUIAccessInfoDraw_DrawMinimapImpl, addr));
+            _drawMinimapMS = new MultiSignature();
+            _context._utils.MultiSigScan(
+                new string[] { AUIAccessInfoDraw_DrawMinimap_SIG_0, AUIAccessInfoDraw_DrawMinimap_SIG_1 },
+                "AUIAccessInfoDraw::DrawMinimap", _context._utils.GetDirectAddress,
+                addr => _drawMinimap = _context._utils.MakeHooker<AUIAccessInfoDraw_DrawMinimap>(AUIAccessInfoDraw_DrawMinimapImpl, addr),
+                _drawMinimapMS
+            );
             _context._utils.SigScan(UUILocationSelect_DrawLocationSelectBaseColor_SIG, "UUILocationSelect::DrawLocationSelectBaseColor", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =

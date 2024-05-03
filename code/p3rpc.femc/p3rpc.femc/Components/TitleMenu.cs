@@ -27,7 +27,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
                     $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(ATitleActor_InjectColorAfterCtorCallImpl, out _pressAnyRectColorWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
                 };
                 _pressAnyRectColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
@@ -36,7 +38,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
                     $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(ATitleActor_InjectColorAfterCtorCallImpl, out _gameModeSelectRectColorWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
                 };
                 _gameModeSelectRectColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });

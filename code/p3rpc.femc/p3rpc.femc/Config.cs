@@ -498,6 +498,18 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp Status: Kotone Line Color")]
         public ConfigColor CampStatusKotoneLineColor { get; set; } = ConfigColor.MellodiColorLight3;
 
+        [DisplayName("Camp Status: Inactive Party Member Background (Tartarus)")]
+        public ConfigColor CampStatusInactiveMemberBgTartarus { get; set; } = UICommon.InactivePartyMemberTartarusBG;
+
+        [DisplayName("Camp Status: Inactive Member Details Pale Pink (Tartarus)")]
+        public ConfigColor CampStatusInactiveMemberDetailsPalePinkTartarus { get; set; } = UICommon.InactivePartyMemberPalePink;
+        
+        [DisplayName("Camp Status: Inactive Member Details Dark Pink (Tartarus)")]
+        public ConfigColor CampStatusInactiveMemberDetailsDarkPinkTartarus { get; set; } = UICommon.InactivePartyMemberDarkPink;
+        
+        [DisplayName("Camp Status: Inactive Member HP Bar (Tartarus)")]
+        public ConfigColor CampStatusInactiveMemberHPBarTartarus { get; set; } = UICommon.InactivePartyMemberHPColor;
+
         [DisplayName("Town Map: Location Details Background Tint")]
         public ConfigColor TownMapLocationDetailsBgTint { get; set; } = ConfigColor.MellodiColorMid1;
 
