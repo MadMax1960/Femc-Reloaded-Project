@@ -113,11 +113,7 @@ namespace p3rpc.femc
                 else if (_configuration.HairTrue == HairType.KotoneBeanHair)
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "NaobeanHair"));
 
-                if (_configuration.AOATrue == AOAType.Ainz)
-                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ainz"));
-                else if (_configuration.AOATrue == AOAType.AinzOld)
-                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "AinzOld"));
-                else if (_configuration.AOATrue == AOAType.Ely)
+                if (_configuration.AOATrue == AOAType.Ely)
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ely"));
                 else if (_configuration.AOATrue == AOAType.Chrysanthie)
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Chrysanthie"));

@@ -708,8 +708,6 @@ namespace p3rpc.femc.Configuration
 		public enum AOAType
 		{
 			Ely,
-			Ainz,
-			AinzOld,
 			Chrysanthie,
 			Fernando,
 			Monica
