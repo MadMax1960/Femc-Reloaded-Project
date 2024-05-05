@@ -55,10 +55,10 @@ namespace p3rpc.femc.Configuration
         public ConfigColor TextBoxLeftHaze { get; set; } = ConfigColor.TextBoxLeftHaze;
 
         [DisplayName("Mind Window: Outer Border")]
-        public ConfigColor MindWindowOuterBorder { get; set; } = ConfigColor.MidColor;
+        public ConfigColor MindWindowOuterBorderNew { get; set; } = UICommon.MindWindowOuterBorder;
 
         [DisplayName("Mind Window: Inner Color")]
-        public ConfigColor MindWindowInnerColor { get; set; } = ConfigColor.DarkColor;
+        public ConfigColor MindWindowInnerColorNew { get; set; } = UICommon.MindWindowInnerColor;
 
         /*[DisplayName("Mind Window: Outer Haze")] i'm hardcoding this it's broken for too many people lol
         public ConfigColor MindWindowOuterHazeEx { get; set; } = new ConfigColor(ConfigColor.MellodiColorLight3.R, ConfigColor.MellodiColorLight3.G, ConfigColor.MellodiColorLight3.B, 128);
@@ -66,7 +66,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Mind Window: Background Dots")]
 		[Category("Ui Colors")]
-		public ConfigColor MindWindowBgDots { get; set; } = ConfigColor.MidColor;
+		public ConfigColor MindWindowBgDotsNew { get; set; } = UICommon.MindWindowOuterBorder;
 
         [DisplayName("Minimap: Place Name Background Color")]
 		[Category("Ui Colors")]

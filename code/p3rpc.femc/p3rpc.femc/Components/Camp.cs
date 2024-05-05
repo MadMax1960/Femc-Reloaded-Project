@@ -505,6 +505,7 @@ namespace p3rpc.femc.Components
         private string UCmpStatus_CharacterDetailsInactiveSelectedNameTartarus_SIG = "0D 00 79 38 1A 45 8B CB";
         private string UCmpStatus_CharacterDetailsInactiveSelectedHealthBarRemainingTartarus_SIG = "C7 45 ?? 00 B3 73 4B";
         private string UCmpStatus_CharacterDetailsInactiveSelectedLineTartarus_SIG = "0D 00 79 38 1A EB ??";
+        private string UCmpStatus_CharacterDetailsInactiveSelectedHPLostLineTartarus_SIG = "41 B8 00 A6 62 3A";
 
         private string UCmpStatus_CharacterDetailsInactiveUnselectedParamUsedTartarus_SIG = "41 81 C8 00 EC D4 C0";
         private string UCmpStatus_CharacterDetailsInactiveUnselectedPlayerNameTartarus_SIG = "0D 00 EC D4 C0 41 81 CC 00 79 38 1A";
@@ -529,7 +530,6 @@ namespace p3rpc.femc.Components
                 _context._memory.Write(addr + 3, _context._config.CampStatusInactiveMemberBgTartarus.ToU32IgnoreAlpha())));
             });
 
-            
             _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedParamUsedTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedParamUsedTartarus", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
@@ -555,6 +555,11 @@ namespace p3rpc.femc.Components
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
                 _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
             });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedHPLostLineTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedHPLostLineTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 2, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
 
             _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedParamUsedTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedParamUsedTartarus", _context._utils.GetDirectAddress, addr =>
             {
@@ -569,12 +574,17 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedLinesTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedLinesTartarus", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
-                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsPalePinkTartarus.ToU32IgnoreAlpha())));
             });
             _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarRemainingTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedHealthBarRemainingTartarus", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
                 _context._memory.Write(addr + 2, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarShadow_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedHealthBarShadow", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 2, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
             });
 
         }

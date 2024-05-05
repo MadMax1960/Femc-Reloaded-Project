@@ -87,8 +87,8 @@ namespace p3rpc.femc.Components
 
         private unsafe void UMsgProcWindow_Mind_DrawMessageBoxImpl(UMsgProcWindow_Mind* self)
         {
-            ConfigColor.SetColor(ref self->OuterBorderColor, _context._config.MindWindowOuterBorder);
-            ConfigColor.SetColor(ref self->InnerContentsColor, _context._config.MindWindowInnerColor);
+            ConfigColor.SetColor(ref self->OuterBorderColor, _context._config.MindWindowOuterBorderNew);
+            ConfigColor.SetColor(ref self->InnerContentsColor, _context._config.MindWindowInnerColorNew);
             //var MindWindowOuterHaze = new ConfigColor(0xd4, 0x15, 0x5b, 0x80);
             var MindWindowOuterHaze = new ConfigColor(125, 7, 57, 0x80);
             ConfigColor.SetColor(ref self->OutsideMistColor, MindWindowOuterHaze);
@@ -98,7 +98,7 @@ namespace p3rpc.femc.Components
 
         private unsafe FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBgImpl(UMsgProcWindow_Mind* self)
         {
-            var configColorRaw = ConfigColor.ToFSprColor(_context._config.MindWindowBgDots);
+            var configColorRaw = ConfigColor.ToFSprColor(_context._config.MindWindowBgDotsNew);
             configColorRaw.A = (byte)((1.0 - self->leftSpotBgOpacity2) * 102 * self->leftSpotBgOpacity1);
             return configColorRaw;
         }
