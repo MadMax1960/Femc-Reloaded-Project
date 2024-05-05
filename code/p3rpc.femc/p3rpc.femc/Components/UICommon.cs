@@ -57,6 +57,12 @@ namespace p3rpc.femc.Components
         public static readonly ConfigColor LocationSelectMapLabel = new ConfigColor(0x1f, 0x11, 0x17, 0xff);
         public static readonly ConfigColor CheckPromptBgBox = new ConfigColor(0xa0, 0x0e, 0x4a, 0xff);
         public static readonly ConfigColor CheckPromptFgBox = new ConfigColor(0x7a, 0x2b, 0x45, 0xff);
+        public static readonly ConfigColor InactivePartyMemberTartarusBG = new ConfigColor(181, 63, 104, 0xff);
+        public static readonly ConfigColor InactivePartyMemberPalePink = new ConfigColor(0xed, 0xc0, 0xdb, 0xff);
+        public static readonly ConfigColor InactivePartyMemberDarkPink = new ConfigColor(0x78, 0x19, 0x34, 0xff);
+        public static readonly ConfigColor InactivePartyMemberHPColor = new ConfigColor(0x8b, 0x0d, 0x41, 0xff);
+        public static readonly ConfigColor MindWindowOuterBorder = new ConfigColor(0xa6, 0x6, 0x52, 0xff);
+        public static readonly ConfigColor MindWindowInnerColor = new ConfigColor(0x49, 0x4, 0x21, 0xff);
 
         public static unsafe float* IdentityMatrixNative; // 0x145361ae0
         public unsafe BPDrawSpr* GetDrawer() => (BPDrawSpr*)(_getSpriteItemMaskInstance() + 0x20);

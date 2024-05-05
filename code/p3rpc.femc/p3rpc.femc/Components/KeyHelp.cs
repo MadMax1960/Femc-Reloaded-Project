@@ -3,6 +3,7 @@ using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
+using Reloaded.Memory.Pointers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,6 @@ namespace p3rpc.femc.Components
     {
         private UICommon _uiCommon;
 
-        //private string FKeyHelpButtonAuto_DrawTextFillColor_SIG = "83 BF ?? ?? ?? ?? 00 0F 28 BC 24 ?? ?? ?? ?? 0F 28 B4 24 ?? ?? ?? ?? 0F 84 ?? ?? ?? ??";
-        //private string FKeyHelpButtonAuto_DrawTextFillColor_SIG = "41 0F B6 D1 83 F8 01";
         private string FKeyHelpButtonAuto_DrawTextFillColor_SIG = "83 F8 01 77 ?? B2 24";
         private string FKeyHelpButtonAuto_DrawTextFillColorTransOut_SIG = "E8 ?? ?? ?? ?? 48 8B 4C 24 ?? 45 33 C0 33 D2 E8 ?? ?? ?? ?? B9 01 00 00 00";
         private string FKeyHelpButtonAuto_DrawTextTriangleColor_SIG = "48 8B 54 24 ?? 48 8D 4C 24 ?? 0F 57 DB 89 44 24 ??";
@@ -51,7 +50,11 @@ namespace p3rpc.femc.Components
         {
             _context._utils.SigScan(FKeyHelpButtonAuto_DrawTextFillColor_SIG, "FKeyHelpButtonAuto::DrawTextFillColor", _context._utils.GetDirectAddress, addr =>
             {
-                string[] function =
+                // get expected length of hook, min 7 bytes to be safe
+                // https://github.com/Reloaded-Project/Reloaded.Hooks/blob/master/source/Reloaded.Hooks.Definitions/AsmHookOptions.cs
+                // if hook is expected to be more than 7 bytes, it'll overwrite the call instruction
+                var hookLength = _context._hooks.Utilities.GetHookLength((nint)addr, 7, true);
+                List<string> function = new()
                 {
                     "use64",
                     $"cmp eax, 0x1",
@@ -59,9 +62,11 @@ namespace p3rpc.femc.Components
                     $"mov r9b, ${_context._config.ButtonPromptHighlightColor.B:X}",
                     $"mov r8b, ${_context._config.ButtonPromptHighlightColor.G:X}",
                     $"mov dl, ${_context._config.ButtonPromptHighlightColor.R:X}",
-                    $"label hookEnd",
+                    $"label hookEnd"
                 };
-                _autoDrawTextFillColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.DoNotExecuteOriginal).Activate();
+                if (hookLength > 7)
+                    function.Add($"call {Utils.GetGlobalAddress((nint)(addr + 8))}");
+                _autoDrawTextFillColor = _context._hooks.CreateAsmHook(function.ToArray(), addr, AsmHookBehaviour.DoNotExecuteOriginal).Activate();
             });
             _context._utils.SigScan(FKeyHelpButtonAuto_DrawTextTriangleColor_SIG, "FKeyHelpButtonAuto::DrawTextTriangleColor", _context._utils.GetDirectAddress, addr =>
             {

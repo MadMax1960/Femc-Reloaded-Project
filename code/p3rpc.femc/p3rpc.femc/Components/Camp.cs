@@ -3,14 +3,6 @@ using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
-using Reloaded.Memory.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
@@ -494,7 +486,7 @@ namespace p3rpc.femc.Components
         public unsafe delegate FColor UCmpPersona_InjectColorRAX(FColor source);
     }
 
-    public class CampStats : ModuleBase<FemcContext>
+    public class CampStats : ModuleAsmInlineColorEdit<FemcContext>
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
@@ -502,6 +494,24 @@ namespace p3rpc.femc.Components
         private string UCmpStatus_CampDrawCharacterListColorLine_SIG = "8B 8C ?? ?? ?? ?? ?? 48 8B 45 ?? 81 E1 00 FF FF FF"; // 0x145309df8
         // FUN_14129d350, 0x145309dd0
         private string UCmpStatus_CampDrawCharacterDetailsColorLine_SIG = "48 8D 05 ?? ?? ?? ?? 8B 04 ?? 48 83 C4 28";
+
+        // Inactive party members in tartarus
+        private string UCmpStatus_CharacterDetailsInactiveBackgroundTartarus_SIG = "41 81 CC 00 79 38 1A";
+
+        // this includes lv, hp, sp and health bar shadows
+        private string UCmpStatus_CharacterDetailsInactiveSelectedParamUsedTartarus_SIG = "0D 00 79 38 1A 45 84 D2";
+
+        private string UCmpStatus_CharacterDetailsInactiveSelectedParamUnusedTartarus_SIG = "B8 00 B3 73 4B 41 BB 00 CD CD CD";
+        private string UCmpStatus_CharacterDetailsInactiveSelectedNameTartarus_SIG = "0D 00 79 38 1A 45 8B CB";
+        private string UCmpStatus_CharacterDetailsInactiveSelectedHealthBarRemainingTartarus_SIG = "C7 45 ?? 00 B3 73 4B";
+        private string UCmpStatus_CharacterDetailsInactiveSelectedLineTartarus_SIG = "0D 00 79 38 1A EB ??";
+        private string UCmpStatus_CharacterDetailsInactiveSelectedHPLostLineTartarus_SIG = "41 B8 00 A6 62 3A";
+
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedParamUsedTartarus_SIG = "41 81 C8 00 EC D4 C0";
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedPlayerNameTartarus_SIG = "0D 00 EC D4 C0 41 81 CC 00 79 38 1A";
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedLinesTartarus_SIG = "BA 00 EC D4 C0";
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarRemainingTartarus_SIG = "41 B8 00 B3 73 4B";
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarShadow_SIG = "81 CB 00 79 38 1A";
 
         public unsafe CampStats(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
@@ -513,6 +523,70 @@ namespace p3rpc.femc.Components
             {
                 *(FSprColor*)addr = ConfigColor.ToFSprColor(_context._config.CampStatusKotoneLineColor);
             });
+
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveBackgroundTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveBackgroundTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => 
+                _context._memory.Write(addr + 3, _context._config.CampStatusInactiveMemberBgTartarus.ToU32IgnoreAlpha())));
+            });
+
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedParamUsedTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedParamUsedTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedParamUnusedTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedParamUnusedTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedNameTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedNameTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedHealthBarRemainingTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedHealthBarRemainingTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 3, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedLineTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedLineTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedHPLostLineTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedHPLostLineTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 2, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
+
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedParamUsedTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedParamUsedTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => 
+                _context._memory.Write(addr + 3, _context._config.CampStatusInactiveMemberDetailsPalePinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedPlayerNameTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedPlayerNameTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsPalePinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedLinesTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedLinesTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsPalePinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarRemainingTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedHealthBarRemainingTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 2, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarShadow_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedHealthBarShadow", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 2, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
+            });
+
         }
         public override void Register()
         {

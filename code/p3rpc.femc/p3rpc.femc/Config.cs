@@ -55,10 +55,10 @@ namespace p3rpc.femc.Configuration
         public ConfigColor TextBoxLeftHaze { get; set; } = ConfigColor.TextBoxLeftHaze;
 
         [DisplayName("Mind Window: Outer Border")]
-        public ConfigColor MindWindowOuterBorder { get; set; } = ConfigColor.MidColor;
+        public ConfigColor MindWindowOuterBorderNew { get; set; } = UICommon.MindWindowOuterBorder;
 
         [DisplayName("Mind Window: Inner Color")]
-        public ConfigColor MindWindowInnerColor { get; set; } = ConfigColor.DarkColor;
+        public ConfigColor MindWindowInnerColorNew { get; set; } = UICommon.MindWindowInnerColor;
 
         /*[DisplayName("Mind Window: Outer Haze")] i'm hardcoding this it's broken for too many people lol
         public ConfigColor MindWindowOuterHazeEx { get; set; } = new ConfigColor(ConfigColor.MellodiColorLight3.R, ConfigColor.MellodiColorLight3.G, ConfigColor.MellodiColorLight3.B, 128);
@@ -66,7 +66,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Mind Window: Background Dots")]
 		[Category("Ui Colors")]
-		public ConfigColor MindWindowBgDots { get; set; } = ConfigColor.MidColor;
+		public ConfigColor MindWindowBgDotsNew { get; set; } = UICommon.MindWindowOuterBorder;
 
         [DisplayName("Minimap: Place Name Background Color")]
 		[Category("Ui Colors")]
@@ -497,6 +497,18 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Camp Status: Kotone Line Color")]
         public ConfigColor CampStatusKotoneLineColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp Status: Inactive Party Member Background (Tartarus)")]
+        public ConfigColor CampStatusInactiveMemberBgTartarus { get; set; } = UICommon.InactivePartyMemberTartarusBG;
+
+        [DisplayName("Camp Status: Inactive Member Details Pale Pink (Tartarus)")]
+        public ConfigColor CampStatusInactiveMemberDetailsPalePinkTartarus { get; set; } = UICommon.InactivePartyMemberPalePink;
+        
+        [DisplayName("Camp Status: Inactive Member Details Dark Pink (Tartarus)")]
+        public ConfigColor CampStatusInactiveMemberDetailsDarkPinkTartarus { get; set; } = UICommon.InactivePartyMemberDarkPink;
+        
+        [DisplayName("Camp Status: Inactive Member HP Bar (Tartarus)")]
+        public ConfigColor CampStatusInactiveMemberHPBarTartarus { get; set; } = UICommon.InactivePartyMemberHPColor;
 
         [DisplayName("Town Map: Location Details Background Tint")]
         public ConfigColor TownMapLocationDetailsBgTint { get; set; } = ConfigColor.MellodiColorMid1;

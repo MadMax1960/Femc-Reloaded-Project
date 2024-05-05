@@ -35,7 +35,17 @@ namespace p3rpc.femc.Components
         {
         }
     }
-    public class StaffRoll
+    public class StaffRoll : ModuleAsmInlineColorEdit<FemcContext>
     {
+        private string AStaffRoll_SetTextColor_SIG = "42 8B 04 ?? 89 44 24 ?? 44 89 44 24 ??"; // r9
+        private string AStaffRoll_HorizontalLine_SIG = "";
+        private string AStaffRoll_VerticalLine_SIG = "";
+        public unsafe StaffRoll(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
+        {
+
+        }
+        public override void Register()
+        {
+        }
     }
 }
