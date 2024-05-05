@@ -710,7 +710,8 @@ namespace p3rpc.femc.Configuration
 			Ely,
 			Chrysanthie,
 			Fernando,
-			Monica
+			Monica,
+			RonaldReagan
 		}
 
 		[DisplayName("AOA Text Options")]
@@ -741,7 +742,8 @@ namespace p3rpc.femc.Configuration
 			Anniversary,
 			JustBlue,
 			Sav,
-			Doodled
+			Doodled,
+			RonaldReagan
 		}
 
 		[DisplayName("Glass Shard")]

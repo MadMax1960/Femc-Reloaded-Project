@@ -121,6 +121,8 @@ namespace p3rpc.femc
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Fernando"));
                 else if (_configuration.AOATrue == AOAType.Monica)
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Monica"));
+				else if (_configuration.AOATrue == AOAType.RonaldReagan)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "RonaldReagan"));
 
                 if (_configuration.AOAText == AOATextType.DontLookBack)
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
@@ -143,6 +145,8 @@ namespace p3rpc.femc
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Sav"));
                 else if (_configuration.BustupTrue == BustupType.Doodled)
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Doodled"));
+				else if (_configuration.BustupTrue == BustupType.RonaldReagan)
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "RonaldReagan"));
 
 
 
