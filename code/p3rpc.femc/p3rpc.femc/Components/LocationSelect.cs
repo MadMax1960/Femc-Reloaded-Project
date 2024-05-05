@@ -21,7 +21,8 @@ namespace p3rpc.femc.Components
         private string UUILocationSelect_DrawLocationSelectBaseColor_SIG = "0F 57 DB 89 85 ?? ?? ?? ?? 0F 57 D2 48 8D 4D ?? 49 8B D6 E8 ?? ?? ?? ?? BA 01 00 00 00";
         private string UUILocationSelect_DrawLocationSelectTintColor_SIG = "0F 57 DB 89 85 ?? ?? ?? ?? 0F 57 D2 48 8D 4D ?? 49 8B D6 E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";
         private string UUILocationSelect_DrawLocationSelectMarkerSprite_SIG = "4C 8B 47 ?? 48 8D 8D ?? ?? ?? ?? 0F 57 DB";
-        private string FShortcutItem_SelectedShortcutColor_SIG = "0F 28 05 ?? ?? ?? ?? 48 8D 4B ?? F3 0F 10 5D ??";
+        //private string FShortcutItem_SelectedShortcutColor_SIG = "0F 28 05 ?? ?? ?? ?? 48 8D 4B ?? F3 0F 10 5D ??";
+        private string FShortcutItem_SelectedShortcutColor_SIG = "48 8D 53 ?? 89 7B ?? 48 8D 4B ??";
         private string AUIAccessInfoDraw_DrawMinimapLabel_SIG = "BA 04 00 00 00 89 44 24 ??";
 
         private IAsmHook _drawLocationSelBase;
@@ -57,7 +58,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UUILocationSelect_DrawLocationSelectBaseColor, out _drawLocationSelBaseWrapper)}"
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UUILocationSelect_DrawLocationSelectBaseColor, out _drawLocationSelBaseWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
                 };
                 _drawLocationSelBase = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
@@ -66,7 +69,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UUILocationSelect_DrawLocationSelectTintColor, out _drawLocationSelTintWrapper)}"
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UUILocationSelect_DrawLocationSelectTintColor, out _drawLocationSelTintWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
                 };
                 _drawLocationSelTint = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
@@ -75,18 +80,30 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UUILocationSelect_DrawLocationSelectMarkerColor, out _drawLocationSelectMarkerWrapper)}"
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UUILocationSelect_DrawLocationSelectMarkerColor, out _drawLocationSelectMarkerWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
                 };
                 _selMarkerSprite = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             _context._utils.SigScan(FShortcutItem_SelectedShortcutColor_SIG, "FShortcutItem::SelectedShortcutColor", _context._utils.GetDirectAddress, addr =>
             {
+                /* old signature
                 string[] function =
                 {
                     "use64",
                     $"cmp byte [rbp + 0x67], 0x0",
                     $"jz whiteColor",
                     $"mov dword [rbx + 0x3c], {_context._config.LocationSelectSelColor.ToU32()}", // for text
+                    $"mov edi, {_context._config.LocationSelectSelColor.ToU32()}", // for marker
+                    $"label whiteColor"
+                };
+                */
+                string[] function =
+                {
+                    "use64",
+                    $"cmp byte [rbp + 0x67], 0x0",
+                    $"jz whiteColor",
                     $"mov edi, {_context._config.LocationSelectSelColor.ToU32()}", // for marker
                     $"label whiteColor"
                 };
@@ -97,7 +114,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(AUIAccessInfoDraw_DrawMinimapLabelImpl, out _drawMinimapLabelWrapper)}"
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(AUIAccessInfoDraw_DrawMinimapLabelImpl, out _drawMinimapLabelWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
                 };
                 _drawMinimapLabel = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
