@@ -702,7 +702,7 @@ namespace p3rpc.femc.Configuration
 		[DisplayName("AOA Options")]
 		[Description("The AOA Image.")]
 		[Category("2D Options")]
-		[DefaultValue(AOAType.Ely)]
+		[DefaultValue(AOAType.Fernando)]
 		public AOAType AOATrue { get; set; } = AOAType.Ely;
 
 		public enum AOAType
@@ -717,7 +717,7 @@ namespace p3rpc.femc.Configuration
 		[DisplayName("AOA Text Options")]
 		[Description("The AOA Foreground Text.")]
 		[Category("2D Options")]
-		[DefaultValue(AOAType.Ely)]
+		[DefaultValue(AOATextType.DontLookBack)]
 		public AOATextType AOAText { get; set; } = AOATextType.DontLookBack;
 
 		public enum AOATextType
