@@ -717,8 +717,8 @@ namespace p3rpc.femc.Configuration
 		[DisplayName("AOA Text Options")]
 		[Description("The AOA Foreground Text.")]
 		[Category("2D Options")]
-		[DefaultValue(AOATextType.DontLookBack)]
-		public AOATextType AOAText { get; set; } = AOATextType.DontLookBack;
+		[DefaultValue(AOATextType.SorryBoutThat)]
+		public AOATextType AOAText { get; set; } = AOATextType.SorryBoutThat;
 
 		public enum AOATextType
 		{
