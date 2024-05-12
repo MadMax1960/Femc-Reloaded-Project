@@ -68,7 +68,7 @@
 [msg MSG_017_0_0 [Maya]]
 [uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0][uf 3 1 3 0 65535 17005 0 0]sabs el viejales asqeroso dl q t hable? staba por el paulownia =_=[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0]si lo ves, no seas amble con el ＞=/ tb lo vi n el programa ese raro de tv, da un mal royo q flipas[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0]enga, m voy a practicar cómo ser una buena ama d casa pra yukki! ＜3[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0]enga, m voy a practicar cómo ser una buena ama d casa pra la-la! ＜3[n][uf 1 1][e]
 
 [msg MND_018_0_0]
 [uf 0 5 65278][uf 2 1]La jugadora Maya se ha desconectado...[n][uf 1 1][e]
