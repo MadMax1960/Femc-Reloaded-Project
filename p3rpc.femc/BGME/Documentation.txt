@@ -1,0 +1,17 @@
+Randomised BGME Mod Documentation:
+Check the Github page for the license, HIGLY recommended so you know your rights
+All music is the property of Mosq and Atlus
+The following is the documentation for the ID's used in the mod:-
+1. 2000: Pull the trigger reload by Mosq
+2. 128: It's going down now
+3. 2001: Wiping all out by Mosq
+4. 26: Mass Destruction
+5. 2002: Danger Zone
+6. 31: Master of Tartarus
+7. 2003: Midnight Reverie by Mineformer
+8. 97: Color your night
+9. 2004: Time (Night Version) by Mosq
+10. 2005: Way of life by Mosq
+11. 25: When the moon's reaching out stars -reload-
+12. 2006: Time by Mosq
+13. 50: Want to be close -reload-
