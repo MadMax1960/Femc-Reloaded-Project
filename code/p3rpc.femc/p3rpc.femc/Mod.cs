@@ -199,14 +199,18 @@ namespace p3rpc.femc
 				string night;
 				string dayoutside1;
 				string dayinside1;
+				string dayinside2;
+				string sociallink11;
+				string sociallink12;
+
 
                 //Code for writing the commands
 				if (_configuration.nightmusic1 == nightmusic1sel.TimeNightVersionByMosq)
-                    night = "const dayout1List=[2004]";
+                    night = "const night1List=[2004]";
                 else if(_configuration.nightmusic1==nightmusic1sel.ColorYourNight)
-                    night = "const dayout1List=[97]";
+                    night = "const night1List=[97]";
                 else
-					night = "const dayout1List=[2005]";
+					night = "const night1List=[2005]";
 
 
                 if (_configuration.dayinmusic1 == dayinmusic1sel.WantToBeCloseReload)
@@ -224,10 +228,28 @@ namespace p3rpc.femc
 					dayinside1 = "const dayin1List=[50]";
 				else
 					dayinside1 = "const dayin1List=[2006]";
-
 				
+
+                if (_configuration.socialmusic1 == socialmusic1sel.Joy)
+				{
+                    sociallink11 = "const social11List=[38]";
+                    sociallink12 = "const social12List=[43]";
+                }
+				else
+				{
+                    sociallink11 = "const social11List=[2007]";
+					sociallink12 = "const social12List=[2008]";
+                }
+
+
+                if (_configuration.dayinmusic2 == dayinmusic2sel.ChangingSeasonsReload)
+                    dayinside2 = "const dayin2List=[51]";
+                else
+                    dayinside2 = "const dayin2List=[2009]";
+
+
                 //Writing the configuration File
-                string[] lines = { "encounter[\"Normal Battles\"]:","music = battle_bgm(2001, 2000, 2002)",night, "global_bgm[\"Color Your Night\"]:", "music = random_song(nightList)","end",dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)","end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end" };
+                string[] lines = { "encounter[\"Normal Battles\"]:", "music = battle_bgm(2001, 2000, 2002)","end", night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)","end",sociallink12,"global_bgm[43]:","music = random_song(social12List)","end",dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)","end"};
 				
 				if (File.Exists(path + ".pme"))
 				{

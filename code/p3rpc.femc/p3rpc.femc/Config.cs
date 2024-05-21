@@ -46,6 +46,30 @@ namespace p3rpc.femc.Configuration
             TimeByMosq
         }
 
+        [DisplayName("Daytime Music (Inside School/Phase 2)")]
+        [Description("Select the music to be played while roaming around the school during daytime (Phase 2)?")]
+        [Category("Music")]
+        [DefaultValue(dayinmusic2sel.SunByMosq)]
+        public dayinmusic2sel dayinmusic2 { get; set; } = dayinmusic2sel.SunByMosq;
+
+        public enum dayinmusic2sel
+        {
+            ChangingSeasonsReload,
+            SunByMosq
+        }
+
+        [DisplayName("Social Link Events Music")]
+        [Description("Select the music to be played during social link events?")]
+        [Category("Music")]
+        [DefaultValue(socialmusic1sel.AfterSchoolByMosq)]
+        public socialmusic1sel socialmusic1 { get; set; } = socialmusic1sel.AfterSchoolByMosq;
+
+        public enum socialmusic1sel
+        {
+            Joy,
+            AfterSchoolByMosq
+        }
+
 
         [DisplayName("Mail Icon: Outer Color")]
         public ConfigColor MailIconOuterCircleColorEx { get; set; } = ConfigColor.MellodiColorMid1;
