@@ -16,8 +16,8 @@ The following is the documentation for the ID's used in the mod:-
 12. 2006: Time by Mosq
 13. 50: Want to be close -reload-
 14. 2007: After School
-15. 2008: After School
+15. 2008: After School (V2)
 16. 38: Joy
-17. 43: Joy
+17. 43: Joy (V2)
 18. 2009: Sun
 19. 51: Changing Seasons -reload-
