@@ -194,202 +194,40 @@ namespace p3rpc.femc
 		{
 			try
 			{
-
 				//Initialise the music picker
-				string path = _modLoader.GetDirectoryForModId(_modConfig.ModId);
-				path = path + "/BGME/scripts";
-				int added = 0;
-				//Advantage Music Specific Code
-				string advantage = "const advantageBgmList=[";
-				var advantagecollection = new Dictionary<string, bool>
-			{
-				{"2000",_configuration.pullthetrigger},
-				{"128",_configuration.itsgoingdown}
-			};
-				foreach (KeyValuePair<string, bool> adv in advantagecollection)
-				{
-					if (adv.Value)
-					{
-						if (added == 1)
-						{
-							advantage = advantage + "," + adv.Key;
-						}
-						else
-						{
-							advantage = advantage + adv.Key;
-							added = 1;
-						}
-
-					}
-				}
-				if (added == 0)
-				{
-					advantage += "2000";
-				}
-				advantage = advantage + "]";
-				//Disadvantage Specific Code
-				string disadvantage = "const disadvantageBgmList=[";
-				var disadvantagecollection = new Dictionary<string, bool>
-			{
-				{"31",_configuration.mast},
-				{"2002",_configuration.dang}
-			};
-				added = 0;
-				foreach (KeyValuePair<string, bool> disadv in disadvantagecollection)
-				{
-					if (disadv.Value)
-					{
-						if (added == 1)
-						{
-							disadvantage = disadvantage + "," + disadv.Key;
-						}
-						else
-						{
-							disadvantage = disadvantage + disadv.Key;
-							added = 1;
-						}
-
-					}
-				}
-				if (added == 0)
-				{
-					disadvantage += "2002";
-				}
-				disadvantage = disadvantage + "]";
-				//Normal Specific Code
-				string normal = "const normalBgmList=[";
-				var normalcollection = new Dictionary<string, bool>
-			{
-				{"26",_configuration.massdest},
-				{"2001",_configuration.wipingall}
-			};
-				added = 0;
-				foreach (KeyValuePair<string, bool> norm in normalcollection)
-				{
-					if (norm.Value)
-					{
-						if (added == 1)
-						{
-							normal = normal + "," + norm.Key;
-						}
-						else
-						{
-							normal = normal + norm.Key;
-							added = 1;
-						}
-
-					}
-				}
-				if (added == 0)
-				{
-					normal += "2001";
-				}
-				normal = normal + "]";
-
-				//Code for night themes
-				string night = "const nightList=[";
-				var nightcollection = new Dictionary<string, bool>
-			{
-				{"97",_configuration.colnight},
-				{"2003",_configuration.midnight},
-				{"2004",_configuration.femnight}
-			};
-				added = 0;
-				foreach (KeyValuePair<string, bool> ni in nightcollection)
-				{
-					if (ni.Value)
-					{
-						if (added == 1)
-						{
-							night = night + "," + ni.Key;
-						}
-						else
-						{
-							night = night + ni.Key;
-							added = 1;
-						}
-
-					}
-				}
-				if (added == 0)
-				{
-					night += "2004";
-				}
-				night = night + "]";
-
-                string dayoutside1 = "const dayout1List=[";
-                var daytimeoutsidephase1 = new Dictionary<string, bool>
-            {
-                {"25",_configuration.moon},
-                {"2005",_configuration.wayoflife}
-            };
-                added = 0;
-                foreach (KeyValuePair<string, bool> do1 in daytimeoutsidephase1)
-                {
-                    if (do1.Value)
-                    {
-                        if (added == 1)
-                        {
-                            dayoutside1 = dayoutside1 + "," + do1.Key;
-                        }
-                        else
-                        {
-                            dayoutside1 = dayoutside1 + do1.Key;
-                            added = 1;
-                        }
-
-                    }
-                }
-                if (added == 0)
-                {
-                    dayoutside1 += "2005";
-                }
-                dayoutside1 = dayoutside1 + "]";
-				
-				string dayinside1 = "const dayin1List=[";
-                var daytimeinsidephase1 = new Dictionary<string, bool>
-            {
-                {"50",_configuration.wantclose},
-                {"2006",_configuration.timeschool}
-            };
-                added = 0;
-                foreach (KeyValuePair<string, bool> di1 in daytimeinsidephase1)
-                {
-                    if (di1.Value)
-                    {
-                        if (added == 1)
-                        {
-                            dayinside1 = dayinside1 + "," + di1.Key;
-                        }
-                        else
-                        {
-                            dayinside1 = dayinside1 + di1.Key;
-                            added = 1;
-                        }
-
-                    }
-                }
-                if (added == 0)
-                {
-                    dayinside1 += "2006";
-                }
-                dayinside1 = dayinside1 + "]";
-				
-				/* NOT TO BE USED IMPLEMENTATION CURRENTLY BEING TESTED
+				string path = _modLoader.GetDirectoryForModId(_modConfig.ModId)+"/BGME/scripts";
+				string night;
+				string dayoutside1;
 				string dayinside1;
-				if (_configuration.dayinmusic1 == dayinmusic1sel.Want_to_be_close_reload)
-				{
-					dayinside1 = "const dayin1List=[50]";
 
-                }
-				else
-				{
+                //Code for writing the commands
+				if (_configuration.nightmusic1 == nightmusic1sel.TimeNightVersionByMosq)
+                    night = "const dayout1List=[2004]";
+                else if(_configuration.nightmusic1==nightmusic1sel.ColorYourNight)
+                    night = "const dayout1List=[97]";
+                else
+					night = "const dayout1List=[2005]";
+
+
+                if (_configuration.dayinmusic1 == dayinmusic1sel.WantToBeCloseReload)
+                    dayinside1 = "const dayin1List=[50]";
+                else
                     dayinside1 = "const dayin1List=[2006]";
-                }
 
-				*/
+                if (_configuration.dayoutmusic1 == dayoutmusic1sel.WhenTheMoonsReachingOutStars)
+                    dayoutside1 = "const dayout1List=[25]";
+                else
+                    dayoutside1 = "const dayout1List=[2005]";
+
+
+				if (_configuration.dayinmusic1 == dayinmusic1sel.WantToBeCloseReload)
+					dayinside1 = "const dayin1List=[50]";
+				else
+					dayinside1 = "const dayin1List=[2006]";
+
+				
                 //Writing the configuration File
-                string[] lines = { normal, advantage, disadvantage, "const normalBgm = random_song(normalBgmList)", "const disadvantageBgm = random_song(disadvantageBgmList)", "const advantageBgm = random_song(advantageBgmList)", "encounter[\"Normal Battles\"]:", "music = battle_bgm(normalBgm, advantageBgm, disadvantageBgm)","end", night, "global_bgm[\"Color Your Night\"]:", "music = random_song(nightList)","end",dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)","end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end" };
+                string[] lines = {night, "global_bgm[\"Color Your Night\"]:", "music = random_song(nightList)","end",dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)","end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end" };
 				
 				if (File.Exists(path + ".pme"))
 				{
