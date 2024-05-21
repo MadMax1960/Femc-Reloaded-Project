@@ -227,7 +227,7 @@ namespace p3rpc.femc
 
 				
                 //Writing the configuration File
-                string[] lines = {night, "global_bgm[\"Color Your Night\"]:", "music = random_song(nightList)","end",dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)","end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end" };
+                string[] lines = { "encounter[\"Normal Battles\"]:","music = battle_bgm(2001, 2000, 2002)",night, "global_bgm[\"Color Your Night\"]:", "music = random_song(nightList)","end",dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)","end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end" };
 				
 				if (File.Exists(path + ".pme"))
 				{
