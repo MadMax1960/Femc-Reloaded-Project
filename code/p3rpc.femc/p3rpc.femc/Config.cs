@@ -8,9 +8,49 @@ namespace p3rpc.femc.Configuration
 {
     public class Config : Configurable<Config>
     {
+        [DisplayName("Advantage Battles Music")]
+        [Description("Select the music to be played when you have the advantage in a battle")]
+        [Category("Music")]
+        [DefaultValue(advantagebattlemusic1sel.PullTheTriggerByMosq)]
+        public advantagebattlemusic1sel advantagebattlemusic1 { get; set; } = advantagebattlemusic1sel.PullTheTriggerByMosq;
+
+        public enum advantagebattlemusic1sel
+        {
+            PullTheTriggerByMosq,
+            PullTheTriggerByKarma,
+            ItsGoingDownNow
+        }
+
+        [DisplayName("Normal Battles Music")]
+        [Description("Select the music to be played when you are in a normal battle")]
+        [Category("Music")]
+        [DefaultValue(normalbattlemusic1sel.WipingAllOutByMosq)]
+        public normalbattlemusic1sel normalbattlemusic1 { get; set; } = normalbattlemusic1sel.WipingAllOutByMosq;
+
+        public enum normalbattlemusic1sel
+        {
+            WipingAllOutByMosq,
+            WipingAllOutByKarma,
+            WipingAllOutByStella,
+            MassDestruction
+        }
+
+        [DisplayName("Disadvantage Battles Music")]
+        [Description("Select the music to be played when you are at a disadvantage during a battle")]
+        [Category("Music")]
+        [DefaultValue(disadvantagebattlemusic1sel.DangerZoneByMosq)]
+        public disadvantagebattlemusic1sel disadvantagebattlemusic1 { get; set; } = disadvantagebattlemusic1sel.DangerZoneByMosq;
+
+        public enum disadvantagebattlemusic1sel
+        {
+            DangerZoneByMosq,
+            DangerZoneByKarma,
+            DangerZoneByGillStudio,
+            MasterOfTartarus
+        }
 
         [DisplayName("Nighttime Music (Phase 1)")]
-        [Description("Select the music to be played while roaming around the island during the night (Phase 1)?")]
+        [Description("Select the music to be played while roaming around the island during the night (Phase 1)")]
         [Category("Music")]
         [DefaultValue(nightmusic1sel.TimeNightVersionByMosq)]
         public nightmusic1sel nightmusic1 { get; set; } = nightmusic1sel.TimeNightVersionByMosq;
@@ -23,7 +63,7 @@ namespace p3rpc.femc.Configuration
         }
 
         [DisplayName("Daytime Music (Outside School/Phase 1)")]
-        [Description("Select the music to be played while roaming around the island during daytime (Phase 1)?")]
+        [Description("Select the music to be played while roaming around the island during daytime (Phase 1)")]
         [Category("Music")]
         [DefaultValue(dayoutmusic1sel.WayofLifeByMosq)]
         public dayoutmusic1sel dayoutmusic1 { get; set; } = dayoutmusic1sel.WayofLifeByMosq;
@@ -35,7 +75,7 @@ namespace p3rpc.femc.Configuration
         }
 
         [DisplayName("Daytime Music (Inside School/Phase 1)")]
-        [Description("Select the music to be played while roaming around the school during daytime (Phase 1)?")]
+        [Description("Select the music to be played while roaming around the school during daytime (Phase 1)")]
         [Category("Music")]
         [DefaultValue(dayinmusic1sel.TimeByMosq)]
         public dayinmusic1sel dayinmusic1 { get; set; } = dayinmusic1sel.TimeByMosq;
@@ -47,7 +87,7 @@ namespace p3rpc.femc.Configuration
         }
 
         [DisplayName("Daytime Music (Inside School/Phase 2)")]
-        [Description("Select the music to be played while roaming around the school during daytime (Phase 2)?")]
+        [Description("Select the music to be played while roaming around the school during daytime (Phase 2)")]
         [Category("Music")]
         [DefaultValue(dayinmusic2sel.SunByMosq)]
         public dayinmusic2sel dayinmusic2 { get; set; } = dayinmusic2sel.SunByMosq;
@@ -59,7 +99,7 @@ namespace p3rpc.femc.Configuration
         }
 
         [DisplayName("Social Link Events Music")]
-        [Description("Select the music to be played during social link events?")]
+        [Description("Select the music to be played during social link events")]
         [Category("Music")]
         [DefaultValue(socialmusic1sel.AfterSchoolByMosq)]
         public socialmusic1sel socialmusic1 { get; set; } = socialmusic1sel.AfterSchoolByMosq;

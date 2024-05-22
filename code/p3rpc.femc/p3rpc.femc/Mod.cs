@@ -190,33 +190,61 @@ namespace p3rpc.femc
 			}
 		}
 
-		private void GenerateMusicScript()
+        private void GenerateMusicScript()
 		{
+			//Author: TheBestAstroNOT
+			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
 			try
 			{
 				//Initialise the music picker
-				string path = _modLoader.GetDirectoryForModId(_modConfig.ModId)+"/BGME/scripts";
+				
 				string night;
 				string dayoutside1;
 				string dayinside1;
 				string dayinside2;
 				string sociallink11;
 				string sociallink12;
-
+				string normal;
+				string advantage;
+				string disadvantage;
+                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGME/scripts";
 
                 //Code for writing the commands
-				if (_configuration.nightmusic1 == nightmusic1sel.TimeNightVersionByMosq)
+                if (_configuration.advantagebattlemusic1 == advantagebattlemusic1sel.PullTheTriggerByKarma)
+                    advantage = "const advantage=2010";
+                else if (_configuration.advantagebattlemusic1 == advantagebattlemusic1sel.ItsGoingDownNow)
+                    advantage = "const advantage=128";
+                else
+                    advantage = "const advantage=2000";
+
+
+				if (_configuration.normalbattlemusic1 == normalbattlemusic1sel.WipingAllOutByKarma)
+					normal = "const normal=2011";
+				else if (_configuration.normalbattlemusic1 == normalbattlemusic1sel.WipingAllOutByStella)
+					normal = "const normal=2013";
+				else if (_configuration.normalbattlemusic1 == normalbattlemusic1sel.MassDestruction)
+					normal = "const normal=26";
+				else
+					normal = "const normal=2001";
+
+
+                if (_configuration.disadvantagebattlemusic1 == disadvantagebattlemusic1sel.DangerZoneByKarma)
+                    disadvantage = "const disadvantage=2012";
+                else if (_configuration.disadvantagebattlemusic1==disadvantagebattlemusic1sel.DangerZoneByGillStudio)
+                    disadvantage = "const disadvantage=2014";
+                else if (_configuration.disadvantagebattlemusic1==disadvantagebattlemusic1sel.MasterOfTartarus)
+                    disadvantage = "const disadvantage=31";
+                else
+                    disadvantage = "const disadvantage=2002";
+
+
+                if (_configuration.nightmusic1 == nightmusic1sel.TimeNightVersionByMosq)
                     night = "const night1List=[2004]";
                 else if(_configuration.nightmusic1==nightmusic1sel.ColorYourNight)
                     night = "const night1List=[97]";
                 else
-					night = "const night1List=[2005]";
+					night = "const night1List=[2003]";
 
-
-                if (_configuration.dayinmusic1 == dayinmusic1sel.WantToBeCloseReload)
-                    dayinside1 = "const dayin1List=[50]";
-                else
-                    dayinside1 = "const dayin1List=[2006]";
 
                 if (_configuration.dayoutmusic1 == dayoutmusic1sel.WhenTheMoonsReachingOutStars)
                     dayoutside1 = "const dayout1List=[25]";
@@ -249,7 +277,7 @@ namespace p3rpc.femc
 
 
                 //Writing the configuration File
-                string[] lines = { "encounter[\"Normal Battles\"]:", "music = battle_bgm(2001, 2000, 2002)","end", night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)","end",sociallink12,"global_bgm[43]:","music = random_song(social12List)","end",dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)","end"};
+                string[] lines = {advantage,normal,disadvantage,"encounter[\"Normal Battles\"]:", "music = battle_bgm(normal, advantage, disadvantage)", "end", night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)","end",sociallink12,"global_bgm[43]:","music = random_song(social12List)","end",dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)","end"};
 				
 				if (File.Exists(path + ".pme"))
 				{
