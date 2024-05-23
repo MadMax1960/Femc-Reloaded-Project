@@ -197,7 +197,7 @@ namespace p3rpc.femc
 			try
 			{
 				//Initialise the music picker
-				
+
 				string night;
 				string dayoutside1;
 				string dayinside1;
@@ -207,93 +207,107 @@ namespace p3rpc.femc
 				string normal;
 				string advantage;
 				string disadvantage;
-                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGME/scripts";
+				string path = _modLoader.GetDirectoryForModId(_modConfig.ModId);
 
-                //Code for writing the commands
-                if (_configuration.advantagebattlemusic1 == advantagebattlemusic1sel.PullTheTriggerByKarma)
-                    advantage = "const advantage=2010";
-                else if (_configuration.advantagebattlemusic1 == advantagebattlemusic1sel.ItsGoingDownNow)
-                    advantage = "const advantage=128";
-                else
-                    advantage = "const advantage=2000";
-
-
-				if (_configuration.normalbattlemusic1 == normalbattlemusic1sel.WipingAllOutByKarma)
-					normal = "const normal=2011";
-				else if (_configuration.normalbattlemusic1 == normalbattlemusic1sel.WipingAllOutByStella)
-					normal = "const normal=2013";
-				else if (_configuration.normalbattlemusic1 == normalbattlemusic1sel.MassDestruction)
-					normal = "const normal=26";
-				else
-					normal = "const normal=2001";
-
-
-                if (_configuration.disadvantagebattlemusic1 == disadvantagebattlemusic1sel.DangerZoneByKarma)
-                    disadvantage = "const disadvantage=2012";
-                else if (_configuration.disadvantagebattlemusic1==disadvantagebattlemusic1sel.DangerZoneByGillStudio)
-                    disadvantage = "const disadvantage=2014";
-                else if (_configuration.disadvantagebattlemusic1==disadvantagebattlemusic1sel.MasterOfTartarus)
-                    disadvantage = "const disadvantage=31";
-                else
-                    disadvantage = "const disadvantage=2002";
-
-
-                if (_configuration.nightmusic1 == nightmusic1sel.TimeNightVersionByMosq)
-                    night = "const night1List=[2004]";
-                else if(_configuration.nightmusic1==nightmusic1sel.ColorYourNight)
-                    night = "const night1List=[97]";
-                else
-					night = "const night1List=[2003]";
-
-
-                if (_configuration.dayoutmusic1 == dayoutmusic1sel.WhenTheMoonsReachingOutStars)
-                    dayoutside1 = "const dayout1List=[25]";
-                else
-                    dayoutside1 = "const dayout1List=[2005]";
-
-
-				if (_configuration.dayinmusic1 == dayinmusic1sel.WantToBeCloseReload)
-					dayinside1 = "const dayin1List=[50]";
-				else
-					dayinside1 = "const dayin1List=[2006]";
-				
-
-                if (_configuration.socialmusic1 == socialmusic1sel.Joy)
+				//Code for writing the commands
+				if (_configuration.mosq)
 				{
-                    sociallink11 = "const social11List=[38]";
-                    sociallink12 = "const social12List=[43]";
-                }
-				else
-				{
-                    sociallink11 = "const social11List=[2007]";
-					sociallink12 = "const social12List=[2008]";
-                }
+					if (Directory.Exists(path + "/battle-themes/mosq.theme.pme"))
+					{
+						File.Move(path + "/battle-themes/mosq.theme.disabled", Path.ChangeExtension(path + "/battle-themes/mosq.theme", ".theme.pme"));
+					}
+					else
+					{
+						File.Move(path + "/battle-themes/mosq.theme.pme", Path.ChangeExtension(path + "/battle-themes/mosq.theme", ".disabled"));
+					}
+					/*
+					if (_configuration.advantagebattlemusic1 == advantagebattlemusic1sel.PullTheTriggerByKarma)
+						advantage = "const advantage=2010";
+					else if (_configuration.advantagebattlemusic1 == advantagebattlemusic1sel.ItsGoingDownNow)
+						advantage = "const advantage=128";
+					else
+						advantage = "const advantage=2000";
 
 
-                if (_configuration.dayinmusic2 == dayinmusic2sel.ChangingSeasonsReload)
-                    dayinside2 = "const dayin2List=[51]";
-                else
-                    dayinside2 = "const dayin2List=[2009]";
+					if (_configuration.normalbattlemusic1 == normalbattlemusic1sel.WipingAllOutByKarma)
+						normal = "const normal=2011";
+					else if (_configuration.normalbattlemusic1 == normalbattlemusic1sel.WipingAllOutByStella)
+						normal = "const normal=2013";
+					else if (_configuration.normalbattlemusic1 == normalbattlemusic1sel.MassDestruction)
+						normal = "const normal=26";
+					else
+						normal = "const normal=2001";
 
 
-                //Writing the configuration File
-                string[] lines = {advantage,normal,disadvantage,"encounter[\"Normal Battles\"]:", "music = battle_bgm(normal, advantage, disadvantage)", "end", night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)","end",sociallink12,"global_bgm[43]:","music = random_song(social12List)","end",dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)","end"};
-				
-				if (File.Exists(path + ".pme"))
-				{
-					File.Delete(path + ".pme");
+					if (_configuration.disadvantagebattlemusic1 == disadvantagebattlemusic1sel.DangerZoneByKarma)
+						disadvantage = "const disadvantage=2012";
+					else if (_configuration.disadvantagebattlemusic1==disadvantagebattlemusic1sel.DangerZoneByGillStudio)
+						disadvantage = "const disadvantage=2014";
+					else if (_configuration.disadvantagebattlemusic1==disadvantagebattlemusic1sel.MasterOfTartarus)
+						disadvantage = "const disadvantage=31";
+					else
+						disadvantage = "const disadvantage=2002";
+					*/
+
+
+					if (_configuration.nightmusic1 == nightmusic1sel.TimeNightVersionByMosq)
+						night = "const night1List=[2004]";
+					else if (_configuration.nightmusic1 == nightmusic1sel.ColorYourNight)
+						night = "const night1List=[97]";
+					else
+						night = "const night1List=[2003]";
+
+
+					if (_configuration.dayoutmusic1 == dayoutmusic1sel.WhenTheMoonsReachingOutStars)
+						dayoutside1 = "const dayout1List=[25]";
+					else
+						dayoutside1 = "const dayout1List=[2005]";
+
+
+					if (_configuration.dayinmusic1 == dayinmusic1sel.WantToBeCloseReload)
+						dayinside1 = "const dayin1List=[50]";
+					else
+						dayinside1 = "const dayin1List=[2006]";
+
+
+					if (_configuration.socialmusic1 == socialmusic1sel.Joy)
+					{
+						sociallink11 = "const social11List=[38]";
+						sociallink12 = "const social12List=[43]";
+					}
+					else
+					{
+						sociallink11 = "const social11List=[2007]";
+						sociallink12 = "const social12List=[2008]";
+					}
+
+
+					if (_configuration.dayinmusic2 == dayinmusic2sel.ChangingSeasonsReload)
+						dayinside2 = "const dayin2List=[51]";
+					else
+						dayinside2 = "const dayin2List=[2009]";
+
+					path = path + "/BGME/scripts";
+					//Writing the configuration File
+					//advantage,normal,disadvantage,"encounter[\"Normal Battles\"]:", "music = battle_bgm(normal, advantage, disadvantage)", "end", 
+					string[] lines = { night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)", "end", sociallink12, "global_bgm[43]:", "music = random_song(social12List)", "end", dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)", "end" };
+
+					if (File.Exists(path + ".pme"))
+					{
+						File.Delete(path + ".pme");
+					}
+					using (StreamWriter outputFile = new StreamWriter(path))
+					{
+						foreach (string line in lines)
+							outputFile.WriteLine(line);
+					}
+					File.Move(path, Path.ChangeExtension(path, ".pme"));
 				}
-				using (StreamWriter outputFile = new StreamWriter(path))
-				{
-					foreach (string line in lines)
-						outputFile.WriteLine(line);
-				}
-				File.Move(path, Path.ChangeExtension(path, ".pme"));
 			}
-            catch (Exception ex)
-            {
-                _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
-            }
+			catch (Exception ex)
+			{
+				_context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
+			}
         }
     
 		private void InitializeModules()

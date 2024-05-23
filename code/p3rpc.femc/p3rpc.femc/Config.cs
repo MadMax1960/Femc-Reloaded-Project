@@ -8,6 +8,12 @@ namespace p3rpc.femc.Configuration
 {
     public class Config : Configurable<Config>
     {
+        [DisplayName("Battle Pack: Mosq")]
+        [Category("Music")]
+        [Description("Enable Mosq's battle music?")]
+        [DefaultValue(true)]
+        public bool mosq { get; set; } = true;
+
         [DisplayName("Advantage Battles Music")]
         [Description("Select the music to be played when you have the advantage in a battle")]
         [Category("Music")]
