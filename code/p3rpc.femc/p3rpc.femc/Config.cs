@@ -9,101 +9,84 @@ namespace p3rpc.femc.Configuration
     public class Config : Configurable<Config>
     {
 
-        [DisplayName("Advantage Battles: Pull the trigger -Reload by Mosq")]
+        [DisplayName("Battle Pack: Mosq")]
         [Category("Music")]
-        [Description("Enable pull the trigger -reload as the advantage battle music?")]
+        [Description("Enable Mosq's battle music?")]
         [DefaultValue(true)]
-        public bool pullthetrigger { get; set; } = true;
+        public bool mosq { get; set; } = true;
 
-
-        [DisplayName("Advantage Battles: It's Going Down Now")]
+        [DisplayName("Battle Pack: Karma")]
         [Category("Music")]
-        [Description("Enable It's going down now as the advantage battle music?")]
-        [DefaultValue(false)]
-        public bool itsgoingdown { get; set; } = true;
-
-
-        [DisplayName("Normal Battles: Wiping All Out -Reload by Mosq")]
-        [Category("Music")]
-        [Description("Enable wiping all out -reload as the normal battle music?")]
+        [Description("Enable Karma's battle music?")]
         [DefaultValue(true)]
-        public bool wipingall { get; set; } = true;
+        public bool karma { get; set; } = true;
 
-
-        [DisplayName("Normal Battles: Mass Destruction")]
+        [DisplayName("Battle Pack: Stella and GillStudio's Rock Covers")]
         [Category("Music")]
-        [Description("Enable Mass Destruction as the normal battle music?")]
-        [DefaultValue(false)]
-        public bool massdest { get; set; } = true;
-
-
-        [DisplayName("Disadvantage Battles: Danger Zone by Mosq")]
-        [Category("Music")]
-        [Description("Enable Danger Zone as the disadvantage battle music?")]
+        [Description("Enable Stella and GillStudio's battle music?")]
         [DefaultValue(true)]
-        public bool dang { get; set; } = true;
+        public bool rock { get; set; } = true;
 
-
-        [DisplayName("Disadvantage Battles: Master of Tartarus")]
+        [DisplayName("Nighttime Music (Phase 1)")]
+        [Description("Select the music to be played while roaming around the island during the night (Phase 1)")]
         [Category("Music")]
-        [Description("Enable Master of Tartarus as the disadvantage battle music?")]
-        [DefaultValue(false)]
-        public bool mast { get; set; } = true;
+        [DefaultValue(nightmusic1sel.TimeNightVersionByMosq)]
+        public nightmusic1sel nightmusic1 { get; set; } = nightmusic1sel.TimeNightVersionByMosq;
 
-        [DisplayName("Night Music: Color your Night")]
-        [Category("Music")]
-        [Description("Enable Color your Night as the night music?")]
-        [DefaultValue(false)]
-        public bool colnight { get; set; } = true;
+        public enum nightmusic1sel
+        {
+            TimeNightVersionByMosq,
+            ColorYourNight,
+            MidnightReverieByMineFormer
+        }
 
+        [DisplayName("Daytime Music (Outside School/Phase 1)")]
+        [Description("Select the music to be played while roaming around the island during daytime (Phase 1)")]
+        [Category("Music")]
+        [DefaultValue(dayoutmusic1sel.WayofLifeByMosq)]
+        public dayoutmusic1sel dayoutmusic1 { get; set; } = dayoutmusic1sel.WayofLifeByMosq;
 
-        [DisplayName("Night Music: Midnight Reverie by Mineformer")]
-        [Category("Music")]
-        [Description("Enable Midnight Reverie as the night music?")]
-        [DefaultValue(false)]
-        public bool midnight { get; set; } = true;
+        public enum dayoutmusic1sel
+        {
+            WhenTheMoonsReachingOutStars,
+            WayofLifeByMosq
+        }
 
-        [DisplayName("Night Music: Time (Night Version) by Mosq")]
-        [Category("Music")]
-        [Description("Enable Time (Night Version) as the night music?")]
-        [DefaultValue(true)]
-        public bool femnight { get; set; } = true;
-
-        [DisplayName("Daytime Music (Outside School): When The Moon's Reaching Out Stars -Reload-")]
-        [Category("Music")]
-        [Description("Enable When The Moon's Reaching Out Stars -Reload- as the daytime music?")]
-        [DefaultValue(false)]
-        public bool moon { get; set; } = true;
-
-        [DisplayName("Daytime Music (Outside School): Way of life by Mosq")]
-        [Category("Music")]
-        [Description("Enable Way of life as the daytime music?")]
-        [DefaultValue(true)]
-        public bool wayoflife { get; set; } = true;
-        
-        [DisplayName("Daytime Music (Inside School): Want to Be Close -Reload-")]
-        [Category("Music")]
-        [Description("Enable Want to Be Close -Reload- as the daytime music inside the school (Phase 1)?")]
-        [DefaultValue(false)]
-        public bool wantclose { get; set; } = true;
-
-        [DisplayName("Daytime Music (Inside School): Time by Mosq")]
-        [Category("Music")]
-        [Description("Enable Time as the daytime music inside the school (Phase 1)?")]
-        [DefaultValue(true)]
-        public bool timeschool { get; set; } = true;
-        /* NOT TO BE USED CURRENTLY, implementation currently being tested
         [DisplayName("Daytime Music (Inside School/Phase 1)")]
-        [Description("This is an enumerable.")]
+        [Description("Select the music to be played while roaming around the school during daytime (Phase 1)")]
         [Category("Music")]
-        [DefaultValue(dayinmusic1sel.Time_by_Mosq)]
-        public dayinmusic1sel dayinmusic1 { get; set; } = dayinmusic1sel.Time_by_Mosq;
+        [DefaultValue(dayinmusic1sel.TimeByMosq)]
+        public dayinmusic1sel dayinmusic1 { get; set; } = dayinmusic1sel.TimeByMosq;
 
         public enum dayinmusic1sel
         {
-            Want_to_be_close_reload,
-            Time_by_Mosq
-        }*/
+            WantToBeCloseReload,
+            TimeByMosq
+        }
+
+        [DisplayName("Daytime Music (Inside School/Phase 2)")]
+        [Description("Select the music to be played while roaming around the school during daytime (Phase 2)")]
+        [Category("Music")]
+        [DefaultValue(dayinmusic2sel.SunByMosq)]
+        public dayinmusic2sel dayinmusic2 { get; set; } = dayinmusic2sel.SunByMosq;
+
+        public enum dayinmusic2sel
+        {
+            ChangingSeasonsReload,
+            SunByMosq
+        }
+
+        [DisplayName("Social Link Events Music")]
+        [Description("Select the music to be played during social link events")]
+        [Category("Music")]
+        [DefaultValue(socialmusic1sel.AfterSchoolByMosq)]
+        public socialmusic1sel socialmusic1 { get; set; } = socialmusic1sel.AfterSchoolByMosq;
+
+        public enum socialmusic1sel
+        {
+            Joy,
+            AfterSchoolByMosq
+        }
 
 
         [DisplayName("Mail Icon: Outer Color")]

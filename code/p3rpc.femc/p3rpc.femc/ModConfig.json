@@ -140,6 +140,9 @@
   },
   "IsUniversalMod": false,
   "ModDependencies": [
+    "BGME.BattleThemes",
+    "BGME.Framework.API",
+    "BGME.Framework.P3R",
     "P3R.CostumeFramework",
     "p3rpc.classconstructor",
     "p3rpc.essentials",

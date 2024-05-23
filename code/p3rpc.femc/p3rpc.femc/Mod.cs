@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
+using BGME.BattleThemes.Interfaces;
 
 namespace p3rpc.femc
 {
@@ -58,8 +59,9 @@ namespace p3rpc.femc
 		private FemcContext _context;
 		private ModuleRuntime<FemcContext> _modRuntime;
 		private readonly IUnreal unreal;
+		
 
-		private string modName { get; set; }
+        private string modName { get; set; }
 
 		public Mod(ModContext context)
 		{
@@ -69,20 +71,19 @@ namespace p3rpc.femc
 			_owner = context.Owner;
 			_configuration = context.Configuration;
 			_modConfig = context.ModConfig;
-
-			// Get dependencies and initialize context
-			var mainModule = Process.GetCurrentProcess().MainModule;
+            // Get dependencies and initialize context
+            var mainModule = Process.GetCurrentProcess().MainModule;
 			if (mainModule == null) throw new Exception($"[{_modConfig.ModName}] Could not get main module (this should never happen)");
 			var baseAddress = mainModule.BaseAddress;
-
-			unreal = GetDependency<IUnreal>("Unreal Objects Emitter");
+            unreal = GetDependency<IUnreal>("Unreal Objects Emitter");
 			var startupScanner = GetDependency<IStartupScanner>("Reloaded Startup Scanner");
 			if (_hooks == null) throw new Exception($"[{_modConfig.ModName}] Could not get controller for Reloaded hooks");
 			var sharedScans = GetDependency<ISharedScans>("Shared Scans");
 			Utils utils = new(startupScanner, _logger, _hooks, baseAddress, "Femc Project", System.Drawing.Color.Thistle, _configuration.DebugLogLevel);
 			var unrealEssentials = GetDependency<IUnrealEssentials>("Unreal Essentials");
+			var bgme = GetDependency<IBattleThemesApi>("Battle Themes");
 			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
-			var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
+            var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
 			var memory = new Memory();
 			_context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods);
 			_modRuntime = new(_context);
@@ -91,10 +92,11 @@ namespace p3rpc.femc
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials);
 			InitializeModules();
-			GenerateMusicScript();
+			GenerateMusicScript(bgme);
 			RedirectPlayerAssets();
 
 		}
+
 
 		private IControllerType GetDependency<IControllerType>(string modName) where IControllerType : class
 		{
@@ -189,207 +191,82 @@ namespace p3rpc.femc
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
 		}
-
-		private void GenerateMusicScript()
+        private void GenerateMusicScript(IBattleThemesApi battleThemes)
 		{
+			//Author: TheBestAstroNOT
+			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
 			try
-			{
-
+			{ 
 				//Initialise the music picker
-				string path = _modLoader.GetDirectoryForModId(_modConfig.ModId);
-				path = path + "/BGME/scripts";
-				int added = 0;
-				//Advantage Music Specific Code
-				string advantage = "const advantageBgmList=[";
-				var advantagecollection = new Dictionary<string, bool>
-			{
-				{"2000",_configuration.pullthetrigger},
-				{"128",_configuration.itsgoingdown}
-			};
-				foreach (KeyValuePair<string, bool> adv in advantagecollection)
-				{
-					if (adv.Value)
-					{
-						if (added == 1)
-						{
-							advantage = advantage + "," + adv.Key;
-						}
-						else
-						{
-							advantage = advantage + adv.Key;
-							added = 1;
-						}
-
-					}
-				}
-				if (added == 0)
-				{
-					advantage += "2000";
-				}
-				advantage = advantage + "]";
-				//Disadvantage Specific Code
-				string disadvantage = "const disadvantageBgmList=[";
-				var disadvantagecollection = new Dictionary<string, bool>
-			{
-				{"31",_configuration.mast},
-				{"2002",_configuration.dang}
-			};
-				added = 0;
-				foreach (KeyValuePair<string, bool> disadv in disadvantagecollection)
-				{
-					if (disadv.Value)
-					{
-						if (added == 1)
-						{
-							disadvantage = disadvantage + "," + disadv.Key;
-						}
-						else
-						{
-							disadvantage = disadvantage + disadv.Key;
-							added = 1;
-						}
-
-					}
-				}
-				if (added == 0)
-				{
-					disadvantage += "2002";
-				}
-				disadvantage = disadvantage + "]";
-				//Normal Specific Code
-				string normal = "const normalBgmList=[";
-				var normalcollection = new Dictionary<string, bool>
-			{
-				{"26",_configuration.massdest},
-				{"2001",_configuration.wipingall}
-			};
-				added = 0;
-				foreach (KeyValuePair<string, bool> norm in normalcollection)
-				{
-					if (norm.Value)
-					{
-						if (added == 1)
-						{
-							normal = normal + "," + norm.Key;
-						}
-						else
-						{
-							normal = normal + norm.Key;
-							added = 1;
-						}
-
-					}
-				}
-				if (added == 0)
-				{
-					normal += "2001";
-				}
-				normal = normal + "]";
-
-				//Code for night themes
-				string night = "const nightList=[";
-				var nightcollection = new Dictionary<string, bool>
-			{
-				{"97",_configuration.colnight},
-				{"2003",_configuration.midnight},
-				{"2004",_configuration.femnight}
-			};
-				added = 0;
-				foreach (KeyValuePair<string, bool> ni in nightcollection)
-				{
-					if (ni.Value)
-					{
-						if (added == 1)
-						{
-							night = night + "," + ni.Key;
-						}
-						else
-						{
-							night = night + ni.Key;
-							added = 1;
-						}
-
-					}
-				}
-				if (added == 0)
-				{
-					night += "2004";
-				}
-				night = night + "]";
-
-                string dayoutside1 = "const dayout1List=[";
-                var daytimeoutsidephase1 = new Dictionary<string, bool>
-            {
-                {"25",_configuration.moon},
-                {"2005",_configuration.wayoflife}
-            };
-                added = 0;
-                foreach (KeyValuePair<string, bool> do1 in daytimeoutsidephase1)
-                {
-                    if (do1.Value)
-                    {
-                        if (added == 1)
-                        {
-                            dayoutside1 = dayoutside1 + "," + do1.Key;
-                        }
-                        else
-                        {
-                            dayoutside1 = dayoutside1 + do1.Key;
-                            added = 1;
-                        }
-
-                    }
-                }
-                if (added == 0)
-                {
-                    dayoutside1 += "2005";
-                }
-                dayoutside1 = dayoutside1 + "]";
 				
-				string dayinside1 = "const dayin1List=[";
-                var daytimeinsidephase1 = new Dictionary<string, bool>
-            {
-                {"50",_configuration.wantclose},
-                {"2006",_configuration.timeschool}
-            };
-                added = 0;
-                foreach (KeyValuePair<string, bool> di1 in daytimeinsidephase1)
-                {
-                    if (di1.Value)
-                    {
-                        if (added == 1)
-                        {
-                            dayinside1 = dayinside1 + "," + di1.Key;
-                        }
-                        else
-                        {
-                            dayinside1 = dayinside1 + di1.Key;
-                            added = 1;
-                        }
-
-                    }
-                }
-                if (added == 0)
-                {
-                    dayinside1 += "2006";
-                }
-                dayinside1 = dayinside1 + "]";
-				
-				/* NOT TO BE USED IMPLEMENTATION CURRENTLY BEING TESTED
+				string night;
+				string dayoutside1;
 				string dayinside1;
-				if (_configuration.dayinmusic1 == dayinmusic1sel.Want_to_be_close_reload)
-				{
-					dayinside1 = "const dayin1List=[50]";
+				string dayinside2;
+				string sociallink11;
+				string sociallink12;
+				string path = _modLoader.GetDirectoryForModId(_modConfig.ModId)+"/BGME/scripts";
 
+				//Code for writing the commands
+				
+				if (_configuration.mosq)
+				{
+                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Mosq");
+                }
+
+
+				if (_configuration.karma)
+				{
+                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Karma");
+                }
+
+
+				if (_configuration.rock)
+				{
+                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Stella_GillStudio");
+                }
+
+
+                if (_configuration.nightmusic1 == nightmusic1sel.TimeNightVersionByMosq)
+                    night = "const night1List=[2004]";
+                else if(_configuration.nightmusic1==nightmusic1sel.ColorYourNight)
+                    night = "const night1List=[97]";
+                else
+					night = "const night1List=[2003]";
+
+
+                if (_configuration.dayoutmusic1 == dayoutmusic1sel.WhenTheMoonsReachingOutStars)
+                    dayoutside1 = "const dayout1List=[25]";
+                else
+                    dayoutside1 = "const dayout1List=[2005]";
+
+
+				if (_configuration.dayinmusic1 == dayinmusic1sel.WantToBeCloseReload)
+					dayinside1 = "const dayin1List=[50]";
+				else
+					dayinside1 = "const dayin1List=[2006]";
+				
+
+                if (_configuration.socialmusic1 == socialmusic1sel.Joy)
+				{
+                    sociallink11 = "const social11List=[38]";
+                    sociallink12 = "const social12List=[43]";
                 }
 				else
 				{
-                    dayinside1 = "const dayin1List=[2006]";
+                    sociallink11 = "const social11List=[2007]";
+					sociallink12 = "const social12List=[2008]";
                 }
 
-				*/
+
+                if (_configuration.dayinmusic2 == dayinmusic2sel.ChangingSeasonsReload)
+                    dayinside2 = "const dayin2List=[51]";
+                else
+                    dayinside2 = "const dayin2List=[2009]";
+
+
                 //Writing the configuration File
-                string[] lines = { normal, advantage, disadvantage, "const normalBgm = random_song(normalBgmList)", "const disadvantageBgm = random_song(disadvantageBgmList)", "const advantageBgm = random_song(advantageBgmList)", "encounter[\"Normal Battles\"]:", "music = battle_bgm(normalBgm, advantageBgm, disadvantageBgm)","end", night, "global_bgm[\"Color Your Night\"]:", "music = random_song(nightList)","end",dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)","end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end" };
+                string[] lines = {night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)","end",sociallink12,"global_bgm[43]:","music = random_song(social12List)","end",dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)","end"};
 				
 				if (File.Exists(path + ".pme"))
 				{
