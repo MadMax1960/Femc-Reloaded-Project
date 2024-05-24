@@ -195,6 +195,8 @@ namespace p3rpc.femc
 		{
 			//Author: TheBestAstroNOT
 			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
+			//Author: TheBestAstroNOT
+			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
 			try
 			{ 
 				//Initialise the music picker
@@ -279,10 +281,10 @@ namespace p3rpc.femc
 				}
 				File.Move(path, Path.ChangeExtension(path, ".pme"));
 			}
-            catch (Exception ex)
-            {
-                _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
-            }
+			catch (Exception ex)
+			{
+				_context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
+			}
         }
     
 		private void InitializeModules()
