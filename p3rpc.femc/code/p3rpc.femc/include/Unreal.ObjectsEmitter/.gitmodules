@@ -1,0 +1,3 @@
+[submodule "submodules/Project.Utils"]
+	path = submodules/Project.Utils
+	url = https://github.com/T-PoseRatkechi/Project.Utils.git

@@ -1,0 +1,9 @@
+[submodule "submodules/phos-music-manager"]
+	path = submodules/phos-music-manager
+	url = https://github.com/T-PoseRatkechi/phos-music-manager.git
+[submodule "submodules/BGME"]
+	path = submodules/BGME
+	url = https://github.com/T-PoseRatkechi/BGME.git
+[submodule "submodules/PersonaModdingMetadata"]
+	path = submodules/PersonaModdingMetadata
+	url = https://github.com/T-PoseRatkechi/PersonaModdingMetadata.git
