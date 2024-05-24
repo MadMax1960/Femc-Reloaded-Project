@@ -56,10 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BGME.BattleThemes">
-      <HintPath>BGME.BattleThemes.dll</HintPath>
+      <HintPath>bin\Release\BGME.BattleThemes.dll</HintPath>
     </Reference>
     <Reference Include="BGME.BattleThemes.Interfaces">
-      <HintPath>BGME.BattleThemes.Interfaces.dll</HintPath>
+      <HintPath>bin\Release\BGME.BattleThemes.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="BGME.Framework.Interfaces">
+      <HintPath>bin\Release\BGME.Framework.Interfaces.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
