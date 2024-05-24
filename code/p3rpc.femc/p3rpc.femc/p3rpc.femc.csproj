@@ -13,6 +13,12 @@
          Test trimming with: `BuildLinked.ps1` in PowerShell. -->
     <ReloadedILLink>false</ReloadedILLink>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
   <ItemGroup>
     <ReloadedLinkRoots Include="p3rpc.femc" />
     <!-- Add assemblies to be trimmed. You might need to add their dependencies too!  -->
@@ -37,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="p3rpc.commonmodutils" Version="1.4.0" />
-    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.3.1" />
+    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.4.5" />
     <PackageReference Include="Reloaded.Memory" Version="9.4.1" />
     <PackageReference Include="Reloaded.Memory.SigScan.ReloadedII.Interfaces" Version="1.2.0" />
     <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.4.0" ExcludeAssets="runtime" />
@@ -47,5 +53,16 @@
   <ItemGroup>
     <ProjectReference Include="..\include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj" />
     <ProjectReference Include="..\include\Unreal.ObjectsEmitter\Unreal.ObjectsEmitter.Interfaces\Unreal.ObjectsEmitter.Interfaces.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="BGME.BattleThemes">
+      <HintPath>bin\Release\BGME.BattleThemes.dll</HintPath>
+    </Reference>
+    <Reference Include="BGME.BattleThemes.Interfaces">
+      <HintPath>bin\Release\BGME.BattleThemes.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="BGME.Framework.Interfaces">
+      <HintPath>bin\Release\BGME.Framework.Interfaces.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

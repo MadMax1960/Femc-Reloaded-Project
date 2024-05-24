@@ -9,6 +9,86 @@ namespace p3rpc.femc.Configuration
     public class Config : Configurable<Config>
     {
 
+        [DisplayName("Battle Pack: Mosq")]
+        [Category("Music")]
+        [Description("Enable Mosq's battle music?")]
+        [DefaultValue(true)]
+        public bool mosq { get; set; } = true;
+
+        [DisplayName("Battle Pack: Karma")]
+        [Category("Music")]
+        [Description("Enable Karma's battle music?")]
+        [DefaultValue(true)]
+        public bool karma { get; set; } = true;
+
+        [DisplayName("Battle Pack: Stella and GillStudio's Rock Covers")]
+        [Category("Music")]
+        [Description("Enable Stella and GillStudio's battle music?")]
+        [DefaultValue(true)]
+        public bool rock { get; set; } = true;
+
+        [DisplayName("Nighttime Music (Phase 1)")]
+        [Description("Select the music to be played while roaming around the island during the night (Phase 1)")]
+        [Category("Music")]
+        [DefaultValue(nightmusic1sel.TimeNightVersionByMosq)]
+        public nightmusic1sel nightmusic1 { get; set; } = nightmusic1sel.TimeNightVersionByMosq;
+
+        public enum nightmusic1sel
+        {
+            TimeNightVersionByMosq,
+            ColorYourNight,
+            MidnightReverieByMineFormer
+        }
+
+        [DisplayName("Daytime Music (Outside School/Phase 1)")]
+        [Description("Select the music to be played while roaming around the island during daytime (Phase 1)")]
+        [Category("Music")]
+        [DefaultValue(dayoutmusic1sel.WayofLifeByMosq)]
+        public dayoutmusic1sel dayoutmusic1 { get; set; } = dayoutmusic1sel.WayofLifeByMosq;
+
+        public enum dayoutmusic1sel
+        {
+            WhenTheMoonsReachingOutStars,
+            WayofLifeByMosq
+        }
+
+        [DisplayName("Daytime Music (Inside School/Phase 1)")]
+        [Description("Select the music to be played while roaming around the school during daytime (Phase 1)")]
+        [Category("Music")]
+        [DefaultValue(dayinmusic1sel.TimeByMosq)]
+        public dayinmusic1sel dayinmusic1 { get; set; } = dayinmusic1sel.TimeByMosq;
+
+        public enum dayinmusic1sel
+        {
+            WantToBeCloseReload,
+            TimeByMosq
+        }
+
+        [DisplayName("Daytime Music (Inside School/Phase 2)")]
+        [Description("Select the music to be played while roaming around the school during daytime (Phase 2)")]
+        [Category("Music")]
+        [DefaultValue(dayinmusic2sel.SunByMosq)]
+        public dayinmusic2sel dayinmusic2 { get; set; } = dayinmusic2sel.SunByMosq;
+
+        public enum dayinmusic2sel
+        {
+            ChangingSeasonsReload,
+            SunByMosq
+        }
+
+        [DisplayName("Social Link Events Music")]
+        [Description("Select the music to be played during social link events")]
+        [Category("Music")]
+        [DefaultValue(socialmusic1sel.AfterSchoolByMosq)]
+        public socialmusic1sel socialmusic1 { get; set; } = socialmusic1sel.AfterSchoolByMosq;
+
+        public enum socialmusic1sel
+        {
+            Joy,
+            AfterSchoolByMosq
+        }
+
+
         [DisplayName("Mail Icon: Outer Color")]
         public ConfigColor MailIconOuterCircleColorEx { get; set; } = ConfigColor.MellodiColorMid1;
 
