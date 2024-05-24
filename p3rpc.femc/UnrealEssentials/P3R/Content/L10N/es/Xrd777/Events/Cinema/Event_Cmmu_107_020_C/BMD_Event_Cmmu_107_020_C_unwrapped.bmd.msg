@@ -66,7 +66,7 @@
 
 [msg MSG_019_0_0 [Maya]]
 [uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0][uf 3 1 3 0 65535 17005 0 0]me parto... tndríamos q star subien2 d nivel, pro ns hemos liao a hablar :3[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0]s q machacar los botones es 1 rollo. mola + hablar cntigo, yukino.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 107 0 65535 65535 0 0]s q machacar los botones es 1 rollo. mola + hablar cntigo, ulala.[n][uf 1 1][e]
 
 [msg MND_020_0_0]
 [uf 0 5 65278][uf 2 1]Creo que Maya se está abriendo conmigo.[n][uf 1 1][e]
