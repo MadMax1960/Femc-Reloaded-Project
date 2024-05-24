@@ -1,11 +1,7 @@
 ﻿using p3rpc.commonmodutils;
 using p3rpc.femc.Components;
 using p3rpc.femc.Template.Configuration;
-using Reloaded.Hooks.Definitions.Internal;
-using Reloaded.Mod.Interfaces.Structs;
-using System;
 using System.ComponentModel;
-using System.Numerics;
 
 namespace p3rpc.femc.Configuration
 {
