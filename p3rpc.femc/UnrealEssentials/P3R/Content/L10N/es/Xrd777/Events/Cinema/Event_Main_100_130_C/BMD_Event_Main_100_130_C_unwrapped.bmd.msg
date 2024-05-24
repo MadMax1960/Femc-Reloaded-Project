@@ -19,14 +19,14 @@
 
 [msg MSG_006_0_0 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 6 0 0]Me cambié de insti cuando estaba en secundaria.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 7 0 0]Sé lo difícil que es ser el nuevo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 7 0 0]Sé lo difícil que es ser la novedad.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 8 0 0]Solo quería saludarte. ¡Para que veas lo majo que soy![n][uf 1 1][e]
 
 [msg MSG_007_0_0 [Yukari Takeba]]
 [uf 0 5 65278][uf 2 1][uf 4 5 2 0 65535 65535 0 0][uf 3 1 0 0 0 9 0 0]...[n][uf 1 1][e]
 
 [msg MSG_008_0_0 [Junpei Iori]]
-[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 10 0 0]¡Eh, Yuka-tan![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 10 0 0]¡Eh, Yuka![n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 65535 0 0][uf 3 1 1 0 0 11 0 0]No sabía que nos había tocado en la misma clase otra vez.[n][uf 1 1][e]
 
 [msg MSG_009_0_0 [Yukari Takeba]]

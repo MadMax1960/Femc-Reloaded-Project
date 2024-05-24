@@ -21,7 +21,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 114 0 65535 65535 0 0][uf 3 1 1 0 0 8 0 0]Tómatelo con calma, jovencita. Enseguida llegarás a la mayoría de edad. No tengas prisa.[n][uf 1 1][e]
 
 [msg MSG_002_5_0 [Monje]]
-[uf 0 5 65278][uf 2 1][uf 4 5 114 0 65535 65535 0 0][uf 3 1 1 0 0 9 0 0]Dártelas de adulto solo te hace parecer más pequeño.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 114 0 65535 65535 0 0][uf 3 1 1 0 0 9 0 0]Dártelas de adulta solo te hace parecer más pequeña.[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 114 0 65535 65535 0 0][uf 3 1 1 0 0 10 0 0]Je... Tiene gracia viniendo de un monje que bebe y fuma, ¿eh?[n][uf 1 1][e]
 
 [sel SEL_003_0_0 top]
@@ -43,7 +43,7 @@
 
 [msg MSG_006_3_0 [Monje]]
 [uf 0 5 65278][uf 2 1][uf 4 5 114 0 65535 65535 0 0][uf 3 1 1 0 0 18 0 0]No te pareces nada a las maleantes que veo por la ciudad últimamente.[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1][uf 4 5 114 0 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]Siempre se las lleva la policía para interrogarlos. Qué vergüenza.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 114 0 65535 65535 0 0][uf 3 1 1 0 0 19 0 0]Siempre se las lleva la policía para interrogarlas. Qué vergüenza.[n][uf 1 1][e]
 
 [msg MSG_006_7_0 [Monje]]
 [uf 0 5 65278][uf 2 1][uf 4 5 114 1 65535 65535 0 0][uf 3 1 1 0 0 20 0 0]Voy a acordarme de tu cara. A la próxima, haré que te saquen de aquí, ¿me has entendido?[n][uf 1 1][e]
