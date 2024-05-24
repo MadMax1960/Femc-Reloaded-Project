@@ -192,18 +192,18 @@ namespace p3rpc.femc
 			//Author: TheBestAstroNOT
 			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
 			//Author: TheBestAstroNOT
-			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
 			try
-			{ 
-				//Initialise the music picker
-				
-				string night;
-				string dayoutside1;
-				string dayinside1;
-				string dayinside2;
-				string sociallink11;
-				string sociallink12;
-				string path = _modLoader.GetDirectoryForModId(_modConfig.ModId)+"/BGME/scripts";
+			{
+                //Initialise the music picker
+
+                string night = "const night1List=[";
+                string dayoutside1 = "const dayout1List=[";
+                string dayinside1 = "const dayin1List=[";
+                string dayinside2 = "const dayin2List=[";
+				string sociallink11 = "const social11List= [";
+				string sociallink12 = "const social12List= [";
+
+                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId)+"/BGME/scripts";
 
 				//Code for writing the commands
 				
@@ -223,45 +223,91 @@ namespace p3rpc.femc
 				{
                     battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Stella_GillStudio");
                 }
-
-
-                if (_configuration.nightmusic1 == nightmusic1sel.TimeNightVersionByMosq)
-                    night = "const night1List=[2004]";
-                else if(_configuration.nightmusic1==nightmusic1sel.ColorYourNight)
-                    night = "const night1List=[97]";
-                else
-					night = "const night1List=[2003]";
-
-
-                if (_configuration.dayoutmusic1 == dayoutmusic1sel.WhenTheMoonsReachingOutStars)
-                    dayoutside1 = "const dayout1List=[25]";
-                else
-                    dayoutside1 = "const dayout1List=[2005]";
-
-
-				if (_configuration.dayinmusic1 == dayinmusic1sel.WantToBeCloseReload)
-					dayinside1 = "const dayin1List=[50]";
-				else
-					dayinside1 = "const dayin1List=[2006]";
-				
-
-                if (_configuration.socialmusic1 == socialmusic1sel.Joy)
+				var added = new Dictionary<string, int>
 				{
-                    sociallink11 = "const social11List=[38]";
-                    sociallink12 = "const social12List=[43]";
-                }
-				else
+					{"night",0},
+					{"dayout1",0},
+					{"social1",0},
+					{"social2",0},
+					{"dayin1",0},
+					{"dayin2",0}
+				};
+				var collection = new Dictionary<string, Tuple<bool, string>>
 				{
-                    sociallink11 = "const social11List=[2007]";
-					sociallink12 = "const social12List=[2008]";
+					{"97",new Tuple<bool,string>(_configuration.colnight,"night")},
+					{"2003",new Tuple<bool,string>(_configuration.midnight,"night")},
+					{"2004",new Tuple<bool,string>(_configuration.femnight,"night")},
+					{"25",new Tuple<bool,string>(_configuration.moon,"dayout1")},
+					{"2005",new Tuple<bool,string>(_configuration.wayoflife,"dayout1")},
+					{"50",new Tuple<bool,string>(_configuration.wantclose,"dayin1")},
+					{"2006",new Tuple<bool,string>(_configuration.timeschool, "dayin1")},
+					{"51",new Tuple<bool,string>(_configuration.sun,"dayin2")},
+					{"2009",new Tuple<bool,string>(_configuration.seasons, "dayin2")},
+					{"38",new Tuple<bool,string>(_configuration.joy,"social1")},
+					{"43",new Tuple<bool,string>(_configuration.joy,"social2")},
+					{"2007",new Tuple<bool,string>(_configuration.afterschool,"social1")},
+					{"2008",new Tuple<bool,string>(_configuration.afterschool,"social2")}
+				};
+                foreach (KeyValuePair<string,Tuple<bool,string>> col in collection)
+                {
+                    if (col.Value.Item1)
+                    {
+                        if (col.Value.Item2=="night")
+                        {
+							if (added[col.Value.Item2]==0)
+                                night += col.Key;
+							else
+								night += ","+col.Key;
+						}
+                        else if(col.Value.Item2=="dayout1")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                                dayoutside1 += col.Key;
+                            else
+								dayoutside1 += "," + col.Key;
+						}
+						else if (col.Value.Item2 == "dayin1")
+						{
+                            if (added[col.Value.Item2] == 0)
+                                dayinside1 += col.Key;
+                            else
+                                dayinside1 += "," + col.Key;
+                        }
+						else if( col.Value.Item2 == "dayin2")
+						{
+                            if (added[col.Value.Item2] == 0)
+                                dayinside2 += col.Key;
+                            else
+                                dayinside2 += "," + col.Key;
+                        }
+						else if (col.Value.Item2 == "social1")
+						{
+                            if (added[col.Value.Item2] == 0)
+                                sociallink11 += col.Key;
+                            else
+                                sociallink11 += "," + col.Key;
+                        }
+						else if (col.Value.Item2 == "social2")
+						{
+                            if (added[col.Value.Item2] == 0)
+                                sociallink12 += col.Key;
+                            else
+                                sociallink12 += "," + col.Key;
+                        }
+						else
+						{
+                            _logger.WriteLineAsync("The Collection dictionary in mod.cs has been improperly configured, one of the specified categories DOES NOT exist.");
+                        }
+
+                    }
                 }
 
-
-                if (_configuration.dayinmusic2 == dayinmusic2sel.ChangingSeasonsReload)
-                    dayinside2 = "const dayin2List=[51]";
-                else
-                    dayinside2 = "const dayin2List=[2009]";
-
+                night += "]";
+                dayoutside1 += "]";
+                dayinside1 += "]";
+                dayinside2 += "]";
+                sociallink11 += "]";
+                sociallink12 += "]";
 
                 //Writing the configuration File
                 string[] lines = {night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)","end",sociallink12,"global_bgm[43]:","music = random_song(social12List)","end",dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)","end"};
