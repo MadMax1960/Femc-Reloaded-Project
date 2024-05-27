@@ -191,7 +191,6 @@ namespace p3rpc.femc
 		{
 			//Author: TheBestAstroNOT
 			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
-			//Author: TheBestAstroNOT
 			try
 			{
                 //Initialise the music picker
@@ -202,6 +201,7 @@ namespace p3rpc.femc
                 string dayinside2 = "const dayin2List=[";
 				string sociallink11 = "const social11List= [";
 				string sociallink12 = "const social12List= [";
+				string finalbattle = "const finalbattle=[";
 
                 string path = _modLoader.GetDirectoryForModId(_modConfig.ModId)+"/BGME/scripts";
 
@@ -230,7 +230,8 @@ namespace p3rpc.femc
 					{"social1",0},
 					{"social2",0},
 					{"dayin1",0},
-					{"dayin2",0}
+					{"dayin2",0},
+					{"final",0}
 				};
 				var collection = new Dictionary<string, Tuple<bool, string>>
 				{
@@ -246,7 +247,9 @@ namespace p3rpc.femc
 					{"38",new Tuple<bool,string>(_configuration.joy,"social1")},
 					{"43",new Tuple<bool,string>(_configuration.joy,"social2")},
 					{"2007",new Tuple<bool,string>(_configuration.afterschool,"social1")},
-					{"2008",new Tuple<bool,string>(_configuration.afterschool,"social2")}
+					{"2008",new Tuple<bool,string>(_configuration.afterschool,"social2")},
+					{"2015",new Tuple<bool,string>(_configuration.soulpk,"final")},
+					{"29",new Tuple<bool, string>(_configuration.bmd,"final")}
 				};
                 foreach (KeyValuePair<string,Tuple<bool,string>> col in collection)
                 {
@@ -294,6 +297,13 @@ namespace p3rpc.femc
                             else
                                 sociallink12 += "," + col.Key;
                         }
+						else if (col.Value.Item2=="final")
+						{
+							if (added[col.Value.Item2] == 0)
+								finalbattle+=col.Key;
+							else
+								finalbattle+=","+col.Key;
+						}
 						else
 						{
                             _logger.WriteLineAsync("The Collection dictionary in mod.cs has been improperly configured, one of the specified categories DOES NOT exist.");
@@ -308,9 +318,10 @@ namespace p3rpc.femc
                 dayinside2 += "]";
                 sociallink11 += "]";
                 sociallink12 += "]";
+				finalbattle += "]";
 
                 //Writing the configuration File
-                string[] lines = {night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)","end",sociallink12,"global_bgm[43]:","music = random_song(social12List)","end",dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)","end"};
+                string[] lines = {night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)","end",sociallink12,"global_bgm[43]:","music = random_song(social12List)","end",dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)","end",finalbattle,"global_bgm[29]:","music=random_song(finalbattle)","end"};
 				
 				if (File.Exists(path + ".pme"))
 				{

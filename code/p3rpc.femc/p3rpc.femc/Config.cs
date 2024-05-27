@@ -92,6 +92,18 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool sun { get; set; } = true;
 
+        [DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
+        [Category("Music")]
+        [Description("Enable Soul Phrase as the music played during the battle with Nyx?")]
+        [DefaultValue(false)]
+        public bool soulpk { get; set; } = true;
+
+        [DisplayName("Final Battle with NYX: Burn my dread Final Battle")]
+        [Category("Music")]
+        [Description("Enable Burn my dread as the music played during the battle with Nyx?")]
+        [DefaultValue(true)]
+        public bool bmd { get; set; } = true;
+
         [DisplayName("Mail Icon: Outer Color")]
         public ConfigColor MailIconOuterCircleColorEx { get; set; } = ConfigColor.MellodiColorMid1;
 
