@@ -1,0 +1,1 @@
+[uf 0 5 65278][uf 2 1]SEKAIIIII  [n][e]
