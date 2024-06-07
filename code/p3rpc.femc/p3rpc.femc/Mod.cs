@@ -13,6 +13,7 @@ using Unreal.ObjectsEmitter.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using BGME.BattleThemes.Interfaces;
+using p3rpc.femc.music.interfaces;
 
 namespace p3rpc.femc
 {
@@ -51,17 +52,17 @@ namespace p3rpc.femc
 		/// The configuration of the currently executing mod.
 		/// </summary>
 		private readonly IModConfig _modConfig;
-
 		private FemcContext _context;
 		private ModuleRuntime<FemcContext> _modRuntime;
 		private readonly IUnreal unreal;
+		
 		
 
         private string modName { get; set; }
 
 		public Mod(ModContext context)
 		{
-			_modLoader = context.ModLoader;
+            _modLoader = context.ModLoader;
 			_hooks = context.Hooks;
 			_logger = context.Logger;
 			_owner = context.Owner;
@@ -93,7 +94,6 @@ namespace p3rpc.femc
 
 		}
 
-
 		private IControllerType GetDependency<IControllerType>(string modName) where IControllerType : class
 		{
 			var controller = _modLoader.GetController<IControllerType>();
@@ -103,7 +103,7 @@ namespace p3rpc.femc
 
 		}
 
-		private void LoadEnabledAddons(IUnrealEssentials unrealEssentials)
+        private void LoadEnabledAddons(IUnrealEssentials unrealEssentials)
 		{
 			try
 			{
@@ -193,8 +193,7 @@ namespace p3rpc.femc
 			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
 			try
 			{
-                //Initialise the music picker
-
+				//Initialise the music picker
                 string night = "const night1List=[";
                 string dayoutside1 = "const dayout1List=[";
                 string dayinside1 = "const dayin1List=[";
@@ -235,6 +234,7 @@ namespace p3rpc.femc
 				};
 				var collection = new Dictionary<string, Tuple<bool, string>>
 				{
+					//{"cue id",new Tuple<bool,string>(config value,category)}
 					{"97",new Tuple<bool,string>(_configuration.colnight,"night")},
 					{"2003",new Tuple<bool,string>(_configuration.midnight,"night")},
 					{"2004",new Tuple<bool,string>(_configuration.femnight,"night")},
@@ -257,52 +257,74 @@ namespace p3rpc.femc
                     {
                         if (col.Value.Item2=="night")
                         {
-							if (added[col.Value.Item2]==0)
-                                night += col.Key;
+							if (added[col.Value.Item2] == 0)
+							{
+								night += col.Key;
+								added[col.Value.Item2] = 1;
+							}
+
 							else
-								night += ","+col.Key;
+								night += "," + col.Key;
 						}
                         else if(col.Value.Item2=="dayout1")
                         {
-                            if (added[col.Value.Item2] == 0)
-                                dayoutside1 += col.Key;
-                            else
+							if (added[col.Value.Item2] == 0)
+							{
+								dayoutside1 += col.Key;
+								added[col.Value.Item2] = 1;
+							}
+							else
 								dayoutside1 += "," + col.Key;
 						}
 						else if (col.Value.Item2 == "dayin1")
 						{
-                            if (added[col.Value.Item2] == 0)
-                                dayinside1 += col.Key;
-                            else
-                                dayinside1 += "," + col.Key;
+							if (added[col.Value.Item2] == 0)
+							{
+								dayinside1 += col.Key;
+								added[col.Value.Item2] = 1;
+							}
+							else
+								dayinside1 += "," + col.Key;
                         }
 						else if( col.Value.Item2 == "dayin2")
 						{
-                            if (added[col.Value.Item2] == 0)
-                                dayinside2 += col.Key;
-                            else
-                                dayinside2 += "," + col.Key;
+							if (added[col.Value.Item2] == 0)
+							{
+								dayinside2 += col.Key;
+								added[col.Value.Item2] = 1;
+							}
+							else
+								dayinside2 += "," + col.Key;
                         }
 						else if (col.Value.Item2 == "social1")
 						{
-                            if (added[col.Value.Item2] == 0)
-                                sociallink11 += col.Key;
-                            else
-                                sociallink11 += "," + col.Key;
+							if (added[col.Value.Item2] == 0)
+							{
+								sociallink11 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+							else
+								sociallink11 += "," + col.Key;
                         }
 						else if (col.Value.Item2 == "social2")
 						{
-                            if (added[col.Value.Item2] == 0)
-                                sociallink12 += col.Key;
-                            else
-                                sociallink12 += "," + col.Key;
+							if (added[col.Value.Item2] == 0)
+							{
+								sociallink12 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+							else
+								sociallink12 += "," + col.Key;
                         }
 						else if (col.Value.Item2=="final")
 						{
 							if (added[col.Value.Item2] == 0)
-								finalbattle+=col.Key;
+							{
+								finalbattle += col.Key;
+								added[col.Value.Item2] = 1;
+							}
 							else
-								finalbattle+=","+col.Key;
+								finalbattle += "," + col.Key;
 						}
 						else
 						{
@@ -312,13 +334,13 @@ namespace p3rpc.femc
                     }
                 }
 
-                night += "]";
-                dayoutside1 += "]";
-                dayinside1 += "]";
-                dayinside2 += "]";
-                sociallink11 += "]";
-                sociallink12 += "]";
-				finalbattle += "]";
+                night += (added["night"]==0) ? "2004]" : "]";
+                dayoutside1 += (added["dayout1"] == 0) ? "2005]" : "]";
+                dayinside1 += (added["dayin1"] == 0) ? "2006]" : "]";
+                dayinside2 += (added["dayin2"] == 0) ? "2009]" : "]";
+                sociallink11 += (added["social1"] == 0) ? "2007]" : "]";
+                sociallink12 += (added["social2"] == 0) ? "2008]" : "]";
+                finalbattle += (added["final"] == 0) ? "2015]" : "]";
 
                 //Writing the configuration File
                 string[] lines = {night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)","end",sociallink12,"global_bgm[43]:","music = random_song(social12List)","end",dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)","end",finalbattle,"global_bgm[29]:","music=random_song(finalbattle)","end"};
