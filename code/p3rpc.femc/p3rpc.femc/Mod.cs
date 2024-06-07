@@ -52,8 +52,6 @@ namespace p3rpc.femc
 		/// The configuration of the currently executing mod.
 		/// </summary>
 		private readonly IModConfig _modConfig;
-		IFemcMusicApi _musicApi;
-
 		private FemcContext _context;
 		private ModuleRuntime<FemcContext> _modRuntime;
 		private readonly IUnreal unreal;
@@ -104,14 +102,6 @@ namespace p3rpc.femc
 			return target;
 
 		}
-            public void execconf()
-        {
-            Process myProcess = new Process();
-            myProcess.StartInfo.UseShellExecute = false;
-            myProcess.StartInfo.FileName = "C:\\Users\\sharm\\source\\repos\\WpfApp1\\bin\\Debug\\net8.0-windows\\WpfApp1.exe";
-            myProcess.StartInfo.CreateNoWindow = true;
-            myProcess.Start();
-        }
 
         private void LoadEnabledAddons(IUnrealEssentials unrealEssentials)
 		{
