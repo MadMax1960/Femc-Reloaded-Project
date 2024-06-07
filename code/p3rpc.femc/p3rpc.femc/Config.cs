@@ -841,7 +841,8 @@ namespace p3rpc.femc.Configuration
             JustBlue,
             Sav,
             Doodled,
-            RonaldReagan
+            RonaldReagan,
+			ElyAlt
         }
 
         [DisplayName("Glass Shard")]
