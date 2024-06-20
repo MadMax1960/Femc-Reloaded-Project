@@ -14,6 +14,8 @@ using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using BGME.BattleThemes.Interfaces;
 
+/// ok maybe p3rpc.femc.music.interfaces is required, but it's not in repo and randomization doesn't work leading me to believe they're connected, or randomization never worked idk
+
 namespace p3rpc.femc
 {
 	/// <summary>
