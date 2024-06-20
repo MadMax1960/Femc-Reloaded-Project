@@ -13,7 +13,6 @@ using Unreal.ObjectsEmitter.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using BGME.BattleThemes.Interfaces;
-using p3rpc.femc.music.interfaces;
 
 namespace p3rpc.femc
 {
