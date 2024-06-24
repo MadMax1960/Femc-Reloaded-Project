@@ -3,9 +3,9 @@
   "ModName": "Femc Project",
   "ModAuthor": "Femc Reloaded Team",
   "ModVersion": "1.0.9",
-  "ModDescription": "Template for a Reloaded Mod Configuration",
+  "ModDescription": "This mod aims to readd the female protagonist Kotone Shiomi  from Persona 3 Portable while updating her style to match Persona 3 Reload\u0027s style. With new tracks, new character model and text changes. BUT social links haven\u0027t been added (yet).",
   "ModDll": "p3rpc.femc.dll",
-  "ModIcon": "EmbeddedImage.png",
+  "ModIcon": "readmelogo.png",
   "ModR2RManagedDll32": "x86/p3rpc.femc.dll",
   "ModR2RManagedDll64": "x64/p3rpc.femc.dll",
   "ModNativeDll32": "",
@@ -18,27 +18,6 @@
   "PluginData": {
     "GameBananaDependencies": {
       "IdToConfigMap": {
-        "BGME.BattleThemes": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 488707
-          },
-          "ReleaseMetadataName": "BGME.BattleThemes.ReleaseMetadata.json"
-        },
-        "BGME.Framework.API": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 477399
-          },
-          "ReleaseMetadataName": "BGME.Framework.API.ReleaseMetadata.json"
-        },
-        "BGME.Framework.P3R": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 495456
-          },
-          "ReleaseMetadataName": "BGME.Framework.P3R.ReleaseMetadata.json"
-        },
         "P3R.CostumeFramework": {
           "Config": {
             "ItemType": "Mod",
@@ -73,20 +52,6 @@
             "ItemId": 500638
           },
           "ReleaseMetadataName": "Unreal.ObjectsEmitter.Reloaded.ReleaseMetadata.json"
-        },
-        "p3r.skins.extendedoutfits": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 497730
-          },
-          "ReleaseMetadataName": "p3r.skins.extendedoutfits.ReleaseMetadata.json"
-        },
-        "Unreal.AtlusScript.Reloaded": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 501844
-          },
-          "ReleaseMetadataName": "Unreal.AtlusScript.Reloaded.ReleaseMetadata.json"
         }
       }
     },
@@ -176,14 +141,12 @@
   "IsUniversalMod": false,
   "ModDependencies": [
     "BGME.BattleThemes",
-    "BGME.Framework",
     "BGME.Framework.API",
     "BGME.Framework.P3R",
     "P3R.CostumeFramework",
     "p3rpc.classconstructor",
     "p3rpc.essentials",
     "p3rpc.nativetypes",
-    "p5rpc.modloader",
     "Reloaded.Memory.SigScan.ReloadedII",
     "reloaded.sharedlib.hooks",
     "Ryo.Reloaded",
@@ -195,5 +158,5 @@
   "SupportedAppId": [
     "p3r.exe"
   ],
-  "ProjectUrl": ""
+  "ProjectUrl": "https://github.com/MadMax1960/Femc-Reloaded-Project"
 }

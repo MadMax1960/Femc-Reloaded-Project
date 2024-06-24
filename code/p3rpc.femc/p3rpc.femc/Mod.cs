@@ -90,7 +90,7 @@ namespace p3rpc.femc
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials);
 			InitializeModules();
-			GenerateMusicScript(bgme);
+			GenerateMusicScript();
 			RedirectPlayerAssets();
 
 		}
@@ -190,13 +190,15 @@ namespace p3rpc.femc
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
 		}
-        private void GenerateMusicScript(IBattleThemesApi battleThemes)
+        private void GenerateMusicScript()
 		{
-			//Author: TheBestAstroNOT
-			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
-			try
+            //Author: TheBestAstroNOT
+            //Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
+            try
 			{
-				//Initialise the music picker
+                _logger.WriteLineAsync("Regenerating music script");
+                var battleThemes = GetDependency<IBattleThemesApi>("Battle Themes");
+                //Initialise the music picker
                 string night = "const night1List=[";
                 string dayoutside1 = "const dayout1List=[";
                 string dayinside1 = "const dayin1List=[";
@@ -515,7 +517,8 @@ namespace p3rpc.femc
 			_configuration = configuration;
 			_logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
 			_modRuntime.UpdateConfiguration(configuration);
-		}
+            GenerateMusicScript();
+        }
 		#endregion
 
 		#region For Exports, Serialization etc.
