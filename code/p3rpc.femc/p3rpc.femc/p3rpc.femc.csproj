@@ -58,6 +58,9 @@
     <Reference Include="BGME.BattleThemes.Interfaces">
       <HintPath>bin\Release\BGME.BattleThemes.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Ryo.Interfaces">
+      <HintPath>..\..\..\..\..\..\Desktop\Reloaded-II\Mods\Ryo.Reloaded\Ryo.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms.Analyzers.CSharp">
       <HintPath>..\..\..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\8.0.5\analyzers\dotnet\cs\System.Windows.Forms.Analyzers.CSharp.dll</HintPath>
     </Reference>
