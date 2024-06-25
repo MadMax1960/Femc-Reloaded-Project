@@ -51,16 +51,12 @@
     <PackageReference Include="UnrealEssentials.Interfaces" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\include\BGME.BattleThemes\BGME.BattleThemes.Interfaces\BGME.BattleThemes.Interfaces.csproj" />
+    <ProjectReference Include="..\include\Ryo\Ryo.Interfaces\Ryo.Interfaces.csproj" />
     <ProjectReference Include="..\include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj" />
     <ProjectReference Include="..\include\Unreal.ObjectsEmitter\Unreal.ObjectsEmitter.Interfaces\Unreal.ObjectsEmitter.Interfaces.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BGME.BattleThemes.Interfaces">
-      <HintPath>bin\Release\BGME.BattleThemes.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Ryo.Interfaces">
-      <HintPath>..\..\..\..\..\..\Desktop\Reloaded-II\Mods\Ryo.Reloaded\Ryo.Interfaces.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows.Forms.Analyzers.CSharp">
       <HintPath>..\..\..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\8.0.5\analyzers\dotnet\cs\System.Windows.Forms.Analyzers.CSharp.dll</HintPath>
     </Reference>

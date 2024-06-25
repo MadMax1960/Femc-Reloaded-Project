@@ -4,3 +4,9 @@
 [submodule "code/p3rpc.femc/include/Unreal.ObjectsEmitter"]
 	path = code/p3rpc.femc/include/Unreal.ObjectsEmitter
 	url = https://github.com/MirrorTuneZM/Unreal.ObjectsEmitter.git
+[submodule "BGMEBattleThemes"]
+	path = code/p3rpc.femc/include/BGME.BattleThemes
+	url = https://github.com/T-PoseRatkechi/BGME.BattleThemes.git
+[submodule "code/p3rpc.femc/include/Ryo"]
+	path = code/p3rpc.femc/include/Ryo
+	url = https://github.com/T-PoseRatkechi/Ryo
