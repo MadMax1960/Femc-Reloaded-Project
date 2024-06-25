@@ -396,8 +396,8 @@ namespace p3rpc.femc
                 string path = _modLoader.GetDirectoryForModId(_modConfig.ModId);
                 var nightmusic = new Dictionary<string, bool>
 				{
-					{Path.Combine(path,"BGM\\2004.hca"),_configuration.nighttrue1==nightmusic1.TimeNightVersionByMosq},
-					{Path.Combine(path,"BGM\\2003.hca"),_configuration.nighttrue1==nightmusic1.MidnightReverieByMineformer}
+					{Path.Combine(path,"BGM\\Mosq\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightVersionByMosq},
+					{Path.Combine(path,"BGM\\Mineformer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.MidnightReverieByMineformer}
 
 				};
 				foreach (KeyValuePair<string, bool> nm in nightmusic)
@@ -407,7 +407,7 @@ namespace p3rpc.femc
 				}
                 var dayin1music = new Dictionary<string, bool>
                 {
-                    {Path.Combine(path, "BGM\\2006.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosq}
+                    {Path.Combine(path, "BGM\\Mosq\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosq}
                 };
                 foreach (KeyValuePair<string, bool> di1m in dayin1music)
                 {
@@ -416,7 +416,7 @@ namespace p3rpc.femc
                 }
                 var dayin2music = new Dictionary<string, bool>
                 {
-                    {Path.Combine(path, "BGM\\2009.hca"),_configuration.dayintrue2==dayinmusic2.SunByMosq}
+                    {Path.Combine(path, "BGM\\Mosq\\link_51.hca"),_configuration.dayintrue2==dayinmusic2.SunByMosq}
                 };
                 foreach (KeyValuePair<string, bool> di2m in dayin2music)
                 {
@@ -425,7 +425,7 @@ namespace p3rpc.femc
                 }
                 var dayout1music = new Dictionary<string, bool>
                 {
-                    {Path.Combine(path, "BGM\\2005.hca"),_configuration.dayouttrue1==dayoutmusic1.WayOfLifeByMosq}
+                    {Path.Combine(path, "BGM\\Mosq\\link_25.hca"),_configuration.dayouttrue1==dayoutmusic1.WayOfLifeByMosq}
                 };
                 foreach (KeyValuePair<string, bool> do1m in dayout1music)
                 {
@@ -434,7 +434,7 @@ namespace p3rpc.femc
                 }
                 var finalbattlemusic = new Dictionary<string, bool>
                 {
-                    {Path.Combine(path, "BGM\\2015.hca"),_configuration.finalmusictrue==finalmusic.SoulPhraseByKarma}
+                    {Path.Combine(path, "BGM\\Karma\\link_29.hca"),_configuration.finalmusictrue==finalmusic.SoulPhraseByKarma}
                 };
                 foreach (KeyValuePair<string, bool> fbm in finalbattlemusic)
                 {
@@ -443,8 +443,8 @@ namespace p3rpc.femc
                 }
                 var sociallinkmusic = new Dictionary<string, bool>
                 {
-                    {Path.Combine(path, "BGM\\2007.hca"),_configuration.socialmusictrue==socialmusic.AfterSchoolByMosq},
-                    {Path.Combine(path, "BGM\\2008.hca"),_configuration.socialmusictrue==socialmusic.AfterSchoolByMosq}
+                    {Path.Combine(path, "BGM\\Mosq\\link_38.hca"),_configuration.socialmusictrue==socialmusic.AfterSchoolByMosq},
+                    {Path.Combine(path, "BGM\\Mosq\\link_43.hca"),_configuration.socialmusictrue==socialmusic.AfterSchoolByMosq}
                 };
                 foreach (KeyValuePair<string, bool> sm in sociallinkmusic)
                 {
@@ -607,8 +607,6 @@ namespace p3rpc.femc
 			_configuration = configuration;
 			_logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
 			_modRuntime.UpdateConfiguration(configuration);
-            //GenerateMusicScriptDeprecated();
-			GenerateMusicScript();
         }
 		#endregion
 
