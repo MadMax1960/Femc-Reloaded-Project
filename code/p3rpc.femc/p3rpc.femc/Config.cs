@@ -10,7 +10,7 @@ namespace p3rpc.femc.Configuration
 
     public class Config : Configurable<Config>
     {
-
+        
         [DisplayName("Battle Pack: Mosq")]
         [Category("Music")]
         [Description("Enable Mosq's battle music?")]
@@ -28,7 +28,7 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Stella and GillStudio's battle music?")]
         [DefaultValue(false)]
         public bool rock { get; set; } = true;
-
+        /*
         [DisplayName("Night Music: Color your Night")]
         [Category("Music")]
         [Description("Enable Color your Night as the night music?")]
@@ -76,7 +76,7 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Joy to be the music played during social link events?")]
         [DefaultValue(false)]
         public bool joy { get; set; } = true;
-
+        
         [DisplayName("Social Link Events: After School by Mosq")]
         [Category("Music")]
         [Description("Enable Mosq's After School to be the music played during social link events?")]
@@ -106,6 +106,80 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Burn my dread as the music played during the battle with Nyx?")]
         [DefaultValue(true)]
         public bool bmd { get; set; } = true;
+        */
+
+        [DisplayName("Night Music")]
+        [Description("Select the music that will be played at night when you are outside the dorm")]
+        [Category("Music")]
+        [DefaultValue(nightmusic1.TimeNightVersionByMosq)]
+        public nightmusic1 nighttrue1 { get; set; } = nightmusic1.TimeNightVersionByMosq;
+
+        public enum nightmusic1
+        {
+            TimeNightVersionByMosq,
+            ColorYourNightReload,
+            MidnightReverieByMineformer
+        }
+
+        [DisplayName("Daytime Music Inside School (April to August)")]
+        [Description("Select the music that will be played when you are inside the school (april to august)")]
+        [Category("Music")]
+        [DefaultValue(dayinmusic1.TimeByMosq)]
+        public dayinmusic1 dayintrue1 { get; set; } = dayinmusic1.TimeByMosq;
+
+        public enum dayinmusic1
+        {
+            WantToBeCloseReload,
+            TimeByMosq
+        }
+
+        [DisplayName("Daytime Music Inside School (September Onwards)")]
+        [Description("Select the music that will be played when you are inside the school (september onwards)")]
+        [Category("Music")]
+        [DefaultValue(dayinmusic2.SunByMosq)]
+        public dayinmusic2 dayintrue2 { get; set; } = dayinmusic2.SunByMosq;
+
+        public enum dayinmusic2
+        {
+            ChangingSeasonsReload,
+            SunByMosq
+        }
+
+        [DisplayName("Daytime Music Outside School (April to August)")]
+        [Description("Select the music that will be played when you are roaming around the island (april to august)")]
+        [Category("Music")]
+        [DefaultValue(dayoutmusic1.WayOfLifeByMosq)]
+        public dayoutmusic1 dayouttrue1 { get; set; } = dayoutmusic1.WayOfLifeByMosq;
+
+        public enum dayoutmusic1
+        {
+            WhenTheMoonsReachingOutStarsReload,
+            WayOfLifeByMosq
+        }
+
+        [DisplayName("Final Battle with Nyx")]
+        [Description("Select the music that will be played in the final battle with Nyx")]
+        [Category("Music")]
+        [DefaultValue(finalmusic.BurnMyDreadReload)]
+        public finalmusic finalmusictrue { get; set; } = finalmusic.BurnMyDreadReload;
+
+        public enum finalmusic
+        {
+            BurnMyDreadReload,
+            SoulPhraseByKarma
+        }
+
+        [DisplayName("Social Link Events")]
+        [Description("Select the music that will be played during social link events")]
+        [Category("Music")]
+        [DefaultValue(socialmusic.AfterSchoolByMosq)]
+        public socialmusic socialmusictrue { get; set; } = socialmusic.AfterSchoolByMosq;
+
+        public enum socialmusic
+        {
+            JoyReload,
+            AfterSchoolByMosq
+        }
 
         [DisplayName("Mail Icon: Outer Color")]
         public ConfigColor MailIconOuterCircleColorEx { get; set; } = ConfigColor.MellodiColorMid1;

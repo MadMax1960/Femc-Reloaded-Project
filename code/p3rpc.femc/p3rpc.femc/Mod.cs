@@ -13,6 +13,7 @@ using Unreal.ObjectsEmitter.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using BGME.BattleThemes.Interfaces;
+using Ryo.Interfaces;
 
 /// ok maybe p3rpc.femc.music.interfaces is required, but it's not in repo and randomization doesn't work leading me to believe they're connected, or randomization never worked idk
 
@@ -79,7 +80,6 @@ namespace p3rpc.femc
 			var sharedScans = GetDependency<ISharedScans>("Shared Scans");
 			Utils utils = new(startupScanner, _logger, _hooks, baseAddress, "Femc Project", System.Drawing.Color.Thistle, _configuration.DebugLogLevel);
 			var unrealEssentials = GetDependency<IUnrealEssentials>("Unreal Essentials");
-			var bgme = GetDependency<IBattleThemesApi>("Battle Themes");
 			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
 			var memory = new Memory();
@@ -90,7 +90,8 @@ namespace p3rpc.femc
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials);
 			InitializeModules();
-			GenerateMusicScript(bgme);
+			//GenerateMusicScriptDeprecated();
+			GenerateMusicScript();
 			RedirectPlayerAssets();
 
 		}
@@ -190,13 +191,18 @@ namespace p3rpc.femc
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
 		}
-        private void GenerateMusicScript(IBattleThemesApi battleThemes)
+		
+        private void GenerateMusicScriptDeprecated()
 		{
-			//Author: TheBestAstroNOT
-			//Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
-			try
+			//Deprecated DO NOT USE
+            //Author: TheBestAstroNOT
+            //Credit for all the music goes to Atlus,Mosq,Mineformer,Karma, Stella and GillStudio
+			/*
+            try
 			{
-				//Initialise the music picker
+                _logger.WriteLineAsync("Regenerating music script");
+                var battleThemes = GetDependency<IBattleThemesApi>("Battle Themes");
+                //Initialise the music picker
                 string night = "const night1List=[";
                 string dayoutside1 = "const dayout1List=[";
                 string dayinside1 = "const dayin1List=[";
@@ -245,8 +251,8 @@ namespace p3rpc.femc
 					{"2005",new Tuple<bool,string>(_configuration.wayoflife,"dayout1")},
 					{"50",new Tuple<bool,string>(_configuration.wantclose,"dayin1")},
 					{"2006",new Tuple<bool,string>(_configuration.timeschool, "dayin1")},
-					{"51",new Tuple<bool,string>(_configuration.sun,"dayin2")},
-					{"2009",new Tuple<bool,string>(_configuration.seasons, "dayin2")},
+					{"51",new Tuple<bool,string>(_configuration.seasons,"dayin2")},
+					{"2009",new Tuple<bool,string>(_configuration.sun, "dayin2")},
 					{"38",new Tuple<bool,string>(_configuration.joy,"social1")},
 					{"43",new Tuple<bool,string>(_configuration.joy,"social2")},
 					{"2007",new Tuple<bool,string>(_configuration.afterschool,"social1")},
@@ -333,7 +339,7 @@ namespace p3rpc.femc
 						{
                             _logger.WriteLineAsync("The Collection dictionary in mod.cs has been improperly configured, one of the specified categories DOES NOT exist.");
                         }
-
+			
                     }
                 }
 
@@ -362,9 +368,95 @@ namespace p3rpc.femc
 			catch (Exception ex)
 			{
 				_context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
-			}
+			}*/
         }
-    
+
+		private void GenerateMusicScript()
+		{
+			try
+			{
+                var battleThemes = GetDependency<IBattleThemesApi>("Battle Themes");
+                var ryo = GetDependency<IRyoApi>("Ryo");
+                if (_configuration.mosq)
+                {
+                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Mosq");
+                }
+
+
+                if (_configuration.karma)
+                {
+                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Karma");
+                }
+
+
+                if (_configuration.rock)
+                {
+                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Stella_GillStudio");
+                }
+                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId);
+                var nightmusic = new Dictionary<string, bool>
+				{
+					{Path.Combine(path,"BGM\\Mosq\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightVersionByMosq},
+					{Path.Combine(path,"BGM\\Mineformer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.MidnightReverieByMineformer}
+
+				};
+				foreach (KeyValuePair<string, bool> nm in nightmusic)
+				{
+					if (nm.Value)
+						ryo.AddAudioFile(nm.Key);
+				}
+                var dayin1music = new Dictionary<string, bool>
+                {
+                    {Path.Combine(path, "BGM\\Mosq\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosq}
+                };
+                foreach (KeyValuePair<string, bool> di1m in dayin1music)
+                {
+                    if (di1m.Value)
+                        ryo.AddAudioFile(di1m.Key);
+                }
+                var dayin2music = new Dictionary<string, bool>
+                {
+                    {Path.Combine(path, "BGM\\Mosq\\link_51.hca"),_configuration.dayintrue2==dayinmusic2.SunByMosq}
+                };
+                foreach (KeyValuePair<string, bool> di2m in dayin2music)
+                {
+                    if (di2m.Value)
+                        ryo.AddAudioFile(di2m.Key);
+                }
+                var dayout1music = new Dictionary<string, bool>
+                {
+                    {Path.Combine(path, "BGM\\Mosq\\link_25.hca"),_configuration.dayouttrue1==dayoutmusic1.WayOfLifeByMosq}
+                };
+                foreach (KeyValuePair<string, bool> do1m in dayout1music)
+                {
+                    if (do1m.Value)
+                        ryo.AddAudioFile(do1m.Key);
+                }
+                var finalbattlemusic = new Dictionary<string, bool>
+                {
+                    {Path.Combine(path, "BGM\\Karma\\link_29.hca"),_configuration.finalmusictrue==finalmusic.SoulPhraseByKarma}
+                };
+                foreach (KeyValuePair<string, bool> fbm in finalbattlemusic)
+                {
+                    if (fbm.Value)
+                        ryo.AddAudioFile(fbm.Key);
+                }
+                var sociallinkmusic = new Dictionary<string, bool>
+                {
+                    {Path.Combine(path, "BGM\\Mosq\\link_38.hca"),_configuration.socialmusictrue==socialmusic.AfterSchoolByMosq},
+                    {Path.Combine(path, "BGM\\Mosq\\link_43.hca"),_configuration.socialmusictrue==socialmusic.AfterSchoolByMosq}
+                };
+                foreach (KeyValuePair<string, bool> sm in sociallinkmusic)
+                {
+                    if (sm.Value)
+                        ryo.AddAudioFile(sm.Key);
+                }
+            }
+			catch (Exception ex)
+			{
+                _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
+            }
+		}
 		private void InitializeModules()
 		{
 			_modRuntime.AddModule<UICommon>();
@@ -515,7 +607,7 @@ namespace p3rpc.femc
 			_configuration = configuration;
 			_logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
 			_modRuntime.UpdateConfiguration(configuration);
-		}
+        }
 		#endregion
 
 		#region For Exports, Serialization etc.
