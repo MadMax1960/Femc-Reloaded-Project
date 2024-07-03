@@ -916,7 +916,8 @@ namespace p3rpc.femc.Configuration
             Sav,
             Doodled,
             RonaldReagan,
-			ElyAlt
+			ElyAlt,
+			Yuunagi
         }
 
         [DisplayName("Glass Shard")]
