@@ -17,6 +17,8 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool mosq { get; set; } = true;
 
+        // literally just a todo list for myself, seperate these into their own options because not everybody wants all the music from each person and bgme supports it fine
+
         [DisplayName("Battle Pack: Karma")]
         [Category("Music")]
         [Description("Enable Karma's battle music?")]
