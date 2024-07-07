@@ -968,7 +968,7 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool FunnyAnims { get; set; } = false;
 
-		[DisplayName("Gregory House Apro")]
+		[DisplayName("Gregory House Apron")]
 		[Category("Fun Stuff")]
 		[DefaultValue(false)]
 		public bool GregoryHouseRatPoisonDeliverySystem { get; set; } = false;
