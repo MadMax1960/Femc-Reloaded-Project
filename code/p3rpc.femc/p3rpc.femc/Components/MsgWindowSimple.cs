@@ -325,6 +325,13 @@ namespace p3rpc.femc.Components
         }
         private unsafe void UMsgProcWindow_Select_Simple_DrawListBoxImpl(UMsgProcWindow_Select_Simple* self)
         {
+            /*
+            if (_context._config.DebugDrawOgSelBox)
+            {
+                _drawListBox.OriginalFunction(self);
+                return;
+            }
+            */
             var vtable278 = _context._hooks.CreateWrapper<UMsgProcWindow_Select_Simple_Vtable278>(*(nint*)(*(nint*)self + 0x278), out _);
             if (vtable278(self))
             {
@@ -338,12 +345,15 @@ namespace p3rpc.femc.Components
                 var entryAllocBR = (FVector2D*)NativeMemory.Alloc((nuint)(sizeof(FVector2D) * selEntries->selCount));
                 var entryTL = MakeArrayFromExistingAlloc(entryAllocTL, selEntries->selCount);
                 var entryBR = MakeArrayFromExistingAlloc(entryAllocBR, selEntries->selCount);
+                var maxLenX = 0f;
                 for (int i = 0; i < selEntries->selCount; i++)
                 {
                     _selBoxFunc1((SelBoxStruct2*)selEntries->selEntries.allocator_instance[i], &entryAllocTL[i].X, &entryAllocTL[i].Y, 0, null);
                     _selBoxFunc1((SelBoxStruct2*)selEntries->selEntries.allocator_instance[i], &entryAllocBR[i].X, &entryAllocBR[i].Y, 1, null);
+                    if (entryAllocBR[i].X > maxLenX) maxLenX = entryAllocBR[i].X;
+                    //_context._logger.WriteLine($"{i} : top left ({entryAllocTL[i].X}, {entryAllocTL[i].Y}), bottom right ({entryAllocBR[i].X}, {entryAllocBR[i].Y})");
                 }
-                var posYTrack = UICommon.ProgressTrackFraction(entryAllocBR[visibleEntries].X, 314, 532, 0);
+                var posYTrack = UICommon.ProgressTrackFraction(maxLenX, 314, 532, 0);
                 // draw bustup
                 _uiCommon._setRenderTarget(masker, 0, *_uiCommon._ActiveDrawTypeId);
                 _bustup.UBustupObject_DrawBustupShadowImpl(self->BustupObject_, self->bustupShadowX + 1106, -151, 1, *_uiCommon._ActiveDrawTypeId, 1);
@@ -357,7 +367,7 @@ namespace p3rpc.femc.Components
                         ListBoxFloats[visibleEntries, 0] * self->speechShadowMod.Y + 811, 0), 
                     new FVector(
                         UICommon.Lerp(0.777f, 1, posYTrack) * self->speechShadowMod.X,
-                        ListBoxFloats[visibleEntries, 1] * self->speechShadowMod.Y, 0), 
+                        ListBoxFloats[visibleEntries, 1] * self->speechShadowMod.Y, 1), 
                     new FVector(0, self->speechShadowRotation + 4.6f, 0),
                     ConfigColor.ToFSprColorWithAlpha(_context._config.MsgSimpleSelectShadowEx, (byte)(self->speechShadowOpacity * 102)),
                     0x17);
@@ -480,8 +490,10 @@ namespace p3rpc.femc.Components
                 }
 
                 // Draw selection entry text + selection rectangle
-                var textPos = new FVector2D(speechShadowX - 252, ListBoxFloats[visibleEntries, 8] + 811);
+                var textPosXLerp = UICommon.Lerp(-252, -318, posYTrack);
+                var textPos = new FVector2D(speechShadowX + textPosXLerp, ListBoxFloats[visibleEntries, 8] + 811);
                 var selBoxLength = entryAllocBR[self->BRIndex1 + self->BRIndex2].X > 314 ? entryAllocBR[self->BRIndex1 + self->BRIndex2].X + 120 : 434;
+                if (selBoxLength > 620) selBoxLength = 620;
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_SourceAlpha, EUIBlendFactor.UI_BF_InverseSourceAlpha,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
                 _drawSelectText(self, selEntries, textEntries, &entryTL, &entryBR, textPos.X, textPos.Y, 
@@ -507,13 +519,11 @@ namespace p3rpc.femc.Components
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
                 _drawSelectText(self, selEntries, textEntries, &entryTL, &entryBR, textPos.X, textPos.Y, selTextColor, selTextCol, nonSelTextCol, selTexOffset, nonSelTexOffset);
 
-
                 NativeMemory.Free(speechBgData);
                 NativeMemory.Free(entryAllocTL);
                 NativeMemory.Free(entryAllocBR);
                 NativeMemory.Free(selEntries);
             }
-            //_drawListBox.OriginalFunction(self);
         }
 
         private unsafe FSprColor UMsgProcWindow_Select_Simple_SetColorPassthroughImpl(FSprColor source)

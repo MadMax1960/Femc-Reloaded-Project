@@ -3,13 +3,6 @@ using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
-using Reloaded.Memory.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
@@ -167,6 +160,7 @@ namespace p3rpc.femc.Components
         private string UCmpItemDraw_ListTextNoSelect_SIG = "81 CB 00 EA C2 08 F3 0F 10 35 ?? ?? ?? ??";
         private string UCmpItemDraw_ListTextCanSelect_SIG = "81 CB 00 FF FF 00";
         private string UCmpItemDraw_ListTextCurrNoSel_SIG = "81 CB 00 53 53 53";
+        private string UCmpItemDraw_ItemDescriptionColor_SIG = "41 81 CF 00 FF FF 00 89 5C 24 ??";
 
         private IAsmHook _texTintColor;
 
@@ -201,6 +195,10 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSkillTextColorCurrSel.ToU32())));
             });
+            _context._utils.SigScan(UCmpItemDraw_ItemDescriptionColor_SIG, "UCmpItemDraw::ItemDescriptionColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampSkillTextColor.ToU32())));
+            });
         }
 
         public override void Register()
@@ -210,45 +208,384 @@ namespace p3rpc.femc.Components
         }
     }
 
-    public class CampEquip : ModuleBase<FemcContext>
+    public class CampEquip : ModuleAsmInlineColorEdit<FemcContext>
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
+
+        private string UCmpEquipDraw_DrawOverviewListTypeBg_SIG = "0D 00 5C 20 0C";
+        private string UCmpEquipDraw_DrawOverviewListTypeText_SIG = "0D 00 F5 C9 79 F3 44 0F 11 5C 24 ??";
+        private string UCmpEquipDraw_DrawEquipText_Unsel_SIG = "81 CB 00 FF FC 00 E8 ?? ?? ?? ??";
+        private string UCmpEquipDraw_DrawEquipItemStat_Unsel_SIG = "41 81 CA 00 FF FC 00";
+        private string UCmpEquipDraw_DrawEqupItemStatNum_Light1_SIG = "0D 00 FF FC 00 BF 00 80 80 80";
+        private string UCmpEquipDraw_DrawEquipItemStatsNum_SIG = "48 8B C4 57 41 54 41 56 41 57 48 81 EC C8 00 00 00";
+        private string UCmpEquipDraw_DrawItemsDescText_SIG = "81 CF 00 FF FC 00";
+        private string UCmpEquipDraw_DrawItemListEntryName_SIG = "0D 00 FF FC 00 80 BC 24 ?? ?? ?? ?? 00";
+        private string UCmpEquipDraw_DrawDetailsTypeBg_SIG = "81 CF 00 5C 20 0C";
+        private string UCmpEquipDraw_DrawDetailsTypeText_SIG = "81 CB 00 F5 C9 79 E8 ?? ?? ?? ?? 49 8B 8D ?? ?? ?? ?? BA 16 00 00 00 E8 ?? ?? ?? ?? 48 8B 4D ?? F3 41 0F 58 FF C6 44 24 ?? 01 F3 41 0F 5C F4 44 89 64 24 ?? 45 8B C7";
+
+        private IHook<UCmpEquipDraw_DrawEquipItemStatsNum> _drawStatsNum;
 
         public unsafe CampEquip(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
+            // UCmpEquipDraw::DrawEqiuppedEquipment
+            _context._utils.SigScan(UCmpEquipDraw_DrawOverviewListTypeBg_SIG, "UCmpEquipDraw::DrawOverviewListTypeBg", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSocialLinkDark.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquipDraw_DrawOverviewListTypeText_SIG, "UCmpEquipDraw::DrawOverviewListTypeText", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampEquipOverviewListType.ToU32IgnoreAlpha())));
+            });
+            // UCmpEquipDraw::DrawUnselectedEquipText
+            _context._utils.SigScan(UCmpEquipDraw_DrawEquipText_Unsel_SIG, "UCmpEquipDraw::DrawEquipText", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSkillTextColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquipDraw_DrawEquipItemStat_Unsel_SIG, "UCmpEquipDraw::DrawEquipItemStat", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampSkillTextColor.ToU32IgnoreAlpha())));
+            });
+            // UCmpEquipDraw::DetailsMenuDrawTypeBg
+            _context._utils.SigScan(UCmpEquipDraw_DrawDetailsTypeBg_SIG, "UCmpEquipDraw::DrawDetailsListTypeBg", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSocialLinkDark.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquipDraw_DrawDetailsTypeText_SIG, "UCmpEquipDraw::DrawDetailsListTypeText", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampEquipOverviewListType.ToU32IgnoreAlpha())));
+            });
 
+            _context._utils.SigScan(UCmpEquipDraw_DrawEquipItemStatsNum_SIG, "UCmpEquipDraw::DrawEquipItemStatsNum", _context._utils.GetDirectAddress, addr => _drawStatsNum = _context._utils.MakeHooker<UCmpEquipDraw_DrawEquipItemStatsNum>(UCmpEquipDraw_DrawEquipItemStatsNumImpl, addr));
+            _context._utils.SigScan(UCmpEquipDraw_DrawItemsDescText_SIG, "UCmpEquipDraw::DrawItemsDescText", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSkillTextColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquipDraw_DrawItemListEntryName_SIG, "UCmpEquipDraw::DrawItemListEntryName", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampItemStatValueValColor.ToU32IgnoreAlpha())));
+            });
         }
         public override void Register()
         {
             _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
+
+        private unsafe void UCmpEquipDraw_DrawEquipItemStatsNumImpl(UCmpEquipDraw* self, int queueId, uint num, char selected, float X, float Y, int menuType, FSprColor baseColor, char a9, char a10)
+        {
+            var campSpr = (USprAsset*)_uiCommon._globalWorkGetUIResources()->GetAssetEntry(0x32);
+            if (num > 999) num = 999;
+            var midGray = new FSprColor(0x80, 0x80, 0x80, baseColor.A);
+            var lightGray = new FSprColor(0xb9, 0xb9, 0xb9, baseColor.A);
+            var black = new FSprColor(0, 0, 0, baseColor.A);
+            var white = new FSprColor(0xff, 0xff, 0xff, baseColor.A);
+            var padColor = ConfigColor.ToFSprColorWithAlpha(_context._config.CampItemStatValuePadColor, baseColor.A);
+            var valColor = ConfigColor.ToFSprColorWithAlpha(_context._config.CampItemStatValueValColor, baseColor.A);
+            var size = menuType == 0 ? 1f : 0.8f;
+            var valueColor = menuType switch // 0*90*
+            {
+                0 | 2 => a10 == 0 ? valColor : black,
+                _ => white,
+            };
+            var paddingColor = menuType switch // *0*90
+            {
+                0 | 2 => a10 == 0 ? padColor : midGray,
+                _ => midGray,
+            };
+            var pos = new FVector2D(
+                X + menuType switch { 0 => 89, 1 => 100, 2 => 82, _ => 0 },
+                Y + menuType switch { 0 => -24, 1 => 66, 2 => 2, _ => 0 }
+            );
+            var activeColor = valueColor;
+            if (a10 == 0) _uiCommon._drawSprDetailedParams(campSpr, 0, num % 10 + 0x78, pos.X, pos.Y, 0, activeColor, queueId, 0, size, size, 4, 1);
+            pos.X -= menuType == 0 ? 29 : 23;
+            if (num < 10) activeColor = paddingColor;
+            if (a10 == 0 || num < 10) _uiCommon._drawSprDetailedParams(campSpr, 0, (num / 10) % 10 + 0x78, pos.X, pos.Y, 0, activeColor, queueId, 0, size, size, 4, 1);
+            pos.X -= menuType == 0 ? 29 : 23;
+            if (num < 100) activeColor = paddingColor;
+            if (a10 == 0 || num < 100) _uiCommon._drawSprDetailedParams(campSpr, 0, (num / 100) % 10 + 0x78, pos.X, pos.Y, 0, activeColor, queueId, 0, size, size, 4, 1);
+        }
+
+        private unsafe delegate void UCmpEquipDraw_DrawEquipItemStatsNum(UCmpEquipDraw* self, int queueId, uint num, char a4, float X, float Y, int menuType, FSprColor baseColor, char a9, char a10);
     }
 
-    public class CampPersona : ModuleBase<FemcContext>
+    public class CampPersona : ModuleAsmInlineColorEdit<FemcContext>
     {
+
         private UICommon _uiCommon;
         private CampCommon _campCommon;
+
+        // UCmpPersona::DrawPersonaStockList
+        private string UCmpPersona_DrawCatchphraseColor_SIG = "E8 ?? ?? ?? ?? 4C 8D 44 24 ?? 48 8B CB 48 8B 10 E8 ?? ?? ?? ?? F3 0F 10 77 ??";
+
+        private string UCmpPersona_SelArcanaBgColor_SIG = "E8 ?? ?? ?? ?? 48 8B 45 ?? 48 8D 8D ?? ?? ?? ?? 4C 89 7C 24 ?? 0F 28 D6 66 C7 45 ?? 74 0C";
+        private string UCmpPersona_SelArcanaTextColor_SIG = "44 89 74 24 ?? 89 44 24 ?? E8 ?? ?? ?? ?? 66 89 75 ??";
+        private string UCmpPersona_UnselArcanaBgColor_SIG = "E8 ?? ?? ?? ?? 48 8B 45 ?? 48 8D 8D ?? ?? ?? ?? 4C 89 7C 24 ?? 0F 28 D6 66 C7 44 24 ?? FF FF";
+        private string UCmpPersona_UnselArcanaTextColor_SIG = "44 89 74 24 ?? 89 44 24 ?? E8 ?? ?? ?? ?? 41 0F 28 C9";
+        private string UCmpPersona_PersonaNameColor_SIG = "48 8B 85 ?? ?? ?? ?? 48 8D 8D ?? ?? ?? ?? 48 89 44 24 ?? 0F 28 D6 48 8D 45 ?? 4C 89 7C 24 ?? 48 89 44 24 ?? 44 89 74 24 ??";
+        private string UCmpPersona_BlankSlotColor_SIG = "41 81 C9 00 FF FF 00";
+
+        private string UCmpPersona_PersonaNameColorTrans_SIG = "F3 0F 5C CE F3 41 0F 59 D2";
+        private string UCmpPersona_UnselArcanaBgColorTrans_SIG = "41 81 C9 00 44 0B 00";
+        private string UCmpPersona_BlankSlotColorTrans_SIG = "41 0F 28 C4 C6 44 24 ?? 01";
+        private string UCmpPersona_UnselArcanaBgTextTrans_SIG = "83 C3 5E C6 44 24 ?? 01 41 0F 28 C9";
+        private string UCmpPersona_SelArcanaBgColorTrans_SIG = "0D 00 FF FF 00 0F 11 81 ?? ?? ?? ??";
+        private string UCmpPersona_SelArcanaBgTextTrans_SIG = "0D 00 74 0C 00";
+
+        private IAsmHook _phraseColor;
+        private IAsmHook _nameColor;
+        private IAsmHook _selArcanaBgColor;
+        private IAsmHook _selArcanaTextColor;
+        private IAsmHook _unselArcanaBgColor;
+        private IAsmHook _unselArcanaTextColor;
+
+        private IAsmHook _nameColorTrans;
+        private IAsmHook _blankSlotTrans;
+        private IAsmHook _unselArcanaTextColorTrans;
+
+        private IReverseWrapper<UCmpPersona_InjectColorR9> _nameColorWrapper;
+        private IReverseWrapper<UCmpPersona_InjectColorR9> _selArcanaBgColorWrapper;
+        private IReverseWrapper<UCmpPersona_InjectColorRAX> _selArcanaTextColorWrapper;
+        private IReverseWrapper<UCmpPersona_InjectColorR9> _unselArcanaBgColorWrapper;
+        private IReverseWrapper<UCmpPersona_InjectColorRAX> _unselArcanaTextColorWrapper;
+
+        private IReverseWrapper<UCmpPersona_InjectColorR9> _nameColorTransWrapper;
+        private IReverseWrapper<UCmpPersona_InjectColorR9> _blankSlotTransWrapper;
+        private IReverseWrapper<UCmpPersona_InjectColorR9PreserveRAX> _unselArcanaTextColorTransWrapper;
 
         public unsafe CampPersona(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
+            _context._utils.SigScan(UCmpPersona_DrawCatchphraseColor_SIG, "UCmpPersona::DrawCatchphraseColor", _context._utils.GetDirectAddress, addr =>
+            {
+                FLinearColor colorOut = ConfigColor.ToFLinearColor(_context._config.CampPersonaArcanaPhraseColor);
+                string[] function =
+                {
+                    "use64",
+                    $"mov dword [rsp + 0x40], {BitConverter.SingleToUInt32Bits(colorOut.R)}",
+                    $"mov dword [rsp + 0x44], {BitConverter.SingleToUInt32Bits(colorOut.G)}",
+                    $"mov dword [rsp + 0x48], {BitConverter.SingleToUInt32Bits(colorOut.B)}",
+                };
+                _phraseColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_PersonaNameColor_SIG, "UCmpPersona::PersonaNameColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_PersonaNameColorImpl, out _nameColorWrapper)}",
+                };
+                _nameColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_SelArcanaBgColor_SIG, "UCmpPersona::SelArcanaBgColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_SelArcanaBgColorImpl, out _selArcanaBgColorWrapper)}",
+                };
+                _selArcanaBgColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_SelArcanaTextColor_SIG, "UCmpPersona::SelArcanaTextColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_SelArcanaTextColorImpl, out _selArcanaTextColorWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
+                };
+                _selArcanaTextColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_UnselArcanaBgColor_SIG, "UCmpPersona::UnselArcanaBgColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_SelArcanaTextColorImpl, out _unselArcanaBgColorWrapper)}",
+                };
+                _unselArcanaBgColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_UnselArcanaTextColor_SIG, "UCmpPersona::UnselArcanaTextColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._utils.PreserveMicrosoftRegisters()}",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_SelArcanaBgColorImpl, out _unselArcanaTextColorWrapper)}",
+                    $"{_context._utils.RetrieveMicrosoftRegisters()}",
+                };
+                _unselArcanaTextColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_BlankSlotColor_SIG, "UCmpPersona::BlankSlotColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampPersonaNameColor.ToU32IgnoreAlpha())));
+            });
 
+            // Transition colors
+            _context._utils.SigScan(UCmpPersona_PersonaNameColorTrans_SIG, "UCmpPersona::PersonaNameColorTrans", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_PersonaNameColorImpl, out _nameColorTransWrapper)}",
+                };
+                _nameColorTrans = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_UnselArcanaBgColorTrans_SIG, "UCmpPersona::UnselArcanaBgColorTrans", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampPersonaArcanaBgColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpPersona_BlankSlotColorTrans_SIG, "UCmpPersona::BlankSlotColorTrans", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_BlankSlotTransImpl, out _blankSlotTransWrapper)}",
+                };
+                _blankSlotTrans = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_UnselArcanaBgTextTrans_SIG, "UCmpPersona::UnselArcanaBgTextTrans", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpPersona_BlankSlotTransImpl, out _unselArcanaTextColorTransWrapper)}",
+                };
+                _unselArcanaTextColorTrans = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpPersona_SelArcanaBgTextTrans_SIG, "UCmpPersona::SelArcanaBgTextTrans", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampPersonaArcanaBgColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpPersona_SelArcanaBgColorTrans_SIG, "UCmpPersona::SelArcanaBgColorTrans", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampPersonaNameColor.ToU32IgnoreAlpha())));
+            });
         }
         public override void Register()
         {
             _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();
         }
+        private unsafe FColor UCmpPersona_BlankSlotTransImpl(FColor source) => ConfigColor.ToFColor(_context._config.CampPersonaNameColor);
+        private unsafe FColor UCmpPersona_SelArcanaTextColorImpl(FColor source) => ConfigColor.ToFColorBPWithAlpha(_context._config.CampPersonaArcanaBgColor, source.A);
+        private unsafe FColor UCmpPersona_SelArcanaBgColorImpl(FColor source) => ConfigColor.ToFColorBPWithAlpha(_context._config.CampPersonaNameColor, source.A);
+        private unsafe FColor UCmpPersona_PersonaNameColorImpl(FColor source)
+        {
+            if (source.B != 0) return ConfigColor.ToFColorBPWithAlpha(_context._config.CampPersonaNameColor, source.A);
+            return source;
+        }
+
+        [Function(FunctionAttribute.Register.r9, FunctionAttribute.Register.r9, false)]
+        public unsafe delegate FColor UCmpPersona_InjectColorR9(FColor source);
+        // normal r9 delegates crashes bc rax is replaced, which is used as a pointer deref later
+        [Function(FunctionAttribute.Register.r9, FunctionAttribute.Register.r9, false, new Register[] { FunctionAttribute.Register.rax })] 
+        public unsafe delegate FColor UCmpPersona_InjectColorR9PreserveRAX(FColor source);
+        [Function(FunctionAttribute.Register.rax, FunctionAttribute.Register.rax, false)]
+        public unsafe delegate FColor UCmpPersona_InjectColorRAX(FColor source);
     }
 
-    public class CampStats : ModuleBase<FemcContext>
+    public class CampStats : ModuleAsmInlineColorEdit<FemcContext>
     {
         private UICommon _uiCommon;
         private CampCommon _campCommon;
 
+        private string UCmpStatus_CampDrawCharacterListColorLine_SIG = "8B 8C ?? ?? ?? ?? ?? 48 8B 45 ?? 81 E1 00 FF FF FF"; // 0x145309df8
+        // FUN_14129d350, 0x145309dd0
+        private string UCmpStatus_CampDrawCharacterDetailsColorLine_SIG = "48 8D 05 ?? ?? ?? ?? 8B 04 ?? 48 83 C4 28";
+
+        // Inactive party members in tartarus
+        private string UCmpStatus_CharacterDetailsInactiveBackgroundTartarus_SIG = "41 81 CC 00 79 38 1A";
+
+        // this includes lv, hp, sp and health bar shadows
+        private string UCmpStatus_CharacterDetailsInactiveSelectedParamUsedTartarus_SIG = "0D 00 79 38 1A 45 84 D2";
+
+        private string UCmpStatus_CharacterDetailsInactiveSelectedParamUnusedTartarus_SIG = "B8 00 B3 73 4B 41 BB 00 CD CD CD";
+        private string UCmpStatus_CharacterDetailsInactiveSelectedNameTartarus_SIG = "0D 00 79 38 1A 45 8B CB";
+        private string UCmpStatus_CharacterDetailsInactiveSelectedHealthBarRemainingTartarus_SIG = "C7 45 ?? 00 B3 73 4B";
+        private string UCmpStatus_CharacterDetailsInactiveSelectedLineTartarus_SIG = "0D 00 79 38 1A EB ??";
+        private string UCmpStatus_CharacterDetailsInactiveSelectedHPLostLineTartarus_SIG = "41 B8 00 A6 62 3A";
+
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedParamUsedTartarus_SIG = "41 81 C8 00 EC D4 C0";
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedPlayerNameTartarus_SIG = "0D 00 EC D4 C0 41 81 CC 00 79 38 1A";
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedLinesTartarus_SIG = "BA 00 EC D4 C0";
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarRemainingTartarus_SIG = "41 B8 00 B3 73 4B";
+        private string UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarShadow_SIG = "81 CB 00 79 38 1A";
+
         public unsafe CampStats(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
+            // TODO: Add options to dehardcode status colors per character
+            _context._utils.SigScan(UCmpStatus_CampDrawCharacterListColorLine_SIG, "UCmpStatus::CampDrawCharacterListColorLine", 
+                offset => (nuint)(_context._baseAddress + *(int*)(_context._baseAddress + offset + 3)), 
+                addr => *(FSprColor*)addr = ConfigColor.ToFSprColor(_context._config.CampStatusKotoneLineColor));
+            _context._utils.SigScan(UCmpStatus_CampDrawCharacterDetailsColorLine_SIG, "UCmpStatus::CampDrawCharacterDetailsColorLine", _context._utils.GetIndirectAddressLong, addr =>
+            {
+                *(FSprColor*)addr = ConfigColor.ToFSprColor(_context._config.CampStatusKotoneLineColor);
+            });
+
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveBackgroundTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveBackgroundTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => 
+                _context._memory.Write(addr + 3, _context._config.CampStatusInactiveMemberBgTartarus.ToU32IgnoreAlpha())));
+            });
+
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedParamUsedTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedParamUsedTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedParamUnusedTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedParamUnusedTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedNameTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedNameTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedHealthBarRemainingTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedHealthBarRemainingTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 3, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedLineTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedLineTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveSelectedHPLostLineTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveSelectedHPLostLineTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 2, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
+
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedParamUsedTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedParamUsedTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => 
+                _context._memory.Write(addr + 3, _context._config.CampStatusInactiveMemberDetailsPalePinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedPlayerNameTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedPlayerNameTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsPalePinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedLinesTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedLinesTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 1, _context._config.CampStatusInactiveMemberDetailsPalePinkTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarRemainingTartarus_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedHealthBarRemainingTartarus", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 2, _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_CharacterDetailsInactiveUnselectedHealthBarShadow_SIG, "UCmpStatus::CharacterDetailsInactiveUnselectedHealthBarShadow", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
+                _context._memory.Write(addr + 2, _context._config.CampStatusInactiveMemberDetailsDarkPinkTartarus.ToU32IgnoreAlpha())));
+            });
 
         }
         public override void Register()
@@ -300,6 +637,7 @@ namespace p3rpc.femc.Components
         private string ABtlShuffleMainBase_CardFallUpdateInner_SIG = "48 8B C4 44 89 48 ?? 44 88 40 ?? 53";
 
         private string UCmpCommuDetails_BorderBottomRightColor_SIG = "48 8D 45 ?? 48 89 44 24 ?? F3 44 0F 11 54 24 ?? F3 44 0F 11 4C 24 ??";
+        private string UCmpCommuList_DrawSocialLinkList_ScrollbarThumb_SIG = "41 BE 00 54 0E 0E 49 8B 84 24 ?? ?? ?? ??";
 
         private IAsmHook _getSocialLinkColors;
         private IReverseWrapper<UCmpCommuList_GetSocialLinkLightColor> _getSocialLinkLightColor;
@@ -408,6 +746,10 @@ namespace p3rpc.femc.Components
                     $"mov dword [rbp - 0x80], {_context._config.CampSocialLinkDetailDescBg.ToU32ARGB()}"
                 };
                 _borderBottomRightColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpCommuList_DrawSocialLinkList_ScrollbarThumb_SIG, "UCmpCommuList::GetScrollbarThumbColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSocialLinkDetailDescBg.ToU32())));
             });
         }
         public override void Register()

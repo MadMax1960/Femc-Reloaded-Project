@@ -1,0 +1,5 @@
+volume: 0.2
+player_id: 0
+sample_rate: 44100
+num_channels: 2
+acb_name: 'bgm'

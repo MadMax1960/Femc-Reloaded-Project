@@ -1,0 +1,27 @@
+// Decompiled by Atlus Script Tools (2017-2021) © TGE
+const int MSG_TUTO_BTL03_00                = 0;
+const int MSG_TUTO_BTL03_01                = 1;
+const int MSG_TUTO_BTL03_02                = 2;
+const int MSG_TUTO_BTL04_00                = 3;
+const int MSG_THEURGIA_4TH_BTL_END         = 4;
+const int MSG_THEURGIA_4TH_BTL_END_2       = 5;
+const int MSG_THEURGIA_4TH_BTL_END_3       = 6;
+const int MSG_THEURGIA_4TH_BTL_END_4       = 7;
+const int SEL_THEURGIA_YESNO               = 8;
+const int MSG_SUGGEST_TUTO_MITSURU         = 9;
+const int MSG_SUGGEST_TUTO_FUKA_00         = 10;
+const int SEL_SEPARATELY_TUTO_00           = 11;
+const int MSG_SUGGEST_TUTO_MITSURU_2       = 12;
+const int MSG_SUGGEST_TUTO_FUKA_01         = 13;
+const int MSG_SUGGEST_MITSURU_00           = 14;
+const int MSG_SUGGEST_FUKA_00              = 15;
+const int MSG_SEPARATELY_YUKARI_00         = 16;
+const int MSG_SEPARATELY_JUNPEI_00         = 17;
+const int MSG_SEPARATELY_SANADA_00         = 18;
+const int MSG_SEPARATELY_MITSURU_0         = 19;
+const int MSG_SEPARATELY_FUKA_00           = 20;
+const int MSG_SEPARATELY_AEGIS_00          = 21;
+const int MSG_SEPARATELY_AMADA_00          = 22;
+const int MSG_SEPARATELY_KOROMARU_         = 23;
+const int MSG_SEPARATELY_ARAGAKI_0         = 24;
+const int SEL_SEPARATELY_00                = 25;

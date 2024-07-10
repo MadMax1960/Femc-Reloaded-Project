@@ -13,6 +13,12 @@
          Test trimming with: `BuildLinked.ps1` in PowerShell. -->
     <ReloadedILLink>false</ReloadedILLink>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
   <ItemGroup>
     <ReloadedLinkRoots Include="p3rpc.femc" />
     <!-- Add assemblies to be trimmed. You might need to add their dependencies too!  -->
@@ -30,20 +36,32 @@
   <ItemGroup>
     <Content Include="ModConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+	</Content>
     <None Update="Preview.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="p3rpc.commonmodutils" Version="1.1.0" />
-    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.1.2" />
+    <PackageReference Include="p3rpc.commonmodutils" Version="1.4.0" />
+    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.4.5" />
     <PackageReference Include="Reloaded.Memory" Version="9.4.1" />
     <PackageReference Include="Reloaded.Memory.SigScan.ReloadedII.Interfaces" Version="1.2.0" />
     <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.4.0" ExcludeAssets="runtime" />
     <PackageReference Include="Reloaded.SharedLib.Hooks" Version="1.9.0" />
+    <PackageReference Include="UnrealEssentials.Interfaces" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\include\BGME.BattleThemes\BGME.BattleThemes.Interfaces\BGME.BattleThemes.Interfaces.csproj" />
+    <ProjectReference Include="..\include\Ryo\Ryo.Interfaces\Ryo.Interfaces.csproj" />
     <ProjectReference Include="..\include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj" />
+    <ProjectReference Include="..\include\Unreal.ObjectsEmitter\Unreal.ObjectsEmitter.Interfaces\Unreal.ObjectsEmitter.Interfaces.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms.Analyzers.CSharp">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\8.0.5\analyzers\dotnet\cs\System.Windows.Forms.Analyzers.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.Analyzers.resources">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\8.0.5\analyzers\dotnet\cs\System.Windows.Forms.Analyzers.resources.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

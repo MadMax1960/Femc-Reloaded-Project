@@ -1,0 +1,307 @@
+[msg MSG_WIN_COMMON_FUKA_00 [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0][uf 3 1 3 0 65535 5143 0 0]¡Sombra abatida! ¡Buen trabajo![n][uf 1 1][e]
+
+[msg MSG_WIN_COMMON_FUKA_10 [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5003 0 0]Parece que hay un cofre del tesoro más adelante, pero también percibo la presencia de un enemigo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Si estás cansada de luchar, puedes parar y tomar un descanso para recuperarte.[n][uf 1 1][e]
+
+[msg MSG_WIN_COMMON_FUKA_11 [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Parece que habéis acabado con todas las sombras de esta zona.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Ahora solo nos falta abrir ese cofre del tesoro. ¡Venga, vamos![n][uf 1 1][e]
+
+[sel SEL_WIN_RETURN top]
+[uf 0 5 65278][uf 2 1]Volver a la entrada[e]
+[uf 0 5 65278][uf 2 1]Continuar[e]
+
+[msg MSG_WIN_RETURN_FUKA_00 [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Entendido.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Tened cuidado. Es fácil perderse por aquí.[n][uf 1 1][e]
+
+[msg MSG_WIN_RETURN_FUKA_10 [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Entendido. Cuenta con mi ayuda.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Si la cosa se pone mal, no dudes en retirarte.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_0_1_YUKARI [Yukari Takeba]]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 6 65535 0 0 0][uf 3 1 3 0 65535 1119 0 0]¿Soy la única que pensaba que esto iba a ser fácil? Porque no lo ha sido en absoluto y me ha pillado totalmente desprevenida.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 0 65535 0 0 0]Ahora sé que no se puede juzgar un libro por su portada. La próxima vez tendré más cuidado.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 1 65535 0 0 0]Parece que nos queda trabajo. Venga, echemos un vistazo.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_0_1_JUNPEI [Junpei Iori]]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 3 65535 0 0 0][uf 3 1 3 0 65535 2115 0 0]Uff, menos mal que se ha terminado. Pensé que iba a estar chupado, pero me equivoqué.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 0 0 0]Así que intentando pillarnos desprevenidos, ¿eh? Pues la llevas clara.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 0 0 0]Por cierto, más adelante hay un tesoro, ¿no? ¡Venga, a por nuestro botín![n][uf 1 1][e]
+
+[msg MSG_WIN_3_0_1_SANADA [Akihiko Sanada]]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 1 65535 0 0 0][uf 3 1 3 0 65535 3060 0 0]Este combate ha sido más duro de lo que esperaba.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 1 65535 0 0 0]¿Tal vez el enemigo trató de engañarnos fingiendo que era débil? Como si esos trucos tan rastreros funcionaran con nosotros.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 0 65535 0 0 0]Venga, que aún nos queda. En marcha.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_0_1_MITSURU [Mitsuru Kirijo]]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0][uf 3 1 3 0 65535 4112 0 0]Este enemigo era de los fuertes... O puede que yo lo haya subestimado.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0]De ser así, os pido disculpas. No debería haber dado nada por hecho, y más si lo que está en juego son nuestras vidas.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0]No perdamos la concentración y sigamos avanzando.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_0_1_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0][uf 3 1 3 0 65535 5143 0 0]¡Sombra abatida! ¡Buen trabajo, equipo![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Se parecía a otra sombra que ya habíamos visto, solo que esta era mucho más fuerte, ¿verdad?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Será mejor ir preparados por si algo así vuelve a suceder. No bajéis la guardia.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_0_2_SANADA [Akihiko Sanada]]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 0 65535 0 0 0][uf 3 1 3 0 65535 3073 0 0]Parece que se están uniendo sombras con diferentes afinidades. Incluso tienen un miembro que da apoyo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 0 65535 0 0 0]Si trabajan en equipo, la cosa puede ponerse seria.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 0 65535 0 0 0]Creo que eso demuestra que el trabajo en equipo potencia significativamente la fuerza de combate del grupo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 1 65535 0 0 0]Dicho esto, confiamos en ti, líder.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_0_2_MITSURU [Mitsuru Kirijo]]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0][uf 3 1 3 0 65535 4078 0 0]Cada una de esas sombras tenía un rol específico y sus acciones estaban perfectamente coordinadas.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0]Los grupos en los que cada miembro puede compensar las debilidades de los demás son más poderosos, pero al final hemos ganado.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 1 65535 0 0 0]Y todo gracias a nuestra excepcional líder. Cuento contigo para el próximo combate.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_0_2_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5006 0 0]Esas sombras... Cada una de ellas poseía habilidades únicas, lo que aportaba equilibrio al grupo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Si las sombras van a unir fuerzas a partir de ahora, deberíamos tener mucho más cuidado.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Aunque, si logramos descubrir qué estrategia siguen, quizá podamos aprovecharla para encontrar su punto débil.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Yo estaré al tanto del análisis. Las decisiones te las dejo a ti, líder.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_0_2_AEGIS [Aigis]]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0][uf 3 1 3 0 65535 6060 0 0]Todas las sombras del grupo con el que acabamos de luchar estaban especializadas en una habilidad.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0]Por ejemplo, yo soy buena eliminando enemigos con mis armas de fuego.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0]Aunque creo que eso ya lo sabíais. En fin, prosigamos.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_1_1_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5068 0 0]No sé si será una coincidencia, pero ese enemigo parecía un dado...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]¿Tendría algún curso de acción predeterminado en función de la tirada? Algo así como un número ligado a una acción concreta.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 6 65535 50 0 0]Si es así, entonces es bastante arriesgado. Yo no podría dejarlo todo a la suerte.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Aunque no pasa nada por echar mano de la suerte de vez en cuando. Yo también os deseo mucha suerte en el próximo combate.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_1_2_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 6 65535 50 0 0][uf 3 1 3 0 65535 5061 0 0]Otro enemigo de tipo dado... Vi que sacó un cuatro y luego...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Ajam. No cabe duda de que se trata de un ataque diferente al de la última vez. Ojalá pudiéramos descifrar el patrón...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Quizá este combate nos pueda servir de referencia, ya que no creo que en el próximo nos toque luchar con otra sombra de tipo dado.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]¿Seguimos?[n][uf 1 1][e]
+
+[msg MSG_WIN_3_1_3_YUKARI [Yukari Takeba]]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 0 65535 0 0 0][uf 3 1 3 0 65535 1114 0 0]Estaba demasiado ocupada luchando como para darme cuenta, pero ¿de verdad sigue un patrón el dado?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 1 65535 0 0 0]Bueno, si hemos ganado es porque la suerte está de nuestra parte.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 4 65535 0 0 0]¿Quién sabe? Quizá tengamos una suerte tremenda y nos llevamos el premio gordo en el próximo cofre del tesoro.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 6 65535 0 0 0]O no. Venga, vamos a comprobarlo de todas formas.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_1_3_JUNPEI [Junpei Iori]]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 0 0 0][uf 3 1 3 0 65535 2115 0 0]La verdad es que no estaba prestando atención. ¿De verdad la tirada ha tenido algún efecto?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 0 0 0]¿Acaso importa? ¡Hemos ganado! ¡Eso demuestra que somos más fuertes y suertudos que ellas![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 0 0 0]Esperad un momento... ¡¿Eso significa que cuando abramos el cofre del tesoro nos tocará el premio gordo?![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 0 0 0]Joder, tíos, ¡¿qué haremos si empieza a salir oro y gemas por doquier?! ¡Seremos ricos de por vida! ¡Venga, vamos a mirar![n][uf 1 1][e]
+
+[msg MSG_WIN_3_1_3_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5116 0 0]Parece que la tirada tenía algo que ver con los ataques.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Si la suerte es un factor decisivo en combate, ¿cómo podríais mejorarla...?[n][uf 1 1][e]
+
+[msg MSG_WIN_3_1_3_KOROMARU [Koromaru]]
+[uf 0 5 65278][uf 2 1][uf 4 5 9 0 65535 0 0 0][uf 3 1 3 0 65535 8013 0 0]¡Guau, guau! ¡Guau![n][uf 1 1][e]
+
+[msg MSG_WIN_3_1_3_KOROMARU_F [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Creo que Korocito quiere que recemos en el santuario.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Je, je. Tal vez tengas razón, Korocito. Deberíamos pasar por el santuario cuando salgamos de paseo.[n][uf 1 1][e]
+
+[msg MSG_WIN_3_1_3_KOROMARU_2 [Koromaru]]
+[uf 0 5 65278][uf 2 1][uf 4 5 9 1 65535 0 0 0][uf 3 1 3 0 65535 8008 0 0]¡Guau![n][uf 1 1][e]
+
+[msg MSG_WIN_4_0_1_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 50 0 0][uf 3 1 3 0 65535 5114 0 0]Envenenarse es aterrador, porque tu salud no para de consumirse.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Asegúrate de tener disponible algún medio para curarte cuando vayas a la Tártaro.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Aunque eso también es una estrategia eficaz contra nuestros enemigos. Deberías usarla cuando tengas oportunidad.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_0_2_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0][uf 3 1 3 0 65535 5143 0 0]Enemigo abatido. ¡Buen trabajo![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 6 65535 50 0 0]Es un poco injusto que el enemigo pueda drenar tu energía... Aunque hayamos ganado, podría afectar a nuestro progreso.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Más adelante, seguramente encontremos otro enemigo de los fuertes. Si crees que va a ser muy arriesgado luchar, te sugiero que nos retiremos.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_0_3_SANADA [Akihiko Sanada]]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 0 65535 0 0 0][uf 3 1 3 0 65535 3095 0 0]Aunque ese enemigo era de los duros, no iba a permitirme perder en una prueba de fuerza.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 0 65535 0 0 0]La sombra que parecía una mujer no ha tenido piedad alguna. Me ha recordado a Mi...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 6 65535 0 0 0]No he dicho nada. Aún siento aprecio por mi vida.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_0_3_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0][uf 3 1 3 0 65535 5143 0 0]Buen trabajo. Habéis logrado derrotar a esa sombra poderosa.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Por cierto, es una tontería que se me ha ocurrido, pero la silla en la que estaba la sombra...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]¿Cómo podía flotar en el aire? ¿Tenía algún propulsor o dispositivo antigravedad? Y si es así, ¿qué usará cómo combustible...?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 4 65535 50 0 0]¡Ay, lo siento! Solo me picaba la curiosidad.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 4 65535 50 0 0]En fin, me alegro de que la hayáis derrotado. Venga, vamos a echar un vistazo al cofre del tesoro.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_0_3_AEGIS [Aigis]]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0][uf 3 1 3 0 65535 6060 0 0]Esa sombra tomó la forma de lo que creo que es la "Santa Madre".[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0]Quizá todas las madres del mundo sean capaces de ejecutar ataques poderosos y devastadores como ese.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0][uf 3 1 3 0 65535 6142 0 0]Ya entiendo... Seré precavida para no enfadar a ninguna.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_0_3_AEGIS_H [Aigis]]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 3 65535 0 0 0][uf 3 1 3 0 65535 6110 0 0]Esa sombra tomó la forma de lo que creo que es la "Santa Madre".[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0]Quizá todas las madres del mundo cuenten con un poder tan devastador.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0]Ahora entiendo por qué comparan a las madres con osos. Cuando te metes con ellas, deben dar mucho miedo.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_0_3_ARAGAKI [Shinjiro Aragaki]]
+[uf 0 5 65278][uf 2 1][uf 4 5 10 0 65535 0 0 0][uf 3 1 3 0 65535 9105 0 0]No sé si las sombras tendrán género, pero esa tenía muy mala leche.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 10 0 65535 0 0 0]Nunca hagáis enfadar a una mujer. Y menos si es Ki...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 10 0 65535 0 0 0]No me he expresado bien. Olvidadlo. Venga, vamos.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 10 2 65535 0 0 0]En serio... Olvídalo.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_1_1_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5114 0 0]Un monstruo con cuerpo humano y cabeza de toro atrapado en un laberinto...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Es como si fuera alguna criatura mitológica. Y de las fuertes.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]¡Aun así, habéis logrado vencerla! Es increíble.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Seguid así, gente.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_1_2_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5062 0 0]¿En el ajedrez no hay también castillos blancos y negros?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 6 65535 50 0 0]Aunque ahí, ambos colores están en bandos opuestos... ¿Por qué razón iban a unirse?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Bueno, lo importante es que le habéis hecho un jaque mate sin pestañear. Venga, en marcha.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_1_3_MITSURU [Mitsuru Kirijo]]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0][uf 3 1 3 0 65535 4001 0 0]Ese oponente... ¿Os acordáis? Ya lo habíamos derrotado antes.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0]Resultan ser mucho más fuertes cuando se agrupan.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 1 65535 0 0 0]Aunque supongo que lo mismo se podría decir de nosotros. Esto nos sirve para recordar que el trabajo en equipo es importante.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_1_3_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5076 0 0]¿Os acordáis de esos enemigos? Ya los habíamos derrotado.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Parece que su fuerza crece mucho cuando se unen. No es tan fácil como sumar uno más uno...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Se me hace raro poner de ejemplo a las sombras, pero tenemos que conseguir que nuestro trabajo en equipo sea así de firme.[n][uf 1 1][e]
+
+[msg MSG_WIN_4_1_3_AMADA [Ken Amada]]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 1 65535 0 0 0][uf 3 1 3 0 65535 7001 0 0]El caballero contra el que hemos luchado estaba superguay.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 1 65535 0 0 0]Parecía sacado de un cuento de hadas. De estos en los que el caballero rescata a la princesa del malvado dragón.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 0 65535 0 0 0]Pero solo son cuentos de niños. No lo digo porque quiera salvar a una princesa ni nada de eso...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 4 65535 0 0 0]L-lo digo en serio, ¿vale? ¡V-venga, sigamos![n][uf 1 1][e]
+
+[msg MSG_WIN_4_1_3_KOROMARU [Koromaru]]
+[uf 0 5 65278][uf 2 1][uf 4 5 9 0 65535 0 0 0][uf 3 1 3 0 65535 8001 0 0]¡Guau, guau![n][uf 1 1][e]
+
+[msg MSG_WIN_4_1_3_KOROMARU_F [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0][uf 3 1 3 0 65535 5131 0 0]¡Buen trabajo, Korocito! ¿Qué tal una recompensa?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Esa sombra iba a caballo, ¿verdad? He oído que a los caballos les gustan las zanahorias...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]¿Qué tal si preparo zanahorias con arroz la próxima vez? Quizá las deje crudas para aportarle más textura...[n][uf 1 1][e]
+
+[msg MSG_WIN_4_1_3_KOROMARU_2 [Koromaru]]
+[uf 0 5 65278][uf 2 1][uf 4 5 9 0 65535 0 0 0][uf 3 1 3 0 65535 8003 0 0]Auuu...[n][uf 1 1][e]
+
+[msg MSG_WIN_5_0_1_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5070 0 0]Esa sombra llevaba a un buen séquito con ella.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Las cuatro sacrificaron sus vidas con tal de proteger a la que tenía aspecto de serpiente.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 6 65535 50 0 0]¿Estaban dispuestas a hacer algo así...? Desde luego, da que pensar.[n][uf 1 1][e]
+
+[msg MSG_WIN_5_0_2_YUKARI [Yukari Takeba]]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 3 65535 0 0 0][uf 3 1 3 0 65535 1119 0 0]Hay muchas sombras que son superparecidas. ¿Cuántas variantes podrá tener solo esa sombra?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 2 65535 0 0 0]Pf, esto es un lío. ¿Por qué no les quitamos los platos y se los pintamos a todas del mismo color?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 6 65535 0 0 0]Bueno, eso no resolvería nada... Ay, me estoy volviendo loca.[n][uf 1 1][e]
+
+[msg MSG_WIN_5_0_2_JUNPEI [Junpei Iori]]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 0 65535 0 0 0][uf 3 1 3 0 65535 2124 0 0]Siempre me lío cuando intento llevar el registro de esas sombras que parecen balanzas.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 0 0 0]Oye, una pregunta. ¿De qué color eran los platos de la última?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 0 0 0]Eran negros, ¿verdad? No, espera. Lo que era negro era el cuerpo, ¿no...?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 3 65535 0 0 0]Eh, [uf 4 2], ¿te acuerdas?[n][uf 1 1][e]
+
+[msg MSG_WIN_5_0_2_SANADA [Akihiko Sanada]]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 0 65535 0 0 0][uf 3 1 3 0 65535 3061 0 0]Esas sombras parecen estar desequilibradas y aun así se mantienen erguidas. Es como si se resistieran a caer.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 0 65535 0 0 0]Por cierto, cuando los boxeadores se pesan, suelen utilizar básculas mecánicas en lugar de digitales.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 1 65535 0 0 0]Pero no es por tradición ni nada de eso. Si os interesa, podéis buscarlo.[n][uf 1 1][e]
+
+[msg MSG_WIN_5_0_2_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5063 0 0]¿No os tienta poner algo en los platos para ver si esas balanzas funcionan de verdad?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Esas sombras parecían bastante robustas. A lo mejor, si Yukari y yo nos montáramos...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 4 65535 50 0 0]¡N-no he dicho nada! Es una idea terrible. Eso revelaría demasiada información...[n][uf 1 1][e]
+
+[msg MSG_WIN_5_1_1_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Esa sombra daba mucho miedo. Menos mal que habéis conseguido acabar con ella.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 50 0 0]Yo no creo en fantasmas, pero si se te aparece algo así en mitad de la noche...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 6 65535 50 0 0]Bueno, ahora que ya la hemos derrotado, no hay motivos para tener miedo. Es curioso que estas cosas ya no me asusten.[n][uf 1 1][e]
+
+[msg MSG_WIN_5_1_2_MITSURU [Mitsuru Kirijo]]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0][uf 3 1 3 0 65535 4122 0 0]Esta vez han aparecido cinco de golpe. ¿Es que estaban jugando a ser Featherman? O como quiera que se llame eso.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 1 65535 0 0 0]Sé que tienen su propio programa de televisión porque el Grupo Kirijo los ha patrocinado. Si no recuerdo mal, vaya.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 1 65535 0 0 0]Mmm... ¿Estos son los que van en moto? A lo mejor ese era otro programa...[n][uf 1 1][e]
+
+[msg MSG_WIN_5_1_2_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5061 0 0]Cinco individuos, cada uno de un color distinto y luchando en equipo... Es como en Featherman, el programa ese para niños.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Bueno, quizá debería retirar lo de que es para niños. He oído que el programa está tan bien hecho que lo ven personas de todas las edades.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Sería divertido que cada uno llevara un color distinto. Supongo que [uf 4 1] sería el rojo, ya que es la líder.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Tendré que consultarlo con Amada. Parece que sabe mucho sobre Featherman.[n][uf 1 1][e]
+
+[msg MSG_WIN_5_1_2_AEGIS [Aigis]]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0][uf 3 1 3 0 65535 6060 0 0]¿Ya ha terminado el combate? Qué raro. Los resultados contradicen los datos existentes.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0]En las batallas contra grupos de cinco adversarios de colores, hay otra fase de combate en la que nos volvemos gigantes.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 2 65535 0 0 0]¿O era que teníamos que pilotar un robot enorme...? Tendré que revisar mis datos cuando tenga tiempo.[n][uf 1 1][e]
+
+[msg MSG_WIN_5_1_2_AMADA [Ken Amada]]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 0 65535 0 0 0][uf 3 1 3 0 65535 7063 0 0]Dorado, plateado, negro, blanco y rosa... Qué combinación tan rara.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 3 65535 0 0 0]¿Cómo se llamarían...? ¿Los Tartarangers? No, qué nombre tan patético...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 4 65535 0 0 0]¡¿Qué...?![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 4 65535 0 0 0]¡E-eh, no es nada! No estaba pensando en Featherman ni en tonterías de esas, ¿eh? ¡V-venga, vamos a seguir![n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_1_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 50 0 0][uf 3 1 3 0 65535 5114 0 0]Es injusto que efectúen tantos ataques a la vez...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 3 65535 50 0 0]Aunque es normal que no jueguen limpio. Al fin y al cabo, su objetivo es hacer todo lo posible para acabar con nosotros...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 2 65535 50 0 0]No podemos permitir que se salgan con la suya. ¡Tenéis todo mi apoyo![n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_2_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5113 0 0]Esta ha sido de las duras... Ver a cuatro samuráis en armadura intimida bastante.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]¿Habéis visto que los cascos tenían algunas diferencias? El profesor Ono está muy puesto en historia. Seguro que sabe el motivo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 6 65535 50 0 0]Aunque probablemente daría una turra tan grande con el tema que hasta las sombras acabarían muertas del aburrimiento.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 2 65535 50 0 0]En fin, tenemos que seguir. Aún nos esperan otras sombras poderosas.[n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_YUKARI [Yukari Takeba]]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 1 65535 0 0 0][uf 3 1 3 0 65535 1114 0 0]Ha sido el combate más duro hasta la fecha, ¡pero hemos ganado![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 1 65535 0 0 0]Quién nos iba a decir que seríamos capaces de derrotar una cosa así hace...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 6 65535 0 0 0]Ah, ¿que se me notaba lo cagada que estaba al principio? Vaya, quizá es que tú tienes los nervios de acero...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 2 1 65535 0 0 0]Bueno, lo importante es lo lejos que hemos llegado. Tenemos que seguir luchando hasta el final.[n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_JUNPEI [Junpei Iori]]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 0 0 0][uf 3 1 3 0 65535 2118 0 0]¡Toma ahí! ¡Esta noche les hemos dado candela de la buena![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 1 65535 0 0 0]¡Nada puede con el poder de la amistad! El vínculo que compartimos es más fuerte que cualquier cosa...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 3 65535 0 0 0]¿Eh? ¿Que quién soy yo para hablar? Pues sí, supongo que tienes razón. Y más con todos los problemas que he causado.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 9 65535 0 0 0]¡Pero pienso compensarlo! ¡Estad bien atentos, porque vais a flipar con el Grand Slam que me voy a marcar![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 3 4 65535 0 0 0]Venga ya, colega... ¿Tanto te cuesta decir unas palabritas? Algo así tipo: "Cuento contigo, hermano".[n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_SANADA [Akihiko Sanada]]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 1 65535 0 0 0][uf 3 1 3 0 65535 3087 0 0]Y... ¡fuera![n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 1 65535 0 0 0]Creo que esta sombra ha sido la más fuerte a la que nos hemos enfrentado.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 1 65535 0 0 0]Este calentamiento nos ha venido de perlas de cara al combate final, ¿verdad?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 4 0 65535 0 0 0]Esto ya se acaba... Esta vez, el desafío corre de nuestra cuenta. Que no decaigan las fuerzas.[n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_MITSURU [Mitsuru Kirijo]]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 1 65535 0 0 0][uf 3 1 3 0 65535 4132 0 0]Una victoria con estilo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0]Jamás imaginé que llegaríamos tan lejos, y mucho menos que derrotaríamos a un enemigo tan poderoso...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0]Hace un año hubiera dicho que era imposible. Estoy asombrada con mi propio progreso, la verdad...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 1 65535 0 0 0]Y todo gracias a un trabajo en equipo impecable. Os agradezco todo lo que habéis hecho.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 5 0 65535 0 0 0]Prometo hacer todo lo posible hasta el final, y para eso necesito contar con vuestra ayuda.[n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_FUKA [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0][uf 3 1 3 0 65535 5114 0 0]La última sombra era muy fuerte. Superaba incluso a las grandes a las que nos enfrentamos todos los meses.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 0 65535 50 0 0]Hemos luchado contra un montón...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Pero de todos los combates salimos fortalecidos. Es algo que me maravilla.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Veros luchar me motiva a mejorar. Gracias por ser un ejemplo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 4 65535 50 0 0]Bueno, creo que es un poco pronto para decir eso. A lo que me refiero es a que...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]¡Hay que seguir luchando con todas nuestras fuerzas hasta el final![n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_AEGIS [Aigis]]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0][uf 3 1 3 0 65535 6087 0 0]Hemos ganado.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 0 65535 0 0 0]Me diseñaron para servir como arma. Mi razón de ser es destruir sombras.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 3 65535 0 0 0]Aunque eso es algo que nunca cambiará, ahora ese no es mi único objetivo...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 1 65535 0 0 0]Es difícil expresarlo con palabras, pero deseo estar a vuestro lado... Bueno, a tu lado, [uf 4 2].[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 7 1 65535 0 0 0]Y ese es mi motivo para seguir luchando.[n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_AMADA [Ken Amada]]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 1 65535 0 0 0][uf 3 1 3 0 65535 7115 0 0]A pesar de que parecía un monstruo gigante, ni se me ha pasado por la cabeza la posibilidad de perder.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 1 65535 0 0 0]Es imposible que sea más fuerte que el enemigo final. Si no podemos destruir a esta cosa, la llevamos clara.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 2 65535 0 0 0]No lo digo por subestimar al enemigo, sino porque creo que hay que echarle valor.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 2 65535 0 0 0]No me gustaría decepcionar a nadie. Ni a ti, ni tampoco a él.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 8 1 65535 0 0 0]¡Así que hay que seguir luchando![n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_KOROMARU [Koromaru]]
+[uf 0 5 65278][uf 2 1][uf 4 5 9 0 65535 0 0 0][uf 3 1 3 0 65535 8007 0 0]¡Auuuuuu![n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_KOROMARU_F [Fuuka Yamagishi]]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0][uf 3 1 3 0 65535 5132 0 0]Se nota que Korocito está preparado para cualquier cosa que venga.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Quizá no lo entienda tan bien como Aigis, pero algo se me ha pegado después de haber pasado tanto tiempo juntos.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 6 1 65535 50 0 0]Korocito dice que cuenta contigo, [uf 4 1]. Venga, tenemos que llegar juntos hasta el final.[n][uf 1 1][e]
+
+[msg MSG_WIN_6_0_3_KOROMARU_2 [Koromaru]]
+[uf 0 5 65278][uf 2 1][uf 4 5 9 0 65535 0 0 0][uf 3 1 3 0 65535 8012 0 0]¡Guau! ¡Guau![n][uf 1 1][e]
+

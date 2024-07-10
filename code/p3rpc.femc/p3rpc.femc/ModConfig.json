@@ -3,9 +3,9 @@
   "ModName": "Femc Project",
   "ModAuthor": "Femc Reloaded Team",
   "ModVersion": "1.0.9",
-  "ModDescription": "Template for a Reloaded Mod Configuration",
+  "ModDescription": "This mod aims to readd the female protagonist Kotone Shiomi from Persona 3 Portable while updating her style to match Persona 3 Reload\u0027s style. With new tracks, new character model and text changes. BUT social links haven\u0027t been added (yet).",
   "ModDll": "p3rpc.femc.dll",
-  "ModIcon": "EmbeddedImage.png",
+  "ModIcon": "readmelogo.png",
   "ModR2RManagedDll32": "x86/p3rpc.femc.dll",
   "ModR2RManagedDll64": "x64/p3rpc.femc.dll",
   "ModNativeDll32": "",
@@ -18,6 +18,13 @@
   "PluginData": {
     "GameBananaDependencies": {
       "IdToConfigMap": {
+        "P3R.CostumeFramework": {
+          "Config": {
+            "ItemType": "Mod",
+            "ItemId": 501833
+          },
+          "ReleaseMetadataName": "P3R.CostumeFramework.ReleaseMetadata.json"
+        },
         "p3rpc.essentials": {
           "Config": {
             "ItemType": "Mod",
@@ -38,11 +45,27 @@
             "ItemId": 495507
           },
           "ReleaseMetadataName": "SharedScans.Reloaded.ReleaseMetadata.json"
+        },
+        "Unreal.ObjectsEmitter.Reloaded": {
+          "Config": {
+            "ItemType": "Mod",
+            "ItemId": 500638
+          },
+          "ReleaseMetadataName": "Unreal.ObjectsEmitter.Reloaded.ReleaseMetadata.json"
         }
       }
     },
     "GitHubDependencies": {
       "IdToConfigMap": {
+        "p3rpc.classconstructor": {
+          "Config": {
+            "UserName": "Rirurin",
+            "RepositoryName": "p3rpc.classconstructor",
+            "UseReleaseTag": true,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "p3rpc.classconstructor.ReleaseMetadata.json"
+        },
         "p3rpc.essentials": {
           "Config": {
             "UserName": "AnimatedSwine37",
@@ -117,16 +140,23 @@
   },
   "IsUniversalMod": false,
   "ModDependencies": [
+    "BGME.BattleThemes",
+    "BGME.Framework.API",
+    "BGME.Framework.P3R",
+    "P3R.CostumeFramework",
+    "p3rpc.classconstructor",
     "p3rpc.essentials",
     "p3rpc.nativetypes",
     "Reloaded.Memory.SigScan.ReloadedII",
     "reloaded.sharedlib.hooks",
     "Ryo.Reloaded",
-    "SharedScans.Reloaded"
+    "SharedScans.Reloaded",
+    "Unreal.ObjectsEmitter.Reloaded",
+    "UnrealEssentials"
   ],
   "OptionalDependencies": [],
   "SupportedAppId": [
     "p3r.exe"
   ],
-  "ProjectUrl": ""
+  "ProjectUrl": "https://github.com/MadMax1960/Femc-Reloaded-Project"
 }

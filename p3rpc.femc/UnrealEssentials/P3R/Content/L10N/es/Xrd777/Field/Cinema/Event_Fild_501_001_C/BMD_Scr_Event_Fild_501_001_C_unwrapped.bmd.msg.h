@@ -1,0 +1,25 @@
+// Decompiled by Atlus Script Tools (2017-2021) © TGE
+const int MSG_TARTAROS_BTL_YUKARI_         = 0;
+const int MSG_TARTAROS_BTL_YUKARI__2       = 1;
+const int MSG_TARTAROS_BTL_JUNPEI_         = 2;
+const int MSG_TARTAROS_BTL_JUNPEI__2       = 3;
+const int MSG_TARTAROS_BTL_SANADA_         = 4;
+const int MSG_TARTAROS_BTL_SANADA__2       = 5;
+const int MSG_TARTAROS_BTL_MITSURU         = 6;
+const int MSG_TARTAROS_BTL_MITSURU_2       = 7;
+const int MSG_TARTAROS_BTL_MITSURU_3       = 8;
+const int MSG_TARTAR_BTL_PT_MITSUR         = 9;
+const int MSG_TARTAR_BTL_PT_MITSUR_2       = 10;
+const int MSG_TARTAROS_BTL_AEGIS_0         = 11;
+const int MSG_TARTAROS_BTL_AEGIS_1         = 12;
+const int MSG_TARTAROS_BTL_AEGIS_2         = 13;
+const int MSG_TARTAROS_BTL_AEGIS_3         = 14;
+const int MSG_TARTAROS_BTL_KOROMAR         = 15;
+const int MSG_TARTAROS_BTL_KOROMAR_2       = 16;
+const int MSG_TARTAROS_BTL_AMADA_0         = 17;
+const int MSG_TARTAROS_BTL_AMADA_1         = 18;
+const int MSG_TARTAROS_BTL_ARAGAKI         = 19;
+const int MSG_TARTAROS_BTL_ARAGAKI_2       = 20;
+const int MSG_TARTAROS_BTL_FUKA_1          = 21;
+const int MSG_TARTAROS_BTL_FUKA_2          = 22;
+const int MSG_TARTAROS_BTL_FUKA_3          = 23;

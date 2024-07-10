@@ -1,4 +1,5 @@
-﻿using p3rpc.commonmodutils;
+﻿using p3rpc.classconstructor.Interfaces;
+using p3rpc.commonmodutils;
 using p3rpc.femc.Configuration;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Memory;
@@ -14,8 +15,9 @@ namespace p3rpc.femc
         public readonly ConfigColor ColorBlack = new ConfigColor(0x0, 0x0, 0x0, 0xff);
         public readonly ConfigColor ColorWhite = new ConfigColor(0xff, 0xff, 0xff, 0xff);
 
-        public FemcContext(long baseAddress, IConfigurable config, ILogger logger, IStartupScanner startupScanner, IReloadedHooks hooks, string modLocation, Utils utils, Memory memory, ISharedScans sharedScans)
-            : base (baseAddress, config, logger, startupScanner, hooks, modLocation, utils, memory, sharedScans) 
+        public FemcContext(long baseAddress, IConfigurable config, ILogger logger, IStartupScanner startupScanner, IReloadedHooks hooks, string modLocation, 
+            Utils utils, Memory memory, ISharedScans sharedScans, IClassMethods classMethods, IObjectMethods objectMethods)
+            : base (baseAddress, config, logger, startupScanner, hooks, modLocation, utils, memory, sharedScans, classMethods, objectMethods) 
         {
             _config = (Config)config;
         }

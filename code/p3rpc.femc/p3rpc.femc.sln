@@ -6,6 +6,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p3rpc.femc", "p3rpc.femc\p3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedScans.Interfaces", "include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj", "{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unreal.ObjectsEmitter.Interfaces", "include\Unreal.ObjectsEmitter\Unreal.ObjectsEmitter.Interfaces\Unreal.ObjectsEmitter.Interfaces.csproj", "{371FCC74-53DF-4735-B77A-2FC8A6F576CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BGME.BattleThemes.Interfaces", "include\BGME.BattleThemes\BGME.BattleThemes.Interfaces\BGME.BattleThemes.Interfaces.csproj", "{C2DA1AB4-1827-4814-8CDC-745CB131C9BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ryo.Interfaces", "include\Ryo\Ryo.Interfaces\Ryo.Interfaces.csproj", "{C11B0FE7-EAE8-4E07-AB8D-9D8433A035CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +26,18 @@ Global
 		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCEFC7FE-1F79-4911-B9F8-AF25B5339E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{371FCC74-53DF-4735-B77A-2FC8A6F576CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{371FCC74-53DF-4735-B77A-2FC8A6F576CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{371FCC74-53DF-4735-B77A-2FC8A6F576CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{371FCC74-53DF-4735-B77A-2FC8A6F576CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2DA1AB4-1827-4814-8CDC-745CB131C9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DA1AB4-1827-4814-8CDC-745CB131C9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2DA1AB4-1827-4814-8CDC-745CB131C9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2DA1AB4-1827-4814-8CDC-745CB131C9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C11B0FE7-EAE8-4E07-AB8D-9D8433A035CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C11B0FE7-EAE8-4E07-AB8D-9D8433A035CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C11B0FE7-EAE8-4E07-AB8D-9D8433A035CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C11B0FE7-EAE8-4E07-AB8D-9D8433A035CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,23 @@
+// Decompiled by Atlus Script Tools (2017-2021) © TGE
+const int SEL_BOSS                         = 0;
+const int MSG_OPE_STOP_YUKARI              = 1;
+const int MSG_OPE_STOP_JUNPEI              = 2;
+const int MSG_OPE_STOP_MITSURU             = 3;
+const int MSG_OPE_STOP_SANADA              = 4;
+const int MSG_OPE_STOP_FUKA                = 5;
+const int MSG_GOTO_OPE                     = 6;
+const int MSG_FUKA_LETS_GO_01              = 7;
+const int MND_BOOK_SHELF_01                = 8;
+const int MND_BOOK_SHELF_02                = 9;
+const int MND_BOOK_SHELF_03                = 10;
+const int MND_NOZOKI_ANYONE1               = 11;
+const int MND_NOZOKI_ANYONE2               = 12;
+const int SEL_YESNO                        = 13;
+const int MSG_OPE_STOP_AEGIS               = 14;
+const int MSG_OPE_STOP_AMADA               = 15;
+const int MSG_FUKA_LETS_GO_02              = 16;
+const int MSG_1103_MITURU_01               = 17;
+const int MSG_1103_IKUTUKI_01              = 18;
+const int MSG_1103_MITURU_02               = 19;
+const int MND_WAREHOUSE                    = 20;
+const int MND_CABINET                      = 21;
