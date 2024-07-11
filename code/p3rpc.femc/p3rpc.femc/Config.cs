@@ -183,7 +183,13 @@ namespace p3rpc.femc.Configuration
             AfterSchoolByMosq
         }
 
-        [DisplayName("Mail Icon: Outer Color")]
+		[DisplayName("Gendered Audio")]
+		[Category("Voice")]
+		[Description("Enable Gio's Gendered Audio?")]
+		[DefaultValue(false)]
+		public bool bluehairandpronounce { get; set; } = true;
+
+		[DisplayName("Mail Icon: Outer Color")]
         public ConfigColor MailIconOuterCircleColorEx { get; set; } = ConfigColor.MellodiColorMid1;
 
         [DisplayName("Mail Icon: Inner Color")]
