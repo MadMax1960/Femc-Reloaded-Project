@@ -14,6 +14,8 @@ using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using BGME.BattleThemes.Interfaces;
 using Ryo.Interfaces;
+using System.IO;
+
 
 /// ok maybe p3rpc.femc.music.interfaces is required, but it's not in repo and randomization doesn't work leading me to believe they're connected, or randomization never worked idk
 
@@ -284,7 +286,17 @@ namespace p3rpc.femc
                     if (sm.Value)
                         ryo.AddAudioFile(sm.Key);
                 }
-            }
+
+				var bluehairandpronounce = new Dictionary<string, bool>
+			{
+					{Path.Combine(path, "Voice"),_configuration.bluehairandpronounce==true}
+				};
+				foreach (KeyValuePair<string, bool> sm in bluehairandpronounce)
+				{
+					if (sm.Value)
+						ryo.AddAudioFolder(sm.Key);
+				}
+			}
 			catch (Exception ex)
 			{
                 _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
@@ -420,6 +432,7 @@ namespace p3rpc.femc
 			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H501", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999"); // hair 2 (3 technically)
 			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H159", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H998"); // yuha hair 3 (4 technically)
 			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C504", "/Game/Xrd777/Characters/Player/PC0006/Models/SK_PC0006_C504");
+			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H504", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999"); // forgor velvet hair
 			// saori and rio will be added as dummy slots, idk who they will replace yet, probably kaz or something 
 			// theo will need to be redirected here 
 
