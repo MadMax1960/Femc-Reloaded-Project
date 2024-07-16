@@ -984,6 +984,11 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(LogLevel.Information)]
         public LogLevel DebugLogLevel { get; set; } = LogLevel.Information;
 
+        [DisplayName("Nagitana Weapons")]
+        [Description("Gives FemC Nagitanas for weapons")]
+        [Category("3D Options")]
+        [DefaultValue(true)]
+        public bool NagiWeap { get; set; } = true;
     }
 
 
