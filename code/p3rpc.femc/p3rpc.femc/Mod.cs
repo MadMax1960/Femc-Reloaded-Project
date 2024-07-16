@@ -198,6 +198,10 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog")); // game dies when 2 files loaded, this has the og files we had in mod but in their own folder, the ! is if the bool is disabled
 				}
 
+                if (_configuration.NagiWeap)
+                {
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
+                }
 
 			}
 			catch (Exception ex)
