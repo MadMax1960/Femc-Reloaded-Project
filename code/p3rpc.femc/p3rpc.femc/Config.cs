@@ -989,7 +989,13 @@ namespace p3rpc.femc.Configuration
         [Category("3D Options")]
         [DefaultValue(true)]
         public bool NagiWeap { get; set; } = true;
-    }
+
+		[DisplayName("Test Skeleton Anim Fiex")]
+		[Description("THIS MIGHT BREAK SOME STUFF, ITS A TEST FOR PEOPLE WHO WANT TO, PLEASE GO IN EXPECTING ERRORS")]
+		[Category("3d Options")]
+		[DefaultValue(false)]
+		public bool TestSkeleton { get; set; } = false;
+	}
 
 
     /// <summary>
