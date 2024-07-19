@@ -205,6 +205,11 @@ namespace p3rpc.femc
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
                 }
 
+				if (_configuration.TestSkeleton)
+				{
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
+				}
+
 			}
 			catch (Exception ex)
 			{
