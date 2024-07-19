@@ -1,0 +1,8 @@
+name: "Mr Mew Hoodie"
+
+costume:
+  mesh_path: /Game/Costumes/Player/Shoka/costume-mesh.uasset
+
+
+hair:
+  mesh_path: /Game/Costumes/Player/Shoka/hair-mesh.uasset
