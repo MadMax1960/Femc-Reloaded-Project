@@ -993,7 +993,7 @@ namespace p3rpc.femc.Configuration
 
 		[DisplayName("Test Skeleton Anim Fiex")]
 		[Description("THIS MIGHT BREAK SOME STUFF, ITS A TEST FOR PEOPLE WHO WANT TO, PLEASE GO IN EXPECTING ERRORS")]
-		[Category("3d Options")]
+		[Category("3D Options")]
 		[DefaultValue(false)]
 		public bool TestSkeleton { get; set; } = false;
 	}
