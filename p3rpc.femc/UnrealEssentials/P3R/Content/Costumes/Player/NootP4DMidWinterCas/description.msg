@@ -1,0 +1,1 @@
+[uf 0 5 65278][uf 2 1]Outfit of a certain Detective Prince, haters say it's fugly. [n][e]
