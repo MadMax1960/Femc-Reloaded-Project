@@ -15,6 +15,8 @@ using p3rpc.classconstructor.Interfaces;
 using BGME.BattleThemes.Interfaces;
 using BGME.BattleThemes.Config;
 using Ryo.Interfaces;
+using System.IO;
+
 
 /// ok maybe p3rpc.femc.music.interfaces is required, but it's not in repo and randomization doesn't work leading me to believe they're connected, or randomization never worked idk
 
@@ -153,6 +155,8 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ElyAlt"));
 				else if (_configuration.BustupTrue == BustupType.Yuunagi)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Yuunagi"));
+				else if (_configuration.BustupTrue == BustupType.cielbell)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "cielbell"));
 
 
 
@@ -197,6 +201,15 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog")); // game dies when 2 files loaded, this has the og files we had in mod but in their own folder, the ! is if the bool is disabled
 				}
 
+                if (_configuration.NagiWeap)
+                {
+                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
+                }
+
+				if (_configuration.TestSkeleton)
+				{
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
+				}
 
 			}
 			catch (Exception ex)
@@ -274,12 +287,24 @@ namespace p3rpc.femc
                     if (sm.Value)
                         ryo.AddAudioFile(sm.Key);
                 }
-            }
+
+				var bluehairandpronounce = new Dictionary<string, bool>
+			{
+					{Path.Combine(path, "Voice"),_configuration.bluehairandpronounce==true}
+				};
+				foreach (KeyValuePair<string, bool> sm in bluehairandpronounce)
+				{
+					if (sm.Value)
+						ryo.AddAudioFolder(sm.Key);
+				}
+			}
 			catch (Exception ex)
 			{
                 _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
             }
 		}
+
+
 		private void InitializeModules()
 		{
 			_modRuntime.AddModule<UICommon>();
@@ -407,6 +432,8 @@ namespace p3rpc.femc
 			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H158", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999"); // hair
 			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H501", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999"); // hair 2 (3 technically)
 			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H159", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H998"); // yuha hair 3 (4 technically)
+			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C504", "/Game/Xrd777/Characters/Player/PC0006/Models/SK_PC0006_C504");
+			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H504", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999"); // forgor velvet hair
 			// saori and rio will be added as dummy slots, idk who they will replace yet, probably kaz or something 
 			// theo will need to be redirected here 
 

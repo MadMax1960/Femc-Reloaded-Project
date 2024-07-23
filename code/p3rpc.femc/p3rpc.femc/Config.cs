@@ -110,7 +110,13 @@ namespace p3rpc.femc.Configuration
             AfterSchoolByMosq
         }
 
-        [DisplayName("Mail Icon: Outer Color")]
+		[DisplayName("Gendered Audio")]
+		[Category("Voice")]
+		[Description("Enable Gio's Gendered Audio?")]
+		[DefaultValue(false)]
+		public bool bluehairandpronounce { get; set; } = true;
+
+		[DisplayName("Mail Icon: Outer Color")]
         public ConfigColor MailIconOuterCircleColorEx { get; set; } = ConfigColor.MellodiColorMid1;
 
         [DisplayName("Mail Icon: Inner Color")]
@@ -846,7 +852,8 @@ namespace p3rpc.femc.Configuration
             Doodled,
             RonaldReagan,
 			ElyAlt,
-			Yuunagi
+			Yuunagi,
+			cielbell
         }
 
         [DisplayName("Glass Shard")]
@@ -905,7 +912,18 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(LogLevel.Information)]
         public LogLevel DebugLogLevel { get; set; } = LogLevel.Information;
 
-    }
+        [DisplayName("Nagitana Weapons")]
+        [Description("Gives FemC Nagitanas for weapons")]
+        [Category("3D Options")]
+        [DefaultValue(true)]
+        public bool NagiWeap { get; set; } = true;
+
+		[DisplayName("Test Skeleton Anim Fiex")]
+		[Description("THIS MIGHT BREAK SOME STUFF, ITS A TEST FOR PEOPLE WHO WANT TO, PLEASE GO IN EXPECTING ERRORS")]
+		[Category("3D Options")]
+		[DefaultValue(false)]
+		public bool TestSkeleton { get; set; } = false;
+	}
 
 
     /// <summary>
