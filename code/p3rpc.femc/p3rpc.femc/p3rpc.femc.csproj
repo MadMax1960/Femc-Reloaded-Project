@@ -51,6 +51,7 @@
     <PackageReference Include="UnrealEssentials.Interfaces" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\include\BGME.BattleThemes\BGME.BattleThemes.Config\BGME.BattleThemes.Config.csproj" />
     <ProjectReference Include="..\include\BGME.BattleThemes\BGME.BattleThemes.Interfaces\BGME.BattleThemes.Interfaces.csproj" />
     <ProjectReference Include="..\include\Ryo\Ryo.Interfaces\Ryo.Interfaces.csproj" />
     <ProjectReference Include="..\include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj" />

@@ -13,6 +13,7 @@ using Unreal.ObjectsEmitter.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using BGME.BattleThemes.Interfaces;
+using BGME.BattleThemes.Config;
 using Ryo.Interfaces;
 
 /// ok maybe p3rpc.femc.music.interfaces is required, but it's not in repo and randomization doesn't work leading me to believe they're connected, or randomization never worked idk
@@ -57,8 +58,8 @@ namespace p3rpc.femc
 		private FemcContext _context;
 		private ModuleRuntime<FemcContext> _modRuntime;
 		private readonly IUnreal unreal;
-		
-		
+        private readonly ThemeConfig themeConfig;
+
 
         private string modName { get; set; }
 
@@ -83,7 +84,8 @@ namespace p3rpc.femc
 			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
 			var memory = new Memory();
-			_context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods);
+            this.themeConfig = new ThemeConfig(this._modLoader, this._modConfig, this._configuration, this._logger);
+            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods);
 			_modRuntime = new(_context);
 
 			modName = _modConfig.ModName;
@@ -207,29 +209,13 @@ namespace p3rpc.femc
 		{
 			try
 			{
-                var battleThemes = GetDependency<IBattleThemesApi>("Battle Themes");
                 var ryo = GetDependency<IRyoApi>("Ryo");
-                if (_configuration.mosq)
-                {
-                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Mosq");
-                }
-
-
-                if (_configuration.karma)
-                {
-                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Karma");
-                }
-
-
-                if (_configuration.rock)
-                {
-                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Stella_GillStudio");
-                }
-
-				if (_configuration.mosqeidk)
-				{
-					battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/MosqEidk");
-				}
+                //MUSIC TOGGLES
+                themeConfig.AddSetting(nameof(this._configuration.mosqeidk), "MosqEidk.theme.pme");
+                themeConfig.AddSetting(nameof(this._configuration.rock), "Rock.theme.pme");
+                themeConfig.AddSetting(nameof(this._configuration.mosq), "Mosq.theme.pme");
+                themeConfig.AddSetting(nameof(this._configuration.karma), "Karma.theme.pme");
+                themeConfig.Initialize();
                 string path = _modLoader.GetDirectoryForModId(_modConfig.ModId);
                 var nightmusic = new Dictionary<string, bool>
 				{
