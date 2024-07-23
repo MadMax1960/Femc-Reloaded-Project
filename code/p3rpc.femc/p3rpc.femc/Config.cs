@@ -46,6 +46,7 @@ namespace p3rpc.femc.Configuration
         public enum nightmusic1
         {
             TimeNightVersionByMosq,
+            TimeNightByMosqGabiVer,
             ColorYourNightReload,
             MidnightReverieByMineformer
         }
@@ -59,7 +60,8 @@ namespace p3rpc.femc.Configuration
         public enum dayinmusic1
         {
             WantToBeCloseReload,
-            TimeByMosq
+            TimeByMosq,
+            TimeByMosqGabiVer
         }
 
         [DisplayName("Daytime Music Inside School (September Onwards)")]

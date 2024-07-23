@@ -233,7 +233,8 @@ namespace p3rpc.femc
                 var nightmusic = new Dictionary<string, bool>
 				{
 					{Path.Combine(path,"BGM\\Mosq\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightVersionByMosq},
-					{Path.Combine(path,"BGM\\Mineformer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.MidnightReverieByMineformer}
+					{Path.Combine(path,"BGM\\Mineformer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.MidnightReverieByMineformer},
+					{Path.Combine(path,"BGM\\Gabi\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightByMosqGabiVer}
 
 				};
 				foreach (KeyValuePair<string, bool> nm in nightmusic)
@@ -243,7 +244,8 @@ namespace p3rpc.femc
 				}
                 var dayin1music = new Dictionary<string, bool>
                 {
-                    {Path.Combine(path, "BGM\\Mosq\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosq}
+                    {Path.Combine(path, "BGM\\Mosq\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosq},
+					{Path.Combine(path,   "BGM\\Gabi\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosqGabiVer}
                 };
                 foreach (KeyValuePair<string, bool> di1m in dayin1music)
                 {
