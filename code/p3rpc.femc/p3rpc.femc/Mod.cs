@@ -13,6 +13,7 @@ using Unreal.ObjectsEmitter.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using BGME.BattleThemes.Interfaces;
+using BGME.BattleThemes.Config;
 using Ryo.Interfaces;
 using System.IO;
 
@@ -59,8 +60,8 @@ namespace p3rpc.femc
 		private FemcContext _context;
 		private ModuleRuntime<FemcContext> _modRuntime;
 		private readonly IUnreal unreal;
-		
-		
+        private readonly ThemeConfig themeConfig;
+
 
         private string modName { get; set; }
 
@@ -85,14 +86,14 @@ namespace p3rpc.femc
 			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
 			var memory = new Memory();
-			_context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods);
+            this.themeConfig = new ThemeConfig(this._modLoader, this._modConfig, this._configuration, this._logger);
+            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods);
 			_modRuntime = new(_context);
 
 			modName = _modConfig.ModName;
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials);
 			InitializeModules();
-			//GenerateMusicScriptDeprecated();
 			GenerateMusicScript();
 			RedirectPlayerAssets();
 
@@ -221,29 +222,19 @@ namespace p3rpc.femc
 		{
 			try
 			{
-                var battleThemes = GetDependency<IBattleThemesApi>("Battle Themes");
                 var ryo = GetDependency<IRyoApi>("Ryo");
-                if (_configuration.mosq)
-                {
-                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Mosq");
-                }
-
-
-                if (_configuration.karma)
-                {
-                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Karma");
-                }
-
-
-                if (_configuration.rock)
-                {
-                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Stella_GillStudio");
-                }
+                //MUSIC TOGGLES
+                themeConfig.AddSetting(nameof(this._configuration.mosqeidk), "MosqEidk.theme.pme");
+                themeConfig.AddSetting(nameof(this._configuration.rock), "Rock.theme.pme");
+                themeConfig.AddSetting(nameof(this._configuration.mosq), "Mosq.theme.pme");
+                themeConfig.AddSetting(nameof(this._configuration.karma), "Karma.theme.pme");
+                themeConfig.Initialize();
                 string path = _modLoader.GetDirectoryForModId(_modConfig.ModId);
                 var nightmusic = new Dictionary<string, bool>
 				{
 					{Path.Combine(path,"BGM\\Mosq\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightVersionByMosq},
-					{Path.Combine(path,"BGM\\Mineformer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.MidnightReverieByMineformer}
+					{Path.Combine(path,"BGM\\Mineformer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.MidnightReverieByMineformer},
+					{Path.Combine(path,"BGM\\Gabi\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightByMosqGabiVer}
 
 				};
 				foreach (KeyValuePair<string, bool> nm in nightmusic)
@@ -253,7 +244,8 @@ namespace p3rpc.femc
 				}
                 var dayin1music = new Dictionary<string, bool>
                 {
-                    {Path.Combine(path, "BGM\\Mosq\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosq}
+                    {Path.Combine(path, "BGM\\Mosq\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosq},
+					{Path.Combine(path,   "BGM\\Gabi\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosqGabiVer}
                 };
                 foreach (KeyValuePair<string, bool> di1m in dayin1music)
                 {
