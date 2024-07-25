@@ -820,7 +820,8 @@ namespace p3rpc.femc.Configuration
             Chrysanthie,
             Fernando,
             Monica,
-            RonaldReagan
+            RonaldReagan,
+            esaadrien
         }
 
         [DisplayName("AOA Text Options")]
