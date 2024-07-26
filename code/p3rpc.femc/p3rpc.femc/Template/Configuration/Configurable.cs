@@ -1,4 +1,5 @@
-﻿using Reloaded.Mod.Interfaces;
+﻿using p3rpc.femc.Configuration;
+using Reloaded.Mod.Interfaces;
 using System.ComponentModel;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -13,6 +14,28 @@ namespace p3rpc.femc.Template.Configuration
             Converters = { new JsonStringEnumConverter() },
             WriteIndented = true
         };
+
+        public static class JsonUtils
+        {
+            // Use same serialization options as Reloaded.
+            private static JsonSerializerOptions serializerOptions { get; } = new JsonSerializerOptions()
+            {
+                Converters = { new JsonStringEnumConverter() },
+                WriteIndented = true
+            };
+
+            public static T DeserializeFile<T>(string file, string type = "")
+            {
+                var obj = JsonSerializer.Deserialize<T>(File.ReadAllText(file), serializerOptions);
+                return obj ?? throw new Exception("Json Serialisation Failed.");
+            }
+
+            public static void SerializeFile<T>(T obj, string file)
+            {
+                var objText = JsonSerializer.Serialize(obj, serializerOptions);
+                File.WriteAllText(file, objText);
+            }
+        }
 
         /* Events */
 
@@ -133,12 +156,24 @@ namespace p3rpc.femc.Template.Configuration
         /* Utility */
         private static TParentType ReadFrom(string filePath, string configName)
         {
-            var result = (File.Exists(filePath)
+            try
+            {
+                var result = (File.Exists(filePath)
                 ? JsonSerializer.Deserialize<TParentType>(File.ReadAllBytes(filePath), SerializerOptions)
                 : new TParentType()) ?? new TParentType();
-
-            result.Initialize(filePath, configName);
-            return result;
+                result.Initialize(filePath, configName);
+                return result;
+            }
+            catch (Exception)
+            {
+                var defaultConfig = new Config();
+                JsonUtils.SerializeFile(defaultConfig, filePath);
+                var result = (File.Exists(filePath)
+                ? JsonSerializer.Deserialize<TParentType>(File.ReadAllBytes(filePath), SerializerOptions)
+                : new TParentType()) ?? new TParentType();
+                result.Initialize(filePath, configName);
+                return result;
+                }
+            }
         }
     }
-}
