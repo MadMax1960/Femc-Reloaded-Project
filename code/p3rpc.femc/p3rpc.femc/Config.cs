@@ -856,7 +856,8 @@ namespace p3rpc.femc.Configuration
             RonaldReagan,
 			ElyAlt,
 			Yuunagi,
-			cielbell
+			cielbell,
+			axolotl
         }
 
         [DisplayName("Glass Shard")]
