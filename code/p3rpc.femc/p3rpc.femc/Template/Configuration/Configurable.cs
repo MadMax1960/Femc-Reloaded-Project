@@ -1,4 +1,5 @@
-﻿using Reloaded.Mod.Interfaces;
+﻿using p3rpc.femc.Configuration;
+using Reloaded.Mod.Interfaces;
 using System.ComponentModel;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -134,9 +135,8 @@ namespace p3rpc.femc.Template.Configuration
         private static TParentType ReadFrom(string filePath, string configName)
         {
             var result = (File.Exists(filePath)
-                ? JsonSerializer.Deserialize<TParentType>(File.ReadAllBytes(filePath), SerializerOptions)
-                : new TParentType()) ?? new TParentType();
-
+            ? JsonSerializer.Deserialize<TParentType>(File.ReadAllBytes(filePath), SerializerOptions)
+            : new TParentType()) ?? new TParentType();
             result.Initialize(filePath, configName);
             return result;
         }
