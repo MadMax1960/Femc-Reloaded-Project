@@ -420,8 +420,7 @@ namespace p3rpc.femc
 					{Path.Combine(path,"BGM\\Mosq\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightVersionByMosq},
 					{Path.Combine(path,"BGM\\Mineformer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.MidnightReverieByMineformer},
 					{Path.Combine(path,"BGM\\Gabi\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightByMosqGabiVer},
-					{Path.Combine(path,"BGM\\Mosq\\NightWanderer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.NightWanderer}
-
+					{Path.Combine(path,"BGM\\Mosq\\NightWanderer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.NightWandererByMosq}
 				};
 				foreach (KeyValuePair<string, bool> nm in nightmusic)
 				{
@@ -475,8 +474,17 @@ namespace p3rpc.femc
                     if (sm.Value)
                         ryo.AddAudioFile(sm.Key);
                 }
-
-				var bluehairandpronounce = new Dictionary<string, bool>
+                var bosslinkmusic = new Dictionary<string, bool>
+                {
+                    {Path.Combine(path, "BGM\\Mosq\\link_129.hca"),_configuration.bossmusictrue==bossmusic.MasterOfShadowFateMixByMosq},
+                    {Path.Combine(path, "BGM\\Mosq\\link_27.hca"),_configuration.bossmusictrue==bossmusic.MasterOfShadowFateMixByMosq}
+                };
+                foreach (KeyValuePair<string, bool> sm in bosslinkmusic)
+                {
+                    if (sm.Value)
+                        ryo.AddAudioFile(sm.Key);
+                }
+                var bluehairandpronounce = new Dictionary<string, bool>
 			{
 					{Path.Combine(path, "Voice"),_configuration.bluehairandpronounce==true}
 				};

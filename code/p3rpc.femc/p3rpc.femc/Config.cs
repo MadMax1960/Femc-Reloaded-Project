@@ -142,6 +142,7 @@ namespace p3rpc.femc.Configuration
         public enum nightmusic1
         {
             TimeNightVersionByMosq,
+            NightWandererByMosq,
             TimeNightByMosqGabiVer,
             NightWanderer,
             ColorYourNightReload,
@@ -211,7 +212,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Master of Shadow")]
         [Description("Select the music that will be played during some boss fights")]
-        [Category("MusicRyo")]
+        [Category("Music")]
         [DefaultValue(bossmusic.MasterOfShadowFateMixByMosq)]
         public bossmusic bossmusictrue { get; set; } = bossmusic.MasterOfShadowFateMixByMosq;
 
