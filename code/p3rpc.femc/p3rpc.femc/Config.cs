@@ -10,7 +10,19 @@ namespace p3rpc.femc.Configuration
 
     public class Config : Configurable<Config>
     {
-        
+
+        [DisplayName("Music Framework")]
+        [Description("Select the music that will be played at night when you are outside the dorm")]
+        [Category("Music")]
+        [DefaultValue(frmwrk.Ryo)]
+        public frmwrk frmwrktrue { get; set; } = frmwrk.Ryo;
+
+        public enum frmwrk
+        {
+            Ryo,
+            BGME
+        }
+
         [DisplayName("Battle Pack: Mosq")]
         [Category("Music")]
         [Description("Enable Mosq's battle music?")]
@@ -37,9 +49,93 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool rock { get; set; } = true;
 
+        [DisplayName("Night Music: Color your Night")]
+        [Category("MusicBGME")]
+        [Description("Enable Color your Night as the night music?")]
+        [DefaultValue(false)]
+        public bool colnight { get; set; } = true;
+
+        [DisplayName("Night Music: Midnight Reverie by Mineformer")]
+        [Category("MusicBGME")]
+        [Description("Enable Midnight Reverie as the night music?")]
+        [DefaultValue(false)]
+        public bool midnight { get; set; } = true;
+
+        [DisplayName("Night Music: Time (Night Version) by Mosq")]
+        [Category("MusicBGME")]
+        [Description("Enable Time (Night Version) as the night music?")]
+        [DefaultValue(true)]
+        public bool femnight { get; set; } = true;
+
+        [DisplayName("Night Music: Night Wanderer by Mosq")]
+        [Category("MusicBGME")]
+        [Description("Enable Night Wanderer as the night music?")]
+        [DefaultValue(true)]
+        public bool nightwand { get; set; } = true;
+
+        [DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
+        [Description("Enable When the moon's reaching out stars as the daytime music?")]
+        [Category("MusicBGME")]
+        [DefaultValue(false)]
+        public bool moon { get; set; } = true;
+
+        [DisplayName("Daytime Music (Outside School/Phase 1): Way of life by Mosq")]
+        [Category("MusicBGME")]
+        [Description("Enable Way of life as the daytime music?")]
+        [DefaultValue(true)]
+        public bool wayoflife { get; set; } = true;
+
+        [DisplayName("Daytime Music (Inside School/Phase 1): Want to Be Close -Reload-")]
+        [Category("MusicBGME")]
+        [Description("Enable Want to Be Close -Reload- as the daytime music inside the school (Phase 1)?")]
+        [DefaultValue(false)]
+        public bool wantclose { get; set; } = true;
+
+        [DisplayName("Daytime Music (Inside School/Phase 1): Time by Mosq")]
+        [Category("MusicRBGME")]
+        [Description("Enable Time as the daytime music inside the school?")]
+        [DefaultValue(true)]
+        public bool timeschool { get; set; } = true;
+
+        [DisplayName("Social Link Events: Joy")]
+        [Category("MusicBGME")]
+        [Description("Enable Joy to be the music played during social link events?")]
+        [DefaultValue(false)]
+        public bool joy { get; set; } = true;
+
+        [DisplayName("Social Link Events: After School by Mosq")]
+        [Category("MusicBGME")]
+        [Description("Enable Mosq's After School to be the music played during social link events?")]
+        [DefaultValue(true)]
+        public bool afterschool { get; set; } = true;
+
+        [DisplayName("Daytime Music(Inside School/Phase 2): Changing Seasons -Reload-")]
+        [Category("MusicBGME")]
+        [Description("Enable Changing Seasons as the daytime music inside the school?")]
+        [DefaultValue(false)]
+        public bool seasons { get; set; } = true;
+
+        [DisplayName("Daytime Music(Inside School/Phase 2): Sun by Mosq")]
+        [Category("MusicBGME")]
+        [Description("Enable Sun as the daytime music inside the school?")]
+        [DefaultValue(true)]
+        public bool sun { get; set; } = true;
+
+        [DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
+        [Category("MusicBGME")]
+        [Description("Enable Soul Phrase as the music played during the battle with Nyx?")]
+        [DefaultValue(false)]
+        public bool soulpk { get; set; } = true;
+
+        [DisplayName("Final Battle with NYX: Burn my dread Final Battle")]
+        [Category("MusicBGME")]
+        [Description("Enable Burn my dread as the music played during the battle with Nyx?")]
+        [DefaultValue(true)]
+        public bool bmd { get; set; } = true;
+
         [DisplayName("Night Music")]
         [Description("Select the music that will be played at night when you are outside the dorm")]
-        [Category("Music")]
+        [Category("MusicRyo")]
         [DefaultValue(nightmusic1.TimeNightVersionByMosq)]
         public nightmusic1 nighttrue1 { get; set; } = nightmusic1.TimeNightVersionByMosq;
 
@@ -47,13 +143,14 @@ namespace p3rpc.femc.Configuration
         {
             TimeNightVersionByMosq,
             TimeNightByMosqGabiVer,
+            NightWanderer,
             ColorYourNightReload,
             MidnightReverieByMineformer
         }
 
         [DisplayName("Daytime Music Inside School (April to August)")]
         [Description("Select the music that will be played when you are inside the school (april to august)")]
-        [Category("Music")]
+        [Category("MusicRyo")]
         [DefaultValue(dayinmusic1.TimeByMosq)]
         public dayinmusic1 dayintrue1 { get; set; } = dayinmusic1.TimeByMosq;
 
@@ -66,7 +163,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Daytime Music Inside School (September Onwards)")]
         [Description("Select the music that will be played when you are inside the school (september onwards)")]
-        [Category("Music")]
+        [Category("MusicRyo")]
         [DefaultValue(dayinmusic2.SunByMosq)]
         public dayinmusic2 dayintrue2 { get; set; } = dayinmusic2.SunByMosq;
 
@@ -78,7 +175,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Daytime Music Outside School (April to August)")]
         [Description("Select the music that will be played when you are roaming around the island (april to august)")]
-        [Category("Music")]
+        [Category("MusicRyo")]
         [DefaultValue(dayoutmusic1.WayOfLifeByMosq)]
         public dayoutmusic1 dayouttrue1 { get; set; } = dayoutmusic1.WayOfLifeByMosq;
 
@@ -90,7 +187,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Final Battle with Nyx")]
         [Description("Select the music that will be played in the final battle with Nyx")]
-        [Category("Music")]
+        [Category("MusicRyo")]
         [DefaultValue(finalmusic.BurnMyDreadReload)]
         public finalmusic finalmusictrue { get; set; } = finalmusic.BurnMyDreadReload;
 
@@ -102,7 +199,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Social Link Events")]
         [Description("Select the music that will be played during social link events")]
-        [Category("Music")]
+        [Category("MusicRyo")]
         [DefaultValue(socialmusic.AfterSchoolByMosq)]
         public socialmusic socialmusictrue { get; set; } = socialmusic.AfterSchoolByMosq;
 
@@ -112,7 +209,19 @@ namespace p3rpc.femc.Configuration
             AfterSchoolByMosq
         }
 
-		[DisplayName("Gendered Audio")]
+        [DisplayName("Master of Shadow")]
+        [Description("Select the music that will be played during some boss fights")]
+        [Category("MusicRyo")]
+        [DefaultValue(bossmusic.MasterOfShadowFateMixByMosq)]
+        public bossmusic bossmusictrue { get; set; } = bossmusic.MasterOfShadowFateMixByMosq;
+
+        public enum bossmusic
+        {
+            MasterOfShadowReload,
+            MasterOfShadowFateMixByMosq
+        }
+
+        [DisplayName("Gendered Audio")]
 		[Category("Voice")]
 		[Description("Enable Gio's Gendered Audio?")]
 		[DefaultValue(false)]
