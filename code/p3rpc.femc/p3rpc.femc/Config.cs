@@ -212,7 +212,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Master of Shadow")]
         [Description("Select the music that will be played during some boss fights")]
-        [Category("Music")]
+        [Category("MusicRyo")]
         [DefaultValue(bossmusic.MasterOfShadowFateMixByMosq)]
         public bossmusic bossmusictrue { get; set; } = bossmusic.MasterOfShadowFateMixByMosq;
 
