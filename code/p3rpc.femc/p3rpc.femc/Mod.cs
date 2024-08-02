@@ -94,10 +94,8 @@ namespace p3rpc.femc
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials);
 			InitializeModules();
-			if(_configuration.frmwrktrue==frmwrk.Ryo)
-				RyoGenerateMusicScript();
-			else
-				BGMEGenerateMusicScript();
+			CallTheBGMGeneration();
+				
 			RedirectPlayerAssets();
 
 		}
@@ -225,6 +223,18 @@ namespace p3rpc.femc
 			}
 		}
 
+		private void CallTheBGMGeneration(string whencalled="")
+		{
+            if (_configuration.frmwrktrue == frmwrk.Ryo && whencalled=="gameruntime")
+            {
+                RyoGenerateMusicScript();
+            }
+            else
+            {
+                BGMEGenerateMusicScript();
+            }
+        }
+
         private void BGMEGenerateMusicScript()
         {
             //Author: TheBestAstroNOT
@@ -241,27 +251,19 @@ namespace p3rpc.femc
                 string sociallink11 = "const social11List= [";
                 string sociallink12 = "const social12List= [";
                 string finalbattle = "const finalbattle=[";
+				string bossbattle1 = "const bossbattle1=[";
+                string bossbattle2 = "const bossbattle2=[";
 
                 string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGME/scripts";
 
-                //Code for writing the commands
-
-                if (_configuration.mosq)
-                {
-                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Mosq");
-                }
-
-
-                if (_configuration.karma)
-                {
-                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Karma");
-                }
-
-
-                if (_configuration.rock)
-                {
-                    battleThemes.AddPath(_modConfig.ModId, _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/Stella_GillStudio");
-                }
+                //Init Battle Themes
+                themeConfig.AddSetting(nameof(this._configuration.mosqeidk), "MosqEidk.theme.pme");
+                themeConfig.AddSetting(nameof(this._configuration.rock), "Rock.theme.pme");
+                themeConfig.AddSetting(nameof(this._configuration.mosq), "Mosq.theme.pme");
+                themeConfig.AddSetting(nameof(this._configuration.karma), "Karma.theme.pme");
+                themeConfig.Initialize();
+                
+				//Code for writing the commands
                 var added = new Dictionary<string, int>
                 {
                     {"night",0},
@@ -270,7 +272,9 @@ namespace p3rpc.femc
                     {"social2",0},
                     {"dayin1",0},
                     {"dayin2",0},
-                    {"final",0}
+                    {"final",0},
+					{"boss1",0},
+					{"boss2",0}
                 };
                 var collection = new Dictionary<string, Tuple<bool, string>>
                 {
@@ -279,10 +283,12 @@ namespace p3rpc.femc
                     {"2003",new Tuple<bool,string>(_configuration.midnight,"night")},
                     {"2004",new Tuple<bool,string>(_configuration.femnight,"night")},
 					{"2011",new Tuple<bool, string>(_configuration.nightwand,"night")},
+					{"2012", new Tuple<bool,string>(_configuration.gabifemnight,"night")},
                     {"25",new Tuple<bool,string>(_configuration.moon,"dayout1")},
                     {"2005",new Tuple<bool,string>(_configuration.wayoflife,"dayout1")},
                     {"50",new Tuple<bool,string>(_configuration.wantclose,"dayin1")},
                     {"2006",new Tuple<bool,string>(_configuration.timeschool, "dayin1")},
+					{"2013", new Tuple<bool, string>(_configuration.gabitimeschool,"dayin1")},
                     {"51",new Tuple<bool,string>(_configuration.seasons,"dayin2")},
                     {"2009",new Tuple<bool,string>(_configuration.sun, "dayin2")},
                     {"38",new Tuple<bool,string>(_configuration.joy,"social1")},
@@ -290,7 +296,11 @@ namespace p3rpc.femc
                     {"2007",new Tuple<bool,string>(_configuration.afterschool,"social1")},
                     {"2008",new Tuple<bool,string>(_configuration.afterschool,"social2")},
                     {"2015",new Tuple<bool,string>(_configuration.soulpk,"final")},
-                    {"29",new Tuple<bool, string>(_configuration.bmd,"final")}
+                    {"29",new Tuple<bool, string>(_configuration.bmd,"final")},
+					{"2016",new Tuple<bool, string>(_configuration.bmsf,"boss1")},
+                    {"2017",new Tuple<bool, string>(_configuration.bmsf,"boss2")},
+                    {"27",new Tuple<bool, string>(_configuration.bms,"boss1")},
+                    {"129",new Tuple<bool, string>(_configuration.bms,"boss2")}
                 };
                 foreach (KeyValuePair<string, Tuple<bool, string>> col in collection)
                 {
@@ -367,6 +377,26 @@ namespace p3rpc.femc
                             else
                                 finalbattle += "," + col.Key;
                         }
+                        else if (col.Value.Item2 == "boss1")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                bossbattle1 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                bossbattle1 += "," + col.Key;
+                        }
+                        else if (col.Value.Item2 == "boss2")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                bossbattle2 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                bossbattle2 += "," + col.Key;
+                        }
                         else
                         {
                             _logger.WriteLineAsync("The Collection dictionary in mod.cs has been improperly configured, one of the specified categories DOES NOT exist.");
@@ -382,9 +412,11 @@ namespace p3rpc.femc
                 sociallink11 += (added["social1"] == 0) ? "2007]" : "]";
                 sociallink12 += (added["social2"] == 0) ? "2008]" : "]";
                 finalbattle += (added["final"] == 0) ? "2015]" : "]";
+				bossbattle1 += (added["boss1"] == 0) ? "2016]" : "]";
+                bossbattle2 += (added["boss2"] == 0) ? "2017]" : "]";
 
                 //Writing the configuration File
-                string[] lines = { night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)", "end", sociallink12, "global_bgm[43]:", "music = random_song(social12List)", "end", dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)", "end", finalbattle, "global_bgm[29]:", "music=random_song(finalbattle)", "end" };
+                string[] lines = { night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)", "end", sociallink12, "global_bgm[43]:", "music = random_song(social12List)", "end", dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)", "end", finalbattle, "global_bgm[29]:", "music=random_song(finalbattle)", "end", bossbattle1, "global_bgm[27]:", "music=random_song(bossbattle1)", "end", bossbattle2, "global_bgm[129]:", "music=random_song(bossbattle2)", "end"};
 
                 if (File.Exists(path + ".pme"))
                 {

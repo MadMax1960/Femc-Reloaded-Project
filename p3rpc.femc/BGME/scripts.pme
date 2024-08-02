@@ -1,0 +1,28 @@
+const night1List=[97,2003,2004]
+global_bgm["Color Your Night"]:
+music = random_song(night1List)
+end
+const dayin1List=[50,2006]
+global_bgm["Want to Be Close"]:
+music = random_song(dayin1List)
+end
+const dayout1List=[25,2005]
+global_bgm["When The Moon's Reaching Out Stars"]:
+music = random_song(dayout1List)
+end
+const social11List= [38,2007]
+global_bgm[38]:
+music = random_song(social11List)
+end
+const social12List= [43,2008]
+global_bgm[43]:
+music = random_song(social12List)
+end
+const dayin2List=[51,2009]
+global_bgm[51]:
+music = random_song(dayin2List)
+end
+const finalbattle=[2015,29]
+global_bgm[29]:
+music=random_song(finalbattle)
+end

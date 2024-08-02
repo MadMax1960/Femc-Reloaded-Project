@@ -67,10 +67,16 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool femnight { get; set; } = true;
 
+        [DisplayName("Night Music: Time (Night Version) by Mosq with Vocals by GabiShy")]
+        [Category("MusicBGME")]
+        [Description("Enable Time (Night Version GabiShy Remix) as the night music?")]
+        [DefaultValue(false)]
+        public bool gabifemnight { get; set; } = true;
+
         [DisplayName("Night Music: Night Wanderer by Mosq")]
         [Category("MusicBGME")]
         [Description("Enable Night Wanderer as the night music?")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool nightwand { get; set; } = true;
 
         [DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
@@ -92,10 +98,16 @@ namespace p3rpc.femc.Configuration
         public bool wantclose { get; set; } = true;
 
         [DisplayName("Daytime Music (Inside School/Phase 1): Time by Mosq")]
-        [Category("MusicRBGME")]
+        [Category("MusicBGME")]
         [Description("Enable Time as the daytime music inside the school?")]
         [DefaultValue(true)]
         public bool timeschool { get; set; } = true;
+
+        [DisplayName("Daytime Music (Inside School/Phase 1): Time (GabiShy remix) by Mosq")]
+        [Category("MusicBGME")]
+        [Description("Enable (Time GabiShy Remix) as the daytime music inside the school?")]
+        [DefaultValue(false)]
+        public bool gabitimeschool { get; set; } = true;
 
         [DisplayName("Social Link Events: Joy")]
         [Category("MusicBGME")]
@@ -132,6 +144,18 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Burn my dread as the music played during the battle with Nyx?")]
         [DefaultValue(true)]
         public bool bmd { get; set; } = true;
+
+        [DisplayName("Boss Battles: Master of Shadow -Reload")]
+        [Category("MusicBGME")]
+        [Description("Enable Master of Shadow -Reload to be the music played during boss battles?")]
+        [DefaultValue(false)]
+        public bool bms { get; set; } = true;
+
+        [DisplayName("Boss Battles: Master of Shadow Fate Mix by Mosq")]
+        [Category("MusicBGME")]
+        [Description("Enable Master of Shadow Fate Mix to be the music played during boss battles?")]
+        [DefaultValue(true)]
+        public bool bmsf { get; set; } = true;
 
         [DisplayName("Night Music")]
         [Description("Select the music that will be played at night when you are outside the dorm")]
