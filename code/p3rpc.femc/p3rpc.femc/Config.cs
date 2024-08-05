@@ -46,6 +46,7 @@ namespace p3rpc.femc.Configuration
         public enum nightmusic1
         {
             TimeNightVersionByMosq,
+            NightWandererByMosq,
             TimeNightByMosqGabiVer,
             ColorYourNightReload,
             MidnightReverieByMineformer
@@ -112,7 +113,19 @@ namespace p3rpc.femc.Configuration
             AfterSchoolByMosq
         }
 
-		[DisplayName("Gendered Audio")]
+        [DisplayName("Master of Shadow")]
+        [Description("Select the music that will be played during some boss fights")]
+        [Category("Music")]
+        [DefaultValue(bossmusic.MasterOfShadowFateMixByMosq)]
+        public bossmusic bossmusictrue { get; set; } = bossmusic.MasterOfShadowFateMixByMosq;
+
+        public enum bossmusic
+        {
+            MasterOfShadowReload,
+            MasterOfShadowFateMixByMosq
+        }
+
+        [DisplayName("Gendered Audio")]
 		[Category("Voice")]
 		[Description("Enable Gio's Gendered Audio?")]
 		[DefaultValue(false)]
