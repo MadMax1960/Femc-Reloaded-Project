@@ -883,7 +883,8 @@ namespace p3rpc.femc.Configuration
         {
             Esa,
             Ely,
-            ElyAlt
+            ElyAlt,
+            Shiosakana
         }
 
         [DisplayName("Level Up")]
