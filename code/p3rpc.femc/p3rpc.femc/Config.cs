@@ -894,7 +894,8 @@ namespace p3rpc.femc.Configuration
         public enum LevelUpType
         {
             Esa,
-            Ely
+            Ely,
+            Shiosakana
         }
 
         [DisplayName("Cutin")]

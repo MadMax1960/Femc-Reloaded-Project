@@ -173,6 +173,8 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
 				else if (_configuration.LevelUpTrue == LevelUpType.Ely)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Ely"));
+				else if (_configuration.LevelUpTrue == LevelUpType.Shiosakana)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Shiosakana"));
 
 				if (_configuration.CutinTrue == CutinType.berrycha)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
