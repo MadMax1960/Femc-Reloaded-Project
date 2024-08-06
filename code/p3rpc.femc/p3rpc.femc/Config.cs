@@ -899,6 +899,18 @@ namespace p3rpc.femc.Configuration
             Ely,
             Shiosakana
         }
+		
+        [DisplayName("Party Panel")]
+        [Description("The face icons in battle and pause menu")]
+        [Category("2D Options")]
+        [DefaultValue(PartyPanelType.Esa)]
+        public PartyPanelType PartyPanelTrue { get; set; } = PartyPanelType.Esa;
+
+        public enum PartyPanelType
+        {
+            Kris,
+            Esa
+        }
 
         [DisplayName("Cutin")]
         [Description("Cutin Movie")]
