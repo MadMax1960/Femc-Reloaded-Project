@@ -882,7 +882,8 @@ namespace p3rpc.femc.Configuration
         public enum ShardType
         {
             Esa,
-            Ely
+            Ely,
+            ElyAlt
         }
 
         [DisplayName("Level Up")]

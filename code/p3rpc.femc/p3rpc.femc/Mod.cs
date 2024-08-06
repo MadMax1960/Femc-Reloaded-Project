@@ -168,6 +168,8 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Esa"));
 				else if (_configuration.ShardTrue == ShardType.Ely)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Ely"));
+				else if (_configuration.ShardTrue == ShardType.ElyAlt)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "ElyAlt"));
 
 				if (_configuration.LevelUpTrue == LevelUpType.Esa)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
