@@ -870,7 +870,8 @@ namespace p3rpc.femc.Configuration
 			ElyAlt,
 			Yuunagi,
 			cielbell,
-			axolotl
+			axolotl,
+			ghostedtoast
         }
 
         [DisplayName("Glass Shard")]
