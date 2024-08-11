@@ -11,55 +11,55 @@ namespace p3rpc.femc.Configuration
     public class Config : Configurable<Config>
     {
         [DisplayName("Pull the Trigger (Karma Remix)")]
-        [Category("Music")]
+        [Category("Battle Music")]
         [Description("Enable Karma's pull the trigger?")]
         [DefaultValue(false)]
         public bool karmaadv { get; set; } = true;
 
         [DisplayName("Pull the trigger (Mosq Remix)")]
-        [Category("Music")]
+        [Category("Battle Music")]
         [Description("Enable Mosq's pull the trigger?")]
         [DefaultValue(true)]
         public bool mosqadv { get; set; } = true;
 
         [DisplayName("Pull the Trigger (EidieK87 Remix)")]
-        [Category("Music")]
+        [Category("Battle Music")]
         [Description("Enable EidieK87's pull the trigger?")]
         [DefaultValue(false)]
         public bool eidadv { get; set; } = true;
 
         [DisplayName("Wiping All Out (Mosq Remix)")]
-        [Category("Music")]
+        [Category("Battle Music")]
         [Description("Enable Mosq's Wiping All Out?")]
         [DefaultValue(true)]
         public bool mosqnom { get; set; } = true;
 
         [DisplayName("Wiping All Out (Karma Remix)")]
-        [Category("Music")]
+        [Category("Battle Music")]
         [Description("Enable Karma's Wiping All Out?")]
         [DefaultValue(false)]
         public bool karmanom { get; set; } = true;
 
         [DisplayName("Wiping All Out (Stella and GillStudio Remix)")]
-        [Category("Music")]
+        [Category("Battle Music")]
         [Description("Enable Stella and GillStudio's Wiping All Out?")]
         [DefaultValue(false)]
         public bool sgnom { get; set; } = true;
 
         [DisplayName("Danger Zone (Stella and GillStudio Remix)")]
-        [Category("Music")]
+        [Category("Battle Music")]
         [Description("Enable Stella and GillStudio's Danger Zone?")]
         [DefaultValue(false)]
         public bool sgdis { get; set; } = true;
 
         [DisplayName("Danger Zone (Karma Remix)")]
-        [Category("Music")]
+        [Category("Battle Music")]
         [Description("Enable Karma's Danger Zone?")]
         [DefaultValue(false)]
         public bool karmadis { get; set; } = true;
 
         [DisplayName("Danger Zone (Mosq Remix)")]
-        [Category("Music")]
+        [Category("Battle Music")]
         [Description("Enable Mosq's Danger Zone?")]
         [DefaultValue(true)]
         public bool mosqdis { get; set; } = true;

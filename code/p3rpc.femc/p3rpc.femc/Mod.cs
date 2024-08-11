@@ -96,7 +96,6 @@ namespace p3rpc.femc
 			InitializeModules();
 			GenerateMusicScript();
 			RedirectPlayerAssets();
-
 		}
 
 		private IControllerType GetDependency<IControllerType>(string modName) where IControllerType : class
@@ -224,7 +223,9 @@ namespace p3rpc.femc
 
         private void BattleMusicGeneration()
         {
-            string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/battle-themes/script";
+            var battlethemes = GetDependency<IBattleThemesApi>("Battle Themes");
+            string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGM/";
+            battlethemes.RemovePath(path);   
             string advantage = "const adv_music=[";
             string normal = "const nom_music=[";
             string disadvantage = "const dis_music=[";
@@ -292,17 +293,18 @@ namespace p3rpc.femc
             advantage += (added["advantage"] == 0) ? "p3r_MPTTR]" : "]";
             normal += (added["normal"] == 0) ? "p3r_MWPAO]" : "]";
             disadvantage += (added["disadvantage"] == 0) ? "p3r_MDZ]" : "]";
-            string[] lines = { advantage, normal, disadvantage, "const BATTLE_THEME = battle_bgm(random_song(nom_music),random_song(adv_music),random_song(dis_music)" };
-            if (File.Exists(path + ".theme.pme"))
+            string[] lines = { advantage, normal, disadvantage, "const BATTLE_THEME = battle_bgm(random_song(nom_music),random_song(adv_music),random_song(dis_music))" };
+            if (File.Exists(path+"script" + ".theme.pme"))
             {
-                File.Delete(path + ".theme.pme");
+                File.Delete(path+"script" + ".theme.pme");
             }
-            using (StreamWriter outputFile = new StreamWriter(path))
+            using (StreamWriter outputFile = new StreamWriter(path+"script"))
             {
                 foreach (string line in lines)
                     outputFile.WriteLine(line);
             }
-            File.Move(path, Path.ChangeExtension(path, ".theme.pme"));
+            File.Move(path+"script", Path.ChangeExtension(path+"script", ".theme.pme"));
+			battlethemes.AddPath(_modConfig.ModId,path);
         }
 
         private void GenerateMusicScript()
@@ -551,6 +553,7 @@ namespace p3rpc.femc
 			_configuration = configuration;
 			_logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
 			_modRuntime.UpdateConfiguration(configuration);
+			BattleMusicGeneration();
         }
 		#endregion
 
