@@ -1,0 +1,68 @@
+[msg MSG_000_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 1 0 0]Ah, eres tú, [uf 4 1].[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 3 65535 65535 0 0][uf 3 1 1 0 4 2 0 0]Tienes mal aspecto. ¿Te está afectando el tiempo? Está haciendo más calor.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 3 0 0]Ya estamos en marzo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 4 0 0][uf 4 25 102]...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 5 0 0]Hay algo que quería decirte.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 6 0 0]Bueno, estamos en el mismo curso, así que seguro que tendremos muchas ocasiones de hablar.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 7 0 0]Aun así, quería decirte esto mientras aún estemos los dos en el consejo estudiantil.[n][uf 1 1][e]
+
+[msg MSG_001_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 8 0 0]Voy a dejarlo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 9 0 0]Verás, este trimestre está a punto de terminar y el año que viene no voy a presentarme.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 10 0 0]El tema del cigarrillo me ha dado mucho en lo que pensar.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 11 0 0]Esta pregunta te sonará rara, pero ¿crees que el país va por buen camino?[n][uf 1 1][e]
+
+[sel SEL_002_0_0 top]
+[uf 0 5 65278][uf 2 1]Eso creo.[e]
+[uf 0 5 65278][uf 2 1]A mí no me lo parece.[e]
+
+[msg MSG_003_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 12 0 0]Ya. Pues yo no estoy de acuerdo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 13 0 0]Eres muy optimista, así que imagino que ves la sociedad de forma diferente.[n][uf 1 1][e]
+
+[msg MSG_004_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 14 0 0]Entiendo. Yo tampoco lo creo.[n][uf 1 1][e]
+
+[msg MSG_005_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 15 0 0]Hasta enero había una secta siniestra que estaba ganando fama.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 3 65535 65535 0 0][uf 3 1 1 0 4 16 0 0]"Una sociedad sin futuro"... Esa es la realidad para mucha gente.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 2 65535 65535 0 0][uf 3 1 1 0 4 17 0 0]He pensado en cómo podemos ponerle remedio y en qué hace falta para cambiar la sociedad.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 2 65535 65535 0 0][uf 3 1 1 0 4 18 0 0]Antes, creía que la única manera era que los que están en el poder iniciasen una reforma.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 3 65535 65535 0 0][uf 3 1 1 0 4 19 0 0]Pero comenzar una revolución solo porque se tiene el poder para ello lo único que consigue es crear más problemas.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 3 65535 65535 0 0][uf 3 1 1 0 4 20 0 0]Es lo que aprendí del incidente del cigarrillo. Así me di cuenta de lo ingenuo que había sido.[n][uf 1 1][e]
+
+[msg MSG_006_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 21 0 0]Y me ayudó a encontrar una respuesta distinta.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 22 0 0]Ahora creo que lo mejor para la sociedad es recibir una buena educación.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 23 0 0]Todos los individuos que forman nuestra sociedad deberían tener derecho a una educación de corazón y mente.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 24 0 0]Estoy convencido de que eso es lo que más necesitamos. Por tanto...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 25 0 0]Estoy pensando en meterme a profesor.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 26 0 0]Una sociedad está determinada por su gente. Cada persona que ayude a crecer, por extensión, ayudará a que crezca la sociedad.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 27 0 0]¿No vas a reírte y a decirme que estoy soñando?[n][uf 1 1][e]
+
+[sel SEL_007_0_0 top]
+[uf 0 5 65278][uf 2 1]Quizá un poco.[e]
+[uf 0 5 65278][uf 2 1]En absoluto.[e]
+
+[msg MSG_008_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 1 65535 65535 0 0][uf 3 1 1 0 4 28 0 0]¡Ja, ja! Si te digo la verdad, a mí también me hace gracia la idea.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 1 65535 65535 0 0][uf 3 1 1 0 4 29 0 0]No sé yo si sería buen profesor. Mis alumnos probablemente me cogerían tirria.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 30 0 0][uf 4 25 102]...[n][uf 1 1][e]
+
+[msg MSG_009_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 1 65535 65535 0 0][uf 3 1 1 0 4 31 0 0]Ya veo... Bueno, yo tengo pensado esforzarme al máximo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 32 0 0][uf 4 25 102]...[n][uf 1 1][e]
+
+[msg MSG_010_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 33 0 0]Eso es lo que quería contarte.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 34 0 0]Ah, y gracias.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 35 0 0]Ha sido todo gracias a ti. Así que gracias.[n][uf 1 1][e]
+
+[msg MSG_011_0_0 [Hidetoshi Odagiri]]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 36 0 0]Por cierto, ya nadie habla del incidente del cigarrillo.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 37 0 0]Para la gente ha sido cosa de poco, un incidente fácil de olvidar, pero para mí no.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 0 65535 65535 0 0][uf 3 1 1 0 4 38 0 0]Yo no lo olvidaré nunca.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 1 65535 65535 0 0][uf 3 1 1 0 4 39 0 0]Ni tampoco te olvidaré a ti, claro.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 102 1 65535 65535 0 0][uf 3 1 1 0 4 40 0 0]Gracias otra vez.[n][uf 1 1][e]
+
