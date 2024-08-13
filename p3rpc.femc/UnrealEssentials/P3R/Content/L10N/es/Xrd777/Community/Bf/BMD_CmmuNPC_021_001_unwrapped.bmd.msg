@@ -217,14 +217,14 @@
 [uf 0 5 65278][uf 2 1]Creo que mi relación con la pareja de ancianos se estrechará pronto.[n][uf 1 1][e]
 
 [msg MND_GENERALSELECTMSG_NOR]
-[uf 0 5 65278][uf 2 1]No creo que mi vínculo con [uf 2 4 0] se fortalezca más aunque pasemos tiempo juntos...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]No creo que mi vínculo con [uf 2 4 0] se fortalezca más aunque pasemos tiempo juntas...[n][uf 1 1][e]
 
 [msg MND_GENERALMSG_BS_NORMAL [Aigis]]
-[uf 0 5 65278][uf 2 1]No creo que nuestro vínculo se fortalezca más aunque pasemos tiempo juntos.[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]No creo que nuestro vínculo se fortalezca más aunque pasemos tiempo juntas.[n][uf 1 1][e]
 
 [msg MND_GENERALSELECTMSG_MAX_2]
 [uf 0 5 65278][uf 2 1]Parece que tu relación no puede avanzar más...[n][uf 1 1][e]
-[uf 0 5 65278][uf 2 1]¿Deberíamos pasar el rato juntos igualmente?[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1]¿Deberíamos pasar el rato juntas igualmente?[n][uf 1 1][e]
 
 [msg MND_GENERAL_MSG_SOLO_AS]
 [uf 0 5 65278][uf 2 1]¿Paso un rato con [uf 2 4 0] después de clase?[n][uf 1 1][e]
