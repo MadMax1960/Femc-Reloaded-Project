@@ -1,1 +1,0 @@
-[uf 0 5 65278][uf 2 1]Now Gege hates me as much as Atlus! [n][e]
