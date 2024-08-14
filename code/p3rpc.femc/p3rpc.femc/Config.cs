@@ -88,93 +88,113 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool massdes { get; set; } = true;
 
-        [DisplayName("Night Music")]
-        [Description("Select the music that will be played at night when you are outside the dorm")]
+        [DisplayName("Night Music: Color your Night")]
         [Category("Music")]
-        [DefaultValue(nightmusic1.TimeNightVersionByMosq)]
-        public nightmusic1 nighttrue1 { get; set; } = nightmusic1.TimeNightVersionByMosq;
+        [Description("Enable Color your Night as the night music?")]
+        [DefaultValue(false)]
+        public bool colnight { get; set; } = true;
 
-        public enum nightmusic1
-        {
-            TimeNightVersionByMosq,
-            NightWandererByMosq,
-            TimeNightByMosqGabiVer,
-            ColorYourNightReload,
-            MidnightReverieByMineformer
-        }
-
-        [DisplayName("Daytime Music Inside School (April to August)")]
-        [Description("Select the music that will be played when you are inside the school (april to august)")]
+        [DisplayName("Night Music: Midnight Reverie by Mineformer")]
         [Category("Music")]
-        [DefaultValue(dayinmusic1.TimeByMosq)]
-        public dayinmusic1 dayintrue1 { get; set; } = dayinmusic1.TimeByMosq;
+        [Description("Enable Midnight Reverie as the night music?")]
+        [DefaultValue(false)]
+        public bool midnight { get; set; } = true;
 
-        public enum dayinmusic1
-        {
-            WantToBeCloseReload,
-            TimeByMosq,
-            TimeByMosqGabiVer
-        }
-
-        [DisplayName("Daytime Music Inside School (September Onwards)")]
-        [Description("Select the music that will be played when you are inside the school (september onwards)")]
+        [DisplayName("Night Music: Time (Night Version) by Mosq")]
         [Category("Music")]
-        [DefaultValue(dayinmusic2.SunByMosq)]
-        public dayinmusic2 dayintrue2 { get; set; } = dayinmusic2.SunByMosq;
+        [Description("Enable Time (Night Version) as the night music?")]
+        [DefaultValue(true)]
+        public bool femnight { get; set; } = true;
 
-        public enum dayinmusic2
-        {
-            ChangingSeasonsReload,
-            SunByMosq
-        }
-
-        [DisplayName("Daytime Music Outside School (April to August)")]
-        [Description("Select the music that will be played when you are roaming around the island (april to august)")]
+        [DisplayName("Night Music: Time (Night Version) by Mosq with Vocals by GabiShy")]
         [Category("Music")]
-        [DefaultValue(dayoutmusic1.WayOfLifeByMosq)]
-        public dayoutmusic1 dayouttrue1 { get; set; } = dayoutmusic1.WayOfLifeByMosq;
+        [Description("Enable Time (Night Version GabiShy Remix) as the night music?")]
+        [DefaultValue(false)]
+        public bool gabifemnight { get; set; } = true;
 
-        public enum dayoutmusic1
-        {
-            WhenTheMoonsReachingOutStarsReload,
-            WayOfLifeByMosq
-        }
-
-        [DisplayName("Final Battle with Nyx")]
-        [Description("Select the music that will be played in the final battle with Nyx")]
+        [DisplayName("Night Music: Night Wanderer by Mosq")]
         [Category("Music")]
-        [DefaultValue(finalmusic.BurnMyDreadReload)]
-        public finalmusic finalmusictrue { get; set; } = finalmusic.BurnMyDreadReload;
+        [Description("Enable Night Wanderer as the night music?")]
+        [DefaultValue(false)]
+        public bool nightwand { get; set; } = true;
 
-        public enum finalmusic
-        {
-            BurnMyDreadReload,
-            SoulPhraseByKarma
-        }
-
-        [DisplayName("Social Link Events")]
-        [Description("Select the music that will be played during social link events")]
+        [DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
+        [Description("Enable When the moon's reaching out stars as the daytime music?")]
         [Category("Music")]
-        [DefaultValue(socialmusic.AfterSchoolByMosq)]
-        public socialmusic socialmusictrue { get; set; } = socialmusic.AfterSchoolByMosq;
+        [DefaultValue(false)]
+        public bool moon { get; set; } = true;
 
-        public enum socialmusic
-        {
-            JoyReload,
-            AfterSchoolByMosq
-        }
-
-        [DisplayName("Master of Shadow")]
-        [Description("Select the music that will be played during some boss fights")]
+        [DisplayName("Daytime Music (Outside School/Phase 1): Way of life by Mosq")]
         [Category("Music")]
-        [DefaultValue(bossmusic.MasterOfShadowFateMixByMosq)]
-        public bossmusic bossmusictrue { get; set; } = bossmusic.MasterOfShadowFateMixByMosq;
+        [Description("Enable Way of life as the daytime music?")]
+        [DefaultValue(true)]
+        public bool wayoflife { get; set; } = true;
 
-        public enum bossmusic
-        {
-            MasterOfShadowReload,
-            MasterOfShadowFateMixByMosq
-        }
+        [DisplayName("Daytime Music (Inside School/Phase 1): Want to Be Close -Reload-")]
+        [Category("Music")]
+        [Description("Enable Want to Be Close -Reload- as the daytime music inside the school (Phase 1)?")]
+        [DefaultValue(false)]
+        public bool wantclose { get; set; } = true;
+
+        [DisplayName("Daytime Music (Inside School/Phase 1): Time by Mosq")]
+        [Category("Music")]
+        [Description("Enable Time as the daytime music inside the school?")]
+        [DefaultValue(true)]
+        public bool timeschool { get; set; } = true;
+
+        [DisplayName("Daytime Music (Inside School/Phase 1): Time (GabiShy remix) by Mosq")]
+        [Category("Music")]
+        [Description("Enable (Time GabiShy Remix) as the daytime music inside the school?")]
+        [DefaultValue(false)]
+        public bool gabitimeschool { get; set; } = true;
+
+        [DisplayName("Social Link Events: Joy")]
+        [Category("Music")]
+        [Description("Enable Joy to be the music played during social link events?")]
+        [DefaultValue(false)]
+        public bool joy { get; set; } = true;
+
+        [DisplayName("Social Link Events: After School by Mosq")]
+        [Category("Music")]
+        [Description("Enable Mosq's After School to be the music played during social link events?")]
+        [DefaultValue(true)]
+        public bool afterschool { get; set; } = true;
+
+        [DisplayName("Daytime Music(Inside School/Phase 2): Changing Seasons -Reload-")]
+        [Category("Music")]
+        [Description("Enable Changing Seasons as the daytime music inside the school?")]
+        [DefaultValue(false)]
+        public bool seasons { get; set; } = true;
+
+        [DisplayName("Daytime Music(Inside School/Phase 2): Sun by Mosq")]
+        [Category("Music")]
+        [Description("Enable Sun as the daytime music inside the school?")]
+        [DefaultValue(true)]
+        public bool sun { get; set; } = true;
+
+        [DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
+        [Category("Music")]
+        [Description("Enable Soul Phrase as the music played during the battle with Nyx?")]
+        [DefaultValue(false)]
+        public bool soulpk { get; set; } = true;
+
+        [DisplayName("Final Battle with NYX: Burn my dread Final Battle")]
+        [Category("Music")]
+        [Description("Enable Burn my dread as the music played during the battle with Nyx?")]
+        [DefaultValue(true)]
+        public bool bmd { get; set; } = true;
+
+        [DisplayName("Boss Battles: Master of Shadow -Reload")]
+        [Category("Music")]
+        [Description("Enable Master of Shadow -Reload to be the music played during boss battles?")]
+        [DefaultValue(false)]
+        public bool bms { get; set; } = true;
+
+        [DisplayName("Boss Battles: Master of Shadow Fate Mix by Mosq")]
+        [Category("Music")]
+        [Description("Enable Master of Shadow Fate Mix to be the music played during boss battles?")]
+        [DefaultValue(true)]
+        public bool bmsf { get; set; } = true;
 
         [DisplayName("Gendered Audio")]
 		[Category("Voice")]
