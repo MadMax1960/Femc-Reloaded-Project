@@ -96,7 +96,6 @@ namespace p3rpc.femc
 			InitializeModules();
 			GenerateMusicScript();
 			RedirectPlayerAssets();
-
 		}
 
 		private IControllerType GetDependency<IControllerType>(string modName) where IControllerType : class
@@ -229,17 +228,102 @@ namespace p3rpc.femc
 			}
 		}
 
-		private void GenerateMusicScript()
+        private void BattleMusicGeneration()
+        {
+            var battlethemes = GetDependency<IBattleThemesApi>("Battle Themes");
+            string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGM/";
+            battlethemes.RemovePath(path);   
+            string advantage = "const adv_music=[";
+            string normal = "const nom_music=[";
+            string disadvantage = "const dis_music=[";
+            var added = new Dictionary<string, int>
+            {
+                {"advantage",0},
+                {"normal",0},
+                {"disadvantage",0}
+            };
+            var collection = new Dictionary<string, Tuple<string, bool>>
+            {
+                {"p3r_MPTTR", new Tuple<string, bool>("advantage",_configuration.mosqadv)},
+                {"p3r_KPPTR", new Tuple<string, bool>("advantage",_configuration.karmaadv)},
+                {"p3r_EPTTR", new Tuple<string, bool>("advantage",_configuration.eidadv)},
+                {"p3r_MWPAO", new Tuple<string, bool>("normal",_configuration.mosqnom)},
+                {"p3r_KWPAO", new Tuple<string, bool>("normal",_configuration.karmanom)},
+                {"p3r_SGWPAO", new Tuple<string, bool>("normal",_configuration.sgnom)},
+                {"p3r_MDZ", new Tuple<string, bool>("disadvantage",_configuration.mosqdis)},
+                {"p3r_KDZ", new Tuple<string, bool>("disadvantage",_configuration.karmadis)},
+                {"p3r_EDZ", new Tuple<string, bool>("disadvantage",_configuration.eddis)},
+                {"p3r_SGDZ", new Tuple<string, bool>("disadvantage",_configuration.sgdis)},
+				{"128", new Tuple<string, bool>("advantage",_configuration.itgoingdown)},
+                {"26", new Tuple<string, bool>("normal",_configuration.massdes)},
+                {"31", new Tuple<string, bool>("disadvantage",_configuration.mastertar)}
+
+            };
+            foreach (KeyValuePair<string, Tuple<string, bool>> col in collection)
+            {
+                if (col.Value.Item2)
+                {
+                    if (col.Value.Item1 == "advantage")
+                    {
+                        if (added[col.Value.Item1] == 0)
+                        {
+                            advantage += col.Key;
+                            added[col.Value.Item1] = 1;
+                        }
+                        else
+                        {
+                            advantage += "," + col.Key;
+                        }
+                    }
+                    else if (col.Value.Item1 == "normal")
+                    {
+                        if (added[col.Value.Item1] == 0)
+                        {
+                            normal += col.Key;
+                            added[col.Value.Item1] = 1;
+                        }
+                        else
+                        {
+                            normal += "," + col.Key;
+                        }
+                    }
+                    else if (col.Value.Item1 == "disadvantage")
+                    {
+                        if (added[col.Value.Item1] == 0)
+                        {
+                            disadvantage += col.Key;
+                            added[col.Value.Item1] = 1;
+                        }
+                        else
+                        {
+                            disadvantage += "," + col.Key;
+                        }
+                    }
+                }
+            }
+            advantage += (added["advantage"] == 0) ? "p3r_MPTTR]" : "]";
+            normal += (added["normal"] == 0) ? "p3r_MWPAO]" : "]";
+            disadvantage += (added["disadvantage"] == 0) ? "p3r_MDZ]" : "]";
+            string[] lines = { advantage, normal, disadvantage, "const BATTLE_THEME = battle_bgm(random_song(nom_music),random_song(adv_music),random_song(dis_music))" };
+            if (File.Exists(path+"script" + ".theme.pme"))
+            {
+                File.Delete(path+"script" + ".theme.pme");
+            }
+            using (StreamWriter outputFile = new StreamWriter(path+"script"))
+            {
+                foreach (string line in lines)
+                    outputFile.WriteLine(line);
+            }
+            File.Move(path+"script", Path.ChangeExtension(path+"script", ".theme.pme"));
+			battlethemes.AddPath(_modConfig.ModId,path);
+        }
+
+        private void GenerateMusicScript()
 		{
 			try
 			{
                 var ryo = GetDependency<IRyoApi>("Ryo");
-                //MUSIC TOGGLES
-                themeConfig.AddSetting(nameof(this._configuration.mosqeidk), "MosqEidk.theme.pme");
-                themeConfig.AddSetting(nameof(this._configuration.rock), "Rock.theme.pme");
-                themeConfig.AddSetting(nameof(this._configuration.mosq), "Mosq.theme.pme");
-                themeConfig.AddSetting(nameof(this._configuration.karma), "Karma.theme.pme");
-                themeConfig.Initialize();
+				BattleMusicGeneration();
                 string path = _modLoader.GetDirectoryForModId(_modConfig.ModId);
                 var nightmusic = new Dictionary<string, bool>
 				{
@@ -480,6 +564,7 @@ namespace p3rpc.femc
 			_configuration = configuration;
 			_logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
 			_modRuntime.UpdateConfiguration(configuration);
+			BattleMusicGeneration();
         }
 		#endregion
 

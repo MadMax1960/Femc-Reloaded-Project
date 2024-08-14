@@ -10,32 +10,83 @@ namespace p3rpc.femc.Configuration
 
     public class Config : Configurable<Config>
     {
-        
-        [DisplayName("Battle Pack: Mosq")]
-        [Category("Music")]
-        [Description("Enable Mosq's battle music?")]
+        [DisplayName("Pull the Trigger (Karma Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Karma's pull the trigger?")]
+        [DefaultValue(false)]
+        public bool karmaadv { get; set; } = true;
+
+        [DisplayName("Pull the trigger (Mosq Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Mosq's pull the trigger?")]
         [DefaultValue(true)]
-        public bool mosq { get; set; } = true;
+        public bool mosqadv { get; set; } = true;
 
-        [DisplayName("Battle Pack: Mosq and EidieK87")]
-        [Category("Music")]
-        [Description("Enable Mosq's battle music along with EidieK87's version of Pull the trigger?")]
+        [DisplayName("Pull the Trigger (EidieK87 Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable EidieK87's pull the trigger?")]
         [DefaultValue(false)]
-        public bool mosqeidk { get; set; } = true;
+        public bool eidadv { get; set; } = true;
 
-        // literally just a todo list for myself, seperate these into their own options because not everybody wants all the music from each person and bgme supports it fine
+        [DisplayName("Wiping All Out (Mosq Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Mosq's Wiping All Out?")]
+        [DefaultValue(true)]
+        public bool mosqnom { get; set; } = true;
 
-        [DisplayName("Battle Pack: Karma")]
-        [Category("Music")]
-        [Description("Enable Karma's battle music?")]
+        [DisplayName("Wiping All Out (Karma Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Karma's Wiping All Out?")]
         [DefaultValue(false)]
-        public bool karma { get; set; } = true;
+        public bool karmanom { get; set; } = true;
 
-        [DisplayName("Battle Pack: Stella and GillStudio's Rock Covers")]
-        [Category("Music")]
-        [Description("Enable Stella and GillStudio's battle music?")]
+        [DisplayName("Wiping All Out (Stella and GillStudio Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Stella and GillStudio's Wiping All Out?")]
         [DefaultValue(false)]
-        public bool rock { get; set; } = true;
+        public bool sgnom { get; set; } = true;
+
+        [DisplayName("Danger Zone (Stella and GillStudio Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Stella and GillStudio's Danger Zone?")]
+        [DefaultValue(false)]
+        public bool sgdis { get; set; } = true;
+
+        [DisplayName("Danger Zone (Karma Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Karma's Danger Zone?")]
+        [DefaultValue(false)]
+        public bool karmadis { get; set; } = true;
+
+        [DisplayName("Danger Zone (Mosq Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Mosq's Danger Zone?")]
+        [DefaultValue(true)]
+        public bool mosqdis { get; set; } = true;
+
+        [DisplayName("Danger Zone (EidieK87 Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable EidieK87's Danger Zone?")]
+        [DefaultValue(false)]
+        public bool eddis { get; set; } = true;
+
+        [DisplayName("It's Going Down Now")]
+        [Category("Battle Music")]
+        [Description("Enable Atlus's It's Going down now?")]
+        [DefaultValue(false)]
+        public bool itgoingdown { get; set; } = true;
+
+        [DisplayName("Master of Tartarus -Reload-")]
+        [Category("Battle Music")]
+        [Description("Enable Atlus's Master of Tartarus -Reload-?")]
+        [DefaultValue(false)]
+        public bool mastertar { get; set; } = true;
+
+        [DisplayName("Mass Destruction -Reload-")]
+        [Category("Battle Music")]
+        [Description("Enable Atlus's Mass Destruction -Reload-?")]
+        [DefaultValue(false)]
+        public bool massdes { get; set; } = true;
 
         [DisplayName("Night Music")]
         [Description("Select the music that will be played at night when you are outside the dorm")]
