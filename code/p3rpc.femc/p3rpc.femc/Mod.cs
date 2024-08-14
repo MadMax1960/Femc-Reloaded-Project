@@ -246,6 +246,9 @@ namespace p3rpc.femc
                 {"p3r_MDZ", new Tuple<string, bool>("disadvantage",_configuration.mosqdis)},
                 {"p3r_KDZ", new Tuple<string, bool>("disadvantage",_configuration.karmadis)},
                 {"p3r_SGDZ", new Tuple<string, bool>("disadvantage",_configuration.sgdis)},
+				{"128", new Tuple<string, bool>("advantage",_configuration.itgoingdown)},
+                {"26", new Tuple<string, bool>("normal",_configuration.massdes)},
+                {"31", new Tuple<string, bool>("disadvantage",_configuration.mastertar)}
 
             };
             foreach (KeyValuePair<string, Tuple<string, bool>> col in collection)

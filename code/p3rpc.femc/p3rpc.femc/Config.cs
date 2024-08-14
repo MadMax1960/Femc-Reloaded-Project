@@ -64,6 +64,23 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool mosqdis { get; set; } = true;
 
+        [DisplayName("It's Going Down Now")]
+        [Category("Battle Music")]
+        [Description("Enable Atlus's It's Going down now?")]
+        [DefaultValue(false)]
+        public bool itgoingdown { get; set; } = true;
+
+        [DisplayName("Master of Tartarus -Reload-")]
+        [Category("Battle Music")]
+        [Description("Enable Atlus's Master of Tartarus -Reload-?")]
+        [DefaultValue(false)]
+        public bool mastertar { get; set; } = true;
+
+        [DisplayName("Mass Destruction -Reload-")]
+        [Category("Battle Music")]
+        [Description("Enable Atlus's Mass Destruction -Reload-?")]
+        [DefaultValue(false)]
+        public bool massdes { get; set; } = true;
 
         [DisplayName("Night Music")]
         [Description("Select the music that will be played at night when you are outside the dorm")]
