@@ -67,7 +67,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Danger Zone (EidieK87 Remix)")]
         [Category("Battle Music")]
         [Description("Enable EidieK87's Danger Zone?")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool eddis { get; set; } = true;
 
         [DisplayName("It's Going Down Now")]
