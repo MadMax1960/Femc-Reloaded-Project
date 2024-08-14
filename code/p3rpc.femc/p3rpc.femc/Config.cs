@@ -909,15 +909,23 @@ namespace p3rpc.femc.Configuration
             ElyandPatmandx
         }
 
-        [DisplayName("Kotone Room")]
+		[DisplayName("Animations")]
+		[Description("Choose from a few Animations, note that some custom anims might not look correct if skeleton fix is enabled.")]
+		[Category("3D Options")]
+		[DefaultValue(AnimType.OriginalAnims)]
+		public AnimType AnimTrue { get; set; } = AnimType.OriginalAnims;
+
+		public enum AnimType
+		{
+			OriginalAnims,
+			CustomAnims,
+			VeryFunnyAnims
+		}
+
+		[DisplayName("Kotone Room")]
         [Category("Fun Stuff")]
         [DefaultValue(false)]
         public bool KotoneRoom { get; set; } = false;
-
-        [DisplayName("Funny Anims")]
-        [Category("Fun Stuff")]
-        [DefaultValue(false)]
-        public bool FunnyAnims { get; set; } = false;
 
 		[DisplayName("Gregory House Apron")]
 		[Category("Fun Stuff")]

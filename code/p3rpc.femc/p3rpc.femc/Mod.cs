@@ -185,12 +185,12 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
 				}
 
-				if (_configuration.FunnyAnims)
+				//if (_configuration.FunnyAnims)
 				{
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Funny Anims"));
 				}
 
-				if (!_configuration.FunnyAnims)
+				//if (!_configuration.FunnyAnims)
 				{
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Funny Animsog")); // game dies when 2 files loaded, this has the og files we had in mod but in their own folder, the ! is if the bool is disabled
 				}
@@ -214,6 +214,13 @@ namespace p3rpc.femc
 				{
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
 				}
+
+				if (_configuration.AnimTrue == AnimType.OriginalAnims)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Original Dummy"));
+				else if (_configuration.AnimTrue == AnimType.CustomAnims)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Custom Anims"));
+				else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
 
 			}
 			catch (Exception ex)
