@@ -230,19 +230,21 @@ namespace p3rpc.femc
 
         private void BattleMusicGeneration()
         {
-            var battlethemes = GetDependency<IBattleThemesApi>("Battle Themes");
-            string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGM/";
-            battlethemes.RemovePath(path);   
-            string advantage = "const adv_music=[";
-            string normal = "const nom_music=[";
-            string disadvantage = "const dis_music=[";
-            var added = new Dictionary<string, int>
+			try
+			{
+                var battlethemes = GetDependency<IBattleThemesApi>("Battle Themes");
+                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGM/";
+                battlethemes.RemovePath(path);
+                string advantage = "const adv_music=[";
+                string normal = "const nom_music=[";
+                string disadvantage = "const dis_music=[";
+                var added = new Dictionary<string, int>
             {
                 {"advantage",0},
                 {"normal",0},
                 {"disadvantage",0}
             };
-            var collection = new Dictionary<string, Tuple<string, bool>>
+                var collection = new Dictionary<string, Tuple<string, bool>>
             {
                 {"p3r_MPTTR", new Tuple<string, bool>("advantage",_configuration.mosqadv)},
                 {"p3r_KPPTR", new Tuple<string, bool>("advantage",_configuration.karmaadv)},
@@ -254,164 +256,273 @@ namespace p3rpc.femc
                 {"p3r_KDZ", new Tuple<string, bool>("disadvantage",_configuration.karmadis)},
                 {"p3r_EDZ", new Tuple<string, bool>("disadvantage",_configuration.eddis)},
                 {"p3r_SGDZ", new Tuple<string, bool>("disadvantage",_configuration.sgdis)},
-				{"128", new Tuple<string, bool>("advantage",_configuration.itgoingdown)},
+                {"128", new Tuple<string, bool>("advantage",_configuration.itgoingdown)},
                 {"26", new Tuple<string, bool>("normal",_configuration.massdes)},
                 {"31", new Tuple<string, bool>("disadvantage",_configuration.mastertar)}
 
             };
-            foreach (KeyValuePair<string, Tuple<string, bool>> col in collection)
-            {
-                if (col.Value.Item2)
+                foreach (KeyValuePair<string, Tuple<string, bool>> col in collection)
                 {
-                    if (col.Value.Item1 == "advantage")
+                    if (col.Value.Item2)
                     {
-                        if (added[col.Value.Item1] == 0)
+                        if (col.Value.Item1 == "advantage")
                         {
-                            advantage += col.Key;
-                            added[col.Value.Item1] = 1;
+                            if (added[col.Value.Item1] == 0)
+                            {
+                                advantage += col.Key;
+                                added[col.Value.Item1] = 1;
+                            }
+                            else
+                            {
+                                advantage += "," + col.Key;
+                            }
                         }
-                        else
+                        else if (col.Value.Item1 == "normal")
                         {
-                            advantage += "," + col.Key;
+                            if (added[col.Value.Item1] == 0)
+                            {
+                                normal += col.Key;
+                                added[col.Value.Item1] = 1;
+                            }
+                            else
+                            {
+                                normal += "," + col.Key;
+                            }
                         }
-                    }
-                    else if (col.Value.Item1 == "normal")
-                    {
-                        if (added[col.Value.Item1] == 0)
+                        else if (col.Value.Item1 == "disadvantage")
                         {
-                            normal += col.Key;
-                            added[col.Value.Item1] = 1;
+                            if (added[col.Value.Item1] == 0)
+                            {
+                                disadvantage += col.Key;
+                                added[col.Value.Item1] = 1;
+                            }
+                            else
+                            {
+                                disadvantage += "," + col.Key;
+                            }
                         }
-                        else
-                        {
-                            normal += "," + col.Key;
-                        }
-                    }
-                    else if (col.Value.Item1 == "disadvantage")
-                    {
-                        if (added[col.Value.Item1] == 0)
-                        {
-                            disadvantage += col.Key;
-                            added[col.Value.Item1] = 1;
-                        }
-                        else
-                        {
-                            disadvantage += "," + col.Key;
+						else
+						{
+                            _logger.WriteLineAsync("The Collection dictionary in mod.cs has been improperly configured, one of the specified categories DOES NOT exist.");
                         }
                     }
                 }
+                advantage += (added["advantage"] == 0) ? "p3r_MPTTR]" : "]";
+                normal += (added["normal"] == 0) ? "p3r_MWPAO]" : "]";
+                disadvantage += (added["disadvantage"] == 0) ? "p3r_MDZ]" : "]";
+                string[] lines = { advantage, normal, disadvantage, "const BATTLE_THEME = battle_bgm(random_song(nom_music),random_song(adv_music),random_song(dis_music))" };
+                if (File.Exists(path + "script" + ".theme.pme"))
+                {
+                    File.Delete(path + "script" + ".theme.pme");
+                }
+                using (StreamWriter outputFile = new StreamWriter(path + "script"))
+                {
+                    foreach (string line in lines)
+                        outputFile.WriteLine(line);
+                }
+                File.Move(path + "script", Path.ChangeExtension(path + "script", ".theme.pme"));
+                battlethemes.AddPath(_modConfig.ModId, path);
             }
-            advantage += (added["advantage"] == 0) ? "p3r_MPTTR]" : "]";
-            normal += (added["normal"] == 0) ? "p3r_MWPAO]" : "]";
-            disadvantage += (added["disadvantage"] == 0) ? "p3r_MDZ]" : "]";
-            string[] lines = { advantage, normal, disadvantage, "const BATTLE_THEME = battle_bgm(random_song(nom_music),random_song(adv_music),random_song(dis_music))" };
-            if (File.Exists(path+"script" + ".theme.pme"))
-            {
-                File.Delete(path+"script" + ".theme.pme");
+			catch(Exception ex)
+			{
+                _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
             }
-            using (StreamWriter outputFile = new StreamWriter(path+"script"))
-            {
-                foreach (string line in lines)
-                    outputFile.WriteLine(line);
-            }
-            File.Move(path+"script", Path.ChangeExtension(path+"script", ".theme.pme"));
-			battlethemes.AddPath(_modConfig.ModId,path);
         }
 
         private void GenerateMusicScript()
 		{
-			try
-			{
-                var ryo = GetDependency<IRyoApi>("Ryo");
+            //Author: TheBestAstroNOT
+            //Credit for all the music goes to Atlus, Mosq, Mineformer, Karma, Stella and GillStudio, EidieK87, GabiShy
+            try
+            {
 				BattleMusicGeneration();
-                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId);
-                var nightmusic = new Dictionary<string, bool>
-				{
-					{Path.Combine(path,"BGM\\Mosq\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightVersionByMosq},
-					{Path.Combine(path,"BGM\\Mineformer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.MidnightReverieByMineformer},
-					{Path.Combine(path,"BGM\\Gabi\\link_97.hca"),_configuration.nighttrue1==nightmusic1.TimeNightByMosqGabiVer},
-					{Path.Combine(path,"BGM\\Mosq\\NightWanderer\\link_97.hca"),_configuration.nighttrue1==nightmusic1.NightWandererByMosq}
-				};
-				foreach (KeyValuePair<string, bool> nm in nightmusic)
-				{
-					if (nm.Value)
-						ryo.AddAudioFile(nm.Key);
-				}
-                var dayin1music = new Dictionary<string, bool>
+                _logger.WriteLineAsync("Regenerating music script");
+                var battleThemes = GetDependency<IBattleThemesApi>("Battle Themes");
+                //Initialise the music picker
+                string night = "const night1List=[";
+                string dayoutside1 = "const dayout1List=[";
+                string dayinside1 = "const dayin1List=[";
+                string dayinside2 = "const dayin2List=[";
+                string sociallink11 = "const social11List= [";
+                string sociallink12 = "const social12List= [";
+                string finalbattle = "const finalbattle=[";
+                string bossbattle1 = "const bossbattle1=[";
+                string bossbattle2 = "const bossbattle2=[";
+                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGME/scripts";
+                //Code for writing the commands
+                var added = new Dictionary<string, int>
+        {
+            {"night",0},
+            {"dayout1",0},
+            {"social1",0},
+            {"social2",0},
+            {"dayin1",0},
+            {"dayin2",0},
+            {"final",0},
+            {"boss1",0},
+            {"boss2",0}
+        };
+                var collection = new Dictionary<string, Tuple<bool, string>>
+        {
+			//{"cue id",new Tuple<bool,string>(config value,category)}
+			{"97",new Tuple<bool,string>(_configuration.colnight,"night")},
+            {"2003",new Tuple<bool,string>(_configuration.midnight,"night")},
+            {"2004",new Tuple<bool,string>(_configuration.femnight,"night")},
+            {"2011",new Tuple<bool, string>(_configuration.nightwand,"night")},
+            {"2012", new Tuple<bool,string>(_configuration.gabifemnight,"night")},
+            {"25",new Tuple<bool,string>(_configuration.moon,"dayout1")},
+            {"2005",new Tuple<bool,string>(_configuration.wayoflife,"dayout1")},
+            {"50",new Tuple<bool,string>(_configuration.wantclose,"dayin1")},
+            {"2006",new Tuple<bool,string>(_configuration.timeschool, "dayin1")},
+            {"2013", new Tuple<bool, string>(_configuration.gabitimeschool,"dayin1")},
+            {"51",new Tuple<bool,string>(_configuration.seasons,"dayin2")},
+            {"2009",new Tuple<bool,string>(_configuration.sun, "dayin2")},
+            {"38",new Tuple<bool,string>(_configuration.joy,"social1")},
+            {"43",new Tuple<bool,string>(_configuration.joy,"social2")},
+            {"2007",new Tuple<bool,string>(_configuration.afterschool,"social1")},
+            {"2008",new Tuple<bool,string>(_configuration.afterschool,"social2")},
+            {"2015",new Tuple<bool,string>(_configuration.soulpk,"final")},
+            {"29",new Tuple<bool, string>(_configuration.bmd,"final")},
+            {"2016",new Tuple<bool, string>(_configuration.bmsf,"boss1")},
+            {"2017",new Tuple<bool, string>(_configuration.bmsf,"boss2")},
+            {"27",new Tuple<bool, string>(_configuration.bms,"boss1")},
+            {"129",new Tuple<bool, string>(_configuration.bms,"boss2")}
+        };
+                foreach (KeyValuePair<string, Tuple<bool, string>> col in collection)
                 {
-                    {Path.Combine(path, "BGM\\Mosq\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosq},
-					{Path.Combine(path,   "BGM\\Gabi\\link_50.hca"),_configuration.dayintrue1==dayinmusic1.TimeByMosqGabiVer}
-                };
-                foreach (KeyValuePair<string, bool> di1m in dayin1music)
-                {
-                    if (di1m.Value)
-                        ryo.AddAudioFile(di1m.Key);
+                    if (col.Value.Item1)
+                    {
+                        if (col.Value.Item2 == "night")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                night += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+
+                            else
+                                night += "," + col.Key;
+                        }
+                        else if (col.Value.Item2 == "dayout1")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                dayoutside1 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                dayoutside1 += "," + col.Key;
+                        }
+                        else if (col.Value.Item2 == "dayin1")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                dayinside1 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                dayinside1 += "," + col.Key;
+                        }
+                        else if (col.Value.Item2 == "dayin2")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                dayinside2 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                dayinside2 += "," + col.Key;
+                        }
+                        else if (col.Value.Item2 == "social1")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                sociallink11 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                sociallink11 += "," + col.Key;
+                        }
+                        else if (col.Value.Item2 == "social2")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                sociallink12 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                sociallink12 += "," + col.Key;
+                        }
+                        else if (col.Value.Item2 == "final")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                finalbattle += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                finalbattle += "," + col.Key;
+                        }
+                        else if (col.Value.Item2 == "boss1")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                bossbattle1 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                bossbattle1 += "," + col.Key;
+                        }
+                        else if (col.Value.Item2 == "boss2")
+                        {
+                            if (added[col.Value.Item2] == 0)
+                            {
+                                bossbattle2 += col.Key;
+                                added[col.Value.Item2] = 1;
+                            }
+                            else
+                                bossbattle2 += "," + col.Key;
+                        }
+                        else
+                        {
+                            _logger.WriteLineAsync("The Collection dictionary in mod.cs has been improperly configured, one of the specified categories DOES NOT exist.");
+                        }
+
+                    }
                 }
-                var dayin2music = new Dictionary<string, bool>
+
+                night += (added["night"] == 0) ? "2004]" : "]";
+                dayoutside1 += (added["dayout1"] == 0) ? "2005]" : "]";
+                dayinside1 += (added["dayin1"] == 0) ? "2006]" : "]";
+                dayinside2 += (added["dayin2"] == 0) ? "2009]" : "]";
+                sociallink11 += (added["social1"] == 0) ? "2007]" : "]";
+                sociallink12 += (added["social2"] == 0) ? "2008]" : "]";
+                finalbattle += (added["final"] == 0) ? "2015]" : "]";
+                bossbattle1 += (added["boss1"] == 0) ? "2016]" : "]";
+                bossbattle2 += (added["boss2"] == 0) ? "2017]" : "]";
+
+                //Writing the configuration File
+                string[] lines = { night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)", "end", sociallink12, "global_bgm[43]:", "music = random_song(social12List)", "end", dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)", "end", finalbattle, "global_bgm[29]:", "music=random_song(finalbattle)", "end", bossbattle1, "global_bgm[27]:", "music=random_song(bossbattle1)", "end", bossbattle2, "global_bgm[129]:", "music=random_song(bossbattle2)", "end" };
+
+                if (File.Exists(path + ".pme"))
                 {
-                    {Path.Combine(path, "BGM\\Mosq\\link_51.hca"),_configuration.dayintrue2==dayinmusic2.SunByMosq}
-                };
-                foreach (KeyValuePair<string, bool> di2m in dayin2music)
-                {
-                    if (di2m.Value)
-                        ryo.AddAudioFile(di2m.Key);
+                    File.Delete(path + ".pme");
                 }
-                var dayout1music = new Dictionary<string, bool>
+                using (StreamWriter outputFile = new StreamWriter(path))
                 {
-                    {Path.Combine(path, "BGM\\Mosq\\link_25.hca"),_configuration.dayouttrue1==dayoutmusic1.WayOfLifeByMosq}
-                };
-                foreach (KeyValuePair<string, bool> do1m in dayout1music)
-                {
-                    if (do1m.Value)
-                        ryo.AddAudioFile(do1m.Key);
+                    foreach (string line in lines)
+                        outputFile.WriteLine(line);
                 }
-                var finalbattlemusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "BGM\\Karma\\link_29.hca"),_configuration.finalmusictrue==finalmusic.SoulPhraseByKarma}
-                };
-                foreach (KeyValuePair<string, bool> fbm in finalbattlemusic)
-                {
-                    if (fbm.Value)
-                        ryo.AddAudioFile(fbm.Key);
-                }
-                var sociallinkmusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "BGM\\Mosq\\link_38.hca"),_configuration.socialmusictrue==socialmusic.AfterSchoolByMosq},
-                    {Path.Combine(path, "BGM\\Mosq\\link_43.hca"),_configuration.socialmusictrue==socialmusic.AfterSchoolByMosq}
-                };
-                foreach (KeyValuePair<string, bool> sm in sociallinkmusic)
-                {
-                    if (sm.Value)
-                        ryo.AddAudioFile(sm.Key);
-                }
-                var bosslinkmusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "BGM\\Mosq\\link_129.hca"),_configuration.bossmusictrue==bossmusic.MasterOfShadowFateMixByMosq},
-                    {Path.Combine(path, "BGM\\Mosq\\link_27.hca"),_configuration.bossmusictrue==bossmusic.MasterOfShadowFateMixByMosq}
-                };
-                foreach (KeyValuePair<string, bool> sm in bosslinkmusic)
-                {
-                    if (sm.Value)
-                        ryo.AddAudioFile(sm.Key);
-                }
-                var bluehairandpronounce = new Dictionary<string, bool>
-			{
-					{Path.Combine(path, "Voice"),_configuration.bluehairandpronounce==true}
-				};
-				foreach (KeyValuePair<string, bool> sm in bluehairandpronounce)
-				{
-					if (sm.Value)
-						ryo.AddAudioFolder(sm.Key);
-				}
-			}
-			catch (Exception ex)
-			{
+                File.Move(path, Path.ChangeExtension(path, ".pme"));
+            }
+            catch (Exception ex)
+            {
                 _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
             }
-		}
+        }
 
 
-		private void InitializeModules()
+        private void InitializeModules()
 		{
 			_modRuntime.AddModule<UICommon>();
 			if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
@@ -564,7 +675,7 @@ namespace p3rpc.femc
 			_configuration = configuration;
 			_logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
 			_modRuntime.UpdateConfiguration(configuration);
-			BattleMusicGeneration();
+			GenerateMusicScript();
         }
 		#endregion
 
