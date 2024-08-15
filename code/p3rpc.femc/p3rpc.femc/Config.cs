@@ -897,8 +897,7 @@ namespace p3rpc.femc.Configuration
         public enum LevelUpType
         {
             Esa,
-            Ely,
-            Shiosakana
+            Ely
         }
 		
         [DisplayName("Party Panel")]
