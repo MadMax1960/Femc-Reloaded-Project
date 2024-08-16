@@ -10,193 +10,194 @@ namespace p3rpc.femc.Configuration
 
     public class Config : Configurable<Config>
     {
-        [DisplayName("Pull the Trigger (Karma Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable Karma's pull the trigger?")]
-        [DefaultValue(false)]
-        public bool karmaadv { get; set; } = true;
+		[DisplayName("Pull the Trigger (Karma Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable Karma's pull the trigger?")]
+		[DefaultValue(false)]
+		public bool KarmaAdv { get; set; } = true;
 
-        [DisplayName("Pull the trigger (Mosq Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable Mosq's pull the trigger?")]
-        [DefaultValue(true)]
-        public bool mosqadv { get; set; } = true;
+		[DisplayName("Pull the trigger (Mosq Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable Mosq's pull the trigger?")]
+		[DefaultValue(true)]
+		public bool MosqAdv { get; set; } = true;
 
-        [DisplayName("Pull the Trigger (EidieK87 Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable EidieK87's pull the trigger?")]
-        [DefaultValue(false)]
-        public bool eidadv { get; set; } = true;
+		[DisplayName("Pull the Trigger (EidieK87 Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable EidieK87's pull the trigger?")]
+		[DefaultValue(false)]
+		public bool Eidadv { get; set; } = true;
 
-        [DisplayName("Wiping All Out (Mosq Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable Mosq's Wiping All Out?")]
-        [DefaultValue(true)]
-        public bool mosqnom { get; set; } = true;
+		[DisplayName("Wiping All Out (Mosq Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable Mosq's Wiping All Out?")]
+		[DefaultValue(true)]
+		public bool MosqNom { get; set; } = true;
 
-        [DisplayName("Wiping All Out (Karma Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable Karma's Wiping All Out?")]
-        [DefaultValue(false)]
-        public bool karmanom { get; set; } = true;
+		[DisplayName("Wiping All Out (Karma Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable Karma's Wiping All Out?")]
+		[DefaultValue(false)]
+		public bool Karmanom { get; set; } = true;
 
-        [DisplayName("Wiping All Out (Stella and GillStudio Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable Stella and GillStudio's Wiping All Out?")]
-        [DefaultValue(false)]
-        public bool sgnom { get; set; } = true;
+		[DisplayName("Wiping All Out (Stella and GillStudio Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable Stella and GillStudio's Wiping All Out?")]
+		[DefaultValue(false)]
+		public bool Sgnom { get; set; } = true;
 
-        [DisplayName("Danger Zone (Stella and GillStudio Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable Stella and GillStudio's Danger Zone?")]
-        [DefaultValue(false)]
-        public bool sgdis { get; set; } = true;
+		[DisplayName("Danger Zone (Stella and GillStudio Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable Stella and GillStudio's Danger Zone?")]
+		[DefaultValue(false)]
+		public bool Sgdis { get; set; } = true;
 
-        [DisplayName("Danger Zone (Karma Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable Karma's Danger Zone?")]
-        [DefaultValue(false)]
-        public bool karmadis { get; set; } = true;
+		[DisplayName("Danger Zone (Karma Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable Karma's Danger Zone?")]
+		[DefaultValue(false)]
+		public bool Karmadis { get; set; } = true;
 
-        [DisplayName("Danger Zone (Mosq Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable Mosq's Danger Zone?")]
-        [DefaultValue(true)]
-        public bool mosqdis { get; set; } = true;
+		[DisplayName("Danger Zone (Mosq Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable Mosq's Danger Zone?")]
+		[DefaultValue(true)]
+		public bool Mosqdis { get; set; } = true;
 
-        [DisplayName("Danger Zone (EidieK87 Remix)")]
-        [Category("Battle Music")]
-        [Description("Enable EidieK87's Danger Zone?")]
-        [DefaultValue(false)]
-        public bool eddis { get; set; } = true;
+		[DisplayName("Danger Zone (EidieK87 Remix)")]
+		[Category("Battle Music")]
+		[Description("Enable EidieK87's Danger Zone?")]
+		[DefaultValue(false)]
+		public bool Eddis { get; set; } = true;
 
-        [DisplayName("It's Going Down Now")]
-        [Category("Battle Music")]
-        [Description("Enable Atlus's It's Going down now?")]
-        [DefaultValue(false)]
-        public bool itgoingdown { get; set; } = true;
+		[DisplayName("It's Going Down Now")]
+		[Category("Battle Music")]
+		[Description("Enable Atlus's It's Going down now?")]
+		[DefaultValue(false)]
+		public bool ItGoingDown { get; set; } = true;
 
-        [DisplayName("Master of Tartarus -Reload-")]
-        [Category("Battle Music")]
-        [Description("Enable Atlus's Master of Tartarus -Reload-?")]
-        [DefaultValue(false)]
-        public bool mastertar { get; set; } = true;
+		[DisplayName("Master of Tartarus -Reload-")]
+		[Category("Battle Music")]
+		[Description("Enable Atlus's Master of Tartarus -Reload-?")]
+		[DefaultValue(false)]
+		public bool MasterTar { get; set; } = true;
 
-        [DisplayName("Mass Destruction -Reload-")]
-        [Category("Battle Music")]
-        [Description("Enable Atlus's Mass Destruction -Reload-?")]
-        [DefaultValue(false)]
-        public bool massdes { get; set; } = true;
+		[DisplayName("Mass Destruction -Reload-")]
+		[Category("Battle Music")]
+		[Description("Enable Atlus's Mass Destruction -Reload-?")]
+		[DefaultValue(false)]
+		public bool MassDes { get; set; } = true;
 
-        [DisplayName("Night Music: Color your Night")]
-        [Category("Music")]
-        [Description("Enable Color your Night as the night music?")]
-        [DefaultValue(false)]
-        public bool colnight { get; set; } = true;
+		[DisplayName("Night Music: Color your Night")]
+		[Category("Music")]
+		[Description("Enable Color your Night as the night music?")]
+		[DefaultValue(false)]
+		public bool ColNight { get; set; } = true;
 
-        [DisplayName("Night Music: Midnight Reverie by Mineformer")]
-        [Category("Music")]
-        [Description("Enable Midnight Reverie as the night music?")]
-        [DefaultValue(false)]
-        public bool midnight { get; set; } = true;
+		[DisplayName("Night Music: Midnight Reverie by Mineformer")]
+		[Category("Music")]
+		[Description("Enable Midnight Reverie as the night music?")]
+		[DefaultValue(false)]
+		public bool Midnight { get; set; } = true;
 
-        [DisplayName("Night Music: Time (Night Version) by Mosq")]
-        [Category("Music")]
-        [Description("Enable Time (Night Version) as the night music?")]
-        [DefaultValue(true)]
-        public bool femnight { get; set; } = true;
+		[DisplayName("Night Music: Time (Night Version) by Mosq")]
+		[Category("Music")]
+		[Description("Enable Time (Night Version) as the night music?")]
+		[DefaultValue(true)]
+		public bool FemNight { get; set; } = true;
 
-        [DisplayName("Night Music: Time (Night Version) by Mosq with Vocals by GabiShy")]
-        [Category("Music")]
-        [Description("Enable Time (Night Version GabiShy Remix) as the night music?")]
-        [DefaultValue(false)]
-        public bool gabifemnight { get; set; } = true;
+		[DisplayName("Night Music: Time (Night Version) by Mosq with Vocals by GabiShy")]
+		[Category("Music")]
+		[Description("Enable Time (Night Version GabiShy Remix) as the night music?")]
+		[DefaultValue(false)]
+		public bool GabiFemNight { get; set; } = true;
 
-        [DisplayName("Night Music: Night Wanderer by Mosq")]
-        [Category("Music")]
-        [Description("Enable Night Wanderer as the night music?")]
-        [DefaultValue(false)]
-        public bool nightwand { get; set; } = true;
+		[DisplayName("Night Music: Night Wanderer by Mosq")]
+		[Category("Music")]
+		[Description("Enable Night Wanderer as the night music?")]
+		[DefaultValue(false)]
+		public bool NightWand { get; set; } = true;
 
-        [DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
-        [Description("Enable When the moon's reaching out stars as the daytime music?")]
-        [Category("Music")]
-        [DefaultValue(false)]
-        public bool moon { get; set; } = true;
+		[DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
+		[Description("Enable When the moon's reaching out stars as the daytime music?")]
+		[Category("Music")]
+		[DefaultValue(false)]
+		public bool Moon { get; set; } = true;
 
-        [DisplayName("Daytime Music (Outside School/Phase 1): Way of life by Mosq")]
-        [Category("Music")]
-        [Description("Enable Way of life as the daytime music?")]
-        [DefaultValue(true)]
-        public bool wayoflife { get; set; } = true;
+		[DisplayName("Daytime Music (Outside School/Phase 1): Way of life by Mosq")]
+		[Category("Music")]
+		[Description("Enable Way of life as the daytime music?")]
+		[DefaultValue(true)]
+		public bool WayOfLife { get; set; } = true;
 
-        [DisplayName("Daytime Music (Inside School/Phase 1): Want to Be Close -Reload-")]
-        [Category("Music")]
-        [Description("Enable Want to Be Close -Reload- as the daytime music inside the school (Phase 1)?")]
-        [DefaultValue(false)]
-        public bool wantclose { get; set; } = true;
+		[DisplayName("Daytime Music (Inside School/Phase 1): Want to Be Close -Reload-")]
+		[Category("Music")]
+		[Description("Enable Want to Be Close -Reload- as the daytime music inside the school (Phase 1)?")]
+		[DefaultValue(false)]
+		public bool WantClose { get; set; } = true;
 
-        [DisplayName("Daytime Music (Inside School/Phase 1): Time by Mosq")]
-        [Category("Music")]
-        [Description("Enable Time as the daytime music inside the school?")]
-        [DefaultValue(true)]
-        public bool timeschool { get; set; } = true;
+		[DisplayName("Daytime Music (Inside School/Phase 1): Time by Mosq")]
+		[Category("Music")]
+		[Description("Enable Time as the daytime music inside the school?")]
+		[DefaultValue(true)]
+		public bool TimeSchool { get; set; } = true;
 
-        [DisplayName("Daytime Music (Inside School/Phase 1): Time (GabiShy remix) by Mosq")]
-        [Category("Music")]
-        [Description("Enable (Time GabiShy Remix) as the daytime music inside the school?")]
-        [DefaultValue(false)]
-        public bool gabitimeschool { get; set; } = true;
+		[DisplayName("Daytime Music (Inside School/Phase 1): Time (GabiShy remix) by Mosq")]
+		[Category("Music")]
+		[Description("Enable (Time GabiShy Remix) as the daytime music inside the school?")]
+		[DefaultValue(false)]
+		public bool GabiTimeSchool { get; set; } = true;
 
-        [DisplayName("Social Link Events: Joy")]
-        [Category("Music")]
-        [Description("Enable Joy to be the music played during social link events?")]
-        [DefaultValue(false)]
-        public bool joy { get; set; } = true;
+		[DisplayName("Social Link Events: Joy")]
+		[Category("Music")]
+		[Description("Enable Joy to be the music played during social link events?")]
+		[DefaultValue(false)]
+		public bool Joy { get; set; } = true;
 
-        [DisplayName("Social Link Events: After School by Mosq")]
-        [Category("Music")]
-        [Description("Enable Mosq's After School to be the music played during social link events?")]
-        [DefaultValue(true)]
-        public bool afterschool { get; set; } = true;
+		[DisplayName("Social Link Events: After School by Mosq")]
+		[Category("Music")]
+		[Description("Enable Mosq's After School to be the music played during social link events?")]
+		[DefaultValue(true)]
+		public bool AfterSchool { get; set; } = true;
 
-        [DisplayName("Daytime Music(Inside School/Phase 2): Changing Seasons -Reload-")]
-        [Category("Music")]
-        [Description("Enable Changing Seasons as the daytime music inside the school?")]
-        [DefaultValue(false)]
-        public bool seasons { get; set; } = true;
+		[DisplayName("Daytime Music(Inside School/Phase 2): Changing Seasons -Reload-")]
+		[Category("Music")]
+		[Description("Enable Changing Seasons as the daytime music inside the school?")]
+		[DefaultValue(false)]
+		public bool Seasons { get; set; } = true;
 
-        [DisplayName("Daytime Music(Inside School/Phase 2): Sun by Mosq")]
-        [Category("Music")]
-        [Description("Enable Sun as the daytime music inside the school?")]
-        [DefaultValue(true)]
-        public bool sun { get; set; } = true;
+		[DisplayName("Daytime Music(Inside School/Phase 2): Sun by Mosq")]
+		[Category("Music")]
+		[Description("Enable Sun as the daytime music inside the school?")]
+		[DefaultValue(true)]
+		public bool Sun { get; set; } = true;
 
-        [DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
-        [Category("Music")]
-        [Description("Enable Soul Phrase as the music played during the battle with Nyx?")]
-        [DefaultValue(false)]
-        public bool soulpk { get; set; } = true;
+		[DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
+		[Category("Music")]
+		[Description("Enable Soul Phrase as the music played during the battle with Nyx?")]
+		[DefaultValue(false)]
+		public bool SoulPK { get; set; } = true;
 
-        [DisplayName("Final Battle with NYX: Burn my dread Final Battle")]
-        [Category("Music")]
-        [Description("Enable Burn my dread as the music played during the battle with Nyx?")]
-        [DefaultValue(true)]
-        public bool bmd { get; set; } = true;
+		[DisplayName("Final Battle with NYX: Burn my dread Final Battle")]
+		[Category("Music")]
+		[Description("Enable Burn my dread as the music played during the battle with Nyx?")]
+		[DefaultValue(true)]
+		public bool BMD { get; set; } = true;
 
-        [DisplayName("Boss Battles: Master of Shadow -Reload")]
-        [Category("Music")]
-        [Description("Enable Master of Shadow -Reload to be the music played during boss battles?")]
-        [DefaultValue(false)]
-        public bool bms { get; set; } = true;
+		[DisplayName("Boss Battles: Master of Shadow -Reload")]
+		[Category("Music")]
+		[Description("Enable Master of Shadow -Reload to be the music played during boss battles?")]
+		[DefaultValue(false)]
+		public bool BMS { get; set; } = true;
 
-        [DisplayName("Boss Battles: Master of Shadow Fate Mix by Mosq")]
-        [Category("Music")]
-        [Description("Enable Master of Shadow Fate Mix to be the music played during boss battles?")]
-        [DefaultValue(true)]
-        public bool bmsf { get; set; } = true;
+		[DisplayName("Boss Battles: Master of Shadow Fate Mix by Mosq")]
+		[Category("Music")]
+		[Description("Enable Master of Shadow Fate Mix to be the music played during boss battles?")]
+		[DefaultValue(true)]
+		public bool BMSF { get; set; } = true;
 
-        [DisplayName("Gendered Audio")]
+
+		[DisplayName("Gendered Audio")]
 		[Category("Voice")]
 		[Description("Enable Gio's Gendered Audio?")]
 		[DefaultValue(false)]
