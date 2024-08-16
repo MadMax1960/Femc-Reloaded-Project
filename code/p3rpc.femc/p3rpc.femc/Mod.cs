@@ -239,7 +239,7 @@ namespace p3rpc.femc
 			}
 		}
 
-        private void BattleMusicGeneration()
+        private void BattleMusicGeneration() // this should be battle themes man
         {
 			try
 			{
@@ -531,7 +531,7 @@ namespace p3rpc.femc
             catch (Exception ex)
             {
                 _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
-            }
+            } // this should just be ryo bruh it could be bools
         }
 
 
