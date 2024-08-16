@@ -1029,11 +1029,11 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool NagiWeap { get; set; } = true;
 
-		[DisplayName("Test Skeleton Anim Fiex")]
+		[DisplayName("Skirt, Face, Etc Fix")]
 		[Description("THIS MIGHT BREAK SOME STUFF, ITS A TEST FOR PEOPLE WHO WANT TO, PLEASE GO IN EXPECTING ERRORS")]
 		[Category("3D Options")]
-		[DefaultValue(false)]
-		public bool TestSkeleton { get; set; } = false;
+		[DefaultValue(true)]
+		public bool SkirtEtcFix { get; set; } = true;
 	}
 
 
