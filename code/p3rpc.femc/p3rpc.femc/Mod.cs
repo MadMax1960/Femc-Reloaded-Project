@@ -181,7 +181,7 @@ namespace p3rpc.femc
 				
 				if (_configuration.PartyPanelTrue == PartyPanelType.Kris)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Kris"));
-				else if (_configuration.LevelUpTrue == PartyPanelType.Esa)
+				else if (_configuration.PartyPanelTrue == PartyPanelType.Esa)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Esa"));
 
 				if (_configuration.CutinTrue == CutinType.berrycha)
