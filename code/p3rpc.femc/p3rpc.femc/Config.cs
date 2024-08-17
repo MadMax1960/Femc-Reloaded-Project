@@ -943,7 +943,8 @@ namespace p3rpc.femc.Configuration
 			Yuunagi,
 			cielbell,
 			axolotl,
-			ghostedtoast
+			ghostedtoast,
+			Strelko
         }
 
         [DisplayName("Glass Shard")]
