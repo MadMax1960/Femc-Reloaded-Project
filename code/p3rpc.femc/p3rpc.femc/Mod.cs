@@ -250,29 +250,27 @@ namespace p3rpc.femc
                 string normal = "const nom_music=[";
                 string disadvantage = "const dis_music=[";
                 var added = new Dictionary<string, int>
-            {
-                {"advantage",0},
-                {"normal",0},
-                {"disadvantage",0}
-            };
+				{
+					{"advantage",0},
+					{"normal",0},
+					{"disadvantage",0}
+				};
                 var collection = new Dictionary<string, Tuple<string, bool>>
-            {
-{"p3r_MPTTR", new Tuple<string, bool>("advantage", _configuration.MosqAdv)},
-{"p3r_KPPTR", new Tuple<string, bool>("advantage", _configuration.KarmaAdv)},
-{"p3r_EPTTR", new Tuple<string, bool>("advantage", _configuration.Eidadv)},
-{"p3r_MWPAO", new Tuple<string, bool>("normal", _configuration.MosqNom)},
-{"p3r_KWPAO", new Tuple<string, bool>("normal", _configuration.Karmanom)},
-{"p3r_SGWPAO", new Tuple<string, bool>("normal", _configuration.Sgnom)},
-{"p3r_MDZ", new Tuple<string, bool>("disadvantage", _configuration.Mosqdis)},
-{"p3r_KDZ", new Tuple<string, bool>("disadvantage", _configuration.Karmadis)},
-{"p3r_EDZ", new Tuple<string, bool>("disadvantage", _configuration.Eddis)},
-{"p3r_SGDZ", new Tuple<string, bool>("disadvantage", _configuration.Sgdis)},
-{"128", new Tuple<string, bool>("advantage", _configuration.ItGoingDown)},
-{"26", new Tuple<string, bool>("normal", _configuration.MassDes)},
-{"31", new Tuple<string, bool>("disadvantage", _configuration.MasterTar)}
-
-
-			};
+				{
+					{"p3r_MPTTR", new Tuple<string, bool>("advantage", _configuration.MosqAdv)},
+					{"p3r_KPPTR", new Tuple<string, bool>("advantage", _configuration.KarmaAdv)},
+					{"p3r_EPTTR", new Tuple<string, bool>("advantage", _configuration.Eidadv)},
+					{"p3r_MWPAO", new Tuple<string, bool>("normal", _configuration.MosqNom)},
+					{"p3r_KWPAO", new Tuple<string, bool>("normal", _configuration.Karmanom)},
+					{"p3r_SGWPAO", new Tuple<string, bool>("normal", _configuration.Sgnom)},
+					{"p3r_MDZ", new Tuple<string, bool>("disadvantage", _configuration.Mosqdis)},
+					{"p3r_KDZ", new Tuple<string, bool>("disadvantage", _configuration.Karmadis)},
+					{"p3r_EDZ", new Tuple<string, bool>("disadvantage", _configuration.Eddis)},
+					{"p3r_SGDZ", new Tuple<string, bool>("disadvantage", _configuration.Sgdis)},
+					{"128", new Tuple<string, bool>("advantage", _configuration.ItGoingDown)},
+					{"26", new Tuple<string, bool>("normal", _configuration.MassDes)},
+					{"31", new Tuple<string, bool>("disadvantage", _configuration.MasterTar)}
+				};
                 foreach (KeyValuePair<string, Tuple<string, bool>> col in collection)
                 {
                     if (col.Value.Item2)
@@ -363,44 +361,44 @@ namespace p3rpc.femc
                 string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGME/scripts";
                 //Code for writing the commands
                 var added = new Dictionary<string, int>
-        {
-            {"night",0},
-            {"dayout1",0},
-            {"social1",0},
-            {"social2",0},
-            {"dayin1",0},
-            {"dayin2",0},
-            {"final",0},
-            {"boss1",0},
-            {"boss2",0}
-        };
+				{
+					{"night",0},
+					{"dayout1",0},
+					{"social1",0},
+					{"social2",0},
+					{"dayin1",0},
+					{"dayin2",0},
+					{"final",0},
+					{"boss1",0},
+					{"boss2",0}
+				};
                 var collection = new Dictionary<string, Tuple<bool, string>>
-        {
+				{
 			//{"cue id",new Tuple<bool,string>(config value,category)}
-{"97", new Tuple<bool, string>(_configuration.ColNight, "night")},
-{"2003", new Tuple<bool, string>(_configuration.Midnight, "night")},
-{"2004", new Tuple<bool, string>(_configuration.FemNight, "night")},
-{"2011", new Tuple<bool, string>(_configuration.NightWand, "night")},
-{"2012", new Tuple<bool, string>(_configuration.GabiFemNight, "night")},
-{"25", new Tuple<bool, string>(_configuration.Moon, "dayout1")},
-{"2005", new Tuple<bool, string>(_configuration.WayOfLife, "dayout1")},
-{"50", new Tuple<bool, string>(_configuration.WantClose, "dayin1")},
-{"2006", new Tuple<bool, string>(_configuration.TimeSchool, "dayin1")},
-{"2013", new Tuple<bool, string>(_configuration.GabiTimeSchool, "dayin1")},
-{"51", new Tuple<bool, string>(_configuration.Seasons, "dayin2")},
-{"2009", new Tuple<bool, string>(_configuration.Sun, "dayin2")},
-{"38", new Tuple<bool, string>(_configuration.Joy, "social1")},
-{"43", new Tuple<bool, string>(_configuration.Joy, "social2")},
-{"2007", new Tuple<bool, string>(_configuration.AfterSchool, "social1")},
-{"2008", new Tuple<bool, string>(_configuration.AfterSchool, "social2")},
-{"2015", new Tuple<bool, string>(_configuration.SoulPK, "final")},
-{"29", new Tuple<bool, string>(_configuration.BMD, "final")},
-{"2016", new Tuple<bool, string>(_configuration.BMSF, "boss1")},
-{"2017", new Tuple<bool, string>(_configuration.BMSF, "boss2")},
-{"27", new Tuple<bool, string>(_configuration.BMS, "boss1")},
-{"129", new Tuple<bool, string>(_configuration.BMS, "boss2")}
+					{"97", new Tuple<bool, string>(_configuration.ColNight, "night")},
+					{"2003", new Tuple<bool, string>(_configuration.Midnight, "night")},
+					{"2004", new Tuple<bool, string>(_configuration.FemNight, "night")},
+					{"2011", new Tuple<bool, string>(_configuration.NightWand, "night")},
+					{"2012", new Tuple<bool, string>(_configuration.GabiFemNight, "night")},
+					{"25", new Tuple<bool, string>(_configuration.Moon, "dayout1")},
+					{"2005", new Tuple<bool, string>(_configuration.WayOfLife, "dayout1")},
+					{"50", new Tuple<bool, string>(_configuration.WantClose, "dayin1")},
+					{"2006", new Tuple<bool, string>(_configuration.TimeSchool, "dayin1")},
+					{"2013", new Tuple<bool, string>(_configuration.GabiTimeSchool, "dayin1")},
+					{"51", new Tuple<bool, string>(_configuration.Seasons, "dayin2")},
+					{"2009", new Tuple<bool, string>(_configuration.Sun, "dayin2")},
+					{"38", new Tuple<bool, string>(_configuration.Joy, "social1")},
+					{"43", new Tuple<bool, string>(_configuration.Joy, "social2")},
+					{"2007", new Tuple<bool, string>(_configuration.AfterSchool, "social1")},
+					{"2008", new Tuple<bool, string>(_configuration.AfterSchool, "social2")},
+					{"2015", new Tuple<bool, string>(_configuration.SoulPK, "final")},
+					{"29", new Tuple<bool, string>(_configuration.BMD, "final")},
+					{"2016", new Tuple<bool, string>(_configuration.BMSF, "boss1")},
+					{"2017", new Tuple<bool, string>(_configuration.BMSF, "boss2")},
+					{"27", new Tuple<bool, string>(_configuration.BMS, "boss1")},
+					{"129", new Tuple<bool, string>(_configuration.BMS, "boss2")}
 
-		};
+				};
                 foreach (KeyValuePair<string, Tuple<bool, string>> col in collection)
                 {
                     if (col.Value.Item1)
