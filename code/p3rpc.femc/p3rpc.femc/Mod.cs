@@ -85,6 +85,7 @@ namespace p3rpc.femc
 			var unrealEssentials = GetDependency<IUnrealEssentials>("Unreal Essentials");
 			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
+			var ryo = GetDependency<IRyoApi>("Ryo");
 			var memory = new Memory();
             this.themeConfig = new ThemeConfig(this._modLoader, this._modConfig, this._configuration, this._logger);
             _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods);
@@ -92,7 +93,7 @@ namespace p3rpc.femc
 
 			modName = _modConfig.ModName;
 			// Load Modules/assets
-			LoadEnabledAddons(unrealEssentials);
+			LoadEnabledAddons(unrealEssentials, ryo);
 			InitializeModules();
 			GenerateMusicScript();
 			RedirectPlayerAssets();
@@ -107,7 +108,7 @@ namespace p3rpc.femc
 
 		}
 
-        private void LoadEnabledAddons(IUnrealEssentials unrealEssentials)
+        private void LoadEnabledAddons(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 		{
 			try
 			{
@@ -231,6 +232,9 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Custom Anims"));
 				else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
+				if (_configuration.bluehairandpronounce)
+					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Voice");
+					
 
 			}
 			catch (Exception ex)
