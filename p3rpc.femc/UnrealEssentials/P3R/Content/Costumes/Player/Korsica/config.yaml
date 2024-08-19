@@ -1,0 +1,4 @@
+name: Korsica Outfit
+
+costume:
+  mesh_path: /Game/Costumes/Player/Korsica/costume-mesh.uasset
