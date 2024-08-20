@@ -1,0 +1,4 @@
+const adv_music=[p3r_ITS]
+const nom_music=[p3r_MSD]
+const dis_music=[p3r_MAT]
+const BATTLE_THEME = battle_bgm(random_song(nom_music),random_song(adv_music),random_song(dis_music))
