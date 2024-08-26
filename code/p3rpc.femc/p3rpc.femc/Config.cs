@@ -946,7 +946,9 @@ namespace p3rpc.femc.Configuration
 			axolotl,
 			ghostedtoast,
 			Strelko,
-			gackt
+			gackt,
+			Jackie,
+			Lisa
         }
 
         [DisplayName("Glass Shard")]
