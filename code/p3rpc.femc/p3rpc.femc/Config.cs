@@ -1041,6 +1041,11 @@ namespace p3rpc.femc.Configuration
 		[Category("3D Options")]
 		[DefaultValue(true)]
 		public bool SkirtEtcFix { get; set; } = true;
+
+		[DisplayName("Theo")]
+		[Category("Theo")]
+		[DefaultValue(false)]
+		public bool TheodorefromAlvinandTheChipmunks { get; set; } = false; // soon this should be a whole thing, movies, bustups, etc 
 	}
 
 
