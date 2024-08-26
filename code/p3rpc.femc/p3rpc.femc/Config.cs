@@ -1041,7 +1041,7 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(true)]
 		public bool SkirtEtcFix { get; set; } = true;
 
-		[DisplayName("Theo Model")]
+		[DisplayName("Theo")]
 		[Category("Theo")]
 		[DefaultValue(false)]
 		public bool TheodorefromAlvinandTheChipmunks { get; set; } = false;
