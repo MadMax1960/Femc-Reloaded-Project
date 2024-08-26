@@ -229,7 +229,9 @@ namespace p3rpc.femc
                 if (_configuration.TheodorefromAlvinandTheChipmunks)
                 {
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
-                }
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "cutin", "mekkipatman"));
+
+				}
 
 				if (_configuration.SkirtEtcFix)
 				{

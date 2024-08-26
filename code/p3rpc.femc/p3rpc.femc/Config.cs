@@ -1044,7 +1044,7 @@ namespace p3rpc.femc.Configuration
 		[DisplayName("Theo")]
 		[Category("Theo")]
 		[DefaultValue(false)]
-		public bool TheodorefromAlvinandTheChipmunks { get; set; } = false;
+		public bool TheodorefromAlvinandTheChipmunks { get; set; } = false; // soon this should be a whole thing, movies, bustups, etc 
 	}
 
 
