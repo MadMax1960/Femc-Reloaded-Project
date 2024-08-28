@@ -18,47 +18,7 @@ _ⓒAtlus ⓒSega All Rights reserved, this mod is not associated with Sega or A
 - **Persona Modding Tutorial**: [Get started with modding](https://gamebanana.com/tuts/17156)
 
 ## How to Contribute
-Contributions come in all shapes and sizes, and here, all are welcome. If your masterpiece isn't quite ready for the main stage, your fork awaits. It's a place for refinement and creativity.
-
-### The Key Quests
-Our quests span across different assets - from 3D modeling to UI design, from rewriting texts to reanimating cutscenes. Each task is a notch in the pathway for. 
-
-- Document your 3D modeling escapades, breathing life into Kotone's character.
-- Paint the UI with Kotone's essence, making every pixel count.
-- Rewrite dialogues, bestowing Kotone with a voice that echoes and differentiates her from Makoto.
-- Craft cutscenes that captivate, placing Kotone at the heart of the narrative.
-- Weave animations with finesse, bringing fluidity to Kotone's every move.
-
-As you venture forth:
-- Chronicle your journey, detailing every artistic conquest and technical triumph.
-- Attune your senses to the harmony of voices, ensuring they resonate with our narrative.
-- Herald your achievements, signaling the audio alchemists to concoct their aural elixirs.
-- Archive anomalies and curiosities, for some enigmas require a collective wit to unravel.
-
-#### Step 1: Clone the Repository
-Your first step is to mirror our repository into your own creative enclave using GitHub Desktop or VSCode.
-
-
-#### Step 2: Make Your Changes
-Immerse yourself in the cloned repository, transforming Makoto into Kotone with your **unique talents**.
-
-
-#### Step 3: Update the trello
-We are tracking all progress, so you have to ask for a ticket so we can have your name on it and we can help you.
-
-
-#### Step 4: Share Your Changes
-Broadcast your achievements using GitHub Desktop or VSCode, sharing your branch with the world.
-
-
-#### Step 5: Create a Pull Request
-Forge a pull request on GitHub, inviting others to witness your work. If you find yourself at a crossroads, our Discord sanctuary offers guidance. (Update the trello.)
-
-
-#### Step 6: Once Merged
-Please contact the Discord so we can align on where this is in the mod for proper accreditation.
-
-<br/>
+Pretty much any contribution is welcome! You can check the wiki to learn how to submit your own pull request with contributions! Or join the discord and ask there!
 
 ## Leadership
 - **Lead/Director**: A Mudkip (@MadMax1960), orchestrating it all, decisions, 3D Lead.
