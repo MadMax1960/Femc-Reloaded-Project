@@ -82,7 +82,19 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool ItGoingDown { get; set; } = true;
 
-		[DisplayName("Master of Tartarus -Reload-")]
+        [DisplayName("It's Going Down Now (Jen Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Jen's It's Going down now?")]
+        [DefaultValue(false)]
+        public bool Jenadv { get; set; } = true;
+
+        [DisplayName("Daytime Music (Outside School/Phase 1): Way of life by Jen")]
+        [Category("Music")]
+        [Description("Enable Way of life by Jen as the daytime music?")]
+        [DefaultValue(false)]
+        public bool WayOfLifeJen { get; set; } = true;
+
+        [DisplayName("Master of Tartarus -Reload-")]
 		[Category("Battle Music")]
 		[Description("Enable Atlus's Master of Tartarus -Reload-?")]
 		[DefaultValue(false)]

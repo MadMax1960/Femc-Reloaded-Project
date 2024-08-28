@@ -417,6 +417,7 @@ namespace p3rpc.femc
                 var dayout1music = new Dictionary<string, bool>
                 {
                     {Path.Combine(path, "Mosq\\link_25.cue"),_configuration.WayOfLife},
+                    {Path.Combine(path, "Jen\\link_25.cue"),_configuration.WayOfLifeJen},
                     {Path.Combine(path, "Reload\\link_25.cue"),_configuration.Moon}
                 };
                 foreach (KeyValuePair<string, bool> do1m in dayout1music)
@@ -488,6 +489,7 @@ namespace p3rpc.femc
                     {Path.Combine(path, "Mosq\\link_128.cue"),_configuration.MosqAdv},
                     {Path.Combine(path, "Karma\\link_128.cue"),_configuration.KarmaAdv},
                     {Path.Combine(path, "Reload\\link_128.cue"),_configuration.ItGoingDown},
+                    {Path.Combine(path, "Jen\\link_128.cue"),_configuration.Jenadv},
                     {Path.Combine(path, "EidieK87\\link_128.cue"),_configuration.Eidadv}
                 };
                 foreach (KeyValuePair<string, bool> asm in advantagemusic)
