@@ -248,9 +248,14 @@ namespace p3rpc.femc
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
 		}
+        private void BattleMusicGeneration()
+		{
+			//Do nothing as the old function is deprecated but still being kept till testing is done
+		}
 
-        private void BattleMusicGeneration() // this should be battle themes man
+        private void BattleMusicGenerationDeprecated() // this should be battle themes man
         {
+			throw new Exception("The BattleMusicGeneration Function was run. This is now deprecated but still kept in the code till testing is done.");
 			try
 			{
                 var battlethemes = GetDependency<IBattleThemesApi>("Battle Themes");
@@ -439,8 +444,43 @@ namespace p3rpc.femc
                     if (sm.Value)
                         ryo.AddAudioFolder(sm.Key);
                 }
-
-
+                var disadvantagemusic = new Dictionary<string, bool>
+                {
+                    {Path.Combine(path, "Mosq\\link_31.cue"),_configuration.Mosqdis},
+                    {Path.Combine(path, "Karma\\link_31.cue"),_configuration.Karmadis},
+                    {Path.Combine(path, "Satella&GillStudio\\link_31.cue"),_configuration.Sgdis},
+                    {Path.Combine(path, "Reload\\link_31.cue"),_configuration.MasterTar},
+                    {Path.Combine(path, "EidieK87\\link_31.cue"),_configuration.Eiddis}
+                };
+                foreach (KeyValuePair<string, bool> ds in disadvantagemusic)
+                {
+                    if (ds.Value)
+                        ryo.AddAudioFolder(ds.Key);
+                }
+				var normalmusic = new Dictionary<string, bool>
+                {
+                    {Path.Combine(path, "Mosq\\link_26.cue"),_configuration.MosqNom},
+                    {Path.Combine(path, "Karma\\link_26.cue"),_configuration.Karmanom},
+                    {Path.Combine(path, "Satella&GillStudio\\link_26.cue"),_configuration.Sgnom},
+                    {Path.Combine(path, "Reload\\link_26.cue"),_configuration.MassDes},
+                };
+                foreach (KeyValuePair<string, bool> nm in normalmusic)
+                {
+                    if (nm.Value)
+                        ryo.AddAudioFolder(nm.Key);
+                }
+                var advantagemusic = new Dictionary<string, bool>
+                {
+                    {Path.Combine(path, "Mosq\\link_128.cue"),_configuration.MosqAdv},
+                    {Path.Combine(path, "Karma\\link_128.cue"),_configuration.KarmaAdv},
+                    {Path.Combine(path, "Reload\\link_128.cue"),_configuration.ItGoingDown},
+                    {Path.Combine(path, "EidieK87\\link_128.cue"),_configuration.Eidadv}
+                };
+                foreach (KeyValuePair<string, bool> asm in advantagemusic)
+                {
+                    if (asm.Value)
+                        ryo.AddAudioFolder(asm.Key);
+                }
             }
             catch (Exception ex)
             {

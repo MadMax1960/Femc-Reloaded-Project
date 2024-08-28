@@ -28,7 +28,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool Eidadv { get; set; } = true;
 
-		[DisplayName("Wiping All Out (Mosq Remix)")]
+        [DisplayName("Danger Zone (EidieK87 Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable EidieK87's Danger Zone?")]
+        [DefaultValue(false)]
+        public bool Eiddis { get; set; } = true;
+
+        [DisplayName("Wiping All Out (Mosq Remix)")]
 		[Category("Battle Music")]
 		[Description("Enable Mosq's Wiping All Out?")]
 		[DefaultValue(true)]
