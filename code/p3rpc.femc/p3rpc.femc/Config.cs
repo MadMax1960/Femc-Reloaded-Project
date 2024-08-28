@@ -925,7 +925,8 @@ namespace p3rpc.femc.Configuration
             Monica,
             RonaldReagan,
             esaadrien,
-			mekki
+			mekki,
+			shiosakana
         }
 
         [DisplayName("AOA Text Options")]
