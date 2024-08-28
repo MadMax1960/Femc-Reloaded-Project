@@ -133,6 +133,8 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "mekki"));
 				else if (_configuration.AOATrue == AOAType.shiosakana)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakana"));
+				else if (_configuration.AOATrue == AOAType.shiosakanaAlt)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakanaAlt"));
 
 				if (_configuration.AOAText == AOATextType.DontLookBack)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));

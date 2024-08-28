@@ -926,7 +926,8 @@ namespace p3rpc.femc.Configuration
             RonaldReagan,
             esaadrien,
 			mekki,
-			shiosakana
+			shiosakana,
+			shiosakanaAlt
         }
 
         [DisplayName("AOA Text Options")]
