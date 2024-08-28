@@ -937,7 +937,8 @@ namespace p3rpc.femc.Configuration
         public enum AOATextType
         {
             DontLookBack,
-            SorryBoutThat
+            SorryBoutThat,
+			PerfectlyAccomplished
         }
 
 

@@ -136,6 +136,8 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
 				else if (_configuration.AOAText == AOATextType.SorryBoutThat)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "SorryBoutThat"));
+				else if (_configuration.AOAText == AOATextType.PerfectlyAccomplished)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "PerfectlyAccomplished"));
 
 				if (_configuration.BustupTrue == BustupType.Neptune)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Neptune"));
