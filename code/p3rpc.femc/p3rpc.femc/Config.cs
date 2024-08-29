@@ -925,7 +925,9 @@ namespace p3rpc.femc.Configuration
             Monica,
             RonaldReagan,
             esaadrien,
-			mekki
+			mekki,
+			shiosakana,
+			shiosakanaAlt
         }
 
         [DisplayName("AOA Text Options")]
@@ -937,7 +939,8 @@ namespace p3rpc.femc.Configuration
         public enum AOATextType
         {
             DontLookBack,
-            SorryBoutThat
+            SorryBoutThat,
+			PerfectlyAccomplished
         }
 
 

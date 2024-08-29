@@ -131,11 +131,17 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "esaadrien"));
 				else if (_configuration.AOATrue == AOAType.mekki)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "mekki"));
+				else if (_configuration.AOATrue == AOAType.shiosakana)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakana"));
+				else if (_configuration.AOATrue == AOAType.shiosakanaAlt)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakanaAlt"));
 
 				if (_configuration.AOAText == AOATextType.DontLookBack)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
 				else if (_configuration.AOAText == AOATextType.SorryBoutThat)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "SorryBoutThat"));
+				else if (_configuration.AOAText == AOATextType.PerfectlyAccomplished)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "PerfectlyAccomplished"));
 
 				if (_configuration.BustupTrue == BustupType.Neptune)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Neptune"));
@@ -232,7 +238,7 @@ namespace p3rpc.femc
                 {
                     unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "cutin", "mekkipatman"));
-					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Theo/Voice/Landon");
+					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Theo/voice/Landon");
 
 				}
 
