@@ -1,4 +1,0 @@
-const adv_music=[p3r_KPPTR]
-const nom_music=[p3r_KWPAO]
-const dis_music=[p3r_KDZ]
-const BATTLE_THEME = battle_bgm(random_song(nom_music),random_song(adv_music),random_song(dis_music))
