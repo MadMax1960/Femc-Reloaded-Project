@@ -265,10 +265,13 @@ namespace p3rpc.femc
 			{
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
+
+			_musicManager.GenerateMusicScript();
+
 		}
 
 
-        private void InitializeModules()
+		private void InitializeModules()
 		{
 			_modRuntime.AddModule<UICommon>();
 			if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
