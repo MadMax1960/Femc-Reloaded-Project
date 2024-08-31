@@ -12,10 +12,8 @@ using UnrealEssentials.Interfaces;
 using Unreal.ObjectsEmitter.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
-using BGME.BattleThemes.Interfaces;
-using BGME.BattleThemes.Config;
 using Ryo.Interfaces;
-using System.IO;
+
 
 
 /// ok maybe p3rpc.femc.music.interfaces is required, but it's not in repo and randomization doesn't work leading me to believe they're connected, or randomization never worked idk
@@ -60,10 +58,10 @@ namespace p3rpc.femc
 		private FemcContext _context;
 		private ModuleRuntime<FemcContext> _modRuntime;
 		private readonly IUnreal unreal;
-        private readonly ThemeConfig themeConfig;
+		private readonly MusicManager _musicManager;
 
 
-        private string modName { get; set; }
+		private string modName { get; set; }
 
 		public Mod(ModContext context)
 		{
@@ -87,15 +85,14 @@ namespace p3rpc.femc
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
             var ryo = GetDependency<IRyoApi>("Ryo");
             var memory = new Memory();
-            this.themeConfig = new ThemeConfig(this._modLoader, this._modConfig, this._configuration, this._logger);
             _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods);
 			_modRuntime = new(_context);
+			_musicManager = new MusicManager(_modLoader, _modConfig, _configuration, ryo, _logger, _context);
 
 			modName = _modConfig.ModName;
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials, ryo);
 			InitializeModules();
-			GenerateMusicScript();
 			RedirectPlayerAssets();
 		}
 
@@ -269,247 +266,6 @@ namespace p3rpc.femc
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
 		}
-        private void BattleMusicGeneration()
-		{
-			//Do nothing as the old function is deprecated but still being kept till testing is done
-		}
-
-        private void BattleMusicGenerationDeprecated() // this should be battle themes man
-        {
-			throw new Exception("The BattleMusicGeneration Function was run. This is now deprecated but still kept in the code till testing is done.");
-			try
-			{
-                var battlethemes = GetDependency<IBattleThemesApi>("Battle Themes");
-                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGM/";
-                battlethemes.RemovePath(path);
-                string advantage = "const adv_music=[";
-                string normal = "const nom_music=[";
-                string disadvantage = "const dis_music=[";
-                var added = new Dictionary<string, int>
-				{
-					{"advantage",0},
-					{"normal",0},
-					{"disadvantage",0}
-				};
-                var collection = new Dictionary<string, Tuple<string, bool>>
-				{
-					{"p3r_MPTTR", new Tuple<string, bool>("advantage", _configuration.MosqAdv)},
-					{"p3r_KPPTR", new Tuple<string, bool>("advantage", _configuration.KarmaAdv)},
-					{"p3r_EPTTR", new Tuple<string, bool>("advantage", _configuration.Eidadv)},
-					{"p3r_MWPAO", new Tuple<string, bool>("normal", _configuration.MosqNom)},
-					{"p3r_KWPAO", new Tuple<string, bool>("normal", _configuration.Karmanom)},
-					{"p3r_SGWPAO", new Tuple<string, bool>("normal", _configuration.Sgnom)},
-					{"p3r_MDZ", new Tuple<string, bool>("disadvantage", _configuration.Mosqdis)},
-					{"p3r_KDZ", new Tuple<string, bool>("disadvantage", _configuration.Karmadis)},
-					{"p3r_EDZ", new Tuple<string, bool>("disadvantage", _configuration.Eddis)},
-					{"p3r_SGDZ", new Tuple<string, bool>("disadvantage", _configuration.Sgdis)},
-					{"p3r_ITS", new Tuple<string, bool>("advantage", _configuration.ItGoingDown)},
-					{"p3r_MSD", new Tuple<string, bool>("normal", _configuration.MassDes)},
-					{"p3r_MAT", new Tuple<string, bool>("disadvantage", _configuration.MasterTar)}
-				};
-
-                foreach (KeyValuePair<string, Tuple<string, bool>> col in collection)
-                {
-                    if (col.Value.Item2)
-                    {
-                        if (col.Value.Item1 == "advantage")
-                        {
-                            if (added[col.Value.Item1] == 0)
-                            {
-                                advantage += col.Key;
-                                added[col.Value.Item1] = 1;
-                            }
-                            else
-                            {
-                                advantage += "," + col.Key;
-                            }
-                        }
-                        else if (col.Value.Item1 == "normal")
-                        {
-                            if (added[col.Value.Item1] == 0)
-                            {
-                                normal += col.Key;
-                                added[col.Value.Item1] = 1;
-                            }
-                            else
-                            {
-                                normal += "," + col.Key;
-                            }
-                        }
-                        else if (col.Value.Item1 == "disadvantage")
-                        {
-                            if (added[col.Value.Item1] == 0)
-                            {
-                                disadvantage += col.Key;
-                                added[col.Value.Item1] = 1;
-                            }
-                            else
-                            {
-                                disadvantage += "," + col.Key;
-                            }
-                        }
-						else
-						{
-                            _logger.WriteLineAsync("The Collection dictionary in mod.cs has been improperly configured, one of the specified categories DOES NOT exist.");
-                        }
-                    }
-                }
-                advantage += (added["advantage"] == 0) ? "p3r_MPTTR]" : "]";
-                normal += (added["normal"] == 0) ? "p3r_MWPAO]" : "]";
-                disadvantage += (added["disadvantage"] == 0) ? "p3r_MDZ]" : "]";
-                string[] lines = { advantage, normal, disadvantage, "const BATTLE_THEME = battle_bgm(random_song(nom_music),random_song(adv_music),random_song(dis_music))" };
-                if (File.Exists(path + "script" + ".theme.pme"))
-                {
-                    File.Delete(path + "script" + ".theme.pme");
-                }
-                using (StreamWriter outputFile = new StreamWriter(path + "script"))
-                {
-                    foreach (string line in lines)
-                        outputFile.WriteLine(line);
-                }
-                File.Move(path + "script", Path.ChangeExtension(path + "script", ".theme.pme"));
-                battlethemes.AddPath(_modConfig.ModId, path);
-            }
-			catch(Exception ex)
-			{
-                _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
-            }
-        }
-
-        private void GenerateMusicScript()
-		{
-            //Author: TheBestAstroNOT
-            //Credit for all the music goes to Atlus, Mosq, Mineformer, Karma, Stella and GillStudio, EidieK87, GabiShy
-            try
-            {
-                var ryo = GetDependency<IRyoApi>("Ryo");
-                BattleMusicGeneration();
-                _logger.WriteLineAsync("Regenerating music script");
-                //Initialise the music picker
-                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "\\BGM\\BGM.acb\\";
-                var nightmusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path,"Mosq\\link_97.cue"),_configuration.FemNight},
-                    {Path.Combine(path,"Mineformer\\link_97.cue"),_configuration.Midnight},
-                    {Path.Combine(path,"Gabi\\link_97.cue"),_configuration.GabiFemNight},
-                    {Path.Combine(path,"Mosq\\NightWanderer\\link_97.cue"),_configuration.NightWand},
-					{Path.Combine(path,"Reload\\link_97.cue"),_configuration.ColNight}
-                };
-                foreach (KeyValuePair<string, bool> nm in nightmusic)
-                {
-                    if (nm.Value)
-                        ryo.AddAudioFolder(nm.Key);
-                }
-                var dayin1music = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "Mosq\\link_50.cue"),_configuration.TimeSchool},
-                    {Path.Combine(path,   "Gabi\\link_50.cue"),_configuration.GabiTimeSchool},
-                    {Path.Combine(path,   "Reload\\link_50.cue"),_configuration.WantClose}
-                };
-                foreach (KeyValuePair<string, bool> di1m in dayin1music)
-                {
-                    if (di1m.Value)
-                        ryo.AddAudioFolder(di1m.Key);
-                }
-                var dayin2music = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "Mosq\\link_51.cue"),_configuration.Sun},
-                    {Path.Combine(path, "Reload\\link_51.cue"),_configuration.Seasons}
-                };
-                foreach (KeyValuePair<string, bool> di2m in dayin2music)
-                {
-                    if (di2m.Value)
-                        ryo.AddAudioFolder(di2m.Key);
-                }
-                var dayout1music = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "Mosq\\link_25.cue"),_configuration.WayOfLife},
-                    {Path.Combine(path, "Jen\\link_25.cue"),_configuration.WayOfLifeJen},
-                    {Path.Combine(path, "Reload\\link_25.cue"),_configuration.Moon}
-                };
-                foreach (KeyValuePair<string, bool> do1m in dayout1music)
-                {
-                    if (do1m.Value)
-                        ryo.AddAudioFolder(do1m.Key);
-                }
-                var finalbattlemusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "Karma\\link_29.cue"),_configuration.SoulPK},
-                    {Path.Combine(path, "Reload\\link_29.cue"),_configuration.BMD}
-                };
-                foreach (KeyValuePair<string, bool> fbm in finalbattlemusic)
-                {
-                    if (fbm.Value)
-                        ryo.AddAudioFolder(fbm.Key);
-                }
-                var sociallinkmusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "Mosq\\link_38.cue"),_configuration.AfterSchool},
-                    {Path.Combine(path, "Mosq\\link_43.cue"),_configuration.AfterSchool},
-                    {Path.Combine(path, "Reload\\link_38.cue"),_configuration.Joy},
-                    {Path.Combine(path, "Reload\\link_43.cue"),_configuration.Joy}
-                };
-                foreach (KeyValuePair<string, bool> sm in sociallinkmusic)
-                {
-                    if (sm.Value)
-                        ryo.AddAudioFolder(sm.Key);
-                }
-                var bosslinkmusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "Mosq\\link_129.cue"),_configuration.BMSF},
-                    {Path.Combine(path, "Mosq\\link_27.cue"),_configuration.BMSF},
-                    {Path.Combine(path, "Reload\\link_129.cue"),_configuration.BMS},
-                    {Path.Combine(path, "Reload\\link_27.cue"),_configuration.BMS}
-                };
-                foreach (KeyValuePair<string, bool> sm in bosslinkmusic)
-                {
-                    if (sm.Value)
-                        ryo.AddAudioFolder(sm.Key);
-                }
-                var disadvantagemusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "Mosq\\link_31.cue"),_configuration.Mosqdis},
-                    {Path.Combine(path, "Karma\\link_31.cue"),_configuration.Karmadis},
-                    {Path.Combine(path, "Satella&GillStudio\\link_31.cue"),_configuration.Sgdis},
-                    {Path.Combine(path, "Reload\\link_31.cue"),_configuration.MasterTar},
-                    {Path.Combine(path, "EidieK87\\link_31.cue"),_configuration.Eiddis}
-                };
-                foreach (KeyValuePair<string, bool> ds in disadvantagemusic)
-                {
-                    if (ds.Value)
-                        ryo.AddAudioFolder(ds.Key);
-                }
-				var normalmusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "Mosq\\link_26.cue"),_configuration.MosqNom},
-                    {Path.Combine(path, "Karma\\link_26.cue"),_configuration.Karmanom},
-                    {Path.Combine(path, "Satella&GillStudio\\link_26.cue"),_configuration.Sgnom},
-                    {Path.Combine(path, "Reload\\link_26.cue"),_configuration.MassDes},
-                };
-                foreach (KeyValuePair<string, bool> nm in normalmusic)
-                {
-                    if (nm.Value)
-                        ryo.AddAudioFolder(nm.Key);
-                }
-                var advantagemusic = new Dictionary<string, bool>
-                {
-                    {Path.Combine(path, "Mosq\\link_128.cue"),_configuration.MosqAdv},
-                    {Path.Combine(path, "Karma\\link_128.cue"),_configuration.KarmaAdv},
-                    {Path.Combine(path, "Reload\\link_128.cue"),_configuration.ItGoingDown},
-                    {Path.Combine(path, "Jen\\link_128.cue"),_configuration.Jenadv},
-                    {Path.Combine(path, "EidieK87\\link_128.cue"),_configuration.Eidadv}
-                };
-                foreach (KeyValuePair<string, bool> asm in advantagemusic)
-                {
-                    if (asm.Value)
-                        ryo.AddAudioFolder(asm.Key);
-                }
-            }
-            catch (Exception ex)
-            {
-                _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
-            } // this should just be ryo bruh it could be bools
-        }
 
 
         private void InitializeModules()
