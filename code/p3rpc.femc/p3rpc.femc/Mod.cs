@@ -110,148 +110,26 @@ namespace p3rpc.femc
 
         private void LoadEnabledAddons(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 		{
-			try
+				try
+				{
+					Load3dAssets(unrealEssentials);
+					Load2dAssets(unrealEssentials);
+					LoadTheoAssets(unrealEssentials, ryo);
+					LoadFunStuff(unrealEssentials);
+					LoadMiscAssets(unrealEssentials, ryo);
+				}
+				catch (Exception ex)
+				{
+					_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
+				}
+			}
+
+			private void Load3dAssets(IUnrealEssentials unrealEssentials)
 			{
 				if (_configuration.HairTrue == HairType.MudkipsHair)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "MudkipHair"));
 				else if (_configuration.HairTrue == HairType.KotoneBeanHair)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "NaobeanHair"));
-
-				if (_configuration.AOATrue == AOAType.Ely)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ely"));
-				else if (_configuration.AOATrue == AOAType.Chrysanthie)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Chrysanthie"));
-				else if (_configuration.AOATrue == AOAType.Fernando)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Fernando"));
-				else if (_configuration.AOATrue == AOAType.Monica)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Monica"));
-				else if (_configuration.AOATrue == AOAType.RonaldReagan)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "RonaldReagan"));
-				else if (_configuration.AOATrue == AOAType.esaadrien)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "esaadrien"));
-				else if (_configuration.AOATrue == AOAType.mekki)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "mekki"));
-				else if (_configuration.AOATrue == AOAType.shiosakana)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakana"));
-				else if (_configuration.AOATrue == AOAType.shiosakanaAlt)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakanaAlt"));
-
-				if (_configuration.AOAText == AOATextType.DontLookBack)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
-				else if (_configuration.AOAText == AOATextType.SorryBoutThat)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "SorryBoutThat"));
-				else if (_configuration.AOAText == AOATextType.PerfectlyAccomplished)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "PerfectlyAccomplished"));
-
-				if (_configuration.BustupTrue == BustupType.Neptune)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Neptune"));
-				else if (_configuration.BustupTrue == BustupType.Ely)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Ely"));
-				else if (_configuration.BustupTrue == BustupType.Esa)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Esa"));
-				else if (_configuration.BustupTrue == BustupType.Betina)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Betina"));
-				else if (_configuration.BustupTrue == BustupType.Anniversary)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "25thAnniversary"));
-				else if (_configuration.BustupTrue == BustupType.JustBlue)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "JustBlue"));
-				else if (_configuration.BustupTrue == BustupType.Sav)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Sav"));
-				else if (_configuration.BustupTrue == BustupType.Doodled)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Doodled"));
-				else if (_configuration.BustupTrue == BustupType.RonaldReagan)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "RonaldReagan"));
-				else if (_configuration.BustupTrue == BustupType.ElyAlt)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ElyAlt"));
-				else if (_configuration.BustupTrue == BustupType.Yuunagi)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Yuunagi"));
-				else if (_configuration.BustupTrue == BustupType.cielbell)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "cielbell"));
-				else if (_configuration.BustupTrue == BustupType.axolotl)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "axolotl"));
-				else if (_configuration.BustupTrue == BustupType.ghostedtoast)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ghostedtoast"));
-				else if (_configuration.BustupTrue == BustupType.Strelko)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Strelko"));
-				else if (_configuration.BustupTrue == BustupType.gackt)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "gackt"));
-				else if (_configuration.BustupTrue == BustupType.Jackie)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Jackie"));
-				else if (_configuration.BustupTrue == BustupType.Lisa)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Lisa9388"));
-				else if (_configuration.BustupTrue == BustupType.BetaFemcByMae)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "BetaFemcByMae"));
-
-
-
-				if (_configuration.ShardTrue == ShardType.Esa)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Esa"));
-				else if (_configuration.ShardTrue == ShardType.Ely)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Ely"));
-				else if (_configuration.ShardTrue == ShardType.ElyAlt)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "ElyAlt"));
-				else if (_configuration.ShardTrue == ShardType.Shiosakana)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Shiosakana"));
-
-				if (_configuration.LevelUpTrue == LevelUpType.Esa)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
-				else if (_configuration.LevelUpTrue == LevelUpType.Ely)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Ely"));
-				
-				if (_configuration.PartyPanelTrue == PartyPanelType.Kris)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Kris"));
-				else if (_configuration.PartyPanelTrue == PartyPanelType.Esa)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Esa"));
-
-				if (_configuration.CutinTrue == CutinType.berrycha)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
-				else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
-
-
-				if (_configuration.KotoneRoom)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
-				}
-
-				//if (_configuration.FunnyAnims)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Funny Anims"));
-				}
-
-				//if (!_configuration.FunnyAnims)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Funny Animsog")); // game dies when 2 files loaded, this has the og files we had in mod but in their own folder, the ! is if the bool is disabled
-				}
-
-				if (_configuration.GregoryHouseRatPoisonDeliverySystem)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystem"));
-				}
-
-				if (!_configuration.GregoryHouseRatPoisonDeliverySystem)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog")); // game dies when 2 files loaded, this has the og files we had in mod but in their own folder, the ! is if the bool is disabled
-				}
-
-                if (_configuration.TheodorefromAlvinandTheChipmunks)
-                {
-                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "cutin", "mekkipatman"));
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "message"));
-					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Theo/voice/Landon");
-
-				}
-
-				if (_configuration.SkirtEtcFix)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
-				}
-
-				if (_configuration.NagiWeap)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
-				}
 
 				if (_configuration.AnimTrue == AnimType.OriginalAnims)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Original Dummy"));
@@ -259,16 +137,140 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Custom Anims"));
 				else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
+
+				if (_configuration.SkirtEtcFix)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
+
+				if (_configuration.NagiWeap)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
+			}
+
+			private void Load2dAssets(IUnrealEssentials unrealEssentials)
+			{
+			if (_configuration.AOATrue == AOAType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ely"));
+			else if (_configuration.AOATrue == AOAType.Chrysanthie)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Chrysanthie"));
+			else if (_configuration.AOATrue == AOAType.Fernando)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Fernando"));
+			else if (_configuration.AOATrue == AOAType.Monica)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Monica"));
+			else if (_configuration.AOATrue == AOAType.RonaldReagan)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "RonaldReagan"));
+			else if (_configuration.AOATrue == AOAType.esaadrien)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "esaadrien"));
+			else if (_configuration.AOATrue == AOAType.mekki)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "mekki"));
+			else if (_configuration.AOATrue == AOAType.shiosakana)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakana"));
+			else if (_configuration.AOATrue == AOAType.shiosakanaAlt)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakanaAlt"));
+			// Other AOA conditions...
+
+			if (_configuration.AOAText == AOATextType.DontLookBack)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
+			else if (_configuration.AOAText == AOATextType.SorryBoutThat)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "SorryBoutThat"));
+			else if (_configuration.AOAText == AOATextType.PerfectlyAccomplished)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "PerfectlyAccomplished"));
+			// Other AOAText conditions...
+
+			if (_configuration.BustupTrue == BustupType.Neptune)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Neptune"));
+			else if (_configuration.BustupTrue == BustupType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Ely"));
+			else if (_configuration.BustupTrue == BustupType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Esa"));
+			else if (_configuration.BustupTrue == BustupType.Betina)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Betina"));
+			else if (_configuration.BustupTrue == BustupType.Anniversary)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "25thAnniversary"));
+			else if (_configuration.BustupTrue == BustupType.JustBlue)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "JustBlue"));
+			else if (_configuration.BustupTrue == BustupType.Sav)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Sav"));
+			else if (_configuration.BustupTrue == BustupType.Doodled)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Doodled"));
+			else if (_configuration.BustupTrue == BustupType.RonaldReagan)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "RonaldReagan"));
+			else if (_configuration.BustupTrue == BustupType.ElyAlt)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ElyAlt"));
+			else if (_configuration.BustupTrue == BustupType.Yuunagi)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Yuunagi"));
+			else if (_configuration.BustupTrue == BustupType.cielbell)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "cielbell"));
+			else if (_configuration.BustupTrue == BustupType.axolotl)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "axolotl"));
+			else if (_configuration.BustupTrue == BustupType.ghostedtoast)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ghostedtoast"));
+			else if (_configuration.BustupTrue == BustupType.Strelko)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Strelko"));
+			else if (_configuration.BustupTrue == BustupType.gackt)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "gackt"));
+			else if (_configuration.BustupTrue == BustupType.Jackie)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Jackie"));
+			else if (_configuration.BustupTrue == BustupType.Lisa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Lisa9388"));
+			else if (_configuration.BustupTrue == BustupType.BetaFemcByMae)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "BetaFemcByMae"));
+			// Other Bustup conditions...
+
+			if (_configuration.ShardTrue == ShardType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Esa"));
+			else if (_configuration.ShardTrue == ShardType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Ely"));
+			else if (_configuration.ShardTrue == ShardType.ElyAlt)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "ElyAlt"));
+			else if (_configuration.ShardTrue == ShardType.Shiosakana)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Shiosakana"));
+			// Other Shard conditions...
+
+			if (_configuration.LevelUpTrue == LevelUpType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
+			else if (_configuration.LevelUpTrue == LevelUpType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Ely"));
+			// Other Level Up conditions...
+
+			if (_configuration.PartyPanelTrue == PartyPanelType.Kris)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Kris"));
+			else if (_configuration.PartyPanelTrue == PartyPanelType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Esa"));
+			// Other Party Panel conditions...
+
+			if (_configuration.CutinTrue == CutinType.berrycha)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
+			else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
+			// Other Cutin conditions...
+			}
+
+		private void LoadTheoAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
+			{
+				if (_configuration.TheodorefromAlvinandTheChipmunks)
+				{
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "cutin", "mekkipatman"));
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "message"));
+					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Theo/voice/Landon");
+				}
+			}
+
+			private void LoadFunStuff(IUnrealEssentials unrealEssentials)
+			{
+				if (_configuration.KotoneRoom)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
+
+				if (_configuration.GregoryHouseRatPoisonDeliverySystem)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystem"));
+				if (!_configuration.GregoryHouseRatPoisonDeliverySystem)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog"));
+			}
+
+			private void LoadMiscAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
+			{
 				if (_configuration.bluehairandpronounce)
 					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Voice");
-					
-
 			}
-			catch (Exception ex)
-			{
-				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
-			}
-		}
 
 
 		private void InitializeModules()
