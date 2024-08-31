@@ -126,22 +126,22 @@ namespace p3rpc.femc
 
 			private void Load3dAssets(IUnrealEssentials unrealEssentials)
 			{
-				if (_configuration.HairTrue == HairType.MudkipsHair)
+			if (_configuration.HairTrue == HairType.MudkipsHair)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "MudkipHair"));
-				else if (_configuration.HairTrue == HairType.KotoneBeanHair)
+			else if (_configuration.HairTrue == HairType.KotoneBeanHair)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "NaobeanHair"));
 
-				if (_configuration.AnimTrue == AnimType.OriginalAnims)
+			if (_configuration.AnimTrue == AnimType.OriginalAnims)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Original Dummy"));
-				else if (_configuration.AnimTrue == AnimType.CustomAnims)
+			else if (_configuration.AnimTrue == AnimType.CustomAnims)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Custom Anims"));
-				else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
+			else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
 
-				if (_configuration.SkirtEtcFix)
+			if (_configuration.SkirtEtcFix)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
 
-				if (_configuration.NagiWeap)
+			if (_configuration.NagiWeap)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
 			}
 
@@ -357,15 +357,6 @@ namespace p3rpc.femc
 			if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
 			_modRuntime.RegisterModules();
         }
-
-		private void RedirectAsset(string ogAssetPath, string newAssetPath)
-		{
-			var ogFnames = new AssetFNames(ogAssetPath);
-			var newFnames = new AssetFNames(newAssetPath);
-
-			this.unreal.AssignFName(modName, ogFnames.AssetName, newFnames.AssetName);
-			this.unreal.AssignFName(modName, ogFnames.AssetPath, newFnames.AssetPath);
-		}
 
 		#region Standard Overrides
 		public override void ConfigurationUpdated(Config configuration)
