@@ -36,7 +36,8 @@ namespace p3rpc.femc
 				var nightmusic = new Dictionary<string, bool>
 				{
 					{Path.Combine(path,"Mosq\\link_97.cue"),_configuration.FemNight},
-					{Path.Combine(path,"Mineformer\\link_97.cue"),_configuration.Midnight},
+                    {Path.Combine(path,"Pealeaf\\link_97.cue"),_configuration.peacolnight},
+                    {Path.Combine(path,"Mineformer\\link_97.cue"),_configuration.Midnight},
 					{Path.Combine(path,"Gabi\\link_97.cue"),_configuration.GabiFemNight},
 					{Path.Combine(path,"Mosq\\NightWanderer\\link_97.cue"),_configuration.NightWand},
 					{Path.Combine(path,"Reload\\link_97.cue"),_configuration.ColNight}
