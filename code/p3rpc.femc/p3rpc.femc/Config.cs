@@ -136,7 +136,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool NightWand { get; set; } = true;
 
-		[DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
+        [DisplayName("Night Music: Color your night by Pealeaf and ChewieMelodies")]
+        [Category("Music")]
+        [Description("Enable Night Color your night as the night music?")]
+        [DefaultValue(false)]
+        public bool peacolnight { get; set; } = true;
+
+        [DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
 		[Description("Enable When the moon's reaching out stars as the daytime music?")]
 		[Category("Music")]
 		[DefaultValue(false)]
