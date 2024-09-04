@@ -253,6 +253,7 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "cutin", "mekkipatman"));
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "message"));
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "Bustup"));
 					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Theo/voice/Landon");
 				}
 			}
