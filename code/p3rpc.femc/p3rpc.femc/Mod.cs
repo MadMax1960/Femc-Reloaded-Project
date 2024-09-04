@@ -243,6 +243,8 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
 			else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
+			else if (_configuration.CutinTrue == CutinType.Mekki)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "Mekki"));
 			// Other Cutin conditions...
 			}
 

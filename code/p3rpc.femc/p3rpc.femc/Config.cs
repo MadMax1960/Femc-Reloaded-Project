@@ -1027,7 +1027,8 @@ namespace p3rpc.femc.Configuration
         public enum CutinType
         {
             berrycha,
-            ElyandPatmandx
+            ElyandPatmandx,
+			Mekki
         }
 
 		[DisplayName("Animations")]
