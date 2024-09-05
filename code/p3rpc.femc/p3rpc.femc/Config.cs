@@ -10,6 +10,8 @@ namespace p3rpc.femc.Configuration
 
     public class Config : Configurable<Config>
     {
+        //Config Editing Standards: Any bool designed to be accessed by the config app must be in CamelCase
+
 		[DisplayName("Pull the Trigger (Karma Remix)")]
 		[Category("Battle Music")]
 		[Description("Enable Karma's pull the trigger?")]
@@ -26,13 +28,13 @@ namespace p3rpc.femc.Configuration
 		[Category("Battle Music")]
 		[Description("Enable EidieK87's pull the trigger?")]
 		[DefaultValue(false)]
-		public bool Eidadv { get; set; } = true;
+		public bool EidAdv { get; set; } = true;
 
         [DisplayName("Danger Zone (EidieK87 Remix)")]
         [Category("Battle Music")]
         [Description("Enable EidieK87's Danger Zone?")]
         [DefaultValue(false)]
-        public bool Eiddis { get; set; } = true;
+        public bool EidDis { get; set; } = true;
 
         [DisplayName("Wiping All Out (Mosq Remix)")]
 		[Category("Battle Music")]
@@ -44,37 +46,37 @@ namespace p3rpc.femc.Configuration
 		[Category("Battle Music")]
 		[Description("Enable Karma's Wiping All Out?")]
 		[DefaultValue(false)]
-		public bool Karmanom { get; set; } = true;
+		public bool KarmaNom { get; set; } = true;
 
 		[DisplayName("Wiping All Out (Stella and GillStudio Remix)")]
 		[Category("Battle Music")]
 		[Description("Enable Stella and GillStudio's Wiping All Out?")]
 		[DefaultValue(false)]
-		public bool Sgnom { get; set; } = true;
+		public bool SgNom { get; set; } = true;
 
 		[DisplayName("Danger Zone (Stella and GillStudio Remix)")]
 		[Category("Battle Music")]
 		[Description("Enable Stella and GillStudio's Danger Zone?")]
 		[DefaultValue(false)]
-		public bool Sgdis { get; set; } = true;
+		public bool SgDis { get; set; } = true;
 
 		[DisplayName("Danger Zone (Karma Remix)")]
 		[Category("Battle Music")]
 		[Description("Enable Karma's Danger Zone?")]
 		[DefaultValue(false)]
-		public bool Karmadis { get; set; } = true;
+		public bool KarmaDis { get; set; } = true;
 
 		[DisplayName("Danger Zone (Mosq Remix)")]
 		[Category("Battle Music")]
 		[Description("Enable Mosq's Danger Zone?")]
 		[DefaultValue(true)]
-		public bool Mosqdis { get; set; } = true;
+		public bool MosqDis { get; set; } = true;
 
 		[DisplayName("Danger Zone (EidieK87 Remix)")]
 		[Category("Battle Music")]
 		[Description("Enable EidieK87's Danger Zone?")]
 		[DefaultValue(false)]
-		public bool Eddis { get; set; } = true;
+		public bool EdDis { get; set; } = true;
 
 		[DisplayName("It's Going Down Now")]
 		[Category("Battle Music")]
@@ -86,7 +88,7 @@ namespace p3rpc.femc.Configuration
         [Category("Battle Music")]
         [Description("Enable Jen's It's Going down now?")]
         [DefaultValue(false)]
-        public bool Jenadv { get; set; } = true;
+        public bool JenAdv { get; set; } = true;
 
         [DisplayName("Daytime Music (Outside School/Phase 1): Way of life by Jen")]
         [Category("Music")]
@@ -116,7 +118,7 @@ namespace p3rpc.femc.Configuration
 		[Category("Music")]
 		[Description("Enable Midnight Reverie as the night music?")]
 		[DefaultValue(false)]
-		public bool Midnight { get; set; } = true;
+		public bool MidNight { get; set; } = true;
 
 		[DisplayName("Night Music: Time (Night Version) by Mosq")]
 		[Category("Music")]
@@ -140,7 +142,7 @@ namespace p3rpc.femc.Configuration
         [Category("Music")]
         [Description("Enable Night Color your night as the night music?")]
         [DefaultValue(false)]
-        public bool peacolnight { get; set; } = true;
+        public bool PeaColNight { get; set; } = true;
 
         [DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
 		[Description("Enable When the moon's reaching out stars as the daytime music?")]

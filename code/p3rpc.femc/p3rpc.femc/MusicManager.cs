@@ -36,8 +36,8 @@ namespace p3rpc.femc
 				var nightmusic = new Dictionary<string, bool>
 				{
 					{Path.Combine(path,"Mosq\\link_97.cue"),_configuration.FemNight},
-                    {Path.Combine(path,"Pealeaf\\link_97.cue"),_configuration.peacolnight},
-                    {Path.Combine(path,"Mineformer\\link_97.cue"),_configuration.Midnight},
+                    {Path.Combine(path,"Pealeaf\\link_97.cue"),_configuration.PeaColNight},
+                    {Path.Combine(path,"Mineformer\\link_97.cue"),_configuration.MidNight},
 					{Path.Combine(path,"Gabi\\link_97.cue"),_configuration.GabiFemNight},
 					{Path.Combine(path,"Mosq\\NightWanderer\\link_97.cue"),_configuration.NightWand},
 					{Path.Combine(path,"Reload\\link_97.cue"),_configuration.ColNight}
@@ -122,11 +122,11 @@ namespace p3rpc.femc
 
 				var disadvantagemusic = new Dictionary<string, bool>
 				{
-					{Path.Combine(path, "Mosq\\link_31.cue"),_configuration.Mosqdis},
-					{Path.Combine(path, "Karma\\link_31.cue"),_configuration.Karmadis},
-					{Path.Combine(path, "Satella&GillStudio\\link_31.cue"),_configuration.Sgdis},
+					{Path.Combine(path, "Mosq\\link_31.cue"),_configuration.MosqDis},
+					{Path.Combine(path, "Karma\\link_31.cue"),_configuration.KarmaDis},
+					{Path.Combine(path, "Satella&GillStudio\\link_31.cue"),_configuration.SgDis},
 					{Path.Combine(path, "Reload\\link_31.cue"),_configuration.MasterTar},
-					{Path.Combine(path, "EidieK87\\link_31.cue"),_configuration.Eiddis}
+					{Path.Combine(path, "EidieK87\\link_31.cue"),_configuration.EidDis}
 				};
 				foreach (KeyValuePair<string, bool> ds in disadvantagemusic)
 				{
@@ -137,8 +137,8 @@ namespace p3rpc.femc
 				var normalmusic = new Dictionary<string, bool>
 				{
 					{Path.Combine(path, "Mosq\\link_26.cue"),_configuration.MosqNom},
-					{Path.Combine(path, "Karma\\link_26.cue"),_configuration.Karmanom},
-					{Path.Combine(path, "Satella&GillStudio\\link_26.cue"),_configuration.Sgnom},
+					{Path.Combine(path, "Karma\\link_26.cue"),_configuration.KarmaNom},
+					{Path.Combine(path, "Satella&GillStudio\\link_26.cue"),_configuration.SgNom},
 					{Path.Combine(path, "Reload\\link_26.cue"),_configuration.MassDes},
 				};
 				foreach (KeyValuePair<string, bool> nm in normalmusic)
@@ -152,8 +152,8 @@ namespace p3rpc.femc
 					{Path.Combine(path, "Mosq\\link_128.cue"),_configuration.MosqAdv},
 					{Path.Combine(path, "Karma\\link_128.cue"),_configuration.KarmaAdv},
 					{Path.Combine(path, "Reload\\link_128.cue"),_configuration.ItGoingDown},
-					{Path.Combine(path, "Jen\\link_128.cue"),_configuration.Jenadv},
-					{Path.Combine(path, "EidieK87\\link_128.cue"),_configuration.Eidadv}
+					{Path.Combine(path, "Jen\\link_128.cue"),_configuration.JenAdv},
+					{Path.Combine(path, "EidieK87\\link_128.cue"),_configuration.EidAdv}
 				};
 				foreach (KeyValuePair<string, bool> asm in advantagemusic)
 				{
