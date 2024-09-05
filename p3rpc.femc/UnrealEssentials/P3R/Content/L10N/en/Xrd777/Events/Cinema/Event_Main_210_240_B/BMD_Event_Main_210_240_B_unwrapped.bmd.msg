@@ -15,7 +15,7 @@
 
 [sel SEL_003_0_0 top]
 [uf 0 5 65278][uf 2 1]Yes, I can sense them...[e]
-[uf 0 5 65278][uf 2 1]I'm not sure...[e]
+[uf 0 5 65278][uf 2 1]I don't know...[e]
 
 [msg MSG_004_0_0 [Igor]]
 [uf 0 5 65278][uf 2 1][uf 4 5 201 0 65535 65535 0 0][uf 3 1 1 0 0 8 0 0]Close your eyes and listen... Their voices may be faint, but you hear them, don't you?[n][uf 1 1][e]
@@ -67,7 +67,7 @@
 [uf 0 5 65278][uf 2 1][uf 4 5 110 1 6 65 0 0][uf 3 1 1 0 0 28 0 0]I won't give up.[n][uf 1 1][e]
 
 [msg MSG_017_0_0 [Bebe]]
-[uf 0 5 65278][uf 2 1][uf 4 5 112 1 6 65 0 0][uf 3 1 1 0 0 29 0 0][uf 4 2]-dono, how are you doing? Ça va, I hope...[n][uf 1 1][e]
+[uf 0 5 65278][uf 2 1][uf 4 5 112 1 6 65 0 0][uf 3 1 1 0 0 29 0 0][uf 4 2]-sama, how are you doing? Ça va, I hope...[n][uf 1 1][e]
 [uf 0 5 65278][uf 2 1][uf 4 5 112 1 6 65 0 0][uf 3 1 1 0 0 30 0 0]I am here for you... like you were there for me![n][uf 1 1][e]
 
 [msg MSG_018_0_0 [President Tanaka]]

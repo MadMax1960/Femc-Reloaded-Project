@@ -1,0 +1,10 @@
+name: "Joker's Outfit"
+
+costume:
+  mesh_path: /Game/Costumes/Player/Joker/costume-mesh.uasset
+
+hair:
+  mesh_path: /Game/Costumes/Player/Joker/hair-mesh.uasset
+  
+face:
+  mesh_path: /Game/Costumes/Player/Joker/face-mesh.uasset

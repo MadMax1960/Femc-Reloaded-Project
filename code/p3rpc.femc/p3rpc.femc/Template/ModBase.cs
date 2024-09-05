@@ -1,5 +1,4 @@
 ﻿using p3rpc.femc.Configuration;
-
 namespace p3rpc.femc.Template
 {
     /// <summary>
@@ -16,7 +15,7 @@ namespace p3rpc.femc.Template
         /// Returns true if the unload functionality is supported, else false.
         /// </summary>
         public virtual bool CanUnload() => false;
-
+        
         /// <summary>
         /// Suspends your mod, i.e. mod stops performing its functionality but is not unloaded.
         /// </summary>

@@ -365,3 +365,4 @@ FodyWeavers.xsd
 # For Rust projects
 target/
 Cargo.lock
+/code/p3rpc.femc/p3rpc.femc/p3rpc.femc.music.interaces.cs
