@@ -213,6 +213,8 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Lisa9388"));
 			else if (_configuration.BustupTrue == BustupType.BetaFemcByMae)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "BetaFemcByMae"));
+			else if (_configuration.BustupTrue == BustupType.crezzstar)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "crezzstar"));
 			// Other Bustup conditions...
 
 			if (_configuration.ShardTrue == ShardType.Esa)
@@ -241,6 +243,8 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
 			else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
+			else if (_configuration.CutinTrue == CutinType.Mekki)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "Mekki"));
 			// Other Cutin conditions...
 			}
 
@@ -251,6 +255,7 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "cutin", "mekkipatman"));
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "message"));
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "Bustup"));
 					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Theo/voice/Landon");
 				}
 			}
