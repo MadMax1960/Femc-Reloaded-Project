@@ -933,7 +933,8 @@ namespace p3rpc.femc.Configuration
             esaadrien,
 			mekki,
 			shiosakana,
-			shiosakanaAlt
+			shiosakanaAlt,
+			Nami
         }
 
         [DisplayName("AOA Text Options")]
