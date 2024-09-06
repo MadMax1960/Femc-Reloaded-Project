@@ -977,7 +977,8 @@ namespace p3rpc.femc.Configuration
 			Jackie,
 			Lisa,
 			BetaFemcByMae,
-			crezzstar
+			crezzstar,
+			AngieDaGorl
         }
 
         [DisplayName("Glass Shard")]
