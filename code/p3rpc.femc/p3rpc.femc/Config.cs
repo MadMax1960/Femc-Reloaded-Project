@@ -28,7 +28,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool Eidadv { get; set; } = true;
 
-		[DisplayName("Wiping All Out (Mosq Remix)")]
+        [DisplayName("Danger Zone (EidieK87 Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable EidieK87's Danger Zone?")]
+        [DefaultValue(false)]
+        public bool Eiddis { get; set; } = true;
+
+        [DisplayName("Wiping All Out (Mosq Remix)")]
 		[Category("Battle Music")]
 		[Description("Enable Mosq's Wiping All Out?")]
 		[DefaultValue(true)]
@@ -76,7 +82,19 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool ItGoingDown { get; set; } = true;
 
-		[DisplayName("Master of Tartarus -Reload-")]
+        [DisplayName("It's Going Down Now (Jen Remix)")]
+        [Category("Battle Music")]
+        [Description("Enable Jen's It's Going down now?")]
+        [DefaultValue(false)]
+        public bool Jenadv { get; set; } = true;
+
+        [DisplayName("Daytime Music (Outside School/Phase 1): Way of life by Jen")]
+        [Category("Music")]
+        [Description("Enable Way of life by Jen as the daytime music?")]
+        [DefaultValue(false)]
+        public bool WayOfLifeJen { get; set; } = true;
+
+        [DisplayName("Master of Tartarus -Reload-")]
 		[Category("Battle Music")]
 		[Description("Enable Atlus's Master of Tartarus -Reload-?")]
 		[DefaultValue(false)]
@@ -118,7 +136,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool NightWand { get; set; } = true;
 
-		[DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
+        [DisplayName("Night Music: Color your night by Pealeaf and ChewieMelodies")]
+        [Category("Music")]
+        [Description("Enable Night Color your night as the night music?")]
+        [DefaultValue(false)]
+        public bool peacolnight { get; set; } = true;
+
+        [DisplayName("Daytime Music (Outside School/Phase 1): When the Moon's reaching out stars -Reload-")]
 		[Description("Enable When the moon's reaching out stars as the daytime music?")]
 		[Category("Music")]
 		[DefaultValue(false)]
@@ -906,7 +930,11 @@ namespace p3rpc.femc.Configuration
             Fernando,
             Monica,
             RonaldReagan,
-            esaadrien
+            esaadrien,
+			mekki,
+			shiosakana,
+			shiosakanaAlt,
+			Nami
         }
 
         [DisplayName("AOA Text Options")]
@@ -918,7 +946,8 @@ namespace p3rpc.femc.Configuration
         public enum AOATextType
         {
             DontLookBack,
-            SorryBoutThat
+            SorryBoutThat,
+			PerfectlyAccomplished
         }
 
 
@@ -945,7 +974,12 @@ namespace p3rpc.femc.Configuration
 			axolotl,
 			ghostedtoast,
 			Strelko,
-			gackt
+			gackt,
+			Jackie,
+			Lisa,
+			BetaFemcByMae,
+			crezzstar,
+			AngieDaGorl
         }
 
         [DisplayName("Glass Shard")]
@@ -995,7 +1029,8 @@ namespace p3rpc.femc.Configuration
         public enum CutinType
         {
             berrycha,
-            ElyandPatmandx
+            ElyandPatmandx,
+			Mekki
         }
 
 		[DisplayName("Animations")]
@@ -1037,6 +1072,11 @@ namespace p3rpc.femc.Configuration
 		[Category("3D Options")]
 		[DefaultValue(true)]
 		public bool SkirtEtcFix { get; set; } = true;
+
+		[DisplayName("Theo")]
+		[Category("Theo")]
+		[DefaultValue(false)]
+		public bool TheodorefromAlvinandTheChipmunks { get; set; } = false; // soon this should be a whole thing, movies, bustups, etc 
 	}
 
 

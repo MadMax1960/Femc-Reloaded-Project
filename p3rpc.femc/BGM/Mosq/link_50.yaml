@@ -1,6 +1,0 @@
-acb_name: 'bgm'
-player_id: 0
-volume: 0.15
-category_ids: [0, 13]
-sample_rate: 44100
-num_channels: 2

@@ -12,10 +12,8 @@ using UnrealEssentials.Interfaces;
 using Unreal.ObjectsEmitter.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
-using BGME.BattleThemes.Interfaces;
-using BGME.BattleThemes.Config;
 using Ryo.Interfaces;
-using System.IO;
+
 
 
 /// ok maybe p3rpc.femc.music.interfaces is required, but it's not in repo and randomization doesn't work leading me to believe they're connected, or randomization never worked idk
@@ -60,10 +58,11 @@ namespace p3rpc.femc
 		private FemcContext _context;
 		private ModuleRuntime<FemcContext> _modRuntime;
 		private readonly IUnreal unreal;
-        private readonly ThemeConfig themeConfig;
+		private readonly MusicManager _musicManager;
+		private AssetRedirector _assetRedirector;
 
 
-        private string modName { get; set; }
+		private string modName { get; set; }
 
 		public Mod(ModContext context)
 		{
@@ -85,18 +84,19 @@ namespace p3rpc.femc
 			var unrealEssentials = GetDependency<IUnrealEssentials>("Unreal Essentials");
 			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
-			var ryo = GetDependency<IRyoApi>("Ryo");
-			var memory = new Memory();
-            this.themeConfig = new ThemeConfig(this._modLoader, this._modConfig, this._configuration, this._logger);
+            var ryo = GetDependency<IRyoApi>("Ryo");
+            var memory = new Memory();
             _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods);
 			_modRuntime = new(_context);
+			_musicManager = new MusicManager(_modLoader, _modConfig, _configuration, ryo, _logger, _context);
 
 			modName = _modConfig.ModName;
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials, ryo);
 			InitializeModules();
-			GenerateMusicScript();
-			RedirectPlayerAssets();
+			_assetRedirector = new AssetRedirector(unreal, modName);
+			_assetRedirector.RedirectPlayerAssets();
+			_musicManager.GenerateMusicScript();
 		}
 
 		private IControllerType GetDependency<IControllerType>(string modName) where IControllerType : class
@@ -110,438 +110,179 @@ namespace p3rpc.femc
 
         private void LoadEnabledAddons(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 		{
-			try
+				try
+				{
+					Load3dAssets(unrealEssentials);
+					Load2dAssets(unrealEssentials);
+					LoadTheoAssets(unrealEssentials, ryo);
+					LoadFunStuff(unrealEssentials);
+					LoadMiscAssets(unrealEssentials, ryo);
+				}
+				catch (Exception ex)
+				{
+					_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
+				}
+			}
+
+			private void Load3dAssets(IUnrealEssentials unrealEssentials)
 			{
-				if (_configuration.HairTrue == HairType.MudkipsHair)
+			if (_configuration.HairTrue == HairType.MudkipsHair)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "MudkipHair"));
-				else if (_configuration.HairTrue == HairType.KotoneBeanHair)
+			else if (_configuration.HairTrue == HairType.KotoneBeanHair)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "NaobeanHair"));
 
-				if (_configuration.AOATrue == AOAType.Ely)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ely"));
-				else if (_configuration.AOATrue == AOAType.Chrysanthie)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Chrysanthie"));
-				else if (_configuration.AOATrue == AOAType.Fernando)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Fernando"));
-				else if (_configuration.AOATrue == AOAType.Monica)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Monica"));
-				else if (_configuration.AOATrue == AOAType.RonaldReagan)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "RonaldReagan"));
-				else if (_configuration.AOATrue == AOAType.esaadrien)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "esaadrien"));
+			if (_configuration.AnimTrue == AnimType.OriginalAnims)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Original Dummy"));
+			else if (_configuration.AnimTrue == AnimType.CustomAnims)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Custom Anims"));
+			else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
 
-				if (_configuration.AOAText == AOATextType.DontLookBack)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
-				else if (_configuration.AOAText == AOATextType.SorryBoutThat)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "SorryBoutThat"));
+			if (_configuration.SkirtEtcFix)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
 
-				if (_configuration.BustupTrue == BustupType.Neptune)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Neptune"));
-				else if (_configuration.BustupTrue == BustupType.Ely)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Ely"));
-				else if (_configuration.BustupTrue == BustupType.Esa)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Esa"));
-				else if (_configuration.BustupTrue == BustupType.Betina)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Betina"));
-				else if (_configuration.BustupTrue == BustupType.Anniversary)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "25thAnniversary"));
-				else if (_configuration.BustupTrue == BustupType.JustBlue)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "JustBlue"));
-				else if (_configuration.BustupTrue == BustupType.Sav)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Sav"));
-				else if (_configuration.BustupTrue == BustupType.Doodled)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Doodled"));
-				else if (_configuration.BustupTrue == BustupType.RonaldReagan)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "RonaldReagan"));
-				else if (_configuration.BustupTrue == BustupType.ElyAlt)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ElyAlt"));
-				else if (_configuration.BustupTrue == BustupType.Yuunagi)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Yuunagi"));
-				else if (_configuration.BustupTrue == BustupType.cielbell)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "cielbell"));
-				else if (_configuration.BustupTrue == BustupType.axolotl)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "axolotl"));
-				else if (_configuration.BustupTrue == BustupType.ghostedtoast)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ghostedtoast"));
-				else if (_configuration.BustupTrue == BustupType.Strelko)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Strelko"));
-				else if (_configuration.BustupTrue == BustupType.gackt)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "gackt"));
+			if (_configuration.NagiWeap)
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
+			}
 
+			private void Load2dAssets(IUnrealEssentials unrealEssentials)
+			{
+			if (_configuration.AOATrue == AOAType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ely"));
+			else if (_configuration.AOATrue == AOAType.Chrysanthie)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Chrysanthie"));
+			else if (_configuration.AOATrue == AOAType.Fernando)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Fernando"));
+			else if (_configuration.AOATrue == AOAType.Monica)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Monica"));
+			else if (_configuration.AOATrue == AOAType.RonaldReagan)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "RonaldReagan"));
+			else if (_configuration.AOATrue == AOAType.esaadrien)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "esaadrien"));
+			else if (_configuration.AOATrue == AOAType.mekki)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "mekki"));
+			else if (_configuration.AOATrue == AOAType.shiosakana)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakana"));
+			else if (_configuration.AOATrue == AOAType.shiosakanaAlt)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakanaAlt"));
+			else if (_configuration.AOATrue == AOAType.Nami)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Nami"));
+			// Other AOA conditions...
 
+			if (_configuration.AOAText == AOATextType.DontLookBack)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
+			else if (_configuration.AOAText == AOATextType.SorryBoutThat)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "SorryBoutThat"));
+			else if (_configuration.AOAText == AOATextType.PerfectlyAccomplished)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "PerfectlyAccomplished"));
+			// Other AOAText conditions...
 
-				if (_configuration.ShardTrue == ShardType.Esa)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Esa"));
-				else if (_configuration.ShardTrue == ShardType.Ely)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Ely"));
-				else if (_configuration.ShardTrue == ShardType.ElyAlt)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "ElyAlt"));
-				else if (_configuration.ShardTrue == ShardType.Shiosakana)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Shiosakana"));
+			if (_configuration.BustupTrue == BustupType.Neptune)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Neptune"));
+			else if (_configuration.BustupTrue == BustupType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Ely"));
+			else if (_configuration.BustupTrue == BustupType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Esa"));
+			else if (_configuration.BustupTrue == BustupType.Betina)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Betina"));
+			else if (_configuration.BustupTrue == BustupType.Anniversary)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "25thAnniversary"));
+			else if (_configuration.BustupTrue == BustupType.JustBlue)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "JustBlue"));
+			else if (_configuration.BustupTrue == BustupType.Sav)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Sav"));
+			else if (_configuration.BustupTrue == BustupType.Doodled)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Doodled"));
+			else if (_configuration.BustupTrue == BustupType.RonaldReagan)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "RonaldReagan"));
+			else if (_configuration.BustupTrue == BustupType.ElyAlt)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ElyAlt"));
+			else if (_configuration.BustupTrue == BustupType.Yuunagi)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Yuunagi"));
+			else if (_configuration.BustupTrue == BustupType.cielbell)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "cielbell"));
+			else if (_configuration.BustupTrue == BustupType.axolotl)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "axolotl"));
+			else if (_configuration.BustupTrue == BustupType.ghostedtoast)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "ghostedtoast"));
+			else if (_configuration.BustupTrue == BustupType.Strelko)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Strelko"));
+			else if (_configuration.BustupTrue == BustupType.gackt)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "gackt"));
+			else if (_configuration.BustupTrue == BustupType.Jackie)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Jackie"));
+			else if (_configuration.BustupTrue == BustupType.Lisa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "Lisa9388"));
+			else if (_configuration.BustupTrue == BustupType.BetaFemcByMae)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "BetaFemcByMae"));
+			else if (_configuration.BustupTrue == BustupType.crezzstar)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "crezzstar"));
+			else if (_configuration.BustupTrue == BustupType.AngieDaGorl)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "AngieDaGorl"));
+			// Other Bustup conditions...
 
-				if (_configuration.LevelUpTrue == LevelUpType.Esa)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
-				else if (_configuration.LevelUpTrue == LevelUpType.Ely)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Ely"));
-				
-				if (_configuration.PartyPanelTrue == PartyPanelType.Kris)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Kris"));
-				else if (_configuration.PartyPanelTrue == PartyPanelType.Esa)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Esa"));
+			if (_configuration.ShardTrue == ShardType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Esa"));
+			else if (_configuration.ShardTrue == ShardType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Ely"));
+			else if (_configuration.ShardTrue == ShardType.ElyAlt)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "ElyAlt"));
+			else if (_configuration.ShardTrue == ShardType.Shiosakana)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Shiosakana"));
+			// Other Shard conditions...
 
-				if (_configuration.CutinTrue == CutinType.berrycha)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
-				else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
+			if (_configuration.LevelUpTrue == LevelUpType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
+			else if (_configuration.LevelUpTrue == LevelUpType.Ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Ely"));
+			// Other Level Up conditions...
 
+			if (_configuration.PartyPanelTrue == PartyPanelType.Kris)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Kris"));
+			else if (_configuration.PartyPanelTrue == PartyPanelType.Esa)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Esa"));
+			// Other Party Panel conditions...
 
+			if (_configuration.CutinTrue == CutinType.berrycha)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
+			else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
+			else if (_configuration.CutinTrue == CutinType.Mekki)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "Mekki"));
+			// Other Cutin conditions...
+			}
+
+		private void LoadTheoAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
+			{
+				if (_configuration.TheodorefromAlvinandTheChipmunks)
+				{
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "cutin", "mekkipatman"));
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "message"));
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "Bustup"));
+					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Theo/voice/Landon");
+				}
+			}
+
+			private void LoadFunStuff(IUnrealEssentials unrealEssentials)
+			{
 				if (_configuration.KotoneRoom)
-				{
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
-				}
-
-				//if (_configuration.FunnyAnims)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Funny Anims"));
-				}
-
-				//if (!_configuration.FunnyAnims)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Funny Animsog")); // game dies when 2 files loaded, this has the og files we had in mod but in their own folder, the ! is if the bool is disabled
-				}
 
 				if (_configuration.GregoryHouseRatPoisonDeliverySystem)
-				{
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystem"));
-				}
-
 				if (!_configuration.GregoryHouseRatPoisonDeliverySystem)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog")); // game dies when 2 files loaded, this has the og files we had in mod but in their own folder, the ! is if the bool is disabled
-				}
+					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog"));
+			}
 
-                if (_configuration.NagiWeap)
-                {
-                    unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
-                }
-
-				if (_configuration.SkirtEtcFix)
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
-				}
-
-				if (_configuration.AnimTrue == AnimType.OriginalAnims)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Original Dummy"));
-				else if (_configuration.AnimTrue == AnimType.CustomAnims)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Custom Anims"));
-				else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
+			private void LoadMiscAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
+			{
 				if (_configuration.bluehairandpronounce)
 					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Voice");
-					
-
 			}
-			catch (Exception ex)
-			{
-				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
-			}
-		}
-
-        private void BattleMusicGeneration() // this should be battle themes man
-        {
-			try
-			{
-                var battlethemes = GetDependency<IBattleThemesApi>("Battle Themes");
-                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGM/";
-                battlethemes.RemovePath(path);
-                string advantage = "const adv_music=[";
-                string normal = "const nom_music=[";
-                string disadvantage = "const dis_music=[";
-                var added = new Dictionary<string, int>
-				{
-					{"advantage",0},
-					{"normal",0},
-					{"disadvantage",0}
-				};
-                var collection = new Dictionary<string, Tuple<string, bool>>
-				{
-					{"p3r_MPTTR", new Tuple<string, bool>("advantage", _configuration.MosqAdv)},
-					{"p3r_KPPTR", new Tuple<string, bool>("advantage", _configuration.KarmaAdv)},
-					{"p3r_EPTTR", new Tuple<string, bool>("advantage", _configuration.Eidadv)},
-					{"p3r_MWPAO", new Tuple<string, bool>("normal", _configuration.MosqNom)},
-					{"p3r_KWPAO", new Tuple<string, bool>("normal", _configuration.Karmanom)},
-					{"p3r_SGWPAO", new Tuple<string, bool>("normal", _configuration.Sgnom)},
-					{"p3r_MDZ", new Tuple<string, bool>("disadvantage", _configuration.Mosqdis)},
-					{"p3r_KDZ", new Tuple<string, bool>("disadvantage", _configuration.Karmadis)},
-					{"p3r_EDZ", new Tuple<string, bool>("disadvantage", _configuration.Eddis)},
-					{"p3r_SGDZ", new Tuple<string, bool>("disadvantage", _configuration.Sgdis)},
-					{"128", new Tuple<string, bool>("advantage", _configuration.ItGoingDown)},
-					{"26", new Tuple<string, bool>("normal", _configuration.MassDes)},
-					{"31", new Tuple<string, bool>("disadvantage", _configuration.MasterTar)}
-				};
-                foreach (KeyValuePair<string, Tuple<string, bool>> col in collection)
-                {
-                    if (col.Value.Item2)
-                    {
-                        if (col.Value.Item1 == "advantage")
-                        {
-                            if (added[col.Value.Item1] == 0)
-                            {
-                                advantage += col.Key;
-                                added[col.Value.Item1] = 1;
-                            }
-                            else
-                            {
-                                advantage += "," + col.Key;
-                            }
-                        }
-                        else if (col.Value.Item1 == "normal")
-                        {
-                            if (added[col.Value.Item1] == 0)
-                            {
-                                normal += col.Key;
-                                added[col.Value.Item1] = 1;
-                            }
-                            else
-                            {
-                                normal += "," + col.Key;
-                            }
-                        }
-                        else if (col.Value.Item1 == "disadvantage")
-                        {
-                            if (added[col.Value.Item1] == 0)
-                            {
-                                disadvantage += col.Key;
-                                added[col.Value.Item1] = 1;
-                            }
-                            else
-                            {
-                                disadvantage += "," + col.Key;
-                            }
-                        }
-						else
-						{
-                            _logger.WriteLineAsync("The Collection dictionary in mod.cs has been improperly configured, one of the specified categories DOES NOT exist.");
-                        }
-                    }
-                }
-                advantage += (added["advantage"] == 0) ? "p3r_MPTTR]" : "]";
-                normal += (added["normal"] == 0) ? "p3r_MWPAO]" : "]";
-                disadvantage += (added["disadvantage"] == 0) ? "p3r_MDZ]" : "]";
-                string[] lines = { advantage, normal, disadvantage, "const BATTLE_THEME = battle_bgm(random_song(nom_music),random_song(adv_music),random_song(dis_music))" };
-                if (File.Exists(path + "script" + ".theme.pme"))
-                {
-                    File.Delete(path + "script" + ".theme.pme");
-                }
-                using (StreamWriter outputFile = new StreamWriter(path + "script"))
-                {
-                    foreach (string line in lines)
-                        outputFile.WriteLine(line);
-                }
-                File.Move(path + "script", Path.ChangeExtension(path + "script", ".theme.pme"));
-                battlethemes.AddPath(_modConfig.ModId, path);
-            }
-			catch(Exception ex)
-			{
-                _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
-            }
-        }
-
-        private void GenerateMusicScript()
-		{
-            //Author: TheBestAstroNOT
-            //Credit for all the music goes to Atlus, Mosq, Mineformer, Karma, Stella and GillStudio, EidieK87, GabiShy
-            try
-            {
-				BattleMusicGeneration();
-                _logger.WriteLineAsync("Regenerating music script");
-                var battleThemes = GetDependency<IBattleThemesApi>("Battle Themes");
-                //Initialise the music picker
-                string night = "const night1List=[";
-                string dayoutside1 = "const dayout1List=[";
-                string dayinside1 = "const dayin1List=[";
-                string dayinside2 = "const dayin2List=[";
-                string sociallink11 = "const social11List= [";
-                string sociallink12 = "const social12List= [";
-                string finalbattle = "const finalbattle=[";
-                string bossbattle1 = "const bossbattle1=[";
-                string bossbattle2 = "const bossbattle2=[";
-                string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "/BGME/scripts";
-                //Code for writing the commands
-                var added = new Dictionary<string, int>
-				{
-					{"night",0},
-					{"dayout1",0},
-					{"social1",0},
-					{"social2",0},
-					{"dayin1",0},
-					{"dayin2",0},
-					{"final",0},
-					{"boss1",0},
-					{"boss2",0}
-				};
-                var collection = new Dictionary<string, Tuple<bool, string>>
-				{
-			//{"cue id",new Tuple<bool,string>(config value,category)}
-					{"97", new Tuple<bool, string>(_configuration.ColNight, "night")},
-					{"2003", new Tuple<bool, string>(_configuration.Midnight, "night")},
-					{"2004", new Tuple<bool, string>(_configuration.FemNight, "night")},
-					{"2011", new Tuple<bool, string>(_configuration.NightWand, "night")},
-					{"2012", new Tuple<bool, string>(_configuration.GabiFemNight, "night")},
-					{"25", new Tuple<bool, string>(_configuration.Moon, "dayout1")},
-					{"2005", new Tuple<bool, string>(_configuration.WayOfLife, "dayout1")},
-					{"50", new Tuple<bool, string>(_configuration.WantClose, "dayin1")},
-					{"2006", new Tuple<bool, string>(_configuration.TimeSchool, "dayin1")},
-					{"2013", new Tuple<bool, string>(_configuration.GabiTimeSchool, "dayin1")},
-					{"51", new Tuple<bool, string>(_configuration.Seasons, "dayin2")},
-					{"2009", new Tuple<bool, string>(_configuration.Sun, "dayin2")},
-					{"38", new Tuple<bool, string>(_configuration.Joy, "social1")},
-					{"43", new Tuple<bool, string>(_configuration.Joy, "social2")},
-					{"2007", new Tuple<bool, string>(_configuration.AfterSchool, "social1")},
-					{"2008", new Tuple<bool, string>(_configuration.AfterSchool, "social2")},
-					{"2015", new Tuple<bool, string>(_configuration.SoulPK, "final")},
-					{"29", new Tuple<bool, string>(_configuration.BMD, "final")},
-					{"2016", new Tuple<bool, string>(_configuration.BMSF, "boss1")},
-					{"2017", new Tuple<bool, string>(_configuration.BMSF, "boss2")},
-					{"27", new Tuple<bool, string>(_configuration.BMS, "boss1")},
-					{"129", new Tuple<bool, string>(_configuration.BMS, "boss2")}
-
-				};
-                foreach (KeyValuePair<string, Tuple<bool, string>> col in collection)
-                {
-                    if (col.Value.Item1)
-                    {
-                        if (col.Value.Item2 == "night")
-                        {
-                            if (added[col.Value.Item2] == 0)
-                            {
-                                night += col.Key;
-                                added[col.Value.Item2] = 1;
-                            }
-
-                            else
-                                night += "," + col.Key;
-                        }
-                        else if (col.Value.Item2 == "dayout1")
-                        {
-                            if (added[col.Value.Item2] == 0)
-                            {
-                                dayoutside1 += col.Key;
-                                added[col.Value.Item2] = 1;
-                            }
-                            else
-                                dayoutside1 += "," + col.Key;
-                        }
-                        else if (col.Value.Item2 == "dayin1")
-                        {
-                            if (added[col.Value.Item2] == 0)
-                            {
-                                dayinside1 += col.Key;
-                                added[col.Value.Item2] = 1;
-                            }
-                            else
-                                dayinside1 += "," + col.Key;
-                        }
-                        else if (col.Value.Item2 == "dayin2")
-                        {
-                            if (added[col.Value.Item2] == 0)
-                            {
-                                dayinside2 += col.Key;
-                                added[col.Value.Item2] = 1;
-                            }
-                            else
-                                dayinside2 += "," + col.Key;
-                        }
-                        else if (col.Value.Item2 == "social1")
-                        {
-                            if (added[col.Value.Item2] == 0)
-                            {
-                                sociallink11 += col.Key;
-                                added[col.Value.Item2] = 1;
-                            }
-                            else
-                                sociallink11 += "," + col.Key;
-                        }
-                        else if (col.Value.Item2 == "social2")
-                        {
-                            if (added[col.Value.Item2] == 0)
-                            {
-                                sociallink12 += col.Key;
-                                added[col.Value.Item2] = 1;
-                            }
-                            else
-                                sociallink12 += "," + col.Key;
-                        }
-                        else if (col.Value.Item2 == "final")
-                        {
-                            if (added[col.Value.Item2] == 0)
-                            {
-                                finalbattle += col.Key;
-                                added[col.Value.Item2] = 1;
-                            }
-                            else
-                                finalbattle += "," + col.Key;
-                        }
-                        else if (col.Value.Item2 == "boss1")
-                        {
-                            if (added[col.Value.Item2] == 0)
-                            {
-                                bossbattle1 += col.Key;
-                                added[col.Value.Item2] = 1;
-                            }
-                            else
-                                bossbattle1 += "," + col.Key;
-                        }
-                        else if (col.Value.Item2 == "boss2")
-                        {
-                            if (added[col.Value.Item2] == 0)
-                            {
-                                bossbattle2 += col.Key;
-                                added[col.Value.Item2] = 1;
-                            }
-                            else
-                                bossbattle2 += "," + col.Key;
-                        }
-                        else
-                        {
-                            _logger.WriteLineAsync("The Collection dictionary in mod.cs has been improperly configured, one of the specified categories DOES NOT exist.");
-                        }
-
-                    }
-                }
-
-                night += (added["night"] == 0) ? "2004]" : "]";
-                dayoutside1 += (added["dayout1"] == 0) ? "2005]" : "]";
-                dayinside1 += (added["dayin1"] == 0) ? "2006]" : "]";
-                dayinside2 += (added["dayin2"] == 0) ? "2009]" : "]";
-                sociallink11 += (added["social1"] == 0) ? "2007]" : "]";
-                sociallink12 += (added["social2"] == 0) ? "2008]" : "]";
-                finalbattle += (added["final"] == 0) ? "2015]" : "]";
-                bossbattle1 += (added["boss1"] == 0) ? "2016]" : "]";
-                bossbattle2 += (added["boss2"] == 0) ? "2017]" : "]";
-
-                //Writing the configuration File
-                string[] lines = { night, "global_bgm[\"Color Your Night\"]:", "music = random_song(night1List)", "end", dayinside1, "global_bgm[\"Want to Be Close\"]:", "music = random_song(dayin1List)", "end", dayoutside1, "global_bgm[\"When The Moon's Reaching Out Stars\"]:", "music = random_song(dayout1List)", "end", sociallink11, "global_bgm[38]:", "music = random_song(social11List)", "end", sociallink12, "global_bgm[43]:", "music = random_song(social12List)", "end", dayinside2, "global_bgm[51]:", "music = random_song(dayin2List)", "end", finalbattle, "global_bgm[29]:", "music=random_song(finalbattle)", "end", bossbattle1, "global_bgm[27]:", "music=random_song(bossbattle1)", "end", bossbattle2, "global_bgm[129]:", "music=random_song(bossbattle2)", "end" };
-
-                if (File.Exists(path + ".pme"))
-                {
-                    File.Delete(path + ".pme");
-                }
-                using (StreamWriter outputFile = new StreamWriter(path))
-                {
-                    foreach (string line in lines)
-                        outputFile.WriteLine(line);
-                }
-                File.Move(path, Path.ChangeExtension(path, ".pme"));
-            }
-            catch (Exception ex)
-            {
-                _context._utils.Log($"An error occured while trying to generate the music script: \"{ex.Message}\"", System.Drawing.Color.Red);
-            } // this should just be ryo bruh it could be bools
-        }
 
 
-        private void InitializeModules()
+		private void InitializeModules()
 		{
 			_modRuntime.AddModule<UICommon>();
 			if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
@@ -625,66 +366,6 @@ namespace p3rpc.femc
 			if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
 			_modRuntime.RegisterModules();
         }
-	
-
-		// ADD ASSET REDIRECTS HERE.
-		private void RedirectPlayerAssets()
-		{
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_F000", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_F999"); // face
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H000", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999"); // hair
-			// this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H000", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H998"); // aigis hair
-			this.RedirectAsset("/Game/Xrd777/Characters/Data/DataAsset/Player/PC0001/DA_PC0001_CombineAnim", "/Game/Xrd777/Characters/Data/DataAsset/Player/PC0002/DA_PC0002_CombineAnim"); // idk what this is, its something
-			this.RedirectAsset("/Game/Xrd777/Characters/Data/DataAsset/Player/PC0001/DA_PC0001_CommonAnim", "/Game/Xrd777/Characters/Data/DataAsset/Player/PC0002/DA_PC0002_CommonAnim"); // common anim stuff, walking, sitting, griddying, etc
-			//this.RedirectAsset("/Game/Xrd777/Characters/Data/DataAsset/Player/PC0001/DA_PC0001_EventAnim", "/Game/Xrd777/Characters/Data/DataAsset/Player/PC0002/DA_PC0002_EventAnim"); // Event anims, so specific events, probably why velvet room dies tbqh
-			this.RedirectAsset("/Game/Xrd777/Characters/Data/DataAsset/Player/PC0001/DA_PC0001_FaceAnim", "/Game/Xrd777/Characters/Data/DataAsset/Player/PC0002/DA_PC0002_FaceAnim"); // read the filename to my left
-			//this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/ABP_PC0001", "/Game/Xrd777/Characters/Player/PC0002/ABP_PC0002"); // might omega die
-			// this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/AnmCommon/A_PC0001_CMA0055_ADDP_BagLNoPocket", "/Game/Xrd777/Characters/Player/PC0002/AnmCommon/A_PC0002_CMA0056_ADDP_BagL"); // might die 
-			//this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/AnmCommon/A_PC0001_CMA0056_ADDP_BagL", "/Game/Xrd777/Characters/Player/PC0002/AnmCommon/A_PC0002_CMA0056_ADDP_BagL"); // might die 2
-			//this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/AnmCommon/A_PC0001_CMA0063_ADDP_TravelBagL", "/Game/Xrd777/Characters/Player/PC0002/AnmCommon/A_PC0002_CMA0056_ADDP_BagL"); // might die 3
-			//this.RedirectAsset("/Game/Xrd777/Blueprints/Characters/Player/Bag/BP_AppCharBag_0001_000", "/Game/Xrd777/Blueprints/Characters/Player/Bag/BP_AppCharBag_0002_000"); // idk what these 2 do
-			//this.RedirectAsset("/Game/Xrd777/Blueprints/Characters/Player/Bag/BP_AppCharBag_0001_099", "/Game/Xrd777/Blueprints/Characters/Player/Bag/BP_AppCharBag_0002_001"); // this is the 2nd 
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_BaseSkelton", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_BaseSkelton"); // trent crimm the indepedent
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C001", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C991"); // summer school I think?
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C002", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C992"); // winter school
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C005", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C993"); // summer casual
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C006", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C992"); // winter casual
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C051", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C998"); // joker persona 5 reference
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C052", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C999"); // STRETCHING SKIRT MAKE LOOK BAD :((((((((
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C101", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C985"); // idk what this is, its something though
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C102", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C986"); // idk what this is, its something though
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C103", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C982"); // bikini I think?
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C106", "/Game/Xrd777/Characters/Player/PC0005/Models/SK_PC0005_C106"); // this is something too
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C151", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C985"); // :idk:
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C154", "/Game/Xrd777/Characters/Player/PC0005/Models/SK_PC0005_C154"); // never gonna give you up, never gonna let you down
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C155", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C155"); // yukata i believe
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C158", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C983"); // idk
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C159", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C970"); // dorm apron
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C160", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C984"); // idk
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C161", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C980"); // work outfit for something
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C162", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C981"); // something
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C501", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C996"); //not  rise
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C502", "/Game/Xrd777/Characters/Player/PC0005/Models/SK_PC0005_C502"); // mitsuru shujin redirect
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C503", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C997"); // not best outfit, its naoto, look at her go, i need to use new yuha textures for coat (and maybe make textures for pants and hat while I wait, but either way its naoto, look at that woah, wow, naoto, noot, shirogane, tiny person, little short tiny not tall detective 
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H158", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999"); // hair
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H501", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999"); // hair 2 (3 technically)
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H159", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H998"); // yuha hair 3 (4 technically)
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C504", "/Game/Xrd777/Characters/Player/PC0006/Models/SK_PC0006_C504");
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H504", "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999"); // forgor velvet hair
-			// saori and rio will be added as dummy slots, idk who they will replace yet, probably kaz or something 
-			// theo will need to be redirected here 
-
-
-
-		}
-
-		private void RedirectAsset(string ogAssetPath, string newAssetPath)
-		{
-			var ogFnames = new AssetFNames(ogAssetPath);
-			var newFnames = new AssetFNames(newAssetPath);
-
-			this.unreal.AssignFName(modName, ogFnames.AssetName, newFnames.AssetName);
-			this.unreal.AssignFName(modName, ogFnames.AssetPath, newFnames.AssetPath);
-		}
 
 		#region Standard Overrides
 		public override void ConfigurationUpdated(Config configuration)
@@ -694,7 +375,6 @@ namespace p3rpc.femc
 			_configuration = configuration;
 			_logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
 			_modRuntime.UpdateConfiguration(configuration);
-			GenerateMusicScript();
         }
 		#endregion
 
@@ -705,201 +385,3 @@ namespace p3rpc.femc
 		#endregion
 	}
 }
-
-internal static class AssetUtils
-{
-	/// <summary>
-	/// Gets the expected asset file for the given character's costume ID and asset type.
-	/// </summary>
-	/// <param name="character">Character.</param>
-	/// <param name="costumeId">Costume ID.</param>
-	/// <param name="type">Asset type.</param>
-	/// <returns></returns>
-	public static string GetAssetPath(Character character, AssetType type, int costumeId = 0)
-		=> type switch
-		{
-			AssetType.BaseMesh => FormatAssetPath($"/Game/Xrd777/Characters/Player/PC{FormatCharId(character)}/Models/SK_PC{FormatCharId(character)}_BaseSkelton", character),
-			AssetType.CostumeMesh => FormatAssetPath($"/Game/Xrd777/Characters/Player/PC{FormatCharId(character)}/Models/SK_PC{FormatCharId(character)}_C{costumeId:000}", character),
-			AssetType.HairMesh => FormatAssetPath($"/Game/Xrd777/Characters/Player/PC{FormatCharId(character)}/Models/SK_PC{FormatCharId(character)}_H{costumeId:000}", character),
-			AssetType.FaceMesh => FormatAssetPath($"/Game/Xrd777/Characters/Player/PC{FormatCharId(character)}/Models/SK_PC{FormatCharId(character)}_F{costumeId:000}", character),
-			AssetType.CommonAnim => FormatAssetPath($"/Game/Xrd777/Characters/Data/DataAsset/Player/PC{FormatCharId(character)}/DA_PC{FormatCharId(character)}_CommonAnim", character),
-			AssetType.CombineAnim => FormatAssetPath($"/Game/Xrd777/Characters/Data/DataAsset/Player/PC{FormatCharId(character)}/DA_PC{FormatCharId(character)}_CombineAnim", character),
-			AssetType.EventAnim => FormatAssetPath($"/Game/Xrd777/Characters/Data/DataAsset/Player/PC{FormatCharId(character)}/DA_PC{FormatCharId(character)}_EventAnim", character),
-			AssetType.FaceAnim => FormatAssetPath($"/Game/Xrd777/Characters/Data/DataAsset/Player/PC{FormatCharId(character)}/DA_PC{FormatCharId(character)}_FaceAnim", character),
-			_ => throw new Exception(),
-		};
-
-	public static string GetAssetFile(Character character, AssetType type, Outfit outfit)
-		=> GetAssetPath(character, type, (int)outfit);
-
-	/// <summary>
-	/// Gets the expected asset path from asset file path.
-	/// Simply removes the .uasset extension and/or adds the game content path.
-	/// </summary>
-	/// <param name="assetFile">Asset .uasset file path.</param>
-	/// <returns>Asset path.</returns>
-	public static string GetAssetPath(string assetFile)
-	{
-		var adjustedPath = assetFile.Replace('\\', '/').Replace(".uasset", string.Empty);
-
-		if (adjustedPath.IndexOf("Content") is int contentIndex && contentIndex > -1)
-		{
-			adjustedPath = adjustedPath.Substring(contentIndex + 8);
-		}
-
-		if (!adjustedPath.StartsWith("/Game/"))
-		{
-			adjustedPath = $"/Game/{adjustedPath}";
-		}
-
-		return adjustedPath;
-	}
-
-	public static string FormatCharId(Character character)
-		=> ((int)character).ToString("0000");
-
-	private static string FormatAssetPath(string path, Character character)
-	{
-		if (character >= Character.Player && character <= Character.Shinjiro)
-		{
-			return path;
-		}
-		else
-		{
-			return path.Replace("PC", "SC").Replace("Player", "Sub");
-		}
-	}
-}
-
-public enum AssetType
-{
-	BaseMesh,
-	CostumeMesh,
-	HairMesh,
-	FaceMesh,
-
-	CommonAnim,
-	CombineAnim,
-	EventAnim,
-	FaceAnim,
-}
-
-public enum Character
-{
-	NONE,
-	Player,
-	Yukari,
-	Stupei,
-	Akihiko,
-	Mitsuru,
-	Fuuka,
-	Aigis,
-	Ken,
-	Koromaru,
-	Shinjiro = 10,
-
-	// Side-characters.
-	////Kenji = 101,
-	////Hidetoshi,
-	////Bunkichi,
-	////Mitsuko,
-	////Kazushi,
-	////Yuko,
-	////Keisuke = 108,
-	////Chihiro,
-	//Maiko,
-	//Pharos = 110,
-	//Andre_Laurent_Jean_Geraux,
-	//Tanaka,
-	//Mutatsu,
-	//Mamoru,
-	//Akinari,
-
-	//Igor = 201,
-	//Elizabeth,
-
-	//Takaya = 211,
-	//Jin,
-	//Chidori,
-
-	//Ryoji = 221,
-	//Ikutsuki,
-	//Natsuki,
-	//Takeharu,
-
-	FEMC = 999,
-}
-
-public class CharacterConfig
-{
-	public CharacterBase Base { get; set; } = new();
-
-	public CharacterAnims Animations { get; set; } = new();
-
-	public Dictionary<Outfit, string?> Outfits { get; set; } = new();
-}
-
-public class CharacterBase
-{
-	public Character Character { get; set; } = Character.Player;
-
-	public string? BaseSkeleton { get; set; }
-
-	public string? Hair { get; set; }
-
-	public string? Face { get; set; }
-}
-
-public class CharacterAnims
-{
-	public string? Common { get; set; }
-
-	public string? Combine { get; set; }
-
-	public string? Event { get; set; }
-
-	public string? Face { get; set; }
-}
-
-public enum Outfit
-{
-	Missing = 0,
-	Summer_Uniform = 1,
-	Winter_Uniform = 2,
-	Summer_Casual = 5,
-	Winter_Casual = 6,
-	Uniform_Armband = 51,
-	SEES_Uniform = 52,
-	Gekkoukan_Jersey = 101,
-	Swimsuit = 102,
-	Nightwear = 103,
-	Battle_Armor = 104,
-	Butler_Suit = 106,
-	Track_Team_Shirt = 151,
-	Hot_Springs_Towel = 154,
-	Hotel_Yukata = 155,
-	Shrine_Festival_Yukata = 156,
-	New_Years_Kimono = 157,
-	Wilduck_Burger_Uniform = 158,
-	Dorm_Apron = 159,
-	Cafe_Uniform = 160,
-	Be_Blue_V_Uniform = 161,
-	Screen_Shot_Uniform = 162,
-	SEES_Outfit = 201,
-	SEES_Uniform_2 = 202,
-	Damaged_Ribbon = 203,
-	Ocean_Sundress = 204,
-	Ocean_Sundress_2 = 205,
-	Firearms = 206,
-	Phantom_Suit = 501,
-	Shujin_Uniform = 502,
-	Yasogami_Uniform = 503,
-}
-
-internal record AssetFNames(string AssetFile)
-{
-	public string AssetName { get; } = Path.GetFileNameWithoutExtension(AssetFile);
-
-	public string AssetPath { get; } = AssetUtils.GetAssetPath(AssetFile);
-};
-
