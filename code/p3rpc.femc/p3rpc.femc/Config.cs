@@ -935,7 +935,8 @@ namespace p3rpc.femc.Configuration
             esaadrien,
 			mekki,
 			shiosakana,
-			shiosakanaAlt
+			shiosakanaAlt,
+			Nami
         }
 
         [DisplayName("AOA Text Options")]
@@ -979,7 +980,8 @@ namespace p3rpc.femc.Configuration
 			Jackie,
 			Lisa,
 			BetaFemcByMae,
-			crezzstar
+			crezzstar,
+			AngieDaGorl
         }
 
         [DisplayName("Glass Shard")]

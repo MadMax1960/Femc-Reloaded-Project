@@ -165,6 +165,8 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakana"));
 			else if (_configuration.AOATrue == AOAType.shiosakanaAlt)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakanaAlt"));
+			else if (_configuration.AOATrue == AOAType.Nami)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Nami"));
 			// Other AOA conditions...
 
 			if (_configuration.AOAText == AOATextType.DontLookBack)
@@ -215,6 +217,8 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "BetaFemcByMae"));
 			else if (_configuration.BustupTrue == BustupType.crezzstar)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "crezzstar"));
+			else if (_configuration.BustupTrue == BustupType.AngieDaGorl)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "AngieDaGorl"));
 			// Other Bustup conditions...
 
 			if (_configuration.ShardTrue == ShardType.Esa)
