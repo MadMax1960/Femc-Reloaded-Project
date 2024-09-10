@@ -17,7 +17,11 @@ namespace p3rpc.femc.Components
 
         private string AUIBackLogDraw_DrawBackgroundColor_SIG = "48 8B C4 53 57 48 81 EC 18 01 00 00 0F 29 70 ?? 48 8B F9";
         private string AUIBackLogDraw_DrawLogTitleColor_SIG = "F3 0F 59 05 ?? ?? ?? ?? F3 0F 2C C0 F3 0F 10 83 ?? ?? ?? ??";
+
         private string AUIBackLogDraw_DrawCalendarTimeOfDayColor_SIG = "48 8B 40 ?? 44 8B 84 24 ?? ?? ?? ?? 66 C7 44 24 ?? 76 FF";
+        private string AUIBackLogDraw_DrawCalendarTimeOfDayColor_SIG_EpAigis = "8B 9C 24 ?? ?? ?? ?? 66 C7 84 24 ?? ?? ?? ?? 76 FF";
+        private MultiSignature _calendarTimeOfDayMS;
+
         private string AUIBackLogDraw_DrawTitleColorUnselected_SIG = "41 BD 00 8F 91 03 66 66 66 0F 1F 84 ?? 00 00 00 00";
         private string AUIBackLogDraw_DrawTitleColorUnselected2_SIG = "41 BD 00 8F 91 03 8B 8D ?? ?? ?? ??";
         private string AUIBackLogDraw_DrawTitleColorSelected_SIG = "BE 00 DC DF 05";
@@ -42,17 +46,23 @@ namespace p3rpc.femc.Components
                 };
                 _drawLogTitleColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            _context._utils.SigScan(AUIBackLogDraw_DrawCalendarTimeOfDayColor_SIG, "AUIBackLogDraw::DrawCalendarTimeOfDayColor", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
+            _calendarTimeOfDayMS = new MultiSignature();
+            _context._utils.MultiSigScan(
+                new string[] { AUIBackLogDraw_DrawCalendarTimeOfDayColor_SIG, AUIBackLogDraw_DrawCalendarTimeOfDayColor_SIG_EpAigis },
+                "AUIBackLogDraw::DrawCalendarTimeOfDayColor", _context._utils.GetDirectAddress,
+                addr =>
                 {
-                    "use64",
-                    $"mov byte [rsp + 0x82], ${_context._config.DateTimePanelBottomTextColor.R:X}",
-                    $"mov byte [rsp + 0x81], ${_context._config.DateTimePanelBottomTextColor.G:X}",
-                    $"mov byte [rsp + 0x80], ${_context._config.DateTimePanelBottomTextColor.B:X}",
-                };
-                _drawCalendarTimeOfDay = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
+                    string[] function =
+                    {
+                        "use64",
+                        $"mov byte [rsp + 0x{GetDateTimePanelBottomTextColorOffset(2):X}], ${_context._config.DateTimePanelBottomTextColor.R:X}",
+                        $"mov byte [rsp + 0x{GetDateTimePanelBottomTextColorOffset(1):X}], ${_context._config.DateTimePanelBottomTextColor.G:X}",
+                        $"mov byte [rsp + 0x{GetDateTimePanelBottomTextColorOffset(0):X}], ${_context._config.DateTimePanelBottomTextColor.B:X}",
+                    };
+                    _drawCalendarTimeOfDay = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                },
+                _calendarTimeOfDayMS
+            );
             _context._utils.SigScan(AUIBackLogDraw_DrawTitleColorUnselected_SIG, "AUIBackLogDraw::DrawTitleColorUnselected", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.BackLogTexColorUnselectedEx.ToU32())));
@@ -82,6 +92,8 @@ namespace p3rpc.femc.Components
         {
             _uiCommon = GetModule<UICommon>();
         }
+
+        public unsafe int GetDateTimePanelBottomTextColorOffset(int comp) => _context.bIsAigis ? 0xa0 + comp : 0x80 + comp;
 
         public unsafe void AUIBackLogDraw_DrawBackgroundColorImpl(AUIBackLogDraw* self, uint a2, uint a3, uint a4, uint a5)
         {
