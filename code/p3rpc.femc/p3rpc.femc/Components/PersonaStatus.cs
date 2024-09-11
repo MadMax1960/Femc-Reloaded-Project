@@ -16,6 +16,8 @@ namespace p3rpc.femc.Components
     {
         // so many hooks....
         private string APersonaStatusDraw_GetDefaultPersonaInfoBgInner_SIG = "48 8B C4 55 53 56 57 41 56 48 8D A8 ?? ?? ?? ?? 48 81 EC B0 01 00 00";
+        private string APersonaStatusDraw_GetDefaultPersonaInfoBgInner_SIG_EpAigis = "4C 8B DC 55 56 41 56 49 8D AB ?? ?? ?? ?? 48 81 EC C0 01 00 00";
+        private MultiSignature GetDefaultPersonaInfoBgInnerMS;
         private string APersonaStatusDraw_DrawGradientRectangle_SIG = "48 8B C4 48 89 58 ?? 48 89 70 ?? 48 89 78 ?? 55 41 54 41 55 41 56 41 57 48 8D A8 ?? ?? ?? ?? 48 81 EC B0 03 00 00";
         private string APersonaStatusDraw_DrawDefaultStatusParameterInner_SIG = "40 55 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 88 03 00 00";
         // in APersonaStatusDraw::DrawDefaultPersonaInfo
@@ -104,8 +106,14 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.PersonaStatusPlayerInfoColor.ToU32())));
             });
-
-            _context._utils.SigScan(APersonaStatusDraw_GetDefaultPersonaInfoBgInner_SIG, "APersonaStatusDraw::GetDefaultPersonaInfoBgInner", _context._utils.GetDirectAddress, addr => _drawInfoBg = _context._utils.MakeHooker<APersonaStatusDraw_DrawDefaultPersonaInfoBackgroundInner>(APersonaStatusDraw_DrawDefaultPersonaInfoBackgroundInnerImpl, addr));
+            GetDefaultPersonaInfoBgInnerMS = new MultiSignature();
+            _context._utils.MultiSigScan(
+                new string[] { APersonaStatusDraw_GetDefaultPersonaInfoBgInner_SIG, APersonaStatusDraw_GetDefaultPersonaInfoBgInner_SIG_EpAigis },
+                "APersonaStatusDraw::GetDefaultPersonaInfoBgInner", _context._utils.GetDirectAddress,
+                addr => _drawInfoBg = _context._utils.MakeHooker<APersonaStatusDraw_DrawDefaultPersonaInfoBackgroundInner>(APersonaStatusDraw_DrawDefaultPersonaInfoBackgroundInnerImpl, addr),
+                GetDefaultPersonaInfoBgInnerMS
+            );
+            //_context._utils.SigScan(APersonaStatusDraw_GetDefaultPersonaInfoBgInner_SIG, "APersonaStatusDraw::GetDefaultPersonaInfoBgInner", _context._utils.GetDirectAddress, addr => _drawInfoBg = _context._utils.MakeHooker<APersonaStatusDraw_DrawDefaultPersonaInfoBackgroundInner>(APersonaStatusDraw_DrawDefaultPersonaInfoBackgroundInnerImpl, addr));
             _context._utils.SigScan(APersonaStatusDraw_DrawGradientRectangle_SIG, "APersonaStatusDraw::DrawGradientRectangle", _context._utils.GetDirectAddress, addr => _drawGradRect = _context._utils.MakeWrapper<APersonaStatusDraw_DrawGradientRectangle>(addr));
             _context._utils.SigScan(APersonaStatusDraw_DrawDefaultStatusParameterInner_SIG, "APersonaStatusDraw::DrawDefaultStatusParameterInner", _context._utils.GetDirectAddress, addr => _drawStatParam = _context._utils.MakeHooker<APersonaStatusDraw_DrawDefaultStatusParameterInner>(APersonaStatusDraw_DrawDefaultStatusParameterInnerImpl, addr));
 

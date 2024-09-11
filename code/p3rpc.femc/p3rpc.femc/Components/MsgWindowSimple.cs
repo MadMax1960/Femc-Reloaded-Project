@@ -39,15 +39,26 @@ namespace p3rpc.femc.Components
         private string UMsgProcWindow_Simple_DrawMessageBox_SIG = "40 55 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 08 03 00 00 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 85 ?? ?? ?? ?? 48 8B 01";
         private string UMsgProcWindow_Simple_DrawMessageText_SIG = "4C 8B DC 49 89 5B ?? 57 48 81 EC D0 00 00 00 48 8B 81 ?? ?? ?? ??";
         private string UMsgProcWindow_Simple_DrawCurrentSpeakerName_SIG = "E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 48 8D 8D ?? ?? ?? ?? F3 44 0F 58 0D ?? ?? ?? ??";
+
+        private MultiSignature _DrawNextPageIndicatorMS;
         private string UMsgProcWindow_Simple_DrawNextPageIndicator_SIG = "48 89 E0 48 89 70 ?? 57 48 81 EC B0 00 00 00";
+        private string UMsgProcWindow_Simple_DrawNextPageIndicator_EpAigis_SIG = "48 89 E0 48 89 58 ?? 56 48 81 EC B0 00 00 00 0F 29 70 ?? 48 89 D6";
         public unsafe MsgWindowSimple(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(UMsgProcWindow_Simple_DrawMessageBox_SIG, "UMsgProcWindow_Simple::DrawMessageBox", _context._utils.GetDirectAddress, addr => _drawMsgBoxSimple = _context._utils.MakeHooker<UMsgProcWindow_Simple_DrawMessageBox>(UMsgProcWindow_Simple_DrawMessageBoxImpl, addr));
             _context._utils.SigScan(UMsgProcWindow_Simple_DrawMessageText_SIG, "UMsgProcWindow_Simple::DrawMessageText", _context._utils.GetDirectAddress, addr => _drawMessageText = _context._utils.MakeWrapper<IUIMethods.UMsgProcWindow_Simple_DrawMessageText>(addr));
             //_context._sharedScans.CreateListener<IUIMethods.UMsgProcWindow_Simple_DrawMessageText>(addr => _context._utils.AfterSigScan(addr, _context._utils.GetDirectAddress, addr => _context._utils.MakeWrapper<IUIMethods.UMsgProcWindow_Simple_DrawMessageText>(addr)));
             //_context._utils.SigScan(UMsgProcWindow_Simple_DrawCurrentSpeakerName_SIG, "UMsgProcWindow_Simple::DrawCurrentSpeakerName", _context._utils.GetIndirectAddressShort, addr => _messageBoxFloats1 = (float*)addr);
-            _context._utils.SigScan(UMsgProcWindow_Simple_DrawNextPageIndicator_SIG, "UMsgProcWindow_Simple::DrawNextPageIndicator", _context._utils.GetDirectAddress, addr => _drawNextPage = _context._utils.MakeWrapper<UMsgProcWindow_Simple_DrawNextPageIndicator>(addr));
+            _DrawNextPageIndicatorMS = new MultiSignature();
+            _context._utils.MultiSigScan(
+                new string[] { UMsgProcWindow_Simple_DrawNextPageIndicator_SIG, UMsgProcWindow_Simple_DrawNextPageIndicator_EpAigis_SIG },
+                "UMsgProcWindow_Simple::DrawNextPageIndicator", _context._utils.GetDirectAddress,
+                addr => _drawNextPage = _context._utils.MakeWrapper<UMsgProcWindow_Simple_DrawNextPageIndicator>(addr),
+                _DrawNextPageIndicatorMS
+            );
         }
+
+        // 48 89 E0 48 89 58 ?? 56 48 81 EC B0 00 00 00 0F 29 70 ?? 48 89 D6
 
         public override void Register()
         {

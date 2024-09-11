@@ -39,12 +39,20 @@ namespace p3rpc.femc.Components
 
         //private IReverseWrapper<FKeyHelpButtonAuto_DrawTextColor> _autoDrawTextFillColorWrapper;
         private IReverseWrapper<FKeyHelpButtonAuto_DrawTextColor> _autoDrawTextTriangleColorWrapper;
+        private IReverseWrapper<FKeyHelpButtonAuto_DrawTextColor_EpAigis> _autoDrawTextTriangleColorWrapper_EpAigis;
         private IReverseWrapper<FKeyHelpButtonFastForward_DrawTriangleColor> _ffwdDrawTriangleColorWrapper1;
         private IReverseWrapper<FKeyHelpButtonFastForward_DrawTriangleColor> _ffwdDrawTriangleColorWrapper2;
         private IReverseWrapper<FKeyHelpButtonFastForward_DrawTriangleColor> _ffwdDrawTriangleColorWrapper3;
 
+        private IReverseWrapper<FKeyHelpButtonFastForward_DrawTriangleColor_EpAigis> _ffwdDrawTriangleColorWrapper1_EpAigis;
+        private IReverseWrapper<FKeyHelpButtonFastForward_DrawTriangleColor_EpAigis> _ffwdDrawTriangleColorWrapper2_EpAigis;
+        private IReverseWrapper<FKeyHelpButtonFastForward_DrawTriangleColor_EpAigis> _ffwdDrawTriangleColorWrapper3_EpAigis;
+
         private IHook<FKeyHelpButtonFastForward_UpdateState> _ffwdUpdateState;
         private IHook<FKeyHelpButtonMovie_UpdateState> _movieUpdateState;
+
+        private IHook<FKeyHelpButtonFastForward_UpdateState_EpAigis> _ffwdUpdateState_EpAigis;
+        private IHook<FKeyHelpButtonMovie_UpdateState_EpAigis> _movieUpdateState_EpAigis;
 
         public unsafe KeyHelp(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
@@ -70,12 +78,10 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(FKeyHelpButtonAuto_DrawTextTriangleColor_SIG, "FKeyHelpButtonAuto::DrawTextTriangleColor", _context._utils.GetDirectAddress, addr =>
             {
-                string[] function =
-                {
-                    "use64",
-                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonAuto_DrawTextTriangleColor, out _autoDrawTextTriangleColorWrapper)}",
-                };
-                _autoDrawTextTriangleColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                List<string> function = new() { $"use64" };
+                if (_context.bIsAigis) function.Add($"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonAuto_DrawTextTriangleColor_EpAigis, out _autoDrawTextTriangleColorWrapper_EpAigis)}");
+                else function.Add($"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonAuto_DrawTextTriangleColor, out _autoDrawTextTriangleColorWrapper)}");
+                _autoDrawTextTriangleColor = _context._hooks.CreateAsmHook(function.ToArray(), addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             _context._utils.SigScan(FKeyHelpButtonAuto_DrawTextFillColorTransOut_SIG, "FKeyHelpButtonAuto::DrawTextFillColorTransOut", _context._utils.GetDirectAddress, addr =>
             {
@@ -95,35 +101,34 @@ namespace p3rpc.femc.Components
                 var vtableLoc = _context._utils.GetIndirectAddressLong(offset);
                 return *((nuint*)vtableLoc + 1); // UpdateState is second entry
             }, 
-            addr => _ffwdUpdateState = _context._utils.MakeHooker<FKeyHelpButtonFastForward_UpdateState>(FKeyHelpButtonFastForward_UpdateStateImpl, addr));
+            addr =>
+            {
+                if (_context.bIsAigis) _ffwdUpdateState_EpAigis = _context._utils.MakeHooker<FKeyHelpButtonFastForward_UpdateState_EpAigis>(FKeyHelpButtonFastForward_UpdateStateImpl_EpAigis, addr);
+                else _ffwdUpdateState = _context._utils.MakeHooker<FKeyHelpButtonFastForward_UpdateState>(FKeyHelpButtonFastForward_UpdateStateImpl, addr);
+            });
             _context._utils.SigScan(FKeyHelpButtonFastForward_TriangleColor1_SIG, "FKeyHelpButtonFastForward::DrawTriangleColor1", _context._utils.GetDirectAddress, addr =>
             {
-                string[] function =
-                {
-                    "use64",
-                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonFastForward_DrawTextTriangleColor, out _ffwdDrawTriangleColorWrapper1)}",
-                };
-                _ffwdDrawTriangle1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                List<string> function = new() { $"use64" };
+                if (_context.bIsAigis) function.Add($"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonFastForward_DrawTextTriangleColor_EpAigis, out _ffwdDrawTriangleColorWrapper1_EpAigis)}");
+                else function.Add($"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonFastForward_DrawTextTriangleColor, out _ffwdDrawTriangleColorWrapper1)}");
+                _ffwdDrawTriangle1 = _context._hooks.CreateAsmHook(function.ToArray(), addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             _context._utils.SigScan(FKeyHelpButtonFastForward_TriangleColor2_SIG, "FKeyHelpButtonFastForward::DrawTriangleColor2", _context._utils.GetDirectAddress, addr =>
             {
-                string[] function =
-                {
-                    "use64",
-                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonFastForward_DrawTextTriangleColor, out _ffwdDrawTriangleColorWrapper2)}",
-                };
-                _ffwdDrawTriangle2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                List<string> function = new() { $"use64" };
+                if (_context.bIsAigis) function.Add($"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonFastForward_DrawTextTriangleColor_EpAigis, out _ffwdDrawTriangleColorWrapper2_EpAigis)}");
+                else function.Add($"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonFastForward_DrawTextTriangleColor, out _ffwdDrawTriangleColorWrapper2)}");
+                _ffwdDrawTriangle2 = _context._hooks.CreateAsmHook(function.ToArray(), addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             _context._utils.SigScan(FKeyHelpButtonFastForward_TriangleColor3_SIG, "FKeyHelpButtonFastForward::DrawTriangleColor3", _context._utils.GetDirectAddress, addr =>
             {
-                string[] function =
-                {
-                    "use64",
-                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonFastForward_DrawTextTriangleColor, out _ffwdDrawTriangleColorWrapper3)}",
-                };
-                _ffwdDrawTriangle3 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                List<string> function = new() { $"use64" };
+                if (_context.bIsAigis) function.Add($"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonFastForward_DrawTextTriangleColor_EpAigis, out _ffwdDrawTriangleColorWrapper3_EpAigis)}");
+                else function.Add($"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(FKeyHelpButtonFastForward_DrawTextTriangleColor, out _ffwdDrawTriangleColorWrapper3)}");
+                _ffwdDrawTriangle3 = _context._hooks.CreateAsmHook(function.ToArray(), addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            _context._utils.SigScan(FKeyHelpButtonMovie_UpdateState_SIG, "FKeyHelpButtonMovie::UpdateState", _context._utils.GetDirectAddress, addr => _movieUpdateState = _context._utils.MakeHooker<FKeyHelpButtonMovie_UpdateState>(FKeyHelpButtonMovie_UpdateStateImpl, addr));
+            if (_context.bIsAigis) _context._utils.SigScan(FKeyHelpButtonMovie_UpdateState_SIG, "FKeyHelpButtonMovie::UpdateState", _context._utils.GetDirectAddress, addr => _movieUpdateState_EpAigis = _context._utils.MakeHooker<FKeyHelpButtonMovie_UpdateState_EpAigis>(FKeyHelpButtonMovie_UpdateStateImpl_EpAigis, addr));
+            else _context._utils.SigScan(FKeyHelpButtonMovie_UpdateState_SIG, "FKeyHelpButtonMovie::UpdateState", _context._utils.GetDirectAddress, addr => _movieUpdateState = _context._utils.MakeHooker<FKeyHelpButtonMovie_UpdateState>(FKeyHelpButtonMovie_UpdateStateImpl, addr));
         }
 
         public override void Register()
@@ -139,6 +144,13 @@ namespace p3rpc.femc.Components
             return newColor;
         }
 
+        public unsafe FSprColor FKeyHelpButtonAuto_DrawTextTriangleColor_EpAigis(nativetypes.Interfaces.Astrea.FKeyHelpButtonAuto* self)
+        {
+            var newColor = ConfigColor.ToFSprColor(_context._config.ButtonPromptTriangleColor);
+            newColor.A = (byte)((UICommon.Clamp_1413033e0(&self->Field540) * 0.7 * 255 + 76.5) * self->Super.KeyHelpTransparency);
+            return newColor;
+        }
+
         public unsafe FSprColor FKeyHelpButtonFastForward_DrawTextTriangleColor(FKeyHelpButtonFastForward* self)
         {
             var newColor = ConfigColor.ToFSprColor(_context._config.ButtonPromptTriangleColor);
@@ -146,7 +158,23 @@ namespace p3rpc.femc.Components
             return newColor;
         }
 
+        public unsafe FSprColor FKeyHelpButtonFastForward_DrawTextTriangleColor_EpAigis(nativetypes.Interfaces.Astrea.FKeyHelpButtonFastForward* self)
+        {
+            var newColor = ConfigColor.ToFSprColor(_context._config.ButtonPromptTriangleColor);
+            newColor.A = (byte)((UICommon.Clamp_1413033e0(&self->Field538) * 0.7 * 255 + 76.5) * self->Super.KeyHelpTransparency);
+            return newColor;
+        }
+
         private unsafe void FKeyHelpButtonBase_SetTextButtonColor(FKeyHelpButtonBase* self, float opacity)
+        {
+            var newColor = _context._config.ButtonPromptHighlightColor;
+            newColor.A = (byte)(opacity * 255);
+            self->TextLayout.Color = ConfigColor.ToFSprColor(newColor);
+            for (int i = 0; i < self->SpriteCount; i++)
+                self->GetSpriteLayout(i)->Color = ConfigColor.ToFSprColor(newColor);
+        }
+
+        private unsafe void FKeyHelpButtonBase_SetTextButtonColor_EpAigis(nativetypes.Interfaces.Astrea.FKeyHelpButtonBase* self, float opacity)
         {
             var newColor = _context._config.ButtonPromptHighlightColor;
             newColor.A = (byte)(opacity * 255);
@@ -163,6 +191,15 @@ namespace p3rpc.femc.Components
                 FKeyHelpButtonBase_SetTextButtonColor(&self->Super, opacity);
             }
         }
+
+        public unsafe void FKeyHelpButtonFastForward_UpdateStateImpl_EpAigis(nativetypes.Interfaces.Astrea.FKeyHelpButtonFastForward* self, float deltaTime, nint a3, float opacity)
+        {
+            _ffwdUpdateState_EpAigis.OriginalFunction(self, deltaTime, a3, opacity);
+            if (self->ActivationState == 1 || self->ActivationState == 2)
+            {
+                FKeyHelpButtonBase_SetTextButtonColor_EpAigis(&self->Super, opacity);
+            }
+        }
         public unsafe void FKeyHelpButtonMovie_UpdateStateImpl(FKeyHelpButtonBase* self, float deltaTime, nint a3, float opacity)
         {
             _movieUpdateState.OriginalFunction(self, deltaTime, a3, opacity);
@@ -171,11 +208,25 @@ namespace p3rpc.femc.Components
             self->moviePausePulseColor = ConfigColor.ToFSprColorWithAlpha(_context._config.ButtonPromptHighlightColor, self->moviePausePulseColor.A);
         }
 
+        public unsafe void FKeyHelpButtonMovie_UpdateStateImpl_EpAigis(nativetypes.Interfaces.Astrea.FKeyHelpButtonBase* self, float deltaTime, nint a3, float opacity)
+        {
+            _movieUpdateState_EpAigis.OriginalFunction(self, deltaTime, a3, opacity);
+            FKeyHelpButtonBase_SetTextButtonColor_EpAigis(self, opacity);
+            self->moviePauseMainColor = ConfigColor.ToFSprColorWithAlpha(_context._config.ButtonPromptHighlightColor, self->moviePauseMainColor.A);
+            self->moviePausePulseColor = ConfigColor.ToFSprColorWithAlpha(_context._config.ButtonPromptHighlightColor, self->moviePausePulseColor.A);
+        }
+
         [Function(FunctionAttribute.Register.rdi, FunctionAttribute.Register.rax, false)]
         public unsafe delegate FSprColor FKeyHelpButtonAuto_DrawTextColor(FKeyHelpButtonAuto* self);
         [Function(FunctionAttribute.Register.rdi, FunctionAttribute.Register.rax, false)]
+        public unsafe delegate FSprColor FKeyHelpButtonAuto_DrawTextColor_EpAigis(nativetypes.Interfaces.Astrea.FKeyHelpButtonAuto* self);
+        [Function(FunctionAttribute.Register.rdi, FunctionAttribute.Register.rax, false)]
         public unsafe delegate FSprColor FKeyHelpButtonFastForward_DrawTriangleColor(FKeyHelpButtonFastForward* self);
+        [Function(FunctionAttribute.Register.rdi, FunctionAttribute.Register.rax, false)]
+        public unsafe delegate FSprColor FKeyHelpButtonFastForward_DrawTriangleColor_EpAigis(nativetypes.Interfaces.Astrea.FKeyHelpButtonFastForward* self);
         public unsafe delegate void FKeyHelpButtonFastForward_UpdateState(FKeyHelpButtonFastForward* self, float deltaTime, nint a3, float opacity);
+        public unsafe delegate void FKeyHelpButtonFastForward_UpdateState_EpAigis(nativetypes.Interfaces.Astrea.FKeyHelpButtonFastForward* self, float deltaTime, nint a3, float opacity);
         public unsafe delegate void FKeyHelpButtonMovie_UpdateState(FKeyHelpButtonBase* self, float deltaTime, nint a3, float opacity);
+        public unsafe delegate void FKeyHelpButtonMovie_UpdateState_EpAigis(nativetypes.Interfaces.Astrea.FKeyHelpButtonBase* self, float deltaTime, nint a3, float opacity);
     }
 }
