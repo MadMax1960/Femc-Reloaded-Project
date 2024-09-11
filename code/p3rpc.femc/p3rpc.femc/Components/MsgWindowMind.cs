@@ -26,8 +26,8 @@ namespace p3rpc.femc.Components
         private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg2_SIG_1 = "4C 8B 87 ?? ?? ?? ?? 48 8D 4D ?? 41 0F 28 DF F3 44 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";
         // (Episode Aigis)
         private string UMsgProcWindow_Mind_DrawMessageBox_SIG_EpAigis = "40 55 56 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 20 02 00 00 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 45 ??";
-        private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg1_SIG_EpAigis = "F3 0F 10 05 ?? ?? ?? ?? 41 B0 EE";
-        private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg2_SIG_EpAigis = "0F 28 05 ?? ?? ?? ?? 0F 28 0D ?? ?? ?? ?? 8B 44 24 ??";
+        private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg1_SIG_EpAigis = "4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 45 0F 57 C9";
+        private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg2_SIG_EpAigis = "4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 44 0F 11 4C 24 ??";
         private IHook<UMsgProcWindow_Mind_DrawMessageBox> _drawMessageBox;
         private IHook<UMsgProcWindow_Mind_DrawMessageBox_EpAigis> _drawMessageBoxEpAigis;
 
@@ -54,7 +54,6 @@ namespace p3rpc.femc.Components
             if (_context.bIsAigis)
             {
                 _context._utils.SigScan(UMsgProcWindow_Mind_DrawMessageBox_SIG_EpAigis, "UMsgProcWindow_Mind::DrawMessageBox", _context._utils.GetDirectAddress, addr => _drawMessageBoxEpAigis = _context._utils.MakeHooker<UMsgProcWindow_Mind_DrawMessageBox_EpAigis>(UMsgProcWindow_Mind_DrawMessageBoxImpl_EpAigis, addr));
-                /*
                 _context._utils.SigScan(UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg1_SIG_EpAigis, "UMsgProcWindow_Mind::DrawMessageBoxLeftSpotBg1", _context._utils.GetDirectAddress, addr =>
                 {
                     string[] function =
@@ -73,7 +72,6 @@ namespace p3rpc.femc.Components
                     };
                     _drawMessageBoxLeftSpotBg2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
                 });
-                */
             } else
             {
                 _context._utils.MultiSigScan(
@@ -158,7 +156,7 @@ namespace p3rpc.femc.Components
         private unsafe delegate void UMsgProcWindow_Mind_DrawMessageBox_EpAigis(nativetypes.Interfaces.Astrea.UMsgProcWindow_Mind* self);
         [Function(new Register[] { FunctionAttribute.Register.rdi }, FunctionAttribute.Register.rax, false)]
         private unsafe delegate FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg(UMsgProcWindow_Mind* self);
-        [Function(new Register[] { FunctionAttribute.Register.rdi }, FunctionAttribute.Register.rax, false)]
+        [Function(new Register[] { FunctionAttribute.Register.rsi }, FunctionAttribute.Register.rax, false)]
         private unsafe delegate FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg_EpAigis(nativetypes.Interfaces.Astrea.UMsgProcWindow_Mind* self);
     }
 
