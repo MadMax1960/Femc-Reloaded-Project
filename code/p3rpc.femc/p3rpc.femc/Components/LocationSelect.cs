@@ -16,7 +16,7 @@ namespace p3rpc.femc.Components
         // (1.0.0, 1.0.1)
         private string AUIAccessInfoDraw_DrawMinimap_SIG_0 = "4C 8B DC 55 57 49 8D AB ?? ?? ?? ?? 48 81 EC D8 01 00 00 45 0F 29 A3 ?? ?? ?? ??";
         // (1.0.4)
-        private string AUIAccessInfoDraw_DrawMinimap_SIG_1 = "4C 8B DC 55 57 49 8D AB ?? ?? ?? ?? 48 81 EC 88 01 00 00 41 0F 29 7B ??"; 
+        private string AUIAccessInfoDraw_DrawMinimap_SIG_1 = "4C 8B DC 55 57 49 8D AB ?? ?? ?? ?? 48 81 EC 88 01 00 00 41 0F 29 7B ??";
         // All versions
         private string UUILocationSelect_DrawLocationSelectBaseColor_SIG = "0F 57 DB 89 85 ?? ?? ?? ?? 0F 57 D2 48 8D 4D ?? 49 8B D6 E8 ?? ?? ?? ?? BA 01 00 00 00";
         private string UUILocationSelect_DrawLocationSelectTintColor_SIG = "0F 57 DB 89 85 ?? ?? ?? ?? 0F 57 D2 48 8D 4D ?? 49 8B D6 E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";

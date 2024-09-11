@@ -13,6 +13,7 @@ using Unreal.ObjectsEmitter.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using Ryo.Interfaces;
+using Reloaded.Memory.Sigscan.Definitions;
 
 
 
@@ -72,12 +73,19 @@ namespace p3rpc.femc
 			_owner = context.Owner;
 			_configuration = context.Configuration;
 			_modConfig = context.ModConfig;
-            // Get dependencies and initialize context
-            var mainModule = Process.GetCurrentProcess().MainModule;
-			if (mainModule == null) throw new Exception($"[{_modConfig.ModName}] Could not get main module (this should never happen)");
-			var baseAddress = mainModule.BaseAddress;
+			// Get dependencies and initialize context
+/*
+#if DEBUG
+			Debugger.Launch();
+#endif
+*/
+
+			var process = Process.GetCurrentProcess();
+			if (process.MainModule == null) throw new Exception($"[{_modConfig.ModName}] Could not get main module (this should never happen)");
+			var baseAddress = process.MainModule.BaseAddress;
             unreal = GetDependency<IUnreal>("Unreal Objects Emitter");
-			var startupScanner = GetDependency<IStartupScanner>("Reloaded Startup Scanner");
+            var scannerFactory = GetDependency<IScannerFactory>("Scanner Factory");
+            var startupScanner = GetDependency<IStartupScanner>("Reloaded Startup Scanner");
 			if (_hooks == null) throw new Exception($"[{_modConfig.ModName}] Could not get controller for Reloaded hooks");
 			var sharedScans = GetDependency<ISharedScans>("Shared Scans");
 			Utils utils = new(startupScanner, _logger, _hooks, baseAddress, "Femc Project", System.Drawing.Color.Thistle, _configuration.DebugLogLevel);
@@ -86,7 +94,26 @@ namespace p3rpc.femc
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
             var ryo = GetDependency<IRyoApi>("Ryo");
             var memory = new Memory();
-            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods);
+
+            // Check what game version this is
+            var scanner = scannerFactory.CreateScanner(process, process.MainModule);
+            var res = scanner.FindPattern("48 8B C4 48 89 48 ?? 55 41 54 48 8D 68 ?? 48 81 EC 48 01 00 00");
+			bool bIsAigis = false;
+			if (!res.Found)
+			{
+				_logger.WriteLine("Error! Couldn't find the pattern for UAppCharacterComp::Update! We'll assume that this is Episode Aigis.", System.Drawing.Color.Red);
+				bIsAigis = true;
+            }
+			unsafe
+			{
+                if (*(byte*)(baseAddress + res.Offset + 0x254) == 0x75)
+                {
+                    _logger.WriteLine("Set hooks to use Episode Aigis.");
+                    bIsAigis = true;
+                }
+            }
+
+            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods, bIsAigis);
 			_modRuntime = new(_context);
 			_musicManager = new MusicManager(_modLoader, _modConfig, _configuration, ryo, _logger, _context);
 
