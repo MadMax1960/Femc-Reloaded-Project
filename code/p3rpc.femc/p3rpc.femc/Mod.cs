@@ -306,7 +306,9 @@ namespace p3rpc.femc
 			{
 				if (_configuration.bluehairandpronounce)
 					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Voice");
-			}
+
+			ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/normal battle");
+		}
 
 
 		private void InitializeModules()
