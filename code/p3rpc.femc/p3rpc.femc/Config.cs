@@ -150,7 +150,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool Moon { get; set; } = true;
 
-		[DisplayName("Daytime Music (Outside School/Phase 1): Way of life by Mosq")]
+        [DisplayName("Daytime Music (Outside School/Phase 1): Way of Life -Reload- Mayumi ver")]
+        [Description("Enable Way of Life by Super M Plush, Mosq and Karma as the daytime music?")]
+        [Category("Music")]
+        [DefaultValue(false)]
+        public bool WayLifeVocal { get; set; } = true;
+
+        [DisplayName("Daytime Music (Outside School/Phase 1): Way of life by Mosq")]
 		[Category("Music")]
 		[Description("Enable Way of life as the daytime music?")]
 		[DefaultValue(true)]
@@ -168,9 +174,9 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(true)]
 		public bool TimeSchool { get; set; } = true;
 
-		[DisplayName("Daytime Music (Inside School/Phase 1): Time (GabiShy remix) by Mosq")]
+		[DisplayName("Daytime Music (Inside School/Phase 1): Time -Reload- Mayumi ver")]
 		[Category("Music")]
-		[Description("Enable (Time GabiShy Remix) as the daytime music inside the school?")]
+		[Description("Enable Time -Reload- by GabiShy and Mosq as the daytime music inside the school?")]
 		[DefaultValue(false)]
 		public bool GabiTimeSchool { get; set; } = true;
 

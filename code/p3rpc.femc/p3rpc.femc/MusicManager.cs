@@ -1,9 +1,6 @@
 ﻿using p3rpc.femc.Configuration;
 using Reloaded.Mod.Interfaces;
 using Ryo.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace p3rpc.femc
 {
@@ -75,8 +72,9 @@ namespace p3rpc.femc
 				{
 					{Path.Combine(path, "Mosq\\link_25.cue"),_configuration.WayOfLife},
 					{Path.Combine(path, "Jen\\link_25.cue"),_configuration.WayOfLifeJen},
-					{Path.Combine(path, "Reload\\link_25.cue"),_configuration.Moon}
-				};
+					{Path.Combine(path, "SuperMPlush\\link_25.cue"),_configuration.WayLifeVocal},
+                    {Path.Combine(path, "Reload\\link_25.cue"),_configuration.Moon}
+                };
 				foreach (KeyValuePair<string, bool> do1m in dayout1music)
 				{
 					if (do1m.Value)
