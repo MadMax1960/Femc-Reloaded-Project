@@ -995,7 +995,8 @@ namespace p3rpc.femc.Configuration
             Esa,
             Ely,
             ElyAlt,
-            Shiosakana
+            Shiosakana,
+			namiweiko
         }
 
         [DisplayName("Level Up")]
