@@ -913,8 +913,13 @@ namespace p3rpc.femc.Configuration
         public bool DebugDrawMissingPerson { get; set; } = true;
         */
 
+        [DisplayName("Enable Femc Social Stat Names")]
+        [Category("Should the text for the social stats be the ones for femc from P3P?")]
+        [DefaultValue(true)]
+        public bool FemcSocialStats { get; set; } = true;
+
         [DisplayName("Hair Options")]
-        [Description("This is an enumerable.")]
+        [Description("The hair on top of Kotone.")]
         [Category("3D Options")]
         [DefaultValue(HairType.MudkipsHair)]
         public HairType HairTrue { get; set; } = HairType.MudkipsHair;

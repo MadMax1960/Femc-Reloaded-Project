@@ -281,7 +281,11 @@ namespace p3rpc.femc
 			else if (_configuration.CutinTrue == CutinType.Mekki)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "Mekki"));
 			// Other Cutin conditions...
+
+			if (_configuration.FemcSocialStats)
+				unrealEssentials.AddFromFolder((Path.Combine(_context._modLocation, "2d", "SocialStats", "TheBestAstroNOT")));
 			}
+			// Other Social Stat names conditions...
 
 		private void LoadTheoAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 			{
