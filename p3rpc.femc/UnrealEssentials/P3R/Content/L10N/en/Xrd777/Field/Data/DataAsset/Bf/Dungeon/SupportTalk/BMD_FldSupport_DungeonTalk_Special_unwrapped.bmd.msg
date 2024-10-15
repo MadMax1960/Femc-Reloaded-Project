@@ -41,19 +41,19 @@
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 14 0 0]Um... Is it just me, or does it feel kind of awkward tonight?[n][uf 1 1][e]
 
 [msg AST_DNG_LIMITED_004_0_00 [Mitsuru Kirijo]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 15 0 0]Come to think of it, the party today is all female.[n][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 15 0 0]Come to think of it, the party today is all female.[n][uf 1 1][e]
 
 [msg AST_DNG_LIMITED_004_0_10 [Aigis]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 16 0 0]I see. So this is the fabled "Chickfest"... A party attended by only females.[n][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 16 0 0]I see. So this is the fabled "Chickfest"... A party attended by only females.[n][uf 1 1][e]
 
 [msg AST_DNG_LIMITED_004_0_10_2 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 17 0 0]A-Aigis! Where did you learn that!?[n][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 17 0 0]A-Aigis! Where did you learn that!?[n][uf 1 1][e]
 
 [msg AST_DNG_LIMITED_004_0_10_3 [Aigis]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 18 0 0]Junpei-san taught me the word. He also said that the suffix "-fest" can be applied to many different words, depending on the occasion.[n][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 18 0 0]Junpei-san taught me the word. He also said that the suffix "-fest" can be applied to many different words, depending on the occasion.[n][uf 1 1][e]
 
 [msg AST_DNG_LIMITED_004_0_10_4 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 19 0 0]That idiot, teaching Aigis things she doesn't need to know...[n][e]
+[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 19 0 0]That idiot, teaching Aigis things she doesn't need to know...[n][uf 1 1][e]
 
 [msg AST_DNG_LIMITED_005_0_00 [Junpei Iori]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 20 0 0]Oh, hey! What's up, Class 2-F? Let's get it![n][uf 1 1][e]
