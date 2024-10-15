@@ -40,9 +40,6 @@
 [msg AST_DNG_LIMITED_003_0_10_3 [Fuuka Yamagishi]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 14 0 0]Um... Is it just me, or does it feel kind of awkward tonight?[n][uf 1 1][e]
 
-[msg AST_DNG_LIMITED_004_0_00 [Yukari Takeba]]
-[uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 15 0 0]Oh hey, looks like you're the only guy on the team tonight, [uf 4 1].[n][uf 1 1][e]
-
 [msg AST_DNG_LIMITED_004_0_00 [Mitsuru Kirijo]]
 [uf 0 5 65278][uf 2 1][uf 3 1 2 0 1 15 0 0]Come to think of it, the party today is all female.[n][e]
 
