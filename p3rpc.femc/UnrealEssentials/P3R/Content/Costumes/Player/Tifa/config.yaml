@@ -1,0 +1,4 @@
+name: "Tifa's Outfit"
+
+costume:
+  mesh_path: /Game/Costumes/Player/Tifa/costume-mesh.uasset
