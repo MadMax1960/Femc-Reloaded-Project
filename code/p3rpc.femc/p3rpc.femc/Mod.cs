@@ -283,6 +283,16 @@ namespace p3rpc.femc
 			else if (_configuration.CutinTrue == CutinType.Mekki)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "Mekki"));
 			// Other Cutin conditions...
+			
+			if (_configuration.GroupEventTrue == GroupEventtype.bichelle)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Group", "bichelle"));
+			else if (_configuration.GroupEventTrue == GroupEventtype.ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Group", "ely"));
+			// Other Group Photos
+			
+			if (_configuration.KyotoEventTrue == KyotoEventtype.ely)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Kyoto", "ely"));
+			// Other Kyoto Photos
 
 			if (_configuration.FemcSocialStats)
 				unrealEssentials.AddFromFolder((Path.Combine(_context._modLocation, "2d", "SocialStats", "TheBestAstroNOT")));

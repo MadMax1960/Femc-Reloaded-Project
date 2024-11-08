@@ -1048,6 +1048,29 @@ namespace p3rpc.femc.Configuration
             ElyandPatmandx,
 			Mekki
         }
+		
+		[DisplayName("Group Photo")]
+        [Description("The group photo")]
+        [Category("2D Options")]
+        [DefaultValue(GroupEventtype.bichelle)]
+        public GroupEventtype GroupEventTrue { get; set; } = GroupEventtype.bichelle;
+
+        public enum GroupEventtype
+        {
+            bichelle,
+            ely
+        }
+		
+		[DisplayName("Kyoto trip Photos")]
+        [Description("The photos from the Kyoto trip")]
+        [Category("2D Options")]
+        [DefaultValue(KyotoEventtype.ely)]
+        public KyotoEventtype KyotoEventTrue { get; set; } = KyotoEventtype.ely;
+
+        public enum KyotoEventtype
+        {
+            ely
+        }
 
 		[DisplayName("Animations")]
 		[Description("Choose from a few Animations, note that some custom anims might not look correct if skeleton fix is enabled.")]
