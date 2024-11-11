@@ -170,6 +170,8 @@ namespace p3rpc.femc
 
 			if (_configuration.NagiWeap)
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
+			
+			unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector"));
 			}
 
 			private void Load2dAssets(IUnrealEssentials unrealEssentials)
