@@ -1,0 +1,807 @@
+{
+  "1": [
+    {
+      "Character": 1,
+      "CostumeId": 1,
+      "Name": "Summer Uniform"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 2,
+      "Name": "Winter Uniform"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 5,
+      "Name": "Crew Neck T-Shirt"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 6,
+      "Name": "Dark Jacket"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 51,
+      "Name": "Uniform & Armband"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 52,
+      "Name": "SEES Uniform"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 101,
+      "Name": "Gekkoukan Jersey"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 102,
+      "Name": "Blue Shorts"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 103,
+      "Name": "Nightwear"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 106,
+      "Name": "Butler Suit"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 151,
+      "Name": "Track Team Shirt"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 154,
+      "Name": "Hot Springs Towel"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 155,
+      "Name": "Hotel Yukata"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 158,
+      "Name": "Wilduck Burger Uniform"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 159,
+      "Name": "Dorm Apron"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 160,
+      "Name": "Chagall Cafe Uniform"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 161,
+      "Name": "Be Blue V Uniform"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 162,
+      "Name": "Screen Shot Uniform"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 501,
+      "Name": "Phantom Suit"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 1,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ],
+  "2": [
+    {
+      "Character": 2,
+      "CostumeId": 1,
+      "Name": "Summer Uniform"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 2,
+      "Name": "Winter Uniform"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 5,
+      "Name": "Summer Garb"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 6,
+      "Name": "Winter Garb"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 51,
+      "Name": "Uniform & Armband"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 52,
+      "Name": "SEES Uniform"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 102,
+      "Name": "Pink Bikini"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 104,
+      "Name": "Battle Panties"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 106,
+      "Name": "Maid Outfit"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 154,
+      "Name": "Hot Springs Towel"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 155,
+      "Name": "Hotel Yukata"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 156,
+      "Name": "Shrine Festival Yukata"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 157,
+      "Name": "New Year's Kimono"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 159,
+      "Name": "Dorm Apron"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 201,
+      "Name": "SEES Outfit"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 501,
+      "Name": "Red Latex Suit"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 2,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ],
+  "3": [
+    {
+      "Character": 3,
+      "CostumeId": 1,
+      "Name": "Summer Uniform"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 2,
+      "Name": "Winter Uniform"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 5,
+      "Name": "Summer Garb"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 6,
+      "Name": "Winter Garb"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 51,
+      "Name": "Uniform & Armband"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 52,
+      "Name": "SEES Uniform"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 102,
+      "Name": "Red Shorts"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 106,
+      "Name": "Tuxedo"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 154,
+      "Name": "Hot Springs Towel"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 155,
+      "Name": "Hotel Yukata"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 202,
+      "Name": "SEES Uniform"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 501,
+      "Name": "Pirate Armor"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 3,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ],
+  "4": [
+    {
+      "Character": 4,
+      "CostumeId": 1,
+      "Name": "Summer Uniform"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 2,
+      "Name": "Winter Uniform"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 5,
+      "Name": "Summer Garb"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 6,
+      "Name": "Winter Garb"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 51,
+      "Name": "Uniform & Armband"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 52,
+      "Name": "Hand Wraps"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 102,
+      "Name": "Blue Swimwear"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 106,
+      "Name": "Tuxedo"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 154,
+      "Name": "Hot Springs Towel"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 155,
+      "Name": "Hotel Yukata"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 159,
+      "Name": "Dorm Apron"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 201,
+      "Name": "SEES Outfit"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 501,
+      "Name": "Prince Suit"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 4,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ],
+  "5": [
+    {
+      "Character": 5,
+      "CostumeId": 1,
+      "Name": "Summer Uniform"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 2,
+      "Name": "Winter Uniform"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 5,
+      "Name": "Summer Garb"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 6,
+      "Name": "Winter Uniform"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 51,
+      "Name": "Uniform & Armband"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 52,
+      "Name": "SEES Uniform"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 102,
+      "Name": "Elegant Bikini"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 104,
+      "Name": "Sexy Armor"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 106,
+      "Name": "Maid Outfit"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 154,
+      "Name": "Hot Springs Towel"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 155,
+      "Name": "Hotel Yukata"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 156,
+      "Name": "Shrine Festival Yukata"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 157,
+      "Name": "New Year's Kimono"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 159,
+      "Name": "Dorm Apron"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 501,
+      "Name": "Metal Rider"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 5,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ],
+  "6": [
+    {
+      "Character": 6,
+      "CostumeId": 1,
+      "Name": "Summer Uniform"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 2,
+      "Name": "Winter Uniform"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 5,
+      "Name": "Summer Garb"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 6,
+      "Name": "Winter Garb"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 51,
+      "Name": "Uniform & Armband"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 52,
+      "Name": "SEES Uniform"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 102,
+      "Name": "Lime Swimwear"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 104,
+      "Name": "Alluring Armor"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 106,
+      "Name": "Maid Outfit"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 154,
+      "Name": "Hot Springs Towel"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 155,
+      "Name": "Hotel Yukata"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 156,
+      "Name": "Shrine Festival Yukata"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 157,
+      "Name": "New Year's Kimono"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 501,
+      "Name": "Cyber Gear"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 6,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ],
+  "7": [
+    {
+      "Character": 7,
+      "CostumeId": 2,
+      "Name": "Winter Uniform"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 6,
+      "Name": "Sky Sundress"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 51,
+      "Name": "Infiltration Outfit"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 52,
+      "Name": "SEES Uniform"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 106,
+      "Name": "Maid Outfit"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 155,
+      "Name": "Hotel Yukata"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 156,
+      "Name": "Shrine Festival Yukata"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 157,
+      "Name": "New Year's Kimono"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 201,
+      "Name": "Armor"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 202,
+      "Name": "Ribbon"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 203,
+      "Name": "Damaged Ribbon"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 204,
+      "Name": "Ocean Sundress"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 205,
+      "Name": "Ocean Sundress"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 206,
+      "Name": "Firearms"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 501,
+      "Name": "Musketeer Suit"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 7,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ],
+  "8": [
+    {
+      "Character": 8,
+      "CostumeId": 1,
+      "Name": "Summer Uniform"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 2,
+      "Name": "Winter Uniform"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 5,
+      "Name": "Summer Garb"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 6,
+      "Name": "Winter Garb"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 51,
+      "Name": "Uniform & Armband"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 52,
+      "Name": "SEES Uniform"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 102,
+      "Name": "Striped Wetsuit"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 106,
+      "Name": "Tuxedo"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 159,
+      "Name": "Dorm Apron"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 501,
+      "Name": "Outlaw's Attire"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 8,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ],
+  "9": [
+    {
+      "Character": 9,
+      "CostumeId": 6,
+      "Name": "Winged Dog Suit"
+    },
+    {
+      "Character": 9,
+      "CostumeId": 51,
+      "Name": "Infiltration Outfit"
+    },
+    {
+      "Character": 9,
+      "CostumeId": 52,
+      "Name": "No Collar"
+    },
+    {
+      "Character": 9,
+      "CostumeId": 106,
+      "Name": "Tuxedo"
+    },
+    {
+      "Character": 9,
+      "CostumeId": 201,
+      "Name": "SEES Outfit"
+    },
+    {
+      "Character": 9,
+      "CostumeId": 501,
+      "Name": "Morgana Classic"
+    },
+    {
+      "Character": 9,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 9,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 9,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ],
+  "10": [
+    {
+      "Character": 10,
+      "CostumeId": 6,
+      "Name": "Winter Garb"
+    },
+    {
+      "Character": 10,
+      "CostumeId": 51,
+      "Name": "Uniform & Armband"
+    },
+    {
+      "Character": 10,
+      "CostumeId": 52,
+      "Name": "SEES Uniform"
+    },
+    {
+      "Character": 10,
+      "CostumeId": 102,
+      "Name": "Bicolor Shorts"
+    },
+    {
+      "Character": 10,
+      "CostumeId": 106,
+      "Name": "Tuxedo"
+    },
+    {
+      "Character": 10,
+      "CostumeId": 159,
+      "Name": "Dorm Apron"
+    },
+    {
+      "Character": 10,
+      "CostumeId": 501,
+      "Name": "Dark Suit"
+    },
+    {
+      "Character": 10,
+      "CostumeId": 502,
+      "Name": "Shujin Uniform"
+    },
+    {
+      "Character": 10,
+      "CostumeId": 503,
+      "Name": "Yasogami Uniform"
+    },
+    {
+      "Character": 10,
+      "CostumeId": 504,
+      "Name": "Velvet Outfit"
+    }
+  ]
+}

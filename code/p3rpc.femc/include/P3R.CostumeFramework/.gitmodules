@@ -1,0 +1,6 @@
+[submodule "submodules/BGME"]
+	path = submodules/BGME
+	url = https://github.com/T-PoseRatkechi/BGME.git
+[submodule "submodules/BGME.BattleThemes"]
+	path = submodules/BGME.BattleThemes
+	url = https://github.com/T-PoseRatkechi/BGME.BattleThemes.git

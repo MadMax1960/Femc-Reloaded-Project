@@ -14,6 +14,7 @@ using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using Ryo.Interfaces;
 using Reloaded.Memory.Sigscan.Definitions;
+using P3R.CostumeFramework.Interfaces;
 
 
 
@@ -61,6 +62,8 @@ namespace p3rpc.femc
 		private readonly IUnreal unreal;
 		private readonly MusicManager _musicManager;
 		private AssetRedirector _assetRedirector;
+		private readonly ICostumeApi _costumeApi;
+
 
 
 		private string modName { get; set; }
@@ -84,7 +87,8 @@ namespace p3rpc.femc
 			if (process.MainModule == null) throw new Exception($"[{_modConfig.ModName}] Could not get main module (this should never happen)");
 			var baseAddress = process.MainModule.BaseAddress;
             unreal = GetDependency<IUnreal>("Unreal Objects Emitter");
-            var scannerFactory = GetDependency<IScannerFactory>("Scanner Factory");
+			_costumeApi = GetDependency<ICostumeApi>("Costume Framework");
+			var scannerFactory = GetDependency<IScannerFactory>("Scanner Factory");
             var startupScanner = GetDependency<IStartupScanner>("Reloaded Startup Scanner");
 			if (_hooks == null) throw new Exception($"[{_modConfig.ModName}] Could not get controller for Reloaded hooks");
 			var sharedScans = GetDependency<ISharedScans>("Shared Scans");
@@ -120,6 +124,7 @@ namespace p3rpc.femc
 			modName = _modConfig.ModName;
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials, ryo);
+			LoadCostumeAssets();
 			InitializeModules();
 			_assetRedirector = new AssetRedirector(unreal, modName);
 			_assetRedirector.RedirectPlayerAssets();
@@ -144,7 +149,7 @@ namespace p3rpc.femc
 					LoadTheoAssets(unrealEssentials, ryo);
 					LoadFunStuff(unrealEssentials);
 					LoadMiscAssets(unrealEssentials, ryo);
-				}
+			}
 				catch (Exception ex)
 				{
 					_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
@@ -172,6 +177,7 @@ namespace p3rpc.femc
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
 			
 			unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector"));
+
 			}
 
 			private void Load2dAssets(IUnrealEssentials unrealEssentials)
@@ -331,6 +337,16 @@ namespace p3rpc.femc
 
 			ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/normal battle");
 		}
+
+		private void LoadCostumeAssets()
+		{
+			{
+				string costumeFolder = Path.Combine(_context._modLocation, "Redirector");
+				_costumeApi.AddCostumesFolder(_modConfig.ModId, costumeFolder);
+				_logger.WriteLine($"Loaded costumes from: {costumeFolder}", System.Drawing.Color.Green);
+			}
+		}
+
 
 
 		private void InitializeModules()
