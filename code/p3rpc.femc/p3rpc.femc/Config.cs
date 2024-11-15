@@ -913,11 +913,6 @@ namespace p3rpc.femc.Configuration
         public bool DebugDrawMissingPerson { get; set; } = true;
         */
 
-        [DisplayName("Enable Femc Social Stat Names")]
-        [Category("Should the text for the social stats be the ones for femc from P3P?")]
-        [DefaultValue(true)]
-        public bool FemcSocialStats { get; set; } = true;
-
         [DisplayName("Hair Options")]
         [Description("The hair on top of Kotone.")]
         [Category("3D Options")]
@@ -1116,6 +1111,20 @@ namespace p3rpc.femc.Configuration
 		[Category("Theo")]
 		[DefaultValue(false)]
 		public bool TheodorefromAlvinandTheChipmunks { get; set; } = false; // soon this should be a whole thing, movies, bustups, etc 
+
+
+		[DisplayName("Voice Options")]
+		[Description("The Voice of Kotone.")]
+		[Category("Voice")]
+		[DefaultValue(VoiceType.Mellodi)]
+		public VoiceType VoiceTrue { get; set; } = VoiceType.Mellodi;
+
+		public enum VoiceType
+		{
+			Mellodi,
+			MellodiSilly,
+            Japanese
+		}
 	}
 
 

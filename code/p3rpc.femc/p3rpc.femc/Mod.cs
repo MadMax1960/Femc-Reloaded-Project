@@ -302,7 +302,7 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Kyoto", "ely"));
 			// Other Kyoto Photos
 
-			if (_configuration.FemcSocialStats)
+			//if (_configuration.FemcSocialStats)
 				unrealEssentials.AddFromFolder((Path.Combine(_context._modLocation, "2d", "SocialStats", "TheBestAstroNOT")));
 			}
 			// Other Social Stat names conditions...
@@ -335,7 +335,14 @@ namespace p3rpc.femc
 				if (_configuration.bluehairandpronounce)
 					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Voice");
 
-			ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/normal battle");
+
+			if (_configuration.VoiceTrue == VoiceType.Mellodi)
+				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/normal battle");
+			else if (_configuration.VoiceTrue == VoiceType.MellodiSilly)
+				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/april fools");
+			else if (_configuration.VoiceTrue == VoiceType.Japanese)
+				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/nothing lmao");
+
 		}
 
 		private void LoadCostumeAssets()
