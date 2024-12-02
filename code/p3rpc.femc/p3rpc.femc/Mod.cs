@@ -301,11 +301,8 @@ namespace p3rpc.femc
 			if (_configuration.KyotoEventTrue == KyotoEventtype.ely)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Kyoto", "ely"));
 			// Other Kyoto Photos
-
-			//if (_configuration.FemcSocialStats)
-				unrealEssentials.AddFromFolder((Path.Combine(_context._modLocation, "2d", "SocialStats", "TheBestAstroNOT")));
 			}
-			// Other Social Stat names conditions...
+			
 
 		private void LoadTheoAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 			{
