@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ryo.Interfaces", "include\R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BGME.BattleThemes.Config", "include\BGME.BattleThemes\BGME.BattleThemes.Config\BGME.BattleThemes.Config.csproj", "{12C3F3D6-DDB3-4D6D-A269-5B8F4D00C852}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P3R.CostumeFramework.Interfaces", "include\P3R.CostumeFramework\P3R.CostumeFramework.Interfaces\P3R.CostumeFramework.Interfaces.csproj", "{D0324EF8-CBB9-4F56-B99A-23FA09D1F51F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,10 +44,6 @@ Global
 		{12C3F3D6-DDB3-4D6D-A269-5B8F4D00C852}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12C3F3D6-DDB3-4D6D-A269-5B8F4D00C852}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12C3F3D6-DDB3-4D6D-A269-5B8F4D00C852}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0324EF8-CBB9-4F56-B99A-23FA09D1F51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0324EF8-CBB9-4F56-B99A-23FA09D1F51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0324EF8-CBB9-4F56-B99A-23FA09D1F51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0324EF8-CBB9-4F56-B99A-23FA09D1F51F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

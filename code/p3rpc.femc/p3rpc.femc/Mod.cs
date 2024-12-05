@@ -14,7 +14,6 @@ using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using Ryo.Interfaces;
 using Reloaded.Memory.Sigscan.Definitions;
-using P3R.CostumeFramework.Interfaces;
 
 
 
@@ -62,7 +61,6 @@ namespace p3rpc.femc
 		private readonly IUnreal unreal;
 		private readonly MusicManager _musicManager;
 		private AssetRedirector _assetRedirector;
-		private readonly ICostumeApi _costumeApi;
 
 
 
@@ -87,7 +85,6 @@ namespace p3rpc.femc
 			if (process.MainModule == null) throw new Exception($"[{_modConfig.ModName}] Could not get main module (this should never happen)");
 			var baseAddress = process.MainModule.BaseAddress;
             unreal = GetDependency<IUnreal>("Unreal Objects Emitter");
-			_costumeApi = GetDependency<ICostumeApi>("Costume Framework");
 			var scannerFactory = GetDependency<IScannerFactory>("Scanner Factory");
             var startupScanner = GetDependency<IStartupScanner>("Reloaded Startup Scanner");
 			if (_hooks == null) throw new Exception($"[{_modConfig.ModName}] Could not get controller for Reloaded hooks");
@@ -124,7 +121,6 @@ namespace p3rpc.femc
 			modName = _modConfig.ModName;
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials, ryo);
-			LoadCostumeAssets();
 			InitializeModules();
 			_assetRedirector = new AssetRedirector(unreal, modName);
 			_assetRedirector.RedirectPlayerAssets();
@@ -343,15 +339,6 @@ namespace p3rpc.femc
 			else if (_configuration.VoiceTrue == VoiceType.Japanese)
 				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/nothing lmao");
 
-		}
-
-		private void LoadCostumeAssets()
-		{
-			{
-				string costumeFolder = Path.Combine(_context._modLocation, "Redirector");
-				_costumeApi.AddCostumesFolder(_modConfig.ModId, costumeFolder);
-				_logger.WriteLine($"Loaded costumes from: {costumeFolder}", System.Drawing.Color.Green);
-			}
 		}
 
 
