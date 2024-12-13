@@ -60,7 +60,8 @@ namespace p3rpc.femc
 				var dayin2music = new Dictionary<string, bool>
 				{
 					{Path.Combine(path, "Mosq\\link_51.cue"),_configuration.Sun},
-					{Path.Combine(path, "Reload\\link_51.cue"),_configuration.Seasons}
+                    {Path.Combine(path, "Mineformer\\link_51.cue"),_configuration.SunMForm},
+                    {Path.Combine(path, "Reload\\link_51.cue"),_configuration.Seasons}
 				};
 				foreach (KeyValuePair<string, bool> di2m in dayin2music)
 				{
