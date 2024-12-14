@@ -151,7 +151,7 @@ namespace p3rpc.femc.Configuration
 		public bool Moon { get; set; } = true;
 
         [DisplayName("Daytime Music (Outside School/Phase 1): Way of Life -Reload- Mayumi ver")]
-        [Description("Enable Way of Life by Super M Plush, Mosq, Karma and Alphonse as the daytime music?")]
+        [Description("Enable Way of Life by Super M Plush, Mosq, Karma and cora as the daytime music?")]
         [Category("Music")]
         [DefaultValue(false)]
         public bool WayLifeVocal { get; set; } = true;
