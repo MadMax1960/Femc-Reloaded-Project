@@ -987,7 +987,8 @@ namespace p3rpc.femc.Configuration
 			Lisa,
 			BetaFemcByMae,
 			crezzstar,
-			AngieDaGorl,
+            crezzstarAlt,
+            AngieDaGorl,
 			namiweiko,
 			chitu
         }
