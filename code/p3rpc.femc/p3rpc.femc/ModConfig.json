@@ -18,45 +18,26 @@
   "PluginData": {
     "GameBananaDependencies": {
       "IdToConfigMap": {
-        "P3R.CostumeFramework": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 501833
-          },
-          "ReleaseMetadataName": "P3R.CostumeFramework.ReleaseMetadata.json"
-        },
         "p3rpc.essentials": {
           "Config": {
             "ItemType": "Mod",
             "ItemId": 494020
           },
           "ReleaseMetadataName": "p3rpc.essentials.ReleaseMetadata.json"
-        },
-        "Ryo.Reloaded": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 495507
-          },
-          "ReleaseMetadataName": "Ryo.Reloaded.ReleaseMetadata.json"
-        },
-        "SharedScans.Reloaded": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 495507
-          },
-          "ReleaseMetadataName": "SharedScans.Reloaded.ReleaseMetadata.json"
-        },
-        "Unreal.ObjectsEmitter.Reloaded": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 500638
-          },
-          "ReleaseMetadataName": "Unreal.ObjectsEmitter.Reloaded.ReleaseMetadata.json"
         }
       }
     },
     "GitHubDependencies": {
       "IdToConfigMap": {
+        "P3R.CostumeFramework": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "P3R.CostumeFramework",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "P3R.CostumeFramework.ReleaseMetadata.json"
+        },
         "p3rpc.classconstructor": {
           "Config": {
             "UserName": "Rirurin",
@@ -102,6 +83,33 @@
           },
           "ReleaseMetadataName": "Sewer56.Update.ReleaseMetadata.json"
         },
+        "Ryo.Reloaded": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "Ryo",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "Ryo.Reloaded.ReleaseMetadata.json"
+        },
+        "SharedScans.Reloaded": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "SharedScans",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "SharedScans.Reloaded.ReleaseMetadata.json"
+        },
+        "Unreal.ObjectsEmitter.Reloaded": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "Unreal.ObjectsEmitter",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "Unreal.ObjectsEmitter.Reloaded.ReleaseMetadata.json"
+        },
         "UnrealEssentials": {
           "Config": {
             "UserName": "AnimatedSwine37",
@@ -110,6 +118,42 @@
             "AssetFileName": "Mod.zip"
           },
           "ReleaseMetadataName": "UnrealEssentials.ReleaseMetadata.json"
+        },
+        "BGME.Framework.API": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "BGME",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "BGME.Framework.API.ReleaseMetadata.json"
+        },
+        "BGME.Framework.P3R": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "BGME",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "BGME.Framework.P3R.ReleaseMetadata.json"
+        },
+        "Unreal.AtlusScript.Reloaded": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "Unreal.AtlusScript",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "Unreal.AtlusScript.Reloaded.ReleaseMetadata.json"
+        },
+        "BGME.BattleThemes": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "BGME.BattleThemes",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "BGME.BattleThemes.ReleaseMetadata.json"
         },
         "UTOC.Stream.Emulator": {
           "Config": {
