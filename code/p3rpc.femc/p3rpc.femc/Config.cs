@@ -928,8 +928,8 @@ namespace p3rpc.femc.Configuration
         [DisplayName("AOA Options")]
         [Description("The AOA Image.")]
         [Category("2D Options")]
-        [DefaultValue(AOAType.Fernando)]
-        public AOAType AOATrue { get; set; } = AOAType.Ely;
+        [DefaultValue(AOAType.esaadrien)]
+        public AOAType AOATrue { get; set; } = AOAType.esaadrien;
 
         public enum AOAType
         {
@@ -962,7 +962,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Bustup")]
         [Description("The Bustup.")]
         [Category("2D Options")]
-        [DefaultValue(BustupType.Neptune)]
+        [DefaultValue(BustupType.Esa)]
         public BustupType BustupTrue { get; set; } = BustupType.Neptune;
 
         public enum BustupType
@@ -1034,8 +1034,8 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Cutin")]
         [Description("Cutin Movie")]
         [Category("2D Options")]
-        [DefaultValue(CutinType.berrycha)]
-        public CutinType CutinTrue { get; set; } = CutinType.berrycha;
+        [DefaultValue(CutinType.Mekki)]
+        public CutinType CutinTrue { get; set; } = CutinType.Mekki;
 
         public enum CutinType
         {
@@ -1047,7 +1047,7 @@ namespace p3rpc.femc.Configuration
 		[DisplayName("Group Photo")]
         [Description("The group photo")]
         [Category("2D Options")]
-        [DefaultValue(GroupEventtype.bichelle)]
+        [DefaultValue(GroupEventtype.ely)]
         public GroupEventtype GroupEventTrue { get; set; } = GroupEventtype.bichelle;
 
         public enum GroupEventtype
