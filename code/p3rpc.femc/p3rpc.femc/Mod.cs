@@ -254,9 +254,11 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "namiweiko"));
 			else if (_configuration.BustupTrue == BustupType.chitu)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "chitu"));
-			// Other Bustup conditions...
+            else if (_configuration.BustupTrue == BustupType.crezzstarAlt)
+                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Bustup", "crezzstarAlt"));
+            // Other Bustup conditions...
 
-			if (_configuration.ShardTrue == ShardType.Esa)
+            if (_configuration.ShardTrue == ShardType.Esa)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Esa"));
 			else if (_configuration.ShardTrue == ShardType.Ely)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Ely"));
@@ -297,11 +299,8 @@ namespace p3rpc.femc
 			if (_configuration.KyotoEventTrue == KyotoEventtype.ely)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Kyoto", "ely"));
 			// Other Kyoto Photos
-
-			//if (_configuration.FemcSocialStats)
-				unrealEssentials.AddFromFolder((Path.Combine(_context._modLocation, "2d", "SocialStats", "TheBestAstroNOT")));
 			}
-			// Other Social Stat names conditions...
+			
 
 		private void LoadTheoAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 			{

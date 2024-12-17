@@ -151,7 +151,7 @@ namespace p3rpc.femc.Configuration
 		public bool Moon { get; set; } = true;
 
         [DisplayName("Daytime Music (Outside School/Phase 1): Way of Life -Reload- Mayumi ver")]
-        [Description("Enable Way of Life by Super M Plush, Mosq and Karma as the daytime music?")]
+        [Description("Enable Way of Life by Super M Plush, Mosq, Karma and cora as the daytime music?")]
         [Category("Music")]
         [DefaultValue(false)]
         public bool WayLifeVocal { get; set; } = true;
@@ -204,7 +204,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(true)]
 		public bool Sun { get; set; } = true;
 
-		[DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
+        [DisplayName("Daytime Music(Inside School/Phase 2): Sun by MineFormer")]
+        [Category("Music")]
+        [Description("Enable Sun as the daytime music inside the school?")]
+        [DefaultValue(false)]
+        public bool SunMForm { get; set; } = true;
+
+        [DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
 		[Category("Music")]
 		[Description("Enable Soul Phrase as the music played during the battle with Nyx?")]
 		[DefaultValue(false)]
@@ -987,7 +993,8 @@ namespace p3rpc.femc.Configuration
 			Lisa,
 			BetaFemcByMae,
 			crezzstar,
-			AngieDaGorl,
+            crezzstarAlt,
+            AngieDaGorl,
 			namiweiko,
 			chitu
         }
