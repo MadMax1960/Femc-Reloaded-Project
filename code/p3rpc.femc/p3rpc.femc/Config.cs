@@ -934,7 +934,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("AOA Options")]
         [Description("The AOA Image.")]
         [Category("2D Options")]
-        [DefaultValue(AOAType.Fernando)]
+        [DefaultValue(AOAType.esaadrien)]
         public AOAType AOATrue { get; set; } = AOAType.Ely;
 
         public enum AOAType
