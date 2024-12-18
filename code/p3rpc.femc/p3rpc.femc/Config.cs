@@ -996,7 +996,8 @@ namespace p3rpc.femc.Configuration
             crezzstarAlt,
             AngieDaGorl,
 			namiweiko,
-			chitu
+			chitu,
+            shiosakana
         }
 
         [DisplayName("Glass Shard")]
