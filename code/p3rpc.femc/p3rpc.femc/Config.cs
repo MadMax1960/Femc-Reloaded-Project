@@ -151,7 +151,7 @@ namespace p3rpc.femc.Configuration
 		public bool Moon { get; set; } = true;
 
         [DisplayName("Daytime Music (Outside School/Phase 1): Way of Life -Reload- Mayumi ver")]
-        [Description("Enable Way of Life by Super M Plush, Mosq and Karma as the daytime music?")]
+        [Description("Enable Way of Life by Super M Plush, Mosq, Karma and cora as the daytime music?")]
         [Category("Music")]
         [DefaultValue(false)]
         public bool WayLifeVocal { get; set; } = true;
@@ -204,7 +204,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(true)]
 		public bool Sun { get; set; } = true;
 
-		[DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
+        [DisplayName("Daytime Music(Inside School/Phase 2): Sun by MineFormer")]
+        [Category("Music")]
+        [Description("Enable Sun as the daytime music inside the school?")]
+        [DefaultValue(false)]
+        public bool SunMForm { get; set; } = true;
+
+        [DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
 		[Category("Music")]
 		[Description("Enable Soul Phrase as the music played during the battle with Nyx?")]
 		[DefaultValue(false)]
@@ -928,8 +934,8 @@ namespace p3rpc.femc.Configuration
         [DisplayName("AOA Options")]
         [Description("The AOA Image.")]
         [Category("2D Options")]
-        [DefaultValue(AOAType.Fernando)]
-        public AOAType AOATrue { get; set; } = AOAType.Ely;
+        [DefaultValue(AOAType.esaadrien)]
+        public AOAType AOATrue { get; set; } = AOAType.esaadrien;
 
         public enum AOAType
         {
@@ -962,7 +968,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Bustup")]
         [Description("The Bustup.")]
         [Category("2D Options")]
-        [DefaultValue(BustupType.Neptune)]
+        [DefaultValue(BustupType.Esa)]
         public BustupType BustupTrue { get; set; } = BustupType.Neptune;
 
         public enum BustupType
@@ -987,9 +993,11 @@ namespace p3rpc.femc.Configuration
 			Lisa,
 			BetaFemcByMae,
 			crezzstar,
-			AngieDaGorl,
+            crezzstarAlt,
+            AngieDaGorl,
 			namiweiko,
-			chitu
+			chitu,
+            shiosakana
         }
 
         [DisplayName("Glass Shard")]
@@ -1034,8 +1042,8 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Cutin")]
         [Description("Cutin Movie")]
         [Category("2D Options")]
-        [DefaultValue(CutinType.berrycha)]
-        public CutinType CutinTrue { get; set; } = CutinType.berrycha;
+        [DefaultValue(CutinType.Mekki)]
+        public CutinType CutinTrue { get; set; } = CutinType.Mekki;
 
         public enum CutinType
         {
@@ -1047,7 +1055,7 @@ namespace p3rpc.femc.Configuration
 		[DisplayName("Group Photo")]
         [Description("The group photo")]
         [Category("2D Options")]
-        [DefaultValue(GroupEventtype.bichelle)]
+        [DefaultValue(GroupEventtype.ely)]
         public GroupEventtype GroupEventTrue { get; set; } = GroupEventtype.bichelle;
 
         public enum GroupEventtype

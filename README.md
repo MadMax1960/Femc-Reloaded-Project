@@ -13,7 +13,6 @@ _ⓒAtlus ⓒSega All Rights reserved, this mod is not associated with Sega or A
 <foo style="color:pink;">Within these digital pages lies your roadmap to contributing to a grand vision. This document will evolve, staying in step with our journey. </foo>
 
 ## Project Links
-- **Trello**: [Femc Reloaded Project Board](https://trello.com/b/jxq6wO79/femc-reloaded-project)
 - **Discord**: [Join our community](https://discord.gg/yxtDmX7qXd)
 - **Persona Modding Tutorial**: [Get started with modding](https://gamebanana.com/tuts/17156)
 
