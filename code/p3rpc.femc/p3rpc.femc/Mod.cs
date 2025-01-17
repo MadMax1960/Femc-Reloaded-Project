@@ -290,9 +290,11 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
 			else if (_configuration.CutinTrue == CutinType.Mekki)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "Mekki"));
-			// Other Cutin conditions...
-			
-			if (_configuration.GroupEventTrue == GroupEventtype.bichelle)
+            else if (_configuration.CutinTrue == CutinType.shiosakana)
+                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "shiosakana"));
+            // Other Cutin conditions...
+
+            if (_configuration.GroupEventTrue == GroupEventtype.bichelle)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Group", "bichelle"));
 			else if (_configuration.GroupEventTrue == GroupEventtype.ely)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Group", "ely"));
