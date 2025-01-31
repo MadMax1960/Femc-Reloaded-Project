@@ -1025,7 +1025,8 @@ namespace p3rpc.femc.Configuration
         {
             Esa,
             Ely,
-            shiosakana
+            shiosakana,
+            ElyAlt
 
         }
 
