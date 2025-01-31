@@ -1049,7 +1049,8 @@ namespace p3rpc.femc.Configuration
         {
             berrycha,
             ElyandPatmandx,
-			Mekki
+			Mekki,
+            shiosakana
         }
 		
 		[DisplayName("Group Photo")]
