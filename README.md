@@ -49,7 +49,3 @@ This project is a fanmade mod (modification) created as a homage to the Persona 
 -**Respect for Original Copyright Holders**: Any rights involving characters such as logos or trademarks associated with Atlus’ franchise known as Persona remain their property or that of other respective copyright holders whether they are Sega or Atlus themselves.
 
 This mod is a labor of love, created to celebrate the Persona series and share our collective creativity within the fan community, not to infringe on the rights of the original creators.
-
-
-## Make It Pink!
-<foo style="color:pink;">Your participation in the Femc Reloaded Project showcases the power of community and passion for Persona 3. Together, we're not merely altering a game; we're _**painting it pink**_ or so they say.</foo>
