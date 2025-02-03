@@ -20,12 +20,19 @@ _ⓒAtlus ⓒSega All Rights reserved, this mod is not associated with Sega or A
 Pretty much any contribution is welcome! You can check the wiki to learn how to submit your own pull request with contributions! Or join the discord and ask there!
 
 ## Leadership
-- **Lead/Director**: A Mudkip (@MadMax1960), orchestrating it all, decisions, 3D Lead.
+- **Lead/Director**: A Mudkip (@MadMax1960), orchestrating it all, 3D Lead.
+- **Audio Lead**: Kindred
+- **2D Lead**: Esa Blythe/CatBoyRonaldReagan
+- **Event Lead**: Ciel-Bell
+- **Major Code Contributor**: Rirurin
+- **Major 3d Contributor**: Ray Cooper
 - **Producer/Manager**: Fernando Holguin (@Fernhw), Tasks management. 
-- (More to come)
 
 <br/>
 
+## Copyright TLDR; 
+
+This project is under a license that lets you freely yoink and edit assets at will as long as you credit this page, don't sell your edited/yoinked assets, and publish them under this same license. There is an exception when it comes to monetizing, if you are an artist contributing art, the license allows for selling *your* art, but you have to be ok with other people being able to edit your art for use in other mods or this one. No one can sell your contributed art, but you may sell it yourself. 
 
 ## IMPORTANT: Copyright and License
 
