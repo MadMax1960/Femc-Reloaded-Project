@@ -8,9 +8,7 @@ _ⓒAtlus ⓒSega All Rights reserved, this mod is not associated with Sega or A
 ![Kotone in Pink](img/readmeimg.png)
 
 ## Introduction
-<foo style="color:pink;">We're putting Kotone into P3R, that's about it. This mod is crafted for the PC version and is available as **english first**, all languages are welcome though.</foo>
-
-<foo style="color:pink;">Within these digital pages lies your roadmap to contributing to a grand vision. This document will evolve, staying in step with our journey. </foo>
+<foo style="color:pink;">We're putting Kotone into P3R, that's about it. This mod is crafted for the PC version and is available as **english first**, all languages are welcome though!</foo>
 
 ## Project Links
 - **Discord**: [Join our community](https://discord.gg/yxtDmX7qXd)
