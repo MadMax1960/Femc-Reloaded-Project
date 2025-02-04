@@ -1024,9 +1024,12 @@ namespace p3rpc.femc.Configuration
         public enum LevelUpType
         {
             Esa,
-            Ely
+            Ely,
+            shiosakana,
+            ElyAlt
+
         }
-		
+
         [DisplayName("Party Panel")]
         [Description("The face icons in battle and pause menu")]
         [Category("2D Options")]

@@ -276,9 +276,13 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
 			else if (_configuration.LevelUpTrue == LevelUpType.Ely)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Ely"));
-			// Other Level Up conditions...
+            else if (_configuration.LevelUpTrue == LevelUpType.shiosakana)
+                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "shiosakana"));
+            else if (_configuration.LevelUpTrue == LevelUpType.ElyAlt)
+                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "ElyAlt"));
+            // Other Level Up conditions...
 
-			if (_configuration.PartyPanelTrue == PartyPanelType.Kris)
+            if (_configuration.PartyPanelTrue == PartyPanelType.Kris)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Kris"));
 			else if (_configuration.PartyPanelTrue == PartyPanelType.Esa)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Esa"));
