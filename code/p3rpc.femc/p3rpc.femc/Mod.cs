@@ -146,57 +146,45 @@ namespace p3rpc.femc
 				}
 			}
 
-			private void Load3dAssets(IUnrealEssentials unrealEssentials)
-			{
-			if (_configuration.HairTrue == HairType.MudkipsHair)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "MudkipHair"));
-			else if (_configuration.HairTrue == HairType.KotoneBeanHair)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "NaobeanHair"));
+		private void Load3dAssets(IUnrealEssentials unrealEssentials)
+		{
+		if (_configuration.HairTrue == HairType.MudkipsHair) // hair option, this shit broken, i should fix it
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "MudkipHair"));
+		else if (_configuration.HairTrue == HairType.KotoneBeanHair)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "NaobeanHair"));
+		
+		if (_configuration.AnimTrue == AnimType.OriginalAnims) // animation option
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Original Dummy"));
+		else if (_configuration.AnimTrue == AnimType.CustomAnims)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Custom Anims"));
+		else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
 
-			if (_configuration.AnimTrue == AnimType.OriginalAnims)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Original Dummy"));
-			else if (_configuration.AnimTrue == AnimType.CustomAnims)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Custom Anims"));
-			else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
+		if (_configuration.SkirtEtcFix) // loads skeleton fix
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
 
-			if (_configuration.SkirtEtcFix)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
-
-			if (_configuration.NagiWeap)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
+		if (_configuration.NagiWeap) // loads naginata
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
 			
-			unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector"));
-
+		unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector")); // just loads actual assets, if this doesnt load femc doesn't load lmfao
 			}
 
 		private void Load2dAssets(IUnrealEssentials unrealEssentials)
 		{
-			// Load AOA assets
 			AoaLoader.LoadAoaAssets(unrealEssentials, _configuration, _context._modLocation);
-			// Load AOA Text assets
 			AoaTextLoader.LoadAoaTextAssets(unrealEssentials, _configuration, _context._modLocation);
-			// Load Bustup assets
 			BustupLoader.LoadBustups(unrealEssentials, _configuration, _context._modLocation);
-			// Load Shard assets
 			ShardLoader.LoadShardAssets(unrealEssentials, _configuration, _context._modLocation);
-			// Load LevelUp assets
 			LevelUpLoader.LoadLevelUpAssets(unrealEssentials, _configuration, _context._modLocation);
-			// Load Party Panel assets
 			PartyPanelLoader.LoadPartyPanelAssets(unrealEssentials, _configuration, _context._modLocation);
-			// Load Cutin assets
 			CutinLoader.LoadCutinAssets(unrealEssentials, _configuration, _context._modLocation);
-			// Load Group Event assets
 			GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation);
-			// Load Kyoto Event assets
 			KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation);
 		}
 
-
-
 		private void LoadTheoAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 			{
-				if (_configuration.TheodorefromAlvinandTheChipmunks)
+				if (_configuration.TheodorefromAlvinandTheChipmunks) // loads all the theo assets, needs to be seperated for configs...
 				{
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
 					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "cutin", "mekkipatman"));
@@ -206,24 +194,23 @@ namespace p3rpc.femc
 				}
 			}
 
-			private void LoadFunStuff(IUnrealEssentials unrealEssentials)
-			{
-				if (_configuration.KotoneRoom)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
-
-				if (_configuration.GregoryHouseRatPoisonDeliverySystem)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystem"));
-				if (!_configuration.GregoryHouseRatPoisonDeliverySystem)
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog"));
+		private void LoadFunStuff(IUnrealEssentials unrealEssentials)
+		{
+			if (_configuration.KotoneRoom)  // kotones room with the paintings and stuff 
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
+			
+			if (_configuration.GregoryHouseRatPoisonDeliverySystem) // house apron
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystem"));
+			if (!_configuration.GregoryHouseRatPoisonDeliverySystem)
+				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog"));
 			}
 
-			private void LoadMiscAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
-			{
-				if (_configuration.bluehairandpronounce)
-					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Voice");
-
-
-			if (_configuration.VoiceTrue == VoiceType.Mellodi)
+		private void LoadMiscAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
+		{
+			if (_configuration.bluehairandpronounce)
+				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Voice"); // gendered audio
+			
+			if (_configuration.VoiceTrue == VoiceType.Mellodi) // voice stuff, mellodi, silly, etc
 				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/normal battle");
 			else if (_configuration.VoiceTrue == VoiceType.MellodiSilly)
 				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/april fools");
@@ -232,9 +219,7 @@ namespace p3rpc.femc
 
 		}
 
-
-
-		private void InitializeModules()
+		private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death
 		{
 			_modRuntime.AddModule<UICommon>();
 			if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
