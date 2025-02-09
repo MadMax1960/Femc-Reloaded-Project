@@ -170,89 +170,29 @@ namespace p3rpc.femc
 
 			}
 
-			private void Load2dAssets(IUnrealEssentials unrealEssentials)
-			{
-			if (_configuration.AOATrue == AOAType.Ely)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Ely"));
-			else if (_configuration.AOATrue == AOAType.Chrysanthie)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Chrysanthie"));
-			else if (_configuration.AOATrue == AOAType.Fernando)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Fernando"));
-			else if (_configuration.AOATrue == AOAType.Monica)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Monica"));
-			else if (_configuration.AOATrue == AOAType.RonaldReagan)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "RonaldReagan"));
-			else if (_configuration.AOATrue == AOAType.esaadrien)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "esaadrien"));
-			else if (_configuration.AOATrue == AOAType.mekki)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "mekki"));
-			else if (_configuration.AOATrue == AOAType.shiosakana)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakana"));
-			else if (_configuration.AOATrue == AOAType.shiosakanaAlt)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "shiosakanaAlt"));
-			else if (_configuration.AOATrue == AOAType.Nami)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOA", "Nami"));
-			// Other AOA conditions...
-
-			if (_configuration.AOAText == AOATextType.DontLookBack)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "DontLookBack"));
-			else if (_configuration.AOAText == AOATextType.SorryBoutThat)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "SorryBoutThat"));
-			else if (_configuration.AOAText == AOATextType.PerfectlyAccomplished)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "AOAText", "PerfectlyAccomplished"));
-			// Other AOAText conditions...
-
+		private void Load2dAssets(IUnrealEssentials unrealEssentials)
+		{
+			// Load AOA assets
+			AoaLoader.LoadAoaAssets(unrealEssentials, _configuration, _context._modLocation);
+			// Load AOA Text assets
+			AoaTextLoader.LoadAoaTextAssets(unrealEssentials, _configuration, _context._modLocation);
+			// Load Bustup assets
 			BustupLoader.LoadBustups(unrealEssentials, _configuration, _context._modLocation);
+			// Load Shard assets
+			ShardLoader.LoadShardAssets(unrealEssentials, _configuration, _context._modLocation);
+			// Load LevelUp assets
+			LevelUpLoader.LoadLevelUpAssets(unrealEssentials, _configuration, _context._modLocation);
+			// Load Party Panel assets
+			PartyPanelLoader.LoadPartyPanelAssets(unrealEssentials, _configuration, _context._modLocation);
+			// Load Cutin assets
+			CutinLoader.LoadCutinAssets(unrealEssentials, _configuration, _context._modLocation);
+			// Load Group Event assets
+			GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation);
+			// Load Kyoto Event assets
+			KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation);
+		}
 
-			if (_configuration.ShardTrue == ShardType.Esa)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Esa"));
-			else if (_configuration.ShardTrue == ShardType.Ely)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Ely"));
-			else if (_configuration.ShardTrue == ShardType.ElyAlt)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "ElyAlt"));
-			else if (_configuration.ShardTrue == ShardType.Shiosakana)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "Shiosakana"));
-			else if (_configuration.ShardTrue == ShardType.namiweiko)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Shard", "namiweiko"));
-			// Other Shard conditions...
 
-			if (_configuration.LevelUpTrue == LevelUpType.Esa)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Esa"));
-			else if (_configuration.LevelUpTrue == LevelUpType.Ely)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "Ely"));
-            else if (_configuration.LevelUpTrue == LevelUpType.shiosakana)
-                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "shiosakana"));
-            else if (_configuration.LevelUpTrue == LevelUpType.ElyAlt)
-                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "LevelUp", "ElyAlt"));
-            // Other Level Up conditions...
-
-            if (_configuration.PartyPanelTrue == PartyPanelType.Kris)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Kris"));
-			else if (_configuration.PartyPanelTrue == PartyPanelType.Esa)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "PartyPanel", "Esa"));
-			// Other Party Panel conditions...
-
-			if (_configuration.CutinTrue == CutinType.berrycha)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "berrycha"));
-			else if (_configuration.CutinTrue == CutinType.ElyandPatmandx)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "ElyandPatmandx"));
-			else if (_configuration.CutinTrue == CutinType.Mekki)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "Mekki"));
-            else if (_configuration.CutinTrue == CutinType.shiosakana)
-                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Cutin", "shiosakana"));
-            // Other Cutin conditions...
-
-            if (_configuration.GroupEventTrue == GroupEventtype.bichelle)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Group", "bichelle"));
-			else if (_configuration.GroupEventTrue == GroupEventtype.ely)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Group", "ely"));
-			// Other Group Photos
-			
-			if (_configuration.KyotoEventTrue == KyotoEventtype.ely)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "2d", "Events", "Kyoto", "ely"));
-			// Other Kyoto Photos
-			}
-			
 
 		private void LoadTheoAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 			{
