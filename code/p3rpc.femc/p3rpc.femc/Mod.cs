@@ -74,12 +74,6 @@ namespace p3rpc.femc
 			_owner = context.Owner;
 			_configuration = context.Configuration;
 			_modConfig = context.ModConfig;
-			// Get dependencies and initialize context
-/*
-#if DEBUG
-			Debugger.Launch();
-#endif
-*/
 
 			var process = Process.GetCurrentProcess();
 			if (process.MainModule == null) throw new Exception($"[{_modConfig.ModName}] Could not get main module (this should never happen)");
