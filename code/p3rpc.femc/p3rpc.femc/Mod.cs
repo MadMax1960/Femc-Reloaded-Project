@@ -132,19 +132,19 @@ namespace p3rpc.femc
 
         private void LoadEnabledAddons(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 		{
-				try
-				{
-					Load3dAssets(unrealEssentials);
-					Load2dAssets(unrealEssentials);
-					LoadTheoAssets(unrealEssentials, ryo);
-					LoadFunStuff(unrealEssentials);
-					LoadMiscAssets(unrealEssentials, ryo);
+			try
+			{
+				Load3dAssets(unrealEssentials);
+				Load2dAssets(unrealEssentials);
+				LoadTheoAssets(unrealEssentials, ryo);
+				LoadFunStuff(unrealEssentials);
+				LoadMiscAssets(unrealEssentials, ryo);
 			}
-				catch (Exception ex)
-				{
-					_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
-				}
+			catch (Exception ex)
+			{
+				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
+		}
 
 		private void Load3dAssets(IUnrealEssentials unrealEssentials)
 		{
@@ -167,7 +167,7 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
 			
 		unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector")); // just loads actual assets, if this doesnt load femc doesn't load lmfao
-			}
+		}
 
 		private void Load2dAssets(IUnrealEssentials unrealEssentials)
 		{
