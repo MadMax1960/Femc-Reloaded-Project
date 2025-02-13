@@ -138,7 +138,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool NightWand { get; set; } = true;
 
-        [DisplayName("Night Music: Color your night by Pealeaf and ChewieMelodies")]
+		[DisplayName("Night Music: Moonlightr by Mosq")]
+		[Category("Music")]
+		[Description("Enable Moonlight as the night music?")]
+		[DefaultValue(false)]
+		public bool EsaComm { get; set; } = true;
+
+		[DisplayName("Night Music: Color your night by Pealeaf and ChewieMelodies")]
         [Category("Music")]
         [Description("Enable Night Color your night as the night music?")]
         [DefaultValue(false)]

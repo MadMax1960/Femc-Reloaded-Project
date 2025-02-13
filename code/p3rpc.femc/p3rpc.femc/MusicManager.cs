@@ -37,7 +37,8 @@ namespace p3rpc.femc
                     {Path.Combine(path,"Mineformer\\link_97.cue"),_configuration.MidNight},
 					{Path.Combine(path,"Gabi\\link_97.cue"),_configuration.GabiFemNight},
 					{Path.Combine(path,"Mosq\\NightWanderer\\link_97.cue"),_configuration.NightWand},
-					{Path.Combine(path,"Reload\\link_97.cue"),_configuration.ColNight}
+					{Path.Combine(path,"Reload\\link_97.cue"),_configuration.ColNight},
+					{Path.Combine(path,"Mosq\\EsaComm\\link_97.cue"),_configuration.EsaComm},
 				};
 				foreach (KeyValuePair<string, bool> nm in nightmusic)
 				{
