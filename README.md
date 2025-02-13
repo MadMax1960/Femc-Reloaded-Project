@@ -13,6 +13,7 @@ _ⓒAtlus ⓒSega All Rights reserved, this mod is not associated with Sega or A
 ## Project Links
 - **Discord**: [Join our community](https://discord.gg/yxtDmX7qXd)
 - **Persona Modding Tutorial**: [Get started with modding](https://gamebanana.com/tuts/17156)
+- **Raw Files Repo**: [Raw files are stored here](https://github.com/MadMax1960/Femc-Reloaded-Raw-Files)
 
 ## How to Contribute
 Pretty much any contribution is welcome! You can check the wiki to learn how to submit your own pull request with contributions! Or join the discord and ask there!
