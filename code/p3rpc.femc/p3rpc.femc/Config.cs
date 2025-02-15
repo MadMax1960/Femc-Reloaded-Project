@@ -138,7 +138,7 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool NightWand { get; set; } = true;
 
-		[DisplayName("Night Music: Moonlightr by Mosq")]
+		[DisplayName("Night Music: Moonlight by Mosq")]
 		[Category("Music")]
 		[Description("Enable Moonlight as the night music?")]
 		[DefaultValue(false)]
