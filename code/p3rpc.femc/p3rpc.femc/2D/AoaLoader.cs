@@ -29,7 +29,9 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "AOA", "shiosakanaAlt"));
 			else if (configuration.AOATrue == AOAType.Nami)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "AOA", "Nami"));
-			// Add other AOA conditions if needed.
-		}
+            else if (configuration.AOATrue == AOAType.AngieDaGorl)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "AOA", "AngieDaGorl"));
+            // Add other AOA conditions if needed.
+        }
 	}
 }

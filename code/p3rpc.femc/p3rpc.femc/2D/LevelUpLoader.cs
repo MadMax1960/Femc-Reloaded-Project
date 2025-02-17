@@ -17,7 +17,9 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "LevelUp", "shiosakana"));
 			else if (configuration.LevelUpTrue == LevelUpType.ElyAlt)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "LevelUp", "ElyAlt"));
-			// Add other LevelUp conditions if needed.
-		}
+            else if (configuration.LevelUpTrue == LevelUpType.AngieDaGorl)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "LevelUp", "AngieDaGorl"));
+            // Add other LevelUp conditions if needed.
+        }
 	}
 }

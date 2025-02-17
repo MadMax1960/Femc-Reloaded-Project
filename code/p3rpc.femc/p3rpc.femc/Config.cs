@@ -954,7 +954,8 @@ namespace p3rpc.femc.Configuration
 			mekki,
 			shiosakana,
 			shiosakanaAlt,
-			Nami
+			Nami,
+            AngieDaGorl
         }
 
         [DisplayName("AOA Text Options")]
@@ -1018,7 +1019,8 @@ namespace p3rpc.femc.Configuration
             Ely,
             ElyAlt,
             Shiosakana,
-			namiweiko
+			namiweiko,
+            AngieDaGorl
         }
 
         [DisplayName("Level Up")]
@@ -1032,7 +1034,8 @@ namespace p3rpc.femc.Configuration
             Esa,
             Ely,
             shiosakana,
-            ElyAlt
+            ElyAlt,
+            AngieDaGorl
 
         }
 
