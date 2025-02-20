@@ -25,7 +25,7 @@ Pretty much any contribution is welcome! You can check the wiki to learn how to 
 - **Event Lead**: Ciel-Bell
 - **Major Code Contributor**: Rirurin
 - **Major 3d Contributor**: Ray Cooper
-- **Producer/Manager**: Fernando Holguin (@Fernhw), Tasks management. 
+- **Task Manager**: Fernando Holguin (@Fernhw), Tasks management. 
 
 <br/>
 
