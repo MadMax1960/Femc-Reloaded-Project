@@ -1,13 +1,13 @@
 # Persona 3 Reload Mod Project: Femc Reloaded Project
 
-![logo in Pink](../img/readmelogo.png)
+![logo in Pink](img/readmelogo.png)
 
 Язык документа: [EN](README.md) | [RU](README.ru.md)
 
 _ⓒAtlus ⓒSega Все права защищены, этот мод не связан с Sega или Atlus, все права защищены, прочитайте полное Readme перед любым вкладом_
 
 ## _"Femc True"_
-![Kotone in Pink](../img/readmeimg.png)
+![Kotone in Pink](img/readmeimg.png)
 
 ## Введение
 <foo style="color:pink;">Мы вводим Котоне в P3R, вот и все. Этот мод создан для PC-версии и доступен сначала на английском, но все языки приветствуются!</foo>
