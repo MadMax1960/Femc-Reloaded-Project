@@ -203,7 +203,10 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystem"));
 			if (!_configuration.GregoryHouseRatPoisonDeliverySystem)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog"));
-			}
+
+            if (_configuration.OtomeArcade)  // kotones room with the paintings and stuff 
+                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Otome Arcade"));
+        }
 
 		private void LoadMiscAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 		{
