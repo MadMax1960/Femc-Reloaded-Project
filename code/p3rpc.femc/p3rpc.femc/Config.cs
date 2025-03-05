@@ -1004,7 +1004,8 @@ namespace p3rpc.femc.Configuration
             AngieDaGorl,
 			namiweiko,
 			chitu,
-            shiosakana
+            shiosakana,
+            samythecoolkid
         }
 
         [DisplayName("Glass Shard")]
@@ -1102,6 +1103,7 @@ namespace p3rpc.femc.Configuration
 		}
 
 		[DisplayName("Kotone Room")]
+        [Description("Decorate your dorm room with femc artwork made by the community")]
         [Category("Fun Stuff")]
         [DefaultValue(false)]
         public bool KotoneRoom { get; set; } = false;
@@ -1111,7 +1113,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool GregoryHouseRatPoisonDeliverySystem { get; set; } = false;
 
-		[DisplayName("Debug Log Level")]
+        [DisplayName("Otome Arcade game")]
+        [Description("Changes the Arcade game that raises charm, to be gender swapped")]
+        [Category("Fun Stuff")]
+        [DefaultValue(false)]
+        public bool OtomeArcade { get; set; } = false;
+
+        [DisplayName("Debug Log Level")]
         [Category("Debug")]
         [DefaultValue(LogLevel.Information)]
         public LogLevel DebugLogLevel { get; set; } = LogLevel.Information;
