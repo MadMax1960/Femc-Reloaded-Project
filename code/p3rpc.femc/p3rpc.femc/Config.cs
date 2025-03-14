@@ -1024,7 +1024,7 @@ namespace p3rpc.femc.Configuration
         [Description("The Bustup.")]
         [Category("2D Options")]
         [DefaultValue(BustupType.Esa)]
-        public BustupType BustupTrue { get; set; } = BustupType.Neptune;
+        public BustupType BustupTrue { get; set; } = BustupType.Esa;
 
         public enum BustupType
         {
