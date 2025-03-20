@@ -54,7 +54,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool SgNom { get; set; } = true;
 
-		[DisplayName("Danger Zone (Stella and GillStudio Remix)")]
+        [DisplayName("Wiping All Out")]
+        [Category("Battle Music")]
+        [Description("Enable Wiping All Out (P3P)?")]
+        [DefaultValue(true)]
+        public bool P3PNom { get; set; } = true;
+
+        [DisplayName("Danger Zone (Stella and GillStudio Remix)")]
 		[Category("Battle Music")]
 		[Description("Enable Stella and GillStudio's Danger Zone?")]
 		[DefaultValue(false)]
@@ -78,7 +84,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool EdDis { get; set; } = true;
 
-		[DisplayName("It's Going Down Now")]
+        [DisplayName("Danger Zone")]
+        [Category("Battle Music")]
+        [Description("Enable Danger Zone (P3P)?")]
+        [DefaultValue(true)]
+        public bool P3PDis { get; set; } = true;
+
+        [DisplayName("It's Going Down Now")]
 		[Category("Battle Music")]
 		[Description("Enable Atlus's It's Going down now?")]
 		[DefaultValue(false)]
@@ -168,7 +180,19 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(true)]
 		public bool WayOfLife { get; set; } = true;
 
-		[DisplayName("Daytime Music (Inside School/Phase 1): Want to Be Close -Reload-")]
+        [DisplayName("Daytime Music (Outside School/Phase 1): Way of life")]
+        [Category("Music")]
+        [Description("Enable Way of life (P3P) as the daytime music?")]
+        [DefaultValue(true)]
+        public bool WayOfLifeP3P { get; set; } = true;
+
+        [DisplayName("Daytime Music (Outside School/Phase 1): Way of life -Deep inside my mind Remix-")]
+        [Category("Music")]
+        [Description("Enable Way of life -Deep inside my mind Remix- as the daytime music?")]
+        [DefaultValue(true)]
+        public bool WayOfLifeRemix { get; set; } = true;
+
+        [DisplayName("Daytime Music (Inside School/Phase 1): Want to Be Close -Reload-")]
 		[Category("Music")]
 		[Description("Enable Want to Be Close -Reload- as the daytime music inside the school (Phase 1)?")]
 		[DefaultValue(false)]
@@ -186,7 +210,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(false)]
 		public bool GabiTimeSchool { get; set; } = true;
 
-		[DisplayName("Social Link Events: Joy")]
+        [DisplayName("Daytime Music (Inside School/Phase 1): Time")]
+        [Category("Music")]
+        [Description("Enable Time (P3P) as the daytime music inside the school?")]
+        [DefaultValue(true)]
+        public bool TimeSchoolP3P { get; set; } = true;
+
+        [DisplayName("Social Link Events: Joy")]
 		[Category("Music")]
 		[Description("Enable Joy to be the music played during social link events?")]
 		[DefaultValue(false)]
@@ -198,7 +228,13 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(true)]
 		public bool AfterSchool { get; set; } = true;
 
-		[DisplayName("Daytime Music(Inside School/Phase 2): Changing Seasons -Reload-")]
+        [DisplayName("Social Link Events: After School")]
+        [Category("Music")]
+        [Description("Enable After School (P3P) to be the music played during social link events?")]
+        [DefaultValue(true)]
+        public bool AfterSchoolP3P { get; set; } = true;
+
+        [DisplayName("Daytime Music(Inside School/Phase 2): Changing Seasons -Reload-")]
 		[Category("Music")]
 		[Description("Enable Changing Seasons as the daytime music inside the school?")]
 		[DefaultValue(false)]
@@ -215,6 +251,12 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Sun as the daytime music inside the school?")]
         [DefaultValue(false)]
         public bool SunMForm { get; set; } = true;
+
+        [DisplayName("Daytime Music(Inside School/Phase 2): Sun")]
+        [Category("Music")]
+        [Description("Enable Sun (P3P) as the daytime music inside the school?")]
+        [DefaultValue(false)]
+        public bool SunP3P { get; set; } = true;
 
         [DisplayName("Final Battle with NYX: Soul Phrase Final Battle by Karma")]
 		[Category("Music")]
@@ -240,8 +282,14 @@ namespace p3rpc.femc.Configuration
 		[DefaultValue(true)]
 		public bool BMSF { get; set; } = true;
 
+        // Commented out for now but whenever new social link music is added, uncomment this (and change the file/folder names accordingly too)
+        //[DisplayName("Social Link Events: Tender Feelings")]
+        //[Category("Music")]
+        //[Description("Enable Tender Feelings (P3P) to be the music played during social link events?")]
+        //[DefaultValue(false)]
+        //public bool TenderFeelings { get; set; } = true;
 
-		[DisplayName("Gendered Audio")]
+        [DisplayName("Gendered Audio")]
 		[Category("Voice")]
 		[Description("Enable Gio's Gendered Audio?")]
 		[DefaultValue(false)]
@@ -976,7 +1024,7 @@ namespace p3rpc.femc.Configuration
         [Description("The Bustup.")]
         [Category("2D Options")]
         [DefaultValue(BustupType.Esa)]
-        public BustupType BustupTrue { get; set; } = BustupType.Neptune;
+        public BustupType BustupTrue { get; set; } = BustupType.Esa;
 
         public enum BustupType
         {

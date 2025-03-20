@@ -50,7 +50,8 @@ namespace p3rpc.femc
 				{
 					{Path.Combine(path, "Mosq\\link_50.cue"),_configuration.TimeSchool},
 					{Path.Combine(path,   "Gabi\\link_50.cue"),_configuration.GabiTimeSchool},
-					{Path.Combine(path,   "Reload\\link_50.cue"),_configuration.WantClose}
+					{Path.Combine(path,   "Reload\\link_50.cue"),_configuration.WantClose},
+					{Path.Combine(path,   "P3P\\link_50.cue"),_configuration.TimeSchoolP3P},
 				};
 				foreach (KeyValuePair<string, bool> di1m in dayin1music)
 				{
@@ -62,8 +63,9 @@ namespace p3rpc.femc
 				{
 					{Path.Combine(path, "Mosq\\link_51.cue"),_configuration.Sun},
                     {Path.Combine(path, "Mineformer\\link_51.cue"),_configuration.SunMForm},
-                    {Path.Combine(path, "Reload\\link_51.cue"),_configuration.Seasons}
-				};
+                    {Path.Combine(path, "Reload\\link_51.cue"),_configuration.Seasons},
+                    {Path.Combine(path, "P3P\\link_51.cue"),_configuration.SunP3P},
+                };
 				foreach (KeyValuePair<string, bool> di2m in dayin2music)
 				{
 					if (di2m.Value)
@@ -75,7 +77,8 @@ namespace p3rpc.femc
 					{Path.Combine(path, "Mosq\\link_25.cue"),_configuration.WayOfLife},
 					{Path.Combine(path, "Jen\\link_25.cue"),_configuration.WayOfLifeJen},
 					{Path.Combine(path, "SuperMPlush\\link_25.cue"),_configuration.WayLifeVocal},
-                    {Path.Combine(path, "Reload\\link_25.cue"),_configuration.Moon}
+                    {Path.Combine(path, "Reload\\link_25.cue"),_configuration.Moon},
+                    {Path.Combine(path, "P3P\\link_25.cue"),_configuration.WayOfLifeP3P},
                 };
 				foreach (KeyValuePair<string, bool> do1m in dayout1music)
 				{
@@ -99,8 +102,10 @@ namespace p3rpc.femc
 					{Path.Combine(path, "Mosq\\link_38.cue"),_configuration.AfterSchool},
 					{Path.Combine(path, "Mosq\\link_43.cue"),_configuration.AfterSchool},
 					{Path.Combine(path, "Reload\\link_38.cue"),_configuration.Joy},
-					{Path.Combine(path, "Reload\\link_43.cue"),_configuration.Joy}
-				};
+					{Path.Combine(path, "Reload\\link_43.cue"),_configuration.Joy},
+                    {Path.Combine(path, "P3P\\link_38.cue"),_configuration.AfterSchoolP3P},
+                    {Path.Combine(path, "P3P\\link_43.cue"),_configuration.AfterSchoolP3P},
+                };
 				foreach (KeyValuePair<string, bool> sm in sociallinkmusic)
 				{
 					if (sm.Value)
@@ -126,7 +131,7 @@ namespace p3rpc.femc
 					{Path.Combine(path, "Karma\\link_31.cue"),_configuration.KarmaDis},
 					{Path.Combine(path, "Satella&GillStudio\\link_31.cue"),_configuration.SgDis},
 					{Path.Combine(path, "Reload\\link_31.cue"),_configuration.MasterTar},
-					{Path.Combine(path, "EidieK87\\link_31.cue"),_configuration.EidDis}
+					{Path.Combine(path, "P3P\\link_31.cue"),_configuration.P3PDis},
 				};
 				foreach (KeyValuePair<string, bool> ds in disadvantagemusic)
 				{
@@ -140,7 +145,8 @@ namespace p3rpc.femc
 					{Path.Combine(path, "Karma\\link_26.cue"),_configuration.KarmaNom},
 					{Path.Combine(path, "Satella&GillStudio\\link_26.cue"),_configuration.SgNom},
 					{Path.Combine(path, "Reload\\link_26.cue"),_configuration.MassDes},
-				};
+                    {Path.Combine(path, "P3P\\link_26.cue"),_configuration.P3PNom},
+                };
 				foreach (KeyValuePair<string, bool> nm in normalmusic)
 				{
 					if (nm.Value)
