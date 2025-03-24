@@ -241,7 +241,8 @@ namespace p3rpc.femc
 				_modRuntime.AddModule<SocialStats>();
 				_modRuntime.AddModule<Tutorial>();
 				_modRuntime.AddModule<MissingPerson>();
-			}
+                _modRuntime.AddModule<Requests>();
+            }
 			if (_configuration.EnableDateTimePanel) _modRuntime.AddModule<DateTimePanel>();
 			if (_configuration.EnableTextbox)
 			{

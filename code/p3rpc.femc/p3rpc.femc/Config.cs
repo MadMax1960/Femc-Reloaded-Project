@@ -850,6 +850,12 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Missing Person: Sort by Triangle")]
         public ConfigColor MissingSortTriangle { get; set; } = ConfigColor.MellodiColorMid2;
 
+        [DisplayName("Request Back Card Color")]
+        public ConfigColor RequestBackCard { get; set; } = ConfigColor.MellodiColorDark1;
+
+        [DisplayName("Request Back Squares Color")]
+        public ConfigColor RequestBackSquares { get; set; } = ConfigColor.MellodiColorDark3;
+
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]

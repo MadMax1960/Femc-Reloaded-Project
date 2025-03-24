@@ -20,12 +20,13 @@ namespace p3rpc.femc.Components
 
         }
     }
-    public class CampRoot : ModuleBase<FemcContext>
+    public class CampRoot : ModuleAsmInlineColorEdit<FemcContext>
     {
         private string ACmpMainActor_GetCampParamTableCommon_SIG = "E8 ?? ?? ?? ?? 48 8B D8 83 FF 0C"; // inside of ACmpMainActor::DrawBackgroundUpdateInner
         private string UCmpRootDraw_DrawMenuItems_SetColorsASM_SIG = "89 7D ?? 44 8B F8 89 5D ??";
         //private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "0F 10 45 00 41 B8 01 00 00 00";
         private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "E8 ?? ?? ?? ?? 0F 10 45 00 41 B8 01 00 00 00";
+        private string UCmpRootDraw_MenuTransitionColor_SIG = "C7 84 24 ?? ?? ?? ?? FF 2A 00 FF";
         private IHook<ACmpMainActor_GetCampParamTableCommon> _getCmpMainParams;
         private IAsmHook _setMenuItemColorsHook;
         private IAsmHook _setMenuItemColorNoSel;
@@ -58,6 +59,10 @@ namespace p3rpc.femc.Components
                     // hook takes up from 0x1412d1e6f to 0x1412d1e78 (jmp dest, so we're pretty squashed in)
                 };
                 _setMenuItemColorNoSel = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.DoNotExecuteOriginal).Activate();
+            });
+            _context._utils.SigScan(UCmpRootDraw_MenuTransitionColor_SIG, "UCmpRootDraw::MenuTransitionColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.TutorialListEntryColor.ToU32ARGB())));
             });
         }
 
