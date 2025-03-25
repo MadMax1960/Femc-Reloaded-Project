@@ -1050,12 +1050,13 @@ namespace p3rpc.femc.Components
         private unsafe delegate void UUICmpCalendarDraw_DrawUIComponent(UUICmpCalendarDraw* self, float x, float y, float angle); // angle, degrees
     }
 
-    public class CampSystem : ModuleBase<FemcContext>
+    public class CampSystem : ModuleAsmInlineColorEdit<FemcContext>
     {
         private string UCmpSystemDraw_GetMenuColors_SIG = "43 8B 94 ?? ?? ?? ?? ?? 41 0F 28 D4";
         private string UCmpSystemDraw_DrawUnhighlightedMenuOptions_SIG = "48 8B C4 48 89 58 ?? 44 89 48 ?? 44 89 40 ?? 55 56 57 41 54 41 55 41 56 41 57 48 81 EC 40 01 00 00";
         private string UCmpSystemDraw_GetMenuColorNoSelect_SIG = "4D 8B 24 ?? 83 FB 06"; // or edi, 0x13389500
         //private string UCmpSystemDraw_GetMenuColorNoSelect_SIG = "81 CF 00 95 38 13"; // or edi, 0x13389500
+        private string UCmpSystemDraw_DrawCurveColor_SIG = "C7 84 24 ?? ?? ?? ?? C1 29 0B FF";
 
         private IHook<UCmpSystemDraw_DrawUnhighlightedMenuOptions> _drawUnhighlightOptions;
         private IAsmHook _getMenuColorNoSel;
@@ -1079,6 +1080,10 @@ namespace p3rpc.femc.Components
                     $"mov edi, {_context._config.CampMenuItemColorNoSel.ToU32()}"
                 };
                 _getMenuColorNoSel = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemDraw_DrawCurveColor_SIG, "UCmpSystemDraw::DrawCurveColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.TextBoxSpeakerNameTriangle.ToU32ARGB())));
             });
         }
 
