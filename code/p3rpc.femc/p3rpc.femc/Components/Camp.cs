@@ -255,6 +255,8 @@ namespace p3rpc.femc.Components
         private string UCmpEquipDraw_DrawDetailsTypeText_SIG = "81 CB 00 F5 C9 79 E8 ?? ?? ?? ?? 49 8B 8D ?? ?? ?? ?? BA 16 00 00 00 E8 ?? ?? ?? ?? 48 8B 4D ?? F3 41 0F 58 FF C6 44 24 ?? 01 F3 41 0F 5C F4 44 89 64 24 ?? 45 8B C7";
         private string UCmpEquipDraw_DrawDetailsTypeText_SIG_EpAigis = "81 CB 00 F5 C9 79 E8 ?? ?? ?? ?? 48 8B 8E ?? ?? ?? ?? BA 16 00 00 00 E8 ?? ?? ?? ?? 48 8B 4D ?? F3 41 0F 58 FF C6 44 24 ?? 01 F3 41 0F 5C F3 89 7C 24 ?? 45 8B C5";
         private MultiSignature _drawDetailsTypeTextMS;
+        private string UCmpEquipDraw_DrawSquareBackground_SIG = "BA FF 5C 20 0C";
+        private string UCmpEquipDraw_DrawEquipTitleBackground_SIG = "C7 44 24 ?? FF 45 16 0C";
 
         private IHook<UCmpEquipDraw_DrawEquipItemStatsNum> _drawStatsNum;
 
@@ -304,6 +306,14 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(UCmpEquipDraw_DrawItemListEntryName_SIG, "UCmpEquipDraw::DrawItemListEntryName", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampItemStatValueValColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquipDraw_DrawSquareBackground_SIG, "UCmpEquipDraw::DrawSquareBackground", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillTextColorCurrSel.ToU32())));
+            });
+            _context._utils.SigScan(UCmpEquipDraw_DrawEquipTitleBackground_SIG, "UCmpEquipDraw::DrawEquipTitleBackground", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampSocialLinkDark.ToU32())));
             });
         }
         public override void Register()
