@@ -859,6 +859,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Femc Shadow Color")]
         public ConfigColor CampFemcShadow { get; set; } = UICommon.FemcShadowColor;
 
+        [DisplayName("Camp: Highlighted selection color")]
+        public ConfigColor CampHighlightedColor { get; set; } = ConfigColor.Blue;
+
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]

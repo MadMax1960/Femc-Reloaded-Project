@@ -3,6 +3,7 @@ using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Hooks.Definitions.X64;
+using System.Security.Cryptography;
 using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
@@ -46,10 +47,13 @@ namespace p3rpc.femc.Components
         //private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "0F 10 45 00 41 B8 01 00 00 00";
         private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "E8 ?? ?? ?? ?? 0F 10 45 00 41 B8 01 00 00 00";
         private string UCmpRootDraw_MenuTransitionColor_SIG = "C7 84 24 ?? ?? ?? ?? FF 2A 00 FF";
+        private string UCmpRootDraw_DrawHighlightedColor1_SIG = "EB ?? C6 45 ?? BA";
+        private string UCmpRootDraw_DrawHighlightedColor2_SIG = "C7 45 ?? ?? ?? ?? ?? 8B 45 ?? 89 44 24 ?? 44 89 7D ??";
 
         private IHook<ACmpMainActor_GetCampParamTableCommon> _getCmpMainParams;
         private IAsmHook _setMenuItemColorsHook;
         private IAsmHook _setMenuItemColorNoSel;
+        private IAsmHook _DrawHighlightedColor1;
         private IReverseWrapper<UCmpRootDraw_DrawMenuItems_SetColorsNoSel> _setMenuItemColorNoSelWrapper;
 
         private UICommon _uiCommon;
@@ -83,6 +87,21 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(UCmpRootDraw_MenuTransitionColor_SIG, "UCmpRootDraw::MenuTransitionColor", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.TutorialListEntryColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(UCmpRootDraw_DrawHighlightedColor1_SIG, "UCmpRootDraw::DrawHighlightedColor1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp-0x7F], ${_context._config.CampHighlightedColor.R:X}",
+                    $"mov byte [rbp-0x7E], ${_context._config.CampHighlightedColor.G:X}",
+                    $"mov byte [rbp-0x80], ${_context._config.CampHighlightedColor.B:X}",
+                };
+                _DrawHighlightedColor1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpRootDraw_DrawHighlightedColor2_SIG, "UCmpRootDraw::DrawHighlightedColor2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampHighlightedColor.ToU32ARGB())));
             });
         }
 
@@ -604,6 +623,9 @@ namespace p3rpc.femc.Components
 
         private string UCmpStatus_CharacterDetailsHPBarAndLineRemaining_SIG_EpAigis = "B9 00 EC D4 C0";
 
+        private string UCmpStatus_DrawChangeTacticsHighlightedColor_SIG = "8B 05 ?? ?? ?? ?? 48 8D 8D ?? ?? ?? ?? F3 44 0F 10 2D ?? ?? ?? ??";
+
+
         public unsafe CampStats(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             // TODO: Add options to dehardcode status colors per character
@@ -711,7 +733,12 @@ namespace p3rpc.femc.Components
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr =>
                 _context._memory.Write(addr + (nuint)(_context.bIsAigis ? 1 : 2), _context._config.CampStatusInactiveMemberHPBarTartarus.ToU32IgnoreAlpha())));
             });
-
+            _context._utils.SigScan(UCmpStatus_DrawChangeTacticsHighlightedColor_SIG, "UCmpStatus::DrawChangeTacticsHighlightedColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr, (byte)0xB8))); // mov eax, color
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32ARGB())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 5, (byte)0x90))); // nop extra space
+            });
         }
         public override void Register()
         {
@@ -1091,6 +1118,8 @@ namespace p3rpc.femc.Components
         private string UCmpSystemDraw_DrawFemcShadowColor2_SIG = "C7 44 24 ?? FF B7 A4 9A 41 8B D7";
         private string UCmpSystemDraw_DrawFemcShadowColor3_SIG = "C7 44 24 ?? FF B7 A4 9A 41 8B D4";
         private string UCmpSystemDraw_DrawFemcShadowColor4_SIG = "C7 44 24 ?? FF B7 A4 9A 41 8B D5";
+        private string UCmpSystemDraw_DrawHighlightedColor1_SIG = "8B 05 ?? ?? ?? ?? 4C 8D 4D ?? 44 88 7C 24 ?? 4C 8D 45 ?? 0F 28 C6";
+        private string UCmpSystemDraw_DrawHighlightedColor2_SIG = "8B 05 ?? ?? ?? ?? 44 88 7C 24 ??";
 
 
         private IHook<UCmpSystemDraw_DrawUnhighlightedMenuOptions> _drawUnhighlightOptions;
@@ -1136,7 +1165,19 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
             });
-    }
+            _context._utils.SigScan(UCmpSystemDraw_DrawHighlightedColor1_SIG, "UCmpSystemDraw::DrawHighlightedColor1", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr, (byte) 0xB8))); // mov eax, color
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32ARGB())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 5, (byte) 0x90))); // nop extra space
+            });
+            _context._utils.SigScan(UCmpSystemDraw_DrawHighlightedColor2_SIG, "UCmpSystemDraw::DrawHighlightedColor2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr, (byte) 0xB8))); // mov eax, color
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32ARGB())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 5, (byte) 0x90))); // nop extra space
+            });
+        }
 
     public override void Register()
         {
