@@ -7,12 +7,31 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    public class CampCommon : ModuleBase<FemcContext>
+    public class CampCommon : ModuleAsmInlineColorEdit<FemcContext>
     {
+        private string UCmpCommonDraw_DrawFemcShadowColor1_SIG = "C7 44 24 ?? FF B7 A4 9A F3 44 0F 11 5C 24 ?? E8 ?? ?? ?? ?? 0F 28 44 24 ?? 66 0F 7F 45 ?? 66 0F 73 D8 08 66 48 0F 7E C0 48 85 C0 74 ?? F0 FF 40 ?? F3 0F 10 5D ?? 48 8D 4D ?? F3 0F 10 55 ?? 41 8B D4";
+        private string UCmpCommonDraw_DrawFemcShadowColor2_SIG = "C7 44 24 ?? FF B7 A4 9A F3 44 0F 11 5C 24 ?? E8 ?? ?? ?? ?? 0F 28 44 24 ?? 66 0F 7F 45 ?? 66 0F 73 D8 08 66 48 0F 7E C0 48 85 C0 74 ?? F0 FF 40 ?? F3 0F 10 5D ?? 48 8D 4D ?? F3 0F 10 55 ?? BA 02 00 00 00";
+        private string UCmpCommonDraw_DrawFemcShadowColor3_SIG = "C7 44 24 ?? FF B7 A4 9A F3 44 0F 11 5C 24 ?? E8 ?? ?? ?? ?? 0F 28 44 24 ?? 66 0F 7F 45 ?? 66 0F 73 D8 08 66 48 0F 7E C0 48 85 C0 74 ?? F0 FF 40 ?? F3 0F 10 5D ?? 48 8D 4D ?? F3 0F 10 55 ?? BA 03 00 00 00";
+        private string UCmpCommonDraw_DrawFemcShadowColor4_SIG = "C7 44 24 ?? FF B7 A4 9A F3 44 0F 11 5C 24 ?? E8 ?? ?? ?? ?? 41 B8 04 00 00 00";
 
         public unsafe CampCommon(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
-
+            _context._utils.SigScan(UCmpCommonDraw_DrawFemcShadowColor1_SIG, "UCmpCommonDraw::DrawFemcShadowColor1", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
+            });
+            _context._utils.SigScan(UCmpCommonDraw_DrawFemcShadowColor2_SIG, "UCmpCommonDraw::DrawFemcShadowColor2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
+            });
+            _context._utils.SigScan(UCmpCommonDraw_DrawFemcShadowColor3_SIG, "UCmpCommonDraw::DrawFemcShadowColor3", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
+            });
+            _context._utils.SigScan(UCmpCommonDraw_DrawFemcShadowColor4_SIG, "UCmpCommonDraw::DrawFemcShadowColor4", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
+            });
         }
 
         public override void Register()
@@ -27,6 +46,7 @@ namespace p3rpc.femc.Components
         //private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "0F 10 45 00 41 B8 01 00 00 00";
         private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "E8 ?? ?? ?? ?? 0F 10 45 00 41 B8 01 00 00 00";
         private string UCmpRootDraw_MenuTransitionColor_SIG = "C7 84 24 ?? ?? ?? ?? FF 2A 00 FF";
+
         private IHook<ACmpMainActor_GetCampParamTableCommon> _getCmpMainParams;
         private IAsmHook _setMenuItemColorsHook;
         private IAsmHook _setMenuItemColorNoSel;
@@ -1067,6 +1087,11 @@ namespace p3rpc.femc.Components
         private string UCmpSystemDraw_GetMenuColorNoSelect_SIG = "4D 8B 24 ?? 83 FB 06"; // or edi, 0x13389500
         //private string UCmpSystemDraw_GetMenuColorNoSelect_SIG = "81 CF 00 95 38 13"; // or edi, 0x13389500
         private string UCmpSystemDraw_DrawCurveColor_SIG = "C7 84 24 ?? ?? ?? ?? C1 29 0B FF";
+        private string UCmpSystemDraw_DrawFemcShadowColor1_SIG = "C7 44 24 ?? FF B7 A4 9A 41 0F 28 DA";
+        private string UCmpSystemDraw_DrawFemcShadowColor2_SIG = "C7 44 24 ?? FF B7 A4 9A 41 8B D7";
+        private string UCmpSystemDraw_DrawFemcShadowColor3_SIG = "C7 44 24 ?? FF B7 A4 9A 41 8B D4";
+        private string UCmpSystemDraw_DrawFemcShadowColor4_SIG = "C7 44 24 ?? FF B7 A4 9A 41 8B D5";
+
 
         private IHook<UCmpSystemDraw_DrawUnhighlightedMenuOptions> _drawUnhighlightOptions;
         private IAsmHook _getMenuColorNoSel;
@@ -1095,9 +1120,25 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.TextBoxSpeakerNameTriangle.ToU32ARGB())));
             });
-        }
+            _context._utils.SigScan(UCmpSystemDraw_DrawFemcShadowColor1_SIG, "UCmpSystemDraw::DrawFemcShadowColor1", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
+            });
+            _context._utils.SigScan(UCmpSystemDraw_DrawFemcShadowColor2_SIG, "UCmpSystemDraw::DrawFemcShadowColor2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
+            });
+            _context._utils.SigScan(UCmpSystemDraw_DrawFemcShadowColor3_SIG, "UCmpSystemDraw::DrawFemcShadowColor3", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
+            });
+            _context._utils.SigScan(UCmpSystemDraw_DrawFemcShadowColor4_SIG, "UCmpSystemDraw::DrawFemcShadowColor4", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
+            });
+    }
 
-        public override void Register()
+    public override void Register()
         {
             _uiCommon = GetModule<UICommon>();
             _campCommon = GetModule<CampCommon>();

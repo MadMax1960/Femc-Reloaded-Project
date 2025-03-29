@@ -856,6 +856,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Request Back Squares Color")]
         public ConfigColor RequestBackSquares { get; set; } = ConfigColor.MellodiColorDark3;
 
+        [DisplayName("Camp: Femc Shadow Color")]
+        public ConfigColor CampFemcShadow { get; set; } = UICommon.FemcShadowColor;
+
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
