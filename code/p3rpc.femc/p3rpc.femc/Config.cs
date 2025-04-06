@@ -1065,7 +1065,8 @@ namespace p3rpc.femc.Configuration
 			namiweiko,
 			chitu,
             shiosakana,
-            samythecoolkid
+            samythecoolkid,
+            Mixi_xiMi
         }
 
         [DisplayName("Glass Shard")]
