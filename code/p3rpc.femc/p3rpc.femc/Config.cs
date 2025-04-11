@@ -862,6 +862,15 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Highlighted selection color")]
         public ConfigColor CampHighlightedColor { get; set; } = ConfigColor.Blue;
 
+        [DisplayName("Camp: Social Link Arcana selection color")]
+        public ConfigColor CampSocialLinkArcanaHighlightedColor { get; set; } = new ConfigColor(0x6d, 0x03, 0x0d, 0x7F);
+
+        [DisplayName("Camp: System falling words starting color")]
+        public ConfigColor CampSystemStartFallingWordsColor { get; set; } = new ConfigColor(0x2B, 0x00, 0x00, 0xFF);
+
+        [DisplayName("Camp: System falling words end color")]
+        public ConfigColor CampSystemEndFallingWordsColor { get; set; } = new ConfigColor(0xA3, 0x20, 0x26, 0xFF);
+
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
