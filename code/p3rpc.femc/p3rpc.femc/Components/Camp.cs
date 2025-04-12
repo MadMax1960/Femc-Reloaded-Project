@@ -557,6 +557,8 @@ namespace p3rpc.femc.Components
         private string UCmpPersona_UnselArcanaBgTextTrans_SIG = "83 C3 5E C6 44 24 ?? 01 41 0F 28 C9";
         private string UCmpPersona_SelArcanaBgColorTrans_SIG = "0D 00 FF FF 00 0F 11 81 ?? ?? ?? ??";
         private string UCmpPersona_SelArcanaBgTextTrans_SIG = "0D 00 74 0C 00";
+        private string UCmpPersona_HighlightedPersonaColor1_SIG = "0D 00 00 00 EE F3 44 0F 11 64 24 ??";
+        private string UCmpPersona_HighlightedPersonaColor2_SIG = "0D 00 00 00 EE 89 44 24 ??";
 
         private IAsmHook _phraseColor;
         private IAsmHook _nameColor;
@@ -693,7 +695,27 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampPersonaNameColor.ToU32IgnoreAlpha())));
             });
+            _context._utils.SigScan(UCmpPersona_HighlightedPersonaColor1_SIG, "UCmpPersona::HighlightedPersonaColor1", _context._utils.GetDirectAddress, addr =>
+            {
+                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, reducedHighlightColor.ToU32())));
+            });
+            _context._utils.SigScan(UCmpPersona_HighlightedPersonaColor2_SIG, "UCmpPersona::HighlightedPersonaColor2", _context._utils.GetDirectAddress, addr =>
+            {
+                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, reducedHighlightColor.ToU32())));
+            });
         }
+
+        private ConfigColor applyColorReduction(ConfigColor color, float reductionRatio)
+        {
+            byte r = (byte)(color.R * reductionRatio);
+            byte g = (byte)(color.G * reductionRatio);
+            byte b = (byte)(color.B * reductionRatio);
+
+            return new ConfigColor(r, g, b, color.A);
+        }
+
         public override void Register()
         {
             _uiCommon = GetModule<UICommon>();
