@@ -132,6 +132,7 @@ namespace p3rpc.femc
 					{Path.Combine(path, "Satella&GillStudio\\link_31.cue"),_configuration.SgDis},
 					{Path.Combine(path, "Reload\\link_31.cue"),_configuration.MasterTar},
 					{Path.Combine(path, "P3P\\link_31.cue"),_configuration.P3PDis},
+					{Path.Combine(path, "EidieK87\\link_31.cue"),_configuration.EidDis}
 				};
 				foreach (KeyValuePair<string, bool> ds in disadvantagemusic)
 				{
