@@ -1,4 +1,5 @@
 name: "Blue Shorts"
+display_name: "Orange Cutsew"
 
 base:
   mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Skeleton.uasset
