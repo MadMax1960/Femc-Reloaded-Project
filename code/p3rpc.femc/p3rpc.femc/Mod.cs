@@ -67,6 +67,7 @@ namespace p3rpc.femc
 
 
 
+
 		private string modName { get; set; }
 
 		public Mod(ModContext context)
@@ -172,7 +173,7 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
 			
 		unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector")); // just loads actual assets, if this doesnt load femc doesn't load lmfao
-		//_costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Redirector"));
+		_costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Oscar Fortnite")); // Fuck it 
 
 		}
 
