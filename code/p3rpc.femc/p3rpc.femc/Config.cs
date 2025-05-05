@@ -1276,7 +1276,8 @@ namespace p3rpc.femc.Configuration
 			shiosakana,
 			shiosakanaAlt,
 			Nami,
-            AngieDaGorl
+            AngieDaGorl,
+            StupidAle
         }
 
         [DisplayName("AOA Text Options")]
