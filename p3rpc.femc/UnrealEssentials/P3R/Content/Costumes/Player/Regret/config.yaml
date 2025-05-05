@@ -1,7 +1,0 @@
-name: "Virtuadoll Regret"
-
-costume:
-  mesh_path: /Game/Costumes/Player/Regret/costume-mesh.uasset
-  
-face:
-  mesh_path: /Game/Costumes/Player/Regret/face-mesh.uasset

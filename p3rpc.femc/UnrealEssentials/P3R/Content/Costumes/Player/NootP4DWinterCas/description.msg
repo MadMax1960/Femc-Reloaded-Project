@@ -1,1 +1,0 @@
-[uf 0 5 65278][uf 2 1]Outfit of a certain Detective Prince. [n][e]

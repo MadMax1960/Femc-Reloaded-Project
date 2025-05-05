@@ -1,7 +1,0 @@
-name: "WDO Uniform"
-
-costume:
-  mesh_path: /Game/Costumes/Player/Fubukinya/costume-mesh.uasset
-  
-face:
-  mesh_path: /Game/Costumes/Player/Fubukinya/face-mesh.uasset

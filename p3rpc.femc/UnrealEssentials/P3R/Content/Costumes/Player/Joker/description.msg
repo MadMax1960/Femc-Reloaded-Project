@@ -1,1 +1,0 @@
-[uf 0 5 65278][uf 2 1]The outfit of a rebel who rose up against society[n][e]

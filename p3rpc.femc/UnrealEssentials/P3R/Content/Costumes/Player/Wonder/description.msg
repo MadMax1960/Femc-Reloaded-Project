@@ -1,1 +1,0 @@
-[uf 0 5 65278][uf 2 1]Weird, another red haired wildcard trapped on a mobile device? [n][e]
