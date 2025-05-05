@@ -1,0 +1,4 @@
+name: Hatsune Miku
+
+costume:
+  mesh_path: /P3R/Content/Costumes/Player/Miku/costume-mesh.uasset
