@@ -1,0 +1,10 @@
+name: "Nightwear"
+
+costume:
+  mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Nightwear.uasset
+
+hair:
+  mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Hair.uasset
+
+face:
+  mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Face.uasset
