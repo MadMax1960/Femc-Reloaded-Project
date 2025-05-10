@@ -24,7 +24,7 @@ namespace p3rpc.femc
 			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C502", "/Game/Xrd777/Characters/Player/PC0005/Models/SK_PC0005_C502"); // mitsuru shujin redirect
 			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_C504", "/Game/Xrd777/Characters/Player/PC0006/Models/SK_PC0006_C504");
 			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_H504", "/Game/Xrd777/Characters/Player/FemC/Femc_Hair"); // forgor velvet hair
-			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_Title_00", "/Game/Xrd777/Characters/Player/FemC/malcomlni_n_thine_midel"); // forgor velvet hair
+			this.RedirectAsset("/Game/Xrd777/Characters/Player/PC0001/Models/SK_PC0001_Title_00", "/Game/Xrd777/Characters/Player/FemC/malcomlni_n_thine_midel"); // title model
 		}
 
 		private void RedirectAsset(string ogAssetPath, string newAssetPath)
