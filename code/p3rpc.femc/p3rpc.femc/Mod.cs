@@ -166,9 +166,6 @@ namespace p3rpc.femc
 		else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
 
-		if (_configuration.SkirtEtcFix) // loads skeleton fix
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
-
 		if (_configuration.NagiWeap) // loads naginata
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
 			
