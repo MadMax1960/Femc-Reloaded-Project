@@ -1,0 +1,13 @@
+name: "Hot Springs Towel"
+
+base:
+  mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Skeleton.uasset
+
+costume:
+  mesh_path: /Game/Xrd777/Characters/Player/PC0002/SK_PC0002_C154.uasset
+
+hair:
+  mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Hair.uasset
+
+face:
+  mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Face.uasset
