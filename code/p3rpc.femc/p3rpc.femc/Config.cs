@@ -1366,7 +1366,8 @@ namespace p3rpc.femc.Configuration
 			shiosakana,
 			shiosakanaAlt,
 			Nami,
-            AngieDaGorl
+            AngieDaGorl,
+            StupidAle
         }
 
         [DisplayName("AOA Text Options")]
@@ -1557,13 +1558,6 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 14)]
         [DefaultValue(true)]
         public bool NagiWeap { get; set; } = true;
-
-		[DisplayName("Skirt, Face, Etc Fix")]
-		[Description("THIS MIGHT BREAK SOME STUFF, ITS A TEST FOR PEOPLE WHO WANT TO, PLEASE GO IN EXPECTING ERRORS")]
-		[Category("3D Options")]
-        [Display(Order = 15)]
-        [DefaultValue(true)]
-		public bool SkirtEtcFix { get; set; } = true;
 
 		[DisplayName("Theo")]
 		[Category("Theo")]
