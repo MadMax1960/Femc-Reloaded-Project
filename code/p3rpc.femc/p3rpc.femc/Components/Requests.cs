@@ -15,40 +15,63 @@ namespace p3rpc.femc.Components
     {
         private string AUIRequest_BackCardColor_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? BA 01 00 00 00";
         private string AUIRequest_BackSquaresColor_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 0F 28 45 ??";
-        private string AUIRequest_InfoBackColor_SIG = "E8 ?? ?? ?? ?? BA 04 00 00 00 89 45 ??";
-        private string AUIRequest_InfoCampMenuChairColor_SIG = "E8 ?? ?? ?? ?? 48 8B 8E ?? ?? ?? ?? 41 0F 28 D8 C6 44 24 ?? 00 41 0F 28 D3 C6 44 24 ?? 01 BA 71 00 00 00 F3 44 0F 11 4C 24 ?? F3 44 0F 11 4C 24 ?? F3 44 0F 11 64 24 ?? 89 7C 24 ?? 48 89 5C 24 ?? 89 44 24 ?? F3 0F 11 7C 24 ?? E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ??";
-        private string AUIRequest_InfoCampMenuChairAndKotone_SIG = "E8 ?? ?? ?? ?? C6 44 24 ?? 00 F3 0F 10 5D ??";
+        private string AUIRequest_DetailBackColor_SIG = "E8 ?? ?? ?? ?? BA 04 00 00 00 89 45 ??";
+        private string AUIRequest_DetailCampMenuChairColor_SIG = "E8 ?? ?? ?? ?? 48 8B 8E ?? ?? ?? ?? 41 0F 28 D8 C6 44 24 ?? 00 41 0F 28 D3 C6 44 24 ?? 01 BA 71 00 00 00 F3 44 0F 11 4C 24 ?? F3 44 0F 11 4C 24 ?? F3 44 0F 11 64 24 ?? 89 7C 24 ?? 48 89 5C 24 ?? 89 44 24 ?? F3 0F 11 7C 24 ?? E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ??";
+        private string AUIRequest_DetailCampMenuChairAndKotone_SIG = "E8 ?? ?? ?? ?? C6 44 24 ?? 00 F3 0F 10 5D ??";
         private string AUIRequest_BackCampMenuChairAndKotone_SIG = "E8 ?? ?? ?? ?? 48 8B 8E ?? ?? ?? ?? 41 0F 28 D8 C6 44 24 ?? 00 41 0F 28 D3 C6 44 24 ?? 01 BA 71 00 00 00 F3 44 0F 11 4C 24 ?? F3 44 0F 11 4C 24 ?? F3 44 0F 11 64 24 ?? 89 7C 24 ?? 48 89 5C 24 ?? 89 44 24 ?? F3 0F 11 7C 24 ?? E8 ?? ?? ?? ?? 48 8B BC 24 ?? ?? ?? ??";
-        private string AUIRequest_InfoCompletedBack_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";
-        private string AUIRequest_InfoCompleted_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 48 8D 8E ?? ?? ?? ??";
-        private string AUIRequest_InfoRightDownCorner_SIG = "E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ?? BA 03 00 00 00 F3 0F 59 35 ?? ?? ?? ??";
-        private string AUIRequest_InfoUnknownReward_SIG = "E8 ?? ?? ?? ?? F3 44 0F 58 0D ?? ?? ?? ?? F3 44 0F 58 05 ?? ?? ?? ??";
-        private string AUIRequest_InfoEarnedTag_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? F3 44 0F 58 CE";
+        private string AUIRequest_DetailCompletedBack_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";
+        private string AUIRequest_DetailCompleted_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 48 8D 8E ?? ?? ?? ??";
+        private string AUIRequest_DetailRightDownCorner_SIG = "E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ?? BA 03 00 00 00 F3 0F 59 35 ?? ?? ?? ??";
+        private string AUIRequest_DetailUnknownReward_SIG = "E8 ?? ?? ?? ?? F3 44 0F 58 0D ?? ?? ?? ?? F3 44 0F 58 05 ?? ?? ?? ??";
+        private string AUIRequest_DetailEarnedTag_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? F3 44 0F 58 CE";
         private string AUIRequest_TaskTitle_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 44 0F 11 4C 24 ?? 48 8B D6 89 44 24 ?? E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";
         private string AUIRequest_UnknownTaskDescription_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 44 0F 11 4C 24 ?? 48 8B D6 89 44 24 ?? E8 ?? ?? ?? ?? E9 ?? ?? ?? ?? 48 8B 8F ?? ?? ?? ?? 4C 89 B4 24 ?? ?? ?? ?? 44 0F 29 94 24 ?? ?? ?? ??";
-        private string AUIRequest_InfoRequestDetails_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 F3 44 0F 11 44 24 ??";
-        private string AUIRequest_InfoUnknownTask_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 44 0F 11 4C 24 ?? 48 8B D6 89 44 24 ?? E8 ?? ?? ?? ?? E9 ?? ?? ?? ?? 48 8B 8F ?? ?? ?? ?? 4C 89 B4 24 ?? ?? ?? ?? 44 0F 29 9C 24 ?? ?? ?? ??";
+        private string AUIRequest_DetailRequestDetails_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 F3 44 0F 11 44 24 ??";
+        private string AUIRequest_DetailUnknownTask_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 44 0F 11 4C 24 ?? 48 8B D6 89 44 24 ?? E8 ?? ?? ?? ?? E9 ?? ?? ?? ?? 48 8B 8F ?? ?? ?? ?? 4C 89 B4 24 ?? ?? ?? ?? 44 0F 29 9C 24 ?? ?? ?? ??";
+        private string AUIRequest_RequestsCursorColor_SIG = "E8 ?? ?? ?? ?? F3 0F 10 5E ?? 48 8D 4E ??";
+        private string AUIRequest_RequestsDetailCursorColor_SIG = "E8 ?? ?? ?? ?? F3 0F 10 9F ?? ?? ?? ?? 48 8D 8F ?? ?? ?? ?? F3 44 0F 59 35 ?? ?? ?? ??";
+
+        private string AUIRequest_DifficultyRankUp_SIG = "E8 ?? ?? ?? ?? 4C 8B 83 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 44 0F 11 55 ?? 49 8B D6";
+        private string AUIRequest_DifficultyRankDown_SIG = "E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ?? 49 8B CE F3 0F 10 1D ?? ?? ?? ??";
+        private string AUIRequest_DifficultyIndicatorButterfly1_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 06";
+        private string AUIRequest_DifficultyIndicatorButterfly2_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 83 ?? ?? ?? ?? 41 B0 7F";
+        private string AUIRequest_DifficultyIndicatorButterfly34_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 83 ?? ?? ?? ?? 41 B0 73 B2 2D B1 0E E8 ?? ?? ?? ??";
+        private string AUIRequest_DifficultyIndicatorButterfly5_SIG = "E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 0F 57 C9 F3 0F 10 B5 ?? ?? ?? ??";
+        private string AUIRequest_DifficultyFont_SIG = "E8 ?? ?? ?? ?? F3 44 0F 58 15 ?? ?? ?? ?? F3 44 0F 58 1D ?? ?? ?? ?? 4C 8B 83 ?? ?? ?? ??";
+
+        private string AUIRequest_FontAndStatusTagBackground_SIG = "E8 ?? ?? ?? ?? 41 B0 FC 44 0F B6 CF 41 0F B6 D0 B1 67 44 8B F8";
+        private string AUIRequest_FontStatusTag_SIG = "E8 ?? ?? ?? ?? 41 B0 FC 89 44 24 ??";
+        private string AUIRequest_StatusTagUnderlay_SIG = "E8 ?? ?? ?? ?? 33 D2 89 85 ?? ?? ?? ?? 48 8B 83 ?? ?? ?? ??";
 
         private IAsmHook _BackCardColor;
         private IAsmHook _BackSquaresColor;
-        private IAsmHook _InfoBackColor;
-        private IAsmHook _InfoCampMenuChairColor;
-        private IAsmHook _InfoCampMenuChairAndKotone;
+        private IAsmHook _DetailBackColor;
+        private IAsmHook _DetailCampMenuChairColor;
+        private IAsmHook _DetailCampMenuChairAndKotone;
         private IAsmHook _BackCampMenuChairAndKotone;
-        private IAsmHook _InfoCompletedBack;
-        private IAsmHook _InfoCompleted;
-        private IAsmHook _InfoRightDownCorner;
-        private IAsmHook _InfoUnknownReward;
-        private IAsmHook _InfoEarnedTag;
+        private IAsmHook _DetailCompletedBack;
+        private IAsmHook _DetailCompleted;
+        private IAsmHook _DetailRightDownCorner;
+        private IAsmHook _DetailUnknownReward;
+        private IAsmHook _DetailEarnedTag;
         private IAsmHook _TaskTitle;
         private IAsmHook _UnknownTaskDescription;
-        private IAsmHook _InfoRequestDetails;
-        private IAsmHook _InfoUnknownTask;
+        private IAsmHook _DetailRequestDetails;
+        private IAsmHook _DetailUnknownTask;
+        private IAsmHook _RequestsCursorColor;
+        private IAsmHook _RequestsDetailCursorColor;
+        private IAsmHook _DifficultyRankUp;
+        private IAsmHook _DifficultyRankDown;
+        private IAsmHook _DifficultyIndicatorButterfly;
+        private IAsmHook _DifficultyFont;
+        private IAsmHook _FontAndStatusTagBackground;
+        private IAsmHook _FontStatusTag;
+        private IAsmHook _StatusTagUnderlay;
 
         /*
-        private string AUIRequest_InfoColor_SIG = "E8 ?? ?? ?? ?? BA 04 00 00 00 89 45 ??";
+        private string AUIRequest_DetailColor_SIG = "E8 ?? ?? ?? ?? BA 04 00 00 00 89 45 ??";
         
-        private IAsmHook _InfoColor;
+        private IAsmHook _DetailColor;
         */
 
         public unsafe Requests(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
@@ -75,51 +98,88 @@ namespace p3rpc.femc.Components
                 };
                 _BackSquaresColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            _context._utils.SigScan(AUIRequest_InfoBackColor_SIG, "AUIRequest::InfoBackColor", _context._utils.GetDirectAddress, addr =>
+            _context._utils.SigScan(AUIRequest_DetailBackColor_SIG, "AUIRequest::DetailBackColor", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.RequestBackSquares.B:X}",
-                    $"mov dl, ${_context._config.RequestBackSquares.G:X}",
-                    $"mov cl, ${_context._config.RequestBackSquares.R:X}"
+                    $"mov r8b, ${_context._config.RequestBackCardDetail.B:X}",
+                    $"mov dl, ${_context._config.RequestBackCardDetail.G:X}",
+                    $"mov cl, ${_context._config.RequestBackCardDetail.R:X}"
                 };
-                _InfoBackColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _DetailBackColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            _context._utils.SigScan(AUIRequest_InfoCampMenuChairColor_SIG, "AUIRequest::InfoCampMenuChairColor", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    $"mov r8b, ${_context._config.RequestBackCard.B:X}",
-                    $"mov dl, ${_context._config.RequestBackCard.G:X}",
-                    $"mov cl, ${_context._config.RequestBackCard.R:X}"
-                };
-                _InfoCampMenuChairColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
-            _context._utils.SigScan(AUIRequest_InfoCampMenuChairAndKotone_SIG, "AUIRequest::InfoCampMenuChairAndKotone", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    $"mov r8b, ${_context._config.RequestBackCard.B:X}",
-                    $"mov dl, ${_context._config.RequestBackCard.G:X}",
-                    $"mov cl, ${_context._config.RequestBackCard.R:X}"
-                };
-                _InfoCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
+
             _context._utils.SigScan(AUIRequest_BackCampMenuChairAndKotone_SIG, "AUIRequest::BackCampMenuChairAndKotone", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.RequestBackSquares.B:X}",
-                    $"mov dl, ${_context._config.RequestBackSquares.G:X}",
-                    $"mov cl, ${_context._config.RequestBackSquares.R:X}"
+                    $"mov r8b, ${_context._config.QuestFemcChairsShadow.B:X}",
+                    $"mov dl, ${_context._config.QuestFemcChairsShadow.G:X}",
+                    $"mov cl, ${_context._config.QuestFemcChairsShadow.R:X}"
                 };
                 _BackCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            _context._utils.SigScan(AUIRequest_InfoCompletedBack_SIG, "AUIRequest::InfoCompletedBack", _context._utils.GetDirectAddress, addr =>
+
+            _context._utils.SigScan(AUIRequest_DetailCampMenuChairColor_SIG, "AUIRequest::DetailCampMenuChairColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.QuestFemcChairsShadow.B:X}",
+                    $"mov dl, ${_context._config.QuestFemcChairsShadow.G:X}",
+                    $"mov cl, ${_context._config.QuestFemcChairsShadow.R:X}"
+                };
+                _DetailCampMenuChairColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DetailCampMenuChairAndKotone_SIG, "AUIRequest::DetailCampMenuChairAndKotone", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDetailFemcChairsShadow.B:X}",
+                    $"mov dl, ${_context._config.RequestDetailFemcChairsShadow.G:X}",
+                    $"mov cl, ${_context._config.RequestDetailFemcChairsShadow.R:X}"
+                };
+                _DetailCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            
+            _context._utils.SigScan(AUIRequest_DetailCompletedBack_SIG, "AUIRequest::DetailCompletedBack", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDetailBackgroundCompleted.B:X}",
+                    $"mov dl, ${_context._config.RequestDetailBackgroundCompleted.G:X}",
+                    $"mov cl, ${_context._config.RequestDetailBackgroundCompleted.R:X}"
+                };
+                _DetailCompletedBack = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUIRequest_DetailCompleted_SIG, "AUIRequest::DetailCompleted", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDetailCompleted.B:X}",
+                    $"mov dl, ${_context._config.RequestDetailCompleted.G:X}",
+                    $"mov cl, ${_context._config.RequestDetailCompleted.R:X}"
+                };
+                _DetailCompleted = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUIRequest_DetailRightDownCorner_SIG, "AUIRequest::DetailRightDownCorner", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestBackCardRightDownDetail.B:X}",
+                    $"mov dl, ${_context._config.RequestBackCardRightDownDetail.G:X}",
+                    $"mov cl, ${_context._config.RequestBackCardRightDownDetail.R:X}"
+                };
+                _DetailRightDownCorner = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUIRequest_DetailUnknownReward_SIG, "AUIRequest::DetailUnknownReward", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
@@ -128,60 +188,27 @@ namespace p3rpc.femc.Components
                     $"mov dl, ${_context._config.RequestBackCard.G:X}",
                     $"mov cl, ${_context._config.RequestBackCard.R:X}"
                 };
-                _InfoCompletedBack = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _DetailUnknownReward = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            _context._utils.SigScan(AUIRequest_InfoCompleted_SIG, "AUIRequest::InfoCompleted", _context._utils.GetDirectAddress, addr =>
+            _context._utils.SigScan(AUIRequest_DetailEarnedTag_SIG, "AUIRequest::DetailEarnedTag", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.RequestBackSquares.B:X}",
-                    $"mov dl, ${_context._config.RequestBackSquares.G:X}",
-                    $"mov cl, ${_context._config.RequestBackSquares.R:X}"
+                    $"mov r8b, ${_context._config.RequestDetailEarned.B:X}",
+                    $"mov dl, ${_context._config.RequestDetailEarned.G:X}",
+                    $"mov cl, ${_context._config.RequestDetailEarned.R:X}"
                 };
-                _InfoCompleted = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
-            _context._utils.SigScan(AUIRequest_InfoRightDownCorner_SIG, "AUIRequest::InfoRightDownCorner", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    $"mov r8b, ${_context._config.RequestBackSquares.B:X}",
-                    $"mov dl, ${_context._config.RequestBackSquares.G:X}",
-                    $"mov cl, ${_context._config.RequestBackSquares.R:X}"
-                };
-                _InfoRightDownCorner = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
-            _context._utils.SigScan(AUIRequest_InfoUnknownReward_SIG, "AUIRequest::InfoUnknownReward", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    $"mov r8b, ${_context._config.RequestBackCard.B:X}",
-                    $"mov dl, ${_context._config.RequestBackCard.G:X}",
-                    $"mov cl, ${_context._config.RequestBackCard.R:X}"
-                };
-                _InfoUnknownReward = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
-            _context._utils.SigScan(AUIRequest_InfoEarnedTag_SIG, "AUIRequest::InfoEarnedTag", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    $"mov r8b, ${_context._config.RequestBackSquares.B:X}",
-                    $"mov dl, ${_context._config.RequestBackSquares.G:X}",
-                    $"mov cl, ${_context._config.RequestBackSquares.R:X}"
-                };
-                _InfoEarnedTag = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _DetailEarnedTag = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             _context._utils.SigScan(AUIRequest_TaskTitle_SIG, "AUIRequest::TaskTitle", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.RequestBackCard.B:X}",
-                    $"mov dl, ${_context._config.RequestBackCard.G:X}",
-                    $"mov cl, ${_context._config.RequestBackCard.R:X}"
+                    $"mov r8b, ${_context._config.RequestTaskFont.B:X}",
+                    $"mov dl, ${_context._config.RequestTaskFont.G:X}",
+                    $"mov cl, ${_context._config.RequestTaskFont.R:X}"
                 };
                 _TaskTitle = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
@@ -196,7 +223,18 @@ namespace p3rpc.femc.Components
                 };
                 _UnknownTaskDescription = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            _context._utils.SigScan(AUIRequest_InfoRequestDetails_SIG, "AUIRequest::InfoRequestDetails", _context._utils.GetDirectAddress, addr =>
+            _context._utils.SigScan(AUIRequest_DetailRequestDetails_SIG, "AUIRequest::DetailRequestDetails", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDetailsFont.B:X}",
+                    $"mov dl, ${_context._config.RequestDetailsFont.G:X}",
+                    $"mov cl, ${_context._config.RequestDetailsFont.R:X}"
+                };
+                _DetailRequestDetails = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUIRequest_DetailUnknownTask_SIG, "AUIRequest::DetailUnknownTask", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
@@ -205,21 +243,176 @@ namespace p3rpc.femc.Components
                     $"mov dl, ${_context._config.RequestBackCard.G:X}",
                     $"mov cl, ${_context._config.RequestBackCard.R:X}"
                 };
-                _InfoRequestDetails = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _DetailUnknownTask = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            _context._utils.SigScan(AUIRequest_InfoUnknownTask_SIG, "AUIRequest::InfoUnknownTask", _context._utils.GetDirectAddress, addr =>
+            
+            
+            _context._utils.SigScan(AUIRequest_RequestsCursorColor_SIG, "AUIRequest::RequestsCursorColor", _context._utils.GetDirectAddress, addr =>
+            {
+                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
+
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${reducedHighlightColor.B:X}",
+                    $"mov dl, ${reducedHighlightColor.G:X}",
+                    $"mov cl, ${reducedHighlightColor.R:X}"
+                };
+                _RequestsCursorColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_RequestsDetailCursorColor_SIG, "AUIRequest::RequestsDetailCursorColor", _context._utils.GetDirectAddress, addr =>
+            {
+                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
+
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${reducedHighlightColor.B:X}",
+                    $"mov dl, ${reducedHighlightColor.G:X}",
+                    $"mov cl, ${reducedHighlightColor.R:X}"
+                };
+                _RequestsDetailCursorColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DifficultyRankUp_SIG, "AUIRequest::DifficultyRankUp", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.RequestBackCard.B:X}",
-                    $"mov dl, ${_context._config.RequestBackCard.G:X}",
-                    $"mov cl, ${_context._config.RequestBackCard.R:X}"
+                    $"mov r8b, ${_context._config.RequestDifficultyRankUp.B:X}",
+                    $"mov dl, ${_context._config.RequestDifficultyRankUp.G:X}",
+                    $"mov cl, ${_context._config.RequestDifficultyRankUp.R:X}"
                 };
-                _InfoUnknownTask = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _DifficultyRankUp = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
+
+            _context._utils.SigScan(AUIRequest_DifficultyRankDown_SIG, "AUIRequest::DifficultyRankDown", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDifficultyRankDown.B:X}",
+                    $"mov dl, ${_context._config.RequestDifficultyRankDown.G:X}",
+                    $"mov cl, ${_context._config.RequestDifficultyRankDown.R:X}"
+                };
+                _DifficultyRankDown = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DifficultyIndicatorButterfly1_SIG, "AUIRequest::DifficultyIndicatorButterfly1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDifficultyIndicator.B:X}",
+                    $"mov dl, ${_context._config.RequestDifficultyIndicator.G:X}",
+                    $"mov cl, ${_context._config.RequestDifficultyIndicator.R:X}"
+                };
+                _DifficultyIndicatorButterfly = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DifficultyIndicatorButterfly2_SIG, "AUIRequest::DifficultyIndicatorButterfly2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDifficultyIndicator.B:X}",
+                    $"mov dl, ${_context._config.RequestDifficultyIndicator.G:X}",
+                    $"mov cl, ${_context._config.RequestDifficultyIndicator.R:X}"
+                };
+                _DifficultyIndicatorButterfly = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DifficultyIndicatorButterfly34_SIG, "AUIRequest::DifficultyIndicatorButterfly34", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDifficultyIndicator.B:X}",
+                    $"mov dl, ${_context._config.RequestDifficultyIndicator.G:X}",
+                    $"mov cl, ${_context._config.RequestDifficultyIndicator.R:X}"
+                };
+                _DifficultyIndicatorButterfly = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _DifficultyIndicatorButterfly = _context._hooks.CreateAsmHook(function, addr + 21, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DifficultyIndicatorButterfly5_SIG, "AUIRequest::DifficultyIndicatorButterfly5", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDifficultyIndicator.B:X}",
+                    $"mov dl, ${_context._config.RequestDifficultyIndicator.G:X}",
+                    $"mov cl, ${_context._config.RequestDifficultyIndicator.R:X}"
+                };
+                _DifficultyIndicatorButterfly = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DifficultyFont_SIG, "AUIRequest::DifficultyFont", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDifficultyFont.B:X}",
+                    $"mov dl, ${_context._config.RequestDifficultyFont.G:X}",
+                    $"mov cl, ${_context._config.RequestDifficultyFont.R:X}"
+                };
+                _DifficultyFont = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_FontStatusTag_SIG, "AUIRequest::FontStatusTag", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestStatusTagFont.B:X}",
+                    $"mov dl, ${_context._config.RequestStatusTagFont.G:X}",
+                    $"mov cl, ${_context._config.RequestStatusTagFont.R:X}"
+                };
+                _FontStatusTag = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_FontAndStatusTagBackground_SIG, "AUIRequest::FontAndStatusTagBackground", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    "cmp cl, 0x67",
+                    "jne not_pink",
+                    $"mov r8b, ${_context._config.RequestStatusFontTagBack.B:X}",
+                    $"mov dl, ${_context._config.RequestStatusFontTagBack.G:X}",
+                    $"mov cl, ${_context._config.RequestStatusFontTagBack.R:X}",
+                    "not_pink:"
+                };
+                _FontAndStatusTagBackground = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_FontStatusTag_SIG, "AUIRequest::FontStatusTag", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestStatusTagFont.B:X}",
+                    $"mov dl, ${_context._config.RequestStatusTagFont.G:X}",
+                    $"mov cl, ${_context._config.RequestStatusTagFont.R:X}"
+                };
+                _FontStatusTag = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_StatusTagUnderlay_SIG, "AUIRequest::StatusTagUnderlay", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestStatusTagUnderlay.B:X}",
+                    $"mov dl, ${_context._config.RequestStatusTagUnderlay.G:X}",
+                    $"mov cl, ${_context._config.RequestStatusTagUnderlay.R:X}"
+                };
+                _StatusTagUnderlay = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
             /*
-            _context._utils.SigScan(AUIRequest_InfoColor_SIG, "AUIRequest::InfoColor", _context._utils.GetDirectAddress, addr =>
+            _context._utils.SigScan(AUIRequest_DetailColor_SIG, "AUIRequest::DetailColor", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
@@ -228,9 +421,18 @@ namespace p3rpc.femc.Components
                     $"mov dl, ${_context._config.RequestBackCard.G:X}",
                     $"mov cl, ${_context._config.RequestBackCard.R:X}"
                 };
-                _InfoColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _DetailColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             */
+        }
+
+        private ConfigColor applyColorReduction(ConfigColor color, float reductionRatio)
+        {
+            byte r = (byte)(color.R * reductionRatio);
+            byte g = (byte)(color.G * reductionRatio);
+            byte b = (byte)(color.B * reductionRatio);
+
+            return new ConfigColor(r, g, b, color.A);
         }
 
         public override void Register() { }
