@@ -259,11 +259,11 @@ namespace p3rpc.femc.Components
             }
             _context._utils.SigScan(ACmpMainActor_SetHeroTexTintItemMenuTop_SIG, "ACmpMainActor::SetHeroTexTintItemMenuTop", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillTextColor.ToU32())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampItemMenuCharacterTopColor.ToU32())));
             });
             _context._utils.SigScan(ACmpMainActor_SetHeroTexTintItemMenuBottom_SIG, "ACmpMainActor::SetHeroTexTintItemMenuBottom", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillTextColor.ToU32())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampItemMenuCharacterBottomColor.ToU32())));
             });
             _context._utils.SigScan(UCmpItemDraw_SetNoItemColor_SIG, "UCmpItemDraw::SetNoItemColor", _context._utils.GetDirectAddress, addr =>
             {
