@@ -37,6 +37,33 @@ namespace p3rpc.femc.Components
         private string APersonaStatusDraw_DrawCommentaryText_SIG = "E8 ?? ?? ?? ?? 0F B6 87 ?? ?? ?? ?? 81 CB 00 FF FF FF";
         private string APersonaStatusDraw_GetTextPosRowLayoutDatatable_SIG = "E8 ?? ?? ?? ?? 48 85 C0 74 ?? F3 0F 2C 70 ?? 0F B6 87 ?? ?? ?? ??";
 
+        private string APersonaStatusDraw_DrawNone_SIG = "C7 45 ?? 9F 83 83 FF";
+        private string APersonaStatusDraw_SelectedSkillFont_SIG = "C7 45 ?? 3B 02 00 FF E8 ?? ?? ?? ?? 49 8B 97 ?? ?? ?? ??";
+        private string APersonaStatusDraw_SwapSelectedSkillFontBg_SIG = "C7 45 ?? FE BA 8D FF";
+        private string APersonaStatusDraw_SwapUnselectedSkillFont_SIG = "C7 45 ?? 9E 52 3C FF 48 89 85 ?? ?? ?? ?? 48 85 C0 74 ?? F0 FF 40 ?? 8B 85 ?? ?? ?? ?? 48 8D 4D ?? 89 85 ?? ?? ?? ?? 41 0F 28 D2 41 0F B6 87 ?? ?? ?? ?? 41 0F 28 CC F3 0F 58 15 ?? ?? ?? ?? F3 0F 58 0D ?? ?? ?? ?? 88 44 24 ?? 41 0F 28 D9 8B 45 ?? 89 44 24 ?? 48 8D 85 ?? ?? ?? ?? 48 89 44 24 ?? E8 ?? ?? ?? ?? 41 0F B6 87 ?? ?? ?? ?? 41 B1 05 88 44 24 ?? 41 B0 04 44 88 6C 24 ?? 33 D2 C6 44 24 ?? 01 49 8B CC 44 88 6C 24 ?? E8 ?? ?? ?? ?? 48 8B 45 ??";
+        private string APersonaStatusDraw_SwapUnselectedSkillBg_SIG = "C7 45 ?? D1 7A 62 FF";
+
+        private string APersonaStatusDraw_InheritableSkillTick_SIG = "C7 45 ?? B2 8C 31 FF";
+        private string APersonaStatusDraw_InheritableSkillTickBg_SIG = "C7 45 ?? 71 3A 36 FF";
+
+        private string APersonaStatusDraw_GetSkillListNextSkillZero_SIG = "C7 44 24 ?? AE 6A 0A FF";
+        private string APersonaStatusDraw_GetSkillListNextSkillZeroNumber_SIG = "C7 44 24 ?? FF D3 00 FF 8B 44 24 ??";
+
+        private string APersonaStatusDraw_NextSkillsQuestionMarkOutterOutline_SIG = "C7 45 ?? C6 0E 00 FF E8 ?? ?? ?? ?? F3 41 0F 58 F2";
+        private string APersonaStatusDraw_NextSkillsQuestionMarkInnerOutline_SIG = "C7 45 ?? FF D3 00 FF 4C 8D 75 ?? 48 63 FB";
+
+        private string APersonaStatusDraw_HighlightedSkillCursor_SIG = "88 5C 24 ?? F3 41 0F 58 87 ?? ?? ?? ??";
+        private string APersonaStatusDraw_HighlightedSkillCursorNextSkill_SIG = "C7 45 ?? 29 00 EA FF";
+        private string APersonaStatusDraw_HighlightedSkillCursorSkillCard_SIG = "40 88 B5 ?? ?? ?? ?? E8 ?? ?? ?? ?? EB ??";
+
+        private string APersonaStatusDraw_SkillCardBgColor_SIG = "40 88 74 24 ?? E8 ?? ?? ?? ?? 40 88 74 24 ??";
+        private string APersonaStatusDraw_SkillCardSkillBgColor_SIG = "8B 44 24 ?? 41 0F 28 D7 F3 0F 58 15 ?? ?? ?? ??";
+
+        private string APersonaStatusDraw_SkillDescriptionBg_SIG = "E8 ?? ?? ?? ?? 0F B6 87 ?? ?? ?? ?? 41 0F 28 D0 F3 0F 5C 15 ?? ?? ?? ??";
+        private string APersonaStatusDraw_SkillDescriptionCornerBg_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 15 ?? ?? ?? ?? BA 15 00 00 00";
+        private string APersonaStatusDraw_SkillDescriptionCornerSkillFontBg_SIG = "F3 0F 11 44 24 ?? F3 41 0F 58 CA F3 44 0F 11 4C 24 ??";
+
+
         //private static float[] PersonaInfoBgPoints = { 0, 0, 1270.5f, 0, 1732.5f, 0, 2310, 0, 0, 224, 1270.5f, 24, 1732.5f, 224, 2310, 224 };
         private unsafe float* PersonaInfoBgPoints;
         public struct PersonaStatusGradientLine
@@ -61,6 +88,13 @@ namespace p3rpc.femc.Components
         private APersonaStatusDraw_DrawGradientRectangle _drawGradRect;
 
         private IAsmHook _drawAttributeOutlineColor;
+        private IAsmHook _HighlightedSkillCursor;
+        private IAsmHook _HighlightedSkillCursorSkillCard;
+        private IAsmHook _SkillCardBgColor;
+        private IAsmHook _SkillCardSkillBgColor;
+        private IAsmHook _SkillDescriptionBg;
+        private IAsmHook _SkillDescriptionCornerBg;
+        private IAsmHook _SkillDescriptionCornerSkillFontBg;
 
         private IHook<APersonaStatusDraw_DrawDefaultStatusParameterInner> _drawStatParam;
         private IHook<APersonaStatusDraw_DrawDefaultCommentary> _drawDefaultLore;
@@ -70,6 +104,144 @@ namespace p3rpc.femc.Components
         private static int MaximumLevel = 99;
         public unsafe PersonaStatus(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
+            _context._utils.SigScan(APersonaStatusDraw_DrawNone_SIG, "APersonaStatusDraw::DrawNone", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.NoneSkillColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_SelectedSkillFont_SIG, "APersonaStatusDraw::SelectedSkillFont", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.SelectedSkillFontColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_SwapSelectedSkillFontBg_SIG, "APersonaStatusDraw::SwapSelectedSkillFontBg", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.SwapSkillShadowSelectedFontColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_SwapUnselectedSkillFont_SIG, "APersonaStatusDraw::SwapUnselectedSkillFont", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.SwapSkillUnselectedFontColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_SwapUnselectedSkillBg_SIG, "APersonaStatusDraw::SwapUnselectedSkillBg", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.SwapSkillUnselectedBgColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_InheritableSkillTick_SIG, "APersonaStatusDraw::InheritableSkillTick", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.InheritableSkillTick.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_InheritableSkillTickBg_SIG, "APersonaStatusDraw::InheritableSkillTickBg", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.InheritableSkillTickBg.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_GetSkillListNextSkillZero_SIG, "APersonaStatusDraw::GetSkillListNextSkillZero", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.NextSkillZero.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_GetSkillListNextSkillZeroNumber_SIG, "APersonaStatusDraw::GetSkillListNextSkillZeroNumber", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.PersonaSkillListNextLevelColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_NextSkillsQuestionMarkOutterOutline_SIG, "APersonaStatusDraw::NextSkillsQuestionMarkOutterOutline", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.NextSkillOutterOutlineColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_NextSkillsQuestionMarkInnerOutline_SIG, "APersonaStatusDraw::NextSkillsQuestionMarkInnerOutline", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.NextSkillInnerOutlineColor.ToU32ARGB())));
+            });
+
+
+            _context._utils.SigScan(APersonaStatusDraw_HighlightedSkillCursor_SIG, "APersonaStatusDraw::HighlightedSkillCursor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rsp + 0x76], {_context._config.PersonaStatusHighlightedColor.R}",
+                    $"mov byte [rsp + 0x75], {_context._config.PersonaStatusHighlightedColor.G}",
+                    $"mov byte [rsp + 0x74], {_context._config.PersonaStatusHighlightedColor.B}"
+                };
+                _HighlightedSkillCursor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_HighlightedSkillCursorNextSkill_SIG, "APersonaStatusDraw::HighlightedSkillCursorNextSkill", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.PersonaStatusHighlightedColor.ToU32ARGB())));
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_HighlightedSkillCursorSkillCard_SIG, "APersonaStatusDraw::HighlightedSkillCursorSkillCard", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0x1a2], {_context._config.PersonaStatusHighlightedColor.R}",
+                    $"mov byte [rbp + 0x1a1], {_context._config.PersonaStatusHighlightedColor.G}",
+                    $"mov byte [rbp + 0x1a0], {_context._config.PersonaStatusHighlightedColor.B}"
+                };
+                _HighlightedSkillCursorSkillCard = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_SkillCardBgColor_SIG, "APersonaStatusDraw::SkillCardBgColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rsp + 0x7a], {_context._config.PersonaStatusSkillListBg.R}",
+                    $"mov byte [rsp + 0x79], {_context._config.PersonaStatusSkillListBg.G}",
+                    $"mov byte [rsp + 0x78], {_context._config.PersonaStatusSkillListBg.B}"
+                };
+                _SkillCardBgColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_SkillCardSkillBgColor_SIG, "APersonaStatusDraw::SkillCardSkillBgColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    "jnz white_bg",
+                    $"mov byte [rsp + 0x76], {_context._config.SkillCardSkillBg.R}",
+                    $"mov byte [rsp + 0x75], {_context._config.SkillCardSkillBg.G}",
+                    $"mov byte [rsp + 0x74], {_context._config.SkillCardSkillBg.B}",
+                    "white_bg:"
+                };
+                _SkillCardSkillBgColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+
+            _context._utils.SigScan(APersonaStatusDraw_SkillDescriptionBg_SIG, "APersonaStatusDraw::SkillDescriptionBg", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x80], {_context._config.SkillDescriptionMainBg.B}",
+                    $"mov byte [rbp - 0x7F], {_context._config.SkillDescriptionMainBg.G}",
+                    $"mov byte [rbp - 0x7E], {_context._config.SkillDescriptionMainBg.R}"
+                };
+                _SkillDescriptionBg = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_SkillDescriptionCornerBg_SIG, "APersonaStatusDraw::SkillDescriptionCornerBg", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x74], {_context._config.SkillDescriptionCornerBg.B}",
+                    $"mov byte [rbp - 0x73], {_context._config.SkillDescriptionCornerBg.G}",
+                    $"mov byte [rbp - 0x72], {_context._config.SkillDescriptionCornerBg.R}"
+                };
+                _SkillDescriptionCornerBg = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_SkillDescriptionCornerSkillFontBg_SIG, "APersonaStatusDraw::SkillDescriptionCornerSkillFontBg", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x70], {_context._config.SkillDescriptionCornerBg.B}",
+                    $"mov byte [rbp - 0x6F], {_context._config.SkillDescriptionCornerBg.G}",
+                    $"mov byte [rbp - 0x6E], {_context._config.SkillDescriptionCornerBg.R}"
+                };
+                _SkillDescriptionCornerSkillFontBg = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
             _context._utils.SigScan(APersonaStatusDraw_GetSkillListBgColor_SIG, "APersonaStatusDraw::GetSkillListBgColor", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.PersonaStatusSkillListBg.ToU32ARGB())));

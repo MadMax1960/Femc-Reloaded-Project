@@ -1169,9 +1169,6 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Highlighted selection color")]
         public ConfigColor CampHighlightedColor { get; set; } = ConfigColor.Blue;
 
-        [DisplayName("Camp: Persona Skill Highlighted selection color")]
-        public ConfigColor CampPersonaSkillHighlightedColor { get; set; } = new ConfigColor(0x29, 0x00, 0xEA, 0xFF);
-
         [DisplayName("Camp: Social Link Arcana selection color")]
         public ConfigColor CampSocialLinkArcanaHighlightedColor { get; set; } = new ConfigColor(0x6d, 0x03, 0x0d, 0x7F);
 
@@ -1187,6 +1184,47 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Quest: Request/Missing Person Toggler Background Color")]
         public ConfigColor QuestToggler { get; set; } = new ConfigColor(0x2e, 0x09, 0x17, 0xFF);
 
+        [DisplayName("Persona Status: Highlighted selection color")]
+        public ConfigColor PersonaStatusHighlightedColor { get; set; } = new ConfigColor(0x29, 0x00, 0xEA, 0xFF);
+
+        [DisplayName("Persona Status: Skill Card Skill Background color")]
+        public ConfigColor SkillCardSkillBg { get; set; } = new ConfigColor(0x66, 0x2b, 0x47, 0xFF);
+
+        [DisplayName("Persona Status: Skill Description Main Background color")]
+        public ConfigColor SkillDescriptionMainBg { get; set; } = new ConfigColor(0x57, 0x21, 0x3D, 0xFF);
+
+        [DisplayName("Persona Status: Skill Description Corner and Title Background color")]
+        public ConfigColor SkillDescriptionCornerBg { get; set; } = new ConfigColor(0x7D, 0x4D, 0x66, 0xFF);
+
+        [DisplayName("Persona Status: --NONE-- skill color")]
+        public ConfigColor NoneSkillColor { get; set; } = new ConfigColor(0x9F, 0x83, 0x8C, 0xFF);
+
+        [DisplayName("Persona Status: Selected skill font color")]
+        public ConfigColor SelectedSkillFontColor { get; set; } = ConfigColor.PersonaStatusSkillListBg;
+
+        [DisplayName("Persona Status: Skill swap selected skill shadow font color")]
+        public ConfigColor SwapSkillShadowSelectedFontColor { get; set; } = new ConfigColor(0xFE, 0x9B, 0xB8, 0xFF);
+
+        [DisplayName("Persona Status: Skill swap unselected skill background color")]
+        public ConfigColor SwapSkillUnselectedFontColor { get; set; } = new ConfigColor(0x9E, 0x3C, 0x5E, 0xFF);
+
+        [DisplayName("Persona Status: Skill swap unselected skill background color")]
+        public ConfigColor SwapSkillUnselectedBgColor { get; set; } = new ConfigColor(0xFD, 0x75, 0x9B, 0xFF);
+
+        [DisplayName("Persona Status: Inheritable skill tick color")]
+        public ConfigColor InheritableSkillTick { get; set; } = new ConfigColor(0xCC, 0x7C, 0x93, 0xFF);
+
+        [DisplayName("Persona Status: Inheritable skill tick tag background color")]
+        public ConfigColor InheritableSkillTickBg { get; set; } = new ConfigColor(0x71, 0x36, 0x4D, 0xFF);
+        
+        [DisplayName("Persona Status: Next skill left zero color")]
+        public ConfigColor NextSkillZero { get; set; } = new ConfigColor(0x99, 0x53, 0x64, 0xFF);
+
+        [DisplayName("Persona Status: Next skill outter outline question mark color")]
+        public ConfigColor NextSkillOutterOutlineColor { get; set; } = new ConfigColor(0x59, 0x02, 0x23, 0xFF);
+
+        [DisplayName("Persona Status: Next skill inner outline question mark color")]
+        public ConfigColor NextSkillInnerOutlineColor { get; set; } = new ConfigColor(0xFD, 0x9B, 0xB7, 0xFF);
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
