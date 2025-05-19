@@ -14,6 +14,7 @@ using static p3rpc.femc.Configuration.Config;
 using p3rpc.classconstructor.Interfaces;
 using Ryo.Interfaces;
 using Reloaded.Memory.Sigscan.Definitions;
+using P3R.CostumeFramework.Interfaces;
 
 
 
@@ -61,6 +62,9 @@ namespace p3rpc.femc
 		private readonly IUnreal unreal;
 		private readonly MusicManager _musicManager;
 		private AssetRedirector _assetRedirector;
+		private readonly ICostumeApi _costumeApi;
+
+
 
 
 
@@ -87,7 +91,9 @@ namespace p3rpc.femc
 			var unrealEssentials = GetDependency<IUnrealEssentials>("Unreal Essentials");
 			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
-            var ryo = GetDependency<IRyoApi>("Ryo");
+			_costumeApi = GetDependency<ICostumeApi>("Costume Framework");
+
+			var ryo = GetDependency<IRyoApi>("Ryo");
             var memory = new Memory();
 
             // Check what game version this is
@@ -160,13 +166,12 @@ namespace p3rpc.femc
 		else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
 
-		if (_configuration.SkirtEtcFix) // loads skeleton fix
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "TestSkeleton"));
-
 		if (_configuration.NagiWeap) // loads naginata
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
 			
 		unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector")); // just loads actual assets, if this doesnt load femc doesn't load lmfao
+		_costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Oscar Fortnite")); // Fuck it 
+
 		}
 
 		private void Load2dAssets(IUnrealEssentials unrealEssentials)
@@ -203,7 +208,10 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystem"));
 			if (!_configuration.GregoryHouseRatPoisonDeliverySystem)
 				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog"));
-			}
+
+            if (_configuration.OtomeArcade)  // kotones room with the paintings and stuff 
+                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Otome Arcade"));
+        }
 
 		private void LoadMiscAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 		{
