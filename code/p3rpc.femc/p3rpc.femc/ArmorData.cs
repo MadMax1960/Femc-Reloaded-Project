@@ -87,6 +87,7 @@ namespace p3rpc.femc.Components {
                     SellPrice = 10,
                     GetFLG = 1
                 }
+            }
             */
         };
 
