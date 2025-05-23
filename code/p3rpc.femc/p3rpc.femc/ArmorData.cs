@@ -29,6 +29,7 @@ namespace p3rpc.femc.Components {
             {
                 _uObjects.FindObject("DatItemArmorDataAsset", obj =>
                 {
+                    _context._utils.Log("Found DatItemArmorDataAsset", System.Drawing.Color.Green);
                     obj.Self = (UObject*)ModifyArmorData((UArmorItemListTable*)obj.Self);
                 });
             }
@@ -38,7 +39,21 @@ namespace p3rpc.femc.Components {
         {
             foreach(var (key, value) in armorStatData)
             {
-                ApplyUpdate(ref armorItemListTable->Data.AllocatorInstance[key], value);
+                if (key > armorItemListTable->Data.Num - 1)
+                {
+                    _context._utils.Log($"ArmorData: {key} is out of range, skipping", System.Drawing.Color.Yellow);
+                    continue;
+                }
+                else if (key < 0)
+                {
+                    _context._utils.Log($"ArmorData: {key} is less than 0, skipping", System.Drawing.Color.Yellow);
+                    continue;
+                }
+                else
+                {
+                    _context._utils.Log($"ArmorData: Modifying armor data at index {key}", System.Drawing.Color.Green);
+                    ApplyUpdate(ref armorItemListTable->Data.AllocatorInstance[key], value);
+                }
             }
 
             return armorItemListTable;
