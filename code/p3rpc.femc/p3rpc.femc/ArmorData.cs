@@ -55,9 +55,9 @@ namespace p3rpc.femc {
 
                 });
 
-                _uObjects.FindObject("DatItemArmorDataAsset", obj =>
+                _uObjects.FindObject("WhiteSquareTexture", obj =>
                 {
-                    _context._utils.Log("Found DatItemArmorDataAsset", System.Drawing.Color.Green);
+                    _context._utils.Log("WhiteSquareTexture", System.Drawing.Color.Green);
                     try
                     {
                         _actualGameLanguage = _getLanguage!();
