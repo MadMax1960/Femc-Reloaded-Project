@@ -1,21 +1,42 @@
 ﻿using p3rpc.femc.Configuration;
 using Reloaded.Mod.Interfaces;
-using System.Runtime.InteropServices;
+using UE.Toolkit.Interfaces;
 using Unreal.ObjectsEmitter.Interfaces;
-using Unreal.ObjectsEmitter.Interfaces.Types;
 
-namespace p3rpc.femc.Components {
+namespace p3rpc.femc {
     public class ArmorData
     {
-        private IUObjects _uObjects;
-        private IUnreal _unreal;
-        private ILogger _logger;
+        private readonly IUObjects _uObjects;
+        private readonly IUnrealMemory _unreal;
+        private readonly ILogger _logger;
         private readonly IModLoader _modLoader;
         private readonly IModConfig _modConfig;
         private readonly Config _configuration;
         private readonly FemcContext _context;
+        private unsafe delegate ESystemLanguage GetLanguage();
+        private GetLanguage _getLanguage;
+        private ESystemLanguage _actualGameLanguage;
 
-        public ArmorData(IModLoader modLoader, IModConfig modConfig, Config configuration, IUObjects uObjects, IUnreal unreal, ILogger logger, FemcContext context)
+        public enum ESystemLanguage : byte
+        {
+            JA = 0,
+            EN = 1,
+            FR = 2,
+            IT = 3,
+            DE = 4,
+            ES = 5,
+            ZH_HANS = 6,
+            ZH_HANT = 7,
+            KO = 8,
+            RU = 9,
+            PT = 10,
+            TR = 11,
+            PL = 12,
+        };
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+        public ArmorData(IModLoader modLoader, IModConfig modConfig, Config configuration, IUObjects uObjects, IUnrealMemory unreal, ILogger logger,IToolkit toolKit, FemcContext context)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
             _uObjects = uObjects;
             _unreal = unreal;
@@ -27,130 +48,76 @@ namespace p3rpc.femc.Components {
 
             unsafe
             {
+                _context._utils.SigScan("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 56 41 57 48 83 EC 30 E8", "GetGameLanguage", _context._utils.GetDirectAddress, addr =>
+                {
+                    _context._utils.Log($"Found GetGameLanguage at {addr:X}", System.Drawing.Color.Green);
+                    _getLanguage = _context._utils.MakeWrapper<GetLanguage>(addr);
+
+                });
+
                 _uObjects.FindObject("DatItemArmorDataAsset", obj =>
                 {
                     _context._utils.Log("Found DatItemArmorDataAsset", System.Drawing.Color.Green);
-                    obj.Self = (UObject*)ModifyArmorData((UArmorItemListTable*)obj.Self);
+                    try
+                    {
+                        _actualGameLanguage = _getLanguage!();
+                        _context._utils.Log($"Game language is: {_actualGameLanguage}", System.Drawing.Color.Green);
+                        string path = Path.Combine(_modLoader.GetDirectoryForModId(_modConfig.ModId), "UEToolkitAssets");
+                        
+                        if (Directory.Exists(path))
+                        {
+                            toolKit.AddObjectsPath(Path.Combine(path, "AlwaysGlobal"));
+                            switch (_actualGameLanguage)
+                            {
+                                case ESystemLanguage.JA:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "ja"));
+                                    break;
+                                case ESystemLanguage.ZH_HANS:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "zh-Hans"));
+                                    break;
+                                case ESystemLanguage.ZH_HANT:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "zh-Hant"));
+                                    break;
+                                case ESystemLanguage.KO:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "ko"));
+                                    break;
+                                case ESystemLanguage.RU:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "ru"));
+                                    break;
+                                case ESystemLanguage.FR:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "fr"));
+                                    break;
+                                case ESystemLanguage.IT:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "it"));
+                                    break;
+                                case ESystemLanguage.DE:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "de"));
+                                    break;
+                                case ESystemLanguage.ES:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "es"));
+                                    break;
+                                case ESystemLanguage.PT:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "pt"));
+                                    break;
+                                case ESystemLanguage.TR:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "tr"));
+                                    break;
+                                case ESystemLanguage.PL:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "pl"));
+                                    break;
+                                default:
+                                    toolKit.AddObjectsPath(Path.Combine(path, "en"));
+                                    break;
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        _context._utils.Log("Failed to get game language, falling back to english", System.Drawing.Color.Red);
+                    }
                 });
             }
         }
 
-        private unsafe UArmorItemListTable* ModifyArmorData(UArmorItemListTable* armorItemListTable)
-        {
-            foreach(var (key, value) in armorStatData)
-            {
-                if (key > armorItemListTable->Data.Num - 1)
-                {
-                    _context._utils.Log($"ArmorData: {key} is out of range, skipping", System.Drawing.Color.Yellow);
-                    continue;
-                }
-                else if (key < 0)
-                {
-                    _context._utils.Log($"ArmorData: {key} is less than 0, skipping", System.Drawing.Color.Yellow);
-                    continue;
-                }
-                else
-                {
-                    _context._utils.Log($"ArmorData: Modifying armor data at index {key}", System.Drawing.Color.Green);
-                    ApplyUpdate(ref armorItemListTable->Data.AllocatorInstance[key], value);
-                }
-            }
-
-            return armorItemListTable;
-        }
-
-        public unsafe static void ApplyUpdate(ref FArmorItemList target, FArmorItemListUpdate update)
-        {
-            if (update.ItemDef != null) target.ItemDef = new FString(update.ItemDef);
-            if (update.SortNum.HasValue) target.SortNum = update.SortNum.Value;
-            if (update.ItemType.HasValue) target.ItemType = update.ItemType.Value;
-            if (update.EquipID.HasValue) target.EquipID = update.EquipID.Value;
-            if (update.Rarity.HasValue) target.Rarity = update.Rarity.Value;
-            if (update.Tier.HasValue) target.Tier = update.Tier.Value;
-            if (update.Defence.HasValue) target.Defence = update.Defence.Value;
-            if (update.Strength.HasValue) target.Strength = update.Strength.Value;
-            if (update.Magic.HasValue) target.Magic = update.Magic.Value;
-            if (update.Endurance.HasValue) target.Endurance = update.Endurance.Value;
-            if (update.Agility.HasValue) target.Agility = update.Agility.Value;
-            if (update.Luck.HasValue) target.Luck = update.Luck.Value;
-            if (update.SkillId.HasValue) target.skillId = update.SkillId.Value;
-            if (update.Price.HasValue) target.Price = update.Price.Value;
-            if (update.SellPrice.HasValue) target.SellPrice = update.SellPrice.Value;
-            if (update.GetFLG.HasValue) target.GetFLG = update.GetFLG.Value;
-        }
-
-        private Dictionary<int, FArmorItemListUpdate> armorStatData = new()
-        {
-            /*The dictionary will have the armor's entry index in the data asset as the key and the FArmorItemListUpdate as the value
-            {0, new FArmorItemListUpdate
-                {
-                Only add values which you are going to use, don't assign values to anything you don't want to modify
-                    ItemDef = "DUMMYDATA",
-                    SortNum = 0,
-                    ItemType = 0,
-                    EquipID = 0,
-                    Rarity = 0,
-                    Tier = 0,
-                    Defence = 0,
-                    Strength = 0,
-                    Magic = 0,
-                    Endurance = 0,
-                    Agility = 0,
-                    Luck = 0,
-                    SkillId = 0,
-                    Price = 10,
-                    SellPrice = 10,
-                    GetFLG = 1
-                }
-            }
-            */
-        };
-
-        [StructLayout(LayoutKind.Explicit, Size = 0x40)]
-        public unsafe struct UArmorItemListTable
-        {
-            [FieldOffset(0x0030)] public TArray<FArmorItemList> Data;
-        }
-
-        [StructLayout(LayoutKind.Explicit, Size = 0x40)]
-        public unsafe struct FArmorItemList
-        {
-            [FieldOffset(0x0000)] public FString ItemDef;
-            [FieldOffset(0x0010)] public ushort SortNum;
-            [FieldOffset(0x0014)] public uint ItemType;
-            [FieldOffset(0x0018)] public uint EquipID;
-            [FieldOffset(0x001C)] public ushort Rarity;
-            [FieldOffset(0x001E)] public ushort Tier;
-            [FieldOffset(0x0020)] public ushort Defence;
-            [FieldOffset(0x0022)] public ushort Strength;
-            [FieldOffset(0x0024)] public ushort Magic;
-            [FieldOffset(0x0026)] public ushort Endurance;
-            [FieldOffset(0x0028)] public ushort Agility;
-            [FieldOffset(0x002A)] public ushort Luck;
-            [FieldOffset(0x002C)] public ushort skillId;
-            [FieldOffset(0x0030)] public uint Price;
-            [FieldOffset(0x0034)] public uint SellPrice;
-            [FieldOffset(0x0038)] public ushort GetFLG;
-        }
-
-        public class FArmorItemListUpdate
-        {
-            public string? ItemDef { get; set; }
-            public ushort? SortNum { get; set; }
-            public uint? ItemType { get; set; }
-            public uint? EquipID { get; set; }
-            public ushort? Rarity { get; set; }
-            public ushort? Tier { get; set; }
-            public ushort? Defence { get; set; }
-            public ushort? Strength { get; set; }
-            public ushort? Magic { get; set; }
-            public ushort? Endurance { get; set; }
-            public ushort? Agility { get; set; }
-            public ushort? Luck { get; set; }
-            public ushort? SkillId { get; set; }
-            public uint? Price { get; set; }
-            public uint? SellPrice { get; set; }
-            public ushort? GetFLG { get; set; }
-        }
     }
 }

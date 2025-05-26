@@ -58,4 +58,9 @@
     <ProjectReference Include="..\include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj" />
     <ProjectReference Include="..\include\Unreal.ObjectsEmitter\Unreal.ObjectsEmitter.Interfaces\Unreal.ObjectsEmitter.Interfaces.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="UE.Toolkit.Interfaces">
+      <HintPath>UE.Toolkit.Interfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
