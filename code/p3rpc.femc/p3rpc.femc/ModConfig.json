@@ -201,6 +201,7 @@
     "Ryo.Reloaded",
     "SharedScans.Reloaded",
     "UE.Toolkit.Reloaded",
+    "Unreal.ObjectsEmitter.Reloaded",
     "UnrealEssentials"
   ],
   "OptionalDependencies": [],
