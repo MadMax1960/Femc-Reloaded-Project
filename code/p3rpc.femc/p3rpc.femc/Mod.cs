@@ -83,7 +83,6 @@ namespace p3rpc.femc
 			if (process.MainModule == null) throw new Exception($"[{_modConfig.ModName}] Could not get main module (this should never happen)");
 			var baseAddress = process.MainModule.BaseAddress;
             var unrealmemory = GetDependency<IUnrealMemory>("UE Toolkit (IUnrealMemory)");
-			var unreal = GetDependency<IUnreal>("Unreal Objects Emitter (IUnreal)");
             var scannerFactory = GetDependency<IScannerFactory>("Scanner Factory");
             var startupScanner = GetDependency<IStartupScanner>("Reloaded Startup Scanner");
 			if (_hooks == null) throw new Exception($"[{_modConfig.ModName}] Could not get controller for Reloaded hooks");
@@ -92,8 +91,9 @@ namespace p3rpc.femc
 			var unrealEssentials = GetDependency<IUnrealEssentials>("Unreal Essentials");
 			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
-			var uObjects = GetDependency<IUObjects>("Unreal Objects Emitter (IUObjects)");
-			var toolKit = GetDependency<IToolkit>("UE Toolkit (IToolkit");
+			var uObjects = GetDependency<IUnrealObjects>("Unreal Objects Emitter (IUObjects)");
+			var uoeUnreal = GetDependency<IUnreal>("Unreal Objects Emitter (IUnreal)");
+            var toolKit = GetDependency<IToolkit>("UE Toolkit (IToolkit");
             _costumeApi = GetDependency<ICostumeApi>("Costume Framework");
 
 			var ryo = GetDependency<IRyoApi>("Ryo");
@@ -126,7 +126,7 @@ namespace p3rpc.femc
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials, ryo);
 			InitializeModules();
-			_assetRedirector = new AssetRedirector(unreal, ModName);
+			_assetRedirector = new AssetRedirector(uoeUnreal, ModName);
 			_assetRedirector.RedirectPlayerAssets();
 			_musicManager.GenerateMusicScript();
 		}

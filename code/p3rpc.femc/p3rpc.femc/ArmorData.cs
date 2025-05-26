@@ -1,12 +1,12 @@
 ﻿using p3rpc.femc.Configuration;
 using Reloaded.Mod.Interfaces;
+using UE.Toolkit.Core.Types.Unreal.UE4_27_2;
 using UE.Toolkit.Interfaces;
-using Unreal.ObjectsEmitter.Interfaces;
 
 namespace p3rpc.femc {
     public class ArmorData
     {
-        private readonly IUObjects _uObjects;
+        private readonly IUnrealObjects _uObjects;
         private readonly IUnrealMemory _unreal;
         private readonly ILogger _logger;
         private readonly IModLoader _modLoader;
@@ -35,7 +35,7 @@ namespace p3rpc.femc {
         };
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-        public ArmorData(IModLoader modLoader, IModConfig modConfig, Config configuration, IUObjects uObjects, IUnrealMemory unreal, ILogger logger,IToolkit toolKit, FemcContext context)
+        public ArmorData(IModLoader modLoader, IModConfig modConfig, Config configuration, IUnrealObjects uObjects, IUnrealMemory unreal, ILogger logger,IToolkit toolKit, FemcContext context)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
             _uObjects = uObjects;
@@ -55,7 +55,7 @@ namespace p3rpc.femc {
 
                 });
 
-                _uObjects.FindObject("WhiteSquareTexture", obj =>
+                _uObjects.OnObjectLoadedByName<UObjectBase>("WhiteSquareTexture", obj =>
                 {
                     _context._utils.Log("WhiteSquareTexture", System.Drawing.Color.Green);
                     try

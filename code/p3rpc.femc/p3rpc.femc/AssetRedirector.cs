@@ -3,7 +3,6 @@ using UnrealEssentials.Interfaces;
 using System;
 using System.IO;
 using Unreal.ObjectsEmitter.Interfaces;
-
 namespace p3rpc.femc
 {
 	internal class AssetRedirector
