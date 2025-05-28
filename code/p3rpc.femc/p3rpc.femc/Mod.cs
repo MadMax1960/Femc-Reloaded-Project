@@ -279,7 +279,8 @@ namespace p3rpc.femc
 			}
 			if (_configuration.EnableTownMap) _modRuntime.AddModule<TownMap>();
 			if (_configuration.EnablePartyPanel) _modRuntime.AddModule<PartyPanel>();
-			if (_configuration.EnableBacklog) _modRuntime.AddModule<Backlog>();
+            if (_configuration.EnableBattle) _modRuntime.AddModule<Battle>();
+            if (_configuration.EnableBacklog) _modRuntime.AddModule<Backlog>();
 			if (_configuration.EnableButtonPrompts) _modRuntime.AddModule<KeyHelp>();
 			if (_configuration.EnableGetItem) _modRuntime.AddModule<MiscGetItemDraw>();
 			if (_configuration.EnableTimeSkip)

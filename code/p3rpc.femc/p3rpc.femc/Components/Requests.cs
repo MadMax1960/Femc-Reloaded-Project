@@ -249,28 +249,24 @@ namespace p3rpc.femc.Components
             
             _context._utils.SigScan(AUIRequest_RequestsCursorColor_SIG, "AUIRequest::RequestsCursorColor", _context._utils.GetDirectAddress, addr =>
             {
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
-
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${reducedHighlightColor.B:X}",
-                    $"mov dl, ${reducedHighlightColor.G:X}",
-                    $"mov cl, ${reducedHighlightColor.R:X}"
+                    $"mov r8b, ${_context._config.CampHighlightedLowerColor.B:X}",
+                    $"mov dl, ${_context._config.CampHighlightedLowerColor.G:X}",
+                    $"mov cl, ${_context._config.CampHighlightedLowerColor.R:X}"
                 };
                 _RequestsCursorColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
 
             _context._utils.SigScan(AUIRequest_RequestsDetailCursorColor_SIG, "AUIRequest::RequestsDetailCursorColor", _context._utils.GetDirectAddress, addr =>
             {
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
-
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${reducedHighlightColor.B:X}",
-                    $"mov dl, ${reducedHighlightColor.G:X}",
-                    $"mov cl, ${reducedHighlightColor.R:X}"
+                    $"mov r8b, ${_context._config.CampHighlightedLowerColor.B:X}",
+                    $"mov dl, ${_context._config.CampHighlightedLowerColor.G:X}",
+                    $"mov cl, ${_context._config.CampHighlightedLowerColor.R:X}"
                 };
                 _RequestsDetailCursorColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
@@ -411,7 +407,7 @@ namespace p3rpc.femc.Components
                 _StatusTagUnderlay = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
 
-            /*
+            /* FAST COPY PASTING SIGSCAN
             _context._utils.SigScan(AUIRequest_DetailColor_SIG, "AUIRequest::DetailColor", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
@@ -424,15 +420,6 @@ namespace p3rpc.femc.Components
                 _DetailColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             */
-        }
-
-        private ConfigColor applyColorReduction(ConfigColor color, float reductionRatio)
-        {
-            byte r = (byte)(color.R * reductionRatio);
-            byte g = (byte)(color.G * reductionRatio);
-            byte b = (byte)(color.B * reductionRatio);
-
-            return new ConfigColor(r, g, b, color.A);
         }
 
         public override void Register() { }

@@ -114,28 +114,24 @@ namespace p3rpc.femc.Components
 
             _context._utils.SigScan(UUIMissingPerson_CursorColor_SIG, "UUIMissingPerson::CursorColor", _context._utils.GetDirectAddress, addr =>
             {
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
-
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${reducedHighlightColor.B:X}",
-                    $"mov dl, ${reducedHighlightColor.G:X}",
-                    $"mov cl, ${reducedHighlightColor.R:X}"
+                    $"mov r8b, ${_context._config.CampHighlightedLowerColor.B:X}",
+                    $"mov dl, ${_context._config.CampHighlightedLowerColor.G:X}",
+                    $"mov cl, ${_context._config.CampHighlightedLowerColor.R:X}"
                 };
                 _CursorColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
 
             _context._utils.SigScan(UUIMissingPerson_DetailCursorColor_SIG, "UUIMissingPerson::DetailCursorColor", _context._utils.GetDirectAddress, addr =>
             {
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
-
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${reducedHighlightColor.B:X}",
-                    $"mov dl, ${reducedHighlightColor.G:X}",
-                    $"mov cl, ${reducedHighlightColor.R:X}"
+                    $"mov r8b, ${_context._config.CampHighlightedLowerColor.B:X}",
+                    $"mov dl, ${_context._config.CampHighlightedLowerColor.G:X}",
+                    $"mov cl, ${_context._config.CampHighlightedLowerColor.R:X}"
                 };
                 _DetailCursorColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
@@ -188,15 +184,6 @@ namespace p3rpc.femc.Components
                 _QuestToggler = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
     }
-
-        private ConfigColor applyColorReduction(ConfigColor color, float reductionRatio)
-        {
-            byte r = (byte)(color.R * reductionRatio);
-            byte g = (byte)(color.G * reductionRatio);
-            byte b = (byte)(color.B * reductionRatio);
-
-            return new ConfigColor(r, g, b, color.A);
-        }
 
         private unsafe float DrawLabelRowGetOffset(UUIMissingPerson* self)
         {

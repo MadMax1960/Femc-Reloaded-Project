@@ -188,26 +188,15 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(UCmpSkillDraw_DrawPartyMemberSkillHighlightedColor_SIG, "UCmpSkillDraw::DrawPartyMemberSkillHighlightedColor", _context._utils.GetDirectAddress, addr =>
             {
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
-
                 string[] function =
                 {
                     "use64",
-                    $"mov byte [rbp - 0x7a], ${reducedHighlightColor.R:X}",
-                    $"mov byte [rbp - 0x7b], ${reducedHighlightColor.G:X}",
-                    $"mov byte [rbp - 0x7c], ${reducedHighlightColor.B:X}"
+                    $"mov byte [rbp - 0x7a], ${_context._config.CampHighlightedLowerColor.R:X}",
+                    $"mov byte [rbp - 0x7b], ${_context._config.CampHighlightedLowerColor.G:X}",
+                    $"mov byte [rbp - 0x7c], ${_context._config.CampHighlightedLowerColor.B:X}"
                 };
                 _drawPartyMemberSkillHighlightedColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
             });
-        }
-
-        private ConfigColor applyColorReduction(ConfigColor color, float reductionRatio)
-        {
-            byte r = (byte)(color.R * reductionRatio);
-            byte g = (byte)(color.G * reductionRatio);
-            byte b = (byte)(color.B * reductionRatio);
-
-            return new ConfigColor(r, g, b, color.A);
         }
 
         public override void Register()
@@ -281,26 +270,21 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampSkillTextColorCurrSel.ToU32())));
             });
-
-            // Apply same color reduction ratio (normal menus is 0xff, recuced one is 0xee)
-            ConfigColor reducedHighlightColorEE = applyColorReduction(_context._config.CampHighlightedColor, (float) 0xee / (float) 0xff);
-            ConfigColor reducedHighlightColor6A = applyColorReduction(_context._config.CampHighlightedColor, (float)0x6a / (float)0xff);
-
             _context._utils.SigScan(UCmpItemDraw_DrawHighlightedItem1_SIG, "UCmpItemDraw::DrawHighlightedItem1", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, reducedHighlightColorEE.ToU32ARGB())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampHighlightedLowerColor.ToU32ARGB())));
             });
             _context._utils.SigScan(UCmpItemDraw_DrawHighlightedItem2_SIG, "UCmpItemDraw::DrawHighlightedItem2", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, reducedHighlightColorEE.ToU32ARGB())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampHighlightedLowerColor.ToU32ARGB())));
             });
             _context._utils.SigScan(UCmpItemDraw_DrawHighlightedPartyMember1_SIG, "UCmpItemDraw::DrawHighlightedPartyMember1", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, reducedHighlightColor6A.ToU32IgnoreAlpha())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampHighlightedMidColor.ToU32IgnoreAlpha())));
             });
             _context._utils.SigScan(UCmpItemDraw_DrawHighlightedPartyMember2_SIG, "UCmpItemDraw::DrawHighlightedPartyMember2", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, reducedHighlightColorEE.ToU32IgnoreAlpha())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedLowerColor.ToU32IgnoreAlpha())));
             });
             _context._utils.SigScan(UCmpItemDraw_DrawSkillCardFemcShadow_SIG, "UCmpItemDraw::DrawSkillCardFemcShadow", _context._utils.GetDirectAddress, addr =>
             {
@@ -314,15 +298,6 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillCardFrame.ToU32IgnoreAlpha())));
             });
-        }
-
-        private ConfigColor applyColorReduction(ConfigColor color, float reductionRatio)
-        {
-            byte r = (byte)(color.R * reductionRatio);
-            byte g = (byte)(color.G * reductionRatio);
-            byte b = (byte)(color.B * reductionRatio);
-
-            return new ConfigColor(r, g, b, color.A);
         }
 
         public override void Register()
@@ -355,11 +330,14 @@ namespace p3rpc.femc.Components
         private MultiSignature _drawDetailsTypeTextMS;
         private string UCmpEquipDraw_DrawSquareBackground_SIG = "BA FF 5C 20 0C";
         private string UCmpEquipDraw_DrawEquipTitleBackground_SIG = "C7 44 24 ?? FF 45 16 0C";
+        private string UCmpEquipDraw_DrawEquipDescriptionEffectBg_SIG = "41 81 CC 00 4E 2B 01";
 
         private string UCmpEquipDraw_DrawHighlightedPartyMember1_SIG = "81 CB 00 00 00 6A EB ??";
         private string UCmpEquipDraw_DrawHighlightedPartyMember2_SIG = "81 CF 00 00 00 EE C7 44 24 ?? 15 00 00 00";
         private string UCmpEquipDraw_DrawHighlightedEquipment_SIG = "0D 00 00 00 FF 0F 28 0D ?? ?? ?? ??";
         private string UCmpEquipDraw_DrawHighlightedEquipmentElement_SIG = "0D 00 00 00 FF 0F 11 89 ?? ?? ?? ??";
+        private string UCmpEquipDraw_DrawHighlightedEquipmentCompareAnim_SIG = "0D 00 00 00 FF 0F 57 C0";
+        private string UCmpEquipDraw_DrawHighlightedEquipmentCompare_SIG = "0D 00 00 00 FF F3 44 0F 11 7C 24 ??";
 
         private string UCmpEquip_FemaleEquipmentForFemc_SIG = "0F A3 C8 73 ?? B0 01 48 8B 5C 24 ??";
         private string UCmpEquip_FemcArmorFemaleSymbolDraw_SIG = "48 8B 5C 24 ?? 48 83 C4 20 5F C3 81 F9 7E 05 00 00";
@@ -426,15 +404,11 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(UCmpEquipDraw_DrawHighlightedPartyMember1_SIG, "UCmpEquipDraw::DrawHighlightedPartyMember1", _context._utils.GetDirectAddress, addr =>
             {
-                // Apply same color reduction ratio (normal menus is 0xff, recuced one is 0x6a)
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float) 0x6a/ (float) 0xff);
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, reducedHighlightColor.ToU32IgnoreAlpha())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampHighlightedMidColor.ToU32IgnoreAlpha())));
             });
             _context._utils.SigScan(UCmpEquipDraw_DrawHighlightedPartyMember2_SIG, "UCmpEquipDraw::DrawHighlightedPartyMember2", _context._utils.GetDirectAddress, addr =>
             {
-                // Apply same color reduction ratio (normal menus is 0xff, recuced one is 0xee)
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float )0xee / (float)0xff);
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, reducedHighlightColor.ToU32IgnoreAlpha())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampHighlightedLowerColor.ToU32IgnoreAlpha())));
             });
             _context._utils.SigScan(UCmpEquipDraw_DrawHighlightedEquipment_SIG, "UCmpEquipDraw::DrawHighlightedEquipment", _context._utils.GetDirectAddress, addr =>
             {
@@ -444,6 +418,20 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32IgnoreAlpha())));
             });
+            _context._utils.SigScan(UCmpEquipDraw_DrawHighlightedEquipmentCompareAnim_SIG, "UCmpEquipDraw::DrawHighlightedEquipmentCompareAnim", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquipDraw_DrawHighlightedEquipmentCompare_SIG, "UCmpEquipDraw::DrawHighlightedEquipmentCompare", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32IgnoreAlpha())));
+            });
+
+            _context._utils.SigScan(UCmpEquipDraw_DrawEquipDescriptionEffectBg_SIG, "UCmpEquipDraw::DrawEquipDescriptionEffectBg", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampSocialLinkDark.ToU32IgnoreAlpha())));
+            });
+
             _context._utils.SigScan(UCmpEquip_FemaleEquipmentForFemc_SIG, "UCmpEquip::FemaleEquipmentForFemc", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
@@ -479,15 +467,6 @@ namespace p3rpc.femc.Components
                 };
                 _FemcArmorFemaleSymbolDraw = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-        }
-
-        private ConfigColor applyColorReduction(ConfigColor color, float reductionRatio)
-        {
-            byte r = (byte)(color.R * reductionRatio);
-            byte g = (byte)(color.G * reductionRatio);
-            byte b = (byte)(color.B * reductionRatio);
-
-            return new ConfigColor(r, g, b, color.A);
         }
 
         public override void Register()
@@ -698,23 +677,12 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(UCmpPersona_HighlightedPersonaColor1_SIG, "UCmpPersona::HighlightedPersonaColor1", _context._utils.GetDirectAddress, addr =>
             {
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, reducedHighlightColor.ToU32())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedLowerColor.ToU32())));
             });
             _context._utils.SigScan(UCmpPersona_HighlightedPersonaColor2_SIG, "UCmpPersona::HighlightedPersonaColor2", _context._utils.GetDirectAddress, addr =>
             {
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, reducedHighlightColor.ToU32())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedLowerColor.ToU32())));
             });
-        }
-
-        private ConfigColor applyColorReduction(ConfigColor color, float reductionRatio)
-        {
-            byte r = (byte)(color.R * reductionRatio);
-            byte g = (byte)(color.G * reductionRatio);
-            byte b = (byte)(color.B * reductionRatio);
-
-            return new ConfigColor(r, g, b, color.A);
         }
 
         public override void Register()
@@ -1353,13 +1321,12 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(UCmpSystemTutoDictDraw_DrawHighlightedColor_SIG, "UCmpSystemTutoDictDraw::DrawHighlightedColor", _context._utils.GetDirectAddress, addr =>
             {
-                ConfigColor reducedHighlightColor = applyColorReduction(_context._config.CampHighlightedColor, (float)0xee / (float)0xff);
                 string[] function =
                 {
                     "use64",
-                    $"mov byte [rsp + 0x60], ${reducedHighlightColor.B:X}",
-                    $"mov byte [rsp + 0x61], ${reducedHighlightColor.G:X}",
-                    $"mov byte [rsp + 0x62], ${reducedHighlightColor.R:X}"
+                    $"mov byte [rsp + 0x60], ${_context._config.CampHighlightedLowerColor.B:X}",
+                    $"mov byte [rsp + 0x61], ${_context._config.CampHighlightedLowerColor.G:X}",
+                    $"mov byte [rsp + 0x62], ${_context._config.CampHighlightedLowerColor.R:X}"
                 };
                 _drawTutoDictHighlightedColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
             });
@@ -1369,15 +1336,6 @@ namespace p3rpc.femc.Components
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 6, _context._config.CampSystemEndFallingWordsColor.ToU32())));
             });
             
-        }
-
-        private ConfigColor applyColorReduction(ConfigColor color, float reductionRatio)
-        {
-            byte r = (byte)(color.R * reductionRatio);
-            byte g = (byte)(color.G * reductionRatio);
-            byte b = (byte)(color.B * reductionRatio);
-
-            return new ConfigColor(r, g, b, color.A);
         }
 
         public override void Register()

@@ -63,6 +63,35 @@ namespace p3rpc.femc.Components
         private string APersonaStatusDraw_SkillDescriptionCornerBg_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 15 ?? ?? ?? ?? BA 15 00 00 00";
         private string APersonaStatusDraw_SkillDescriptionCornerSkillFontBg_SIG = "F3 0F 11 44 24 ?? F3 41 0F 58 CA F3 44 0F 11 4C 24 ??";
 
+        private string APersonaStatusDraw_PersonaFusionShadow_SIG = "C7 45 ?? 57 20 1D FF";
+        private string APersonaStatusDraw_PersonaInheritanceCursor_SIG = "66 44 89 7D ?? C6 45 ?? EE";
+
+        // Fade animation so separated r,g,b for every color interpolation function call
+        private string APersonaStatusDraw_PersonaInheritanceSocialLinkBonusRed_SIG = "66 0F 6E C0 0F 5B C0 E8 ?? ?? ?? ?? F3 0F 2C C0 41 0F 28 D3 41 0F 28 CC";
+        private string APersonaStatusDraw_PersonaInheritanceSocialLinkBonusGreen_SIG = "88 85 ?? ?? ?? ?? 0F B6 85 ?? ?? ?? ?? 66 0F 6E C0 0F 5B C0 E8 ?? ?? ?? ?? F3 0F 2C C0 41 0F 28 D3";
+        private string APersonaStatusDraw_PersonaInheritanceSocialLinkBonusBlue_SIG = "88 85 ?? ?? ?? ?? 0F B6 85 ?? ?? ?? ?? 66 0F 6E C0 0F 5B C0 E8 ?? ?? ?? ?? F3 0F 2C C0 88 85 ?? ?? ?? ??";
+        private string APersonaStatusDraw_PersonaSkillSelectSocialLinkBonusRed_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 25 ?? ?? ?? ?? 41 0F 28 D5";
+        private string APersonaStatusDraw_PersonaSkillSelectSocialLinkBonusGreen_SIG = "88 85 ?? ?? ?? ?? 0F B6 85 ?? ?? ?? ?? 66 0F 6E C0 0F 5B C0 E8 ?? ?? ?? ?? F3 0F 2C C0 41 0F 28 D5";
+        private string APersonaStatusDraw_PersonaSkillSelectSocialLinkBonusBlue_SIG = "88 85 ?? ?? ?? ?? 0F B6 85 ?? ?? ?? ?? 66 0F 6E C0 0F 5B C0 E8 ?? ?? ?? ?? 0F B6 8D ?? ?? ?? ??";
+
+        private string APersonaStatusDraw_PersonaMutationUp_SIG = "C7 45 ?? C6 0E 00 FF E8 ?? ?? ?? ?? 45 33 C9 C7 85 ?? ?? ?? ?? 00 80 84 C3";
+        private string APersonaStatusDraw_PersonaMutationMiddle_SIG = "C7 45 ?? C6 0E 00 FF E8 ?? ?? ?? ?? 45 33 C9 C7 85 ?? ?? ?? ?? 00 00 7F C3";
+        private string APersonaStatusDraw_PersonaMutationDown_SIG = "C7 45 ?? C6 0E 00 FF E8 ?? ?? ?? ?? 41 8B 87 ?? ?? ?? ??";
+
+        // Fusion mini animation after fusing persona which learns a new skill
+        private string APersonaStatusDraw_GetFusionSkillListNextSkill_SIG = "C7 45 ?? C6 0E 00 FF E8 ?? ?? ?? ?? 49 8B 87 ?? ?? ?? ??";
+        private string APersonaStatusDraw_NextSkillsFusionQuestionMarkOutterOutline_SIG = "C7 45 ?? C6 0E 00 FF E8 ?? ?? ?? ?? F3 41 0F 58 F3";
+        private string APersonaStatusDraw_NextSkillsFusionQuestionMarkInnerOutline_SIG = "C7 45 ?? FF D3 00 FF 4C 8D 75 ?? 48 63 F3";
+        private string APersonaStatusDraw_NextSkillLastSkillFontColor_SIG = "44 88 6C 24 ?? 88 5C 24 ??";
+        // Fade animation so separated r,g,b for every color interpolation function call
+        private string APersonaStatusDraw_PersonaFusionNextSkillBgRed_SIG = "E8 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 28 D6 F3 0F 2C F8 F3 0F 10 05 ?? ?? ?? ?? E8 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 28 D6 F3 0F 2C D8 F3 0F 10 05 ?? ?? ?? ?? E8 ?? ?? ?? ?? F3 0F 2C C0";
+        private string APersonaStatusDraw_PersonaFusionNextSkillBgGreen_SIG = "E8 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 28 D6 F3 0F 2C D8 F3 0F 10 05 ?? ?? ?? ?? E8 ?? ?? ?? ?? F3 0F 2C C0";
+        private string APersonaStatusDraw_PersonaFusionNextSkillBgBlue_SIG = "E8 ?? ?? ?? ?? F3 0F 2C C0 88 5D ?? 49 8B CC";
+
+        private string APersonaStatusDraw_NumbersTopLeftCornerDraw_SIG = "C6 85 ?? ?? ?? ?? 00 88 9D ?? ?? ?? ?? 8B 85 ?? ?? ?? ??";
+        private string APersonaStatusDraw_ResultTopLeftCornerDraw_SIG = "C6 85 ?? ?? ?? ?? 00 8B 85 ?? ?? ?? ?? 48 8D 9F ?? ?? ?? ??";
+        private string APersonaStatusDraw_DotsTopLeftCornerDraw_SIG = "C6 85 ?? ?? ?? ?? 00 88 9D ?? ?? ?? ?? E8 ?? ?? ?? ?? 44 8B 65 ??";
+
 
         //private static float[] PersonaInfoBgPoints = { 0, 0, 1270.5f, 0, 1732.5f, 0, 2310, 0, 0, 224, 1270.5f, 24, 1732.5f, 224, 2310, 224 };
         private unsafe float* PersonaInfoBgPoints;
@@ -95,6 +124,20 @@ namespace p3rpc.femc.Components
         private IAsmHook _SkillDescriptionBg;
         private IAsmHook _SkillDescriptionCornerBg;
         private IAsmHook _SkillDescriptionCornerSkillFontBg;
+        private IAsmHook _PersonaInheritanceCursor;
+        private IAsmHook _PersonaInheritanceSocialLinkBonusRed;
+        private IAsmHook _PersonaInheritanceSocialLinkBonusGreen;
+        private IAsmHook _PersonaInheritanceSocialLinkBonusBlue;
+        private IAsmHook _PersonaSkillSelectSocialLinkBonusRed;
+        private IAsmHook _PersonaSkillSelectSocialLinkBonusGreen;
+        private IAsmHook _PersonaSkillSelectSocialLinkBonusBlue;
+        private IAsmHook _PersonaFusionNextSkillBgRed;
+        private IAsmHook _PersonaFusionNextSkillBgGreen;
+        private IAsmHook _PersonaFusionNextSkillBgBlue;
+        private IAsmHook _NextSkillLastSkillFontColor;
+        private IAsmHook _NumbersTopLeftCornerDraw;
+        private IAsmHook _ResultTopLeftCornerDraw;
+        private IAsmHook _DotsTopLeftCornerDraw;
 
         private IHook<APersonaStatusDraw_DrawDefaultStatusParameterInner> _drawStatParam;
         private IHook<APersonaStatusDraw_DrawDefaultCommentary> _drawDefaultLore;
@@ -241,6 +284,255 @@ namespace p3rpc.femc.Components
                 };
                 _SkillDescriptionCornerSkillFontBg = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaFusionShadow_SIG, "APersonaStatusDraw::PersonaFusionShadow", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.PersonaFusionShadow.ToU32ARGB())));
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaInheritanceCursor_SIG, "APersonaStatusDraw::PersonaInheritanceCursor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x80], {_context._config.CampHighlightedLowerColor.B}",
+                    $"mov byte [rbp - 0x7F], {_context._config.CampHighlightedLowerColor.G}",
+                    $"mov byte [rbp - 0x7E], {_context._config.CampHighlightedLowerColor.R}"
+                };
+                _PersonaInheritanceCursor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.DoNotExecuteOriginal).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaInheritanceSocialLinkBonusRed_SIG, "APersonaStatusDraw::PersonaInheritanceSocialLinkBonusRed", _context._utils.GetDirectAddress, addr =>
+            {
+                float fValue = _context._config.PersonaSocialLinkInheritance.R;
+                uint hexRed = BitConverter.ToUInt32(BitConverter.GetBytes(fValue), 0);
+
+                string[] function =
+                {
+                    "use64",
+                    "sub rsp, 8",
+                    $"mov dword [rsp], {hexRed}",
+                    "movss xmm1, dword [rsp]",
+                    "add rsp, 8",
+                };
+                _PersonaInheritanceSocialLinkBonusRed = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaInheritanceSocialLinkBonusGreen_SIG, "APersonaStatusDraw::PersonaInheritanceSocialLinkBonusGreen", _context._utils.GetDirectAddress, addr =>
+            {
+                float fValue = _context._config.PersonaSocialLinkInheritance.G;
+                uint hexGreen = BitConverter.ToUInt32(BitConverter.GetBytes(fValue), 0);
+
+                string[] function =
+                {
+                    "use64",
+                    "sub rsp, 8",
+                    $"mov dword [rsp], {hexGreen}",
+                    "movss xmm1, dword [rsp]",
+                    "add rsp, 8",
+                };
+                _PersonaInheritanceSocialLinkBonusGreen = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaInheritanceSocialLinkBonusBlue_SIG, "APersonaStatusDraw::PersonaInheritanceSocialLinkBonusBlue", _context._utils.GetDirectAddress, addr =>
+            {
+                float fValue = _context._config.PersonaSocialLinkInheritance.B;
+                uint hexBlue = BitConverter.ToUInt32(BitConverter.GetBytes(fValue), 0);
+
+                string[] function =
+                {
+                    "use64",
+                    "sub rsp, 8",
+                    $"mov dword [rsp], {hexBlue}",
+                    "movss xmm1, dword [rsp]",
+                    "add rsp, 8",
+                };
+                _PersonaInheritanceSocialLinkBonusBlue = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaSkillSelectSocialLinkBonusRed_SIG, "APersonaStatusDraw::PersonaSkillSelectSocialLinkBonusRed", _context._utils.GetDirectAddress, addr =>
+            {
+                float fValue = _context._config.PersonaSocialLinkInheritance.R;
+                uint hexRed = BitConverter.ToUInt32(BitConverter.GetBytes(fValue), 0);
+
+                string[] function =
+                {
+                    "use64",
+                    "sub rsp, 8",
+                    $"mov dword [rsp], {hexRed}",
+                    "movss xmm1, dword [rsp]",
+                    "add rsp, 8",
+                };
+                _PersonaSkillSelectSocialLinkBonusRed = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaSkillSelectSocialLinkBonusGreen_SIG, "APersonaStatusDraw::PersonaSkillSelectSocialLinkBonusGreen", _context._utils.GetDirectAddress, addr =>
+            {
+                float fValue = _context._config.PersonaSocialLinkInheritance.G;
+                uint hexGreen = BitConverter.ToUInt32(BitConverter.GetBytes(fValue), 0);
+
+                string[] function =
+                {
+                    "use64",
+                    "sub rsp, 8",
+                    $"mov dword [rsp], {hexGreen}",
+                    "movss xmm1, dword [rsp]",
+                    "add rsp, 8",
+                };
+                _PersonaSkillSelectSocialLinkBonusGreen = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaSkillSelectSocialLinkBonusBlue_SIG, "APersonaStatusDraw::PersonaSkillSelectSocialLinkBonusBlue", _context._utils.GetDirectAddress, addr =>
+            {
+                float fValue = _context._config.PersonaSocialLinkInheritance.B;
+                uint hexBlue = BitConverter.ToUInt32(BitConverter.GetBytes(fValue), 0);
+
+                string[] function =
+                {
+                    "use64",
+                    "sub rsp, 8",
+                    $"mov dword [rsp], {hexBlue}",
+                    "movss xmm1, dword [rsp]",
+                    "add rsp, 8",
+                };
+                _PersonaSkillSelectSocialLinkBonusBlue = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaMutationUp_SIG, "APersonaStatusDraw::PersonaMutationUp", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.MutationStripColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_PersonaMutationMiddle_SIG, "APersonaStatusDraw::PersonaMutationMiddle", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.MutationStripColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_PersonaMutationDown_SIG, "APersonaStatusDraw::PersonaMutationDown", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.MutationStripColor.ToU32ARGB())));
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_GetFusionSkillListNextSkill_SIG, "APersonaStatusDraw::GetFusionSkillListNextSkill", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.PersonaSkillListNextSkillColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_NextSkillsFusionQuestionMarkOutterOutline_SIG, "APersonaStatusDraw::NextSkillsFusionQuestionMarkOutterOutline", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.NextSkillOutterOutlineColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_NextSkillsFusionQuestionMarkInnerOutline_SIG, "APersonaStatusDraw::NextSkillsFusionQuestionMarkInnerOutline", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.NextSkillInnerOutlineColor.ToU32ARGB())));
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_NextSkillLastSkillFontColor_SIG, "APersonaStatusDraw::NextSkillLastSkillFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rsp + 0x78], {_context._config.PersonaSkillListNextSkillInfoName.B}",
+                    $"mov byte [rsp + 0x79], {_context._config.PersonaSkillListNextSkillInfoName.G}",
+                    $"mov byte [rsp + 0x7A], {_context._config.PersonaSkillListNextSkillInfoName.R}"
+                };
+                _NextSkillLastSkillFontColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaFusionNextSkillBgRed_SIG, "APersonaStatusDraw::PersonaFusionNextSkillBgRed", _context._utils.GetDirectAddress, addr =>
+            {
+                float fOriginalValue = _context._config.PersonaSkillListNextSkillColor.R;
+                float fDestinyValue = _context._config.PersonaLvlUpSkillListNextSkillColor.R;
+
+                uint hexOriginalColor = BitConverter.ToUInt32(BitConverter.GetBytes(fOriginalValue), 0);
+                uint hexDestinyColor = BitConverter.ToUInt32(BitConverter.GetBytes(fDestinyValue), 0);
+
+                string[] function =
+                {
+                    "use64",
+                    "sub rsp, 16",
+                    $"mov dword [rsp], {hexOriginalColor}",
+                    $"mov dword [rsp+8], {hexDestinyColor}",
+                    "movss xmm0, dword [rsp]",
+                    "movss xmm1, dword [rsp+8]",
+                    "add rsp, 16",
+                };
+                _PersonaFusionNextSkillBgRed = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaFusionNextSkillBgGreen_SIG, "APersonaStatusDraw::PersonaFusionNextSkillBgGreen", _context._utils.GetDirectAddress, addr =>
+            {
+                float fOriginalValue = _context._config.PersonaSkillListNextSkillColor.G;
+                float fDestinyValue = _context._config.PersonaLvlUpSkillListNextSkillColor.G;
+
+                uint hexOriginalColor = BitConverter.ToUInt32(BitConverter.GetBytes(fOriginalValue), 0);
+                uint hexDestinyColor = BitConverter.ToUInt32(BitConverter.GetBytes(fDestinyValue), 0);
+
+                string[] function =
+                {
+                    "use64",
+                    "sub rsp, 16",
+                    $"mov dword [rsp], {hexOriginalColor}",
+                    $"mov dword [rsp+8], {hexDestinyColor}",
+                    "movss xmm0, dword [rsp]",
+                    "movss xmm1, dword [rsp+8]",
+                    "add rsp, 16",
+                };
+                _PersonaFusionNextSkillBgGreen = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_PersonaFusionNextSkillBgBlue_SIG, "APersonaStatusDraw::PersonaFusionNextSkillBgBlue", _context._utils.GetDirectAddress, addr =>
+            {
+                float fOriginalValue = _context._config.PersonaSkillListNextSkillColor.B;
+                float fDestinyValue = _context._config.PersonaLvlUpSkillListNextSkillColor.B;
+
+                uint hexOriginalColor = BitConverter.ToUInt32(BitConverter.GetBytes(fOriginalValue), 0);
+                uint hexDestinyColor = BitConverter.ToUInt32(BitConverter.GetBytes(fDestinyValue), 0);
+
+                string[] function =
+                {
+                    "use64",
+                    "sub rsp, 16",
+                    $"mov dword [rsp], {hexOriginalColor}",
+                    $"mov dword [rsp+8], {hexDestinyColor}",
+                    "movss xmm0, dword [rsp]",
+                    "movss xmm1, dword [rsp+8]",
+                    "add rsp, 16",
+                };
+                _PersonaFusionNextSkillBgBlue = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_NumbersTopLeftCornerDraw_SIG, "APersonaStatusDraw::NumbersTopLeftCornerDraw", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0x140], {_context._config.FusionTopRightIndicatorColors.B}",
+                    $"mov byte [rbp + 0x141], {_context._config.FusionTopRightIndicatorColors.G}",
+                    $"mov byte [rbp + 0x142], {_context._config.FusionTopRightIndicatorColors.R}"
+                };
+                _NumbersTopLeftCornerDraw = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
+            });
+            _context._utils.SigScan(APersonaStatusDraw_ResultTopLeftCornerDraw_SIG, "APersonaStatusDraw::ResultTopLeftCornerDraw", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0x138], {_context._config.FusionTopRightIndicatorColors.B}",
+                    $"mov byte [rbp + 0x139], {_context._config.FusionTopRightIndicatorColors.G}",
+                    $"mov byte [rbp + 0x13A], {_context._config.FusionTopRightIndicatorColors.R}"
+                };
+                _ResultTopLeftCornerDraw = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
+            });
+            _context._utils.SigScan(APersonaStatusDraw_DotsTopLeftCornerDraw_SIG, "APersonaStatusDraw::DotsTopLeftCornerDraw", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0x130], {_context._config.FusionTopRightIndicatorColors.B}",
+                    $"mov byte [rbp + 0x131], {_context._config.FusionTopRightIndicatorColors.G}",
+                    $"mov byte [rbp + 0x132], {_context._config.FusionTopRightIndicatorColors.R}"
+                };
+                _DotsTopLeftCornerDraw = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
+            });
+
 
             _context._utils.SigScan(APersonaStatusDraw_GetSkillListBgColor_SIG, "APersonaStatusDraw::GetSkillListBgColor", _context._utils.GetDirectAddress, addr =>
             {

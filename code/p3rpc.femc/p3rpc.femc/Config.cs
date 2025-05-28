@@ -1166,8 +1166,14 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Femc Shadow Color")]
         public ConfigColor CampFemcShadow { get; set; } = UICommon.FemcShadowColor;
 
-        [DisplayName("Camp: Highlighted selection color")]
+        [DisplayName("Camp: Highlighted selection color high")]
         public ConfigColor CampHighlightedColor { get; set; } = ConfigColor.Blue;
+
+        [DisplayName("Camp: Highlighted selection color lower high")]
+        public ConfigColor CampHighlightedLowerColor { get; set; } = new ConfigColor(0x00, 0x00, 0xEE, 0xFF);
+
+        [DisplayName("Camp: Highlighted selection color middle (involves highlighted party member with lower high)")]
+        public ConfigColor CampHighlightedMidColor { get; set; } = new ConfigColor(0x00, 0x00, 0x6A, 0xFF);
 
         [DisplayName("Camp: Social Link Arcana selection color")]
         public ConfigColor CampSocialLinkArcanaHighlightedColor { get; set; } = new ConfigColor(0x6d, 0x03, 0x0d, 0x7F);
@@ -1225,6 +1231,24 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Persona Status: Next skill inner outline question mark color")]
         public ConfigColor NextSkillInnerOutlineColor { get; set; } = new ConfigColor(0xFD, 0x9B, 0xB7, 0xFF);
+
+        [DisplayName("Persona Status: Persona shadow when selecting inheritance skills/high level persona")]
+        public ConfigColor PersonaFusionShadow { get; set; } = new ConfigColor(0x30, 0x10, 0x27, 0xFF);
+
+        [DisplayName("Persona Status: Social Link Bonus color when choosing inheritance skills")]
+        public ConfigColor PersonaSocialLinkInheritance { get; set; } = new ConfigColor(0x6E, 0x03, 0x0A, 0xFF);
+
+        [DisplayName("Persona Status: Mutation animation strip colors")]
+        public ConfigColor MutationStripColor { get; set; } = new ConfigColor(0xC6, 0x00, 0x35, 0xFF);
+
+        [DisplayName("Persona Status: Fusion level up new learned skill info animation background color")]
+        public ConfigColor PersonaLvlUpSkillListNextSkillColor { get; set; } = new ConfigColor(0xFF, 0x7D, 0xA9, 0xFF);
+
+        [DisplayName("Persona Status: Fusion top left corner numbers/result color")]
+        public ConfigColor FusionTopRightIndicatorColors { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Battle: Squares colors from battle result animation")]
+        public ConfigColor BtlResultSquaresColor { get; set; } = new ConfigColor(0xD1, 0x00, 0x3F, 0xFF);
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -1357,6 +1381,12 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 171)]
         [DefaultValue(true)]
         public bool EnableWipe { get; set; } = true;
+
+        [DisplayName("Enable Battle")]
+        [Category("UI Components")]
+        [Display(Order = 172)]
+        [DefaultValue(true)]
+        public bool EnableBattle { get; set; } = true;
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
