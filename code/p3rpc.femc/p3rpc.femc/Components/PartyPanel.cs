@@ -33,9 +33,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.CampMiddleColor.B:X}",
-                    $"mov dl, ${_context._config.CampMiddleColor.G:X}",
-                    $"mov cl, ${_context._config.CampMiddleColor.R:X}"
+                    $"mov r8b, ${_context._config.PartyPanelFemcBgColor.B:X}",
+                    $"mov dl, ${_context._config.PartyPanelFemcBgColor.G:X}",
+                    $"mov cl, ${_context._config.PartyPanelFemcBgColor.R:X}"
                 };
                 _PartyPanelFemcBackgroundUpdate = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
             });

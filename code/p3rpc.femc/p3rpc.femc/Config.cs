@@ -1092,7 +1092,7 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 350)]
         public ConfigColor MissingTextDark { get; set; } = ConfigColor.MellodiColorDark3;
 
-        [DisplayName("Missing Person: Sort by Triangle")]
+        [DisplayName("Request/Missing Person: Sort by Triangle")]
         [Category("Ui Colors")]
         [Display(Order = 351)]
         public ConfigColor MissingSortTriangle { get; set; } = ConfigColor.MellodiColorMid2;
@@ -1249,6 +1249,15 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Battle: Squares colors from battle result animation")]
         public ConfigColor BtlResultSquaresColor { get; set; } = new ConfigColor(0xD1, 0x00, 0x3F, 0xFF);
+
+        [DisplayName("Party Panel Femc Background Color")]
+        public ConfigColor PartyPanelFemcBgColor { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
+
+        [DisplayName("Request/Missing Person: Column titles color")]
+        public ConfigColor DataColumnColor { get; set; } = new ConfigColor(0x92, 0x72, 0x7B, 0xFF);
+
+        [DisplayName("Request: Selected Sort By Column Title")]
+        public ConfigColor SelectedSortColumnTitle { get; set; } = new ConfigColor(0xFF, 0xD3, 0xFF, 0xFF);
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]

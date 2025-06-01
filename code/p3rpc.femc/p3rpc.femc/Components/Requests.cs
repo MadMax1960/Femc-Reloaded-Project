@@ -43,6 +43,17 @@ namespace p3rpc.femc.Components
         private string AUIRequest_FontStatusTag_SIG = "E8 ?? ?? ?? ?? 41 B0 FC 89 44 24 ??";
         private string AUIRequest_StatusTagUnderlay_SIG = "E8 ?? ?? ?? ?? 33 D2 89 85 ?? ?? ?? ?? 48 8B 83 ?? ?? ?? ??";
 
+        private string AUIRequest_NumberColumn_SIG = "C7 45 ?? 62 03 00 00 E8 ?? ?? ?? ??";
+        private string AUIRequest_QuestColumn_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 89 44 24 ?? E8 ?? ?? ?? ?? 0F 28 B4 24 ?? ?? ?? ??";
+        private string AUIRequest_DateColumn_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 89 44 24 ?? E8 ?? ?? ?? ?? 83 BF ?? ?? ?? ?? 01";
+        private string AUIRequest_StatusColumn_SIG = "E8 ?? ?? ?? ?? 89 44 24 ?? 48 8D 4C 24 ?? 4C 8B 87 ?? ?? ?? ??";
+
+        private string AUIRequest_SortCurrentText_SIG = "E8 ?? ?? ?? ?? 89 44 24 ?? E8 ?? ?? ?? ?? 8B 97 ?? ?? ?? ??";
+        private string AUIRequest_NumberTriangle_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 89 45 ?? E8 ?? ?? ?? ?? 33 D2 48 8B CE E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 0F 57 C9 0F 29 44 24 ??";
+        private string AUIRequest_NumberSortFont_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 89 45 ?? E8 ?? ?? ?? ?? 8D 53 ??";
+        private string AUIRequest_StatusTriangle_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 89 45 ?? E8 ?? ?? ?? ?? 33 D2 48 8B CE E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 0F 57 C9 8B 44 24 ??";
+        private string AUIRequest_StatusSortFont_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 89 44 24 ?? E8 ?? ?? ?? ?? BA 02 00 00 00";
+
         private IAsmHook _BackCardColor;
         private IAsmHook _BackSquaresColor;
         private IAsmHook _DetailBackColor;
@@ -67,6 +78,15 @@ namespace p3rpc.femc.Components
         private IAsmHook _FontAndStatusTagBackground;
         private IAsmHook _FontStatusTag;
         private IAsmHook _StatusTagUnderlay;
+        private IAsmHook _NumberColumn;
+        private IAsmHook _QuestColumn;
+        private IAsmHook _DateColumn;
+        private IAsmHook _StatusColumn;
+        private IAsmHook _SortCurrentText;
+        private IAsmHook _NumberTriangle;
+        private IAsmHook _NumberSortFont;
+        private IAsmHook _StatusTriangle;
+        private IAsmHook _StatusSortFont;
 
         /*
         private string AUIRequest_DetailColor_SIG = "E8 ?? ?? ?? ?? BA 04 00 00 00 89 45 ??";
@@ -407,19 +427,113 @@ namespace p3rpc.femc.Components
                 _StatusTagUnderlay = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
 
-            /* FAST COPY PASTING SIGSCAN
-            _context._utils.SigScan(AUIRequest_DetailColor_SIG, "AUIRequest::DetailColor", _context._utils.GetDirectAddress, addr =>
+            _context._utils.SigScan(AUIRequest_NumberColumn_SIG, "AUIRequest::NumberColumn", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.RequestBackCard.B:X}",
-                    $"mov dl, ${_context._config.RequestBackCard.G:X}",
-                    $"mov cl, ${_context._config.RequestBackCard.R:X}"
+                    $"mov r8b, ${_context._config.DataColumnColor.B:X}",
+                    $"mov dl, ${_context._config.DataColumnColor.G:X}",
+                    $"mov cl, ${_context._config.DataColumnColor.R:X}"
                 };
-                _DetailColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _NumberColumn = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            */
+
+            _context._utils.SigScan(AUIRequest_QuestColumn_SIG, "AUIRequest::QuestColumn", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.DataColumnColor.B:X}",
+                    $"mov dl, ${_context._config.DataColumnColor.G:X}",
+                    $"mov cl, ${_context._config.DataColumnColor.R:X}"
+                };
+                _QuestColumn = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DateColumn_SIG, "AUIRequest::DateColumn", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.DataColumnColor.B:X}",
+                    $"mov dl, ${_context._config.DataColumnColor.G:X}",
+                    $"mov cl, ${_context._config.DataColumnColor.R:X}"
+                };
+                _DateColumn = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_StatusColumn_SIG, "AUIRequest::StatusColumn", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.DataColumnColor.B:X}",
+                    $"mov dl, ${_context._config.DataColumnColor.G:X}",
+                    $"mov cl, ${_context._config.DataColumnColor.R:X}"
+                };
+                _StatusColumn = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_SortCurrentText_SIG, "AUIRequest::SortCurrentText", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.SelectedSortColumnTitle.B:X}",
+                    $"mov dl, ${_context._config.SelectedSortColumnTitle.G:X}",
+                    $"mov cl, ${_context._config.SelectedSortColumnTitle.R:X}"
+                };
+                _SortCurrentText = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_NumberTriangle_SIG, "AUIRequest::NumberTriangle", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MissingSortTriangle.B:X}",
+                    $"mov dl, ${_context._config.MissingSortTriangle.G:X}",
+                    $"mov cl, ${_context._config.MissingSortTriangle.R:X}"
+                };
+                _NumberTriangle = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_NumberSortFont_SIG, "AUIRequest::NumberSortFont", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MissingSortTriangle.B:X}",
+                    $"mov dl, ${_context._config.MissingSortTriangle.G:X}",
+                    $"mov cl, ${_context._config.MissingSortTriangle.R:X}"
+                };
+                _NumberSortFont = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_StatusTriangle_SIG, "AUIRequest::StatusTriangle", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MissingSortTriangle.B:X}",
+                    $"mov dl, ${_context._config.MissingSortTriangle.G:X}",
+                    $"mov cl, ${_context._config.MissingSortTriangle.R:X}"
+                };
+                _StatusTriangle = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_StatusSortFont_SIG, "AUIRequest::StatusSortFont", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MissingSortTriangle.B:X}",
+                    $"mov dl, ${_context._config.MissingSortTriangle.G:X}",
+                    $"mov cl, ${_context._config.MissingSortTriangle.R:X}"
+                };
+                _StatusSortFont = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
 
         public override void Register() { }
