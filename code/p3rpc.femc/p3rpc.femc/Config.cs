@@ -1332,7 +1332,8 @@ namespace p3rpc.femc.Configuration
             samythecoolkid,
             Mixi_xiMi,
             StupidAle,
-            Kiara
+            Kiara,
+            Autumn
         }
 
         [DisplayName("Glass Shard")]
