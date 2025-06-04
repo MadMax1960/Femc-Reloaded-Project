@@ -1350,7 +1350,8 @@ namespace p3rpc.femc.Configuration
             ElyAlt,
             Shiosakana,
 			namiweiko,
-            AngieDaGorl
+            AngieDaGorl,
+            StupidAle
         }
 
         [DisplayName("Level Up")]
