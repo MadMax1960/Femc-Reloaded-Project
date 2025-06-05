@@ -33,7 +33,6 @@ namespace p3rpc.femc
 				var nightmusic = new Dictionary<string, bool>
 				{
 					{Path.Combine(path,"Mosq\\link_97.cue"),_configuration.FemNight},
-                    {Path.Combine(path,"Pealeaf\\link_97.cue"),_configuration.PeaColNight},
                     {Path.Combine(path,"Mineformer\\link_97.cue"),_configuration.MidNight},
 					{Path.Combine(path,"Gabi\\link_97.cue"),_configuration.GabiFemNight},
 					{Path.Combine(path,"Mosq\\NightWanderer\\link_97.cue"),_configuration.NightWand},
@@ -159,7 +158,6 @@ namespace p3rpc.femc
 					{Path.Combine(path, "Mosq\\link_128.cue"),_configuration.MosqAdv},
 					{Path.Combine(path, "Karma\\link_128.cue"),_configuration.KarmaAdv},
 					{Path.Combine(path, "Reload\\link_128.cue"),_configuration.ItGoingDown},
-					{Path.Combine(path, "Jen\\link_128.cue"),_configuration.JenAdv},
 					{Path.Combine(path, "EidieK87\\link_128.cue"),_configuration.EidAdv}
 				};
 				foreach (KeyValuePair<string, bool> asm in advantagemusic)
