@@ -186,7 +186,8 @@ namespace p3rpc.femc.Configuration
             ElyAlt,
             Shiosakana,
             namiweiko,
-            AngieDaGorl
+            AngieDaGorl,
+            StupidAle
         }
 
         // 3D Options
