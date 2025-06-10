@@ -15,6 +15,7 @@ using p3rpc.classconstructor.Interfaces;
 using Ryo.Interfaces;
 using Reloaded.Memory.Sigscan.Definitions;
 using P3R.CostumeFramework.Interfaces;
+using UE.Toolkit.Interfaces;
 
 
 
@@ -59,16 +60,15 @@ namespace p3rpc.femc
 		private readonly IModConfig _modConfig;
 		private FemcContext _context;
 		private ModuleRuntime<FemcContext> _modRuntime;
-		private readonly IUnreal unreal;
 		private readonly MusicManager _musicManager;
 		private AssetRedirector _assetRedirector;
 		private readonly ICostumeApi _costumeApi;
+		private ArmorData _armorData;
 
 
 
 
-
-		private string modName { get; set; }
+        private string ModName { get; set; }
 
 		public Mod(ModContext context)
 		{
@@ -82,8 +82,8 @@ namespace p3rpc.femc
 			var process = Process.GetCurrentProcess();
 			if (process.MainModule == null) throw new Exception($"[{_modConfig.ModName}] Could not get main module (this should never happen)");
 			var baseAddress = process.MainModule.BaseAddress;
-            unreal = GetDependency<IUnreal>("Unreal Objects Emitter");
-			var scannerFactory = GetDependency<IScannerFactory>("Scanner Factory");
+            var unrealmemory = GetDependency<IUnrealMemory>("UE Toolkit (IUnrealMemory)");
+            var scannerFactory = GetDependency<IScannerFactory>("Scanner Factory");
             var startupScanner = GetDependency<IStartupScanner>("Reloaded Startup Scanner");
 			if (_hooks == null) throw new Exception($"[{_modConfig.ModName}] Could not get controller for Reloaded hooks");
 			var sharedScans = GetDependency<ISharedScans>("Shared Scans");
@@ -91,7 +91,10 @@ namespace p3rpc.femc
 			var unrealEssentials = GetDependency<IUnrealEssentials>("Unreal Essentials");
 			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
             var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
-			_costumeApi = GetDependency<ICostumeApi>("Costume Framework");
+			var uObjects = GetDependency<IUnrealObjects>("Unreal Objects Emitter (IUObjects)");
+			var uoeUnreal = GetDependency<IUnreal>("Unreal Objects Emitter (IUnreal)");
+            var toolKit = GetDependency<IToolkit>("UE Toolkit (IToolkit");
+            _costumeApi = GetDependency<ICostumeApi>("Costume Framework");
 
 			var ryo = GetDependency<IRyoApi>("Ryo");
             var memory = new Memory();
@@ -117,12 +120,13 @@ namespace p3rpc.femc
             _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods, bIsAigis);
 			_modRuntime = new(_context);
 			_musicManager = new MusicManager(_modLoader, _modConfig, _configuration, ryo, _logger, _context);
+            _armorData = new(_modLoader, _modConfig, _configuration, uObjects, unrealmemory, _logger, toolKit, _context);
 
-			modName = _modConfig.ModName;
+            ModName = _modConfig.ModName;
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials, ryo);
 			InitializeModules();
-			_assetRedirector = new AssetRedirector(unreal, modName);
+			_assetRedirector = new AssetRedirector(uoeUnreal, ModName);
 			_assetRedirector.RedirectPlayerAssets();
 			_musicManager.GenerateMusicScript();
 		}
@@ -144,7 +148,7 @@ namespace p3rpc.femc
 				Load2dAssets(unrealEssentials);
 				LoadTheoAssets(unrealEssentials, ryo);
 				LoadFunStuff(unrealEssentials);
-				LoadMiscAssets(unrealEssentials, ryo);
+				LoadMiscAssets(ryo);
 			}
 			catch (Exception ex)
 			{
@@ -213,7 +217,7 @@ namespace p3rpc.femc
                 unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Otome Arcade"));
         }
 
-		private void LoadMiscAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
+		private void LoadMiscAssets(IRyoApi ryo)
 		{
 			if (_configuration.bluehairandpronounce)
 				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Voice"); // gendered audio
