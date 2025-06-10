@@ -811,6 +811,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableWipe { get; set; } = true;
 
+        [DisplayName("Enable Battle")]
+        [Category("UI Components")]
+        [Display(Order = 172)]
+        [DefaultValue(true)]
+        public bool EnableBattle { get; set; } = true;
+
         [DisplayName("Mail Icon: Outer Color")]
         [Category("UI Colors")]
         [Display(Order = 200)]
@@ -1626,6 +1632,12 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Request: Status Tag Underlay Color")]
         public ConfigColor RequestStatusTagUnderlay { get; set; } = new ConfigColor(0x6a, 0x00, 0x19, 0xFF);
 
+        [DisplayName("Social Stats: Musical Notes Color")]
+        public ConfigColor MusicNotesColor { get; set; } = new ConfigColor(0xFF, 0x8F, 0xEC, 0xFF);
+
+        [DisplayName("Camp: Transition between menus color")]
+        public ConfigColor CampColorTransition { get; set; } = ConfigColor.MellodiColorLight3;
+
         [DisplayName("Camp: Skill Card Sub Menu Background Color")]
         public ConfigColor CampSkillCardBackground { get; set; } = new ConfigColor(0x78, 0x68, 0x6f, 0xFF);
 
@@ -1655,6 +1667,15 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Camp: System falling words end color")]
         public ConfigColor CampSystemEndFallingWordsColor { get; set; } = new ConfigColor(0xA3, 0x20, 0x26, 0xFF);
+
+        [DisplayName("Camp Equip: Square Background")]
+        public ConfigColor EquipSquareBack { get; set; } = ConfigColor.MellodiColorDark2;
+
+        [DisplayName("Camp Equip: Menu title inside square color")]
+        public ConfigColor EquipTitleBackground { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Camp Equip: 'Effect' font color in equipment description")]
+        public ConfigColor EquipEffectColor { get; set; } = ConfigColor.MellodiColorDark3;
 
         [DisplayName("Quest: Shadows Femc and Chairs Color")]
         public ConfigColor QuestFemcChairsShadow { get; set; } = new ConfigColor(0x58, 0x0F, 0x21, 0xFF);
@@ -1730,144 +1751,6 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Request: Selected Sort By Column Title")]
         public ConfigColor SelectedSortColumnTitle { get; set; } = new ConfigColor(0xFF, 0xD3, 0xFF, 0xFF);
-
-        [DisplayName("Enable Mail Icon")]
-        [Category("UI Components")]
-        [Display(Order = 150)]
-        [DefaultValue(true)]
-        public bool EnableMailIcon { get; set; } = true;
-
-        [DisplayName("Enable Date Time Panel")]
-        [Category("UI Components")]
-        [Display(Order = 151)]
-        [DefaultValue(true)]
-        public bool EnableDateTimePanel { get; set; } = true;
-
-        [DisplayName("Enable Camp Menu")]
-        [Category("UI Components")]
-        [Display(Order = 152)]
-        [DefaultValue(true)]
-        public bool EnableCampMenu { get; set; } = true;
-
-        [DisplayName("Enable Standard Message Box")]
-        [Category("UI Components")]
-        [Display(Order = 153)]
-        [DefaultValue(true)]
-        public bool EnableTextbox { get; set; } = true;
-
-        [DisplayName("Enable Mind Message Box")]
-        [Category("UI Components")]
-        [Display(Order = 154)]
-        [DefaultValue(true)]
-        public bool EnableMindMessageBox { get; set; } = true;
-
-        [DisplayName("Enable Interact Prompt")]
-        [Category("UI Components")]
-        [Display(Order = 155)]
-        [DefaultValue(true)]
-        public bool EnableInteractPrompt { get; set; } = true;
-
-        [DisplayName("Enable Minimap")]
-        [Category("UI Components")]
-        [Display(Order = 156)]
-        [DefaultValue(true)]
-        public bool EnableMinimap { get; set; } = true;
-
-        [DisplayName("Enable Bustup")]
-        [Category("UI Components")]
-        [Display(Order = 157)]
-        [DefaultValue(true)]
-        public bool EnableBustup { get; set; } = true;
-
-        [DisplayName("Enable MessageScript")]
-        [Category("UI Components")]
-        [Display(Order = 158)]
-        [DefaultValue(true)]
-        public bool EnableMessageScript { get; set; } = true;
-
-        [DisplayName("Enable Town Map")]
-        [Category("UI Components")]
-        [Display(Order = 159)]
-        [DefaultValue(true)]
-        public bool EnableTownMap { get; set; } = true;
-
-        [DisplayName("Enable Party Panel")]
-        [Category("UI Components")]
-        [Display(Order = 160)]
-        [DefaultValue(true)]
-        public bool EnablePartyPanel { get; set; } = true;
-
-        [DisplayName("Enable Time Skip")]
-        [Category("UI Components")]
-        [Display(Order = 161)]
-        [DefaultValue(true)]
-        public bool EnableTimeSkip { get; set; } = true;
-
-        [DisplayName("Enable Get Item")]
-        [Category("UI Components")]
-        [Display(Order = 162)]
-        [DefaultValue(true)]
-        public bool EnableGetItem { get; set; } = true;
-
-        [DisplayName("Enable Network Features")]
-        [Category("UI Components")]
-        [Display(Order = 163)]
-        [DefaultValue(true)]
-        public bool EnableNetworkFeatures { get; set; } = true;
-
-        [DisplayName("Enable Shop")]
-        [Category("UI Components")]
-        [Display(Order = 164)]
-        [DefaultValue(true)]
-        public bool EnableShop { get; set; } = true;
-
-        [DisplayName("Enable Persona Status")]
-        [Category("UI Components")]
-        [Display(Order = 165)]
-        [DefaultValue(true)]
-        public bool EnablePersonaStatus { get; set; } = true;
-
-        [DisplayName("Enable Backlog")]
-        [Category("UI Components")]
-        [Display(Order = 166)]
-        [DefaultValue(true)]
-        public bool EnableBacklog { get; set; } = true;
-
-        [DisplayName("Enable Button Prompts")]
-        [Category("UI Components")]
-        [Display(Order = 167)]
-        [DefaultValue(true)]
-        public bool EnableButtonPrompts { get; set; } = true;
-
-        [DisplayName("Enable Title Menu")]
-        [Category("UI Components")]
-        [Display(Order = 168)]
-        [DefaultValue(true)]
-        public bool EnableTitleMenu { get; set; } = true;
-
-        [DisplayName("Enable Staff Roll")]
-        [Category("UI Components")]
-        [Display(Order = 169)]
-        [DefaultValue(true)]
-        public bool EnableStaffRoll { get; set; } = true;
-
-        [DisplayName("Enable Cutin")]
-        [Category("UI Components")]
-        [Display(Order = 170)]
-        [DefaultValue(true)]
-        public bool EnableCutin { get; set; } = true;
-
-        [DisplayName("Enable Wipe")]
-        [Category("UI Components")]
-        [Display(Order = 171)]
-        [DefaultValue(true)]
-        public bool EnableWipe { get; set; } = true;
-
-        [DisplayName("Enable Battle")]
-        [Category("UI Components")]
-        [Display(Order = 172)]
-        [DefaultValue(true)]
-        public bool EnableBattle { get; set; } = true;
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]

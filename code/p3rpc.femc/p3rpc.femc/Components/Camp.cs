@@ -86,7 +86,7 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(UCmpRootDraw_MenuTransitionColor_SIG, "UCmpRootDraw::MenuTransitionColor", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.TutorialListEntryColor.ToU32ARGB())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CampColorTransition.ToU32ARGB())));
             });
             _context._utils.SigScan(UCmpRootDraw_DrawHighlightedColor1_SIG, "UCmpRootDraw::DrawHighlightedColor1", _context._utils.GetDirectAddress, addr =>
             {
@@ -396,11 +396,11 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(UCmpEquipDraw_DrawSquareBackground_SIG, "UCmpEquipDraw::DrawSquareBackground", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillTextColorCurrSel.ToU32())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.EquipSquareBack.ToU32())));
             });
             _context._utils.SigScan(UCmpEquipDraw_DrawEquipTitleBackground_SIG, "UCmpEquipDraw::DrawEquipTitleBackground", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampSocialLinkDark.ToU32())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.EquipTitleBackground.ToU32())));
             });
             _context._utils.SigScan(UCmpEquipDraw_DrawHighlightedPartyMember1_SIG, "UCmpEquipDraw::DrawHighlightedPartyMember1", _context._utils.GetDirectAddress, addr =>
             {
@@ -429,7 +429,7 @@ namespace p3rpc.femc.Components
 
             _context._utils.SigScan(UCmpEquipDraw_DrawEquipDescriptionEffectBg_SIG, "UCmpEquipDraw::DrawEquipDescriptionEffectBg", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampSocialLinkDark.ToU32IgnoreAlpha())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipEffectColor.ToU32IgnoreAlpha())));
             });
 
             _context._utils.SigScan(UCmpEquip_FemaleEquipmentForFemc_SIG, "UCmpEquip::FemaleEquipmentForFemc", _context._utils.GetDirectAddress, addr =>

@@ -52,9 +52,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.CampMenuItemColor1.B:X}",
-                    $"mov dl, ${_context._config.CampMenuItemColor1.G:X}",
-                    $"mov cl, ${_context._config.CampMenuItemColor1.R:X}"
+                    $"mov r8b, ${_context._config.MusicNotesColor.B:X}",
+                    $"mov dl, ${_context._config.MusicNotesColor.G:X}",
+                    $"mov cl, ${_context._config.MusicNotesColor.R:X}"
                 };
                 _drawStatUpMusicNote1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
@@ -63,9 +63,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.CampMenuItemColor1.B:X}",
-                    $"mov dl, ${_context._config.CampMenuItemColor1.G:X}",
-                    $"mov cl, ${_context._config.CampMenuItemColor1.R:X}"
+                    $"mov r8b, ${_context._config.MusicNotesColor.B:X}",
+                    $"mov dl, ${_context._config.MusicNotesColor.G:X}",
+                    $"mov cl, ${_context._config.MusicNotesColor.R:X}"
                 };
                 _drawStatUpMusicNote2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
