@@ -811,6 +811,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableWipe { get; set; } = true;
 
+        [DisplayName("Enable Battle")]
+        [Category("UI Components")]
+        [Display(Order = 172)]
+        [DefaultValue(true)]
+        public bool EnableBattle { get; set; } = true;
+
         [DisplayName("Mail Icon: Outer Color")]
         [Category("UI Colors")]
         [Display(Order = 200)]
@@ -1567,10 +1573,184 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 350)]
         public ConfigColor MissingTextDark { get; set; } = ConfigColor.MellodiColorDark3;
 
-        [DisplayName("Missing Person: Sort by Triangle")]
-        [Category("UI Colors")]
+        [DisplayName("Request/Missing Person: Sort by Triangle")]
+        [Category("Ui Colors")]
         [Display(Order = 351)]
         public ConfigColor MissingSortTriangle { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Missing Person: Shadows Femc and Chairs in Detail Color")]
+        public ConfigColor MissingDetailFemcChairsShadow { get; set; } = new ConfigColor(0x36, 0x0c, 0x18, 0xFF);
+
+        [DisplayName("Request: Back Card Color")]
+        public ConfigColor RequestBackCard { get; set; } = new ConfigColor(0x60, 0x00, 0x21, 0xFF);
+
+        [DisplayName("Request: Back Squares Color")]
+        public ConfigColor RequestBackSquares { get; set; } = new ConfigColor(0x38, 0x00, 0x10, 0xFF);
+
+        [DisplayName("Request: Back Card Detail Color")]
+        public ConfigColor RequestBackCardDetail { get; set; } = new ConfigColor(0x2e, 0x09, 0x17, 0xFF);
+
+        [DisplayName("Request: Back Card Detail Right Down Solid Color")]
+        public ConfigColor RequestBackCardRightDownDetail { get; set; } = new ConfigColor(0x5d, 0x00, 0x20, 0xFF);
+
+        [DisplayName("Request: Shadows Femc and Chairs in Detail Color")] 
+        public ConfigColor RequestDetailFemcChairsShadow { get; set; } = new ConfigColor(0x48, 0x11, 0x23, 0xFF);
+
+        [DisplayName("Request: 'Task' Font Color")]
+        public ConfigColor RequestTaskFont { get; set; } = new ConfigColor(0xFF, 0x91, 0xb0, 0xFF);
+
+        [DisplayName("Request: Detail 'Request Details' Font Color")]
+        public ConfigColor RequestDetailsFont { get; set; } = new ConfigColor(0xFD, 0x9B, 0xb7, 0xFF);
+
+        [DisplayName("Request: Detail 'Complete' Tag Color")]
+        public ConfigColor RequestDetailCompleted { get; set; } = new ConfigColor(0x43, 0x0d, 0x1b, 0xFF);
+
+        [DisplayName("Request: Detail Background 'Complete' Tag Color")]
+        public ConfigColor RequestDetailBackgroundCompleted { get; set; } = new ConfigColor(0x8c, 0x09, 0x30, 0xFF);
+
+        [DisplayName("Request: Detail 'Earned' Tag Color")]
+        public ConfigColor RequestDetailEarned { get; set; } = new ConfigColor(0xFF, 0x91, 0xb0, 0xFF);
+
+        [DisplayName("Request: Detail Difficulty Rank Upper Part Color")]
+        public ConfigColor RequestDifficultyRankUp { get; set; } = new ConfigColor(0x17, 0x03, 0x0c, 0xFF);
+
+        [DisplayName("Request: Detail Difficulty Rank Lower Part Color")]
+        public ConfigColor RequestDifficultyRankDown { get; set; } = new ConfigColor(0x41, 0x03, 0x20, 0xFF);
+
+        [DisplayName("Request: Detail Difficulty Butterfly Indicator Color")]
+        public ConfigColor RequestDifficultyIndicator { get; set; } = new ConfigColor(0x73, 0x0e, 0x38, 0xFF);
+
+        [DisplayName("Request: Detail Difficulty Font Color")]
+        public ConfigColor RequestDifficultyFont { get; set; } = new ConfigColor(0x71, 0x0d, 0x2b, 0xFF);
+
+        [DisplayName("Request: Status Light Font and Tag Background Color")]
+        public ConfigColor RequestStatusFontTagBack { get; set; } = new ConfigColor(0xfc, 0x9a, 0xb6, 0xFF);
+
+        [DisplayName("Request: Status Tag Font Color")]
+        public ConfigColor RequestStatusTagFont { get; set; } = new ConfigColor(0x68, 0x01, 0x08, 0xFF);
+
+        [DisplayName("Request: Status Tag Underlay Color")]
+        public ConfigColor RequestStatusTagUnderlay { get; set; } = new ConfigColor(0x6a, 0x00, 0x19, 0xFF);
+
+        [DisplayName("Social Stats: Musical Notes Color")]
+        public ConfigColor MusicNotesColor { get; set; } = new ConfigColor(0xFF, 0x8F, 0xEC, 0xFF);
+
+        [DisplayName("Camp: Transition between menus color")]
+        public ConfigColor CampColorTransition { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Skill Card Sub Menu Background Color")]
+        public ConfigColor CampSkillCardBackground { get; set; } = new ConfigColor(0x78, 0x68, 0x6f, 0xFF);
+
+        [DisplayName("Camp: Skill Card Sub Menu Frame Color")]
+        public ConfigColor CampSkillCardFrame { get; set; } = new ConfigColor(0x65, 0x35, 0x48, 0xFF);
+
+        [DisplayName("Camp: Skill Card Femc Sub Menu Color")]
+        public ConfigColor CampSkillCardFemc { get; set; } = new ConfigColor(0x21, 0x08, 0x12, 0xFF);
+
+        [DisplayName("Camp: Femc Shadow Color")]
+        public ConfigColor CampFemcShadow { get; set; } = UICommon.FemcShadowColor;
+
+        [DisplayName("Camp: Highlighted selection color high")]
+        public ConfigColor CampHighlightedColor { get; set; } = ConfigColor.Blue;
+
+        [DisplayName("Camp: Highlighted selection color lower high")]
+        public ConfigColor CampHighlightedLowerColor { get; set; } = new ConfigColor(0x00, 0x00, 0xEE, 0xFF);
+
+        [DisplayName("Camp: Highlighted selection color middle (involves highlighted party member with lower high)")]
+        public ConfigColor CampHighlightedMidColor { get; set; } = new ConfigColor(0x00, 0x00, 0x6A, 0xFF);
+
+        [DisplayName("Camp: Social Link Arcana selection color")]
+        public ConfigColor CampSocialLinkArcanaHighlightedColor { get; set; } = new ConfigColor(0x6d, 0x03, 0x0d, 0x7F);
+
+        [DisplayName("Camp: System falling words starting color")]
+        public ConfigColor CampSystemStartFallingWordsColor { get; set; } = new ConfigColor(0x2B, 0x00, 0x00, 0xFF);
+
+        [DisplayName("Camp: System falling words end color")]
+        public ConfigColor CampSystemEndFallingWordsColor { get; set; } = new ConfigColor(0xA3, 0x20, 0x26, 0xFF);
+
+        [DisplayName("Camp Equip: Square Background")]
+        public ConfigColor EquipSquareBack { get; set; } = ConfigColor.MellodiColorDark2;
+
+        [DisplayName("Camp Equip: Menu title inside square color")]
+        public ConfigColor EquipTitleBackground { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Camp Equip: 'Effect' font color in equipment description")]
+        public ConfigColor EquipEffectColor { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Quest: Shadows Femc and Chairs Color")]
+        public ConfigColor QuestFemcChairsShadow { get; set; } = new ConfigColor(0x58, 0x0F, 0x21, 0xFF);
+
+        [DisplayName("Quest: Request/Missing Person Toggler Background Color")]
+        public ConfigColor QuestToggler { get; set; } = new ConfigColor(0x2e, 0x09, 0x17, 0xFF);
+
+        [DisplayName("Persona Status: Highlighted selection color")]
+        public ConfigColor PersonaStatusHighlightedColor { get; set; } = new ConfigColor(0x29, 0x00, 0xEA, 0xFF);
+
+        [DisplayName("Persona Status: Skill Card Skill Background color")]
+        public ConfigColor SkillCardSkillBg { get; set; } = new ConfigColor(0x66, 0x2b, 0x47, 0xFF);
+
+        [DisplayName("Persona Status: Skill Description Main Background color")]
+        public ConfigColor SkillDescriptionMainBg { get; set; } = new ConfigColor(0x57, 0x21, 0x3D, 0xFF);
+
+        [DisplayName("Persona Status: Skill Description Corner and Title Background color")]
+        public ConfigColor SkillDescriptionCornerBg { get; set; } = new ConfigColor(0x7D, 0x4D, 0x66, 0xFF);
+
+        [DisplayName("Persona Status: --NONE-- skill color")]
+        public ConfigColor NoneSkillColor { get; set; } = new ConfigColor(0x9F, 0x83, 0x8C, 0xFF);
+
+        [DisplayName("Persona Status: Selected skill font color")]
+        public ConfigColor SelectedSkillFontColor { get; set; } = ConfigColor.PersonaStatusSkillListBg;
+
+        [DisplayName("Persona Status: Skill swap selected skill shadow font color")]
+        public ConfigColor SwapSkillShadowSelectedFontColor { get; set; } = new ConfigColor(0xFE, 0x9B, 0xB8, 0xFF);
+
+        [DisplayName("Persona Status: Skill swap unselected skill background color")]
+        public ConfigColor SwapSkillUnselectedFontColor { get; set; } = new ConfigColor(0x9E, 0x3C, 0x5E, 0xFF);
+
+        [DisplayName("Persona Status: Skill swap unselected skill background color")]
+        public ConfigColor SwapSkillUnselectedBgColor { get; set; } = new ConfigColor(0xFD, 0x75, 0x9B, 0xFF);
+
+        [DisplayName("Persona Status: Inheritable skill tick color")]
+        public ConfigColor InheritableSkillTick { get; set; } = new ConfigColor(0xCC, 0x7C, 0x93, 0xFF);
+
+        [DisplayName("Persona Status: Inheritable skill tick tag background color")]
+        public ConfigColor InheritableSkillTickBg { get; set; } = new ConfigColor(0x71, 0x36, 0x4D, 0xFF);
+        
+        [DisplayName("Persona Status: Next skill left zero color")]
+        public ConfigColor NextSkillZero { get; set; } = new ConfigColor(0x99, 0x53, 0x64, 0xFF);
+
+        [DisplayName("Persona Status: Next skill outter outline question mark color")]
+        public ConfigColor NextSkillOutterOutlineColor { get; set; } = new ConfigColor(0x59, 0x02, 0x23, 0xFF);
+
+        [DisplayName("Persona Status: Next skill inner outline question mark color")]
+        public ConfigColor NextSkillInnerOutlineColor { get; set; } = new ConfigColor(0xFD, 0x9B, 0xB7, 0xFF);
+
+        [DisplayName("Persona Status: Persona shadow when selecting inheritance skills/high level persona")]
+        public ConfigColor PersonaFusionShadow { get; set; } = new ConfigColor(0x30, 0x10, 0x27, 0xFF);
+
+        [DisplayName("Persona Status: Social Link Bonus color when choosing inheritance skills")]
+        public ConfigColor PersonaSocialLinkInheritance { get; set; } = new ConfigColor(0x6E, 0x03, 0x0A, 0xFF);
+
+        [DisplayName("Persona Status: Mutation animation strip colors")]
+        public ConfigColor MutationStripColor { get; set; } = new ConfigColor(0xC6, 0x00, 0x35, 0xFF);
+
+        [DisplayName("Persona Status: Fusion level up new learned skill info animation background color")]
+        public ConfigColor PersonaLvlUpSkillListNextSkillColor { get; set; } = new ConfigColor(0xFF, 0x7D, 0xA9, 0xFF);
+
+        [DisplayName("Persona Status: Fusion top left corner numbers/result color")]
+        public ConfigColor FusionTopRightIndicatorColors { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Battle: Squares colors from battle result animation")]
+        public ConfigColor BtlResultSquaresColor { get; set; } = new ConfigColor(0xD1, 0x00, 0x3F, 0xFF);
+
+        [DisplayName("Party Panel Femc Background Color")]
+        public ConfigColor PartyPanelFemcBgColor { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
+
+        [DisplayName("Request/Missing Person: Column titles color")]
+        public ConfigColor DataColumnColor { get; set; } = new ConfigColor(0x92, 0x72, 0x7B, 0xFF);
+
+        [DisplayName("Request: Selected Sort By Column Title")]
+        public ConfigColor SelectedSortColumnTitle { get; set; } = new ConfigColor(0xFF, 0xD3, 0xFF, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
