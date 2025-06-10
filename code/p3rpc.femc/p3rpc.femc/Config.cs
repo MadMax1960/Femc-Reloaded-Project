@@ -32,18 +32,30 @@ namespace p3rpc.femc.Configuration
 
         public enum AOAType
         {
+            [Display(Name = "Ely")]
             Ely,
+            [Display(Name = "Chrysanthie")]
             Chrysanthie,
+            [Display(Name = "Fernando")]
             Fernando,
+            [Display(Name = "Monica")]
             Monica,
+            [Display(Name = "Ronald Reagan")]
             RonaldReagan,
+            [Display(Name = "Esa, Adrien")]
             esaadrien,
+            [Display(Name = "Mekki")]
             mekki,
+            [Display(Name = "shiosakana")]
             shiosakana,
+            [Display(Name = "shiosakana (jacket closed)")]
             shiosakanaAlt,
+            [Display(Name = "Namiweiko")]
             Nami,
+            [Display(Name = "AngieDaGorl")]
             AngieDaGorl,
-            StupidAle
+            [Display(Name = "StupidAle")]
+            StupidAle,
         }
 
         [DisplayName("AOA Text Options")]
@@ -55,9 +67,12 @@ namespace p3rpc.femc.Configuration
 
         public enum AOATextType
         {
+            [Display(Name = "Don't look back.")]
             DontLookBack,
+            [Display(Name = "Sorry 'bout that— bye-bye!")]
             SorryBoutThat,
-            PerfectlyAccomplished
+            [Display(Name = "Perfectly accomplished!!")]
+            PerfectlyAccomplished,
         }
 
 
@@ -70,35 +85,65 @@ namespace p3rpc.femc.Configuration
 
         public enum BustupType
         {
+            [Display(Name = "Neptune")]
             Neptune,
+            [Display(Name = "Ely")]
             Ely,
+            [Display(Name = "Esa")]
             Esa,
+            [Display(Name = "Betina")]
             Betina,
+            [Display(Name = "P25th Anniversary Art")]
             Anniversary,
+            [Display(Name = "Just Blue")]
             JustBlue,
+            [Display(Name = "Sav")]
             Sav,
+            [Display(Name = "Doodled")]
             Doodled,
+            [Display(Name = "Ronald Reagan")]
             RonaldReagan,
+            [Display(Name = "Ely (Alt)")]
             ElyAlt,
+            [Display(Name = "Yuunagi")]
             Yuunagi,
+            [Display(Name = "cielbell")]
             cielbell,
+            [Display(Name = "axolotl")]
             axolotl,
+            [Display(Name = "GhostedToast")]
             ghostedtoast,
+            [Display(Name = "Strelko")]
             Strelko,
+            [Display(Name = "gackt")]
             gackt,
+            [Display(Name = "Jackie")]
             Jackie,
+            [Display(Name = "Lisa9388")]
             Lisa,
+            [Display(Name = "Mae (Beta FEMC)")]
             BetaFemcByMae,
+            [Display(Name = "crezzstar")]
             crezzstar,
+            [Display(Name = "crezzstar (Alt expression)")]
             crezzstarAlt,
+            [Display(Name = "AngieDaGorl")]
             AngieDaGorl,
+            [Display(Name = "namiweiko")]
             namiweiko,
+            [Display(Name = "chitu")]
             chitu,
+            [Display(Name = "shiosakana")]
             shiosakana,
+            [Display(Name = "samythecoolkid")]
             samythecoolkid,
+            [Display(Name = "Mixi_xiMi")]
             Mixi_xiMi,
+            [Display(Name = "StupidAle")]
             StupidAle,
+            [Display(Name = "Kiara")]
             Kiara,
+            [Display(Name = "Autumn")]
             Autumn
         }
 
@@ -111,9 +156,13 @@ namespace p3rpc.femc.Configuration
 
         public enum CutinType
         {
+            [Display(Name = "berrycha")]
             berrycha,
+            [Display(Name = "Ely, PatManDX")]
             ElyandPatmandx,
+            [Display(Name = "Mekki")]
             Mekki,
+            [Display(Name = "shiosakana")]
             shiosakana
         }
 
@@ -126,7 +175,9 @@ namespace p3rpc.femc.Configuration
 
         public enum GroupEventtype
         {
+            [Display(Name = "Bichelle")]
             bichelle,
+            [Display(Name = "Ely")]
             ely
         }
 
@@ -139,6 +190,7 @@ namespace p3rpc.femc.Configuration
 
         public enum KyotoEventtype
         {
+            [Display(Name = "Ely")]
             ely
         }
 
@@ -151,10 +203,15 @@ namespace p3rpc.femc.Configuration
 
         public enum LevelUpType
         {
+            [Display(Name = "Esa")]
             Esa,
+            [Display(Name = "Ely")]
             Ely,
+            [Display(Name = "shiosakana")]
             shiosakana,
+            [Display(Name = "Ely (Alt)")]
             ElyAlt,
+            [Display(Name = "AngieDaGorl")]
             AngieDaGorl
 
         }
@@ -168,7 +225,9 @@ namespace p3rpc.femc.Configuration
 
         public enum PartyPanelType
         {
+            [Display(Name = "Kris")]
             Kris,
+            [Display(Name = "Esa")]
             Esa
         }
 
@@ -181,19 +240,26 @@ namespace p3rpc.femc.Configuration
 
         public enum ShardType
         {
+            [Display(Name = "Esa")]
             Esa,
+            [Display(Name = "Ely")]
             Ely,
+            [Display(Name = "Ely (Alt)")]
             ElyAlt,
+            [Display(Name = "shiosakana")]
             Shiosakana,
+            [Display(Name = "namiweiko")]
             namiweiko,
+            [Display(Name = "AngieDaGorl")]
             AngieDaGorl,
+            [Display(Name = "StupidAle")]
             StupidAle
         }
 
         // 3D Options
 
         [DisplayName("Animations")]
-        [Description("Choose from a few animations.\n\nNote that some custom anims might not look correct if skeleton fix is enabled.")]
+        [Description("Choose from a few animations.\n\nNote that some custom anims might not look correct if skeleton fix is enabled,\nsuch as the menu animations.")]
         [Category("3D Options")]
         [Display(Order = 12)]
         [DefaultValue(AnimType.OriginalAnims)]
@@ -201,8 +267,11 @@ namespace p3rpc.femc.Configuration
 
         public enum AnimType
         {
+            [Display(Name = "Original Animations")]
             OriginalAnims,
+            [Display(Name = "Custom Animations")]
             CustomAnims,
+            [Display(Name = "Very Funny Animations")]
             VeryFunnyAnims
         }
 
@@ -215,7 +284,9 @@ namespace p3rpc.femc.Configuration
 
         public enum HairType
         {
+            [Display(Name = "Default")]
             MudkipsHair,
+            [Display(Name = "Kotone Bean")]
             KotoneBeanHair
         }
 
@@ -229,7 +300,7 @@ namespace p3rpc.femc.Configuration
         // Voice
 
         [DisplayName("Voice Options")]
-        [Description("Voice used ingame for FEMC.")]
+        [Description("The voice used ingame for FEMC.")]
         [Category("Voice")]
         [Display(Order = 20)]
         [DefaultValue(VoiceType.Mellodi)]
@@ -237,8 +308,11 @@ namespace p3rpc.femc.Configuration
 
         public enum VoiceType
         {
+            [Display(Name = "Mellodi")]
             Mellodi,
+            [Display(Name = "Mellodi (Silly)")]
             MellodiSilly,
+            [Display(Name = "Japanese")]
             Japanese
         }
 
@@ -365,7 +439,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Master of Shadow -Reload-")]
         [Category("Full Moon Boss Music")]
-        [Description("Enable Master of Shadow -Reload-, the stock full moon boss battle music.\nMultiple songs can be chosen for randomization!")]
+        [Description("Enable Master of Shadow -Reload-, the default full moon boss battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 60)]
         [DefaultValue(false)]
         public bool BMS { get; set; } = true;
@@ -381,7 +455,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Nyx Final Battle: Burn My Dread -Last Battle Reload-")]
         [Category("Special Boss Music")]
-        [Description("Enable Burn My Dread -Last Battle Reload-, the stock Nyx boss battle music.\nMultiple songs can be chosen for randomization!")]
+        [Description("Enable Burn My Dread -Last Battle Reload-, the default Nyx boss battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 62)]
         [DefaultValue(true)]
         public bool BMD { get; set; } = true;
@@ -409,26 +483,26 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool WayOfLifeJen { get; set; } = false;
 
+        [DisplayName("A Way of Life -Reload- (Vocal Version) by Super M Plush, MOSQ, Karma, cora")]
+        [Category("Daytime Music")]
+        [Description("Enable A Way Of Life -Reload- (Vocal Version) by Super M Plush, MOSQ, Karma and cora\nas the daytime music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 73)]
+        [DefaultValue(true)]
+        public bool WayLifeVocal { get; set; } = true;
+
         [DisplayName("A Way Of Life (P3P)")]
         [Category("Daytime Music")]
         [Description("Enable the original A Way Of Life from P3P as the daytime music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 73)]
+        [Display(Order = 74)]
         [DefaultValue(false)]
         public bool WayOfLifeP3P { get; set; } = false;
 
         [DisplayName("A Way Of Life -Deep inside my mind Remix-")]
         [Category("Daytime Music")]
         [Description("Enable A Way Of Life -Deep inside my mind Remix- from P3P as the daytime music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 74)]
+        [Display(Order = 75)]
         [DefaultValue(false)]
         public bool WayOfLifeRemix { get; set; } = false;
-
-        [DisplayName("A Way of Life -Reload- (Vocal Version) by Super M Plush, MOSQ, Karma, cora")]
-        [Category("Daytime Music")]
-        [Description("Enable A Way Of Life -Reload- (Vocal Version) by Super M Plush, MOSQ, Karma and cora\nas the daytime music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 75)]
-        [DefaultValue(true)]
-        public bool WayLifeVocal { get; set; } = true;
 
         [DisplayName("When the Moon's Reaching Out Stars -Reload-")]
         [Category("Daytime Music")]
@@ -536,7 +610,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Color Your Night")]
         [Category("Night Music")]
-        [Description("Enable Color Your Night, the stock night music.\nMultiple songs can be chosen for randomization!")]
+        [Description("Enable Color Your Night, the default night music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 104)]
         [DefaultValue(false)]
         public bool ColNight { get; set; } = false;
