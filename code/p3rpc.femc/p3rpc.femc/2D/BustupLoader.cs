@@ -70,6 +70,8 @@ namespace p3rpc.femc
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Kiara"));
             else if (configuration.BustupTrue == BustupType.Autumn)
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Autumn"));
+            else if (configuration.BustupTrue == BustupType.p3pYuha)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "p3pYuha"));
         }
 	}
 }
