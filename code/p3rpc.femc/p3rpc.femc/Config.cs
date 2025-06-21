@@ -817,6 +817,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableBattle { get; set; } = true;
 
+        [DisplayName("Enable Item List")]
+        [Category("UI Components")]
+        [Display(Order = 173)]
+        [DefaultValue(true)]
+        public bool EnableItemList { get; set; } = true;
+
         [DisplayName("Mail Icon: Outer Color")]
         [Category("UI Colors")]
         [Display(Order = 200)]
@@ -1752,6 +1758,39 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Request: Selected Sort By Column Title")]
         public ConfigColor SelectedSortColumnTitle { get; set; } = new ConfigColor(0xFF, 0xD3, 0xFF, 0xFF);
 
+        [DisplayName("Simple Shop: Highlighted Selection Color")]
+        public ConfigColor SimpleShopHighlightedColor { get; set; } = new ConfigColor(0xED, 0x6D, 0x91, 0xFF);
+
+        [DisplayName("Simple Shop: Blur filter color when choosing amount to buy")]
+        public ConfigColor SimpleShopBlurFilterColor { get; set; } = new ConfigColor(0x68, 0x01, 0x08, 0xFF);
+
+        [DisplayName("Simple Shop: Zero font color when selecting amount to buy")]
+        public ConfigColor SimpleShopZeroFontColor { get; set; } = ConfigColor.Red;
+
+        [DisplayName("Simple Shop: Shadow color in buy menu")]
+        public ConfigColor SimpleShopBuyShadowColor { get; set; } = new ConfigColor(0xEB, 0x44, 0x7D, 0xFF);
+
+        [DisplayName("Simple Shop: Buy menu selected option font color")]
+        public ConfigColor SimpleShopBuyFontColor { get; set; } = new ConfigColor(0x5C, 0x00, 0x06, 0xFF);
+
+        [DisplayName("Date Time Panel: Weekday triangle color")]
+        public ConfigColor DateTimePanelWeekdayTriangleColor { get; set; } = new ConfigColor(0x24, 0x07, 0x09, 0xFF);
+
+        [DisplayName("Item List: Highlighted selection color")]
+        public ConfigColor ItemListHighlightedColor { get; set; } = new ConfigColor(0xFF, 0x75, 0x9C, 0xFF);
+
+        [DisplayName("Minimap: Field minimap inner circle background color")]
+        public ConfigColor MinimapFieldInnerCircle { get; set; } = new ConfigColor(0xEB, 0x00, 0x4E, 0xFF);
+
+        [DisplayName("Minimap: Field minimap outter circle background color")]
+        public ConfigColor MinimapFieldOutterCircle { get; set; } = new ConfigColor(0x2B, 0x10, 0x13, 0xFF);
+
+        [DisplayName("Minimap: Minimap locations view higher strip background color")]
+        public ConfigColor MinimapLocationsHighStrip { get; set; } = new ConfigColor(0x2B, 0x10, 0x13, 0xFF);
+
+        [DisplayName("Minimap: Minimap locations view lower strip background color")]
+        public ConfigColor MinimapLocationsLowerStrip { get; set; } = new ConfigColor(0xEB, 0x00, 0x4E, 0xFF);
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
@@ -1765,7 +1804,7 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool DebugDrawMissingPerson { get; set; } = true;
         */
-	}
+    }
 
 
     /// <summary>
@@ -1776,5 +1815,5 @@ namespace p3rpc.femc.Configuration
     {
 
         
-}
+    }
 }

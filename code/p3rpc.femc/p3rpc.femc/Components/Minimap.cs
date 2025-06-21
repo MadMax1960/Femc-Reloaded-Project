@@ -1,6 +1,7 @@
 ﻿using p3rpc.commonmodutils;
 using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
+using Reloaded.Hooks.Definitions.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +32,67 @@ namespace p3rpc.femc.Components
         private string UUIMinimapDraw_DrawMinimapBgCircle_SIG = "48 89 E0 48 89 70 ?? 57 48 81 EC C0 00 00 00";
         private string UUILocationSelect_DrawLocationSelect_SIG = "40 55 56 57 41 56 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 88 04 00 00";
 
+        private string UUIMinimapDraw_DrawMinimapFieldInnerCircle_SIG = "E8 ?? ?? ?? ?? 0F 28 DE 89 86 ?? ?? ?? ??";
+        private string UUIMinimapDraw_DrawMinimapFieldOutterCircle_SIG = "E8 ?? ?? ?? ?? 44 0F 2F 2D ?? ?? ?? ??";
+        private string UUIMinimapDraw_DrawMinimapLocationsHighStrip_SIG = "E8 ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 41 B0 CD";
+        private string UUIMinimapDraw_DrawMinimapLocationsLowerStrip_SIG = "E8 ?? ?? ?? ?? 44 0F 28 64 24 ?? 0F 28 BC 24 ?? ?? ?? ??";
+
+        private IAsmHook _DrawMinimapFieldInnerCircle;
+        private IAsmHook _DrawMinimapFieldOutterCircle;
+        private IAsmHook _DrawMinimapLocationsHighStrip;
+        private IAsmHook _DrawMinimapLocationsLowerStrip;
+
         private UICommon _uiCommon;
         public unsafe Minimap(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             if (_context.bIsAigis) _context._utils.SigScan(AUIAccessInfoDraw_UpdateMinimapState_SIG_EpAigis, "AUIAccessInfoDraw::UpdateMinimapState", _context._utils.GetDirectAddress, addr => _updateMinimapState_EpAigis = _context._utils.MakeHooker<AUIAccessInfoDraw_UpdateMinimapState_EpAigis>(AUIAccessInfoDraw_UpdateMinimapStateImpl_EpAigis, addr));
             else _context._utils.SigScan(AUIAccessInfoDraw_UpdateMinimapState_SIG, "AUIAccessInfoDraw::UpdateMinimapState", _context._utils.GetDirectAddress, addr => _updateMinimapState = _context._utils.MakeHooker<AUIAccessInfoDraw_UpdateMinimapState>(AUIAccessInfoDraw_UpdateMinimapStateImpl, addr));
+
+            _context._utils.SigScan(UUIMinimapDraw_DrawMinimapFieldInnerCircle_SIG, "UUIMinimapDraw::DrawMinimapFieldInnerCircle", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MinimapFieldInnerCircle.B:X}",
+                    $"mov dl, ${_context._config.MinimapFieldInnerCircle.G:X}",
+                    $"mov cl, ${_context._config.MinimapFieldInnerCircle.R:X}"
+                };
+                _DrawMinimapFieldInnerCircle = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUIMinimapDraw_DrawMinimapFieldOutterCircle_SIG, "UUIMinimapDraw::DrawMinimapFieldOutterCircle", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MinimapFieldOutterCircle.B:X}",
+                    $"mov dl, ${_context._config.MinimapFieldOutterCircle.G:X}",
+                    $"mov cl, ${_context._config.MinimapFieldOutterCircle.R:X}"
+                };
+                _DrawMinimapFieldOutterCircle = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UUIMinimapDraw_DrawMinimapLocationsHighStrip_SIG, "UUIMinimapDraw::DrawMinimapLocationsHighStrip", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MinimapLocationsHighStrip.B:X}",
+                    $"mov dl, ${_context._config.MinimapLocationsHighStrip.G:X}",
+                    $"mov cl, ${_context._config.MinimapLocationsHighStrip.R:X}"
+                };
+                _DrawMinimapLocationsHighStrip = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUIMinimapDraw_DrawMinimapLocationsLowerStrip_SIG, "UUIMinimapDraw::DrawMinimapLocationsLowerStrip", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MinimapLocationsLowerStrip.B:X}",
+                    $"mov dl, ${_context._config.MinimapLocationsLowerStrip.G:X}",
+                    $"mov cl, ${_context._config.MinimapLocationsLowerStrip.R:X}"
+                };
+                _DrawMinimapLocationsLowerStrip = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
 
         public override void Register()

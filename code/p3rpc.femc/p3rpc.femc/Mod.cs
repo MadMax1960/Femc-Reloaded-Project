@@ -311,7 +311,8 @@ namespace p3rpc.femc
 				//_modRuntime.AddModule<StaffRoll>();
 			}
 			if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
-			_modRuntime.RegisterModules();
+			if (_configuration.EnableItemList) _modRuntime.AddModule<ItemList>();
+            _modRuntime.RegisterModules();
         }
 
 		#region Standard Overrides
