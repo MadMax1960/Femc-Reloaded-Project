@@ -23,33 +23,34 @@ _ⓒAtlus ⓒSega All Rights reserved. This mod is not associated with Sega or A
 Pretty much any contribution is welcome! You can check our [wiki](https://github.com/MadMax1960/Femc-Reloaded-Project/wiki) to learn how to submit a pull request with your contributions! Or join our [discord](https://discord.gg/femc) and ask there!
 
 ## Leadership
--**Director**: A Mudkip (MadMax1960)
+**Director**: A Mudkip (MadMax1960)
 
--**2D Leads**: catboyronaldreagan (Adrien), esablythe, yuhaino
+**2D Leads**: catboyronaldreagan (Adrien), esablythe, yuhaino
 
--**3D Animation Lead**: cpido
+**3D Animation Lead**: cpido
 
--**Major 3D Contributors**: dniwetamp, esablythe, raycooper
+**Major 3D Contributors**: dniwetamp, esablythe, raycooper
 
--**Audio Leads**: giowno, kindredtea, mosq
+**Audio Leads**: giowno, kindredtea, mosq
 
--**Major Code Contributors**: rirurin, teolicht (Iván)
+**Major Code Contributors**: rirurin, teolicht (Iván)
 
--**Event Editing Leads**: raycooper, rirurin 
+**Event Editing Leads**: raycooper, rirurin 
 
--**Text Leads**: chrollosgirl (Kiara), ciel_bell 
+**Text Leads**: chrollosgirl (Kiara), ciel_bell 
 
--**Config App**: Brawler, thebestastronot, ryotune (Rena)
+**Config App**: Brawler, thebestastronot, ryotune (Rena)
 
--**PR**: kingddd
+**PR**: kingddd
 
 - **Major Voice Actors**: realmelodyhope (Femc)
 
--**Japanese Localization Lead**: misegalf
 
--**Chinese Localization Lead**: gingerbread_ginger
+**Japanese Localization Lead**: misegalf
 
--**Spanish Localization Lead**: chrollosgirl (Kiara)
+**Chinese Localization Lead**: gingerbread_ginger
+
+**Spanish Localization Lead**: chrollosgirl (Kiara)
 
 <br/>
 
