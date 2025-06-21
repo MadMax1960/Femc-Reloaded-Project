@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BGME.BattleThemes.Config", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P3R.CostumeFramework.Interfaces", "include\P3R.CostumeFramework\P3R.CostumeFramework.Interfaces\P3R.CostumeFramework.Interfaces.csproj", "{EA4570A4-FFB4-41E9-B18C-DFAFD8956F78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unreal.ObjectsEmitter.Interfaces", "include\Unreal.ObjectsEmitter\Unreal.ObjectsEmitter.Interfaces\Unreal.ObjectsEmitter.Interfaces.csproj", "{DB072A13-EB2C-8998-3678-EF4D5628BA47}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,10 +44,6 @@ Global
 		{EA4570A4-FFB4-41E9-B18C-DFAFD8956F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA4570A4-FFB4-41E9-B18C-DFAFD8956F78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA4570A4-FFB4-41E9-B18C-DFAFD8956F78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB072A13-EB2C-8998-3678-EF4D5628BA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB072A13-EB2C-8998-3678-EF4D5628BA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB072A13-EB2C-8998-3678-EF4D5628BA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB072A13-EB2C-8998-3678-EF4D5628BA47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
