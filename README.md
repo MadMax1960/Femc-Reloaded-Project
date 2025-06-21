@@ -24,20 +24,31 @@ Pretty much any contribution is welcome! You can check our [wiki](https://github
 
 ## Leadership
 -**Director**: A Mudkip (MadMax1960)
+
 -**2D Leads**: catboyronaldreagan (Adrien), esablythe, yuhaino
+
 -**3D Animation Lead**: cpido
+
 -**Major 3D Contributors**: dniwetamp, esablythe, raycooper
+
 -**Audio Leads**: giowno, kindredtea, mosq
+
 -**Major Code Contributors**: rirurin, teolicht (Iván)
+
 -**Event Editing Leads**: raycooper, rirurin 
+
 -**Text Leads**: chrollosgirl (Kiara), ciel_bell 
+
 -**Config App**: Brawler, thebestastronot, ryotune (Rena)
+
 -**PR**: kingddd
 
 - **Major Voice Actors**: realmelodyhope (Femc)
 
 -**Japanese Localization Lead**: misegalf
+
 -**Chinese Localization Lead**: gingerbread_ginger
+
 -**Spanish Localization Lead**: chrollosgirl (Kiara)
 
 <br/>
