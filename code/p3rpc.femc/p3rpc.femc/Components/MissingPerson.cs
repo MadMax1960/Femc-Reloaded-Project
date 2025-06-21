@@ -33,6 +33,15 @@ namespace p3rpc.femc.Components
         private string UUIMissingPerson_DrawCompleteText_SIG = "0F 57 DB F3 44 0F 11 44 24 ?? 4D 8B C6 89 45 ?? 48 8B D6 44 89 6D ?? 48 8D 4D ?? C7 45 ?? 00 00 38 C1 44 89 6D ?? E8 ?? ?? ?? ?? 41 0F 28 C4";
         private string UUIMissingPerson_DrawCompleteBg_SIG = "0F 57 DB F3 44 0F 11 44 24 ?? 4D 8B C6 89 45 ?? 48 8B D6 44 89 6D ?? 48 8D 4D ?? C7 45 ?? 00 00 38 C1 44 89 6D ?? E8 ?? ?? ?? ?? 44 38 AF ?? ?? ?? ??";
 
+        private string UUIMissingPerson_DrawLastSightedNullDescription_SIG = "E8 ?? ?? ?? ?? 41 0F 28 D9 F3 44 0F 11 4C 24 ??";
+
+        private string UUIMissingPerson_CursorColor_SIG = "E8 ?? ?? ?? ?? F3 0F 10 5B ?? 48 8D 4B ??";
+        private string UUIMissingPerson_DetailCursorColor_SIG = "E8 ?? ?? ?? ?? F3 0F 10 9E ?? ?? ?? ?? 48 8D 8E ?? ?? ?? ?? F3 0F 59 35 ?? ?? ?? ??";
+        private string UUIMissingPerson_BackCampMenuChairAndKotone_SIG = "E8 ?? ?? ?? ?? 44 88 6C 24 ?? 0F 28 DE";
+        private string UUIMissingPerson_DetailBackCampMenuChairAndKotone1_SIG = "E8 ?? ?? ?? ?? F3 0F 10 5D ?? BA 7D 00 00 00 F3 0F 10 55 00 49 8B CE 44 88 6C 24 ?? C6 44 24 ?? 01 F3 44 0F 11 5C 24 ?? F3 44 0F 11 5C 24 ?? F3 44 0F 11 44 24 ?? C7 44 24 ?? 16 00 00 00 48 89 5C 24 ?? 89 44 24 ?? F3 44 0F 11 44 24 ?? E8 ?? ?? ?? ?? 33 D2";
+        private string UUIMissingPerson_DetailBackCampMenuChairAndKotone2_SIG = "E8 ?? ?? ?? ?? F3 0F 10 5D ?? BA 7D 00 00 00 F3 0F 10 55 00 49 8B CE 44 88 6C 24 ?? C6 44 24 ?? 01 F3 44 0F 11 5C 24 ?? F3 44 0F 11 5C 24 ?? F3 44 0F 11 44 24 ?? C7 44 24 ?? 16 00 00 00 48 89 5C 24 ?? 89 44 24 ?? F3 44 0F 11 44 24 ?? E8 ?? ?? ?? ?? BA 06 00 00 00";
+        private string UUIMissingPerson_QuestToggler_SIG = "E8 ?? ?? ?? ?? 89 85 ?? ?? ?? ?? 4D 8B 46 ??";
+
         private IAsmHook _lastSight;
         private IReverseWrapper<UUIMissingPerson_InjectColorAfterCtorCall> _lastSightWrapper;
         private IAsmHook _pageBg;
@@ -50,6 +59,12 @@ namespace p3rpc.femc.Components
         private USprAsset_FUN_1413283d0 _fun1413283d0;
         private USprAsset_FUN_1413283d0 _fun14c0a15d0;
         private UUIMissingPerson_FUN_14142bb30 _fun14142bb30;
+        private IAsmHook _CursorColor;
+        private IAsmHook _DetailCursorColor;
+        private IAsmHook _BackCampMenuChairAndKotone;
+        private IAsmHook _DetailBackCampMenuChairAndKotone;
+        private IAsmHook _QuestToggler;
+        private IAsmHook _DrawLastSightedNullDescription;
 
         private UICommon _uiCommon;
         public unsafe MissingPerson(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
@@ -99,7 +114,92 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(USprAsset_FUN_1413283d0_SIG, "USprAsset::FUN_1413283d0", _context._utils.GetDirectAddress, addr => _fun1413283d0 = _context._utils.MakeWrapper<USprAsset_FUN_1413283d0>(addr));
             _context._utils.SigScan(USprAsset_FUN_14c0a15d0_SIG, "USprAsset::FUN_14c0a15d0", _context._utils.GetDirectAddress, addr => _fun14c0a15d0 = _context._utils.MakeWrapper<USprAsset_FUN_1413283d0>(addr));
             _context._utils.SigScan(UUIMissingPerson_FUN_14142bb30_SIG, "UUIMissingPerson::FUN_1412bb30", _context._utils.GetIndirectAddressShort, addr => _fun14142bb30 = _context._utils.MakeWrapper<UUIMissingPerson_FUN_14142bb30>(addr));
-        }
+
+            _context._utils.SigScan(UUIMissingPerson_CursorColor_SIG, "UUIMissingPerson::CursorColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.CampHighlightedLowerColor.B:X}",
+                    $"mov dl, ${_context._config.CampHighlightedLowerColor.G:X}",
+                    $"mov cl, ${_context._config.CampHighlightedLowerColor.R:X}"
+                };
+                _CursorColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UUIMissingPerson_DetailCursorColor_SIG, "UUIMissingPerson::DetailCursorColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.CampHighlightedLowerColor.B:X}",
+                    $"mov dl, ${_context._config.CampHighlightedLowerColor.G:X}",
+                    $"mov cl, ${_context._config.CampHighlightedLowerColor.R:X}"
+                };
+                _DetailCursorColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UUIMissingPerson_BackCampMenuChairAndKotone_SIG, "UUIMissingPerson::BackCampMenuChairAndKotone", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.QuestFemcChairsShadow.B:X}",
+                    $"mov dl, ${_context._config.QuestFemcChairsShadow.G:X}",
+                    $"mov cl, ${_context._config.QuestFemcChairsShadow.R:X}"
+                };
+                _BackCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UUIMissingPerson_DetailBackCampMenuChairAndKotone1_SIG, "UUIMissingPerson::DetailBackCampMenuChairAndKotone1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MissingDetailFemcChairsShadow.B:X}",
+                    $"mov dl, ${_context._config.MissingDetailFemcChairsShadow.G:X}",
+                    $"mov cl, ${_context._config.MissingDetailFemcChairsShadow.R:X}"
+                };
+                _DetailBackCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UUIMissingPerson_DetailBackCampMenuChairAndKotone2_SIG, "UUIMissingPerson::DetailBackCampMenuChairAndKotone2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MissingDetailFemcChairsShadow.B:X}",
+                    $"mov dl, ${_context._config.MissingDetailFemcChairsShadow.G:X}",
+                    $"mov cl, ${_context._config.MissingDetailFemcChairsShadow.R:X}"
+                };
+                _DetailBackCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UUIMissingPerson_QuestToggler_SIG, "UUIMissingPerson::QuestToggler", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.QuestToggler.B:X}",
+                    $"mov dl, ${_context._config.QuestToggler.G:X}",
+                    $"mov cl, ${_context._config.QuestToggler.R:X}"
+                };
+                _QuestToggler = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UUIMissingPerson_DrawLastSightedNullDescription_SIG, "UUIMissingPerson::DrawLastSightedNullDescription", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.DataColumnColor.B:X}",
+                    $"mov dl, ${_context._config.DataColumnColor.G:X}",
+                    $"mov cl, ${_context._config.DataColumnColor.R:X}"
+                };
+                _DrawLastSightedNullDescription = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+    }
 
         private unsafe float DrawLabelRowGetOffset(UUIMissingPerson* self)
         {
@@ -120,13 +220,14 @@ namespace p3rpc.femc.Components
             var campSprite = (USprAsset*)_uiCommon._globalWorkGetUIResources()->GetAssetEntry(0x32);
             var labelRowAlpha = UICommon.GetCheckDrawOpacity(&self->LabelRowOpacity) * 255;
             var offsetX = DrawLabelRowGetOffset(self) + 166;
-            var numRowLabel = new SprDefStruct1(0x362, new FVector(offsetX, 199, 0), new FVector(1, 1, 0), new FSprColor(0x72, 0x72, 0x99, (byte)labelRowAlpha),
+            var columnColor = ConfigColor.ToFSprColorWithAlpha(_context._config.DataColumnColor, (byte)labelRowAlpha);
+            var numRowLabel = new SprDefStruct1(0x362, new FVector(offsetX, 199, 0), new FVector(1, 1, 0), columnColor,
                 1, 0, 0, 0, 1, 1, 0);
-            var nameRowLabel = new SprDefStruct1(0x364, new FVector(offsetX + 386, 199, 0), new FVector(1, 1, 0), new FSprColor(0x72, 0x72, 0x99, (byte)labelRowAlpha),
+            var nameRowLabel = new SprDefStruct1(0x364, new FVector(offsetX + 386, 199, 0), new FVector(1, 1, 0), columnColor,
                 1, 0, 0, 0, 1, 1, 0);
-            var dateRowLabel = new SprDefStruct1(0x365, new FVector(offsetX + 844, 199, 0), new FVector(1, 1, 0), new FSprColor(0x72, 0x72, 0x99, (byte)labelRowAlpha),
+            var dateRowLabel = new SprDefStruct1(0x365, new FVector(offsetX + 844, 199, 0), new FVector(1, 1, 0), columnColor,
                 1, 0, 0, 0, 1, 1, 0);
-            var statRowLabel = new SprDefStruct1(0x366, new FVector(offsetX + 1034, 199, 0), new FVector(1, 1, 0), new FSprColor(0x72, 0x72, 0x99, (byte)labelRowAlpha),
+            var statRowLabel = new SprDefStruct1(0x366, new FVector(offsetX + 1034, 199, 0), new FVector(1, 1, 0), columnColor,
                 1, 0, 0, 0, 1, 1, 0);
 
             var sortBy = (self->bHideSortedRow == 1 && self->Field2B0.Field14 != 0) ? self->SortByStatus : self->SortByNumber;
