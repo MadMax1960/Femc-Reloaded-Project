@@ -16,34 +16,35 @@ _ⓒAtlus ⓒSega All Rights reserved. This mod is not associated with Sega or A
 - [Discord](https://discord.gg/femc)
 - [Persona Modding Tutorial](https://gamebanana.com/tuts/17156)
 - [Config App](https://github.com/MadMax1960/Femc-Config-Adjuster/releases)
+- [Wiki](https://github.com/MadMax1960/Femc-Reloaded-Project/wiki)
 - [Raw Files Repo](https://github.com/MadMax1960/Femc-Reloaded-Raw-Files)
 
 ## How to Contribute
 Pretty much any contribution is welcome! You can check our [wiki](https://github.com/MadMax1960/Femc-Reloaded-Project/wiki) to learn how to submit a pull request with your contributions! Or join our [discord](https://discord.gg/femc) and ask there!
 
 ## Leadership
-**Director**: A Mudkip (MadMax1960)
-**2D Leads**: catboyronaldreagan (Adrien), esablythe, yuhaino
-**3D Animation Lead**: cpido
-**Major 3D Contributors**: dniwetamp, esablythe, raycooper
-**Audio Leads**: giowno, kindredtea, mosq
-**Major Code Contributors**: rirurin, teolicht (Iván)
-**Event Editing Leads**: raycooper, rirurin 
-**Text Leads**: chrollosgirl (Kiara), ciel_bell 
-**Config App**: Brawler, thebestastronot, ryotune (Rena)
-**PR**: kingddd
+-**Director**: A Mudkip (MadMax1960)
+-**2D Leads**: catboyronaldreagan (Adrien), esablythe, yuhaino
+-**3D Animation Lead**: cpido
+-**Major 3D Contributors**: dniwetamp, esablythe, raycooper
+-**Audio Leads**: giowno, kindredtea, mosq
+-**Major Code Contributors**: rirurin, teolicht (Iván)
+-**Event Editing Leads**: raycooper, rirurin 
+-**Text Leads**: chrollosgirl (Kiara), ciel_bell 
+-**Config App**: Brawler, thebestastronot, ryotune (Rena)
+-**PR**: kingddd
 
 - **Major Voice Actors**: realmelodyhope (Femc)
 
-**Japanese Localization Lead**: misegalf
-**Chinese Localization Lead**: gingerbread_ginger
-**Spanish Localization Lead**: chrollosgirl (Kiara)
+-**Japanese Localization Lead**: misegalf
+-**Chinese Localization Lead**: gingerbread_ginger
+-**Spanish Localization Lead**: chrollosgirl (Kiara)
 
 <br/>
 
 ## Copyright TLDR; 
 
-This project is under a license that lets you freely yoink and edit submitted assets at will as long as you credit this page. Do not sell your edited/ yoinked assets. There is one exception when it comes to monetizing: If you are an artist contributing original assets, the license allows for selling *your own* art.
+This project is under a license that lets you freely yoink and edit submitted assets at will so long as you credit this page. Do not sell your edited/ yoinked assets. There is one exception when it comes to monetizing: If you are an artist contributing original assets, the license allows for selling *your own* original art.
 
 ## IMPORTANT: Copyright and License
 
