@@ -1,6 +1,7 @@
 ﻿using p3rpc.commonmodutils;
 using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
+using Reloaded.Hooks.Definitions.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,10 @@ namespace p3rpc.femc.Components
             if (self->TimeOfDay != 8) self->TimeOfDayParams.color = ConfigColor.ToFSprColor(_context._config.DateTimePanelBottomTextColor);
         }
 
+        private string AUIDateDraw_WeekdayTriangleColor_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 41 B0 20 B2 3E";
+
+        private IAsmHook _weekdayTriangleColor;
+
         private UICommon _uiCommon;
         public unsafe DateTimePanel(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
@@ -64,6 +69,18 @@ namespace p3rpc.femc.Components
                 _context._utils.SigScan(UAgePanel_UpdateAgePanelParameters_SIG, "UAgePanel::UpdateAgePanelParameters", _context._utils.GetDirectAddress, addr => _updateAgePanelParameters = _context._utils.MakeHooker<UAgePanel_UpdateAgePanelParameters>(UAgePanel_UpdateAgePanelParametersImpl, addr));
                 _context._utils.SigScan(AUIDateDraw_UpdateParams_SIG, "AUIDrateDraw::UpdateParams", _context._utils.GetDirectAddress, addr => _drawActorInner = _context._utils.MakeHooker<AUIDateDraw_UpdateParams>(AUIDateDraw_UpdateParamsImpl, addr));
             }
+
+            _context._utils.SigScan(AUIDateDraw_WeekdayTriangleColor_SIG, "AUIDateDraw::WeekdayTriangleColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.DateTimePanelWeekdayTriangleColor.B:X}",
+                    $"mov dl, ${_context._config.DateTimePanelWeekdayTriangleColor.G:X}",
+                    $"mov cl, ${_context._config.DateTimePanelWeekdayTriangleColor.R:X}"
+                };
+                _weekdayTriangleColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
 
         public override void Register()
