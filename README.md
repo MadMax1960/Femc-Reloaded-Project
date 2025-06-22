@@ -39,9 +39,7 @@ Pretty much any contribution is welcome! You can check our [wiki](https://github
 
 **Text Leads**: chrollosgirl (Kiara), ciel_bell 
 
-**Config App**: Brawler, thebestastronot, ryotune (Rena)
-
-**PR**: kingddd
+**Youtube**: kingddd
 
 - **Major Voice Actors**: realmelodyhope (Femc)
 
@@ -56,7 +54,7 @@ Pretty much any contribution is welcome! You can check our [wiki](https://github
 
 ## Copyright TLDR; 
 
-This project is under a license that lets you freely yoink and edit submitted assets at will so long as you credit this page. Do not sell your edited/ yoinked assets. There is one exception when it comes to monetizing: If you are an artist contributing original assets, the license allows for selling *your own* original art.
+This project is under a license that lets you freely yoink and edit assets at will as long as you credit this page, don't sell your edited/yoinked assets, and publish them under this same license. There is one exception when it comes to monetizing: If you are an artist contributing original assets, the license allows for selling *your own* original art.
 
 ## IMPORTANT: Copyright and License
 
