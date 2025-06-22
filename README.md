@@ -37,7 +37,7 @@ Pretty much any contribution is welcome! You can check our [wiki](https://github
 
 **Event Editing Leads**: raycooper, rirurin 
 
-**Text Leads**: chrollosgirl (Kiara), ciel_bell 
+**Text Leads**: kiawaii (Kiara), ciel_bell 
 
 **Youtube**: kingddd
 
@@ -45,9 +45,9 @@ Pretty much any contribution is welcome! You can check our [wiki](https://github
 
 **Japanese Localization Lead**: misegalf
 
-**Chinese Localization Lead**: gingerbread_ginger
+**Simplified Chinese Localization Lead**: gingerbread_ginger
 
-**Spanish Localization Lead**: chrollosgirl (Kiara)
+**Spanish Localization Lead**: kiawaii (Kiara)
 
 <br/>
 
