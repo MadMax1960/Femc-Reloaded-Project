@@ -431,7 +431,7 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipEffectColor.ToU32IgnoreAlpha())));
             });
-        }
+        } // remember to delete this when reimplemtning lmao
 
         //    _context._utils.SigScan(UCmpEquip_FemaleEquipmentForFemc_SIG, "UCmpEquip::FemaleEquipmentForFemc", _context._utils.GetDirectAddress, addr =>
         //    {
