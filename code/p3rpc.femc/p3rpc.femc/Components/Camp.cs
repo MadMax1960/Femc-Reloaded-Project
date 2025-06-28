@@ -339,13 +339,13 @@ namespace p3rpc.femc.Components
         private string UCmpEquipDraw_DrawHighlightedEquipmentCompareAnim_SIG = "0D 00 00 00 FF 0F 57 C0";
         private string UCmpEquipDraw_DrawHighlightedEquipmentCompare_SIG = "0D 00 00 00 FF F3 44 0F 11 7C 24 ??";
 
-        private string UCmpEquip_FemaleEquipmentForFemc_SIG = "0F A3 C8 73 ?? B0 01 48 8B 5C 24 ??";
-        private string UCmpEquip_FemcArmorFemaleSymbolDraw_SIG = "48 8B 5C 24 ?? 48 83 C4 20 5F C3 81 F9 7E 05 00 00";
+       // private string UCmpEquip_FemaleEquipmentForFemc_SIG = "0F A3 C8 73 ?? B0 01 48 8B 5C 24 ??";
+       // private string UCmpEquip_FemcArmorFemaleSymbolDraw_SIG = "48 8B 5C 24 ?? 48 83 C4 20 5F C3 81 F9 7E 05 00 00";
 
         private IHook<UCmpEquipDraw_DrawEquipItemStatsNum> _drawStatsNum;
 
-        private IAsmHook _FemaleEquipmentForFemc;
-        private IAsmHook _FemcArmorFemaleSymbolDraw;
+        //private IAsmHook _FemaleEquipmentForFemc;
+        // private IAsmHook _FemcArmorFemaleSymbolDraw;
 
         public unsafe CampEquip(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
@@ -431,43 +431,44 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipEffectColor.ToU32IgnoreAlpha())));
             });
-
-            _context._utils.SigScan(UCmpEquip_FemaleEquipmentForFemc_SIG, "UCmpEquip::FemaleEquipmentForFemc", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    "pushfq",
-                    "cmp eax, 0x64", // Check Female equipment bitmask
-                    "je .check_ecx",
-                    "cmp eax, 0x51A", // Check Male equipment bitmask
-                    "jne .original",
-
-                    ".check_ecx:", // Check specific outfits for Femc id
-                    "cmp ecx, 1",
-                    "jne .original",
-                    "mov ecx, 2", // Set Femc id to Yukari's id for this equipment
-
-                    ".original:",
-                    "popfq"
-                };
-                _FemaleEquipmentForFemc = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
-            _context._utils.SigScan(UCmpEquip_FemcArmorFemaleSymbolDraw_SIG, "UCmpEquip::FemcArmorFemaleSymbolDraw", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    "cmp edi, 0x107d", // Check Jack Jumper equipment
-                    "jne .original",
-
-                    "mov eax, 0x21", // If we are drawing Jack Jumper draw it with female symbol
-
-                    ".original:",
-                };
-                _FemcArmorFemaleSymbolDraw = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
         }
+
+        //    _context._utils.SigScan(UCmpEquip_FemaleEquipmentForFemc_SIG, "UCmpEquip::FemaleEquipmentForFemc", _context._utils.GetDirectAddress, addr =>
+        //    {
+        //        string[] function =
+        //        {
+        //            "use64",
+        //            "pushfq",
+        //            "cmp eax, 0x64", // Check Female equipment bitmask
+        //            "je .check_ecx",
+        //            "cmp eax, 0x51A", // Check Male equipment bitmask
+        //            "jne .original",
+
+        //            ".check_ecx:", // Check specific outfits for Femc id
+        //            "cmp ecx, 1",
+        //            "jne .original",
+        //            "mov ecx, 2", // Set Femc id to Yukari's id for this equipment
+
+        //            ".original:",
+        //            "popfq"
+        //        };
+        //        _FemaleEquipmentForFemc = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+        //    });
+        //    _context._utils.SigScan(UCmpEquip_FemcArmorFemaleSymbolDraw_SIG, "UCmpEquip::FemcArmorFemaleSymbolDraw", _context._utils.GetDirectAddress, addr =>
+        //    {
+        //        string[] function =
+        //        {
+        //            "use64",
+        //            "cmp edi, 0x107d", // Check Jack Jumper equipment
+        //            "jne .original",
+
+        //            "mov eax, 0x21", // If we are drawing Jack Jumper draw it with female symbol
+
+        //            ".original:",
+        //        };
+        //        _FemcArmorFemaleSymbolDraw = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+        //    });
+        //}
 
         public override void Register()
         {
