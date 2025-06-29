@@ -1,19 +1,15 @@
-﻿using p3rpc.femc.Components;
-using UnrealEssentials.Interfaces;
-using System;
-using System.IO;
-using Unreal.ObjectsEmitter.Interfaces;
+﻿using UE.Toolkit.Interfaces;
 
 namespace p3rpc.femc
 {
 	internal class AssetRedirector
 	{
-		private readonly IUnreal _unreal;
+		private readonly IUnrealNames _unrealNames;
 		private readonly string _modName;
 
-		public AssetRedirector(IUnreal unreal, string modName)
+		public AssetRedirector(IUnrealNames unreal, string modName)
 		{
-			_unreal = unreal;
+			_unrealNames = unreal;
 			_modName = modName;
 		}
 
@@ -33,8 +29,8 @@ namespace p3rpc.femc
 			var ogFnames = new AssetFNames(ogAssetPath);
 			var newFnames = new AssetFNames(newAssetPath);
 
-			_unreal.AssignFName(_modName, ogFnames.AssetName, newFnames.AssetName);
-			_unreal.AssignFName(_modName, ogFnames.AssetPath, newFnames.AssetPath);
+			_unrealNames.RedirectFName(_modName, ogFnames.AssetName, newFnames.AssetName);
+			_unrealNames.RedirectFName(_modName, ogFnames.AssetPath, newFnames.AssetPath);
 		}
 	}
 

@@ -111,19 +111,6 @@ namespace p3rpc.femc
 						_ryo.AddAudioFolder(sm.Key);
 				}
 
-				var bosslinkmusic = new Dictionary<string, bool>
-				{
-					{Path.Combine(path, "Mosq\\link_129.cue"),_configuration.BMSF},
-					{Path.Combine(path, "Mosq\\link_27.cue"),_configuration.BMSF},
-					{Path.Combine(path, "Reload\\link_129.cue"),_configuration.BMS},
-					{Path.Combine(path, "Reload\\link_27.cue"),_configuration.BMS}
-				};
-				foreach (KeyValuePair<string, bool> sm in bosslinkmusic)
-				{
-					if (sm.Value)
-						_ryo.AddAudioFolder(sm.Key);
-				}
-
 				var disadvantagemusic = new Dictionary<string, bool>
 				{
 					{Path.Combine(path, "Mosq\\link_31.cue"),_configuration.MosqDis},
