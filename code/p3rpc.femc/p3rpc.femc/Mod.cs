@@ -120,7 +120,7 @@ namespace p3rpc.femc
             _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods, bIsAigis);
 			_modRuntime = new(_context);
 			_musicManager = new MusicManager(_modLoader, _modConfig, _configuration, ryo, _logger, _context);
-            _armorData = new(_modLoader, _modConfig, _configuration, uObjects, unrealMemory, _logger, toolKit, _context);
+            _armorData = new(_modLoader, _modConfig, uObjects, toolKit, _context);
 
             modName = _modConfig.ModName;
 			// Load Modules/assets

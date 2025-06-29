@@ -7,16 +7,14 @@ namespace p3rpc.femc {
     public class ArmorData
     {
         private readonly IUnrealObjects _uObjects;
-        private readonly IUnrealMemory _unreal;
-        private readonly ILogger _logger;
         private readonly IModLoader _modLoader;
         private readonly IModConfig _modConfig;
-        private readonly Config _configuration;
         private readonly FemcContext _context;
         private unsafe delegate ESystemLanguage GetLanguage();
         private GetLanguage _getLanguage;
         private ESystemLanguage _actualGameLanguage;
 
+        //Enum representing the system languages used in the game, returned by the GetGameLanguage function.
         public enum ESystemLanguage : byte
         {
             JA = 0,
@@ -35,19 +33,17 @@ namespace p3rpc.femc {
         };
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-        public ArmorData(IModLoader modLoader, IModConfig modConfig, Config configuration, IUnrealObjects uObjects, IUnrealMemory unreal, ILogger logger,IToolkit toolKit, FemcContext context)
+        public ArmorData(IModLoader modLoader, IModConfig modConfig, IUnrealObjects uObjects,IToolkit toolKit, FemcContext context)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
             _uObjects = uObjects;
-            _unreal = unreal;
-            _configuration = configuration;
-            _logger = logger;
             _modLoader = modLoader;
             _modConfig = modConfig;
             _context = context;
 
             unsafe
             {
+                //Initialize the GetGameLanguage function
                 _context._utils.SigScan("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 56 41 57 48 83 EC 30 E8", "GetGameLanguage", _context._utils.GetDirectAddress, addr =>
                 {
                     _context._utils.Log($"Found GetGameLanguage at {addr:X}", System.Drawing.Color.Green);
@@ -55,17 +51,19 @@ namespace p3rpc.femc {
 
                 });
 
+                //WhiteSquareTexture is used to determine if the game is loaded, it's the most consistent object to use in all of my tests
                 _uObjects.OnObjectLoadedByName<UObjectBase>("WhiteSquareTexture", obj =>
                 {
-                    _context._utils.Log("WhiteSquareTexture", System.Drawing.Color.Green);
                     try
                     {
+                        //Get the game language using the GetGameLanguage function
                         _actualGameLanguage = _getLanguage!();
                         _context._utils.Log($"Game language is: {_actualGameLanguage}", System.Drawing.Color.Green);
                         string path = Path.Combine(_modLoader.GetDirectoryForModId(_modConfig.ModId), "UEToolkitAssets");
                         
                         if (Directory.Exists(path))
                         {
+                            //Add UEToolkit files via the API
                             toolKit.AddObjectsPath(Path.Combine(path, "AlwaysGlobal"));
                             switch (_actualGameLanguage)
                             {
