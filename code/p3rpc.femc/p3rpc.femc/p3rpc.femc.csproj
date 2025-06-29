@@ -42,13 +42,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="p3rpc.commonmodutils" Version="1.6.0" />
-    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.6.1" />
+    <PackageReference Include="p3rpc.commonmodutils" Version="1.7.0" />
+    <PackageReference Include="p3rpc.nativetypes.Interfaces" Version="1.7.1" />
     <PackageReference Include="Reloaded.Memory" Version="9.4.2" />
     <PackageReference Include="Reloaded.Memory.SigScan.ReloadedII.Interfaces" Version="1.2.0" />
     <PackageReference Include="Reloaded.Mod.Interfaces" Version="2.4.0" ExcludeAssets="runtime" />
     <PackageReference Include="Reloaded.SharedLib.Hooks" Version="1.9.0" />
-    <PackageReference Include="UnrealEssentials.Interfaces" Version="1.0.0" />
+    <PackageReference Include="UE.Toolkit.Interfaces" Version="1.4.3" />
+    <PackageReference Include="UnrealEssentials.Interfaces" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\include\BGME.BattleThemes\BGME.BattleThemes.Config\BGME.BattleThemes.Config.csproj" />
@@ -56,6 +57,5 @@
     <ProjectReference Include="..\include\P3R.CostumeFramework\P3R.CostumeFramework.Interfaces\P3R.CostumeFramework.Interfaces.csproj" />
     <ProjectReference Include="..\include\Ryo\Ryo.Interfaces\Ryo.Interfaces.csproj" />
     <ProjectReference Include="..\include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj" />
-    <ProjectReference Include="..\include\Unreal.ObjectsEmitter\Unreal.ObjectsEmitter.Interfaces\Unreal.ObjectsEmitter.Interfaces.csproj" />
   </ItemGroup>
 </Project>
