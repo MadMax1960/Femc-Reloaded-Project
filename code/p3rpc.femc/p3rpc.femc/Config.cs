@@ -146,7 +146,9 @@ namespace p3rpc.femc.Configuration
             [Display(Name = "Autumn")]
             Autumn,
             [Display(Name = "P3 Portable by Yuha")]
-            p3pYuha
+            p3pYuha,
+            [Display(Name = "Maru")]
+            Maru
         }
 
         [DisplayName("Cutin")]
