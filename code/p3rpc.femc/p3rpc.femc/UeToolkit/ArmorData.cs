@@ -3,7 +3,7 @@ using Reloaded.Mod.Interfaces;
 using UE.Toolkit.Core.Types.Unreal.UE4_27_2;
 using UE.Toolkit.Interfaces;
 
-namespace p3rpc.femc {
+namespace p3rpc.femc.UeToolkit {
     public class ArmorData
     {
         private readonly IUnrealObjects _uObjects;
