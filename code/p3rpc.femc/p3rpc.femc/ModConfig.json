@@ -191,10 +191,10 @@
   },
   "IsUniversalMod": false,
   "ModDependencies": [
-    "P3R.CostumeFramework",
     "p3rpc.classconstructor",
-    "p3rpc.essentials",
     "p3rpc.nativetypes",
+    "P3R.CostumeFramework",
+    "p3rpc.essentials",
     "p3rpc.skins.universalskeletonfix",
     "Reloaded.Memory.SigScan.ReloadedII",
     "reloaded.sharedlib.hooks",
@@ -202,11 +202,14 @@
     "SharedScans.Reloaded",
     "UE.Toolkit.Reloaded",
     "Unreal.ObjectsEmitter.Reloaded",
-    "UnrealEssentials"
+    "UnrealEssentials",
+    "P3R.UEToolkit"
   ],
   "OptionalDependencies": [],
   "SupportedAppId": [
     "p3r.exe"
   ],
-  "ProjectUrl": "https://github.com/MadMax1960/Femc-Reloaded-Project"
+  "ProjectUrl": "https://github.com/MadMax1960/Femc-Reloaded-Project",
+  "CreatorUrl": "",
+  "IsSeparator": false
 }
