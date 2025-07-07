@@ -2,7 +2,7 @@
 using Reloaded.Mod.Interfaces;
 using Ryo.Interfaces;
 
-namespace p3rpc.femc
+namespace p3rpc.femc.Audio
 {
 	public class MusicManager
 	{
@@ -27,7 +27,6 @@ namespace p3rpc.femc
 		{
 			try
 			{
-				_logger.WriteLineAsync("Regenerating music script");
 
 				string path = _modLoader.GetDirectoryForModId(_modConfig.ModId) + "\\BGM\\BGM.acb\\";
 				var nightmusic = new Dictionary<string, bool>

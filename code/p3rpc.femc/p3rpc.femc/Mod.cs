@@ -17,6 +17,7 @@ using P3R.CostumeFramework.Interfaces;
 using UE.Toolkit.Interfaces;
 using IUnrealMemory = UE.Toolkit.Interfaces.IUnrealMemory;
 using p3rpc.femc.UeToolkit;
+using p3rpc.femc.Audio;
 
 
 
