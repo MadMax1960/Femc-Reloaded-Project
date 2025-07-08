@@ -32,30 +32,30 @@ namespace p3rpc.femc.Configuration
 
         public enum AOAType
         {
-            [Display(Name = "Ely")]
-            Ely,
-            [Display(Name = "Chrysanthie")]
-            Chrysanthie,
-            [Display(Name = "Fernando")]
-            Fernando,
-            [Display(Name = "Monica")]
-            Monica,
-            [Display(Name = "Ronald Reagan")]
-            RonaldReagan,
-            [Display(Name = "Esa, Adrien")]
-            esaadrien,
-            [Display(Name = "Mekki")]
-            mekki,
-            [Display(Name = "shiosakana")]
-            shiosakana,
-            [Display(Name = "shiosakana (jacket closed)")]
-            shiosakanaAlt,
-            [Display(Name = "Namiweiko")]
-            Nami,
-            [Display(Name = "AngieDaGorl")]
-            AngieDaGorl,
-            [Display(Name = "StupidAle")]
-            StupidAle,
+        [Display(Name = "Ely")]
+        Ely,
+        [Display(Name = "Chrysanthie")]
+        Chrysanthie,
+        [Display(Name = "Fernando")]
+        Fernando,
+        [Display(Name = "Monica")]
+        Monica,
+        [Display(Name = "Ronald Reagan")]
+        RonaldReagan,
+        [Display(Name = "Esa, Adrien")]
+        esaadrien,
+        [Display(Name = "Mekki")]
+        mekki,
+        [Display(Name = "shiosakana")]
+        shiosakana,
+        [Display(Name = "shiosakana (jacket closed)")]
+        shiosakanaAlt,
+        [Display(Name = "Namiweiko")]
+        Nami,
+        [Display(Name = "AngieDaGorl")]
+        AngieDaGorl,
+        [Display(Name = "StupidAle")]
+        StupidAle,
         }
 
         [DisplayName("AOA Text Options")]
@@ -67,12 +67,12 @@ namespace p3rpc.femc.Configuration
 
         public enum AOATextType
         {
-            [Display(Name = "Don't look back.")]
-            DontLookBack,
-            [Display(Name = "Sorry 'bout that— bye-bye!")]
-            SorryBoutThat,
-            [Display(Name = "Perfectly accomplished!!")]
-            PerfectlyAccomplished,
+        [Display(Name = "Don't look back.")]
+        DontLookBack,
+        [Display(Name = "Sorry 'bout that— bye-bye!")]
+        SorryBoutThat,
+        [Display(Name = "Perfectly accomplished!!")]
+        PerfectlyAccomplished,
         }
 
 
@@ -85,70 +85,70 @@ namespace p3rpc.femc.Configuration
 
         public enum BustupType
         {
-            [Display(Name = "Neptune")]
-            Neptune,
-            [Display(Name = "Ely")]
-            Ely,
-            [Display(Name = "Esa")]
-            Esa,
-            [Display(Name = "Betina")]
-            Betina,
-            [Display(Name = "P25th Anniversary Art")]
-            Anniversary,
-            [Display(Name = "Just Blue")]
-            JustBlue,
-            [Display(Name = "Sav")]
-            Sav,
-            [Display(Name = "Doodled")]
-            Doodled,
-            [Display(Name = "Ronald Reagan")]
-            RonaldReagan,
-            [Display(Name = "Ely (Alt)")]
-            ElyAlt,
-            [Display(Name = "Yuunagi")]
-            Yuunagi,
-            [Display(Name = "cielbell")]
-            cielbell,
-            [Display(Name = "axolotl")]
-            axolotl,
-            [Display(Name = "GhostedToast")]
-            ghostedtoast,
-            [Display(Name = "Strelko")]
-            Strelko,
-            [Display(Name = "gackt")]
-            gackt,
-            [Display(Name = "Jackie")]
-            Jackie,
-            [Display(Name = "Lisa9388")]
-            Lisa,
-            [Display(Name = "Mae (Beta FEMC)")]
-            BetaFemcByMae,
-            [Display(Name = "crezzstar")]
-            crezzstar,
-            [Display(Name = "crezzstar (Alt expression)")]
-            crezzstarAlt,
-            [Display(Name = "AngieDaGorl")]
-            AngieDaGorl,
-            [Display(Name = "namiweiko")]
-            namiweiko,
-            [Display(Name = "chitu")]
-            chitu,
-            [Display(Name = "shiosakana")]
-            shiosakana,
-            [Display(Name = "samythecoolkid")]
-            samythecoolkid,
-            [Display(Name = "Mixi_xiMi")]
-            Mixi_xiMi,
-            [Display(Name = "StupidAle")]
-            StupidAle,
-            [Display(Name = "Kiara")]
-            Kiara,
-            [Display(Name = "Autumn")]
-            Autumn,
-            [Display(Name = "P3 Portable by Yuha")]
-            p3pYuha,
-            [Display(Name = "Maru")]
-            Maru
+        [Display(Name = "Neptune")]
+        Neptune,
+        [Display(Name = "Ely")]
+        Ely,
+        [Display(Name = "Esa")]
+        Esa,
+        [Display(Name = "Betina")]
+        Betina,
+        [Display(Name = "P25th Anniversary Art")]
+        Anniversary,
+        [Display(Name = "Just Blue")]
+        JustBlue,
+        [Display(Name = "Sav")]
+        Sav,
+        [Display(Name = "Doodled")]
+        Doodled,
+        [Display(Name = "Ronald Reagan")]
+        RonaldReagan,
+        [Display(Name = "Ely (Alt)")]
+        ElyAlt,
+        [Display(Name = "Yuunagi")]
+        Yuunagi,
+        [Display(Name = "cielbell")]
+        cielbell,
+        [Display(Name = "axolotl")]
+        axolotl,
+        [Display(Name = "GhostedToast")]
+        ghostedtoast,
+        [Display(Name = "Strelko")]
+        Strelko,
+        [Display(Name = "gackt")]
+        gackt,
+        [Display(Name = "Jackie")]
+        Jackie,
+        [Display(Name = "Lisa9388")]
+        Lisa,
+        [Display(Name = "Mae (Beta FEMC)")]
+        BetaFemcByMae,
+        [Display(Name = "crezzstar")]
+        crezzstar,
+        [Display(Name = "crezzstar (Alt expression)")]
+        crezzstarAlt,
+        [Display(Name = "AngieDaGorl")]
+        AngieDaGorl,
+        [Display(Name = "namiweiko")]
+        namiweiko,
+        [Display(Name = "chitu")]
+        chitu,
+        [Display(Name = "shiosakana")]
+        shiosakana,
+        [Display(Name = "samythecoolkid")]
+        samythecoolkid,
+        [Display(Name = "Mixi_xiMi")]
+        Mixi_xiMi,
+        [Display(Name = "StupidAle")]
+        StupidAle,
+        [Display(Name = "Kiara")]
+        Kiara,
+        [Display(Name = "Autumn")]
+        Autumn,
+        [Display(Name = "P3 Portable by Yuha")]
+        p3pYuha,
+        [Display(Name = "Maru")]
+        Maru
         }
 
         [DisplayName("Cutin")]
@@ -271,12 +271,12 @@ namespace p3rpc.femc.Configuration
 
         public enum AnimType
         {
-            [Display(Name = "Original Animations")]
-            OriginalAnims,
-            [Display(Name = "Custom Animations")]
-            CustomAnims,
-            [Display(Name = "Very Funny Animations")]
-            VeryFunnyAnims
+        [Display(Name = "Original Animations")]
+        OriginalAnims,
+        [Display(Name = "Custom Animations")]
+        CustomAnims,
+        [Display(Name = "Very Funny Animations")]
+        VeryFunnyAnims
         }
 
         [DisplayName("Hair Options")]
@@ -288,10 +288,10 @@ namespace p3rpc.femc.Configuration
 
         public enum HairType
         {
-            [Display(Name = "Default")]
-            MudkipsHair,
-            [Display(Name = "Kotone Bean")]
-            KotoneBeanHair
+        [Display(Name = "Default")]
+        MudkipsHair,
+        [Display(Name = "Kotone Bean")]
+        KotoneBeanHair
         }
 
         [DisplayName("Naginata Weapons")]
@@ -312,12 +312,12 @@ namespace p3rpc.femc.Configuration
 
         public enum VoiceType
         {
-            [Display(Name = "Mellodi")]
-            Mellodi,
-            [Display(Name = "Mellodi (Silly)")]
-            MellodiSilly,
-            [Display(Name = "Japanese")]
-            Japanese
+        [Display(Name = "Mellodi")]
+        Mellodi,
+        [Display(Name = "Mellodi (Silly)")]
+        MellodiSilly,
+        [Display(Name = "Japanese")]
+        Japanese
         }
 
         [DisplayName("Gendered Audio")]
