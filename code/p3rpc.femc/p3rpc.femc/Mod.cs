@@ -146,41 +146,30 @@ namespace p3rpc.femc
 		{
 			try
 			{
-				Load3dAssets(unrealEssentials);
-				Load2dAssets(unrealEssentials);
-				LoadTheoAssets(unrealEssentials, ryo);
-				LoadFunStuff(unrealEssentials);
-				LoadMiscAssets(ryo);
-			}
+                Load3dAssets(unrealEssentials);
+                Load2dAssets(unrealEssentials);
+                LoadTheoAssets(unrealEssentials, ryo);
+                LoadFunStuff(unrealEssentials);
+                LoadMiscAssets(ryo);
+            }
 			catch (Exception ex)
 			{
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
 		}
 
-		private void Load3dAssets(IUnrealEssentials unrealEssentials)
-		{
-		if (_configuration.HairTrue == HairType.MudkipsHair) // hair option, this shit broken, i should fix it
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "MudkipHair"));
-		else if (_configuration.HairTrue == HairType.KotoneBeanHair)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "hair", "NaobeanHair"));
-		
-		if (_configuration.AnimTrue == AnimType.OriginalAnims) // animation option
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Original Dummy"));
-		else if (_configuration.AnimTrue == AnimType.CustomAnims)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Custom Anims"));
-		else if (_configuration.AnimTrue == AnimType.VeryFunnyAnims)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Anims", "Very Funny Anims"));
+        private void Load3dAssets(IUnrealEssentials unrealEssentials)
+        {
+            HairLoader.LoadHairAssets(unrealEssentials, _configuration, _context._modLocation);
+            AnimLoader.LoadAnimAssets(unrealEssentials, _configuration, _context._modLocation);
+            NaginataLoader.LoadNaginataAssets(unrealEssentials, _configuration, _context._modLocation);
 
-		if (_configuration.NagiWeap) // loads naginata
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "3d", "Nagitana"));
-			
-		unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector")); // just loads actual assets, if this doesnt load femc doesn't load lmfao
-		_costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Oscar Fortnite")); // Fuck it 
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector"));
+            _costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Oscar Fortnite"));
 
-		}
+        }
 
-		private void Load2dAssets(IUnrealEssentials unrealEssentials)
+        private void Load2dAssets(IUnrealEssentials unrealEssentials)
 		{
 			AoaLoader.LoadAoaAssets(unrealEssentials, _configuration, _context._modLocation);
 			AoaTextLoader.LoadAoaTextAssets(unrealEssentials, _configuration, _context._modLocation);
@@ -219,21 +208,13 @@ namespace p3rpc.femc
                 unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Otome Arcade"));
         }
 
-		private void LoadMiscAssets(IRyoApi ryo)
-		{
-			if (_configuration.bluehairandpronounce)
-				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Voice"); // gendered audio
-			
-			if (_configuration.VoiceTrue == VoiceType.Mellodi) // voice stuff, mellodi, silly, etc
-				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/normal battle");
-			else if (_configuration.VoiceTrue == VoiceType.MellodiSilly)
-				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/april fools");
-			else if (_configuration.VoiceTrue == VoiceType.Japanese)
-				ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/mellodi/nothing lmao");
+        private void LoadMiscAssets(IRyoApi ryo)
+        {
+            Voice.LoadVoiceAssets(_modLoader, _modConfig, _configuration, ryo);
 
-		}
+        }
 
-		private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death
+        private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death
 		{
 			_modRuntime.AddModule<UICommon>();
 			if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
