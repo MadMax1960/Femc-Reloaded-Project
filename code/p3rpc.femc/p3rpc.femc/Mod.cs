@@ -146,27 +146,21 @@ namespace p3rpc.femc
 		{
 			try
 			{
-                Load3dAssets(unrealEssentials);
                 Load2dAssets(unrealEssentials);
                 LoadTheoAssets(unrealEssentials, ryo);
                 LoadFunStuff(unrealEssentials);
                 Voice.LoadVoiceAssets(_modLoader, _modConfig, _configuration, ryo); // loads voice options
+                HairLoader.LoadHairAssets(unrealEssentials, _configuration, _context._modLocation);
+                AnimLoader.LoadAnimAssets(unrealEssentials, _configuration, _context._modLocation);
+                NaginataLoader.LoadNaginataAssets(unrealEssentials, _configuration, _context._modLocation);
             }
 			catch (Exception ex)
 			{
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
-		}
-
-        private void Load3dAssets(IUnrealEssentials unrealEssentials)
-        {
-            HairLoader.LoadHairAssets(unrealEssentials, _configuration, _context._modLocation);
-            AnimLoader.LoadAnimAssets(unrealEssentials, _configuration, _context._modLocation);
-            NaginataLoader.LoadNaginataAssets(unrealEssentials, _configuration, _context._modLocation);
 
             unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector"));
             _costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Oscar Fortnite"));
-
         }
 
         private void Load2dAssets(IUnrealEssentials unrealEssentials)
