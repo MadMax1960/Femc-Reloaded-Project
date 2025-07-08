@@ -10,9 +10,9 @@ namespace p3rpc.femc
         public static void LoadHairAssets(IUnrealEssentials unrealEssentials, Config configuration, string modLocation)
         {
             if (configuration.HairTrue == HairType.MudkipsHair)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "3d", "hair", "MudkipHair"));
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "3d", "hair", "MudkipHair")); // I'd like to phase these out, but I forgor people actually use it. Make sure when new hair is done to rename it to "esa hair" and nuke old hair
             else if (configuration.HairTrue == HairType.KotoneBeanHair)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "3d", "hair", "NaobeanHair"));
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "3d", "hair", "NaobeanHair")); 
         }
     }
 }
