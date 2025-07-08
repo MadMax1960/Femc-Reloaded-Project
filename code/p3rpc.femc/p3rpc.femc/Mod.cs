@@ -146,35 +146,30 @@ namespace p3rpc.femc
 		{
 			try
 			{
-                Load2dAssets(unrealEssentials);
-                LoadTheoAssets(unrealEssentials, ryo);
-                LoadFunStuff(unrealEssentials);
+				LoadTheoAssets(unrealEssentials, ryo); // loads theo
+                FunStuffLoader.LoadFunStuffAssets(unrealEssentials, _configuration, _context._modLocation); // loads fun stuff :true:
                 Voice.LoadVoiceAssets(_modLoader, _modConfig, _configuration, ryo); // loads voice options
-                HairLoader.LoadHairAssets(unrealEssentials, _configuration, _context._modLocation);
-                AnimLoader.LoadAnimAssets(unrealEssentials, _configuration, _context._modLocation);
-                NaginataLoader.LoadNaginataAssets(unrealEssentials, _configuration, _context._modLocation);
+                HairLoader.LoadHairAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d hair
+                AnimLoader.LoadAnimAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d anim
+                NaginataLoader.LoadNaginataAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d weapons
+                AoaLoader.LoadAoaAssets(unrealEssentials, _configuration, _context._modLocation); // loads 2d aoa
+                AoaTextLoader.LoadAoaTextAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d aoa text thing on the side
+                BustupLoader.LoadBustups(unrealEssentials, _configuration, _context._modLocation); // loads 2d bustups
+                ShardLoader.LoadShardAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d shard, which is technially 3d
+                LevelUpLoader.LoadLevelUpAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d level up portraits
+                PartyPanelLoader.LoadPartyPanelAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d party panel
+                CutinLoader.LoadCutinAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d cutin usms
+                GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the group event thing, its 2d art 
+                KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the kyoto event, it is also 2d art
             }
 			catch (Exception ex)
 			{
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
 
-            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector"));
-            _costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Oscar Fortnite"));
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector")); // this is femcs asset folder, all her assets go in here. If they are not in here, she will not load
+            _costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Oscar Fortnite")); // Folder with all the costume ymls
         }
-
-        private void Load2dAssets(IUnrealEssentials unrealEssentials)
-		{
-			AoaLoader.LoadAoaAssets(unrealEssentials, _configuration, _context._modLocation);
-			AoaTextLoader.LoadAoaTextAssets(unrealEssentials, _configuration, _context._modLocation);
-			BustupLoader.LoadBustups(unrealEssentials, _configuration, _context._modLocation);
-			ShardLoader.LoadShardAssets(unrealEssentials, _configuration, _context._modLocation);
-			LevelUpLoader.LoadLevelUpAssets(unrealEssentials, _configuration, _context._modLocation);
-			PartyPanelLoader.LoadPartyPanelAssets(unrealEssentials, _configuration, _context._modLocation);
-			CutinLoader.LoadCutinAssets(unrealEssentials, _configuration, _context._modLocation);
-			GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation);
-			KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation);
-		}
 
 		private void LoadTheoAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
 			{
@@ -187,20 +182,6 @@ namespace p3rpc.femc
 					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Theo/voice/Landon");
 				}
 			}
-
-		private void LoadFunStuff(IUnrealEssentials unrealEssentials)
-		{
-			if (_configuration.KotoneRoom)  // kotones room with the paintings and stuff 
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Kotone Room"));
-			
-			if (_configuration.GregoryHouseRatPoisonDeliverySystem) // house apron
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystem"));
-			if (!_configuration.GregoryHouseRatPoisonDeliverySystem)
-				unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "GregoryHouseRatPoisonDeliverySystemog"));
-
-            if (_configuration.OtomeArcade)  // kotones room with the paintings and stuff 
-                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Otome Arcade"));
-        }
 
         private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death (Ivan is exempt from this) 
 		{
