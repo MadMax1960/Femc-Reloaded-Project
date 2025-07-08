@@ -160,14 +160,14 @@ namespace p3rpc.femc.Configuration
 
         public enum CutinType
         {
-            [Display(Name = "berrycha")]
-            berrycha,
-            [Display(Name = "Ely, PatManDX")]
-            ElyandPatmandx,
-            [Display(Name = "Mekki")]
-            Mekki,
-            [Display(Name = "shiosakana")]
-            shiosakana
+        [Display(Name = "berrycha")]
+        berrycha,
+        [Display(Name = "Ely, PatManDX")]
+        ElyandPatmandx,
+        [Display(Name = "Mekki")]
+        Mekki,
+        [Display(Name = "shiosakana")]
+        shiosakana
         }
 
         [DisplayName("Group Photo")]
@@ -179,10 +179,10 @@ namespace p3rpc.femc.Configuration
 
         public enum GroupEventtype
         {
-            [Display(Name = "Bichelle")]
-            bichelle,
-            [Display(Name = "Ely")]
-            ely
+        [Display(Name = "Bichelle")]
+        bichelle,
+        [Display(Name = "Ely")]
+        ely
         }
 
         [DisplayName("Kyoto Photos")]
@@ -194,8 +194,8 @@ namespace p3rpc.femc.Configuration
 
         public enum KyotoEventtype
         {
-            [Display(Name = "Ely")]
-            ely
+        [Display(Name = "Ely")]
+        ely
         }
 
         [DisplayName("Level Up Art")]
@@ -207,16 +207,16 @@ namespace p3rpc.femc.Configuration
 
         public enum LevelUpType
         {
-            [Display(Name = "Esa")]
-            Esa,
-            [Display(Name = "Ely")]
-            Ely,
-            [Display(Name = "shiosakana")]
-            shiosakana,
-            [Display(Name = "Ely (Alt)")]
-            ElyAlt,
-            [Display(Name = "AngieDaGorl")]
-            AngieDaGorl
+        [Display(Name = "Esa")]
+        Esa,
+        [Display(Name = "Ely")]
+        Ely,
+        [Display(Name = "shiosakana")]
+        shiosakana,
+        [Display(Name = "Ely (Alt)")]
+        ElyAlt,
+        [Display(Name = "AngieDaGorl")]
+        AngieDaGorl
 
         }
 
@@ -229,10 +229,10 @@ namespace p3rpc.femc.Configuration
 
         public enum PartyPanelType
         {
-            [Display(Name = "Kris")]
-            Kris,
-            [Display(Name = "Esa")]
-            Esa
+        [Display(Name = "Kris")]
+        Kris,
+        [Display(Name = "Esa")]
+        Esa
         }
 
         [DisplayName("Status Menu Art")]
@@ -244,20 +244,20 @@ namespace p3rpc.femc.Configuration
 
         public enum ShardType
         {
-            [Display(Name = "Esa")]
-            Esa,
-            [Display(Name = "Ely")]
-            Ely,
-            [Display(Name = "Ely (Alt)")]
-            ElyAlt,
-            [Display(Name = "shiosakana")]
-            Shiosakana,
-            [Display(Name = "namiweiko")]
-            namiweiko,
-            [Display(Name = "AngieDaGorl")]
-            AngieDaGorl,
-            [Display(Name = "StupidAle")]
-            StupidAle
+        [Display(Name = "Esa")]
+        Esa,
+        [Display(Name = "Ely")]
+        Ely,
+        [Display(Name = "Ely (Alt)")]
+        ElyAlt,
+        [Display(Name = "shiosakana")]
+        Shiosakana,
+        [Display(Name = "namiweiko")]
+        namiweiko,
+        [Display(Name = "AngieDaGorl")]
+        AngieDaGorl,
+        [Display(Name = "StupidAle")]
+        StupidAle
         }
 
         // 3D Options
