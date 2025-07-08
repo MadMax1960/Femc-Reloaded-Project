@@ -17,3 +17,4 @@ namespace p3rpc.femc
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "3d", "Anims", "Very Funny Anims"));
         }
     }
+}
