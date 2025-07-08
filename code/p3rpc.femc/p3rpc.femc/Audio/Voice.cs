@@ -16,7 +16,7 @@ namespace p3rpc.femc.Audio
                 ryo.AddAudioFolder(Path.Combine(basePath, "Voice"));
 
             if (configuration.VoiceTrue == VoiceType.Mellodi)
-                ryo.AddAudioFolder(Path.Combine(basePath, "mellodi", "normal battle"));
+                ryo.AddAudioFolder(Path.Combine(basePath, "mellodi", "normal battle")); // if you ever wonder why event voices not loading, they're in a "events" folder, idk why they in there but I don't wanna touch
             else if (configuration.VoiceTrue == VoiceType.MellodiSilly)
                 ryo.AddAudioFolder(Path.Combine(basePath, "mellodi", "april fools"));
             else if (configuration.VoiceTrue == VoiceType.Japanese)
