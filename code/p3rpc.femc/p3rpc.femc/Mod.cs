@@ -150,7 +150,7 @@ namespace p3rpc.femc
                 Load2dAssets(unrealEssentials);
                 LoadTheoAssets(unrealEssentials, ryo);
                 LoadFunStuff(unrealEssentials);
-                LoadMiscAssets(ryo);
+                Voice.LoadVoiceAssets(_modLoader, _modConfig, _configuration, ryo); // loads voice options
             }
 			catch (Exception ex)
 			{
@@ -208,13 +208,7 @@ namespace p3rpc.femc
                 unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Fun Stuff", "Otome Arcade"));
         }
 
-        private void LoadMiscAssets(IRyoApi ryo)
-        {
-            Voice.LoadVoiceAssets(_modLoader, _modConfig, _configuration, ryo);
-
-        }
-
-        private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death
+        private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death (Ivan is exempt from this) 
 		{
 			_modRuntime.AddModule<UICommon>();
 			if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
