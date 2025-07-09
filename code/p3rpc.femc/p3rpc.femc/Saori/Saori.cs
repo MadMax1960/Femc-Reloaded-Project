@@ -16,7 +16,10 @@ public static class Saori
         Config configuration,
         string modLocation)
     {
-        {
-        }
+        //if (configuration.thisfinishedbeforethumbnail)
+        //{
+        //    unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Saori", "Models"));
+        //    ryo.AddAudioFolder(modLoader.GetDirectoryForModId(modConfig.ModId) + "/Saori/Voice/idr");
+        //}
     }
 }

@@ -161,7 +161,7 @@ namespace p3rpc.femc
                 GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the group event thing, its 2d art 
                 KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the kyoto event, it is also 2d art
                 Theo.LoadTheoAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
-                Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
+                Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
             }
 			catch (Exception ex)
 			{
