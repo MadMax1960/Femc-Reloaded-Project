@@ -162,6 +162,7 @@ namespace p3rpc.femc
                 KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the kyoto event, it is also 2d art
                 Theo.LoadTheoAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
                 Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
+                Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
             }
 			catch (Exception ex)
 			{
