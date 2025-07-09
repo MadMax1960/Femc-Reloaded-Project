@@ -146,7 +146,6 @@ namespace p3rpc.femc
 		{
 			try
 			{
-				LoadTheoAssets(unrealEssentials, ryo); // loads theo
                 FunStuffLoader.LoadFunStuffAssets(unrealEssentials, _configuration, _context._modLocation); // loads fun stuff :true:
                 Voice.LoadVoiceAssets(_modLoader, _modConfig, _configuration, ryo); // loads voice options
                 HairLoader.LoadHairAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d hair
@@ -161,6 +160,7 @@ namespace p3rpc.femc
                 CutinLoader.LoadCutinAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d cutin usms
                 GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the group event thing, its 2d art 
                 KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the kyoto event, it is also 2d art
+                Theo.LoadTheoAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
             }
 			catch (Exception ex)
 			{
@@ -170,18 +170,6 @@ namespace p3rpc.femc
             unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector")); // this is femcs asset folder, all her assets go in here. If they are not in here, she will not load
             _costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Oscar Fortnite")); // Folder with all the costume ymls
         }
-
-		private void LoadTheoAssets(IUnrealEssentials unrealEssentials, IRyoApi ryo)
-			{
-				if (_configuration.TheodorefromAlvinandTheChipmunks) // loads all the theo assets, needs to be seperated for configs...
-				{
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "cutin", "mekkipatman"));
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "message"));
-					unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Theo", "Bustup"));
-					ryo.AddAudioFolder(_modLoader.GetDirectoryForModId(_modConfig.ModId) + "/Theo/voice/Landon");
-				}
-			}
 
         private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death (Ivan is exempt from this) 
 		{
