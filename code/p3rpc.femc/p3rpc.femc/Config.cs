@@ -1590,17 +1590,130 @@ namespace p3rpc.femc.Configuration
 
         // silly edits
 
-        [DisplayName("Camp: Nami Top A Color")]
+        [DisplayName("Camp: Waves Top A Color")]
         [Category("UI Colors")]
         [Display(Order = 352)]
-        public ConfigColor CampNamiTopAColor { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor NamiTopAColor { get; set; } = ConfigColor.CampBgColor;
 
-        [DisplayName("Camp: Nami Top B Color")]
+        [DisplayName("Camp: Waves Top B Color")]
         [Category("UI Colors")]
-        [Display(Order = 352)]
-        public ConfigColor CampNamiTopBColor { get; set; } = ConfigColor.CampBgColor;
+        [Display(Order = 353)]
+        public ConfigColor NamiTopBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Skill A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 354)]
+        public ConfigColor NamiSkillAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Skill B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 355)]
+        public ConfigColor NamiSkillBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Item A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 356)]
+        public ConfigColor NamiItemAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Item B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 357)]
+        public ConfigColor NamiItemBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Equip A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 358)]
+        public ConfigColor NamiEquipAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Equip B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 359)]
+        public ConfigColor NamiEquipBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Persona A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 360)]
+        public ConfigColor NamiPersonaAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Persona B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 361)]
+        public ConfigColor NamiPersonaBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Status A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 362)]
+        public ConfigColor NamiStatusAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Status B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 363)]
+        public ConfigColor NamiStatusBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Quest A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 364)]
+        public ConfigColor NamiQuestAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Quest B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 365)]
+        public ConfigColor NamiQuestBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Commu A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 366)]
+        public ConfigColor NamiCommuAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Commu B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 367)]
+        public ConfigColor NamiCommuBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Calendar A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 368)]
+        public ConfigColor NamiCalendarAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Calendar B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 369)]
+        public ConfigColor NamiCalendarBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves System A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 370)]
+        public ConfigColor NamiSystemAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves System B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 371)]
+        public ConfigColor NamiSystemBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Tutorial A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 372)]
+        public ConfigColor NamiTutorialAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Tutorial B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 373)]
+        public ConfigColor NamiTutorialBColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Config A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 374)]
+        public ConfigColor NamiConfigAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Waves Config B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 375)]
+        public ConfigColor NamiConfigBColor { get; set; } = ConfigColor.CampBgColor;
 
         // silly edits end
+
+
+
 
         // edits from here
         // I MIGHT NOT EVEN NEED THIS UNCOMMENT IF IT NO WORK

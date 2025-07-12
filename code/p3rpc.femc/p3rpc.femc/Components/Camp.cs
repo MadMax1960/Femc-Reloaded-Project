@@ -121,8 +121,30 @@ namespace p3rpc.femc.Components
             ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorMid, _context._config.CampMiddleColor);
             ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorLow, _context._config.CampLowColor);
             // adrien edits
-            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTopAColor, _context._config.CampNamiTopAColor);
-            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTopBColor, _context._config.CampNamiTopAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTopAColor, _context._config.NamiTopAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTopBColor, _context._config.NamiTopBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiSkillAColor, _context._config.NamiSkillAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiSkillBColor, _context._config.NamiSkillBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiItemAColor, _context._config.NamiItemAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiItemBColor, _context._config.NamiItemBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiEquipAColor, _context._config.NamiEquipAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiEquipBColor, _context._config.NamiEquipBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiPersonaAColor, _context._config.NamiPersonaAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiPersonaBColor, _context._config.NamiPersonaBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiStatusAColor, _context._config.NamiStatusAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiStatusBColor, _context._config.NamiStatusBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiQuestAColor, _context._config.NamiQuestAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiQuestBColor, _context._config.NamiQuestBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiCommuAColor, _context._config.NamiCommuAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiCommuBColor, _context._config.NamiCommuBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiCalendarAColor, _context._config.NamiCalendarAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiCalendarBColor, _context._config.NamiCalendarBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiSystemAColor, _context._config.NamiSystemAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiSystemBColor, _context._config.NamiSystemBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTutorialAColor, _context._config.NamiTutorialAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTutorialBColor, _context._config.NamiTutorialBColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiConfigAColor, _context._config.NamiConfigAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiConfigBColor, _context._config.NamiConfigBColor);
 
             return return_value;
         }
