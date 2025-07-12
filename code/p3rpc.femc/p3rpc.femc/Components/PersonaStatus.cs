@@ -54,10 +54,13 @@ namespace p3rpc.femc.Components
 
         private string APersonaStatusDraw_HighlightedSkillCursor_SIG = "88 5C 24 ?? F3 41 0F 58 87 ?? ?? ?? ??";
         private string APersonaStatusDraw_HighlightedSkillCursorNextSkill_SIG = "C7 45 ?? 29 00 EA FF";
+        private string APersonaStatusDraw_HighlightedSkillCursorSkillCardBlendState_SIG = "B2 02 E8 ?? ?? ?? ?? 0F B6 87 ?? ?? ?? ??";
         private string APersonaStatusDraw_HighlightedSkillCursorSkillCard_SIG = "40 88 B5 ?? ?? ?? ?? E8 ?? ?? ?? ?? EB ??";
 
         private string APersonaStatusDraw_SkillCardBgColor_SIG = "40 88 74 24 ?? E8 ?? ?? ?? ?? 40 88 74 24 ??";
         private string APersonaStatusDraw_SkillCardSkillBgColor_SIG = "8B 44 24 ?? 41 0F 28 D7 F3 0F 58 15 ?? ?? ?? ??";
+        private string APersonaStatusDraw_SkillCardSelectedSkillAnimation_SIG = "F3 0F 59 05 ?? ?? ?? ?? F3 0F 2C C0 F3 41 0F 10 87 ?? ?? ?? ??";
+        private string APersonaStatusDraw_SkillCardSelectedSkillAnimationFontColor_SIG = "C7 45 ?? 9E 52 3C FF 48 89 85 ?? ?? ?? ?? 48 85 C0 74 ?? F0 FF 40 ?? 8B 85 ?? ?? ?? ?? 48 8D 4D ?? 89 85 ?? ?? ?? ?? 41 0F 28 D2 41 0F B6 87 ?? ?? ?? ?? 41 0F 28 CC F3 0F 58 15 ?? ?? ?? ?? F3 0F 58 0D ?? ?? ?? ?? 88 44 24 ?? 41 0F 28 D9 8B 45 ?? 89 44 24 ?? 48 8D 85 ?? ?? ?? ?? 48 89 44 24 ?? E8 ?? ?? ?? ?? 41 0F B6 87 ?? ?? ?? ?? 41 B1 05 88 44 24 ?? 41 B0 04 44 88 6C 24 ?? 33 D2 C6 44 24 ?? 01 49 8B CC 44 88 6C 24 ?? E8 ?? ?? ?? ?? 48 8B 85 ?? ?? ?? ??";
 
         private string APersonaStatusDraw_SkillDescriptionBg_SIG = "E8 ?? ?? ?? ?? 0F B6 87 ?? ?? ?? ?? 41 0F 28 D0 F3 0F 5C 15 ?? ?? ?? ??";
         private string APersonaStatusDraw_SkillDescriptionCornerBg_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 15 ?? ?? ?? ?? BA 15 00 00 00";
@@ -121,6 +124,7 @@ namespace p3rpc.femc.Components
         private IAsmHook _HighlightedSkillCursorSkillCard;
         private IAsmHook _SkillCardBgColor;
         private IAsmHook _SkillCardSkillBgColor;
+        private IAsmHook _SkillCardSelectedSkillAnimation;
         private IAsmHook _SkillDescriptionBg;
         private IAsmHook _SkillDescriptionCornerBg;
         private IAsmHook _SkillDescriptionCornerSkillFontBg;
@@ -210,16 +214,36 @@ namespace p3rpc.femc.Components
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.PersonaStatusHighlightedColor.ToU32ARGB())));
             });
 
+            _context._utils.SigScan(APersonaStatusDraw_HighlightedSkillCursorSkillCardBlendState_SIG, "APersonaStatusDraw::HighlightedSkillCursorSkillCardBlendState", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, (byte) 0x01)));
+            });
+
             _context._utils.SigScan(APersonaStatusDraw_HighlightedSkillCursorSkillCard_SIG, "APersonaStatusDraw::HighlightedSkillCursorSkillCard", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
                 {
                     "use64",
+                    "push rax",
+                    "push rcx",
+                    "push rdx",
+
+                    "movzx eax, sil",
+                    $"imul eax, {_context._config.PersonaStatusHighlightedColor.A}",
+                    "xor edx, edx",
+                    "mov ecx, 255",
+                    "div ecx",
+                    "mov [rbp + 0x1a3], al", // Custom fade transition
+
+                    "pop rdx",
+                    "pop rcx",
+                    "pop rax",
+
                     $"mov byte [rbp + 0x1a2], {_context._config.PersonaStatusHighlightedColor.R}",
                     $"mov byte [rbp + 0x1a1], {_context._config.PersonaStatusHighlightedColor.G}",
                     $"mov byte [rbp + 0x1a0], {_context._config.PersonaStatusHighlightedColor.B}"
                 };
-                _HighlightedSkillCursorSkillCard = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _HighlightedSkillCursorSkillCard = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
             });
 
             _context._utils.SigScan(APersonaStatusDraw_SkillCardBgColor_SIG, "APersonaStatusDraw::SkillCardBgColor", _context._utils.GetDirectAddress, addr =>
@@ -248,6 +272,22 @@ namespace p3rpc.femc.Components
                 _SkillCardSkillBgColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
 
+            _context._utils.SigScan(APersonaStatusDraw_SkillCardSelectedSkillAnimation_SIG, "APersonaStatusDraw::SkillCardSelectedSkillAnimation", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x62], {_context._config.SkillCardSelectedSkillAnimation.R}",
+                    $"mov byte [rbp - 0x63], {_context._config.SkillCardSelectedSkillAnimation.G}",
+                    $"mov byte [rbp - 0x64], {_context._config.SkillCardSelectedSkillAnimation.B}"
+                };
+                _SkillCardSelectedSkillAnimation = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_SkillCardSelectedSkillAnimationFontColor_SIG, "APersonaStatusDraw::SkillCardSelectedSkillAnimationFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.SwapSkillUnselectedFontColor.ToU32ARGB())));
+            });
 
             _context._utils.SigScan(APersonaStatusDraw_SkillDescriptionBg_SIG, "APersonaStatusDraw::SkillDescriptionBg", _context._utils.GetDirectAddress, addr =>
             {
