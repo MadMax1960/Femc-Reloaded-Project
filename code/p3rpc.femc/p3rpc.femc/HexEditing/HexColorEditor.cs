@@ -15,9 +15,9 @@ namespace p3rpc.femc.HexEditing
             RGB
         }
         /// <param name="filePath">Absolute path to the file to edit.</param>
-        /// <param name="offset">Offset in bytes where the colour should be written.</param>
-        /// <param name="color">The colour value to inject.</param>
-        /// <param name="order">Byte order used for the colour value.</param>
+        /// <param name="offset">Offset in bytes where the color should be written.</param>
+        /// <param name="color">The color value to inject.</param>
+        /// <param name="order">Byte order used for the color value.</param>
         public static void WriteColor(string filePath, long offset, ConfigColor color, ColorOrder order = ColorOrder.RGBA)
         {
             byte[] bytes;
