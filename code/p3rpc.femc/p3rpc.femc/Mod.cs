@@ -1,23 +1,24 @@
-﻿using p3rpc.commonmodutils;
+﻿using P3R.CostumeFramework.Interfaces;
+using p3rpc.classconstructor.Interfaces;
+using p3rpc.commonmodutils;
+using p3rpc.femc.Audio;
 using p3rpc.femc.Components;
 using p3rpc.femc.Configuration;
+using p3rpc.femc.HexEditing;
 using p3rpc.femc.Template;
+using p3rpc.femc.UeToolkit;
 using Reloaded.Hooks.Definitions;
 using Reloaded.Memory;
+using Reloaded.Memory.Sigscan.Definitions;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
+using Ryo.Interfaces;
 using SharedScans.Interfaces;
 using System.Diagnostics;
+using UE.Toolkit.Interfaces;
 using UnrealEssentials.Interfaces;
 using static p3rpc.femc.Configuration.Config;
-using p3rpc.classconstructor.Interfaces;
-using Ryo.Interfaces;
-using Reloaded.Memory.Sigscan.Definitions;
-using P3R.CostumeFramework.Interfaces;
-using UE.Toolkit.Interfaces;
 using IUnrealMemory = UE.Toolkit.Interfaces.IUnrealMemory;
-using p3rpc.femc.UeToolkit;
-using p3rpc.femc.Audio;
 
 
 
@@ -164,6 +165,7 @@ namespace p3rpc.femc
                 Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
                 Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
                 HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Hot Spring Event
+                //ExampleHexEdit.Apply(_configuration, _context._modLocation);
             }
 			catch (Exception ex)
 			{
