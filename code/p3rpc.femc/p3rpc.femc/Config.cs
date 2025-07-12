@@ -1650,6 +1650,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Social Stats: Musical Notes Color")]
         public ConfigColor MusicNotesColor { get; set; } = new ConfigColor(0xFF, 0x8F, 0xEC, 0xFF);
 
+        [DisplayName("Camp: Party Panel Missing Health/SP Color")]
+        public ConfigColor PartyPanelMissingHealthSp { get; set; } = new ConfigColor(0x68, 0x01, 0x08, 0xFF);
+
         [DisplayName("Camp: Transition between menus color")]
         public ConfigColor CampColorTransition { get; set; } = ConfigColor.MellodiColorLight3;
 
@@ -1699,10 +1702,13 @@ namespace p3rpc.femc.Configuration
         public ConfigColor QuestToggler { get; set; } = new ConfigColor(0x2e, 0x09, 0x17, 0xFF);
 
         [DisplayName("Persona Status: Highlighted selection color")]
-        public ConfigColor PersonaStatusHighlightedColor { get; set; } = new ConfigColor(0x29, 0x00, 0xEA, 0xFF);
+        public ConfigColor PersonaStatusHighlightedColor { get; set; } = new ConfigColor(0x29, 0x00, 0xEA, 0x99);
 
         [DisplayName("Persona Status: Skill Card Skill Background color")]
         public ConfigColor SkillCardSkillBg { get; set; } = new ConfigColor(0x66, 0x2b, 0x47, 0xFF);
+
+        [DisplayName("Persona Status: Skill Card Selected Skill animation color")]
+        public ConfigColor SkillCardSelectedSkillAnimation { get; set; } = new ConfigColor(0xD1, 0x62, 0x87, 0xFF);
 
         [DisplayName("Persona Status: Skill Description Main Background color")]
         public ConfigColor SkillDescriptionMainBg { get; set; } = new ConfigColor(0x57, 0x21, 0x3D, 0xFF);
@@ -1799,6 +1805,18 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Minimap: Minimap locations view lower strip background color")]
         public ConfigColor MinimapLocationsLowerStrip { get; set; } = new ConfigColor(0xEB, 0x00, 0x4E, 0xFF);
+
+        [DisplayName("Town Map: Selected Rounded Outline Color")]
+        public ConfigColor PreviewRoundedOutline { get; set; } = new ConfigColor(0xFD, 0x9B, 0xB7, 0xFF);
+
+        [DisplayName("Town Map: Preview Taint Color")]
+        public ConfigColor PreviewTaintColor { get; set; } = new ConfigColor(0xBB, 0x96, 0xA0, 0xFF);
+
+        [DisplayName("Town Map: Location Subtle Shadow")]
+        public ConfigColor LocationSubtleShadowColor { get; set; } = new ConfigColor(0x53, 0x00, 0x04, 0xFF);
+
+        [DisplayName("Town Map: Mini Location Centered Circle when changing selection")]
+        public ConfigColor MiniLocationCircleColor { get; set; } = new ConfigColor(0xEB, 0x44, 0x7D, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]

@@ -25,6 +25,12 @@ namespace p3rpc.femc.Components
         private string AUITownMapActor_LocationDetailsLowerBand_SIG = "F3 0F 10 1D ?? ?? ?? ?? 48 8D 8D ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 49 8B D6 89 85 ?? ?? ?? ??";
         private string AUITownMapActor_LocationDetailsText_SIG = "48 8D 54 24 ?? 89 85 ?? ?? ?? ?? 48 8D 8E ?? ?? ?? ??";
 
+        private string AUITownMap_LocationSubtleShadow_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 83 ?? ?? ?? ?? 41 B0 FE";
+        private string AUITownMap_LocationRoundedOutline_SIG = "E8 ?? ?? ?? ?? B2 96 89 83 ?? ?? ?? ??";
+        private string AUITownMap_LocationPreviewTaint_SIG = "E8 ?? ?? ?? ?? 89 83 ?? ?? ?? ?? 83 FF 05";
+        private string AUITownMap_LocationMiniIndicator_SIG = "E8 ?? ?? ?? ?? 45 33 C9 89 87 ?? ?? ?? ?? 48 8D 8F ?? ?? ?? ??";
+        private string AUITownMap_LocationMiniIndicatorSubtleShadow_SIG = "E8 ?? ?? ?? ?? 41 B1 4C";
+
         private UICommon _uiCommon;
 
         private IAsmHook _townMapTextColor;
@@ -34,6 +40,11 @@ namespace p3rpc.femc.Components
         private IAsmHook _topLeftColor;
         private IAsmHook _lowerBand;
         private IAsmHook _detailsText;
+        private IAsmHook _locationSubtleShadow;
+        private IAsmHook _locationRoundedOutline;
+        private IAsmHook _locationPreviewTaint;
+        private IAsmHook _locationMiniIndicator;
+        private IAsmHook _locationMiniIndicatorSubtleShadow;
 
         private IReverseWrapper<AUITownMapActor_TownMapSetUICompColor> _townMapTextColorWrapper;
         private IReverseWrapper<AUITownMapActor_TownMapSetUICompColor> _townMapBorderColorWrapper;
@@ -102,7 +113,63 @@ namespace p3rpc.femc.Components
                 };
                 _detailsText = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-        }
+
+            _context._utils.SigScan(AUITownMap_LocationSubtleShadow_SIG, "AUITownMap::LocationSubtleShadow", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.LocationSubtleShadowColor.B:X}",
+                    $"mov dl, ${_context._config.LocationSubtleShadowColor.G:X}",
+                    $"mov cl, ${_context._config.LocationSubtleShadowColor.R:X}"
+                };
+                _locationSubtleShadow = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUITownMap_LocationRoundedOutline_SIG, "AUITownMap::LocationRoundedOutline", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.PreviewRoundedOutline.B:X}",
+                    $"mov dl, ${_context._config.PreviewRoundedOutline.G:X}",
+                    $"mov cl, ${_context._config.PreviewRoundedOutline.R:X}"
+                };
+                _locationRoundedOutline = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUITownMap_LocationPreviewTaint_SIG, "AUITownMap::LocationPreviewTaint", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.PreviewTaintColor.B:X}",
+                    $"mov dl, ${_context._config.PreviewTaintColor.G:X}",
+                    $"mov cl, ${_context._config.PreviewTaintColor.R:X}"
+                };
+                _locationPreviewTaint = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUITownMap_LocationMiniIndicator_SIG, "AUITownMap::LocationMiniIndicator", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MiniLocationCircleColor.B:X}",
+                    $"mov dl, ${_context._config.MiniLocationCircleColor.G:X}",
+                    $"mov cl, ${_context._config.MiniLocationCircleColor.R:X}"
+                };
+                _locationMiniIndicator = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUITownMap_LocationMiniIndicatorSubtleShadow_SIG, "AUITownMap::LocationMiniIndicatorSubtleShadow", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.LocationSubtleShadowColor.B:X}",
+                    $"mov dl, ${_context._config.LocationSubtleShadowColor.G:X}",
+                    $"mov cl, ${_context._config.LocationSubtleShadowColor.R:X}"
+                };
+                _locationMiniIndicatorSubtleShadow = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+    }
         public override void Register()
         {
             _uiCommon = GetModule<UICommon>();
