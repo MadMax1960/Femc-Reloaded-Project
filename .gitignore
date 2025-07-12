@@ -28,7 +28,6 @@ x86/
 [Aa][Rr][Mm]64/
 bld/
 [Bb]in/
-[Oo]bj/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
@@ -366,3 +365,7 @@ FodyWeavers.xsd
 target/
 Cargo.lock
 /code/p3rpc.femc/p3rpc.femc/p3rpc.femc.music.interaces.cs
+code/p3rpc.femc/p3rpc.femc/obj/p3rpc.femc.csproj.nuget.dgspec.json
+code/p3rpc.femc/p3rpc.femc/obj/p3rpc.femc.csproj.nuget.g.props
+code/p3rpc.femc/p3rpc.femc/obj/p3rpc.femc.csproj.nuget.g.targets
+code/p3rpc.femc/p3rpc.femc/obj/project.assets.json
