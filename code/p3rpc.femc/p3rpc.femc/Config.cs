@@ -1588,11 +1588,28 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 351)]
         public ConfigColor MissingSortTriangle { get; set; } = ConfigColor.MellodiColorMid2;
 
+        // silly edits
+
+        [DisplayName("Camp: Nami Top A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 352)]
+        public ConfigColor CampNamiTopAColor { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: Nami Top B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 352)]
+        public ConfigColor CampNamiTopBColor { get; set; } = ConfigColor.CampBgColor;
+
+        // silly edits end
+
         // edits from here
+        // I MIGHT NOT EVEN NEED THIS UNCOMMENT IF IT NO WORK
+        /*
         [DisplayName("Nami Wave Hex Edit Color")]
         [Category("UI Colors")]
         [Display(Order = 352)]
         public ConfigColor NamiWavesEditColor { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF); // kiwami,,,
+        */
 
         [DisplayName("Missing Person: Shadows Femc and Chairs in Detail Color")]
         public ConfigColor MissingDetailFemcChairsShadow { get; set; } = new ConfigColor(0x36, 0x0c, 0x18, 0xFF);

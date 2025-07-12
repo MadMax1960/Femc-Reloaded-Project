@@ -120,6 +120,10 @@ namespace p3rpc.femc.Components
             ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorHigh, _context._config.CampHighColorGradation);
             ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorMid, _context._config.CampMiddleColor);
             ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorLow, _context._config.CampLowColor);
+            // adrien edits
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTopAColor, _context._config.CampNamiTopAColor);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTopBColor, _context._config.CampNamiTopAColor);
+
             return return_value;
         }
         private unsafe FLinearColor* UCmpRootDraw_DrawMenuItems_SetColorsNoSelImpl(byte opacity, FLinearColor* colorOut)
