@@ -1588,10 +1588,11 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 351)]
         public ConfigColor MissingSortTriangle { get; set; } = ConfigColor.MellodiColorMid2;
 
-        [DisplayName("Example Hex Edit Color")]
+        // edits from here
+        [DisplayName("Nami Wave Hex Edit Color")]
         [Category("UI Colors")]
         [Display(Order = 352)]
-        public ConfigColor ExampleHexEditColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);
+        public ConfigColor NamiWavesEditColor { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF); // kiwami,,,
 
         [DisplayName("Missing Person: Shadows Femc and Chairs in Detail Color")]
         public ConfigColor MissingDetailFemcChairsShadow { get; set; } = new ConfigColor(0x36, 0x0c, 0x18, 0xFF);
