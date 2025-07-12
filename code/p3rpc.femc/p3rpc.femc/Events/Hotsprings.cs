@@ -16,7 +16,7 @@ public static class HotspringsLoader
         Config configuration,
         string modLocation)
     {
-        if (configuration.TheodorefromAlvinandTheChipmunks)
+        //if (configuration.RayHotSprings)
         {
             //unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Hotsprings"));
             //ryo.AddAudioFolder(modLoader.GetDirectoryForModId(modConfig.ModId) + "/Events/Ray/Oscar Fortnite/Hotsprings Voice");
