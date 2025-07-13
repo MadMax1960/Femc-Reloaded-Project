@@ -16,6 +16,8 @@ internal static class AssetUtils
     /// <returns></returns>
     public static string? GetAssetFile(Character character, int costumeId, CostumeAssetType type)
     {
+        var astreaDepContentDir = character is Character.Metis or Character.AigisReal ? "Xrd777" : "Astrea";
+        
         string? assetFile = type switch
         {
             CostumeAssetType.BaseMesh => $"/Game/Xrd777/Characters/Player/PC{GetCharIdString(character)}/Models/SK_PC{GetCharIdString(character)}_BaseSkelton.uasset",
@@ -28,11 +30,11 @@ internal static class AssetUtils
             CostumeAssetType.HairAnim => "/CharacterBase/Human/Blueprints/Animation/ABP_CH_HairBase.uasset",
             CostumeAssetType.FaceAnim => $"/Game/Xrd777/Characters/Data/DataAsset/Player/PC{GetCharIdString(character)}/DA_PC{GetCharIdString(character)}_FaceAnim.uasset",
 
-            CostumeAssetType.AlloutNormal => $"/Game/Xrd777/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinish_Pc{GetCharIdStringShort(character)}_A1{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
-            CostumeAssetType.AlloutNormalMask => $"/Game/Xrd777/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinish_Pc{GetCharIdStringShort(character)}_A2{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
-            CostumeAssetType.AlloutSpecial => $"/Game/Xrd777/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinish_Pc{GetCharIdStringShort(character)}_B1{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
-            CostumeAssetType.AlloutSpecialMask => $"/Game/Xrd777/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinish_Pc{GetCharIdStringShort(character)}_B2{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
-            CostumeAssetType.AlloutText => $"/Game/Xrd777/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinishText_Pc{GetCharIdStringShort(character)}{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
+            CostumeAssetType.AlloutNormal => $"/Game/{astreaDepContentDir}/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinish_Pc{GetCharIdStringShort(character)}_A1{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
+            CostumeAssetType.AlloutNormalMask => $"/Game/{astreaDepContentDir}/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinish_Pc{GetCharIdStringShort(character)}_A2{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
+            CostumeAssetType.AlloutSpecial => $"/Game/{astreaDepContentDir}/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinish_Pc{GetCharIdStringShort(character)}_B1{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
+            CostumeAssetType.AlloutSpecialMask => $"/Game/{astreaDepContentDir}/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinish_Pc{GetCharIdStringShort(character)}_B2{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
+            CostumeAssetType.AlloutText => $"/Game/{astreaDepContentDir}/Battle/Allout/Materials/Finish2D/T_Btl_AlloutFinishText_Pc{GetCharIdStringShort(character)}{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
             CostumeAssetType.AlloutPlg => $"{GetCharacterPlg(character)}{(costumeId >= 1000 ? $"_{costumeId}" : string.Empty)}",
 
             CostumeAssetType.CommonAnim => $"/Game/Xrd777/Characters/Data/DataAsset/Player/PC{GetCharIdString(character)}/DA_PC{GetCharIdString(character)}_CommonAnim.uasset",
@@ -92,7 +94,7 @@ internal static class AssetUtils
         => Enum.Parse<Character>(flag.ToString());
 
     public static EquipFlag GetEquipFromChar(Character character)
-        => Enum.Parse<EquipFlag>(character.ToString());
+        => character == Character.AigisReal ? EquipFlag.Aigis : Enum.Parse<EquipFlag>(character.ToString());
 
     public static string GetCharIdString(Character character)
         => ((int)character).ToString("0000");
@@ -101,7 +103,8 @@ internal static class AssetUtils
         => ((int)character).ToString("00");
 
     private static string GetCharacterPlg(Character character)
-        => character switch
+    {
+        return character switch
         {
             Character.Player => "/Game/Xrd777/Battle/Allout/Materials/Finish2D/PLG_UI_Battle_Allout_Last_Hero",
             Character.Yukari => "/Game/Xrd777/Battle/Allout/Materials/Finish2D/PLG_UI_Battle_Allout_Last_Yukari",
@@ -113,10 +116,11 @@ internal static class AssetUtils
             Character.Ken => "/Game/Xrd777/Battle/Allout/Materials/Finish2D/PLG_UI_Battle_Allout_Last_Amada",
             Character.Koromaru => "/Game/Xrd777/Battle/Allout/Materials/Finish2D/PLG_UI_Battle_Allout_Last_Koromaru",
             Character.Shinjiro => "/Game/Xrd777/Battle/Allout/Materials/Finish2D/PLG_UI_Battle_Allout_Last_Aragaki",
-            Character.Metis => "/Game/Xrd777/Battle/Allout/Materials/Finish2D/PLG_UI_Battle_Allout_Last_Metis",
-            Character.AigisReal => "/Game/Xrd777/Battle/Allout/Materials/Finish2D/PLG_UI_Battle_Allout_Last_HeroAegis",
+            Character.Metis => "/Game/Astrea/Battle/Allout/Materials/Finish2D/PLG_UI_Battle_Allout_Last_Metis",
+            Character.AigisReal => "/Game/Astrea/Battle/Allout/Materials/Finish2D/PLG_UI_Battle_Allout_Last_HeroAegis",
             _ => throw new NotImplementedException(),
         };
+    }
 
     public static string GetAnimPath(Character character, CharAnim anim)
     {

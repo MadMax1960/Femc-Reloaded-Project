@@ -13,11 +13,9 @@ internal unsafe class CostumeShellService
     private readonly DefaultCostumes defaultCostumes = new();
 
     private readonly CostumeTableService costumeTable;
-    private readonly CostumeRegistry costumes;
 
-    public CostumeShellService(IDataTables dt, CostumeRegistry costumes, CostumeTableService costumeTable)
+    public CostumeShellService(IDataTables dt, CostumeTableService costumeTable)
     {
-        this.costumes = costumes;
         this.costumeTable = costumeTable;
 
         // Reset data on DT_Costume load.
@@ -30,8 +28,10 @@ internal unsafe class CostumeShellService
         });
     }
 
-    public int UpdateCostume(Character character, int costumeId)
+    public int UpdateCostume(Character character, Costume costume)
     {
+        var costumeId = costume.CostumeId;
+        
         if (costumeId == SHELL_COSTUME_ID)
         {
             this.prevCostumeIds[character] = costumeId;
@@ -45,7 +45,7 @@ internal unsafe class CostumeShellService
         }
 
         var shouldUpdateData = this.prevCostumeIds[character] != costumeId;
-        if (shouldUpdateData && this.costumes.TryGetCostume(character, costumeId, out var costume))
+        if (shouldUpdateData)
         {
             this.costumeTable.SetCostumeData(character, SHELL_COSTUME_ID, costume);
             this.prevCostumeIds[character] = costumeId;

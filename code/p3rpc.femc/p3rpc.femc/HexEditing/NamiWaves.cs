@@ -52,8 +52,9 @@ namespace p3rpc.femc.HexEditing
             //HexColorEditor.WriteColor(filePath, offset, config.ExampleHexEditColor);
 
             // Inject colors
-            foreach (var entry in offsets)
-                HexColorEditor.WriteColor(filePath, entry.Offset, config.NamiWavesEditColor, entry.Order);
+            //foreach (var entry in offsets)
+                //HexColorEditor.WriteColor(filePath, entry.Offset, config.NamiWavesEditColor, entry.Order);
+                
         }
     }
 }

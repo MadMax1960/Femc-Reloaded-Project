@@ -33,27 +33,29 @@ internal class CostumeFactory
 
     private static void ApplyCostumeConfig(Costume costume, CostumeConfig config)
     {
-        ModUtils.IfNotNull(config.Name, str => costume.Name = str);
-        ModUtils.IfNotNull(config.Base.MeshPath, str => costume.Config.Base.MeshPath = str);
-        ModUtils.IfNotNull(config.Costume.MeshPath, str => costume.Config.Costume.MeshPath = str);
-        ModUtils.IfNotNull(config.Face.MeshPath, str => costume.Config.Face.MeshPath = str);
-        ModUtils.IfNotNull(config.Hair.MeshPath, str => costume.Config.Hair.MeshPath = str);
-        ModUtils.IfNotNull(config.Base.AnimPath, str => costume.Config.Base.AnimPath = str);
-        ModUtils.IfNotNull(config.Costume.AnimPath, str => costume.Config.Costume.AnimPath = str);
-        ModUtils.IfNotNull(config.Face.AnimPath, str => costume.Config.Face.AnimPath = str);
-        ModUtils.IfNotNull(config.Hair.AnimPath, str => costume.Config.Hair.AnimPath = str);
-
-        ModUtils.IfNotNull(config.Allout.NormalPath, str => costume.Config.Allout.NormalPath = str);
-        ModUtils.IfNotNull(config.Allout.NormalMaskPath, str => costume.Config.Allout.NormalMaskPath = str);
-        ModUtils.IfNotNull(config.Allout.SpecialPath, str => costume.Config.Allout.SpecialPath = str);
-        ModUtils.IfNotNull(config.Allout.SpecialMaskPath, str => costume.Config.Allout.SpecialMaskPath = str);
-        ModUtils.IfNotNull(config.Allout.PlgPath, str => costume.Config.Allout.PlgPath = str);
-        ModUtils.IfNotNull(config.Allout.TextPath, str => costume.Config.Allout.TextPath = str);
-
-        ModUtils.IfNotNull(config.Anims.Common, anim => costume.Config.Anims.Common = anim);
-        ModUtils.IfNotNull(config.Anims.Dungeon, anim => costume.Config.Anims.Dungeon = anim);
-        ModUtils.IfNotNull(config.Anims.Event, anim => costume.Config.Anims.Event = anim);
-        ModUtils.IfNotNull(config.Anims.Combine, anim => costume.Config.Anims.Combine = anim);
+        if (config.Name != null) costume.Name = config.Name;
+        if (config.DisplayName != null) costume.Config.DisplayName = config.DisplayName;
+        if (config.RyoGroupId != null) costume.Config.RyoGroupId = config.RyoGroupId;
+        if (config.Base.MeshPath != null) costume.Config.Base.MeshPath = config.Base.MeshPath;
+        if (config.Costume.MeshPath != null) costume.Config.Costume.MeshPath = config.Costume.MeshPath;
+        if (config.Face.MeshPath != null) costume.Config.Face.MeshPath = config.Face.MeshPath;
+        if (config.Hair.MeshPath != null) costume.Config.Hair.MeshPath = config.Hair.MeshPath;
+        if (config.Base.AnimPath != null) costume.Config.Base.AnimPath = config.Base.AnimPath;
+        if (config.Costume.AnimPath != null) costume.Config.Costume.AnimPath = config.Costume.AnimPath;
+        if (config.Face.AnimPath != null) costume.Config.Face.AnimPath = config.Face.AnimPath;
+        if (config.Hair.AnimPath != null) costume.Config.Hair.AnimPath = config.Hair.AnimPath;
+        
+        if (config.Allout.NormalPath != null) costume.Config.Allout.NormalPath = config.Allout.NormalPath;
+        if (config.Allout.NormalMaskPath != null) costume.Config.Allout.NormalMaskPath = config.Allout.NormalMaskPath;
+        if (config.Allout.SpecialPath != null) costume.Config.Allout.SpecialPath = config.Allout.SpecialPath;
+        if (config.Allout.SpecialMaskPath != null) costume.Config.Allout.SpecialMaskPath = config.Allout.SpecialMaskPath;
+        if (config.Allout.PlgPath != null) costume.Config.Allout.PlgPath = config.Allout.PlgPath;
+        if (config.Allout.TextPath != null) costume.Config.Allout.TextPath = config.Allout.TextPath;
+        
+        if (config.Anims.Common != null) costume.Config.Anims.Common = config.Anims.Common;
+        if (config.Anims.Dungeon != null) costume.Config.Anims.Dungeon = config.Anims.Dungeon;
+        if (config.Anims.Event != null) costume.Config.Anims.Event = config.Anims.Event;
+        if (config.Anims.Combine != null) costume.Config.Anims.Combine = config.Anims.Combine;
     }
 
     public Costume? CreateFromExisting(Character character, string name, int costumeId)
