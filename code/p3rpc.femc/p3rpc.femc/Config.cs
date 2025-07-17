@@ -1598,10 +1598,137 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 351)]
         public ConfigColor MissingSortTriangle { get; set; } = ConfigColor.MellodiColorMid2;
 
-        [DisplayName("Example Hex Edit Color")]
+
+        //silly edits
+
+        [DisplayName("Camp: Waves Top A Color")]
         [Category("UI Colors")]
         [Display(Order = 352)]
-        public ConfigColor ExampleHexEditColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);
+        public ConfigColor NamiTopAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        
+        [DisplayName("Camp: Waves Top B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 353)]
+        public ConfigColor NamiTopBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Skill A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 354)]
+        public ConfigColor NamiSkillAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Skill B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 355)]
+        public ConfigColor NamiSkillBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Item A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 356)]
+        public ConfigColor NamiItemAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Item B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 357)]
+        public ConfigColor NamiItemBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Equip A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 358)]
+        public ConfigColor NamiEquipAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Equip B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 359)]
+        public ConfigColor NamiEquipBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Persona A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 360)]
+        public ConfigColor NamiPersonaAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Persona B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 361)]
+        public ConfigColor NamiPersonaBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Status A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 362)]
+        public ConfigColor NamiStatusAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Status B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 363)]
+        public ConfigColor NamiStatusBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Quest A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 364)]
+        public ConfigColor NamiQuestAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Quest B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 365)]
+        public ConfigColor NamiQuestBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Commu A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 366)]
+        public ConfigColor NamiCommuAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Commu B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 367)]
+        public ConfigColor NamiCommuBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Calendar A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 368)]
+        public ConfigColor NamiCalendarAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Calendar B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 369)]
+        public ConfigColor NamiCalendarBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves System A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 370)]
+        public ConfigColor NamiSystemAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves System B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 371)]
+        public ConfigColor NamiSystemBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Tutorial A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 372)]
+        public ConfigColor NamiTutorialAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Tutorial B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 373)]
+        public ConfigColor NamiTutorialBColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Config A Color")]
+        [Category("UI Colors")]
+        [Display(Order = 374)]
+        public ConfigColor NamiConfigAColor { get; set; } = ConfigColor.MellodiColorLight3;
+
+        [DisplayName("Camp: Waves Config B Color")]
+        [Category("UI Colors")]
+        [Display(Order = 375)]
+        public ConfigColor NamiConfigBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        
+        // silly edits end
+
+
+        // do you want this still really :skull:
+        //[DisplayName("Example Hex Edit Color")]
+        //[Category("UI Colors")]
+        //[Display(Order = 352)]
+        /*public ConfigColor ExampleHexEditColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);*/
 
         [DisplayName("Missing Person: Shadows Femc and Chairs in Detail Color")]
         public ConfigColor MissingDetailFemcChairsShadow { get; set; } = new ConfigColor(0x36, 0x0c, 0x18, 0xFF);
