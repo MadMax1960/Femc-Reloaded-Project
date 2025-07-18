@@ -148,6 +148,18 @@ namespace p3rpc.femc.Components
             ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorMid, _context._config.CampMiddleColor);
             ConfigColor.SetColorIgnoreAlpha(ref return_value->GradADownColorLow, _context._config.CampLowColor);
 
+            // why tf weren't these here before
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradAUpColorHigh, _context._config.GradAUpColorHigh);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradBUpColorHigh, _context._config.GradBUpColorHigh);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradBDownColorHigh, _context._config.GradBDownColorHigh);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradAUpColorMid, _context._config.GradAUpColorMid);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradBUpColorMid, _context._config.GradBUpColorMid);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradBDownColorMid, _context._config.GradBDownColorMid);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradAUpColorLow, _context._config.GradAUpColorLow);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradBUpColorLow, _context._config.GradBUpColorLow);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->GradBDownColorLow, _context._config.GradBDownColorLow);
+            ConfigColor.SetColorIgnoreAlpha(ref return_value->HeroCaptureBgColor, _context._config.HeroCaptureBgColor);
+
             // scrotum
 
             ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTopAColor, _context._config.NamiTopAColor);

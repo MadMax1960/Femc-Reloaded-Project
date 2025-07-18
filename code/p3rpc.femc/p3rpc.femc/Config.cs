@@ -1720,8 +1720,60 @@ namespace p3rpc.femc.Configuration
         [Category("UI Colors")]
         [Display(Order = 375)]
         public ConfigColor NamiConfigBColor { get; set; } = ConfigColor.MellodiColorLight3;
-        
+
         // silly edits end
+
+        [DisplayName("Camp: GradAUpColorHigh")]
+        [Category("UI Colors")]
+        [Display(Order = 376)]
+        public ConfigColor GradAUpColorHigh { get; set; } = ConfigColor.White;
+
+        [DisplayName("Camp: GradBUpColorHigh")]
+        [Category("UI Colors")]
+        [Display(Order = 377)]
+        public ConfigColor GradBUpColorHigh { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: GradBDownColorHigh")]
+        [Category("UI Colors")]
+        [Display(Order = 378)]
+        public ConfigColor GradBDownColorHigh { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: GradAUpColorMid")]
+        [Category("UI Colors")]
+        [Display(Order = 379)]
+        public ConfigColor GradAUpColorMid { get; set; } = ConfigColor.White;
+
+        [DisplayName("Camp: GradBUpColorMid")]
+        [Category("UI Colors")]
+        [Display(Order = 380)]
+        public ConfigColor GradBUpColorMid { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: GradBDownColorMid")]
+        [Category("UI Colors")]
+        [Display(Order = 381)]
+        public ConfigColor GradBDownColorMid { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: GradAUpColorLow")]
+        [Category("UI Colors")]
+        [Display(Order = 382)]
+        public ConfigColor GradAUpColorLow { get; set; } = ConfigColor.White;
+
+        [DisplayName("Camp: GradBUpColorLow")]
+        [Category("UI Colors")]
+        [Display(Order = 383)]
+        public ConfigColor GradBUpColorLow { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: GradBDownColorLow")]
+        [Category("UI Colors")]
+        [Display(Order = 384)]
+        public ConfigColor GradBDownColorLow { get; set; } = ConfigColor.CampBgColor;
+
+        [DisplayName("Camp: HeroCaptureBgColor")]
+        [Category("UI Colors")]
+        [Display(Order = 385)]
+        public ConfigColor HeroCaptureBgColor { get; set; } = ConfigColor.CampBgColor;
+
+        // sillies
 
 
         // do you want this still really :skull:
