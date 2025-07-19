@@ -4,7 +4,6 @@ using p3rpc.commonmodutils;
 using p3rpc.femc.Audio;
 using p3rpc.femc.Components;
 using p3rpc.femc.Configuration;
-using p3rpc.femc.HexEditing;
 using p3rpc.femc.Template;
 using p3rpc.femc.UeToolkit;
 using Reloaded.Hooks.Definitions;
@@ -166,6 +165,11 @@ namespace p3rpc.femc
                 Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
                 HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Hot Spring Event
                 Testing.LoadTesticles(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
+				HexEditing.CampCommon.Apply(_configuration, _context._modLocation);
+                HexEditing.SaveLoad.Apply(_configuration, _context._modLocation);
+                HexEditing.Mail.Apply(_configuration, _context._modLocation);
+                HexEditing.Battle.Apply(_configuration, _context._modLocation);
+				HexEditing.PersonaStatus.Apply(_configuration, _context._modLocation);
                 //ExampleHexEdit.Apply(_configuration, _context._modLocation);
             }
 			catch (Exception ex)
