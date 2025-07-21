@@ -12,7 +12,7 @@ namespace p3rpc.femc.Audio
         {
             var basePath = modLoader.GetDirectoryForModId(modConfig.ModId);
 
-            if (configuration.bluehairandpronounce)
+            if (configuration.bluehairandpronounce && configuration.VoiceTrue != VoiceType.Japanese)
                 ryo.AddAudioFolder(Path.Combine(basePath, "Voice"));
 
             if (configuration.VoiceTrue == VoiceType.Mellodi)
