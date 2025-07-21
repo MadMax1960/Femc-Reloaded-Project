@@ -150,7 +150,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "Maru")]
         Maru,
         [Display(Name = "purpleoctogamer")]
-        purpleoctogamer
+        purpleoctogamer,
+        [Display(Name = "purpleoctogamer Q2")]
+        purpleoctogamerAlt
         }
 
         [DisplayName("Cutin")]
