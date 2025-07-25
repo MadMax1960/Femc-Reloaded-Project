@@ -150,7 +150,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "Maru")]
         Maru,
         [Display(Name = "purpleoctogamer")]
-        purpleoctogamer
+        purpleoctogamer,
+        [Display(Name = "purpleoctogamer Q2")]
+        purpleoctogamerAlt
         }
 
         [DisplayName("Cutin")]
@@ -1884,6 +1886,39 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp Equip: 'Effect' font color in equipment description")]
         public ConfigColor EquipEffectColor { get; set; } = ConfigColor.MellodiColorDark3;
 
+        [DisplayName("Camp: In-game screenshot color filter curve keyframe 1")]
+        public ConfigColor CampScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0x0C, 0x01, 0x05, 0xFF);
+
+        [DisplayName("Camp: In-game screenshot color filter curve keyframe 2")]
+        public ConfigColor CampScreenshotFilterKeyframe2 { get; set; } = new ConfigColor(0xCC, 0x19, 0x52, 0xFF);
+
+        [DisplayName("Camp: In-game screenshot color filter curve keyframe 3")]
+        public ConfigColor CampScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0xF2, 0x26, 0x67, 0xFF);
+
+        [DisplayName("Camp: In-game screenshot color filter curve keyframe 4")]
+        public ConfigColor CampScreenshotFilterKeyframe4 { get; set; } = new ConfigColor(0xFF, 0xFF, 0xFF, 0xFF);
+
+        [DisplayName("Camp: Shards color curve keyframe 1")]
+        public ConfigColor CampShardsKeyframe1 { get; set; } = new ConfigColor(0xFF, 0x4D, 0x70, 0x66);
+
+        [DisplayName("Camp: Shards color curve keyframe 2")]
+        public ConfigColor CampShardsKeyframe2 { get; set; } = new ConfigColor(0x64, 0x96, 0xFB, 0xD6);
+
+        [DisplayName("Camp: Shards color curve keyframe 3")]
+        public ConfigColor CampShardsKeyframe3 { get; set; } = new ConfigColor(0x7E, 0x80, 0xFB, 0xF5);
+
+        [DisplayName("Camp: Shards color curve keyframe 4")]
+        public ConfigColor CampShardsKeyframe4 { get; set; } = new ConfigColor(0xFF, 0x83, 0x8A, 0xFF);
+
+        [DisplayName("Camp: Shards color curve keyframe 5")]
+        public ConfigColor CampShardsKeyframe5 { get; set; } = new ConfigColor(0xFF, 0xC5, 0x85, 0xDF);
+
+        [DisplayName("Camp: Shards color curve keyframe 6")]
+        public ConfigColor CampShardsKeyframe6 { get; set; } = new ConfigColor(0xB8, 0x1C, 0x3B, 0xCB);
+
+        [DisplayName("Camp: Shards color curve keyframe 7")]
+        public ConfigColor CampShardsKeyframe7 { get; set; } = new ConfigColor(0xED, 0x5F, 0x9D, 0xA9);
+
         [DisplayName("Quest: Shadows Femc and Chairs Color")]
         public ConfigColor QuestFemcChairsShadow { get; set; } = new ConfigColor(0x58, 0x0F, 0x21, 0xFF);
 
@@ -1925,7 +1960,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Persona Status: Inheritable skill tick tag background color")]
         public ConfigColor InheritableSkillTickBg { get; set; } = new ConfigColor(0x71, 0x36, 0x4D, 0xFF);
-        
+
         [DisplayName("Persona Status: Next skill left zero color")]
         public ConfigColor NextSkillZero { get; set; } = new ConfigColor(0x99, 0x53, 0x64, 0xFF);
 
@@ -2006,6 +2041,120 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Town Map: Mini Location Centered Circle when changing selection")]
         public ConfigColor MiniLocationCircleColor { get; set; } = new ConfigColor(0xEB, 0x44, 0x7D, 0xFF);
+
+        [DisplayName("SaveLoad: In-game screenshot color filter curve keyframe 1")]
+        public ConfigColor SaveLoadScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0x99, 0x25, 0x6B, 0xFF);
+
+        [DisplayName("SaveLoad: In-game screenshot color filter curve keyframe 2")]
+        public ConfigColor SaveLoadScreenshotFilterKeyframe2 { get; set; } = new ConfigColor(0xCC, 0x19, 0x8D, 0xFF);
+
+        [DisplayName("SaveLoad: In-game screenshot color filter curve keyframe 3")]
+        public ConfigColor SaveLoadScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0xF2, 0x26, 0xA7, 0xFF);
+
+        [DisplayName("Mail: Open animation color")]
+        public ConfigColor MailStartAnimationColor { get; set; } = new ConfigColor(0xC2, 0x00, 0x44, 0xFF);
+
+        [DisplayName("Battle Result: Left square color")]
+        public ConfigColor BattleResultLeftSquare { get; set; } = new ConfigColor(0x6E, 0x03, 0x0E, 0xFF);
+
+        [DisplayName("Battle Result: Left 0 font color in item count")]
+        public ConfigColor BattleResultLeftZeroFontColor { get; set; } = new ConfigColor(0xEB, 0x44, 0x7D, 0xFF);
+
+        [DisplayName("Battle Result: Font color in item count")]
+        public ConfigColor BattleResultFontColor { get; set; } = new ConfigColor(0xFD, 0x9B, 0xB7, 0xFF);
+
+        [DisplayName("Camp Configuration: Light reflective material 1")]
+        public ConfigColor CampConfigurationLightReflectiveColor1 { get; set; } = new ConfigColor(0xFF, 0x2E, 0x70, 0xFF);
+
+        [DisplayName("Camp Configuration: Light reflective material 2")]
+        public ConfigColor CampConfigurationLightReflectiveColor2 { get; set; } = new ConfigColor(0xFF, 0x60, 0x92, 0xFF);
+
+        [DisplayName("SaveLoad: Gradient bottom top color")]
+        public ConfigColor SaveLoadGradientBottomTopColor { get; set; } = new ConfigColor(0xB2, 0x22, 0x50, 0x00);
+
+        [DisplayName("SaveLoad: Gradient bottom color")]
+        public ConfigColor SaveLoadGradientBottomColor { get; set; } = new ConfigColor(0xB2, 0x22, 0x50, 0x28);
+
+        [DisplayName("SaveLoad: Gradient top color")]
+        public ConfigColor SaveLoadGradientTopColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x62, 0x32);
+
+        [DisplayName("SaveLoad: Gradient top bottom color")]
+        public ConfigColor SaveLoadGradientTopBottomColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x6A, 0x00);
+
+        [DisplayName("Persona Status: Velvet Room in-game screenshot deep color filter")]
+        public ConfigColor PersonaStatusDeepColorFilter { get; set; } = new ConfigColor(0x88, 0x00, 0x17, 0xA9);
+
+        [DisplayName("Persona Status: Velvet Room in-game screenshot medium strong color filter")]
+        public ConfigColor PersonaStatusMediumStrongColorFilter { get; set; } = new ConfigColor(0xDE, 0x00, 0x46, 0x00);
+
+        [DisplayName("Persona Status: Velvet Room in-game screenshot soft strong color filter")]
+        public ConfigColor PersonaStatusSoftColorFilter { get; set; } = new ConfigColor(0x8B, 0x01, 0x51, 0x00);
+
+        [DisplayName("Persona Status: Inheritance skill selection square color")]
+        public ConfigColor PersonaStatusInheritanceSquareColor { get; set; } = new ConfigColor(0x6E, 0x03, 0x0A, 0x00);
+
+        [DisplayName("Persona Status: Strip main color")]
+        public ConfigColor PersonaStatusStripColor { get; set; } = new ConfigColor(0xCC, 0x00, 0x4E, 0xFF);
+
+        [DisplayName("Persona Status: Waves over the strip")]
+        public ConfigColor PersonaStatusWavesStripColor { get; set; } = new ConfigColor(0xE9, 0x00, 0x59, 0xFF);
+
+        [DisplayName("Persona Status: Master Material unknown color 1")]
+        public ConfigColor PersonaStatusMMUnk1 { get; set; } = new ConfigColor(0xAD, 0x00, 0x4F, 0xB2);
+
+        [DisplayName("Persona Status: Master Material unknown color 2")]
+        public ConfigColor PersonaStatusMMUnk2 { get; set; } = new ConfigColor(0xFD, 0x00, 0xA6, 0x00);
+
+        [DisplayName("Persona Status: Master Material unknown color 3")]
+        public ConfigColor PersonaStatusMMUnk3 { get; set; } = new ConfigColor(0xAC, 0x00, 0x51, 0xFF);
+
+        [DisplayName("Persona Status: Master Material unknown color 4")]
+        public ConfigColor PersonaStatusMMUnk4 { get; set; } = new ConfigColor(0xFF, 0x00, 0x55, 0xFF);
+
+        [DisplayName("Quest: Elizabeth Quest Menu top gradient")]
+        public ConfigColor QuestElizabethTopGradient1 { get; set; } = new ConfigColor(0xAD, 0x00, 0x5B, 0xCC);
+
+        [DisplayName("Quest: Elizabeth Quest Menu bottom gradient")]
+        public ConfigColor QuestElizabethBottomGradient { get; set; } = new ConfigColor(0xAD, 0x00, 0x5E, 0x00);
+
+        [DisplayName("Quest: Elizabeth Quest Menu additional top gradient")]
+        public ConfigColor QuestElizabethTopGradient2 { get; set; } = new ConfigColor(0xC3, 0x04, 0x5D, 0x00);
+
+        [DisplayName("Persona Status: In-game screenshot color filter curve keyframe 1")]
+        public ConfigColor PersonaStatusScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0xB3, 0x00, 0x4B, 0xFF);
+
+        [DisplayName("Persona Status: In-game screenshot color filter curve keyframe 2")]
+        public ConfigColor PersonaStatusScreenshotFilterKeyframe2 { get; set; } = new ConfigColor(0xCC, 0x19, 0x73, 0xFF);
+
+        [DisplayName("Persona Status: In-game screenshot color filter curve keyframe 3")]
+        public ConfigColor PersonaStatusScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0xD9, 0x99, 0xB0, 0xFF);
+
+        [DisplayName("Persona Status: In-game screenshot color filter curve keyframe 4")]
+        public ConfigColor PersonaStatusScreenshotFilterKeyframe4 { get; set; } = new ConfigColor(0xE5, 0xCC, 0xD6, 0xFF);
+
+        [DisplayName("Camp: Dormitory Calendar in-game screenshot color filter curve keyframe 1")]
+        public ConfigColor CampCalendarScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0xCC, 0x40, 0x6A, 0xFF);
+
+        [DisplayName("Camp: Dormitory Calendar in-game screenshot color filter curve keyframe 2")]
+        public ConfigColor CampCalendarScreenshotFilterKeyframe2 { get; set; } = new ConfigColor(0xE6, 0x66, 0x8A, 0xFF);
+
+        [DisplayName("Camp: Dormitory Calendar in-game screenshot color filter curve keyframe 3")]
+        public ConfigColor CampCalendarScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0xEF, 0x0E, 0x64, 0xFF);
+
+        [DisplayName("Camp: Dormitory Calendar in-game screenshot color filter curve keyframe 4")]
+        public ConfigColor CampCalendarScreenshotFilterKeyframe4 { get; set; } = new ConfigColor(0xED, 0x57, 0xAC, 0xFF);
+
+        [DisplayName("Camp: Configuration main menu in-game screenshot color filter curve keyframe 1")]
+        public ConfigColor CampMainMenuConfigScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0x4D, 0x00, 0x26, 0xFF);
+
+        [DisplayName("Camp: Configuration main menu in-game screenshot color filter curve keyframe 2")]
+        public ConfigColor CampMainMenuConfigScreenshotFilterKeyframe2 { get; set; } = new ConfigColor(0x66, 0x00, 0x36, 0xFF);
+
+        [DisplayName("Camp: Configuration main menu in-game screenshot color filter curve keyframe 3")]
+        public ConfigColor CampMainMenuConfigScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0x99, 0x00, 0x47, 0xFF);
+
+        [DisplayName("Camp: Configuration main menu in-game screenshot color filter curve keyframe 4")]
+        public ConfigColor CampMainMenuConfigScreenshotFilterKeyframe4 { get; set; } = new ConfigColor(0xCA, 0x73, 0xA0, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]

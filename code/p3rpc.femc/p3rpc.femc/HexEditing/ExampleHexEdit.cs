@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using p3rpc.commonmodutils;
 using p3rpc.femc.Configuration;
 
 namespace p3rpc.femc.HexEditing
@@ -36,7 +37,21 @@ namespace p3rpc.femc.HexEditing
 
             // Inject colors
             //foreach (var entry in offsets)
-            //    HexColorEditor.WriteColor(filePath, entry.Offset, config.ExampleHexEditColor, entry.Order);
+            //    HexColorEditor.WriteColor(filePath, entry.Offset, new ConfigColor(0x00,0xFF,0x00,0xFF), entry.Order);
+
+            // Color curve example
+            //filePath = Path.Combine(modDirectory,
+            //    "UnrealEssentials", "P3R", "Content", "Xrd777",
+            //    "UI", "SaveLoad", "Curve", "CA_UI_SaveLoad.uasset");
+
+            //Dictionary<float, ConfigColor> colorKeyFrames = new Dictionary<float, ConfigColor>();
+
+            // Time - Color keyframes, Time must go from 0.0 to 1.0, must also include both
+            //colorKeyFrames.Add(0.0f, new ConfigColor(0x99, 0x25, 0x4C, 0xFF));
+            //colorKeyFrames.Add(0.4f, new ConfigColor(0xCC, 0x19, 0x61, 0xFF));
+            //colorKeyFrames.Add(1.0f, new ConfigColor(0xF2, 0x26, 0x74, 0xFF));
+
+            //HexColorEditor.WriteColorCurve(filePath, 0x4a6, colorKeyFrames);
         }
     }
 }
