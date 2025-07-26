@@ -1,9 +1,11 @@
 ﻿using p3rpc.commonmodutils;
 using p3rpc.femc.Configuration;
+using Reloaded.Memory.Extensions;
 using Reloaded.Mod.Interfaces;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using static p3rpc.femc.HexEditing.HexColorEditor;
 
 namespace p3rpc.femc.HexEditing
@@ -134,7 +136,7 @@ namespace p3rpc.femc.HexEditing
             }
         }
 
-        private static void WriteHalf(Stream stream, Half value)
+        public static void WriteHalf(Stream stream, Half value)
         {
             ushort bits = BitConverter.ToUInt16(BitConverter.GetBytes(value), 0);
 
@@ -144,6 +146,51 @@ namespace p3rpc.femc.HexEditing
 
             stream.WriteByte(lo);
             stream.WriteByte(hi);
+        }
+
+        public static void WriteByte(string filePath, long offset, byte value)
+        {
+            using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
+            stream.Seek(offset, SeekOrigin.Begin);
+            stream.WriteByte(value);
+        }
+
+        public static void WriteFloat(string filePath, long offset, float value)
+        {
+            byte[] floatComponentBytes = BitConverter.GetBytes(value);
+
+            using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
+            stream.Seek(offset, SeekOrigin.Begin);
+            stream.Write(floatComponentBytes, 0, floatComponentBytes.Length);
+        }
+
+        /// <param name="filePath">Absolute path to the file to edit</param>
+        /// <param name="offset">Offset in bytes where the BLUE component starts</param>
+        /// <param name="color">New color value to be written</param>
+        public static void WriteBlueprintSplitColor(string filePath, long offset, ConfigColor color, ColorOrder order = ColorOrder.BGRA)
+        {
+            // Their order is always BGR / BGRA
+            if (!order.Equals(ColorOrder.BGR) && !order.Equals(ColorOrder.BGRA))
+                throw new ArgumentException("Blueprint hardcoded colors must be either BGR or BGRA", nameof(order));
+
+            byte[] bytes = new[] { color.B, color.G, color.R, color.A };
+
+            using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
+
+            stream.Seek(offset, SeekOrigin.Begin);
+            stream.WriteByte(color.B);
+
+            stream.Seek(offset+0x35, SeekOrigin.Begin);
+            stream.WriteByte(color.G);
+
+            stream.Seek(offset + 0x6A, SeekOrigin.Begin);
+            stream.WriteByte(color.R);
+
+            if (order == ColorOrder.BGRA)
+            {
+                stream.Seek(offset + 0x9F, SeekOrigin.Begin);
+                stream.WriteByte(color.A);
+            }
         }
     }
 }
