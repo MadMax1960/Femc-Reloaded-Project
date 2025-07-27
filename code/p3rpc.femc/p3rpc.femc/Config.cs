@@ -2156,6 +2156,48 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Configuration main menu in-game screenshot color filter curve keyframe 4")]
         public ConfigColor CampMainMenuConfigScreenshotFilterKeyframe4 { get; set; } = new ConfigColor(0xCA, 0x73, 0xA0, 0xFF);
 
+        [DisplayName("Battle: Party members silhouette rounded selection color")]
+        public ConfigColor PartyMemberSilhouetteSelectionColor { get; set; } = new ConfigColor(0xFE, 0x9B, 0xB8, 0xFF);
+
+        [DisplayName("Battle: Informative upper-left panel, unkwnown color 1")]
+        public ConfigColor JyokyoHelpUnkColor1 { get; set; } = new ConfigColor(0xFF, 0x2D, 0x7E, 0xFF);
+
+        [DisplayName("Battle: Informative upper-left panel window in color with some transparency applied")]
+        public ConfigColor JyokyoHelpWindowIn1 { get; set; } = new ConfigColor(0x23, 0x12, 0x18, 0xE5);
+
+        [DisplayName("Battle: Informative upper-left panel window out/plate color")]
+        public ConfigColor JyokyoHelpWindowOut { get; set; } = new ConfigColor(0x4B, 0x30, 0x3D, 0xFF);
+
+        [DisplayName("Battle: Informative upper-left panel window in color")]
+        public ConfigColor JyokyoHelpWindowIn2 { get; set; } = new ConfigColor(0x23, 0x12, 0x18, 0xBF);
+
+        [DisplayName("Battle: Informative upper-left panel color gradation")]
+        public ConfigColor JyokyoHelpColorGradation { get; set; } = new ConfigColor(0x40, 0x26, 0x30, 0x66);
+
+        [DisplayName("Mail: Running figure color when checking a mail that allows fast travel")]
+        public ConfigColor MailRunningFigureColor { get; set; } = new ConfigColor(0xEA, 0x00, 0x4A, 0xFF);
+
+        [DisplayName("Mail: Running figure color when message prompt shows up")]
+        public ConfigColor MailDarkRunningFigureColor { get; set; } = new ConfigColor(0x3F, 0x00, 0x14, 0xFF);
+
+        [DisplayName("Mail: list selected subject color font/line/mail icon")]
+        public ConfigColor MailSelectedSubjectColor { get; set; } = new ConfigColor(0xFF, 0x4A, 0x77, 0xFF);
+
+        [DisplayName("Mail: Highlighted mail selection color")]
+        public ConfigColor HighlightedSelectionColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x62, 0xFF);
+
+        [DisplayName("Mail: Mail detail highlighted title color")]
+        public ConfigColor MailDetailTitleHighlightedColor { get; set; } = new ConfigColor(0xD4, 0x15, 0x5B, 0xFF);
+
+        [DisplayName("Mail: Mail detail highlighted title color when message prompt shows up")]
+        public ConfigColor MailDetailDarkTitleHighlightedColor { get; set; } = new ConfigColor(0x80, 0x08, 0x2E, 0xFF);
+
+        [DisplayName("Battle: Water caustic colors in skill/item list/guard menus")]
+        public ConfigColor BtlWaterCausticColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x62, 0xFF);
+
+        [DisplayName("Battle: Highlighted selection color high")]
+        public ConfigColor BtlHighlightedColor { get; set; } = ConfigColor.Blue;
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
