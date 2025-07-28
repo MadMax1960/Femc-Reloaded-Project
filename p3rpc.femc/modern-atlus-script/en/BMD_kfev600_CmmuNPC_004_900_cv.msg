@@ -1,0 +1,68 @@
+[msg MSG_000_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 1 0 0]Oh, it's you, [nl]-kun.[n][w][e]
+[f 2 1][bup 102 3 65535 65535 0 0][vp 1 0 4 2 0 0]You don't look so good. Is the weather getting to you? It's been getting warmer.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 3 0 0]It's already March...[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 4 0 0][f 4 25 102]......[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 5 0 0]There's something I wanted to tell you.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 6 0 0]Well, we're in the same grade, so I'm sure we'll have plenty of chances to talk...[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 7 0 0]Even so, I wanted to say this while we're both still on the student council.[n][w][e]
+
+[msg MSG_001_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 8 0 0]...I'm going to quit.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 9 0 0]Well, this semester is just about wrapping up. All this means is I'm not going to apply next year.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 10 0 0]That cigarette business gave me a lot to think about.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 11 0 0]This may sound odd, but do you think this country is headed in the right direction?[n][w][e]
+
+[sel SEL_002_0_0 top]
+[f 2 1]I think so.[e]
+[f 2 1]I doubt it.[e]
+
+[msg MSG_003_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 12 0 0]I see. Well, I feel differently.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 13 0 0]You're an optimistic woman, so maybe society looks different through your eyes.[n][w][e]
+
+[msg MSG_004_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 14 0 0]I see. Me neither.[n][w][e]
+
+[msg MSG_005_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 15 0 0]Up until January, there was a sinister cult growing in popularity.[n][w][e]
+[f 2 1][bup 102 3 65535 65535 0 0][vp 1 0 4 16 0 0]"A society without a future"... For many people out there, that's the reality.[n][w][e]
+[f 2 1][bup 102 2 65535 65535 0 0][vp 1 0 4 17 0 0]I was thinking how we could change that... And what it would take to change society.[n][w][e]
+[f 2 1][bup 102 2 65535 65535 0 0][vp 1 0 4 18 0 0]My answer to that used to be "reform by those in power." I thought that was the only way.[n][w][e]
+[f 2 1][bup 102 3 65535 65535 0 0][vp 1 0 4 19 0 0]But starting a revolution just because you have the power to do so creates more problems.[n][w][e]
+[f 2 1][bup 102 3 65535 65535 0 0][vp 1 0 4 20 0 0]That's what the cigarette incident taught me. I realized how naive I had been.[n][w][e]
+
+[msg MSG_006_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 21 0 0]And it helped me arrive at a different answer.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 22 0 0]I think the best thing for society is education.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 23 0 0]Every last individual that makes up our society should have a right to education of heart and mind.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 24 0 0]I really believe that's what we need the most. And so...[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 25 0 0]I'm thinking of becoming a teacher.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 26 0 0]A society is shaped by its people. Every person I help grow helps society grow by extension.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 27 0 0]...You're not going to laugh and tell me I'm dreaming?[n][w][e]
+
+[sel SEL_007_0_0 top]
+[f 2 1]Maybe a little.[e]
+[f 2 1]I won't do that.[e]
+
+[msg MSG_008_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 1 65535 65535 0 0][vp 1 0 4 28 0 0]Ha... To be honest, I'm amused by the prospect myself.[n][w][e]
+[f 2 1][bup 102 1 65535 65535 0 0][vp 1 0 4 29 0 0]I don't know if I'd make a good teacher. My students would probably hate me.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 30 0 0][f 4 25 102]......[n][w][e]
+
+[msg MSG_009_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 1 65535 65535 0 0][vp 1 0 4 31 0 0]I see... Well, I plan to do my best.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 32 0 0][f 4 25 102]......[n][w][e]
+
+[msg MSG_010_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 33 0 0]...That's all I wanted to tell you.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 34 0 0]That, and to say thanks.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 35 0 0]This was all because of you. So, thank you.[n][w][e]
+
+[msg MSG_011_0_0 [Hidetoshi Odagiri]]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 36 0 0]By the way, no one even talks about the cigarette incident anymore.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 37 0 0]For everyone except me, it was a minor, easily forgotten incident.[n][w][e]
+[f 2 1][bup 102 0 65535 65535 0 0][vp 1 0 4 38 0 0]But I don't think I'll ever forget it.[n][w][e]
+[f 2 1][bup 102 1 65535 65535 0 0][vp 1 0 4 39 0 0]And I won't forget you either, of course.[n][w][e]
+[f 2 1][bup 102 1 65535 65535 0 0][vp 1 0 4 40 0 0]Thanks again.[n][w][e]
+
