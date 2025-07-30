@@ -37,10 +37,13 @@ namespace p3rpc.femc.Components
         private string UUIMinimapDraw_DrawMinimapLocationsHighStrip_SIG = "E8 ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 41 B0 CD";
         private string UUIMinimapDraw_DrawMinimapLocationsLowerStrip_SIG = "E8 ?? ?? ?? ?? 44 0F 28 64 24 ?? 0F 28 BC 24 ?? ?? ?? ??";
 
+        private string UUIMinimapDraw_DrawMinimapLocationsHighlightedElement_SIG = "E8 ?? ?? ?? ?? 89 83 ?? ?? ?? ?? 0F 28 74 24 ??";
+
         private IAsmHook _DrawMinimapFieldInnerCircle;
         private IAsmHook _DrawMinimapFieldOutterCircle;
         private IAsmHook _DrawMinimapLocationsHighStrip;
         private IAsmHook _DrawMinimapLocationsLowerStrip;
+        private IAsmHook _DrawMinimapLocationsHighlightedElement;
 
         private UICommon _uiCommon;
         public unsafe Minimap(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
@@ -92,6 +95,17 @@ namespace p3rpc.femc.Components
                     $"mov cl, ${_context._config.MinimapLocationsLowerStrip.R:X}"
                 };
                 _DrawMinimapLocationsLowerStrip = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUIMinimapDraw_DrawMinimapLocationsHighlightedElement_SIG, "UUIMinimapDraw::DrawMinimapLocationsHighlightedElement", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MinimapLocationsSelectionColor.B:X}",
+                    $"mov dl, ${_context._config.MinimapLocationsSelectionColor.G:X}",
+                    $"mov cl, ${_context._config.MinimapLocationsSelectionColor.R:X}"
+                };
+                _DrawMinimapLocationsHighlightedElement = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
         }
 
