@@ -2030,6 +2030,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Minimap: Minimap locations view lower strip background color")]
         public ConfigColor MinimapLocationsLowerStrip { get; set; } = new ConfigColor(0xEB, 0x00, 0x4E, 0xFF);
 
+        [DisplayName("Minimap: Minimap locations highlighted selection color")]
+        public ConfigColor MinimapLocationsSelectionColor { get; set; } = new ConfigColor(0xE1, 0x14, 0x51, 0xFF);
+
         [DisplayName("Town Map: Selected Rounded Outline Color")]
         public ConfigColor PreviewRoundedOutline { get; set; } = new ConfigColor(0xFD, 0x9B, 0xB7, 0xFF);
 
