@@ -50,6 +50,7 @@ namespace p3rpc.femc.Audio
 					{Path.Combine(path,   "Gabi\\link_50.cue"),_configuration.GabiTimeSchool},
 					{Path.Combine(path,   "Reload\\link_50.cue"),_configuration.WantClose},
 					{Path.Combine(path,   "P3P\\link_50.cue"),_configuration.TimeSchoolP3P},
+					{Path.Combine(path,   "P3D\\link_50.cue"),_configuration.TimeSchoolP3D},
 				};
 				foreach (KeyValuePair<string, bool> di1m in dayin1music)
 				{
@@ -77,6 +78,7 @@ namespace p3rpc.femc.Audio
 					{Path.Combine(path, "SuperMPlush\\link_25.cue"),_configuration.WayLifeVocal},
                     {Path.Combine(path, "Reload\\link_25.cue"),_configuration.Moon},
                     {Path.Combine(path, "P3P\\link_25.cue"),_configuration.WayOfLifeP3P},
+                    {Path.Combine(path, "P3D\\link_25.cue"),_configuration.WayOfLifeP3D},
                 };
 				foreach (KeyValuePair<string, bool> do1m in dayout1music)
 				{
@@ -132,6 +134,7 @@ namespace p3rpc.femc.Audio
 					{Path.Combine(path, "Satella&GillStudio\\link_26.cue"),_configuration.SgNom},
 					{Path.Combine(path, "Reload\\link_26.cue"),_configuration.MassDes},
                     {Path.Combine(path, "P3P\\link_26.cue"),_configuration.P3PNom},
+                    {Path.Combine(path, "P3D\\link_26.cue"),_configuration.P3MidNomF},
                 };
 				foreach (KeyValuePair<string, bool> nm in normalmusic)
 				{
