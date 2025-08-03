@@ -392,10 +392,17 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool P3PNom { get; set; } = false;
 
+        [DisplayName("Wiping All Out ATLUS Kozuka Remix")]
+        [Category("Battle Music - Normal")]
+        [Description("Enable Wiping All Out ATLUS Kozuka Remix from P3D as normal battle music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 44)]
+        [DefaultValue(false)]
+        public bool P3MidNomF { get; set; } = false;
+
         [DisplayName("Mass Destruction -Reload-")]
         [Category("Battle Music - Normal")]
         [Description("Enable Mass Destruction -Reload-, which is used by default for normal battle music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 44)]
+        [Display(Order = 45)]
         [DefaultValue(false)]
         public bool MassDes { get; set; } = false;
 
@@ -512,10 +519,17 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool WayOfLifeRemix { get; set; } = false;
 
+        [DisplayName("A Way Of Life ATLUS Kitajoh Remix")]
+        [Category("Daytime Music")]
+        [Description("Enable A Way Of Life ATLUS Kitajoh Remix from P3D as the daytime music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 76)]
+        [DefaultValue(false)]
+        public bool WayOfLifeP3D { get; set; } = false;
+
         [DisplayName("When the Moon's Reaching Out Stars -Reload-")]
         [Category("Daytime Music")]
         [Description("Enable When the Moon's Reaching Out Stars -Reload-, which is used by default for daytime music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 76)]
+        [Display(Order = 77)]
         [DefaultValue(false)]
         public bool Moon { get; set; } = true;
 
@@ -542,10 +556,17 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool TimeSchoolP3P { get; set; } = false;
 
+        [DisplayName("Time ATLUS Kitajoh Remix")]
+        [Category("School Music (1st semester)")]
+        [Description("Enable Time ATLUS Kitajoh Remix from P3D as the 1st semester school music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 83)]
+        [DefaultValue(false)]
+        public bool TimeSchoolP3D { get; set; } = false;
+
         [DisplayName("Want To Be Close -Reload-")]
         [Category("School Music (1st semester)")]
         [Description("Enable Want To Be Close -Reload-, which is used by default for  1st semester school music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 83)]
+        [Display(Order = 84)]
         [DefaultValue(false)]
         public bool WantClose { get; set; } = false;
 
@@ -2029,6 +2050,9 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Minimap: Minimap locations view lower strip background color")]
         public ConfigColor MinimapLocationsLowerStrip { get; set; } = new ConfigColor(0xEB, 0x00, 0x4E, 0xFF);
+
+        [DisplayName("Minimap: Minimap locations highlighted selection color")]
+        public ConfigColor MinimapLocationsSelectionColor { get; set; } = new ConfigColor(0xE1, 0x14, 0x51, 0xFF);
 
         [DisplayName("Town Map: Selected Rounded Outline Color")]
         public ConfigColor PreviewRoundedOutline { get; set; } = new ConfigColor(0xFD, 0x9B, 0xB7, 0xFF);
