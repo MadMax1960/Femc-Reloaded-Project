@@ -708,9 +708,9 @@ namespace p3rpc.femc.Configuration
 
         // Dorm Swap
 
-        [DisplayName("Test Dorm Room Swap")]
+        [DisplayName("Test Dorm Room Swap and Hot Spring Event")]
         [Category("Testing")]
-        [Description("THIS LETS YOU TEST THE NEW DORM ROOM SWAP, IT MIGHT BE VERY BROKEN.")]
+        [Description("THIS LETS YOU TEST THE NEW DORM ROOM SWAP AND HOT SPRINGS EVENT, IT MIGHT BE VERY BROKEN.")]
         [DefaultValue(false)]
         public bool TesticlesDorm { get; set; } = false; // yeah
 
