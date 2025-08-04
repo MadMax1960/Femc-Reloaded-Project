@@ -68,7 +68,7 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x32385, config.BtlResultLvlUpItemZeroFontColor); // Original color #1461A1
 
             // Special femc character level up screen persona arcana font colors
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4DCC7, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR); // Original color #00045f
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4DCC7, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR); // Original color #0a73d0
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4E2EA, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR); 
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4E635, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4EAAE, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
@@ -80,7 +80,7 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5C470, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
 
             // Special femc character level up screen persona silhouette
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4F3D5, config.BtlResultFemcLvlUpPersonaSilhouetteColor, HexColorEditor.ColorOrder.BGR); // Original color #0a73d0
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4F3D5, config.BtlResultFemcLvlUpPersonaSilhouetteColor, HexColorEditor.ColorOrder.BGR); // Original color #00045f
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5CB4C, config.BtlResultFemcLvlUpPersonaSilhouetteColor, HexColorEditor.ColorOrder.BGR);
         }
 

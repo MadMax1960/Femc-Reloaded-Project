@@ -2234,10 +2234,10 @@ namespace p3rpc.femc.Configuration
         public ConfigColor BtlResultLvlUpItemZeroFontColor { get; set; } = new ConfigColor(0xA1, 0x14, 0x3E, 0xFF);
 
         [DisplayName("Battle: Result femc level up persona arcana/lvl font color")]
-        public ConfigColor BtlResultFemcLvlUpPersonaInfoFont { get; set; } = new ConfigColor(0x5F, 0x00, 0x00, 0xFF);
+        public ConfigColor BtlResultFemcLvlUpPersonaSilhouetteColor { get; set; } = new ConfigColor(0x5F, 0x00, 0x00, 0xFF);
 
         [DisplayName("Battle: Result femc level up persona silhouette color")]
-        public ConfigColor BtlResultFemcLvlUpPersonaSilhouetteColor { get; set; } = new ConfigColor(0xE3, 0x14, 0x51, 0xFF);
+        public ConfigColor BtlResultFemcLvlUpPersonaInfoFont { get; set; } = new ConfigColor(0xE3, 0x14, 0x51, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
