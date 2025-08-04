@@ -170,7 +170,6 @@ namespace p3rpc.femc
                 HexEditing.Mail.Apply(_configuration, _context._modLocation);
                 HexEditing.Battle.Apply(_configuration, _context._modLocation);
 				HexEditing.PersonaStatus.Apply(_configuration, _context._modLocation);
-                //ExampleHexEdit.Apply(_configuration, _context._modLocation);
             }
 			catch (Exception ex)
 			{

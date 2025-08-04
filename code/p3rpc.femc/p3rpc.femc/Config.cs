@@ -1798,13 +1798,6 @@ namespace p3rpc.femc.Configuration
 
         // sillies
 
-
-        // do you want this still really :skull:
-        //[DisplayName("Example Hex Edit Color")]
-        //[Category("UI Colors")]
-        //[Display(Order = 352)]
-        /*public ConfigColor ExampleHexEditColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);*/
-
         [DisplayName("Missing Person: Shadows Femc and Chairs in Detail Color")]
         public ConfigColor MissingDetailFemcChairsShadow { get; set; } = new ConfigColor(0x36, 0x0c, 0x18, 0xFF);
 
@@ -2221,6 +2214,30 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Battle: Highlighted selection color high")]
         public ConfigColor BtlHighlightedColor { get; set; } = ConfigColor.Blue;
+
+        [DisplayName("Battle: Result level up left square color when leveling up")]
+        public ConfigColor BtlResultLvlUpLeftSquareColor { get; set; } = new ConfigColor(0x3B, 0x02, 0x07, 0xFF);
+
+        [DisplayName("Battle: Result level up large strip color")]
+        public ConfigColor BtlResultLvlUpLargeStripColor { get; set; } = new ConfigColor(0xFF, 0x10, 0x58, 0xFF);
+
+        [DisplayName("Battle: Result level up large strip shadow color")]
+        public ConfigColor BtlResultLvlUpLargeStripShadowColor { get; set; } = new ConfigColor(0x3E, 0x05, 0x05, 0xFF);
+
+        [DisplayName("Battle: Result level up large strip color")]
+        public ConfigColor BtlResultLvlUpShortStripColor { get; set; } = new ConfigColor(0x54, 0x03, 0x0B, 0xFF);
+
+        [DisplayName("Battle: Result level up item number font color")]
+        public ConfigColor BtlResultLvlUpItemFontColor { get; set; } = new ConfigColor(0xA6, 0x24, 0x4D, 0xFF);
+
+        [DisplayName("Battle: Result level up item number 0 font color")]
+        public ConfigColor BtlResultLvlUpItemZeroFontColor { get; set; } = new ConfigColor(0xA1, 0x14, 0x3E, 0xFF);
+
+        [DisplayName("Battle: Result femc level up persona arcana/lvl font color")]
+        public ConfigColor BtlResultFemcLvlUpPersonaSilhouetteColor { get; set; } = new ConfigColor(0x5F, 0x00, 0x00, 0xFF);
+
+        [DisplayName("Battle: Result femc level up persona silhouette color")]
+        public ConfigColor BtlResultFemcLvlUpPersonaInfoFont { get; set; } = new ConfigColor(0xE3, 0x14, 0x51, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
