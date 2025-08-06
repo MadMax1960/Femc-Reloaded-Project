@@ -38,12 +38,14 @@ namespace p3rpc.femc.Components
         private string UUIMinimapDraw_DrawMinimapLocationsLowerStrip_SIG = "E8 ?? ?? ?? ?? 44 0F 28 64 24 ?? 0F 28 BC 24 ?? ?? ?? ??";
 
         private string UUIMinimapDraw_DrawMinimapLocationsHighlightedElement_SIG = "E8 ?? ?? ?? ?? 89 83 ?? ?? ?? ?? 0F 28 74 24 ??";
+        private string UUIMinimapDraw_DrawTownMapLocationsHighlightedElement_SIG = "E8 ?? ?? ?? ?? 89 83 ?? ?? ?? ?? 41 0F 28 C1";
 
         private IAsmHook _DrawMinimapFieldInnerCircle;
         private IAsmHook _DrawMinimapFieldOutterCircle;
         private IAsmHook _DrawMinimapLocationsHighStrip;
         private IAsmHook _DrawMinimapLocationsLowerStrip;
         private IAsmHook _DrawMinimapLocationsHighlightedElement;
+        private IAsmHook _DrawTownMapLocationsHighlightedElement;
 
         private UICommon _uiCommon;
         public unsafe Minimap(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
@@ -106,6 +108,17 @@ namespace p3rpc.femc.Components
                     $"mov cl, ${_context._config.MinimapLocationsSelectionColor.R:X}"
                 };
                 _DrawMinimapLocationsHighlightedElement = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUIMinimapDraw_DrawTownMapLocationsHighlightedElement_SIG, "UUIMinimapDraw::DrawTownMapLocationsHighlightedElement", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MinimapLocationsSelectionColor.B:X}",
+                    $"mov dl, ${_context._config.MinimapLocationsSelectionColor.G:X}",
+                    $"mov cl, ${_context._config.MinimapLocationsSelectionColor.R:X}"
+                };
+                _DrawTownMapLocationsHighlightedElement = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
         }
 
