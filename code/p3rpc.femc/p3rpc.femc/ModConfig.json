@@ -108,6 +108,15 @@
           },
           "ReleaseMetadataName": "SharedScans.Reloaded.ReleaseMetadata.json"
         },
+        "UE.Toolkit.Reloaded": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "UE.Toolkit",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "UE.Toolkit.Reloaded.ReleaseMetadata.json"
+        },
         "Unreal.ObjectsEmitter.Reloaded": {
           "Config": {
             "UserName": "RyoTune",
@@ -125,6 +134,15 @@
             "AssetFileName": "Mod.zip"
           },
           "ReleaseMetadataName": "UnrealEssentials.ReleaseMetadata.json"
+        },
+        "P3R.UEToolkit": {
+          "Config": {
+            "UserName": "RyoTune",
+            "RepositoryName": "P3R.UEToolkit",
+            "UseReleaseTag": false,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "P3R.UEToolkit.ReleaseMetadata.json"
         },
         "BGME.Framework.API": {
           "Config": {
@@ -191,25 +209,24 @@
   },
   "IsUniversalMod": false,
   "ModDependencies": [
-    "p3rpc.classconstructor",
-    "p3rpc.nativetypes",
     "P3R.CostumeFramework",
+    "P3R.UEToolkit",
+    "p3rpc.classconstructor",
     "p3rpc.essentials",
+    "p3rpc.nativetypes",
     "p3rpc.skins.universalskeletonfix",
     "Reloaded.Memory.SigScan.ReloadedII",
     "reloaded.sharedlib.hooks",
     "Ryo.Reloaded",
     "SharedScans.Reloaded",
     "UE.Toolkit.Reloaded",
+    "Unreal.AtlusScript.Reloaded",
     "Unreal.ObjectsEmitter.Reloaded",
-    "UnrealEssentials",
-    "P3R.UEToolkit"
+    "UnrealEssentials"
   ],
   "OptionalDependencies": [],
   "SupportedAppId": [
     "p3r.exe"
   ],
-  "ProjectUrl": "https://github.com/MadMax1960/Femc-Reloaded-Project",
-  "CreatorUrl": "",
-  "IsSeparator": false
+  "ProjectUrl": "https://github.com/MadMax1960/Femc-Reloaded-Project"
 }
