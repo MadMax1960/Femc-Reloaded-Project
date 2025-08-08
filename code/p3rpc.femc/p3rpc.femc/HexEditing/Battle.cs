@@ -23,6 +23,67 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePath, 0x713D2, config.BattleResultLeftZeroFontColor, order);
         }
 
+        private static void ApplyBPBtlResultUIBase(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "BP_BtlResultUIBase.uasset");
+
+            // Left square color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x319B1, config.BtlResultLvlUpLeftSquareColor); // Original color #000679
+
+            // Large strip color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x29837, config.BtlResultLvlUpLargeStripColor); // Original color #10a2ff
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2A572, config.BtlResultLvlUpLargeStripColor);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2CC23, config.BtlResultLvlUpLargeStripColor);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2E024, config.BtlResultLvlUpLargeStripColor);
+
+            // Large strip shadow color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x28FF9, config.BtlResultLvlUpLargeStripShadowColor, HexColorEditor.ColorOrder.BGR); // Original color #05073E
+
+            // Short strip color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3F1E7, config.BtlResultLvlUpShortStripColor); // Original color #002380
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x436A0, config.BtlResultLvlUpShortStripColor);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x54A39, config.BtlResultLvlUpShortStripColor);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x39145, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x395D9, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4A1F4, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4A6B6, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4B575, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4BB62, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4C1C4, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4C868, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4CF65, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4D61F, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x55547, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x55FC5, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x56996, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x58D16, config.BtlResultLvlUpShortStripColor, HexColorEditor.ColorOrder.BGR);
+
+            // Item Number color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2468E, config.BtlResultLvlUpItemFontColor); // Original color #28BD9D
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x32230, config.BtlResultLvlUpItemFontColor);
+
+            // Item left 0 number color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x32385, config.BtlResultLvlUpItemZeroFontColor); // Original color #1461A1
+
+            // Special femc character level up screen persona arcana font colors
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4DCC7, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR); // Original color #0a73d0
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4E2EA, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR); 
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4E635, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4EAAE, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4F13E, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5ABB4, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5B1E9, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5BA09, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5BE99, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5C470, config.BtlResultFemcLvlUpPersonaInfoFont, HexColorEditor.ColorOrder.BGR);
+
+            // Special femc character level up screen persona silhouette
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4F3D5, config.BtlResultFemcLvlUpPersonaSilhouetteColor, HexColorEditor.ColorOrder.BGR); // Original color #00045f
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5CB4C, config.BtlResultFemcLvlUpPersonaSilhouetteColor, HexColorEditor.ColorOrder.BGR);
+        }
+
         private static void ApplyBPBtlSkillList(Config config, string modDirectory)
         {
             string filePath = Path.Combine(modDirectory,
@@ -109,6 +170,7 @@ namespace p3rpc.femc.HexEditing
             ApplyBPBtlGuiIcon(config, modDirectory);
             ApplyBPBtlGuiJyokyoHelp(config, modDirectory);
             ApplyBtlWaterCaustics(config, modDirectory);
+            ApplyBPBtlResultUIBase(config, modDirectory);
         }
     }
 }
