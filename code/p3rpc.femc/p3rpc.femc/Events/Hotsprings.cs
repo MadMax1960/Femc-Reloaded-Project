@@ -21,7 +21,7 @@ public static class HotspringsLoader
         if (configuration.TesticlesDorm)
         {
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Hotsprings"));
-            atlusAssets.RegisterAssetsFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Hotsprings", "MessageScripts"), AssetMode.Default, ESystemLanguage.UNIVERSAL);
+            atlusAssets.RegisterAssetsFolderWithModData(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Hotsprings", "MessageScripts"), new (modConfig.ModId, modLocation), AssetMode.Default, ESystemLanguage.UNIVERSAL);
             //ryo.AddAudioFolder(modLoader.GetDirectoryForModId(modConfig.ModId) + "/Events/Ray/Oscar Fortnite/Hotsprings Voice");
         }
     }
