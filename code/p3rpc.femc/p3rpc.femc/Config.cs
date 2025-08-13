@@ -860,6 +860,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableItemList { get; set; } = true;
 
+        [DisplayName("Enable Social Link")]
+        [Category("UI Components")]
+        [Display(Order = 174)]
+        [DefaultValue(true)]
+        public bool EnableCommunity { get; set; } = true;
+
         [DisplayName("Mail Icon: Outer Color")]
         [Category("UI Colors")]
         [Display(Order = 200)]
@@ -2238,6 +2244,51 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Battle: Result femc level up persona silhouette color")]
         public ConfigColor BtlResultFemcLvlUpPersonaInfoFont { get; set; } = new ConfigColor(0xE3, 0x14, 0x51, 0xFF);
+
+        [DisplayName("Social Link: Rank up background 3 middle/down color")]
+        public ConfigColor CmmuRankUpBG3MiddownColor { get; set; } = new ConfigColor(0x21, 0x12, 0x2B, 0xFF);
+
+        [DisplayName("Social Link: Rank up background 4 color")]
+        public ConfigColor CmmuRankUpBG4Color { get; set; } = new ConfigColor(0xCF, 0xB4, 0xE5, 0xFF);
+
+        [DisplayName("Social Link: Rank up background taint color 1")]
+        public ConfigColor CmmuRankUpColor1 { get; set; } = new ConfigColor(0xA9, 0x43, 0x60, 0xFF);
+
+        [DisplayName("Social Link: Rank up background taint color 2")]
+        public ConfigColor CmmuRankUpColor2 { get; set; } = new ConfigColor(0xDC, 0x3C, 0x6C, 0xFF);
+
+        [DisplayName("Social Link: Rank up background taint color 3")]
+        public ConfigColor CmmuRankUpColor3 { get; set; } = new ConfigColor(0xF5, 0x43, 0x78, 0xFF);
+
+        [DisplayName("Social Link: Rank up color curve keyframe 1")]
+        public ConfigColor CmmuRankUpKeyframe1 { get; set; } = new ConfigColor(0x99, 0x26, 0x47, 0xFF);
+
+        [DisplayName("Social Link: Rank up color curve keyframe 2")]
+        public ConfigColor CmmuRankUpKeyframe2 { get; set; } = new ConfigColor(0xCC, 0x33, 0x5C, 0xFF);
+
+        [DisplayName("Social Link: Rank up color curve keyframe 3")]
+        public ConfigColor CmmuRankUpKeyframe3 { get; set; } = new ConfigColor(0xD9, 0x33, 0x62, 0xFF);
+
+        [DisplayName("Social Link: Rank up color curve keyframe 4")]
+        public ConfigColor CmmuRankUpKeyframe4 { get; set; } = new ConfigColor(0xFF, 0x4D, 0x7C, 0xFF);
+
+        [DisplayName("Social Link: Rank up color curve keyframe 5")]
+        public ConfigColor CmmuRankUpKeyframe5 { get; set; } = new ConfigColor(0xFF, 0xB3, 0xC9, 0xFF);
+
+        [DisplayName("Social Link: Rank up strip upper part color")]
+        public ConfigColor CmmuRankUpStripColorUp { get; set; } = new ConfigColor(0xA6, 0x2E, 0x4E, 0xFF);
+
+        [DisplayName("Social Link: Rank up strip lower part color")]
+        public ConfigColor CmmuRankUpStripColorDown { get; set; } = new ConfigColor(0xA6, 0x08, 0x84, 0xFF);
+
+        [DisplayName("Social Link: Rank up dark color cards")]
+        public ConfigColor CmmuRankUpDarkCardColor { get; set; } = new ConfigColor(0x4D, 0x08, 0x19, 0xFF);
+
+        [DisplayName("Social Link: Rank up light color cards")]
+        public ConfigColor CmmuRankUpLightCardColor { get; set; } = new ConfigColor(0xF6, 0x00, 0x6F, 0xFF);
+
+        [DisplayName("Social Link: Rank up MAX words")]
+        public ConfigColor CmmuRankUpMaxColor { get; set; } = new ConfigColor(0xB3, 0x52, 0x6D, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
