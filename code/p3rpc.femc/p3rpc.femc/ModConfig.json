@@ -3,7 +3,7 @@
   "ModName": "Femc Project",
   "ModAuthor": "Femc Reloaded Team",
   "ModVersion": "2.0.0",
-  "ModDescription": "This mod aims to readd the female protagonist Kotone Shiomi from Persona 3 Portable while updating her style to match Persona 3 Reload\u0027s style. With new tracks, new character model and text changes. BUT social links haven\u0027t been added (yet).",
+  "ModDescription": "This mod aims to readd the female protagonist Kotone Shiomi from Persona 3 Portable.",
   "ModDll": "p3rpc.femc.dll",
   "ModIcon": "Preview.png",
   "ModR2RManagedDll32": "x86/p3rpc.femc.dll",
