@@ -15,6 +15,7 @@ using Ryo.Interfaces;
 using SharedScans.Interfaces;
 using System.Diagnostics;
 using UE.Toolkit.Interfaces;
+using Unreal.AtlusScript.Interfaces;
 using UnrealEssentials.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using IUnrealMemory = UE.Toolkit.Interfaces.IUnrealMemory;
@@ -96,6 +97,7 @@ namespace p3rpc.femc
             var toolKit = GetDependency<IToolkit>("UE Toolkit (IToolkit");
             var unrealMemory = GetDependency<IUnrealMemory>("UE Toolkit (IUnrealMemory)");
             var unrealNames = GetDependency<IUnrealNames>("UE Toolkit (IUnrealNames)");
+			var atlusScript = GetDependency<IAtlusAssets>("Unreal Atlus Script (IAtlusAssets)");
             _costumeApi = GetDependency<ICostumeApi>("Costume Framework");
 
 			var ryo = GetDependency<IRyoApi>("Ryo Framework");
@@ -126,7 +128,7 @@ namespace p3rpc.femc
 
             modName = _modConfig.ModName;
 			// Load Modules/assets
-			LoadEnabledAddons(unrealEssentials, ryo);
+			LoadEnabledAddons(unrealEssentials, ryo, atlusScript);
 			InitializeModules();
 			_assetRedirector = new AssetRedirector(unrealNames, modName);
 			_assetRedirector.RedirectPlayerAssets();
@@ -142,7 +144,7 @@ namespace p3rpc.femc
 
 		}
 
-        private void LoadEnabledAddons(IUnrealEssentials unrealEssentials, IRyoApi ryo)
+        private void LoadEnabledAddons(IUnrealEssentials unrealEssentials, IRyoApi ryo, IAtlusAssets atlusScript)
 		{
 			try
 			{
@@ -163,7 +165,7 @@ namespace p3rpc.femc
                 Theo.LoadTheoAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
                 Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
                 Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
-                HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Hot Spring Event
+                HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, atlusScript, _configuration, _context._modLocation); // loads Hot Spring Event
                 Testing.LoadTesticles(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
 				HexEditing.CampCommon.Apply(_configuration, _context._modLocation);
                 HexEditing.SaveLoad.Apply(_configuration, _context._modLocation);
