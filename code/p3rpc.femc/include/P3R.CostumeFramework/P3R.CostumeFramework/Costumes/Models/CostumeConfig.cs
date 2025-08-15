@@ -5,9 +5,15 @@ namespace P3R.CostumeFramework.Costumes.Models;
 internal class CostumeConfig
 {
     /// <summary>
-    /// Overrides costume name.
+    /// Overrides default costume name taken from the containing folder.
     /// </summary>
     public string? Name { get; set; }
+
+    /// <summary>
+    /// The name used by the in-game item.
+    /// This is different from the costume's name within the Costume Framework system.
+    /// </summary>
+    public string? DisplayName { get; set; }
 
     /// <summary>
     /// Custom Ryo group ID for sharing Ryo
