@@ -220,7 +220,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "Ely (Alt)")]
         ElyAlt,
         [Display(Name = "AngieDaGorl")]
-        AngieDaGorl
+        AngieDaGorl,
+        [Display(Name = "samythecoolkid")]
+        samythecoolkid
 
         }
 
@@ -261,7 +263,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "AngieDaGorl")]
         AngieDaGorl,
         [Display(Name = "StupidAle")]
-        StupidAle
+        StupidAle,
+        [Display(Name = "samythecoolkid")]
+        samythecoolkid
         }
 
         // 3D Options
