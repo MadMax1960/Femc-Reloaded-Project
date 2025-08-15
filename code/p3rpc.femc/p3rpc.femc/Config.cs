@@ -450,22 +450,6 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool MasterTar { get; set; } = false;
 
-        //  Full Moon Boss Music
-
-        [DisplayName("Master of Shadow -Reload-")]
-        [Category("Full Moon Boss Music")]
-        [Description("Enable Master of Shadow -Reload-, the default full moon boss battle music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 60)]
-        [DefaultValue(false)]
-        public bool BMS { get; set; } = true;
-
-        [DisplayName("Master of Shadow -fate mix- by MOSQ")]
-        [Category("Full Moon Boss Music")]
-        [Description("Enable Master of Shadow -fate mix- by MOSQ as full moon boss battle music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 61)]
-        [DefaultValue(true)]
-        public bool BMSF { get; set; } = true;
-
         //  Special Boss Music
 
         [DisplayName("Nyx Final Battle: Burn My Dread -Last Battle Reload-")]
