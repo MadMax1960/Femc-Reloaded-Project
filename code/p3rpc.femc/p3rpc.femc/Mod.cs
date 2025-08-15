@@ -170,7 +170,7 @@ namespace p3rpc.femc
                 HexEditing.Mail.Apply(_configuration, _context._modLocation);
                 HexEditing.Battle.Apply(_configuration, _context._modLocation);
 				HexEditing.PersonaStatus.Apply(_configuration, _context._modLocation);
-                //ExampleHexEdit.Apply(_configuration, _context._modLocation);
+                HexEditing.Cmmu.Apply(_configuration, _context._modLocation);
             }
 			catch (Exception ex)
 			{
@@ -266,6 +266,7 @@ namespace p3rpc.femc
 			}
 			if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
 			if (_configuration.EnableItemList) _modRuntime.AddModule<ItemList>();
+			if (_configuration.EnableCommunity) _modRuntime.AddModule<Cmmu>();
             _modRuntime.RegisterModules();
         }
 
