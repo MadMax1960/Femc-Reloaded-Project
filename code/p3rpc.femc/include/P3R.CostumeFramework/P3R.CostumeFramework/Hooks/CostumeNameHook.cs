@@ -16,8 +16,14 @@ internal unsafe class CostumeNameHook
 			for (int i = 0; i < nameTable->Data.Num; i++)
 			{
 				var costume = registry.Costumes.FirstOrDefault(x => x.CostumeItemId == i);
+				if (costume == null) continue;
 
-				if (costume?.Name != null)
+				if (costume.Config.DisplayName != null)
+				{
+					nameTable->Data.AllocatorInstance[i] = unreal.FString(costume.Config.DisplayName);
+					Log.Debug($"Set name for Costume Item ID: {i} || Name: {costume.Config.DisplayName}");
+				}
+				else if (costume.Name != null)
                 {
                     nameTable->Data.AllocatorInstance[i] = unreal.FString(costume.Name);
                     Log.Debug($"Set name for Costume Item ID: {i} || Name: {costume.Name}");

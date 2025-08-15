@@ -142,12 +142,12 @@ internal unsafe class CostumeHooks
         // Update before costume ID is set to shell costume.
         if (this.registry.TryGetCostume(character, costumeId, out var finalCostume))
         {
+            // Use source character to get correct Aigis.
+            comp->mSetCostumeID = this.costumeShells.UpdateCostume(comp->baseObj.Character, finalCostume);
+            Log.Debug($"{nameof(SetCostumeId)} || {character} || Costume ID: {costumeId}");
+            
             this.OnCostumeChanged?.Invoke(finalCostume);
         }
-
-        // Use source character to get correct Aigis.
-        comp->mSetCostumeID = this.costumeShells.UpdateCostume(comp->baseObj.Character, costumeId);
-        Log.Debug($"{nameof(SetCostumeId)} || {character} || Costume ID: {costumeId}");
     }
 
     private void SetCostumeData(UnrealObject obj)
@@ -164,7 +164,6 @@ internal unsafe class CostumeHooks
             if (existingCostume != null)
             {
                 existingCostume.SetCostumeItemId(i);
-                continue;
             }
         }
 

@@ -71,7 +71,7 @@ public class Mod : ModBase, IExports
         this.costumeOverrides = new(this.costumeRegistry);
         this.costumeDesc = new(atlusAssets!);
         this.costumeMusic = new(bgme!, battleThemes!, this.costumeRegistry);
-        this.costumeRyo = new(ryo!, this.costumeRegistry);
+        this.costumeRyo = new(ryo!);
         this.costumes = new(uobjects!, unreal!, dataTables!, this.costumeRegistry, this.costumeOverrides, this.costumeDesc, this.costumeMusic, this.costumeRyo, objMethods!, femcEnabled);
 
         this.costumeApi = new CostumeApi(costumeRegistry, costumeOverrides);

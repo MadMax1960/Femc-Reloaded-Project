@@ -34,7 +34,7 @@ internal unsafe class CostumeService
     {
         this.itemEquip = new(registry);
         this.costumeTable = new(dt, unreal, registry, useFemcPlayer);
-        this.costumeShells = new(dt, registry, this.costumeTable);
+        this.costumeShells = new(dt, this.costumeTable);
         this.costumeAnims = new(uobjs, unreal, objMethods, this.costumeTable);
         this.costumeHooks = new(uobjs, unreal, registry, overrides, costumeDesc, costumeMusic, costumeAudio, this.costumeShells, this.itemEquip);
         this.costumeManager = new(this.costumeHooks);
