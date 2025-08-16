@@ -1,215 +1,233 @@
 {
-  "ModId": "p3rpc.femc",
-  "ModName": "Femc Project",
-  "ModAuthor": "Femc Reloaded Team",
-  "ModVersion": "2.0.0",
-  "ModDescription": "This mod aims to readd the female protagonist Kotone Shiomi from Persona 3 Portable.",
-  "ModDll": "p3rpc.femc.dll",
-  "ModIcon": "Preview.png",
-  "ModR2RManagedDll32": "x86/p3rpc.femc.dll",
-  "ModR2RManagedDll64": "x64/p3rpc.femc.dll",
-  "ModNativeDll32": "",
-  "ModNativeDll64": "",
-  "Tags": [],
-  "CanUnload": false,
-  "HasExports": false,
-  "IsLibrary": false,
-  "ReleaseMetadataFileName": "p3rpc.femc.ReleaseMetadata.json",
-  "PluginData": {
-    "GameBananaDependencies": {
-      "IdToConfigMap": {
-        "p3rpc.essentials": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 494020
-          },
-          "ReleaseMetadataName": "p3rpc.essentials.ReleaseMetadata.json"
+    "ModId": "p3rpc.femc",
+    "ModName": "Femc Project",
+    "ModAuthor": "Femc Reloaded Team",
+    "ModVersion": "2.0.0",
+    "ModDescription": "This mod aims to readd the female protagonist Kotone Shiomi from Persona 3 Portable.",
+    "ModDll": "p3rpc.femc.dll",
+    "ModIcon": "Preview.png",
+    "ModR2RManagedDll32": "x86/p3rpc.femc.dll",
+    "ModR2RManagedDll64": "x64/p3rpc.femc.dll",
+    "ModNativeDll32": "",
+    "ModNativeDll64": "",
+    "Tags": [],
+    "CanUnload": false,
+    "HasExports": false,
+    "IsLibrary": false,
+    "ReleaseMetadataFileName": "p3rpc.femc.ReleaseMetadata.json",
+    "PluginData": {
+        "GameBananaDependencies": {
+            "IdToConfigMap": {
+                "p3rpc.essentials": {
+                    "Config": {
+                        "ItemType": "Mod",
+                        "ItemId": 494020
+                    },
+                    "ReleaseMetadataName": "p3rpc.essentials.ReleaseMetadata.json"
+                },
+                "p3rpc.skins.universalskeletonfix": {
+                    "Config": {
+                        "ItemType": "Mod",
+                        "ItemId": 593280
+                    },
+                    "ReleaseMetadataName": "p3rpc.skins.universalskeletonfix.ReleaseMetadata.json"
+                }
+            }
         },
-        "p3rpc.skins.universalskeletonfix": {
-          "Config": {
-            "ItemType": "Mod",
-            "ItemId": 593280
-          },
-          "ReleaseMetadataName": "p3rpc.skins.universalskeletonfix.ReleaseMetadata.json"
+        "GitHubDependencies": {
+            "IdToConfigMap": {
+                "p3rpc.classconstructor": {
+                    "Config": {
+                        "UserName": "Rirurin",
+                        "RepositoryName": "p3rpc.classconstructor",
+                        "UseReleaseTag": true,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "p3rpc.classconstructor.ReleaseMetadata.json"
+                },
+                "p3rpc.nativetypes": {
+                    "Config": {
+                        "UserName": "Rirurin",
+                        "RepositoryName": "p3rpc.nativetypes",
+                        "UseReleaseTag": true,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "p3rpc.nativetypes.ReleaseMetadata.json"
+                },
+                "P3R.CostumeFramework": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "P3R.CostumeFramework",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "P3R.CostumeFramework.ReleaseMetadata.json"
+                },
+                "p3rpc.essentials": {
+                    "Config": {
+                        "UserName": "AnimatedSwine37",
+                        "RepositoryName": "p3rpc.essentials",
+                        "UseReleaseTag": true,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "p3rpc.essentials.ReleaseMetadata.json"
+                },
+                "Reloaded.Memory.SigScan.ReloadedII": {
+                    "Config": {
+                        "UserName": "Reloaded-Project",
+                        "RepositoryName": "Reloaded.Memory.SigScan",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "Reloaded.Memory.SigScan.ReloadedII.ReleaseMetadata.json"
+                },
+                "reloaded.sharedlib.hooks": {
+                    "Config": {
+                        "UserName": "Sewer56",
+                        "RepositoryName": "Reloaded.SharedLib.Hooks.ReloadedII",
+                        "UseReleaseTag": true,
+                        "AssetFileName": "reloaded.sharedlib.hooks.zip"
+                    },
+                    "ReleaseMetadataName": "Sewer56.Update.ReleaseMetadata.json"
+                },
+                "Ryo.Reloaded": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "Ryo",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "Ryo.Reloaded.ReleaseMetadata.json"
+                },
+                "SharedScans.Reloaded": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "SharedScans",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "SharedScans.Reloaded.ReleaseMetadata.json"
+                },
+                "Unreal.ObjectsEmitter.Reloaded": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "Unreal.ObjectsEmitter",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "Unreal.ObjectsEmitter.Reloaded.ReleaseMetadata.json"
+                },
+                "UnrealEssentials": {
+                    "Config": {
+                        "UserName": "AnimatedSwine37",
+                        "RepositoryName": "UnrealEssentials",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "UnrealEssentials.ReleaseMetadata.json"
+                },
+                "BGME.Framework.API": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "BGME",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "BGME.Framework.API.ReleaseMetadata.json"
+                },
+                "BGME.Framework.P3R": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "BGME",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "BGME.Framework.P3R.ReleaseMetadata.json"
+                },
+                "Unreal.AtlusScript.Reloaded": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "Unreal.AtlusScript",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "Unreal.AtlusScript.Reloaded.ReleaseMetadata.json"
+                },
+                "BGME.BattleThemes": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "BGME.BattleThemes",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "BGME.BattleThemes.ReleaseMetadata.json"
+                },
+                "UTOC.Stream.Emulator": {
+                    "Config": {
+                        "UserName": "AnimatedSwine37",
+                        "RepositoryName": "UnrealEssentials",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "UTOC.Stream.Emulator.ReleaseMetadata.json"
+                },
+                "reloaded.universal.fileemulationframework": {
+                    "Config": {
+                        "UserName": "Sewer56",
+                        "RepositoryName": "FileEmulationFramework",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "Reloaded.Universal.FileEmulationFramework.ReleaseMetadata.json"
+                },
+                "UE.Toolkit.Reloaded": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "UE.Toolkit",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "UE.Toolkit.Reloaded.ReleaseMetadata.json"
+                },
+                "P3R.UEToolkit": {
+                    "Config": {
+                        "UserName": "RyoTune",
+                        "RepositoryName": "P3R.UEToolkit",
+                        "UseReleaseTag": false,
+                        "AssetFileName": "Mod.zip"
+                    },
+                    "ReleaseMetadataName": "P3R.UEToolkit.ReleaseMetadata.json"
+                }
+            }
+        },
+        "GitHubRelease": {
+            "UserName": "MadMax1960",
+            "RepositoryName": "Femc-Reloaded-Project",
+            "UseReleaseTag": true,
+            "AssetFileName": "Mod.zip"
         }
-      }
     },
-    "GitHubDependencies": {
-      "IdToConfigMap": {
-        "p3rpc.classconstructor": {
-          "Config": {
-            "UserName": "Rirurin",
-            "RepositoryName": "p3rpc.classconstructor",
-            "UseReleaseTag": true,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "p3rpc.classconstructor.ReleaseMetadata.json"
-        },
-        "p3rpc.nativetypes": {
-          "Config": {
-            "UserName": "Rirurin",
-            "RepositoryName": "p3rpc.nativetypes",
-            "UseReleaseTag": true,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "p3rpc.nativetypes.ReleaseMetadata.json"
-        },
-        "P3R.CostumeFramework": {
-          "Config": {
-            "UserName": "RyoTune",
-            "RepositoryName": "P3R.CostumeFramework",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "P3R.CostumeFramework.ReleaseMetadata.json"
-        },
-        "p3rpc.essentials": {
-          "Config": {
-            "UserName": "AnimatedSwine37",
-            "RepositoryName": "p3rpc.essentials",
-            "UseReleaseTag": true,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "p3rpc.essentials.ReleaseMetadata.json"
-        },
-        "Reloaded.Memory.SigScan.ReloadedII": {
-          "Config": {
-            "UserName": "Reloaded-Project",
-            "RepositoryName": "Reloaded.Memory.SigScan",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "Reloaded.Memory.SigScan.ReloadedII.ReleaseMetadata.json"
-        },
-        "reloaded.sharedlib.hooks": {
-          "Config": {
-            "UserName": "Sewer56",
-            "RepositoryName": "Reloaded.SharedLib.Hooks.ReloadedII",
-            "UseReleaseTag": true,
-            "AssetFileName": "reloaded.sharedlib.hooks.zip"
-          },
-          "ReleaseMetadataName": "Sewer56.Update.ReleaseMetadata.json"
-        },
-        "Ryo.Reloaded": {
-          "Config": {
-            "UserName": "RyoTune",
-            "RepositoryName": "Ryo",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "Ryo.Reloaded.ReleaseMetadata.json"
-        },
-        "SharedScans.Reloaded": {
-          "Config": {
-            "UserName": "RyoTune",
-            "RepositoryName": "SharedScans",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "SharedScans.Reloaded.ReleaseMetadata.json"
-        },
-        "Unreal.ObjectsEmitter.Reloaded": {
-          "Config": {
-            "UserName": "RyoTune",
-            "RepositoryName": "Unreal.ObjectsEmitter",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "Unreal.ObjectsEmitter.Reloaded.ReleaseMetadata.json"
-        },
-        "UnrealEssentials": {
-          "Config": {
-            "UserName": "AnimatedSwine37",
-            "RepositoryName": "UnrealEssentials",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "UnrealEssentials.ReleaseMetadata.json"
-        },
-        "BGME.Framework.API": {
-          "Config": {
-            "UserName": "RyoTune",
-            "RepositoryName": "BGME",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "BGME.Framework.API.ReleaseMetadata.json"
-        },
-        "BGME.Framework.P3R": {
-          "Config": {
-            "UserName": "RyoTune",
-            "RepositoryName": "BGME",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "BGME.Framework.P3R.ReleaseMetadata.json"
-        },
-        "Unreal.AtlusScript.Reloaded": {
-          "Config": {
-            "UserName": "RyoTune",
-            "RepositoryName": "Unreal.AtlusScript",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "Unreal.AtlusScript.Reloaded.ReleaseMetadata.json"
-        },
-        "BGME.BattleThemes": {
-          "Config": {
-            "UserName": "RyoTune",
-            "RepositoryName": "BGME.BattleThemes",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "BGME.BattleThemes.ReleaseMetadata.json"
-        },
-        "UTOC.Stream.Emulator": {
-          "Config": {
-            "UserName": "AnimatedSwine37",
-            "RepositoryName": "UnrealEssentials",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "UTOC.Stream.Emulator.ReleaseMetadata.json"
-        },
-        "reloaded.universal.fileemulationframework": {
-          "Config": {
-            "UserName": "Sewer56",
-            "RepositoryName": "FileEmulationFramework",
-            "UseReleaseTag": false,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "Reloaded.Universal.FileEmulationFramework.ReleaseMetadata.json"
-        }
-      }
-    },
-    "GitHubRelease": {
-      "UserName": "MadMax1960",
-      "RepositoryName": "Femc-Reloaded-Project",
-      "UseReleaseTag": true,
-      "AssetFileName": "Mod.zip"
-    }
-  },
-  "IsUniversalMod": false,
-  "ModDependencies": [
-    "p3rpc.classconstructor",
-    "p3rpc.nativetypes",
-    "P3R.CostumeFramework",
-    "p3rpc.essentials",
-    "p3rpc.skins.universalskeletonfix",
-    "Reloaded.Memory.SigScan.ReloadedII",
-    "reloaded.sharedlib.hooks",
-    "Ryo.Reloaded",
-    "SharedScans.Reloaded",
-    "UE.Toolkit.Reloaded",
-    "Unreal.ObjectsEmitter.Reloaded",
-    "UnrealEssentials",
-    "P3R.UEToolkit"
-  ],
-  "OptionalDependencies": [],
-  "SupportedAppId": [
-    "p3r.exe"
-  ],
-  "ProjectUrl": "https://github.com/MadMax1960/Femc-Reloaded-Project",
-  "CreatorUrl": "",
-  "IsSeparator": false
+    "IsUniversalMod": false,
+    "ModDependencies": [
+        "p3rpc.classconstructor",
+        "p3rpc.nativetypes",
+        "P3R.CostumeFramework",
+        "p3rpc.essentials",
+        "p3rpc.skins.universalskeletonfix",
+        "Reloaded.Memory.SigScan.ReloadedII",
+        "reloaded.sharedlib.hooks",
+        "Ryo.Reloaded",
+        "SharedScans.Reloaded",
+        "UE.Toolkit.Reloaded",
+        "Unreal.ObjectsEmitter.Reloaded",
+        "UnrealEssentials",
+        "P3R.UEToolkit"
+    ],
+    "OptionalDependencies": [],
+    "SupportedAppId": [
+        "p3r.exe"
+    ],
+    "ProjectUrl": "https://github.com/MadMax1960/Femc-Reloaded-Project",
+    "CreatorUrl": "",
+    "IsSeparator": false
 }
