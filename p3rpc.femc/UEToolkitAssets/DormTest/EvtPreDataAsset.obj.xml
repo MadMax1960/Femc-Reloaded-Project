@@ -1,0 +1,13 @@
+<AtlEvtPreDataAsset>
+	<Data>
+		<Item id="247">
+			<EventSublevels>
+				<Item id="1">
+					<EventBGLevels>
+		    			<Item id="2" value="/Game/Xrd777/Maps/Field/F102/BG/LV_F102_102_003_BG"/>
+					</EventBGLevels>
+				</Item>
+			</EventSublevels>
+		</Item>
+	</Data>
+</AtlEvtPreDataAsset>
