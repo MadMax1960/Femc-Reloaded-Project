@@ -13,6 +13,7 @@ namespace p3rpc.femc.UeToolkit {
         private unsafe delegate ESystemLanguage GetLanguage();
         private GetLanguage _getLanguage;
         private ESystemLanguage _actualGameLanguage;
+        private Config configuration;
 
         //Enum representing the system languages used in the game, returned by the GetGameLanguage function.
         public enum ESystemLanguage : byte
@@ -33,7 +34,7 @@ namespace p3rpc.femc.UeToolkit {
         };
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-        public ArmorData(IModLoader modLoader, IModConfig modConfig, IUnrealObjects uObjects,IToolkit toolKit, FemcContext context)
+        public ArmorData(IModLoader modLoader, IModConfig modConfig, Config _configuration, IUnrealObjects uObjects,IToolkit toolKit, FemcContext context)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
             _uObjects = uObjects;
@@ -60,7 +61,12 @@ namespace p3rpc.femc.UeToolkit {
                         _actualGameLanguage = _getLanguage!();
                         _context._utils.Log($"Game language is: {_actualGameLanguage}", System.Drawing.Color.Green);
                         string path = Path.Combine(_modLoader.GetDirectoryForModId(_modConfig.ModId), "UEToolkitAssets");
-                        
+
+                        if (_configuration.TesticlesDorm)
+                        {
+                            toolKit.AddObjectsPath(Path.Combine(path, "DormTest"));
+                        }
+
                         if (Directory.Exists(path))
                         {
                             //Add UEToolkit files via the API
@@ -115,6 +121,8 @@ namespace p3rpc.femc.UeToolkit {
                     }
                 });
             }
+
+            this.configuration = configuration;
         }
 
     }
