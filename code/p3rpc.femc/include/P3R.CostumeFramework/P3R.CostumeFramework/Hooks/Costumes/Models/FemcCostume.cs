@@ -11,9 +11,9 @@ internal class FemcCostume : Costume
         Character = Character.Player;
         Config.Base.MeshPath = AssetUtils.GetAssetFile(Character.Yukari, 0, CostumeAssetType.BaseMesh);
         Config.Base.AnimPath = AssetUtils.GetAssetFile(Character.Player, 51, CostumeAssetType.BaseAnim);
-        Config.Costume.MeshPath = "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_C998";
-        Config.Hair.MeshPath = "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_H999";
-        Config.Face.MeshPath = "/Game/Xrd777/Characters/Player/PC0002/Models/SK_PC0002_F999";
+        Config.Costume.MeshPath = "/Game/Xrd777/Characters/Player/FemC/Femc_Winter_School";
+        Config.Hair.MeshPath = "/Game/Xrd777/Characters/Player/FemC/Femc_Hair";
+        Config.Face.MeshPath = "/Game/Xrd777/Characters/Player/FemC/Femc_Face";
         Config.Costume.AnimPath = "None";
         Config.Hair.AnimPath = "None";
         Config.Face.AnimPath = "None";

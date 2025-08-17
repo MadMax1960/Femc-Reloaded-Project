@@ -8,12 +8,10 @@ internal class CostumeRyoService
 {
     private readonly IRyoApi ryo;
     private readonly Dictionary<Character, IContainerGroup?> currentCostumeGroups = [];
-    private readonly CostumeRegistry costumes;
 
-    public CostumeRyoService(IRyoApi ryo, CostumeRegistry costumes)
+    public CostumeRyoService(IRyoApi ryo)
     {
         this.ryo = ryo;
-        this.costumes = costumes;
 
         foreach (var character in Characters.PC)
         {

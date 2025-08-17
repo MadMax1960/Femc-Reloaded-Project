@@ -3,7 +3,7 @@
 [Flags]
 public enum EquipFlag
 {
-    NONE = 0,
+    None = 0,
     Player = 1 << 1,
     Yukari = 1 << 2,
     Stupei = 1 << 3,

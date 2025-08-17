@@ -220,7 +220,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "Ely (Alt)")]
         ElyAlt,
         [Display(Name = "AngieDaGorl")]
-        AngieDaGorl
+        AngieDaGorl,
+        [Display(Name = "samythecoolkid")]
+        samythecoolkid
 
         }
 
@@ -261,7 +263,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "AngieDaGorl")]
         AngieDaGorl,
         [Display(Name = "StupidAle")]
-        StupidAle
+        StupidAle,
+        [Display(Name = "samythecoolkid")]
+        samythecoolkid
         }
 
         // 3D Options
@@ -449,22 +453,6 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 55)]
         [DefaultValue(false)]
         public bool MasterTar { get; set; } = false;
-
-        //  Full Moon Boss Music
-
-        [DisplayName("Master of Shadow -Reload-")]
-        [Category("Full Moon Boss Music")]
-        [Description("Enable Master of Shadow -Reload-, the default full moon boss battle music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 60)]
-        [DefaultValue(false)]
-        public bool BMS { get; set; } = true;
-
-        [DisplayName("Master of Shadow -fate mix- by MOSQ")]
-        [Category("Full Moon Boss Music")]
-        [Description("Enable Master of Shadow -fate mix- by MOSQ as full moon boss battle music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 61)]
-        [DefaultValue(true)]
-        public bool BMSF { get; set; } = true;
 
         //  Special Boss Music
 
