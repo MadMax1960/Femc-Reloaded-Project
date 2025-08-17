@@ -153,6 +153,15 @@
                     },
                     "ReleaseMetadataName": "Unreal.AtlusScript.Reloaded.ReleaseMetadata.json"
                 },
+				"Unreal.AtlusScript.Reloaded": {
+					 "Config": {
+					 "UserName": "RyoTune",
+					 "RepositoryName": "Unreal.AtlusScript",
+					 "UseReleaseTag": false,
+					 "AssetFileName": "Mod.zip"
+					},
+					"ReleaseMetadataName": "Unreal.AtlusScript.Reloaded.ReleaseMetadata.json"
+				},
                 "BGME.BattleThemes": {
                     "Config": {
                         "UserName": "RyoTune",
