@@ -12,11 +12,6 @@ internal class DefaultCostume : Costume
         Config.Base.MeshPath = AssetUtils.GetAssetFile(character, 51, CostumeAssetType.BaseMesh);
         Config.Base.AnimPath = AssetUtils.GetAssetFile(character, 51, CostumeAssetType.BaseAnim);
         Config.Costume.MeshPath = AssetUtils.GetAssetFile(character, 51, CostumeAssetType.CostumeMesh);
-        if (character == Character.Metis)
-        {
-            Config.Costume.MeshPath = AssetUtils.GetAssetFile(character, 201, CostumeAssetType.CostumeMesh);
-        }
-
         Config.Hair.MeshPath = AssetUtils.GetAssetFile(character, 0, CostumeAssetType.HairMesh);
         Config.Face.MeshPath = AssetUtils.GetAssetFile(character, 0, CostumeAssetType.FaceMesh);
         Config.Costume.AnimPath = "None";

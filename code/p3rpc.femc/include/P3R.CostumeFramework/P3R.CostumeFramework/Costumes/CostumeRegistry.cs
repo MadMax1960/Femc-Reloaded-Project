@@ -33,14 +33,14 @@ internal class CostumeRegistry
 
     public bool TryGetCostume(Character character, int costumeId, [NotNullWhen(true)] out Costume? costume)
     {
-        // Treat Answer Aigis as normal Aigis.
-        // TODO: Actually support Answer Aigis.
-        if (character == Character.AigisReal)
-        {
-            character = Character.Aigis;
-        }
-
         costume = this.Costumes.FirstOrDefault(x => IsRequestedCostume(x, character, costumeId));
+        
+        // For Aigis, also check for any costumes under her Astrea ID.
+        if (costume == null && character == Character.Aigis)
+        {
+            costume = this.Costumes.FirstOrDefault(x => IsRequestedCostume(x, Character.AigisReal, costumeId));
+        }
+        
         if (costume != null)
         {
             return true;
