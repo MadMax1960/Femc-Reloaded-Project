@@ -152,7 +152,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "purpleoctogamer")]
         purpleoctogamer,
         [Display(Name = "purpleoctogamer Q2")]
-        purpleoctogamerAlt
+        purpleoctogamerAlt,
+        [Display(Name = "Anonymousfluffi")]
+        Anonymousfluffi
         }
 
         [DisplayName("Cutin")]
