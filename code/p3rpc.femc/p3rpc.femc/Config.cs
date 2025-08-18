@@ -2278,6 +2278,91 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Social Link: Rank up MAX words")]
         public ConfigColor CmmuRankUpMaxColor { get; set; } = new ConfigColor(0xB3, 0x52, 0x6D, 0xFF);
 
+        [DisplayName("Persona Status Highlighted Line Color")]
+        public ConfigColor PersonaStatusHighlightedLine { get; set; } = new ConfigColor(0x2C, 0x00, 0xE9, 0xFF);
+
+        [DisplayName("Battle: Shuffle time card type font inside rectangle color")]
+        public ConfigColor ShuffleCardTypeFontColor { get; set; } = new ConfigColor(0x69, 0x00, 0x11, 0xFF);
+
+        [DisplayName("Battle: Shuffle time card type rectangle and owned rhomb color")]
+        public ConfigColor ShuffleCardTypeAndRhomb { get; set; } = new ConfigColor(0xFE, 0x9A, 0xB7, 0xFF);
+
+        [DisplayName("Battle: Shuffle time owned font color")]
+        public ConfigColor ShuffleOwnedFontColor { get; set; } = new ConfigColor(0x6B, 0x03, 0x13, 0xFF);
+
+        [DisplayName("Battle: Shuffle time owned count number font color")]
+        public ConfigColor ShuffleOwnedCountFontColor { get; set; } = new ConfigColor(0x6B, 0x02, 0x13, 0xFF);
+
+        [DisplayName("Battle: Shuffle time owned count left zero font color")]
+        public ConfigColor ShuffleOwnedLeftZeroFontColor { get; set; } = new ConfigColor(0xFF, 0x7C, 0xA7, 0xFF);
+
+        [DisplayName("Battle: Shuffle time big background cards 1")]
+        public ConfigColor ShuffleBigBGCardsColor1 { get; set; } = new ConfigColor(0xFF, 0x03, 0x63, 0xFF);
+
+        [DisplayName("Battle: Shuffle time arcana symbol color")]
+        public ConfigColor ShuffleArcanaSymbolColor { get; set; } = new ConfigColor(0xAB, 0x03, 0x30, 0xFF);
+
+        [DisplayName("Battle: Shuffle time persona overstock background color")]
+        public ConfigColor ShufflePersonaOverstockBG { get; set; } = new ConfigColor(0xEB, 0x6E, 0x9C, 0xFF);
+
+        [DisplayName("Battle: Shuffle time down gradient color")]
+        public ConfigColor ShuffleDownGradient { get; set; } = new ConfigColor(0xFF, 0x02, 0x5F, 0xFF);
+
+        [DisplayName("Battle: Shuffle time down gradient color when selecting arcana")]
+        public ConfigColor ShuffleDownGradientArcanaSelection { get; set; } = new ConfigColor(0xB8, 0x0F, 0x58, 0xFF);
+
+        [DisplayName("Battle: Shuffle time big background cards 2")]
+        public ConfigColor ShuffleBigBGCardsColor2 { get; set; } = new ConfigColor(0xFF, 0x02, 0x78, 0xFF);
+
+        [DisplayName("Battle: Shuffle time top gradient color when selecting arcana")]
+        public ConfigColor ShuffleTopGradientAndCardsTaint { get; set; } = new ConfigColor(0xFB, 0x00, 0x64, 0xFF);
+
+        [DisplayName("Battle: Shuffle time title underlay color 1")]
+        public ConfigColor ShuffleTitleUnderlayColor1 { get; set; } = new ConfigColor(0xFF, 0x00, 0x6F, 0xFF);
+
+        [DisplayName("Battle: Shuffle time title underlay color 2")]
+        public ConfigColor ShuffleTitleUnderlayColor2 { get; set; } = new ConfigColor(0xFC, 0x60, 0xA1, 0xFF);
+
+        [DisplayName("Battle: Shuffle time title font color")]
+        public ConfigColor ShuffleTitleFontColor { get; set; } = new ConfigColor(0x66, 0x01, 0x12, 0xFF);
+
+        [DisplayName("Battle: Shuffle time unknown color 1")]
+        public ConfigColor ShuffleUnkColor1 { get; set; } = new ConfigColor(0xFF, 0x00, 0x55, 0xFF);
+
+        [DisplayName("Battle: Shuffle time unknown color 2")]
+        public ConfigColor ShuffleUnkColor2 { get; set; } = new ConfigColor(0xFF, 0x2F, 0x66, 0xFF);
+
+        [DisplayName("Battle: Shuffle time unknown color 3")]
+        public ConfigColor ShuffleUnkColor3 { get; set; } = new ConfigColor(0xFF, 0x00, 0x4C, 0xFF);
+
+        [DisplayName("Battle: Shuffle time unknown color 4")]
+        public ConfigColor ShuffleUnkColor4 { get; set; } = new ConfigColor(0xE5, 0x00, 0x45, 0xFF);
+
+        [DisplayName("Battle: Shuffle time unknown color 5")]
+        public ConfigColor ShuffleUnkColor5 { get; set; } = new ConfigColor(0xFF, 0x00, 0x55, 0xFF);
+
+        [DisplayName("Battle: Shuffle time unknown color 6")]
+        public ConfigColor ShuffleUnkColor6 { get; set; } = new ConfigColor(0x77, 0x00, 0x12, 0xFF);
+
+        [DisplayName("Battle: Persona Overstock equipped persona font color")]
+        public ConfigColor OverstockFontEquippedArcanaColor { get; set; } = new ConfigColor(0xCF, 0x4E, 0x6E, 0xFF);
+
+        [DisplayName("Battle: Persona Overstock selected persona arcana font color")]
+        public ConfigColor OverstockFontSelectedArcanaColor { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
+
+        [DisplayName("Battle: Persona Overstock selected arcana rectangle background color")]
+        public ConfigColor OverstockBGSelectedColor { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
+
+        [DisplayName("Battle: Persona Overstock unselected arcana/persona name font color")]
+        public ConfigColor OverstockFontUnselectedNameArcanaColor { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
+
+        [DisplayName("Battle: Persona Overstock unselected arcana rectangle background color")]
+        public ConfigColor OverstockBGUnselectedColor { get; set; } = new ConfigColor(0x44, 0x04, 0x21, 0xFF);
+
+        [DisplayName("Battle: Persona Overstock title color")]
+        public ConfigColor OverstockTitleColor { get; set; } = new ConfigColor(0xC2, 0x00, 0x41, 0xFF);
+
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]

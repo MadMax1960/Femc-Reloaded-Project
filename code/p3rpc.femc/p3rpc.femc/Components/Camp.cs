@@ -47,7 +47,7 @@ namespace p3rpc.femc.Components
         //private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "0F 10 45 00 41 B8 01 00 00 00";
         private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "E8 ?? ?? ?? ?? 0F 10 45 00 41 B8 01 00 00 00";
         private string UCmpRootDraw_MenuTransitionColor_SIG = "C7 84 24 ?? ?? ?? ?? FF 2A 00 FF";
-        private string UCmpRootDraw_DrawHighlightedColor1_SIG = "EB ?? C6 45 ?? BA";
+        private string UCmpRootDraw_DrawHighlightedColor1_SIG = "E8 ?? ?? ?? ?? 4C 8D 6E ?? 84 C0";
         private string UCmpRootDraw_DrawHighlightedColor2_SIG = "C7 45 ?? ?? ?? ?? ?? 8B 45 ?? 89 44 24 ?? 44 89 7D ??";
         private string UCmpRootDraw_DrawPartyPanelMissingHealthColor_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 83 ?? ?? ?? ?? 41 B0 B5";
         private string UCmpRootDraw_DrawPartyPanelMissingSpColor_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 83 ?? ?? ?? ?? 45 0F B6 C1 89 BB ?? ?? ?? ??";
@@ -97,9 +97,12 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
+                    "test al, al",
+                    "jnz .grayHighlight",
                     $"mov byte [rbp-0x7E], ${_context._config.CampHighlightedColor.R:X}",
                     $"mov byte [rbp-0x7F], ${_context._config.CampHighlightedColor.G:X}",
                     $"mov byte [rbp-0x80], ${_context._config.CampHighlightedColor.B:X}",
+                    ".grayHighlight:"
                 };
                 _DrawHighlightedColor1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
