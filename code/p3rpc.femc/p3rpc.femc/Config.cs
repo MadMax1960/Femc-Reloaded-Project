@@ -2362,6 +2362,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Battle: Persona Overstock title color")]
         public ConfigColor OverstockTitleColor { get; set; } = new ConfigColor(0xC2, 0x00, 0x41, 0xFF);
 
+        [DisplayName("Camp: Animated triangle color when assigning personas/equipment")]
+        public ConfigColor EquipTriangleColor { get; set; } = new ConfigColor(0xFF, 0xA1, 0xCA, 0xFF);
+
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
