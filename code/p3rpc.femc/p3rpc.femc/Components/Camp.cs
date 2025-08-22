@@ -324,6 +324,7 @@ namespace p3rpc.femc.Components
         private string UCmpItemDraw_ItemDescriptionColor_SIG_EpAigis = "41 81 CD 00 FF FF 00 89 7C 24 ??";
         private string UCmpItemDraw_DrawHighlightedItem1_SIG = "C7 44 24 ?? 00 00 EE FF 0F 11 48 ??";
         private string UCmpItemDraw_DrawHighlightedItem2_SIG = "C7 44 24 ?? 00 00 EE FF 41 0F 10 4D ??";
+        private string UCmpItemDraw_DrawHighlightedArrows_SIG = "41 BC FF 00 00 FF E8 ?? ?? ?? ??";
         private string UCmpItemDraw_DrawHighlightedPartyMember1_SIG = "81 C9 00 00 00 6A";
         private string UCmpItemDraw_DrawHighlightedPartyMember2_SIG = "0D 00 00 00 EE 41 0F 28 C1";
         private string UCmpItemDraw_DrawSkillCardFemcShadow_SIG = "41 81 C9 00 21 0D 08";
@@ -380,6 +381,10 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampHighlightedLowerColor.ToU32ARGB())));
             });
+            _context._utils.SigScan(UCmpItemDraw_DrawHighlightedArrows_SIG, "UCmpItemDraw::DrawHighlightedArrows", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampHighlightedColor.ToU32())));
+            });
             _context._utils.SigScan(UCmpItemDraw_DrawHighlightedPartyMember1_SIG, "UCmpItemDraw::DrawHighlightedPartyMember1", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampHighlightedMidColor.ToU32IgnoreAlpha())));
@@ -434,6 +439,7 @@ namespace p3rpc.femc.Components
         private string UCmpEquipDraw_DrawEquipTitleBackground_SIG = "C7 44 24 ?? FF 45 16 0C";
         private string UCmpEquipDraw_DrawEquipDescriptionEffectBg_SIG = "41 81 CC 00 4E 2B 01";
 
+        private string UCmpEquipDraw_DrawHighlightedArrows_SIG = "81 CD 00 00 00 EE";
         private string UCmpEquipDraw_DrawHighlightedPartyMember1_SIG = "81 CB 00 00 00 6A EB ??";
         private string UCmpEquipDraw_DrawHighlightedPartyMember2_SIG = "81 CF 00 00 00 EE C7 44 24 ?? 15 00 00 00";
         private string UCmpEquipDraw_DrawHighlightedEquipment_SIG = "0D 00 00 00 FF 0F 28 0D ?? ?? ?? ??";
@@ -505,6 +511,10 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(UCmpEquipDraw_DrawEquipTitleBackground_SIG, "UCmpEquipDraw::DrawEquipTitleBackground", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.EquipTitleBackground.ToU32())));
+            });
+            _context._utils.SigScan(UCmpEquipDraw_DrawHighlightedArrows_SIG, "UCmpEquipDraw::DrawHighlightedArrows", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CampHighlightedLowerColor.ToU32IgnoreAlpha())));
             });
             _context._utils.SigScan(UCmpEquipDraw_DrawHighlightedPartyMember1_SIG, "UCmpEquipDraw::DrawHighlightedPartyMember1", _context._utils.GetDirectAddress, addr =>
             {
@@ -870,6 +880,10 @@ namespace p3rpc.femc.Components
         private string UCmpStatus_CharacterDetailsHPBarAndLineRemaining_SIG_EpAigis = "B9 00 EC D4 C0";
 
         private string UCmpStatus_DrawChangeTacticsHighlightedColor_SIG = "8B 05 ?? ?? ?? ?? 48 8D 8D ?? ?? ?? ?? F3 44 0F 10 2D ?? ?? ?? ??";
+        private string UCmpStatus_DrawStatusHighlightedArrowsColor_SIG = "0D 00 00 00 EE 89 75 ??";
+        private string UCmpStatus_DrawStatsHighlightedArrowsColor_SIG = "41 81 CF 00 00 00 EE";
+        private string UCmpStatus_DrawStatsHighlightedLineColor_SIG = "0D 00 00 00 FF F3 44 0F 11 5C 24 ??";
+        private string UCmpStatus_DrawStatsBGUnderlay_SIG = "41 81 C8 00 40 08 01";
 
 
         public unsafe CampStats(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
@@ -985,6 +999,22 @@ namespace p3rpc.femc.Components
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32ARGB())));
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 5, (byte)0x90))); // nop extra space
             });
+            _context._utils.SigScan(UCmpStatus_DrawStatusHighlightedArrowsColor_SIG, "UCmpStatus::DrawStatusHighlightedArrowsColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedLowerColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatsHighlightedArrowsColor_SIG, "UCmpStatus::DrawStatsHighlightedArrowsColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampHighlightedLowerColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatsHighlightedLineColor_SIG, "UCmpStatus::DrawStatsHighlightedLineColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatsBGUnderlay_SIG, "UCmpStatus::DrawStatsBGUnderlay", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampStatsMenuUnderlay.ToU32IgnoreAlpha())));
+            });
         }
         public override void Register()
         {
@@ -998,9 +1028,94 @@ namespace p3rpc.femc.Components
         private UICommon _uiCommon;
         private CampCommon _campCommon;
 
+        private string UCmpQuest_DrawQuestArrows1_SIG = "E8 ?? ?? ?? ?? 41 0F 28 C2 41 B1 FF";
+        private string UCmpQuest_DrawQuestArrows2_SIG = "E8 ?? ?? ?? ?? F3 45 0F 10 86 ?? ?? ?? ?? 4C 8D 44 24 ??";
+
+        private IAsmHook _DrawQuestArrows1;
+        private IAsmHook _DrawQuestArrows2;
+
         public unsafe CampQuest(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
+            _context._utils.SigScan(UCmpQuest_DrawQuestArrows1_SIG, "UCmpQuest::DrawQuestArrows1", _context._utils.GetDirectAddress, addr =>
+            {
+                int rBits = BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.R); // Original in t=0 -> #6A0000
+                int gBits = BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.G);
+                int bBits = BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.B);
 
+                int rBitsDiff = BitConverter.SingleToInt32Bits(64.0f - (float) _context._config.CampHighlightedMidColor.R); // Original in t=1 -> #404040
+                int gBitsDiff = BitConverter.SingleToInt32Bits(64.0f - (float) _context._config.CampHighlightedMidColor.G);
+                int bBitsDiff = BitConverter.SingleToInt32Bits(64.0f - (float) _context._config.CampHighlightedMidColor.B);
+
+                // xmm14 holds the t, so we interpolate each component from that value
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{rBitsDiff:X}", // Red interpolation
+                    "movd xmm1, eax",
+                    "mulss xmm1, xmm14",
+                    $"mov eax, 0x{rBits:X}",
+                    "movd xmm2, eax",
+                    "addss xmm1, xmm2",
+                    "cvttss2si eax, xmm1",
+
+                    $"mov ecx, 0x{gBitsDiff:X}", // Green interpolation
+                    "movd xmm1, ecx",
+                    "mulss xmm1, xmm14",
+                    $"mov ecx, 0x{gBits:X}",
+                    "movd xmm2, ecx",
+                    "addss xmm1, xmm2",
+                    "cvttss2si ecx, xmm1",
+
+                    $"mov r8d, 0x{bBitsDiff:X}", // Blue interpolation
+                    "movd xmm1, r8d",
+                    "mulss xmm1, xmm14",
+                    $"mov r8d, 0x{bBits:X}",
+                    "movd xmm2, r8d",
+                    "addss xmm1, xmm2",
+                    "cvttss2si r8d, xmm1",
+                };
+                _DrawQuestArrows1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpQuest_DrawQuestArrows2_SIG, "UCmpQuest::DrawQuestArrows2", _context._utils.GetDirectAddress, addr =>
+            {
+                int rBits = BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.R); // Original in t=0 -> #EE0000
+                int gBits = BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.G);
+                int bBits = BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.B);
+
+                int rBitsDiff = BitConverter.SingleToInt32Bits(0.0f - (float)_context._config.CampHighlightedLowerColor.R); // Original in t=1 -> #000000
+                int gBitsDiff = BitConverter.SingleToInt32Bits(0.0f - (float)_context._config.CampHighlightedLowerColor.G);
+                int bBitsDiff = BitConverter.SingleToInt32Bits(0.0f - (float)_context._config.CampHighlightedLowerColor.B);
+
+                // Again, xmm14 holds the t, so we interpolate each component from that value
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{rBitsDiff:X}", // Red interpolation
+                    "movd xmm1, eax",
+                    "mulss xmm1, xmm14",
+                    $"mov eax, 0x{rBits:X}",
+                    "movd xmm2, eax",
+                    "addss xmm1, xmm2",
+                    "cvttss2si eax, xmm1",
+
+                    $"mov ecx, 0x{gBitsDiff:X}", // Green interpolation
+                    "movd xmm1, ecx",
+                    "mulss xmm1, xmm14",
+                    $"mov ecx, 0x{gBits:X}",
+                    "movd xmm2, ecx",
+                    "addss xmm1, xmm2",
+                    "cvttss2si ecx, xmm1",
+
+                    $"mov r8d, 0x{bBitsDiff:X}", // Blue interpolation
+                    "movd xmm1, r8d",
+                    "mulss xmm1, xmm14",
+                    $"mov r8d, 0x{bBits:X}",
+                    "movd xmm2, r8d",
+                    "addss xmm1, xmm2",
+                    "cvttss2si r8d, xmm1",
+                };
+                _DrawQuestArrows1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
         public override void Register()
         {
@@ -1041,6 +1156,8 @@ namespace p3rpc.femc.Components
         private string UCmpCommuList_DrawHighlightedOptionMainScreen_SIG = "81 C9 00 00 00 FF F3 44 0F 11 54 24 ??";
         private string UCmpCommuList_DrawHighlightedOptionDetailScreen_SIG = "C7 44 24 ?? FF 00 00 FF 0F 28 C4";
         private string UCmpCommuList_DrawHighlightedArcanaDetailScreen_SIG = "C7 44 24 ?? 7F 6D 04 03";
+
+        private string UCmpCommuList_DrawHighlightedArrows_SIG = "41 81 CE 00 00 00 EE";
 
         private IAsmHook _getSocialLinkColors;
         private IReverseWrapper<UCmpCommuList_GetSocialLinkLightColor> _getSocialLinkLightColor;
@@ -1163,6 +1280,10 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampSocialLinkArcanaHighlightedColor.ToU32())));
             });
+            _context._utils.SigScan(UCmpCommuList_DrawHighlightedArrows_SIG, "UCmpCommuList::DrawHighlightedArrows", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampHighlightedLowerColor.ToU32IgnoreAlpha())));
+            });
         }
         public override void Register()
         {
@@ -1222,12 +1343,38 @@ namespace p3rpc.femc.Components
         private string UUICmpCalendarDraw_PartTimeJobTextColor_SIG = "C7 84 24 ?? ?? ?? ?? 43 04 08 FF";
         private string UUICmpCalendarDraw_PartTimeJobHeader_SIG = "48 8B C4 48 89 58 ?? 48 89 68 ?? 48 89 70 ?? 57 48 81 EC B0 00 00 00 0F 29 70 ?? 48 8B F9";
 
+        private string UUICmpCalendarDraw_LeftArrowRed1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F0 0F 57 C0 0F 28 D7 41 0F 28 C9 E8 ?? ?? ?? ?? F3 0F 2C F8 0F 57 C0 0F 28 D7 41 0F 28 C9 E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C3 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 59 85 ?? ?? ?? ?? 49 8D 4E ?? 88 9D ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 0F 57 DB F3 0F 10 4C 24 ?? F3 0F 2C C0 40 88 BD ?? ?? ?? ?? 40 88 B5 ?? ?? ?? ?? 88 85 ?? ?? ?? ?? 41 0F B6 86 ?? ?? ?? ?? 88 44 24 ?? 48 8D 85 ?? ?? ?? ?? C6 44 24 ?? 04 4C 89 6C 24 ?? F3 44 0F 11 6C 24 ??";
+        private string UUICmpCalendarDraw_LeftArrowGreen1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F8 0F 57 C0 0F 28 D7 41 0F 28 C9 E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C3 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 59 85 ?? ?? ?? ?? 49 8D 4E ?? 88 9D ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 0F 57 DB F3 0F 10 4C 24 ?? F3 0F 2C C0 40 88 BD ?? ?? ?? ?? 40 88 B5 ?? ?? ?? ?? 88 85 ?? ?? ?? ?? 41 0F B6 86 ?? ?? ?? ?? 88 44 24 ?? 48 8D 85 ?? ?? ?? ?? C6 44 24 ?? 04 4C 89 6C 24 ?? F3 44 0F 11 6C 24 ??";
+        private string UUICmpCalendarDraw_LeftArrowBlue1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C3 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 59 85 ?? ?? ?? ?? 49 8D 4E ?? 88 9D ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 0F 57 DB F3 0F 10 4C 24 ?? F3 0F 2C C0 40 88 BD ?? ?? ?? ?? 40 88 B5 ?? ?? ?? ?? 88 85 ?? ?? ?? ?? 41 0F B6 86 ?? ?? ?? ?? 88 44 24 ?? 48 8D 85 ?? ?? ?? ?? C6 44 24 ?? 04 4C 89 6C 24 ?? F3 44 0F 11 6C 24 ??";
+        private string UUICmpCalendarDraw_LeftArrowRed2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F8 0F 57 C0 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 2C D8 0F 57 C0 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 2C C0";
+        private string UUICmpCalendarDraw_LeftArrowGreen2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 0F 57 C0 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 2C C0";
+        private string UUICmpCalendarDraw_LeftArrowBlue2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C C0 88 9D ?? ?? ?? ?? 40 88 BD ?? ?? ?? ??";
+        private string UUICmpCalendarDraw_RightArrowRed1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F0 0F 57 C0 0F 28 D7 41 0F 28 C9 E8 ?? ?? ?? ?? F3 0F 2C F8 0F 57 C0 0F 28 D7 41 0F 28 C9 E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C3 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 59 85 ?? ?? ?? ?? 49 8D 4E ?? 88 9D ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 0F 57 DB F3 0F 10 4C 24 ?? F3 0F 2C C0 40 88 BD ?? ?? ?? ?? 40 88 B5 ?? ?? ?? ?? 88 85 ?? ?? ?? ?? 41 0F B6 86 ?? ?? ?? ?? 88 44 24 ?? 48 8D 85 ?? ?? ?? ?? C6 44 24 ?? 04 4C 89 6C 24 ?? F3 0F 11 74 24 ??";
+        private string UUICmpCalendarDraw_RightArrowGreen1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F8 0F 57 C0 0F 28 D7 41 0F 28 C9 E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C3 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 59 85 ?? ?? ?? ?? 49 8D 4E ?? 88 9D ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 0F 57 DB F3 0F 10 4C 24 ?? F3 0F 2C C0 40 88 BD ?? ?? ?? ?? 40 88 B5 ?? ?? ?? ?? 88 85 ?? ?? ?? ?? 41 0F B6 86 ?? ?? ?? ?? 88 44 24 ?? 48 8D 85 ?? ?? ?? ?? C6 44 24 ?? 04 4C 89 6C 24 ?? F3 0F 11 74 24 ??";
+        private string UUICmpCalendarDraw_RightArrowBlue1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C3 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 59 85 ?? ?? ?? ?? 49 8D 4E ?? 88 9D ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 0F 57 DB F3 0F 10 4C 24 ?? F3 0F 2C C0 40 88 BD ?? ?? ?? ?? 40 88 B5 ?? ?? ?? ?? 88 85 ?? ?? ?? ?? 41 0F B6 86 ?? ?? ?? ?? 88 44 24 ?? 48 8D 85 ?? ?? ?? ?? C6 44 24 ?? 04 4C 89 6C 24 ?? F3 0F 11 74 24 ??";
+        private string UUICmpCalendarDraw_RightArrowRed2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F8 0F 57 C0 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 0F 2C D8 0F 57 C0 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 44 0F 10 05 ?? ?? ?? ??";
+        private string UUICmpCalendarDraw_RightArrowGreen2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 0F 57 C0 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 44 0F 10 05 ?? ?? ?? ??";
+        private string UUICmpCalendarDraw_RightArrowBlue2_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 05 ?? ?? ?? ?? 49 8D 4E ??";
+
         private IAsmHook _calendarSundayColor;
         private IAsmHook _calendarSundayDay;
         private IAsmHook _monthsPrevMonth;
         private IAsmHook _monthsCurrMonth;
         private IAsmHook _monthsNextMonth;
         private IAsmHook _dateBg;
+
+        private IAsmHook _LeftArrowRed1;
+        private IAsmHook _LeftArrowGreen1;
+        private IAsmHook _LeftArrowBlue1;
+        private IAsmHook _LeftArrowRed2;
+        private IAsmHook _LeftArrowGreen2;
+        private IAsmHook _LeftArrowBlue2;
+        private IAsmHook _RightArrowRed1;
+        private IAsmHook _RightArrowGreen1;
+        private IAsmHook _RightArrowBlue1;
+        private IAsmHook _RightArrowRed2;
+        private IAsmHook _RightArrowGreen2;
+        private IAsmHook _RightArrowBlue2;
 
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeJobBg;
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeHeader;
@@ -1295,6 +1442,139 @@ namespace p3rpc.femc.Components
 
             _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobDescBg_SIG, "UUICmpCalendarDraw::PartTimeJobDescBg", _context._utils.GetDirectAddress, addr => _drawPartTimeJobBg = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobDescBg, addr));
             _context._utils.SigScan(UUICmpCalendarDraw_PartTimeJobHeader_SIG, "UUICmpCalendarDraw::PartTimeJobHeader", _context._utils.GetDirectAddress, addr => _drawPartTimeHeader = _context._utils.MakeHooker<UUICmpCalendarDraw_DrawUIComponent>(UUICmpCalendarDraw_PartTimeJobHeader, addr));
+
+            _context._utils.SigScan(UUICmpCalendarDraw_LeftArrowRed1_SIG, "UUICmpCalendarDraw::LeftArrowRed1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov ebx, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.R):X}",
+                    "movd xmm0, ebx",
+                };
+                _LeftArrowRed1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_LeftArrowGreen1_SIG, "UUICmpCalendarDraw::LeftArrowGreen1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov ebx, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.G):X}",
+                    "movd xmm0, ebx",
+                };
+                _LeftArrowGreen1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_LeftArrowBlue1_SIG, "UUICmpCalendarDraw::LeftArrowBlue1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov ebx, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.B):X}",
+                    "movd xmm0, ebx",
+                };
+                _LeftArrowBlue1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_LeftArrowRed2_SIG, "UUICmpCalendarDraw::LeftArrowRed2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.R):X}",
+                    "movd xmm0, eax",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedDark.R):X}",
+                    "movd xmm1, eax",
+                };
+                _LeftArrowRed2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_LeftArrowGreen2_SIG, "UUICmpCalendarDraw::LeftArrowGreen2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.G):X}",
+                    "movd xmm0, eax",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedDark.G):X}",
+                    "movd xmm1, eax",
+                };
+                _LeftArrowGreen2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_LeftArrowBlue2_SIG, "UUICmpCalendarDraw::LeftArrowBlue2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.B):X}",
+                    "movd xmm0, eax",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedDark.B):X}",
+                    "movd xmm1, eax",
+                };
+                _LeftArrowBlue2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_RightArrowRed1_SIG, "UUICmpCalendarDraw::RightArrowRed1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov ebx, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.R):X}",
+                    "movd xmm0, ebx",
+                };
+                _RightArrowRed1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_RightArrowGreen1_SIG, "UUICmpCalendarDraw::RightArrowGreen1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov ebx, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.G):X}",
+                    "movd xmm0, ebx",
+                };
+                _RightArrowGreen1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_RightArrowBlue1_SIG, "UUICmpCalendarDraw::RightArrowBlue1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov ebx, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.B):X}",
+                    "movd xmm0, ebx",
+                };
+                _RightArrowBlue1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_RightArrowRed2_SIG, "UUICmpCalendarDraw::RightArrowRed2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.R):X}",
+                    "movd xmm0, eax",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedDark.R):X}",
+                    "movd xmm1, eax",
+                };
+                _RightArrowRed2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_RightArrowGreen2_SIG, "UUICmpCalendarDraw::RightArrowGreen2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.G):X}",
+                    "movd xmm0, eax",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedDark.G):X}",
+                    "movd xmm1, eax",
+                };
+                _RightArrowGreen2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_RightArrowBlue2_SIG, "UUICmpCalendarDraw::RightArrowBlue2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.B):X}",
+                    "movd xmm0, eax",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedDark.B):X}",
+                    "movd xmm1, eax",
+                };
+                _RightArrowBlue2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
 
         }
         public override void Register()
@@ -1384,10 +1664,57 @@ namespace p3rpc.femc.Components
 
         private string UCmpSystemTutoDictDraw_DrawHighlightedColor_SIG = "40 88 7C 24 ?? 44 88 7C 24 ??";
 
+        private string UCmpSystemTutoDraw_DrawTutoTopTogglerBG_SIG = "E8 ?? ?? ?? ?? F3 41 0F 10 86 ?? ?? ?? ?? 48 8D 54 24 ?? 66 41 0F 6E 8E ?? ?? ?? ??";
+        private string UCmpSystemTutoDraw_LeftArrowRed1_SIG = "E8 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 28 D7 F3 0F 2C F8 41 0F 28 C3";
+        private string UCmpSystemTutoDraw_LeftArrowGreen1_SIG = "E8 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 28 D7 F3 0F 2C D8 41 0F 28 C3";
+        private string UCmpSystemTutoDraw_LeftArrowBlue1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C C0 88 9D ?? ?? ?? ?? 49 8B CC 40 88 BD ?? ?? ?? ?? 44 88 AD ?? ?? ?? ?? 41 0F 28 DB 41 0F 28 D0 88 85 ?? ?? ?? ?? 0F 28 CE";
+        private string UCmpSystemTutoDraw_LeftArrowRed2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F8 41 0F 28 C3 0F 28 D7 41 0F 28 C8";
+        private string UCmpSystemTutoDraw_LeftArrowGreen2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C3 0F 28 D7 41 0F 28 C8";
+        private string UCmpSystemTutoDraw_LeftArrowBlue2_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 85 ?? ?? ?? ?? 41 0F 28 DB";
+        private string UCmpSystemTutoDraw_RightArrowRed1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F8 41 0F 28 C3 0F 28 D7 0F 28 CE";
+        private string UCmpSystemTutoDraw_RightArrowGreen1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C3 0F 28 D7 0F 28 CE";
+        private string UCmpSystemTutoDraw_RightArrowBlue1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C C0 88 9D ?? ?? ?? ?? 49 8B CC 40 88 BD ?? ?? ?? ?? 44 88 AD ?? ?? ?? ?? 41 0F 28 DB 41 0F 28 D0 88 85 ?? ?? ?? ?? 41 0F 28 CF";
+        private string UCmpSystemTutoDraw_RightArrowRed2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F8 41 0F 28 C3 0F 28 D7 41 0F 28 CA";
+        private string UCmpSystemTutoDraw_RightArrowGreen2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C3 0F 28 D7 41 0F 28 CA";
+        private string UCmpSystemTutoDraw_RightArrowBlue2_SIG = "E8 ?? ?? ?? ?? F3 44 0F 58 2D ?? ?? ?? ?? F3 0F 2C C0";
+
+        private string UCmpSystemConfigDraw_DrawConfigTopMainTogglerBG_SIG = "E8 ?? ?? ?? ?? 49 8B 0E 41 B1 05 44 88 7C 24 ?? 48 81 C1 78 02 00 00 C6 44 24 ?? 00 41 B0 04 C6 44 24 ?? 01";
+        private string UCmpSystemConfigDraw_DrawConfigTopSecondaryTogglerBG_SIG = "E8 ?? ?? ?? ?? 33 DB 4C 8D 45 ?? B2 21";
+        private string UCmpSystemConfigDraw_ArrowRed1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F8 41 0F 28 C1 41 0F 28 D1 0F 28 CE";
+        private string UCmpSystemConfigDraw_ArrowGreen1_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C1 41 0F 28 D1 0F 28 CE";
+        private string UCmpSystemConfigDraw_ArrowBlue1_SIG = "E8 ?? ?? ?? ?? 49 8B 0E 41 0F 28 D9";
+        private string UCmpSystemConfigDraw_ArrowRed2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C F8 41 0F 28 C1 41 0F 28 D1 41 0F 28 CF";
+        private string UCmpSystemConfigDraw_ArrowGreen2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 41 0F 28 C1 41 0F 28 D1 41 0F 28 CF";
+        private string UCmpSystemConfigDraw_ArrowBlue2_SIG = "E8 ?? ?? ?? ?? 49 8B 0E 41 0F 28 FC";
+
         private IHook<UCmpSystemDraw_DrawUnhighlightedMenuOptions> _drawUnhighlightOptions;
         private IAsmHook _getMenuColorNoSel;
         private IReverseWrapper<UCmpSystemDraw_GetMenuColorNoSelect> _getMenuColorNoSelWrapper;
+
         private IAsmHook _drawTutoDictHighlightedColor;
+
+        private IAsmHook _DrawTutoTopTogglerBG;
+        private IAsmHook _LeftArrowRed1;
+        private IAsmHook _LeftArrowGreen1;
+        private IAsmHook _LeftArrowBlue1;
+        private IAsmHook _LeftArrowRed2;
+        private IAsmHook _LeftArrowGreen2;
+        private IAsmHook _LeftArrowBlue2;
+        private IAsmHook _RightArrowRed1;
+        private IAsmHook _RightArrowGreen1;
+        private IAsmHook _RightArrowBlue1;
+        private IAsmHook _RightArrowRed2;
+        private IAsmHook _RightArrowGreen2;
+        private IAsmHook _RightArrowBlue2;
+
+        private IAsmHook _DrawConfigTopMainTogglerBG;
+        private IAsmHook _DrawConfigTopSecondaryTogglerBG;
+        private IAsmHook _ArrowRed1;
+        private IAsmHook _ArrowGreen1;
+        private IAsmHook _ArrowBlue1;
+        private IAsmHook _ArrowRed2;
+        private IAsmHook _ArrowGreen2;
+        private IAsmHook _ArrowBlue2;
 
         private unsafe FSprColor* _systemOptionColors;
         private static int SystemOptionCount = 7;
@@ -1456,7 +1783,222 @@ namespace p3rpc.femc.Components
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSystemStartFallingWordsColor.ToU32())));
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 6, _context._config.CampSystemEndFallingWordsColor.ToU32())));
             });
-            
+            _context._utils.SigScan(UCmpSystemTutoDraw_DrawTutoTopTogglerBG_SIG, "UCmpSystemTutoDraw::DrawTutoTopTogglerBG", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0x90], ${_context._config.MainToggler.B:X}",
+                    $"mov byte [rbp + 0x91], ${_context._config.MainToggler.G:X}",
+                    $"mov byte [rbp + 0x92], ${_context._config.MainToggler.R:X}"
+                };
+                _DrawTutoTopTogglerBG = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UCmpSystemTutoDraw_LeftArrowRed1_SIG, "UCmpSystemTutoDraw::LeftArrowRed1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.R):X}",
+                    "movd xmm0, eax",
+                };
+                _LeftArrowRed1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_LeftArrowGreen1_SIG, "UCmpSystemTutoDraw::LeftArrowGreen1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.G):X}",
+                    "movd xmm0, eax",
+                };
+                _LeftArrowGreen1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_LeftArrowBlue1_SIG, "UCmpSystemTutoDraw::LeftArrowBlue1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.B):X}",
+                    "movd xmm0, eax",
+                };
+                _LeftArrowBlue1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_LeftArrowRed2_SIG, "UCmpSystemTutoDraw::LeftArrowRed2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.R):X}",
+                    "movd xmm0, eax",
+                };
+                _LeftArrowRed2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_LeftArrowGreen2_SIG, "UCmpSystemTutoDraw::LeftArrowGreen2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.G):X}",
+                    "movd xmm0, eax",
+                };
+                _LeftArrowGreen2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_LeftArrowBlue2_SIG, "UCmpSystemTutoDraw::LeftArrowBlue2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.B):X}",
+                    "movd xmm0, eax",
+                };
+                _LeftArrowBlue2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_RightArrowRed1_SIG, "UCmpSystemTutoDraw::RightArrowRed1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.R):X}",
+                    "movd xmm0, eax",
+                };
+                _RightArrowRed1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_RightArrowGreen1_SIG, "UCmpSystemTutoDraw::RightArrowGreen1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.G):X}",
+                    "movd xmm0, eax",
+                };
+                _RightArrowGreen1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_RightArrowBlue1_SIG, "UCmpSystemTutoDraw::RightArrowBlue1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.B):X}",
+                    "movd xmm0, eax",
+                };
+                _RightArrowBlue1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_RightArrowRed2_SIG, "UCmpSystemTutoDraw::RightArrowRed2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.R):X}",
+                    "movd xmm0, eax",
+                };
+                _RightArrowRed2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_RightArrowGreen2_SIG, "UCmpSystemTutoDraw::RightArrowGreen2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.G):X}",
+                    "movd xmm0, eax",
+                };
+                _RightArrowGreen2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_RightArrowBlue2_SIG, "UCmpSystemTutoDraw::RightArrowBlue2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.B):X}",
+                    "movd xmm0, eax",
+                };
+                _RightArrowBlue2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UCmpSystemConfigDraw_DrawConfigTopMainTogglerBG_SIG, "UCmpSystemConfigDraw::DrawConfigTopMainTogglerBG", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0x80], ${_context._config.MainToggler.B:X}",
+                    $"mov byte [rbp + 0x81], ${_context._config.MainToggler.G:X}",
+                    $"mov byte [rbp + 0x82], ${_context._config.MainToggler.R:X}"
+                };
+                _DrawConfigTopMainTogglerBG = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemConfigDraw_DrawConfigTopSecondaryTogglerBG_SIG, "UCmpSystemConfigDraw::DrawConfigTopSecondaryTogglerBG", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0x6F], ${_context._config.SecondaryToggler.B:X}",
+                    $"mov byte [rbp + 0x70], ${_context._config.SecondaryToggler.G:X}",
+                    $"mov byte [rbp + 0x71], ${_context._config.SecondaryToggler.R:X}"
+                };
+                _DrawConfigTopSecondaryTogglerBG = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UCmpSystemConfigDraw_ArrowRed1_SIG, "UCmpSystemConfigDraw::ArrowRed1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.R):X}",
+                    "movd xmm0, eax",
+                };
+                _ArrowRed1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemConfigDraw_ArrowGreen1_SIG, "UCmpSystemConfigDraw::ArrowGreen1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.G):X}",
+                    "movd xmm0, eax",
+                };
+                _ArrowGreen1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemConfigDraw_ArrowBlue1_SIG, "UCmpSystemConfigDraw::ArrowBlue1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedLowerColor.B):X}",
+                    "movd xmm0, eax",
+                };
+                _ArrowBlue1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemConfigDraw_ArrowRed2_SIG, "UCmpSystemConfigDraw::ArrowRed2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.R):X}",
+                    "movd xmm0, eax",
+                };
+                _ArrowRed2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemConfigDraw_ArrowGreen2_SIG, "UCmpSystemConfigDraw::ArrowGreen2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.G):X}",
+                    "movd xmm0, eax",
+                };
+                _ArrowGreen2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemConfigDraw_ArrowBlue2_SIG, "UCmpSystemConfigDraw::ArrowBlue2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov eax, 0x{BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.B):X}",
+                    "movd xmm0, eax",
+                };
+                _ArrowBlue2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
 
         public override void Register()

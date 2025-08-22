@@ -1932,8 +1932,11 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Quest: Shadows Femc and Chairs Color")]
         public ConfigColor QuestFemcChairsShadow { get; set; } = new ConfigColor(0x58, 0x0F, 0x21, 0xFF);
 
-        [DisplayName("Quest: Request/Missing Person Toggler Background Color")]
-        public ConfigColor QuestToggler { get; set; } = new ConfigColor(0x2e, 0x09, 0x17, 0xFF);
+        [DisplayName("Camp: Main Toggler Background Color")]
+        public ConfigColor MainToggler { get; set; } = new ConfigColor(0x2e, 0x09, 0x17, 0xFF);
+
+        [DisplayName("Camp: Secondary Toggler Background Color")]
+        public ConfigColor SecondaryToggler { get; set; } = new ConfigColor(0x2f, 0x12, 0x1E, 0xFF);
 
         [DisplayName("Persona Status: Highlighted selection color")]
         public ConfigColor PersonaStatusHighlightedColor { get; set; } = new ConfigColor(0x29, 0x00, 0xEA, 0x99);
@@ -2367,6 +2370,26 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Animated triangle color when assigning personas/equipment")]
         public ConfigColor EquipTriangleColor { get; set; } = new ConfigColor(0xFF, 0xA1, 0xCA, 0xFF);
 
+        [DisplayName("Events: Handwriting gradation color 1")]
+        public ConfigColor HandwritingGradationColor1 { get; set; } = new ConfigColor(0xFF, 0xA4, 0xC7, 0xFF);
+
+        [DisplayName("Events: Handwriting gradation color 2")]
+        public ConfigColor HandwritingGradationColor2 { get; set; } = new ConfigColor(0xFF, 0x00, 0x66, 0xFF);
+
+        [DisplayName("Camp: Stats menu background underlay")]
+        public ConfigColor CampStatsMenuUnderlay { get; set; } = new ConfigColor(0x40, 0x01, 0x0A, 0xFF);
+
+        [DisplayName("Camp: Highlighted dark color")]
+        public ConfigColor CampHighlightedDark { get; set; } = new ConfigColor(0x00, 0x00, 0x42, 0xFF);
+
+        [DisplayName("Field: Icons over character's head indicating an event (Koromaru walk/Linked episodes) 1")]
+        public ConfigColor AccessIconColor1 { get; set; } = new ConfigColor(0x18, 0x02, 0x06, 0xFF);
+
+        [DisplayName("Field: Icons over character's head indicating an event (Koromaru walk/Linked episodes) 2")]
+        public ConfigColor AccessIconColor2 { get; set; } = new ConfigColor(0xB3, 0x00, 0x36, 0xFF);
+
+        [DisplayName("Field: Icons over character's head indicating an event (Koromaru walk/Linked episodes) 3")]
+        public ConfigColor AccessIconColor3 { get; set; } = new ConfigColor(0x83, 0x01, 0x1D, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
