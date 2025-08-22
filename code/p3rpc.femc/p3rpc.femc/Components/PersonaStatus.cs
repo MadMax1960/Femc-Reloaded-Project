@@ -95,6 +95,9 @@ namespace p3rpc.femc.Components
         private string APersonaStatusDraw_ResultTopLeftCornerDraw_SIG = "C6 85 ?? ?? ?? ?? 00 8B 85 ?? ?? ?? ?? 48 8D 9F ?? ?? ?? ??";
         private string APersonaStatusDraw_DotsTopLeftCornerDraw_SIG = "C6 85 ?? ?? ?? ?? 00 88 9D ?? ?? ?? ?? E8 ?? ?? ?? ?? 44 8B 65 ??";
 
+        private string APersonaStatusDraw_LeftArrow_SIG = "C7 45 ?? 00 00 EE FF 48 8D 4D ??";
+        private string APersonaStatusDraw_RightArrow_SIG = "C7 44 24 ?? 00 00 EE FF 48 8D 4C 24 ??";
+
 
         //private static float[] PersonaInfoBgPoints = { 0, 0, 1270.5f, 0, 1732.5f, 0, 2310, 0, 0, 224, 1270.5f, 24, 1732.5f, 224, 2310, 224 };
         private unsafe float* PersonaInfoBgPoints;
@@ -573,6 +576,14 @@ namespace p3rpc.femc.Components
                 _DotsTopLeftCornerDraw = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
             });
 
+            _context._utils.SigScan(APersonaStatusDraw_LeftArrow_SIG, "APersonaStatusDraw::LeftArrow", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampHighlightedLowerColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_RightArrow_SIG, "APersonaStatusDraw::RightArrow", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampHighlightedLowerColor.ToU32ARGB())));
+            });
 
             _context._utils.SigScan(APersonaStatusDraw_GetSkillListBgColor_SIG, "APersonaStatusDraw::GetSkillListBgColor", _context._utils.GetDirectAddress, addr =>
             {
@@ -708,7 +719,7 @@ namespace p3rpc.femc.Components
             float cAngle = Angle - 11.2f;
             var topLeftColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusSkillListBg);
             _uiCommon._drawRect(&self->baseObj.drawer, cPos.X - 550, cPos.Y - 87, 0, 810, 200, &topLeftColor, 1, 1, cAngle, 1.5f, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
-            var lineColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusPlayerInfoColor);
+            var lineColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusHighlightedLine);
             _uiCommon._drawRect(&self->baseObj.drawer, cPos.X - 16, cPos.Y - 89, 0, 2310, 57, &lineColor, 1, 1, cAngle, 1.5f, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
             var bottomColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusSkillListBg2);
             var bottomModX = new FAppCalculationItem(0, -134, self->Edit_Commentary_Affinity_SlideOut_Delay, self->Edit_Commentary_Affinity_SlideOut_Frame, appCalculationType.DEC);

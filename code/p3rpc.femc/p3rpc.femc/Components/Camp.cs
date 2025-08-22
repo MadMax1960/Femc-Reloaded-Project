@@ -15,6 +15,13 @@ namespace p3rpc.femc.Components
         private string UCmpCommonDraw_DrawFemcShadowColor3_SIG = "C7 44 24 ?? FF B7 A4 9A F3 44 0F 11 5C 24 ?? E8 ?? ?? ?? ?? 0F 28 44 24 ?? 66 0F 7F 45 ?? 66 0F 73 D8 08 66 48 0F 7E C0 48 85 C0 74 ?? F0 FF 40 ?? F3 0F 10 5D ?? 48 8D 4D ?? F3 0F 10 55 ?? BA 03 00 00 00";
         private string UCmpCommonDraw_DrawFemcShadowColor4_SIG = "C7 44 24 ?? FF B7 A4 9A F3 44 0F 11 5C 24 ?? E8 ?? ?? ?? ?? 41 B8 04 00 00 00";
 
+        private string UCmpCommonDraw_DrawOutterEquipTriangleRed_SIG = "41 C7 44 ?? ?? A2 A1 21 3F";
+        private string UCmpCommonDraw_DrawOutterEquipTriangleGreen_SIG = "41 C7 44 ?? ?? C9 C7 47 3F";
+        private string UCmpCommonDraw_DrawOutterEquipTriangleBlue_SIG = "41 C7 44 ?? ?? 00 00 80 3F 49 C7 44 ?? ?? B3 B2 B2 3E";
+        private string UCmpCommonDraw_DrawInnerEquipTriangleRed_SIG = "C7 41 ?? A2 A1 21 3F";
+        private string UCmpCommonDraw_DrawInnerEquipTriangleGreen_SIG = "C7 41 ?? C9 C7 47 3F";
+        private string UCmpCommonDraw_DrawInnerEquipTriangleBlue_SIG = "C7 41 ?? 00 00 80 3F 48 C7 41 ?? B3 B2 B2 3E";
+
         public unsafe CampCommon(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(UCmpCommonDraw_DrawFemcShadowColor1_SIG, "UCmpCommonDraw::DrawFemcShadowColor1", _context._utils.GetDirectAddress, addr =>
@@ -33,6 +40,31 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampFemcShadow.ToU32())));
             });
+
+            _context._utils.SigScan(UCmpCommonDraw_DrawOutterEquipTriangleRed_SIG, "UCmpCommonDraw::DrawOutterEquipTriangleRed", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 5, _context._config.EquipTriangleColor.R / 255.0f)));
+            });
+            _context._utils.SigScan(UCmpCommonDraw_DrawOutterEquipTriangleGreen_SIG, "UCmpCommonDraw::DrawOutterEquipTriangleGreen", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 5, _context._config.EquipTriangleColor.G / 255.0f)));
+            });
+            _context._utils.SigScan(UCmpCommonDraw_DrawOutterEquipTriangleBlue_SIG, "UCmpCommonDraw::DrawOutterEquipTriangleBlue", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 5, _context._config.EquipTriangleColor.B / 255.0f)));
+            });
+            _context._utils.SigScan(UCmpCommonDraw_DrawInnerEquipTriangleRed_SIG, "UCmpCommonDraw::DrawInnerEquipTriangleRed", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipTriangleColor.R / 255.0f)));
+            });
+            _context._utils.SigScan(UCmpCommonDraw_DrawInnerEquipTriangleGreen_SIG, "UCmpCommonDraw::DrawInnerEquipTriangleGreen", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipTriangleColor.G / 255.0f)));
+            });
+            _context._utils.SigScan(UCmpCommonDraw_DrawInnerEquipTriangleBlue_SIG, "UCmpCommonDraw::DrawInnerEquipTriangleBlue", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipTriangleColor.B / 255.0f)));
+            });
         }
 
         public override void Register()
@@ -47,7 +79,7 @@ namespace p3rpc.femc.Components
         //private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "0F 10 45 00 41 B8 01 00 00 00";
         private string UCmpRootDraw_DrawMenuItems_SetColorsNoSel_SIG = "E8 ?? ?? ?? ?? 0F 10 45 00 41 B8 01 00 00 00";
         private string UCmpRootDraw_MenuTransitionColor_SIG = "C7 84 24 ?? ?? ?? ?? FF 2A 00 FF";
-        private string UCmpRootDraw_DrawHighlightedColor1_SIG = "EB ?? C6 45 ?? BA";
+        private string UCmpRootDraw_DrawHighlightedColor1_SIG = "E8 ?? ?? ?? ?? 4C 8D 6E ?? 84 C0";
         private string UCmpRootDraw_DrawHighlightedColor2_SIG = "C7 45 ?? ?? ?? ?? ?? 8B 45 ?? 89 44 24 ?? 44 89 7D ??";
         private string UCmpRootDraw_DrawPartyPanelMissingHealthColor_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 83 ?? ?? ?? ?? 41 B0 B5";
         private string UCmpRootDraw_DrawPartyPanelMissingSpColor_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 83 ?? ?? ?? ?? 45 0F B6 C1 89 BB ?? ?? ?? ??";
@@ -97,9 +129,12 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
+                    "test al, al",
+                    "jnz .grayHighlight",
                     $"mov byte [rbp-0x7E], ${_context._config.CampHighlightedColor.R:X}",
                     $"mov byte [rbp-0x7F], ${_context._config.CampHighlightedColor.G:X}",
                     $"mov byte [rbp-0x80], ${_context._config.CampHighlightedColor.B:X}",
+                    ".grayHighlight:"
                 };
                 _DrawHighlightedColor1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
