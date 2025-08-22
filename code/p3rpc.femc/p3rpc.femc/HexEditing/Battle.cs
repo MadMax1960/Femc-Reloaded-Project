@@ -162,6 +162,122 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteFloat(filePath, 0x1994, (float)config.BtlWaterCausticColor.A / 255.0f);
         }
 
+        private static void ApplyBPBtlShuffleUI(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "BP_BtlShuffleUI.uasset");
+
+            // Card type font color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2374B, config.ShuffleCardTypeFontColor); // Original color #00036D
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x364E0, config.ShuffleCardTypeFontColor);
+
+            // Card type rectangle color and owned rhomb
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x23AFF, config.ShuffleCardTypeAndRhomb); // Original color #3BFFEA
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x25A22, config.ShuffleCardTypeAndRhomb);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x36120, config.ShuffleCardTypeAndRhomb);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x37C1A, config.ShuffleCardTypeAndRhomb);
+
+            // Owned font color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x25D8D, config.ShuffleOwnedFontColor); // Original color #000394
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x38054, config.ShuffleOwnedFontColor);
+
+            // Owned count number font color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x261CF, config.ShuffleOwnedCountFontColor); // Original color #000294
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3FF2E, config.ShuffleOwnedCountFontColor);
+            HexColorEditor.WriteFloat(filePath, 0x4002E, config.ShuffleOwnedCountFontColor.R); // Fade transition into left zero font color
+            HexColorEditor.WriteFloat(filePath, 0x400AA, config.ShuffleOwnedCountFontColor.G);
+            HexColorEditor.WriteFloat(filePath, 0x4015F, config.ShuffleOwnedCountFontColor.B);
+
+            // Owned count number left zero font color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3FE22, config.ShuffleOwnedLeftZeroFontColor); // Original color #32D9DD
+            HexColorEditor.WriteFloat(filePath, 0x40033, config.ShuffleOwnedLeftZeroFontColor.R); // Fade transition from normal count font color
+            HexColorEditor.WriteFloat(filePath, 0x400AF, config.ShuffleOwnedLeftZeroFontColor.G);
+            HexColorEditor.WriteFloat(filePath, 0x40164, config.ShuffleOwnedLeftZeroFontColor.B);
+
+            // Big background cards 1
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x26A95, config.ShuffleBigBGCardsColor1); // Original color #004EFF
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2DA3E, config.ShuffleBigBGCardsColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x38B5D, config.ShuffleBigBGCardsColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3C9A9, config.ShuffleBigBGCardsColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5AC00, config.ShuffleBigBGCardsColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5B269, config.ShuffleBigBGCardsColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5B8D2, config.ShuffleBigBGCardsColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x67652, config.ShuffleBigBGCardsColor1);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x26E79, config.ShuffleUnkColor1); // Original color #0072FF
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x38F97, config.ShuffleUnkColor1);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x28728, config.ShuffleUnkColor2); // Original color #2F4DFF
+
+            // Arcana symbol in right down corner
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2A3F7, config.ShuffleArcanaSymbolColor); // Original color #0352AB
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x34698, config.ShuffleArcanaSymbolColor);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x355C5, config.ShuffleArcanaSymbolColor);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2D6C7, config.ShuffleUnkColor3); // Original color #0090FF
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3C3A7, config.ShuffleUnkColor3);
+
+            // Persona overstock background color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x43963, config.ShufflePersonaOverstockBG, HexColorEditor.ColorOrder.BGR); // Original color #0006F1
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x43ECB, config.ShufflePersonaOverstockBG, HexColorEditor.ColorOrder.BGR);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x44282, config.ShuffleUnkColor4); // Original color #001BE5
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x44672, config.ShuffleUnkColor4);
+
+            // Down gradient color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x57E37, config.ShuffleDownGradient, HexColorEditor.ColorOrder.BGR); // Original color #027CFF
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x68690, config.ShuffleDownGradient, HexColorEditor.ColorOrder.BGR);
+
+            // Down gradient overlay when selecting arcana color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5882B, config.ShuffleDownGradientArcanaSelection); // Original color #0C1C94
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x58F34, config.ShuffleDownGradientArcanaSelection);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5C567, config.ShuffleDownGradientArcanaSelection);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5CC70, config.ShuffleDownGradientArcanaSelection);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x65B32, config.ShuffleDownGradientArcanaSelection);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x661CE, config.ShuffleDownGradientArcanaSelection);
+
+            // Big background cards 2
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x59519, config.ShuffleBigBGCardsColor2); // Original color #0036FF
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x59B82, config.ShuffleBigBGCardsColor2);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x67478, config.ShuffleBigBGCardsColor2);
+
+            // Top gradient and background cards taint
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5A47E, config.ShuffleTopGradientAndCardsTaint); // Original color #002BFB
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x682BB, config.ShuffleTopGradientAndCardsTaint);
+
+            // Shuffle time title underlay color 1
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5D922, config.ShuffleTitleUnderlayColor1); // Original color #0033FF
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5E568, config.ShuffleTitleUnderlayColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x602ED, config.ShuffleTitleUnderlayColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x648DE, config.ShuffleTitleUnderlayColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x64F6A, config.ShuffleTitleUnderlayColor1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x655F6, config.ShuffleTitleUnderlayColor1);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5DF45, config.ShuffleUnkColor5); // Original color #0088FF
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5EB8B, config.ShuffleUnkColor5);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x64C24, config.ShuffleUnkColor5);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x652B0, config.ShuffleUnkColor5);
+
+            // Shuffle time title underlay color 2
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5F1AF, config.ShuffleTitleUnderlayColor2); // Original color #0028AB
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5F788, config.ShuffleTitleUnderlayColor2);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x64252, config.ShuffleTitleUnderlayColor2);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x64598, config.ShuffleTitleUnderlayColor2);
+
+            // Shuffle time title font color
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5FD61, config.ShuffleTitleFontColor, HexColorEditor.ColorOrder.BGR); // Original color #001998
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x6404F, config.ShuffleTitleFontColor, HexColorEditor.ColorOrder.BGR);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x6678C, config.ShuffleUnkColor6); // Original color #000B77
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x66D56, config.ShuffleUnkColor6);
+
+            // Persona overstock title - We gotta convert colors to linear colors so they get converted later to sRGB correctly
+            HexColorEditor.WriteFloat(filePath, 0x76117, (float) Math.Pow(config.OverstockTitleColor.R / 255.0, 2.2)); // Original color #005bf4
+            HexColorEditor.WriteFloat(filePath, 0x761DC, (float) Math.Pow(config.OverstockTitleColor.G / 255.0, 2.2));
+            HexColorEditor.WriteFloat(filePath, 0x762A1, (float) Math.Pow(config.OverstockTitleColor.B / 255.0, 2.2));
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyBPBtlSkillList(config, modDirectory);
@@ -171,6 +287,7 @@ namespace p3rpc.femc.HexEditing
             ApplyBPBtlGuiJyokyoHelp(config, modDirectory);
             ApplyBtlWaterCaustics(config, modDirectory);
             ApplyBPBtlResultUIBase(config, modDirectory);
+            ApplyBPBtlShuffleUI(config, modDirectory);
         }
     }
 }

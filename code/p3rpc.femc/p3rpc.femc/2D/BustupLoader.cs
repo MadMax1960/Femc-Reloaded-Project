@@ -78,6 +78,8 @@ namespace p3rpc.femc
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "purpleoctogamer"));
             else if (configuration.BustupTrue == BustupType.purpleoctogamerAlt)
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "purpleoctogamerAlt"));
+            else if (configuration.BustupTrue == BustupType.Anonymousfluffi)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Anonymousfluffi"));
         }
 	}
 }
