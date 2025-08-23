@@ -2383,13 +2383,16 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CampHighlightedDark { get; set; } = new ConfigColor(0x00, 0x00, 0x42, 0xFF);
 
         [DisplayName("Field: Icons over character's head indicating an event (Koromaru walk/Linked episodes) 1")]
-        public ConfigColor AccessIconColor1 { get; set; } = new ConfigColor(0x18, 0x02, 0x06, 0xFF);
+        public ConfigColor AccessIconColor1 { get; set; } = new ConfigColor(0x61, 0x03, 0x61, 0xFF);
 
         [DisplayName("Field: Icons over character's head indicating an event (Koromaru walk/Linked episodes) 2")]
-        public ConfigColor AccessIconColor2 { get; set; } = new ConfigColor(0xB3, 0x00, 0x36, 0xFF);
+        public ConfigColor AccessIconColor2 { get; set; } = new ConfigColor(0x80, 0x20, 0x40, 0xFF);
 
         [DisplayName("Field: Icons over character's head indicating an event (Koromaru walk/Linked episodes) 3")]
-        public ConfigColor AccessIconColor3 { get; set; } = new ConfigColor(0x83, 0x01, 0x1D, 0xFF);
+        public ConfigColor AccessIconColor3 { get; set; } = new ConfigColor(0x66, 0x05, 0x33, 0xFF);
+
+        [DisplayName("Quest/Missing Persons: Highlighted up/down arrows in detail screen color")]
+        public ConfigColor HighlightedUpDownArrows { get; set; } = new ConfigColor(0x00, 0x7D, 0xEA, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
