@@ -2391,8 +2391,14 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Field: Icons over character's head indicating an event (Koromaru walk/Linked episodes) 3")]
         public ConfigColor AccessIconColor3 { get; set; } = new ConfigColor(0x66, 0x05, 0x33, 0xFF);
 
-        [DisplayName("Quest/Missing Persons: Highlighted up/down arrows in detail screen color")]
+        [DisplayName("Camp: Highlighted up/down arrows color")]
         public ConfigColor HighlightedUpDownArrows { get; set; } = new ConfigColor(0x00, 0x7D, 0xEA, 0xFF);
+
+        [DisplayName("Camp: Compare menu circle BG")]
+        public ConfigColor CampEquipCompareCircle { get; set; } = new ConfigColor(0x5F, 0x00, 0x20, 0xFF);
+
+        [DisplayName("Camp: Compare menu femc shadow inside circle")]
+        public ConfigColor CampEquipCompareFemcShadowCircle { get; set; } = new ConfigColor(0x42, 0x07, 0x17, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]

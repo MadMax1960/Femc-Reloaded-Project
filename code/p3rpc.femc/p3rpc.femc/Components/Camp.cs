@@ -451,11 +451,21 @@ namespace p3rpc.femc.Components
         private string UCmpEquip_FemcArmorFemaleSymbolDraw_SIG = "48 8B 5C 24 ?? 48 83 C4 20 5F C3 81 F9 7E 05 00 00";
         private string UCmpEquip_SafeEquippmentLoad_SIG = "E8 ?? ?? ?? ?? 84 C0 74 ?? 0F B7 CE E8 ?? ?? ?? ?? 0F B6 F8";
 
+        private string UCmpEquipCompare_DrawCircleShadow_SIG = "E8 ?? ?? ?? ?? C7 44 24 ?? 80 00 00 00 44 8B C8 89 6C 24 ?? 0F 57 D2 0F 28 CF F3 44 0F 11 4C 24 ??";
+        private string UCmpEquipCompare_DrawCircle_SIG = "E8 ?? ?? ?? ?? C7 44 24 ?? 80 00 00 00 44 8B C8 89 6C 24 ?? 0F 57 D2 0F 28 CF F3 0F 11 74 24 ??";
+        private string UCmpEquipCompare_DrawCircleFemcShadow_SIG = "E8 ?? ?? ?? ?? 48 8B 8F ?? ?? ?? ?? 8B D8 E8 ?? ?? ?? ?? 0F B6 0D ?? ?? ?? ??";
+        private string UCmpEquipCompare_DrawArrowUp_SIG = "0D 00 29 00 EA 33 D2";
+        private string UCmpEquipCompare_DrawArrowDown_SIG = "0D 00 29 00 EA F3 0F 11 7C 24 ??";
+
         private IHook<UCmpEquipDraw_DrawEquipItemStatsNum> _drawStatsNum;
 
         private IAsmHook _FemaleEquipmentForFemc;
         private IAsmHook _FemcArmorFemaleSymbolDraw;
         private IAsmHook _SafeEquippmentLoad;
+
+        private IAsmHook _DrawCircleShadow;
+        private IAsmHook _DrawCircle;
+        private IAsmHook _DrawCircleFemcShadow;
 
         public unsafe CampEquip(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
@@ -597,6 +607,48 @@ namespace p3rpc.femc.Components
                     ".itemEquippable:",
                 };
                 _SafeEquippmentLoad = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
+            });
+
+            _context._utils.SigScan(UCmpEquipCompare_DrawCircleShadow_SIG, "UCmpEquipCompare::DrawCircleShadow", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r9b, ${_context._config.CampEquipCompareCircle.B:X}",
+                    $"mov r8b, ${_context._config.CampEquipCompareCircle.G:X}",
+                    $"mov dl, ${_context._config.CampEquipCompareCircle.R:X}"
+                };
+                _DrawCircleShadow = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpEquipCompare_DrawCircle_SIG, "UCmpEquipCompare::DrawCircle", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r9b, ${_context._config.CampEquipCompareCircle.B:X}",
+                    $"mov r8b, ${_context._config.CampEquipCompareCircle.G:X}",
+                    $"mov dl, ${_context._config.CampEquipCompareCircle.R:X}"
+                };
+                _DrawCircle = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpEquipCompare_DrawCircleFemcShadow_SIG, "UCmpEquipCompare::DrawCircleFemcShadow", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r9b, ${_context._config.CampEquipCompareFemcShadowCircle.B:X}",
+                    $"mov r8b, ${_context._config.CampEquipCompareFemcShadowCircle.G:X}",
+                    $"mov dl, ${_context._config.CampEquipCompareFemcShadowCircle.R:X}"
+                };
+                _DrawCircleFemcShadow = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpEquipCompare_DrawArrowUp_SIG, "UCmpEquipCompare::DrawArrowUp", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.HighlightedUpDownArrows.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquipCompare_DrawArrowDown_SIG, "UCmpEquipCompare::DrawArrowDown", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.HighlightedUpDownArrows.ToU32IgnoreAlpha())));
             });
         }
 
