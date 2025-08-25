@@ -1,0 +1,36 @@
+[msg MSG_000_0_0 [Ken Amada]]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 1 0 0]Ah, [nl].[n][w][e]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 2 0 0]Menos mal que me he topado contigo. Se me hacía un poco exasperante venir solo al instituto.[n][w][e]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 3 0 0]Por cierto, he venido a traer una cosa que se ha dejado Sanada.[n][w][e]
+[f 2 1][bup 8 1 65535 65535 0 0][vp 1 0 4 4 0 0]Suele ser muy organizado, pero a veces se le va la pinza.[n][w][e]
+
+[msg MSG_001_0_0 [Ken Amada]]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 5 0 0][f 4 25 8]...[n][w][e]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 6 0 0]A todo esto...[n][w][e]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 7 0 0]¿Te acuerdas de Aragaki? Estuvo una temporada en la residencia.[n][w][e]
+
+[msg MSG_002_0_0 [Ken Amada]]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 8 0 0]La verdad es que no teníamos mucha relación, pero cada vez que me acuerdo de él...[n][w][e]
+[f 2 1][bup 8 3 65535 65535 0 0][vp 1 0 4 9 0 0]Un dolor me oprime el pecho y me pongo muy triste, como si me hubiera olvidado de algo importante.[n][w][e]
+[f 2 1][bup 8 3 65535 65535 0 0][vp 1 0 4 10 0 0]Aunque no sé qué puede ser...[n][w][e]
+[f 2 1][bup 8 3 65535 65535 0 0][vp 1 0 4 11 0 0]Me da la impresión de que tenía que hacer algo.[n][w][e]
+[f 2 1][bup 8 3 65535 65535 0 0][vp 1 0 4 12 0 0]Pero... no sé qué es ni por qué me siento de esta manera.[n][w][e]
+
+[msg MSG_003_0_0 [Ken Amada]]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 14 0 0]Ay, perdona. Me encuentro tan cómodo hablando contigo que me vengo arriba y no hay quien me calle.[n][w][e]
+[f 2 1][bup 8 1 65535 65535 0 0][vp 1 0 4 15 0 0]Muchas gracias por estar siempre dispuesta a escucharme, [nl].[n][w][e]
+[f 2 1][bup 8 1 65535 65535 0 0][vp 1 0 4 16 0 0]Incluso me acompañaste a comprar té. Además, tú no me tratas como un crío...[n][w][e]
+[f 2 1][bup 8 1 65535 65535 0 0][vp 1 0 4 17 0 0]Te estoy muy agradecido por todo.[n][w][e]
+
+[msg MSG_004_0_0 [Ken Amada]]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 18 0 0]Ay, perdona. Me encuentro tan cómodo hablando contigo que me vengo arriba y no hay quien me calle.[n][w][e]
+[f 2 1][bup 8 1 65535 65535 0 0][vp 1 0 4 19 0 0]Muchas gracias por estar siempre dispuesta a escucharme, [nl].[n][w][e]
+[f 2 1][bup 8 1 65535 65535 0 0][vp 1 0 4 20 0 0]Incluso me acompañaste al cine. Además, tú no me tratas como un crío...[n][w][e]
+[f 2 1][bup 8 1 65535 65535 0 0][vp 1 0 4 21 0 0]Te estoy muy agradecido por todo.[n][w][e]
+
+[msg MSG_005_0_0 [Ken Amada]]
+[f 2 1][bup 8 0 65535 65535 0 0][vp 1 0 4 22 0 0]Todavía soy un crío, ¿no? Ojalá pudiera crecer más rápido.[n][w][e]
+[f 2 1][bup 8 3 65535 65535 0 0][vp 1 0 4 23 0 0]Por más maduro que intento ser, la gente no hace más que protegerme.[n][w][e]
+[f 2 1][bup 8 3 65535 65535 0 0][vp 1 0 4 24 0 0]Siempre hay alguien cuidando de mí.[n][w][e]
+[f 2 1][bup 8 3 65535 65535 0 0][vp 1 0 4 25 0 0]¿Llegaré a ser algún día lo bastante fuerte como para ser yo quien proteja a los demás?[n][w][e]
+

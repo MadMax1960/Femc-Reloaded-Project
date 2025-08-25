@@ -58,4 +58,9 @@
     <ProjectReference Include="..\include\Ryo\Ryo.Interfaces\Ryo.Interfaces.csproj" />
     <ProjectReference Include="..\include\SharedScans\SharedScans.Interfaces\SharedScans.Interfaces.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Unreal.AtlusScript.Interfaces">
+      <HintPath>Unreal.AtlusScript.Interfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
