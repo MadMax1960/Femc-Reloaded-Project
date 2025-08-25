@@ -171,6 +171,8 @@ namespace p3rpc.femc
                 HexEditing.Battle.Apply(_configuration, _context._modLocation);
 				HexEditing.PersonaStatus.Apply(_configuration, _context._modLocation);
                 HexEditing.Cmmu.Apply(_configuration, _context._modLocation);
+                HexEditing.Handwriting.Apply(_configuration, _context._modLocation);
+                HexEditing.Field.Apply(_configuration, _context._modLocation);
             }
 			catch (Exception ex)
 			{
@@ -195,7 +197,8 @@ namespace p3rpc.femc
 				_modRuntime.AddModule<CampPersona>();
 				_modRuntime.AddModule<CampStats>();
 				_modRuntime.AddModule<CampSocialLink>();
-				_modRuntime.AddModule<CampCalendar>();
+                _modRuntime.AddModule<CampQuest>();
+                _modRuntime.AddModule<CampCalendar>();
 				_modRuntime.AddModule<CampSystem>();
 				_modRuntime.AddModule<SocialStats>();
 				_modRuntime.AddModule<Tutorial>();

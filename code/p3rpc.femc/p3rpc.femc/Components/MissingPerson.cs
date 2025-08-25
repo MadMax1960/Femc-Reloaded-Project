@@ -180,9 +180,9 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"mov r8b, ${_context._config.QuestToggler.B:X}",
-                    $"mov dl, ${_context._config.QuestToggler.G:X}",
-                    $"mov cl, ${_context._config.QuestToggler.R:X}"
+                    $"mov r8b, ${_context._config.MainToggler.B:X}",
+                    $"mov dl, ${_context._config.MainToggler.G:X}",
+                    $"mov cl, ${_context._config.MainToggler.R:X}"
                 };
                 _QuestToggler = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
@@ -340,7 +340,11 @@ namespace p3rpc.femc.Components
                 var scrollF5 = (1 - scrollF2) * 20 + self->Field938 + self->Field9A8;
                 self->arrowUpA.Field1C = scrollF3;
                 self->arrowDownA.Field1C = scrollF3;
-                var scrollColor = new FSprColor((byte)(scrollF3 * 234), 0, (byte)(scrollF3 * 41), 0xff);
+                var scrollColor = new FSprColor(
+                    (byte)(scrollF3 * _context._config.HighlightedUpDownArrows.R),
+                    (byte)(scrollF3 * _context._config.HighlightedUpDownArrows.G),
+                    (byte)(scrollF3 * _context._config.HighlightedUpDownArrows.B), 
+                    0xff);
                 self->arrowUpB.color = scrollColor;
                 self->arrowDownB.color = scrollColor;
 
