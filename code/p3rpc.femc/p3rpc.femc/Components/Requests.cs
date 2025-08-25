@@ -54,6 +54,9 @@ namespace p3rpc.femc.Components
         private string AUIRequest_StatusTriangle_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 89 45 ?? E8 ?? ?? ?? ?? 33 D2 48 8B CE E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 0F 57 C9 8B 44 24 ??";
         private string AUIRequest_StatusSortFont_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 48 8B D6 89 44 24 ?? E8 ?? ?? ?? ?? BA 02 00 00 00";
 
+        private string AUIRequest_DetailUpArrow_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 86 ?? ?? ?? ??";
+        private string AUIRequest_DetailDownArrow_SIG = "E8 ?? ?? ?? ?? 33 D2 89 86 ?? ?? ?? ??";
+
         private IAsmHook _BackCardColor;
         private IAsmHook _BackSquaresColor;
         private IAsmHook _DetailBackColor;
@@ -87,6 +90,8 @@ namespace p3rpc.femc.Components
         private IAsmHook _NumberSortFont;
         private IAsmHook _StatusTriangle;
         private IAsmHook _StatusSortFont;
+        private IAsmHook _DetailUpArrow;
+        private IAsmHook _DetailDownArrow;
 
         /*
         private string AUIRequest_DetailColor_SIG = "E8 ?? ?? ?? ?? BA 04 00 00 00 89 45 ??";
@@ -533,6 +538,61 @@ namespace p3rpc.femc.Components
                     $"mov cl, ${_context._config.MissingSortTriangle.R:X}"
                 };
                 _StatusSortFont = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DetailUpArrow_SIG, "AUIRequest::DetailUpArrow", _context._utils.GetDirectAddress, addr =>
+            {
+                int rBits = BitConverter.SingleToInt32Bits((float)_context._config.HighlightedUpDownArrows.R); // Original in t=1 -> #ea0029
+                int gBits = BitConverter.SingleToInt32Bits((float)_context._config.HighlightedUpDownArrows.G);
+                int bBits = BitConverter.SingleToInt32Bits((float)_context._config.HighlightedUpDownArrows.B);
+
+                // xmm6 holds the t, so we interpolate each component from that value, t=0 -> #000000
+                string[] function =
+                {
+                    "use64",
+                    $"mov ecx, 0x{rBits:X}", // Red interpolation
+                    "movd xmm1, ecx",
+                    "mulss xmm1, xmm6",
+                    "cvttss2si ecx, xmm1",
+
+                    $"mov edx, 0x{gBits:X}", // Green interpolation
+                    "movd xmm1, edx",
+                    "mulss xmm1, xmm6",
+                    "cvttss2si edx, xmm1",
+
+                    $"mov r8d, 0x{bBits:X}", // Blue interpolation
+                    "movd xmm1, r8d",
+                    "mulss xmm1, xmm6",
+                    "cvttss2si r8d, xmm1",
+                };
+                _DetailUpArrow = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUIRequest_DetailDownArrow_SIG, "AUIRequest::DetailDownArrow", _context._utils.GetDirectAddress, addr =>
+            {
+                int rBits = BitConverter.SingleToInt32Bits((float)_context._config.HighlightedUpDownArrows.R); // Original in t=1 -> #ea0029
+                int gBits = BitConverter.SingleToInt32Bits((float)_context._config.HighlightedUpDownArrows.G);
+                int bBits = BitConverter.SingleToInt32Bits((float)_context._config.HighlightedUpDownArrows.B);
+
+                // xmm6 holds the t, so we interpolate each component from that value, t=0 -> #000000
+                string[] function =
+                {
+                    "use64",
+                    $"mov ecx, 0x{rBits:X}", // Red interpolation
+                    "movd xmm1, ecx",
+                    "mulss xmm1, xmm6",
+                    "cvttss2si ecx, xmm1",
+
+                    $"mov edx, 0x{gBits:X}", // Green interpolation
+                    "movd xmm1, edx",
+                    "mulss xmm1, xmm6",
+                    "cvttss2si edx, xmm1",
+
+                    $"mov r8d, 0x{bBits:X}", // Blue interpolation
+                    "movd xmm1, r8d",
+                    "mulss xmm1, xmm6",
+                    "cvttss2si r8d, xmm1",
+                };
+                _DetailDownArrow = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
         }
 

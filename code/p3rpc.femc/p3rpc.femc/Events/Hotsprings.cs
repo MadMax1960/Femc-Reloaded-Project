@@ -23,6 +23,7 @@ public static class HotspringsLoader
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Hotsprings"));
             atlusAssets.RegisterAssetsFolderWithModData(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Hotsprings", "MessageScripts"), new (modConfig.ModId, modLocation), AssetMode.Default, ESystemLanguage.UNIVERSAL);
             //ryo.AddAudioFolder(modLoader.GetDirectoryForModId(modConfig.ModId) + "/Events/Ray/Oscar Fortnite/Hotsprings Voice");
+            unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "DormHang"));
         }
     }
 }
