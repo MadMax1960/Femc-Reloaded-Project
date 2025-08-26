@@ -13,7 +13,9 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Events", "Group", "bichelle"));
 			else if (configuration.GroupEventTrue == GroupEventtype.ely)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Events", "Group", "ely"));
-			// Add other Group Event conditions if needed.
-		}
+            else if (configuration.GroupEventTrue == GroupEventtype.mekki)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Events", "Group", "Mekki"));
+            // Add other Group Event conditions if needed.
+        }
 	}
 }
