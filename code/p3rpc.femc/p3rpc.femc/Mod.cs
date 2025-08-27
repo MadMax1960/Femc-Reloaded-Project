@@ -171,7 +171,7 @@ namespace p3rpc.femc
                 HexEditing.Battle.Apply(_configuration, _context._modLocation);
 				HexEditing.PersonaStatus.Apply(_configuration, _context._modLocation);
                 HexEditing.Cmmu.Apply(_configuration, _context._modLocation);
-                HexEditing.Handwriting.Apply(_configuration, _context._modLocation);
+                //HexEditing.Handwriting.Apply(_configuration, _context._modLocation);
                 HexEditing.Field.Apply(_configuration, _context._modLocation);
             }
 			catch (Exception ex)

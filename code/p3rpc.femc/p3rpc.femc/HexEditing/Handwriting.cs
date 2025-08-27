@@ -60,6 +60,10 @@ namespace p3rpc.femc.HexEditing
                 "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "UI", "Handwriting", "Materials", "MI_UI_Handwriting_Question_02.uasset");
 
+            HexColorEditor.WriteFloat(filePath, 0x10D8, (config.HandwritingGradationColor1.R / 255.0f) * 5.0f); // Original color #ABD5FF
+            HexColorEditor.WriteFloat(filePath, 0x10DC, (config.HandwritingGradationColor1.G / 255.0f) * 5.0f);
+            HexColorEditor.WriteFloat(filePath, 0x10E0, (config.HandwritingGradationColor1.B / 255.0f) * 5.0f);
+
             HexColorEditor.WriteFloat(filePath, 0x1202, (config.HandwritingGradationColor2.R / 255.0f) * 5.0f); // Original color #00AAFF
             HexColorEditor.WriteFloat(filePath, 0x1206, (config.HandwritingGradationColor2.G / 255.0f) * 5.0f);
             HexColorEditor.WriteFloat(filePath, 0x120A, (config.HandwritingGradationColor2.B / 255.0f) * 5.0f);
