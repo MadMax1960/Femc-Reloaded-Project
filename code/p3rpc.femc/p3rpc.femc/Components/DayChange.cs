@@ -26,6 +26,8 @@ namespace p3rpc.femc.Components
         private string AUIDayChange_DrawNextDayRipple1_SIG = "0F 28 05 ?? ?? ?? ?? 48 8D 54 24 ?? 48 8B CF 89 44 24 ??";
         private string AUIDayChange_DrawNextDayRipple2_SIG = "0F 28 05 ?? ?? ?? ?? 48 8D 54 24 ?? 48 8B CF 89 45 ?? 0F 11 45 ?? C7 45 ?? 00 00 00 00 C7 45 ?? 00 00 00 00 C7 45 ?? 00 00 00 40 E8 ?? ?? ?? ?? F3 0F 10 40 ??";
 
+        private string AUIDayChange_DrawNextDayBackground_SIG = "E8 ?? ?? ?? ?? 33 FF 89 86 ?? ?? ?? ?? 48 8D 8E ?? ?? ?? ??";
+
         private IHook<AUIDayChange_UpdateParams> _updateParams;
 
         private IAsmHook _currentDayMoonShadowColor;
@@ -34,6 +36,8 @@ namespace p3rpc.femc.Components
         private IAsmHook _drawDaysUntilFullMoon3;
         private IAsmHook _drawNextDayRipple1;
         private IAsmHook _drawNextDayRipple2;
+        private IAsmHook _DrawNextDayBackground;
+
         private IReverseWrapper<AUIDayChange_SetColorPassthrough> _currentDayMoonShadowColorWrapper;
         private IReverseWrapper<AUIDayChange_SetColorPassthrough> _drawDaysUntilFullMoon1Wrapper;
         private IReverseWrapper<AUIDayChange_SetColorPassthrough> _drawDaysUntilFullMoon2Wrapper;
@@ -96,6 +100,18 @@ namespace p3rpc.femc.Components
                     $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(AUIDayChange_DrawNextDayRipple, out _drawNextDayRipple2Wrapper)}",
                 };
                 _drawNextDayRipple2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIDayChange_DrawNextDayBackground_SIG, "AUIDayChange::DrawNextDayBackground", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.DayChangeBGColor.B:X}",
+                    $"mov dl, ${_context._config.DayChangeBGColor.G:X}",
+                    $"mov cl, ${_context._config.DayChangeBGColor.R:X}"
+                };
+                _DrawNextDayBackground = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
         }
         public override void Register()
