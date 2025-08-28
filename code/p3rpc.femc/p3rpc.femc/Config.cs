@@ -188,7 +188,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "Bichelle")]
         bichelle,
         [Display(Name = "Ely")]
-        ely
+        ely,
+        [Display(Name = "Mekki & Cpido & Dniwe")]
+        mekki
         }
 
         [DisplayName("Kyoto Photos")]
