@@ -12,7 +12,7 @@
 [f 2 1]Rirurin is amazing!![n][w][e]
 
 [msg MND_004_0_0 [DEV: Internal MES]]
-[f 2 1]Rirurin is amazing!![n][w][e]
+[f 2 1]Hey you found Lucina!![n][w][e]
 
 [msg MND_005_0_0 [DEV: Internal MES]]
 [f 2 1]Rirurin is amazing!![n][w][e]
