@@ -36,6 +36,8 @@ namespace p3rpc.femc.Components
         public ICommonMethods.GetUGlobalWork _getUGlobalWork;
         public ICommonMethods.FAppCalculationItem_Lerp _appCalcLerp;
 
+        private bool bCheckedSteam = false;
+
         // todo: move to commonutils
         public AUIDrawBaseActor_DrawRectV4Inner _drawRectV4Inner;
         public DrawSpriteDetailedParams _drawSprDetailedParams;
@@ -102,6 +104,8 @@ namespace p3rpc.femc.Components
             IdentityMatrixNative[5] = 1;
             IdentityMatrixNative[10] = 1;
             IdentityMatrixNative[15] = 1;
+
+            bCheckedSteam = false;
         }
 
         public static float Lerp(float a, float b, float c) => (1 - c) * a + b * c; // FUN_14117cd40
@@ -155,5 +159,24 @@ namespace p3rpc.femc.Components
 
         public unsafe delegate void AUIDrawBaseActor_DrawRectV4Inner(BPDrawSpr* drawer, float X, float Y, float Z, FVector* v0, FVector* v1, FVector* v2, FVector* v3, FColor* color, float* transMtx, float antiAlias, int queueId);
         public unsafe delegate void DrawSpriteDetailedParams(USprAsset* spr, uint a2, uint id, float X, float Y, float Z, FSprColor color, int queueId, float a9, float a10, float a11, int a12, byte a13);
+
+        public unsafe IGlobalWork GetUGlobalWorkEx()
+        {
+            var data = _getUGlobalWork();
+
+            if (!bCheckedSteam)
+            {
+                _context.bIsSteam = Native.GetModuleHandleA("steam_api64") != nint.Zero;
+                bCheckedSteam = true;
+            }
+            if (_context.bIsAigis)
+            {
+                if (_context.bIsSteam)
+                    return new nativetypes.Interfaces.Astrea.GlobalWork((nativetypes.Interfaces.Astrea.UGlobalWork*)data);
+                else
+                    return new nativetypes.Interfaces.Astrea.GlobalWorkUWP((nativetypes.Interfaces.Astrea.UGlobalWorkUWP*)data);
+            }
+            else return new GlobalWork(data);
+        }
     }
 }

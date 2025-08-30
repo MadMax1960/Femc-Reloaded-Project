@@ -1674,12 +1674,12 @@ namespace p3rpc.femc.Components
                 var v1 = new FAppCalculationItem(-400, 0, self->PartJobBgInAnimDelay, self->Field70, appCalculationType.DEC);
                 var f1 = _uiCommon._appCalcLerp(self->Field248, &v1, 1, 0);
                 var fy = y + f1;
-                var gWork = _uiCommon._getUGlobalWork();
-                var bgColor = gWork->Calendar.TimeOfDay switch
+                var gWork = _uiCommon.GetUGlobalWorkEx();
+                var bgColor = gWork.GetCalendar()->TimeOfDay switch
                 {
-                    ECldTimeZone.Night | ECldTimeZone.Shadow | ECldTimeZone.Midnight 
+                    ECldTimeZone.Night or ECldTimeZone.Shadow or ECldTimeZone.Midnight 
                     => ConfigColor.ToFColorBP(_context._config.CampCalendarHighlightColor),
-                    _ => ConfigColor.ToFColorBP(_context._config.CampCalendarHighlightColor),
+                    _ => new FColor(0xFF, 0xFF, 0xF0, 0x46),
                 };
                 _uiCommon._drawPlg(&self->DrawSpr, x - 4, fy - 4, 0, &bgColor, 0xa3, 1, 1, 0, campPlg, self->CalendarDrawQueue);
                 var textPos = new FVector2D(x, fy);

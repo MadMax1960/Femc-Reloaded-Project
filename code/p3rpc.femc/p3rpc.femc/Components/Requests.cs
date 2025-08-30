@@ -57,6 +57,9 @@ namespace p3rpc.femc.Components
         private string AUIRequest_DetailUpArrow_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 86 ?? ?? ?? ??";
         private string AUIRequest_DetailDownArrow_SIG = "E8 ?? ?? ?? ?? 33 D2 89 86 ?? ?? ?? ??";
 
+        private string AUIRequest_ReportIconExclamation_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 74 24 ?? 48 8B D6";
+        private string AUIRequest_ReportIconBG_SIG = "E8 ?? ?? ?? ?? 4C 8B 87 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 74 24 ?? 48 8B D6";
+
         private IAsmHook _BackCardColor;
         private IAsmHook _BackSquaresColor;
         private IAsmHook _DetailBackColor;
@@ -92,6 +95,8 @@ namespace p3rpc.femc.Components
         private IAsmHook _StatusSortFont;
         private IAsmHook _DetailUpArrow;
         private IAsmHook _DetailDownArrow;
+        private IAsmHook _ReportIconExclamation;
+        private IAsmHook _ReportIconBG;
 
         /*
         private string AUIRequest_DetailColor_SIG = "E8 ?? ?? ?? ?? BA 04 00 00 00 89 45 ??";
@@ -593,6 +598,29 @@ namespace p3rpc.femc.Components
                     "cvttss2si r8d, xmm1",
                 };
                 _DetailDownArrow = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_ReportIconExclamation_SIG, "AUIRequest::ReportIconExclamation", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestStatusFontTagBack.B:X}",
+                    $"mov dl, ${_context._config.RequestStatusFontTagBack.G:X}",
+                    $"mov cl, ${_context._config.RequestStatusFontTagBack.R:X}"
+                };
+                _ReportIconExclamation = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AUIRequest_ReportIconBG_SIG, "AUIRequest::ReportIconBG", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestReportBG.B:X}",
+                    $"mov dl, ${_context._config.RequestReportBG.G:X}",
+                    $"mov cl, ${_context._config.RequestReportBG.R:X}"
+                };
+                _ReportIconBG = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
         }
 

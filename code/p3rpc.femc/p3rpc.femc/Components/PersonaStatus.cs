@@ -705,8 +705,8 @@ namespace p3rpc.femc.Components
         }
         private unsafe bool CurrentPersonaIsEquipped(APersonaStatusDraw* self)
         {
-            var gWork = _uiCommon._getUGlobalWork();
-            var pUnit = gWork->GetUnit(1);
+            var gWork = _uiCommon.GetUGlobalWorkEx();
+            var pUnit = gWork.GetUnit(1);
             if (gWork != null && pUnit->persona.GetPersona(pUnit->persona.equip)->Id == self->pCurrentPersona->Id)
             {
                 return true;
