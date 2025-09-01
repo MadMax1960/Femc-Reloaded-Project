@@ -16,6 +16,9 @@ namespace p3rpc.femc.HexEditing
             CampQuest.Apply(config, modDirectory);
             CampCalendar.Apply(config, modDirectory);
             CampConfiguration.Apply(config, modDirectory);
+            CampStats.Apply(config, modDirectory);
+            CampSystem.Apply(config, modDirectory);
+            CampSkill.Apply(config, modDirectory);
         }
     }
 
@@ -70,6 +73,44 @@ namespace p3rpc.femc.HexEditing
         }
     }
 
+    public static class CampSkill
+    {
+        private static void ApplyMIGunColor(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Player", "PC0051", "Models", "MI_PC0051_C002_03_CaFiOp.uasset");
+
+            HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
+
+            HexColorEditor.WriteColor(filePath, 0xA50, config.SkillGunColor, HexColorEditor.ColorOrder.RGBA, type); // Original color #566891
+        }
+
+        public static void Apply(Config config, string modDirectory)
+        {
+            ApplyMIGunColor(config, modDirectory);
+        }
+    }
+
+    public static class CampStats
+    {
+        private static void ApplyMIBackgroundShards(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Player", "PC0051", "Models", "MI_PC0051_C002_02_CaFiOp.uasset");
+
+            HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
+
+            HexColorEditor.WriteColor(filePath, 0xA50, config.StatusShardsColor, HexColorEditor.ColorOrder.RGBA, type); // Original color #1B80FF
+        }
+
+        public static void Apply(Config config, string modDirectory)
+        {
+            ApplyMIBackgroundShards(config, modDirectory);
+        }
+    }
+
     public static class CampQuest
     {
         private static void ApplyMIUICampQuestBG(Config config, string modDirectory)
@@ -85,9 +126,21 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePath, 0xBBC, config.QuestElizabethBottomGradient, HexColorEditor.ColorOrder.RGB, type);
         }
 
+        private static void ApplyMIBackgroundChairs(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Player", "PC0051", "Models", "MI_PC0051_C002_05_CaFiOp.uasset");
+
+            HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
+
+            HexColorEditor.WriteColor(filePath, 0xA50, config.RequestChairsColor, HexColorEditor.ColorOrder.RGBA, type); // Original color #011E76
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyMIUICampQuestBG(config, modDirectory);
+            ApplyMIBackgroundChairs(config, modDirectory);
         }
     }
 
@@ -151,6 +204,25 @@ namespace p3rpc.femc.HexEditing
         {
             ApplyBPUIConfiguration(config, modDirectory);
             ApplyMainMenuConfigCurve(config, modDirectory);
+        }
+    }
+
+    public static class CampSystem
+    {
+        private static void ApplyMIFallingNine(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Player", "PC0051", "Models", "MI_PC0051_C002_06_CaFiOp.uasset");
+
+            HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
+
+            HexColorEditor.WriteColor(filePath, 0xA50, config.FallingNineColor, HexColorEditor.ColorOrder.RGBA, type); // Original color #808CA3
+        }
+
+        public static void Apply(Config config, string modDirectory)
+        {
+            ApplyMIFallingNine(config, modDirectory);
         }
     }
 }
