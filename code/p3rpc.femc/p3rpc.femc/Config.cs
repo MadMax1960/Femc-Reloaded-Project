@@ -2465,6 +2465,24 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Equip selection menu dots separator color")]
         public ConfigColor EquipDotsColor { get; set; } = new ConfigColor(0x90, 0x36, 0x55, 0xFF);
 
+        [DisplayName("Camp: Calendar past day color")]
+        public ConfigColor CalendarPastDay { get; set; } = new ConfigColor(0xC8, 0x91, 0xA5, 0xFF);
+
+        [DisplayName("Camp: Calendar current selected day highlighted color")]
+        public ConfigColor CalendarHighlightedDay { get; set; } = new ConfigColor(0x07, 0x40, 0xFD, 0xFF);
+
+        [DisplayName("Camp: Calendar current highlighted job color")]
+        public ConfigColor CalendarHighlightedJob { get; set; } = new ConfigColor(0x00, 0x00, 0xF1, 0xFF);
+
+        [DisplayName("Camp: Calendar job detail font color")]
+        public ConfigColor CalendarJobDetailFont { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Camp: Item Effect tag background color")]
+        public ConfigColor CampItemEffectBG { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Camp: Item Effect font color")]
+        public ConfigColor CampItemEffectFont { get; set; } = ConfigColor.MellodiColorDark3;
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]

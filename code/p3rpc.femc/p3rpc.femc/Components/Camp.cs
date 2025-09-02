@@ -331,6 +331,10 @@ namespace p3rpc.femc.Components
         private string UCmpItemDraw_DrawSkillCardBackground_SIG = "0D 00 78 6C 68";
         private string UCmpItemDraw_DrawSkillCardFrame_SIG = "0D 00 65 42 35";
 
+        private string UCmpItemDraw_EquipmentEffectBGColor_SIG = "41 81 C9 00 FF FC 00";
+        private string UCmpItemDraw_EquipmentEffectFontColor_SIG = "41 81 C9 00 4E 2B 01";
+        private string UCmpItemDraw_EquipmentDescriptionFont_SIG = "41 81 CD 00 FF FF 00 66 89 44 24 ??";
+        private string UCmpItemDraw_EquipmentNoEffectBGAndFontColor_SIG = "0D 00 FF FC 00 F3 44 0F 11 54 24 ??";
 
         private UICommon _uiCommon;
         private CampCommon _campCommon;
@@ -404,6 +408,23 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(UCmpItemDraw_DrawSkillCardFrame_SIG, "UCmpItemDraw::DrawSkillCardFrame", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillCardFrame.ToU32IgnoreAlpha())));
+            });
+
+            _context._utils.SigScan(UCmpItemDraw_EquipmentEffectBGColor_SIG, "UCmpItemDraw::EquipmentEffectBGColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampItemEffectBG.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpItemDraw_EquipmentEffectFontColor_SIG, "UCmpItemDraw::EquipmentEffectFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampItemEffectFont.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpItemDraw_EquipmentDescriptionFont_SIG, "UCmpItemDraw::EquipmentDescriptionFont", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampSkillTextColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpItemDraw_EquipmentNoEffectBGAndFontColor_SIG, "UCmpItemDraw::EquipmentNoEffectBGAndFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillTextColor.ToU32IgnoreAlpha())));
             });
         }
 
@@ -1656,6 +1677,13 @@ namespace p3rpc.femc.Components
         private string UUICmpCalendarDraw_RightArrowGreen2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 0F 57 C0 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 44 0F 10 05 ?? ?? ?? ??";
         private string UUICmpCalendarDraw_RightArrowBlue2_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 05 ?? ?? ?? ?? 49 8D 4E ??";
 
+        private string UUICmpCalendarDraw_DayOfWeekFontColor_SIG = "41 81 C9 00 43 04 08";
+        private string UUICmpCalendarDraw_JobDescriptionFontColor_SIG = "8B 44 24 ?? 41 0F 28 DA 0F 28 F0";
+        private string UUICmpCalendarDraw_PastDayColor_SIG = "44 88 7D ?? 66 C7 45 ?? FF FF";
+        private string UUICmpCalendarDraw_HighlightedDayColor_SIG = "41 0F 28 DA 41 0F 28 D0 66 0F 6E F0";
+        private string UUICmpCalendarDraw_HighlightedJobColor_SIG = "E8 ?? ?? ?? ?? B1 01 E8 ?? ?? ?? ?? 48 8B C8 48 89 45 ??";
+        private string UUICmpCalendarDraw_CalendarJobDetailFontColor_SIG = "4C 8B B5 ?? ?? ?? ?? 8B 85 ?? ?? ?? ?? F3 0F 10 35 ?? ?? ?? ??";
+
         private IAsmHook _calendarSundayColor;
         private IAsmHook _calendarSundayDay;
         private IAsmHook _monthsPrevMonth;
@@ -1675,6 +1703,12 @@ namespace p3rpc.femc.Components
         private IAsmHook _RightArrowRed2;
         private IAsmHook _RightArrowGreen2;
         private IAsmHook _RightArrowBlue2;
+
+        private IAsmHook _JobDescriptionFontColor;
+        private IAsmHook _PastDayColor;
+        private IAsmHook _HighlightedDayColor;
+        private IAsmHook _HighlightedJobColor;
+        private IAsmHook _CalendarJobDetailFontColor;
 
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeJobBg;
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeHeader;
@@ -1876,6 +1910,67 @@ namespace p3rpc.femc.Components
                 _RightArrowBlue2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
 
+            _context._utils.SigScan(UUICmpCalendarDraw_DayOfWeekFontColor_SIG, "UCmpCommuList::DayOfWeekFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampCalendarTextColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_JobDescriptionFontColor_SIG, "UUICmpCalendarDraw::JobDescriptionFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rsp + 0x60], 0x{_context._config.CampCalendarTextColor.B:X}",
+                    $"mov byte [rsp + 0x61], 0x{_context._config.CampCalendarTextColor.G:X}",
+                    $"mov byte [rsp + 0x62], 0x{_context._config.CampCalendarTextColor.R:X}",
+                };
+                _JobDescriptionFontColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_PastDayColor_SIG, "UUICmpCalendarDraw::PastDayColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0x74], 0x{_context._config.CalendarPastDay.B:X}",
+                    $"mov byte [rbp + 0x75], 0x{_context._config.CalendarPastDay.G:X}",
+                    $"mov byte [rbp + 0x76], 0x{_context._config.CalendarPastDay.R:X}",
+                };
+                _PastDayColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_HighlightedDayColor_SIG, "UUICmpCalendarDraw::HighlightedDayColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rsp + 0x74], 0x{_context._config.CalendarHighlightedDay.B:X}",
+                    $"mov byte [rsp + 0x75], 0x{_context._config.CalendarHighlightedDay.G:X}",
+                    $"mov byte [rsp + 0x76], 0x{_context._config.CalendarHighlightedDay.R:X}",
+                };
+                _HighlightedDayColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_HighlightedJobColor_SIG, "UUICmpCalendarDraw::HighlightedJobColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x80], 0x{_context._config.CalendarHighlightedJob.B:X}",
+                    $"mov byte [rbp - 0x7f], 0x{_context._config.CalendarHighlightedJob.G:X}",
+                    $"mov byte [rbp - 0x7e], 0x{_context._config.CalendarHighlightedJob.R:X}",
+                };
+                _HighlightedJobColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_CalendarJobDetailFontColor_SIG, "UUICmpCalendarDraw::CalendarJobDetailFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    "jz gray_font",
+                    $"mov byte [rbp + 0xd8], 0x{_context._config.CalendarJobDetailFont.B:X}",
+                    $"mov byte [rbp + 0xd9], 0x{_context._config.CalendarJobDetailFont.G:X}",
+                    $"mov byte [rbp + 0xda], 0x{_context._config.CalendarJobDetailFont.R:X}",
+                    "label gray_font"
+                };
+                _CalendarJobDetailFontColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
         public override void Register()
         {
