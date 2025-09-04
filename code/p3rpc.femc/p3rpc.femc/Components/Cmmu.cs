@@ -26,6 +26,9 @@ namespace p3rpc.femc.Components
 
         private string AUICmmu_RankUpMaxColor_SIG = "81 C9 00 90 4A 17";
 
+        private string AUICmmu_CheckSocialLinkStrip1_SIG = "C7 44 24 ?? FF FF 1E 00 E8 ?? ?? ?? ??";
+        private string AUICmmu_CheckSocialLinkStrip2_SIG = "C7 44 24 ?? FF FF 1E 00 0F 11 44 24 ??";
+
         private IAsmHook _RankUpCardColorLightInitialBlue;
         private IAsmHook _RankUpCardColorLightInitialGreen;
         private IAsmHook _RankUpCardColorLightBlue;
@@ -223,6 +226,15 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(AUICmmu_RankUpMaxColor_SIG, "AUICmmu::RankUpMaxColor", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.CmmuRankUpMaxColor.ToU32IgnoreAlpha())));
+            });
+
+            _context._utils.SigScan(AUICmmu_CheckSocialLinkStrip1_SIG, "AUICmmu::CheckSocialLinkStrip1", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CmmuStatusStrip.ToU32())));
+            });
+            _context._utils.SigScan(AUICmmu_CheckSocialLinkStrip2_SIG, "AUICmmu::CheckSocialLinkStrip2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CmmuStatusStrip.ToU32())));
             });
         }
 

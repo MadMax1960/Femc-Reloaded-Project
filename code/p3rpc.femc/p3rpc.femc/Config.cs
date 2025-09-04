@@ -1811,7 +1811,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Request: Back Card Detail Right Down Solid Color")]
         public ConfigColor RequestBackCardRightDownDetail { get; set; } = new ConfigColor(0x5d, 0x00, 0x20, 0xFF);
 
-        [DisplayName("Request: Shadows Femc and Chairs in Detail Color")] 
+        [DisplayName("Camp: Quest shadows Femc and Chairs in Detail Color")] 
         public ConfigColor RequestDetailFemcChairsShadow { get; set; } = new ConfigColor(0x48, 0x11, 0x23, 0xFF);
 
         [DisplayName("Request: 'Task' Font Color")]
@@ -1931,7 +1931,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Shards color curve keyframe 7")]
         public ConfigColor CampShardsKeyframe7 { get; set; } = new ConfigColor(0xED, 0x5F, 0x9D, 0xA9);
 
-        [DisplayName("Quest: Shadows Femc and Chairs Color")]
+        [DisplayName("Camp: Quest shadows Femc and Chairs Color")]
         public ConfigColor QuestFemcChairsShadow { get; set; } = new ConfigColor(0x58, 0x0F, 0x21, 0xFF);
 
         [DisplayName("Camp: Main Toggler Background Color")]
@@ -2407,6 +2407,81 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Request: Report icon background color")]
         public ConfigColor RequestReportBG { get; set; } = new ConfigColor(0xa3, 0x20, 0x28, 0xFF);
+
+        [DisplayName("Camp: Quest chairs color")]
+        public ConfigColor RequestChairsColor { get; set; } = new ConfigColor(0x76, 0x01, 0x1C, 0xFF);
+
+        [DisplayName("Camp: Status shards color")]
+        public ConfigColor StatusShardsColor { get; set; } = new ConfigColor(0xff, 0x1b, 0x6f, 0xFF);
+
+        [DisplayName("Camp: Falling nine femc is grabbing in System")]
+        public ConfigColor FallingNineColor { get; set; } = new ConfigColor(0xa3, 0x80, 0x8A, 0xFF);
+
+        [DisplayName("Camp: Skill menu gun color")]
+        public ConfigColor SkillGunColor { get; set; } = new ConfigColor(0x91, 0x56, 0x68, 0xFF);
+
+        [DisplayName("Camp: Stats Gekkoukan logo dark color")]
+        public ConfigColor StatsGekkoukanDark { get; set; } = new ConfigColor(0x9C, 0x6B, 0x84, 0xFF);
+
+        [DisplayName("Camp: Stats title spinning font color")]
+        public ConfigColor StatsFontColor { get; set; } = new ConfigColor(0xB5, 0xB4, 0xB4, 0xFF);
+
+        [DisplayName("Camp: Stats shadows over background taint color")]
+        public ConfigColor StatsShadowsColor { get; set; } = new ConfigColor(0x66, 0x08, 0x29, 0xFF);
+
+        [DisplayName("Camp: Status detail Gekkoukan logo dark color and status title spinning font color")]
+        public ConfigColor StatusDetailTitleAndGekkoukanDark { get; set; } = new ConfigColor(0x2B, 0x1E, 0x22, 0xFF);
+
+        [DisplayName("Camp: Status detail Gekkoukan logo/femc background main color")]
+        public ConfigColor StatusDetailMainBackground { get; set; } = new ConfigColor(0x46, 0x3D, 0x40, 0xFF);
+
+        [DisplayName("Social Link: Check Social Link status when in field strip color")]
+        public ConfigColor CmmuStatusStrip { get; set; } = new ConfigColor(0x9F, 0x00, 0x3A, 0xFF);
+
+        [DisplayName("Camp: Status detail character shard BG shard gradation")]
+        public ConfigColor StatusDetailBigShard { get; set; } = new ConfigColor(0x87, 0x6F, 0x7B, 0xFF);
+
+        [DisplayName("Social Stats: Triangle background color")]
+        public ConfigColor SocialStatsTriangle { get; set; } = new ConfigColor(0x30, 0x22, 0x29, 0xFF);
+
+        [DisplayName("Camp: Status detail Theurgy/Persona/Stats tags background color")]
+        public ConfigColor StatusDetailTagColors { get; set; } = new ConfigColor(0x4D, 0x34, 0x3D, 0xFF);
+
+        [DisplayName("Camp: Status detail character shard BG in theurgy detail")]
+        public ConfigColor StatusTheurgyBigShard { get; set; } = new ConfigColor(0x75, 0x4D, 0x59, 0xFF);
+
+        [DisplayName("Camp: Status theurgy detail titles font color")]
+        public ConfigColor StatusTheurgyDetailTitlesFont { get; set; } = new ConfigColor(0x67, 0x47, 0x60, 0xFF);
+
+        [DisplayName("Camp: Status theurgy detail background color")]
+        public ConfigColor StatusTheurgyDetailBGColor { get; set; } = new ConfigColor(0x4B, 0x2B, 0x40, 0xFF);
+
+        [DisplayName("Camp: Status detail character shard transition BG light color")]
+        public ConfigColor StatusDetailTransitionBGLight { get; set; } = new ConfigColor(0xD8, 0xD1, 0xD4, 0xFF);
+
+        [DisplayName("Camp: Status detail character shard transition BG dark color")]
+        public ConfigColor StatusDetailTransitionBGDark { get; set; } = new ConfigColor(0xC1, 0xB0, 0xB6, 0xFF);
+
+        [DisplayName("Camp: Equip selection menu dots separator color")]
+        public ConfigColor EquipDotsColor { get; set; } = new ConfigColor(0x90, 0x36, 0x55, 0xFF);
+
+        [DisplayName("Camp: Calendar past day color")]
+        public ConfigColor CalendarPastDay { get; set; } = new ConfigColor(0xC8, 0x91, 0xA5, 0xFF);
+
+        [DisplayName("Camp: Calendar current selected day highlighted color")]
+        public ConfigColor CalendarHighlightedDay { get; set; } = new ConfigColor(0x07, 0x40, 0xFD, 0xFF);
+
+        [DisplayName("Camp: Calendar current highlighted job color")]
+        public ConfigColor CalendarHighlightedJob { get; set; } = new ConfigColor(0x00, 0x00, 0xF1, 0xFF);
+
+        [DisplayName("Camp: Calendar job detail font color")]
+        public ConfigColor CalendarJobDetailFont { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Camp: Item Effect tag background color")]
+        public ConfigColor CampItemEffectBG { get; set; } = ConfigColor.MellodiColorLight1;
+
+        [DisplayName("Camp: Item Effect font color")]
+        public ConfigColor CampItemEffectFont { get; set; } = ConfigColor.MellodiColorDark3;
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
