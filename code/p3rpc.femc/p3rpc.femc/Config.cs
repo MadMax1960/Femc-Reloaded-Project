@@ -407,10 +407,17 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool P3MidNomF { get; set; } = false;
 
+        [DisplayName("Wiping All Out by EidieK87")]
+        [Category("Battle Music - Normal")]
+        [Description("Enable Wiping All Out by by EidieK87 as normal battle music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 45)]
+        [DefaultValue(false)]
+        public bool EidNom { get; set; } = false;
+
         [DisplayName("Mass Destruction -Reload-")]
         [Category("Battle Music - Normal")]
         [Description("Enable Mass Destruction -Reload-, which is used by default for normal battle music.\nMultiple songs can be chosen for randomization!")]
-        [Display(Order = 45)]
+        [Display(Order = 46)]
         [DefaultValue(false)]
         public bool MassDes { get; set; } = false;
 

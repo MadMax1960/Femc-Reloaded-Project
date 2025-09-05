@@ -135,6 +135,7 @@ namespace p3rpc.femc.Audio
 					{Path.Combine(path, "Reload\\link_26.cue"),_configuration.MassDes},
                     {Path.Combine(path, "P3P\\link_26.cue"),_configuration.P3PNom},
                     {Path.Combine(path, "P3D\\link_26.cue"),_configuration.P3MidNomF},
+                    {Path.Combine(path, "EidieK87\\link_26.cue"),_configuration.EidNom}
                 };
 				foreach (KeyValuePair<string, bool> nm in normalmusic)
 				{
