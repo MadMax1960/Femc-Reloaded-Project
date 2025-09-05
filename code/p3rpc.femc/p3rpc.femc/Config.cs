@@ -188,7 +188,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "Bichelle")]
         bichelle,
         [Display(Name = "Ely")]
-        ely
+        ely,
+        [Display(Name = "Mekki & Cpido & Dniwe")]
+        mekki
         }
 
         [DisplayName("Kyoto Photos")]
@@ -1839,7 +1841,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Request: Detail Difficulty Font Color")]
         public ConfigColor RequestDifficultyFont { get; set; } = new ConfigColor(0x71, 0x0d, 0x2b, 0xFF);
 
-        [DisplayName("Request: Status Light Font and Tag Background Color")]
+        [DisplayName("Request: Status Light Font, Tag Background and ! color in report quest icon")]
         public ConfigColor RequestStatusFontTagBack { get; set; } = new ConfigColor(0xfc, 0x9a, 0xb6, 0xFF);
 
         [DisplayName("Request: Status Tag Font Color")]
@@ -2399,6 +2401,12 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Camp: Compare menu femc shadow inside circle")]
         public ConfigColor CampEquipCompareFemcShadowCircle { get; set; } = new ConfigColor(0x42, 0x07, 0x17, 0xFF);
+
+        [DisplayName("DayChange: Day change transition background color")]
+        public ConfigColor DayChangeBGColor { get; set; } = new ConfigColor(0x27, 0x18, 0x1F, 0xFF);
+
+        [DisplayName("Request: Report icon background color")]
+        public ConfigColor RequestReportBG { get; set; } = new ConfigColor(0xa3, 0x20, 0x28, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
