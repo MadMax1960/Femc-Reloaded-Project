@@ -16,9 +16,6 @@ namespace p3rpc.femc.Components
         private string AUIRequest_BackCardColor_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? BA 01 00 00 00";
         private string AUIRequest_BackSquaresColor_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 0F 28 45 ??";
         private string AUIRequest_DetailBackColor_SIG = "E8 ?? ?? ?? ?? BA 04 00 00 00 89 45 ??";
-        private string AUIRequest_DetailCampMenuChairColor_SIG = "E8 ?? ?? ?? ?? 48 8B 8E ?? ?? ?? ?? 41 0F 28 D8 C6 44 24 ?? 00 41 0F 28 D3 C6 44 24 ?? 01 BA 71 00 00 00 F3 44 0F 11 4C 24 ?? F3 44 0F 11 4C 24 ?? F3 44 0F 11 64 24 ?? 89 7C 24 ?? 48 89 5C 24 ?? 89 44 24 ?? F3 0F 11 7C 24 ?? E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ??";
-        private string AUIRequest_DetailCampMenuChairAndKotone_SIG = "E8 ?? ?? ?? ?? C6 44 24 ?? 00 F3 0F 10 5D ??";
-        private string AUIRequest_BackCampMenuChairAndKotone_SIG = "E8 ?? ?? ?? ?? 48 8B 8E ?? ?? ?? ?? 41 0F 28 D8 C6 44 24 ?? 00 41 0F 28 D3 C6 44 24 ?? 01 BA 71 00 00 00 F3 44 0F 11 4C 24 ?? F3 44 0F 11 4C 24 ?? F3 44 0F 11 64 24 ?? 89 7C 24 ?? 48 89 5C 24 ?? 89 44 24 ?? F3 0F 11 7C 24 ?? E8 ?? ?? ?? ?? 48 8B BC 24 ?? ?? ?? ??";
         private string AUIRequest_DetailCompletedBack_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4C 24 ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";
         private string AUIRequest_DetailCompleted_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 48 8D 8E ?? ?? ?? ??";
         private string AUIRequest_DetailRightDownCorner_SIG = "E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ?? BA 03 00 00 00 F3 0F 59 35 ?? ?? ?? ??";
@@ -63,9 +60,6 @@ namespace p3rpc.femc.Components
         private IAsmHook _BackCardColor;
         private IAsmHook _BackSquaresColor;
         private IAsmHook _DetailBackColor;
-        private IAsmHook _DetailCampMenuChairColor;
-        private IAsmHook _DetailCampMenuChairAndKotone;
-        private IAsmHook _BackCampMenuChairAndKotone;
         private IAsmHook _DetailCompletedBack;
         private IAsmHook _DetailCompleted;
         private IAsmHook _DetailRightDownCorner;
@@ -138,42 +132,6 @@ namespace p3rpc.femc.Components
                     $"mov cl, ${_context._config.RequestBackCardDetail.R:X}"
                 };
                 _DetailBackColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
-
-            _context._utils.SigScan(AUIRequest_BackCampMenuChairAndKotone_SIG, "AUIRequest::BackCampMenuChairAndKotone", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    $"mov r8b, ${_context._config.QuestFemcChairsShadow.B:X}",
-                    $"mov dl, ${_context._config.QuestFemcChairsShadow.G:X}",
-                    $"mov cl, ${_context._config.QuestFemcChairsShadow.R:X}"
-                };
-                _BackCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
-
-            _context._utils.SigScan(AUIRequest_DetailCampMenuChairColor_SIG, "AUIRequest::DetailCampMenuChairColor", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    $"mov r8b, ${_context._config.QuestFemcChairsShadow.B:X}",
-                    $"mov dl, ${_context._config.QuestFemcChairsShadow.G:X}",
-                    $"mov cl, ${_context._config.QuestFemcChairsShadow.R:X}"
-                };
-                _DetailCampMenuChairColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
-
-            _context._utils.SigScan(AUIRequest_DetailCampMenuChairAndKotone_SIG, "AUIRequest::DetailCampMenuChairAndKotone", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    $"mov r8b, ${_context._config.RequestDetailFemcChairsShadow.B:X}",
-                    $"mov dl, ${_context._config.RequestDetailFemcChairsShadow.G:X}",
-                    $"mov cl, ${_context._config.RequestDetailFemcChairsShadow.R:X}"
-                };
-                _DetailCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             
             _context._utils.SigScan(AUIRequest_DetailCompletedBack_SIG, "AUIRequest::DetailCompletedBack", _context._utils.GetDirectAddress, addr =>

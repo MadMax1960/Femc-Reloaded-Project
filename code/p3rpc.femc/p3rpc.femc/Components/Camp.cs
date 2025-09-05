@@ -331,6 +331,10 @@ namespace p3rpc.femc.Components
         private string UCmpItemDraw_DrawSkillCardBackground_SIG = "0D 00 78 6C 68";
         private string UCmpItemDraw_DrawSkillCardFrame_SIG = "0D 00 65 42 35";
 
+        private string UCmpItemDraw_EquipmentEffectBGColor_SIG = "41 81 C9 00 FF FC 00";
+        private string UCmpItemDraw_EquipmentEffectFontColor_SIG = "41 81 C9 00 4E 2B 01";
+        private string UCmpItemDraw_EquipmentDescriptionFont_SIG = "41 81 CD 00 FF FF 00 66 89 44 24 ??";
+        private string UCmpItemDraw_EquipmentNoEffectBGAndFontColor_SIG = "0D 00 FF FC 00 F3 44 0F 11 54 24 ??";
 
         private UICommon _uiCommon;
         private CampCommon _campCommon;
@@ -405,6 +409,23 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillCardFrame.ToU32IgnoreAlpha())));
             });
+
+            _context._utils.SigScan(UCmpItemDraw_EquipmentEffectBGColor_SIG, "UCmpItemDraw::EquipmentEffectBGColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampItemEffectBG.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpItemDraw_EquipmentEffectFontColor_SIG, "UCmpItemDraw::EquipmentEffectFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampItemEffectFont.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpItemDraw_EquipmentDescriptionFont_SIG, "UCmpItemDraw::EquipmentDescriptionFont", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampSkillTextColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpItemDraw_EquipmentNoEffectBGAndFontColor_SIG, "UCmpItemDraw::EquipmentNoEffectBGAndFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSkillTextColor.ToU32IgnoreAlpha())));
+            });
         }
 
         public override void Register()
@@ -456,6 +477,8 @@ namespace p3rpc.femc.Components
         private string UCmpEquipCompare_DrawCircleFemcShadow_SIG = "E8 ?? ?? ?? ?? 48 8B 8F ?? ?? ?? ?? 8B D8 E8 ?? ?? ?? ?? 0F B6 0D ?? ?? ?? ??";
         private string UCmpEquipCompare_DrawArrowUp_SIG = "0D 00 29 00 EA 33 D2";
         private string UCmpEquipCompare_DrawArrowDown_SIG = "0D 00 29 00 EA F3 0F 11 7C 24 ??";
+        private string UCmpEquip_DotStatsSeparator1_SIG = "81 CD 00 90 46 36 40 84 F6";
+        private string UCmpEquip_DotStatsSeparator2_SIG = "81 CD 00 90 46 36 45 0F 57 C0";
 
         private IHook<UCmpEquipDraw_DrawEquipItemStatsNum> _drawStatsNum;
 
@@ -649,6 +672,14 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(UCmpEquipCompare_DrawArrowDown_SIG, "UCmpEquipCompare::DrawArrowDown", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.HighlightedUpDownArrows.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquip_DotStatsSeparator1_SIG, "UCmpEquip::DotStatsSeparator1", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.EquipDotsColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquip_DotStatsSeparator2_SIG, "UCmpEquip::DotStatsSeparator2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.EquipDotsColor.ToU32IgnoreAlpha())));
             });
         }
 
@@ -932,11 +963,45 @@ namespace p3rpc.femc.Components
         private string UCmpStatus_CharacterDetailsHPBarAndLineRemaining_SIG_EpAigis = "B9 00 EC D4 C0";
 
         private string UCmpStatus_DrawChangeTacticsHighlightedColor_SIG = "8B 05 ?? ?? ?? ?? 48 8D 8D ?? ?? ?? ?? F3 44 0F 10 2D ?? ?? ?? ??";
-        private string UCmpStatus_DrawStatusHighlightedArrowsColor_SIG = "0D 00 00 00 EE 89 75 ??";
-        private string UCmpStatus_DrawStatsHighlightedArrowsColor_SIG = "41 81 CF 00 00 00 EE";
-        private string UCmpStatus_DrawStatsHighlightedLineColor_SIG = "0D 00 00 00 FF F3 44 0F 11 5C 24 ??";
-        private string UCmpStatus_DrawStatsBGUnderlay_SIG = "41 81 C8 00 40 08 01";
+        private string UCmpStatus_DrawStatsHighlightedArrowsColor_SIG = "0D 00 00 00 EE 89 75 ??";
+        private string UCmpStatus_DrawStatsGekkoukanDark_SIG = "BB FF 9C 84 7C";
+        private string UCmpStatus_DrawStatsFontColor_SIG = "41 BC FF B5 B5 B4";
+        private string UCmpStatus_DrawStatsShadowsColor1_SIG = "0B D7 E8 ?? ?? ?? ?? 44 8B C5 41 8D 54 24 ??";
+        private string UCmpStatus_DrawStatsShadowsColor2_SIG = "0B D7 E8 ?? ?? ?? ?? 44 8B C5 BA 01 00 00 00";
 
+        private string UCmpStatus_DrawStatusHighlightedArrowsColor_SIG = "41 81 CF 00 00 00 EE";
+        private string UCmpStatus_DrawStatusHighlightedLineColor_SIG = "0D 00 00 00 FF F3 44 0F 11 5C 24 ??";
+        private string UCmpStatus_DrawStatusBGUnderlay_SIG = "41 81 C8 00 40 08 01";
+        private string UCmpStatus_DrawStatusDetailTitleAndGekkoukanDark_SIG = "BB FF 2B 20 1E";
+        private string UCmpStatus_DrawStatusDetailBackground_SIG = "BF FF 46 3E 3D";
+        private string UCmpStatus_DrawStatusBigShardGradation_SIG = "81 CB 00 87 7E 6F";
+        private string UCmpStatus_DrawStatusDetailFemcBackground_SIG = "0B D8 E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ??";
+        private string UCmpStatus_DrawTheurgyBGTag_SIG = "0D 00 4D 3E 34 C7 44 24 ?? 04 00 00 00";
+        private string UCmpStatus_DrawPersonaBGTag_SIG = "0D 00 4D 3E 34 F3 0F 10 74 24 ??";
+        private string UCmpStatus_DrawStatusBigShardBGTheurgy1_SIG = "81 CB 00 75 59 4D";
+        private string UCmpStatus_DrawStatusBigShardBGTheurgy2_SIG = "C7 44 24 ?? 00 75 59 4D 89 5C 24 ?? C7 44 24 ?? 00 75 59 4D";
+        private string UCmpStatus_DrawStatusBigShardBGTheurgy3_SIG = "C7 44 24 ?? 00 75 59 4D 89 5C 24 ?? E8 ?? ?? ?? ??";
+        private string UCmpStatus_DrawStatsBGTag1_SIG = "E8 ?? ?? ?? ?? 89 45 ?? E8 ?? ?? ?? ?? 2C 04";
+        private string UCmpStatus_DrawStatsBGTag2_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 A5 ?? ?? ?? ?? 48 8D 4D ??";
+        private string UCmpStatus_DrawTheurgyDetailBG1_SIG = "E8 ?? ?? ?? ?? 0F 57 DB F3 0F 11 7D ?? 0F 57 D2 F3 44 0F 11 45 ?? 49 8B D7 89 45 ?? 48 8D 4D ?? 89 7D ?? E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";
+        private string UCmpStatus_DrawTheurgyDetailBG2_SIG = "E8 ?? ?? ?? ?? 0F 57 DB F3 0F 11 7D ?? 0F 57 D2 F3 44 0F 11 45 ?? 49 8B D7 89 45 ?? 48 8D 4D ?? 89 7D ?? E8 ?? ?? ?? ?? 45 33 C0";
+        private string UCmpStatus_DrawTheurgyDetailTitle1_SIG = "E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ?? 48 8D 4D ?? 4C 8B 86 ?? ?? ?? ??";
+        private string UCmpStatus_DrawTheurgyDetailTitle2_SIG = "E8 ?? ?? ?? ?? 4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 41 0F 28 DB";
+        private string UCmpStatus_DrawTheurgyDetailTitle3_SIG = "E8 ?? ?? ?? ?? 83 BE ?? ?? ?? ?? 00 45 0F 28 FD";
+        private string UCmpStatus_DrawStatusBigShardTransitionLight1_SIG = "0D 00 D8 D2 D1"; // 1 No alpha
+        private string UCmpStatus_DrawStatusBigShardTransitionLight2_SIG = "C7 44 24 ?? FF D8 D2 D1"; // 4 Alpha
+        private string UCmpStatus_DrawStatusBigShardTransitionDark_SIG = "C7 44 24 ?? FF C1 B3 B0"; // 4 Alpha
+
+        private IAsmHook _DrawStatsShadowsColor1;
+        private IAsmHook _DrawStatsShadowsColor2;
+        private IAsmHook _DrawStatusDetailFemcBackground;
+        private IAsmHook _DrawStatsBGTag1;
+        private IAsmHook _DrawStatsBGTag2;
+        private IAsmHook _DrawTheurgyDetailBG1;
+        private IAsmHook _DrawTheurgyDetailBG2;
+        private IAsmHook _DrawTheurgyDetailTitle1;
+        private IAsmHook _DrawTheurgyDetailTitle2;
+        private IAsmHook _DrawTheurgyDetailTitle3;
 
         public unsafe CampStats(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
@@ -1051,21 +1116,182 @@ namespace p3rpc.femc.Components
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32ARGB())));
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 5, (byte)0x90))); // nop extra space
             });
-            _context._utils.SigScan(UCmpStatus_DrawStatusHighlightedArrowsColor_SIG, "UCmpStatus::DrawStatusHighlightedArrowsColor", _context._utils.GetDirectAddress, addr =>
-            {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedLowerColor.ToU32IgnoreAlpha())));
-            });
             _context._utils.SigScan(UCmpStatus_DrawStatsHighlightedArrowsColor_SIG, "UCmpStatus::DrawStatsHighlightedArrowsColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedLowerColor.ToU32())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatsGekkoukanDark_SIG, "UCmpStatus::DrawStatsGekkoukanDark", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.StatsGekkoukanDark.ToU32())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatsFontColor_SIG, "UCmpStatus::DrawStatsFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.StatsFontColor.ToU32())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatsShadowsColor1_SIG, "UCmpStatus::DrawStatsShadowsColor1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov edx, 0x{_context._config.StatsShadowsColor.ToU32IgnoreAlpha():X8}"
+                };
+                _DrawStatsShadowsColor1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatsShadowsColor2_SIG, "UCmpStatus::DrawStatsShadowsColor2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov edx, 0x{_context._config.StatsShadowsColor.ToU32IgnoreAlpha():X8}"
+                };
+                _DrawStatsShadowsColor2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(UCmpStatus_DrawStatusHighlightedArrowsColor_SIG, "UCmpStatus::DrawStatusHighlightedArrowsColor", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampHighlightedLowerColor.ToU32IgnoreAlpha())));
             });
-            _context._utils.SigScan(UCmpStatus_DrawStatsHighlightedLineColor_SIG, "UCmpStatus::DrawStatsHighlightedLineColor", _context._utils.GetDirectAddress, addr =>
+            _context._utils.SigScan(UCmpStatus_DrawStatusHighlightedLineColor_SIG, "UCmpStatus::DrawStatusHighlightedLineColor", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampHighlightedColor.ToU32IgnoreAlpha())));
             });
-            _context._utils.SigScan(UCmpStatus_DrawStatsBGUnderlay_SIG, "UCmpStatus::DrawStatsBGUnderlay", _context._utils.GetDirectAddress, addr =>
+            _context._utils.SigScan(UCmpStatus_DrawStatusBGUnderlay_SIG, "UCmpStatus::DrawStatusBGUnderlay", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampStatsMenuUnderlay.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusDetailTitleAndGekkoukanDark_SIG, "UCmpStatus::DrawStatusDetailTitleAndGekkoukanDark", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.StatusDetailTitleAndGekkoukanDark.ToU32())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusDetailBackground_SIG, "UCmpStatus::DrawStatusDetailBackground", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.StatusDetailMainBackground.ToU32())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusBigShardGradation_SIG, "UCmpStatus::DrawStatusBigShardGradation", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.StatusDetailBigShard.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusDetailFemcBackground_SIG, "UCmpStatus::DrawStatusDetailFemcBackground", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov ebx, 0x{_context._config.StatusDetailMainBackground.ToU32IgnoreAlpha():X8}"
+                };
+                _DrawStatusDetailFemcBackground = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusBigShardGradation_SIG, "UCmpStatus::DrawStatusBigShardGradation", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.StatusDetailBigShard.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawTheurgyBGTag_SIG, "UCmpStatus::DrawTheurgyBGTag", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.StatusDetailTagColors.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawPersonaBGTag_SIG, "UCmpStatus::DrawPersonaBGTag", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.StatusDetailTagColors.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusBigShardBGTheurgy1_SIG, "UCmpStatus::DrawStatusBigShardBGTheurgy1", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.StatusTheurgyBigShard.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusBigShardBGTheurgy2_SIG, "UCmpStatus::DrawStatusBigShardBGTheurgy2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.StatusTheurgyBigShard.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusBigShardBGTheurgy3_SIG, "UCmpStatus::DrawStatusBigShardBGTheurgy3", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.StatusTheurgyBigShard.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatsBGTag1_SIG, "UCmpStatus::DrawStatsBGTag1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.StatusDetailTagColors.B:X}",
+                    $"mov dl, ${_context._config.StatusDetailTagColors.G:X}",
+                    $"mov cl, ${_context._config.StatusDetailTagColors.R:X}"
+                };
+                _DrawStatsBGTag1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatsBGTag2_SIG, "UCmpStatus::DrawStatsBGTag2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.StatusDetailTagColors.B:X}",
+                    $"mov dl, ${_context._config.StatusDetailTagColors.G:X}",
+                    $"mov cl, ${_context._config.StatusDetailTagColors.R:X}"
+                };
+                _DrawStatsBGTag2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpStatus_DrawTheurgyDetailBG1_SIG, "UCmpStatus::DrawTheurgyDetailBG1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.StatusTheurgyDetailBGColor.B:X}",
+                    $"mov dl, ${_context._config.StatusTheurgyDetailBGColor.G:X}",
+                    $"mov cl, ${_context._config.StatusTheurgyDetailBGColor.R:X}"
+                };
+                _DrawTheurgyDetailBG1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpStatus_DrawTheurgyDetailBG2_SIG, "UCmpStatus::DrawTheurgyDetailBG2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.StatusTheurgyDetailBGColor.B:X}",
+                    $"mov dl, ${_context._config.StatusTheurgyDetailBGColor.G:X}",
+                    $"mov cl, ${_context._config.StatusTheurgyDetailBGColor.R:X}"
+                };
+                _DrawTheurgyDetailBG2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpStatus_DrawTheurgyDetailTitle1_SIG, "UCmpStatus::DrawTheurgyDetailTitle1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.StatusTheurgyDetailTitlesFont.B:X}",
+                    $"mov dl, ${_context._config.StatusTheurgyDetailTitlesFont.G:X}",
+                    $"mov cl, ${_context._config.StatusTheurgyDetailTitlesFont.R:X}"
+                };
+                _DrawTheurgyDetailTitle1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpStatus_DrawTheurgyDetailTitle2_SIG, "UCmpStatus::DrawTheurgyDetailTitle2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.StatusTheurgyDetailTitlesFont.B:X}",
+                    $"mov dl, ${_context._config.StatusTheurgyDetailTitlesFont.G:X}",
+                    $"mov cl, ${_context._config.StatusTheurgyDetailTitlesFont.R:X}"
+                };
+                _DrawTheurgyDetailTitle2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpStatus_DrawTheurgyDetailTitle3_SIG, "UCmpStatus::DrawTheurgyDetailTitle3", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.StatusTheurgyDetailTitlesFont.B:X}",
+                    $"mov dl, ${_context._config.StatusTheurgyDetailTitlesFont.G:X}",
+                    $"mov cl, ${_context._config.StatusTheurgyDetailTitlesFont.R:X}"
+                };
+                _DrawTheurgyDetailTitle3 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusBigShardTransitionLight1_SIG, "UCmpStatus::DrawStatusBigShardTransitionLight1", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.StatusDetailTransitionBGLight.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusBigShardTransitionLight2_SIG, "UCmpStatus::DrawStatusBigShardTransitionLight2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.StatusDetailTransitionBGLight.ToU32())));
+            });
+            _context._utils.SigScan(UCmpStatus_DrawStatusBigShardTransitionDark_SIG, "UCmpStatus::DrawStatusBigShardTransitionDark", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.StatusDetailTransitionBGDark.ToU32())));
             });
         }
         public override void Register()
@@ -1080,14 +1306,57 @@ namespace p3rpc.femc.Components
         private UICommon _uiCommon;
         private CampCommon _campCommon;
 
+        private string AUIRequest_DetailCampMenuChairColor_SIG = "E8 ?? ?? ?? ?? 48 8B 8E ?? ?? ?? ?? 41 0F 28 D8 C6 44 24 ?? 00 41 0F 28 D3 C6 44 24 ?? 01 BA 71 00 00 00 F3 44 0F 11 4C 24 ?? F3 44 0F 11 4C 24 ?? F3 44 0F 11 64 24 ?? 89 7C 24 ?? 48 89 5C 24 ?? 89 44 24 ?? F3 0F 11 7C 24 ?? E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ??";
+        private string AUIRequest_DetailCampMenuChairAndKotone_SIG = "E8 ?? ?? ?? ?? C6 44 24 ?? 00 F3 0F 10 5D ??";
+        private string AUIRequest_BackCampMenuChairAndKotone_SIG = "E8 ?? ?? ?? ?? 48 8B 8E ?? ?? ?? ?? 41 0F 28 D8 C6 44 24 ?? 00 41 0F 28 D3 C6 44 24 ?? 01 BA 71 00 00 00 F3 44 0F 11 4C 24 ?? F3 44 0F 11 4C 24 ?? F3 44 0F 11 64 24 ?? 89 7C 24 ?? 48 89 5C 24 ?? 89 44 24 ?? F3 0F 11 7C 24 ?? E8 ?? ?? ?? ?? 48 8B BC 24 ?? ?? ?? ??";
+
         private string UCmpQuest_DrawQuestArrows1_SIG = "E8 ?? ?? ?? ?? 41 0F 28 C2 41 B1 FF";
         private string UCmpQuest_DrawQuestArrows2_SIG = "E8 ?? ?? ?? ?? F3 45 0F 10 86 ?? ?? ?? ?? 4C 8D 44 24 ??";
 
+        private IAsmHook _DetailCampMenuChairColor;
+        private IAsmHook _DetailCampMenuChairAndKotone;
+        private IAsmHook _BackCampMenuChairAndKotone;
         private IAsmHook _DrawQuestArrows1;
         private IAsmHook _DrawQuestArrows2;
 
         public unsafe CampQuest(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
+            _context._utils.SigScan(AUIRequest_BackCampMenuChairAndKotone_SIG, "AUIRequest::BackCampMenuChairAndKotone", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.QuestFemcChairsShadow.B:X}",
+                    $"mov dl, ${_context._config.QuestFemcChairsShadow.G:X}",
+                    $"mov cl, ${_context._config.QuestFemcChairsShadow.R:X}"
+                };
+                _BackCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DetailCampMenuChairColor_SIG, "AUIRequest::DetailCampMenuChairColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.QuestFemcChairsShadow.B:X}",
+                    $"mov dl, ${_context._config.QuestFemcChairsShadow.G:X}",
+                    $"mov cl, ${_context._config.QuestFemcChairsShadow.R:X}"
+                };
+                _DetailCampMenuChairColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AUIRequest_DetailCampMenuChairAndKotone_SIG, "AUIRequest::DetailCampMenuChairAndKotone", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.RequestDetailFemcChairsShadow.B:X}",
+                    $"mov dl, ${_context._config.RequestDetailFemcChairsShadow.G:X}",
+                    $"mov cl, ${_context._config.RequestDetailFemcChairsShadow.R:X}"
+                };
+                _DetailCampMenuChairAndKotone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
             _context._utils.SigScan(UCmpQuest_DrawQuestArrows1_SIG, "UCmpQuest::DrawQuestArrows1", _context._utils.GetDirectAddress, addr =>
             {
                 int rBits = BitConverter.SingleToInt32Bits((float)_context._config.CampHighlightedMidColor.R); // Original in t=0 -> #6A0000
@@ -1408,6 +1677,13 @@ namespace p3rpc.femc.Components
         private string UUICmpCalendarDraw_RightArrowGreen2_SIG = "E8 ?? ?? ?? ?? F3 0F 2C D8 0F 57 C0 0F 28 D7 0F 57 C9 E8 ?? ?? ?? ?? F3 44 0F 10 05 ?? ?? ?? ??";
         private string UUICmpCalendarDraw_RightArrowBlue2_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 05 ?? ?? ?? ?? 49 8D 4E ??";
 
+        private string UUICmpCalendarDraw_DayOfWeekFontColor_SIG = "41 81 C9 00 43 04 08";
+        private string UUICmpCalendarDraw_JobDescriptionFontColor_SIG = "8B 44 24 ?? 41 0F 28 DA 0F 28 F0";
+        private string UUICmpCalendarDraw_PastDayColor_SIG = "44 88 7D ?? 66 C7 45 ?? FF FF";
+        private string UUICmpCalendarDraw_HighlightedDayColor_SIG = "41 0F 28 DA 41 0F 28 D0 66 0F 6E F0";
+        private string UUICmpCalendarDraw_HighlightedJobColor_SIG = "E8 ?? ?? ?? ?? B1 01 E8 ?? ?? ?? ?? 48 8B C8 48 89 45 ??";
+        private string UUICmpCalendarDraw_CalendarJobDetailFontColor_SIG = "4C 8B B5 ?? ?? ?? ?? 8B 85 ?? ?? ?? ?? F3 0F 10 35 ?? ?? ?? ??";
+
         private IAsmHook _calendarSundayColor;
         private IAsmHook _calendarSundayDay;
         private IAsmHook _monthsPrevMonth;
@@ -1427,6 +1703,12 @@ namespace p3rpc.femc.Components
         private IAsmHook _RightArrowRed2;
         private IAsmHook _RightArrowGreen2;
         private IAsmHook _RightArrowBlue2;
+
+        private IAsmHook _JobDescriptionFontColor;
+        private IAsmHook _PastDayColor;
+        private IAsmHook _HighlightedDayColor;
+        private IAsmHook _HighlightedJobColor;
+        private IAsmHook _CalendarJobDetailFontColor;
 
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeJobBg;
         private IHook<UUICmpCalendarDraw_DrawUIComponent> _drawPartTimeHeader;
@@ -1628,6 +1910,67 @@ namespace p3rpc.femc.Components
                 _RightArrowBlue2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
 
+            _context._utils.SigScan(UUICmpCalendarDraw_DayOfWeekFontColor_SIG, "UCmpCommuList::DayOfWeekFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampCalendarTextColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_JobDescriptionFontColor_SIG, "UUICmpCalendarDraw::JobDescriptionFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rsp + 0x60], 0x{_context._config.CampCalendarTextColor.B:X}",
+                    $"mov byte [rsp + 0x61], 0x{_context._config.CampCalendarTextColor.G:X}",
+                    $"mov byte [rsp + 0x62], 0x{_context._config.CampCalendarTextColor.R:X}",
+                };
+                _JobDescriptionFontColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_PastDayColor_SIG, "UUICmpCalendarDraw::PastDayColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0x74], 0x{_context._config.CalendarPastDay.B:X}",
+                    $"mov byte [rbp + 0x75], 0x{_context._config.CalendarPastDay.G:X}",
+                    $"mov byte [rbp + 0x76], 0x{_context._config.CalendarPastDay.R:X}",
+                };
+                _PastDayColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_HighlightedDayColor_SIG, "UUICmpCalendarDraw::HighlightedDayColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rsp + 0x74], 0x{_context._config.CalendarHighlightedDay.B:X}",
+                    $"mov byte [rsp + 0x75], 0x{_context._config.CalendarHighlightedDay.G:X}",
+                    $"mov byte [rsp + 0x76], 0x{_context._config.CalendarHighlightedDay.R:X}",
+                };
+                _HighlightedDayColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_HighlightedJobColor_SIG, "UUICmpCalendarDraw::HighlightedJobColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x80], 0x{_context._config.CalendarHighlightedJob.B:X}",
+                    $"mov byte [rbp - 0x7f], 0x{_context._config.CalendarHighlightedJob.G:X}",
+                    $"mov byte [rbp - 0x7e], 0x{_context._config.CalendarHighlightedJob.R:X}",
+                };
+                _HighlightedJobColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_CalendarJobDetailFontColor_SIG, "UUICmpCalendarDraw::CalendarJobDetailFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    "jz gray_font",
+                    $"mov byte [rbp + 0xd8], 0x{_context._config.CalendarJobDetailFont.B:X}",
+                    $"mov byte [rbp + 0xd9], 0x{_context._config.CalendarJobDetailFont.G:X}",
+                    $"mov byte [rbp + 0xda], 0x{_context._config.CalendarJobDetailFont.R:X}",
+                    "label gray_font"
+                };
+                _CalendarJobDetailFontColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
         }
         public override void Register()
         {
