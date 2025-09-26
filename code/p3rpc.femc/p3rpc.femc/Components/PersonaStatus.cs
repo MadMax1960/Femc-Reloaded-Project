@@ -833,7 +833,8 @@ namespace p3rpc.femc.Components
                 _uiCommon._drawSpr(&self->baseObj.drawer, statIconPosLayout.X, statIconPosLayout.Y, 0, &statIconShadowCol, (uint)(i + 0x1bf), 1, 1, Angle, campSpr, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
                 var statIconFillCol = new FColor(0xcc, 0x0, 0x0, 0x0);
                 _uiCommon._drawSpr(&self->baseObj.drawer, statIconPosLayout.X, statIconPosLayout.Y, 0, &statIconFillCol, (uint)(i + 0x1ba), 1, 1, Angle, campSpr, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
-                var personaStatLevelColor = baseLvl < baseAndNextLvl ? nextLevelColor : ConfigColor.ToFColorBP(_context.ColorWhite);
+                var personaCombineStatGrowth = self->GetCombinePersonaStatGrowth(i);
+                var personaStatLevelColor = (baseLvl < baseAndNextLvl || personaCombineStatGrowth != 0) ? nextLevelColor : ConfigColor.ToFColorBP(_context.ColorWhite);
                 string personaStatLevelStr = $"{(int)baseStatDisplay}";
                 for (int j = 0; j < personaStatLevelStr.Length; j++)
                 {
@@ -844,7 +845,7 @@ namespace p3rpc.femc.Components
                 _uiCommon._drawSpr(&self->baseObj.drawer, statIconPos.X + 251, statIconPos.Y - 40, 0, &barShadowColor, 0x1c9, 1, 1, Angle - 11, campSpr, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
                 var barContentColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusSkillListCheckboardAlt);
                 _uiCommon._drawSpr(&self->baseObj.drawer, statIconPos.X + 234, statIconPos.Y - 45, 0, &barContentColor, 0x1c9, 1, 1, Angle - 11, campSpr, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
-                if (baseLvl < baseAndEquipLvl) // draw next level stat increase
+                if (baseLvl < baseAndNextLvl) // draw next level stat increase
                 {
                     var nf1 = UICommon.Lerp(baseAndEquipLvl * switchPersonaStatParamTrans, (baseAndEquipLvl + nextLvlBonus) * switchPersonaStatParamTrans, f4);
                     var nf2 = UICommon.ProgressTrackFraction(nf1, 0, 99, 0);
