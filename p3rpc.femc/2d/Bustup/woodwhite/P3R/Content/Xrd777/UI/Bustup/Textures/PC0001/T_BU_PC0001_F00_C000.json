@@ -1,0 +1,55 @@
+[
+  {
+    "Type": "Texture2D",
+    "Name": "T_BU_PC0001_F00_C000",
+    "Class": "UScriptClass'Texture2D'",
+    "Flags": "RF_Public | RF_Standalone | RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+    "Properties": {
+      "ImportedSize": {
+        "X": 4,
+        "Y": 4
+      },
+      "LightingGuid": "E9FB88F4-4183B8EF-78069A8D-9995E633"
+    },
+    "SizeX": 4,
+    "SizeY": 4,
+    "PackedData": 1,
+    "PixelFormat": "PF_DXT5",
+    "FirstMipToSerialize": 0,
+    "Mips": [
+      {
+        "BulkData": {
+          "BulkDataFlags": "BULKDATA_SingleUse | BULKDATA_ForceInlinePayload",
+          "ElementCount": 16,
+          "SizeOnDisk": 16,
+          "OffsetInFile": "0x764"
+        },
+        "SizeX": 4,
+        "SizeY": 4,
+        "SizeZ": 1
+      },
+      {
+        "BulkData": {
+          "BulkDataFlags": "BULKDATA_SingleUse | BULKDATA_ForceInlinePayload",
+          "ElementCount": 16,
+          "SizeOnDisk": 16,
+          "OffsetInFile": "0x798"
+        },
+        "SizeX": 4,
+        "SizeY": 4,
+        "SizeZ": 1
+      },
+      {
+        "BulkData": {
+          "BulkDataFlags": "BULKDATA_SingleUse | BULKDATA_ForceInlinePayload",
+          "ElementCount": 16,
+          "SizeOnDisk": 16,
+          "OffsetInFile": "0x7CC"
+        },
+        "SizeX": 4,
+        "SizeY": 4,
+        "SizeZ": 1
+      }
+    ]
+  }
+]
