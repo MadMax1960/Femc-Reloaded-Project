@@ -2404,12 +2404,12 @@ namespace p3rpc.femc.Components
 
         private unsafe FSprColor GetMatchingColorForEntry(int entryId)
         {
-            if (entryId % 3 == 0) return ConfigColor.ToFSprColor(_context._config.CampMenuItemColor1);
-            else if (entryId % 3 == 1) return ConfigColor.ToFSprColor(_context._config.CampMenuItemColor2);
-            else /*(entryId % 3 == 2)*/ return ConfigColor.ToFSprColor(_context._config.CampMenuItemColor3);
+            if (entryId % 3 == 0) return ConfigColor.ToFSprColor(_context._config.CampMenuSystemItemColor1);
+            else if (entryId % 3 == 1) return ConfigColor.ToFSprColor(_context._config.CampMenuSystemItemColor2);
+            else /*(entryId % 3 == 2)*/ return ConfigColor.ToFSprColor(_context._config.CampMenuSystemItemColor3);
         }
 
-        private unsafe FSprColor UCmpSystemDraw_GetMenuColorNoSelectImpl() => ConfigColor.ToFSprColor(_context._config.CampMenuItemColorNoSel);
+        private unsafe FSprColor UCmpSystemDraw_GetMenuColorNoSelectImpl() => ConfigColor.ToFSprColor(_context._config.CampMenuSystemItemColorNoSel);
 
         private unsafe void UCmpSystemDraw_DrawUnhighlightedMenuOptionsImpl(UCmpSystemDraw* self, UCmpSystemSystem* sys, uint activeId, uint queueId)
         {

@@ -154,7 +154,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "purpleoctogamer Q2")]
         purpleoctogamerAlt,
         [Display(Name = "Anonymousfluffi")]
-        Anonymousfluffi
+        Anonymousfluffi,
+        [Display(Name = "WoodWhite")]
+        woodwhite
         }
 
         [DisplayName("Cutin")]
@@ -2491,6 +2493,22 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Camp: Item Effect font color")]
         public ConfigColor CampItemEffectFont { get; set; } = ConfigColor.MellodiColorDark3;
+
+        [DisplayName("Camp: System Menu Item Color 1")]
+        [Category("UI Colors")]
+        public ConfigColor CampMenuSystemItemColor1 { get; set; } = ConfigColor.CampMenuItemColor1;
+
+        [DisplayName("Camp: System Menu Item Color 2")]
+        [Category("UI Colors")]
+        public ConfigColor CampMenuSystemItemColor2 { get; set; } = ConfigColor.CampMenuItemColor2;
+
+        [DisplayName("Camp: System Menu Item Color 3")]
+        [Category("UI Colors")]
+        public ConfigColor CampMenuSystemItemColor3 { get; set; } = ConfigColor.CampMenuItemColor3;
+
+        [DisplayName("Camp: System Menu Item Color No Select")]
+        [Category("UI Colors")]
+        public ConfigColor CampMenuSystemItemColorNoSel { get; set; } = ConfigColor.CampMenuItemColorNoSel;
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
