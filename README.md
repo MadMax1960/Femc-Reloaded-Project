@@ -26,7 +26,7 @@ Pretty much any contribution is welcome! You can check our [wiki](https://github
 ## Leadership
 **Director**: A Mudkip (MadMax1960)
 
-**2D Leads**: catboyronaldreagan (Adrien), esablythe, yuhaino
+**Major 2D Contributors**: catboyronaldreagan (Adrien), esablythe, yuhaino, Mekki
 
 **3D Animation Lead**: cpido
 
@@ -38,7 +38,7 @@ Pretty much any contribution is welcome! You can check our [wiki](https://github
 
 **Event Editing Leads**: raycooper, rirurin 
 
-**Text Leads**: kiawaii (Kiara), ciel_bell 
+**Major Text Contributors**: kiawaii (Kiara), ciel_bell, Smerz
 
 **Major Voice Actors**: realmelodyhope (Femc)
 
