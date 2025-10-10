@@ -39,8 +39,6 @@ Pretty much any contribution is welcome! You can check our [wiki](https://github
 
 **Text Leads**: kiawaii (Kiara), ciel_bell 
 
-**Youtube**: kingddd
-
 **Major Voice Actors**: realmelodyhope (Femc)
 
 **Japanese Localization Lead**: misegalf
