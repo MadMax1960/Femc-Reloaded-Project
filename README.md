@@ -18,6 +18,7 @@ _ⓒAtlus ⓒSega All Rights reserved. This mod is not associated with Sega or A
 - [Config App](https://github.com/MadMax1960/Femc-Config-Adjuster/releases)
 - [Wiki](https://github.com/MadMax1960/Femc-Reloaded-Project/wiki)
 - [Raw Files Repo](https://github.com/MadMax1960/Femc-Reloaded-Raw-Files)
+- [KingDDD's youtube channel has a video of every every update and feature added!](https://www.youtube.com/@kingddd)
 
 ## How to Contribute
 Pretty much any contribution is welcome! You can check our [wiki](https://github.com/MadMax1960/Femc-Reloaded-Project/wiki) to learn how to submit a pull request with your contributions! Or join our [discord](https://discord.gg/femc) and ask there!
