@@ -48,6 +48,8 @@ Pretty much any contribution is welcome! You can check our [wiki](https://github
 
 **Spanish Localization Lead**: kiawaii (Kiara)
 
+**Founding Producer (v1.0.0)**: Fernhw (initial task management)
+
 <br/>
 
 ## Copyright TLDR; 
