@@ -278,6 +278,27 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteFloat(filePath, 0x762A1, (float) Math.Pow(config.OverstockTitleColor.B / 255.0, 2.2));
         }
 
+        private static void ApplyShiftColors(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Effects", "Niagara", "Battle", "ShiftFrom00ShiftTo00_P.ucas");
+
+            // ShiftFrom_00 -> first animation file
+            HexColorEditor.WriteFloat(filePath, 0x15793, config.ShiftFromColor.R / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0x157B3, config.ShiftFromColor.G / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0x157B7, config.ShiftFromColor.B / 255.0f);
+
+            // ShiftTo_00 -> second animation file
+            HexColorEditor.WriteFloat(filePath, 0x5980, config.ShiftToMiddleColor.R / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0x59B4, config.ShiftToMiddleColor.G / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0x59BC, config.ShiftToMiddleColor.B / 255.0f);
+
+            HexColorEditor.WriteFloat(filePath, 0x5984, config.ShiftToUpDownColor.R / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0x59B8, config.ShiftToUpDownColor.G / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0x59C0, config.ShiftToUpDownColor.B / 255.0f);
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyBPBtlSkillList(config, modDirectory);
@@ -288,6 +309,7 @@ namespace p3rpc.femc.HexEditing
             ApplyBtlWaterCaustics(config, modDirectory);
             ApplyBPBtlResultUIBase(config, modDirectory);
             ApplyBPBtlShuffleUI(config, modDirectory);
+            ApplyShiftColors(config, modDirectory);
         }
     }
 }

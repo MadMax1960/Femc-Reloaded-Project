@@ -43,15 +43,6 @@ namespace p3rpc.femc.Components
 
         public unsafe Cmmu(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
-            _context._utils.SigScan(AUICmmu_RankUpCardColorDark1_SIG, "AUICmmu::RankUpCardColorDark1", _context._utils.GetDirectAddress, addr =>
-            {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CmmuRankUpDarkCardColor.ToU32ARGB())));
-            });
-            _context._utils.SigScan(AUICmmu_RankUpCardColorDark2_SIG, "AUICmmu::RankUpCardColorDark2", _context._utils.GetDirectAddress, addr =>
-            {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CmmuRankUpDarkCardColor.ToU32ARGB())));
-            });
-
             _context._utils.SigScan(AUICmmu_RankUpCardColorLightInitialBlue_SIG, "AUICmmu::RankUpCardColorLightInitialBlue", _context._utils.GetDirectAddress, addr =>
             {
                 // 0x88 to 0xF6 before, we'll lower the color offset to not make the cards so red
@@ -235,6 +226,14 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(AUICmmu_CheckSocialLinkStrip2_SIG, "AUICmmu::CheckSocialLinkStrip2", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CmmuStatusStrip.ToU32())));
+            });
+            _context._utils.SigScan(AUICmmu_RankUpCardColorDark1_SIG, "AUICmmu::RankUpCardColorDark1", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CmmuRankUpDarkCardColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(AUICmmu_RankUpCardColorDark2_SIG, "AUICmmu::RankUpCardColorDark2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CmmuRankUpDarkCardColor.ToU32ARGB())));
             });
         }
 
