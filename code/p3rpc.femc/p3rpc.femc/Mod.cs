@@ -186,7 +186,8 @@ namespace p3rpc.femc
         private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death (Ivan is exempt from this) 
 		{
 			_modRuntime.AddModule<UICommon>();
-			if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
+            _modRuntime.AddModule<FemcEquipment>();
+            if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
 			if (_configuration.EnableCampMenu)
 			{
 				_modRuntime.AddModule<CampCommon>();

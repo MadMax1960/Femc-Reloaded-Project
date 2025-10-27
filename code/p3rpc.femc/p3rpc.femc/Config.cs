@@ -2510,6 +2510,15 @@ namespace p3rpc.femc.Configuration
         [Category("UI Colors")]
         public ConfigColor CampMenuSystemItemColorNoSel { get; set; } = ConfigColor.CampMenuItemColorNoSel;
 
+        [DisplayName("Battle: Shift from strip color")]
+        public ConfigColor ShiftFromColor { get; set; } = new ConfigColor(0xFF, 0x05, 0x13, 0xFF);
+
+        [DisplayName("Battle: Shift to middle strip color")]
+        public ConfigColor ShiftToMiddleColor { get; set; } = new ConfigColor(0xFF, 0x17, 0x23, 0xFF);
+
+        [DisplayName("Battle: Shift to up/down strips color")]
+        public ConfigColor ShiftToUpDownColor { get; set; } = new ConfigColor(0xFF, 0x5C, 0x49, 0xFF);
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
