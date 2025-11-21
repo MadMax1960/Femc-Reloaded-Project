@@ -2519,6 +2519,38 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Battle: Shift to up/down strips color")]
         public ConfigColor ShiftToUpDownColor { get; set; } = new ConfigColor(0xFF, 0x5C, 0x49, 0xFF);
 
+        [DisplayName("Camp Configuration: BGM Selection Text and Icon Color")]
+        public ConfigColor CampConfSelTexColor { get; set; } = ConfigColor.MellodiColorMid2;
+        
+        [DisplayName("Camp Configuration: Option Current Setting Background Color")]
+        public ConfigColor CampConfOptFmtBgColor { get; set; } = new ConfigColor(0x1a, 0x0, 0x10, 0xFF);
+        
+        [DisplayName("Camp Configuration: Option Name Text Color")]
+        public ConfigColor CampConfSelNameColor { get; set; } = ConfigColor.MellodiColorMid2;
+
+        [DisplayName("Camp Configuration: Key Configuration Inactive Option")]
+        public ConfigColor CampConfigControlSetInactive { get; set; } = ConfigColor.MellodiColorMid3;
+        
+        [DisplayName("Camp Configuration: Option Unselected Area")]
+        public ConfigColor CampConfigOptionUnselectedArea { get; set; } = new ConfigColor(0x8f, 0x2f, 0x4f, 0xff);
+
+        [DisplayName("Camp Configuration: Boolean Unselected Area")]
+        public ConfigColor CampConfigBooleanUnselectedArea { get; set; } = ConfigColor.MellodiColorDark1;
+        
+        [DisplayName("Camp Configuration: Music Player Glow Color")]
+        public ConfigColor CampConfigMusicPlayerGlow { get; set; } = ConfigColor.MellodiColorMid2;
+        
+        [DisplayName("Camp Configuration: Top Description Text Color")]
+        public ConfigColor CampConfigTopDescColor { get; set; } = ConfigColor.MellodiColorMid2;
+        
+        [DisplayName("Camp Configuration: Background Color")]
+        public ConfigColor CampConfigBgColor { get; set; } = ConfigColor.PersonaStatusSkillListBg;
+
+        // public ConfigColor CampConfigUnk { get; set; } = new ConfigColor(0x8f, 0x65, 0x73, 0xff);
+        
+        [DisplayName("Camp Configuration: Playlist Title Color")]
+        public ConfigColor CampConfigPlistHeadColor { get; set; } = new ConfigColor(0x90, 0x46, 0x6c, 0xff);
+        
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
