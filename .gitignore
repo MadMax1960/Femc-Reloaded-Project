@@ -364,8 +364,11 @@ FodyWeavers.xsd
 # For Rust projects
 target/
 Cargo.lock
+
 /code/p3rpc.femc/p3rpc.femc/p3rpc.femc.music.interaces.cs
-code/p3rpc.femc/p3rpc.femc/obj/p3rpc.femc.csproj.nuget.dgspec.json
-code/p3rpc.femc/p3rpc.femc/obj/p3rpc.femc.csproj.nuget.g.props
-code/p3rpc.femc/p3rpc.femc/obj/p3rpc.femc.csproj.nuget.g.targets
-code/p3rpc.femc/p3rpc.femc/obj/project.assets.json
+
+# VS project object file
+code/p3rpc.femc/p3rpc.femc/obj/*
+
+# Jetbrains IDE
+**/.idea/*

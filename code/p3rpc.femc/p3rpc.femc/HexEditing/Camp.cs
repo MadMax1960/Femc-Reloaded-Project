@@ -177,11 +177,34 @@ namespace p3rpc.femc.HexEditing
                 "Blueprints", "UI", "Configuration", "BP_UIConfiguration.uasset");
 
             HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGRA;
-
-            HexColorEditor.WriteColor(filePath, 0x42586, config.CampHighlightedLowerColor, order);
-            HexColorEditor.WriteColor(filePath, 0x40798, config.CampConfigurationLightReflectiveColor1, order);
-            HexColorEditor.WriteColor(filePath, 0x407CD, config.CampConfigurationLightReflectiveColor2, order);
-
+            // Updated to use BP_UIConfiguration from 1.0.10 (originally used 1.0.1 file)
+            using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
+            HexColorEditor.WriteBlueprintByteColor(stream, 0xc275, config.CampConfigBgColor, order);
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x108c5, config.CampConfSelTexColor, order); // was 0xf87d (+ 0x1048)
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x15ed9, config.CampConfOptFmtBgColor, order); // was 0x145ad (+ 0x192c)
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x15f75, config.CampConfSelNameColor, order); // was 0x14649 (+ 0x192c)
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x15fa9, config.CampConfigControlSetInactive, order); // was 0x1467d (+ 0x192c)
+            HexColorEditor.WriteBlueprintSplitColor(stream, 0x16341, config.CampConfigTopDescColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(stream, 0x1667d, config.CampConfigTopDescColor, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x200a9, config.CampConfigOptionUnselectedArea, order);
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x200dd, config.CampConfigOptionUnselectedArea, order);
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x20111, config.CampConfigOptionUnselectedArea, order);
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x20145, config.CampConfigOptionUnselectedArea, order);
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x20179, config.CampConfigOptionUnselectedArea, order);
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x201e1, config.CampConfigOptionUnselectedArea, order);
+            HexColorEditor.WriteBlueprintByteColor(stream, 0x22cad, config.CampConfigBooleanUnselectedArea, order);
+            // HexColorEditor.WriteBlueprintSplitColor(stream, 0x2c4f3, config.CampConfig2C4F3, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(stream, 0x38587, config.CampConfigMusicPlayerGlow, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteColor(stream, 0x42f40, config.CampConfigurationLightReflectiveColor1, order); // was 0x40798
+            HexColorEditor.WriteColor(stream, 0x42f75, config.CampConfigurationLightReflectiveColor2, order); // was 0x407cd
+            HexColorEditor.WriteColor(stream, 0x456d2, config.CampHighlightedLowerColor, order); // was 0x42586
+            var PlaylistTitleColorComp = new[] {
+                config.CampConfigPlistHeadColor.B, config.CampConfigPlistHeadColor.G, config.CampConfigPlistHeadColor.R};
+            for (var i = 0; i < 3; i++)
+            {
+                stream.Seek(0x4d817 + (0x22 * i), SeekOrigin.Begin);
+                stream.WriteByte(PlaylistTitleColorComp[i]);
+            }
         }
 
         private static void ApplyMainMenuConfigCurve(Config config, string modDirectory)
