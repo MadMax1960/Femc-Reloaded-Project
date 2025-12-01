@@ -182,8 +182,8 @@ namespace p3rpc.femc.Configuration
         [Description("The group photo taken during a certain event.")]
         [Category("2D Options")]
         [Display(Order = 7)]
-        [DefaultValue(GroupEventtype.ely)]
-        public GroupEventtype GroupEventTrue { get; set; } = GroupEventtype.bichelle;
+        [DefaultValue(GroupEventtype.mekki)]
+        public GroupEventtype GroupEventTrue { get; set; } = GroupEventtype.mekki;
 
         public enum GroupEventtype
         {
@@ -491,7 +491,7 @@ namespace p3rpc.femc.Configuration
         [Category("Daytime Music")]
         [Description("Enable A Way Of Life -Reload- (Vocal Version) by MOSQ as the daytime music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 71)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool WayOfLife { get; set; } = false;
 
         [DisplayName("A Way of Life cover by Jen")]
@@ -505,7 +505,7 @@ namespace p3rpc.femc.Configuration
         [Category("Daytime Music")]
         [Description("Enable A Way Of Life -Reload- (Vocal Version) by Super M Plush, MOSQ, Karma and cora\nas the daytime music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 73)]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool WayLifeVocal { get; set; } = true;
 
         [DisplayName("A Way Of Life (P3P)")]
