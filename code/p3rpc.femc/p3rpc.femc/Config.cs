@@ -205,7 +205,9 @@ namespace p3rpc.femc.Configuration
         public enum KyotoEventtype
         {
         [Display(Name = "Ely")]
-        ely
+        ely,
+        [Display(Name = "Mekki & Cpido & Dniwe")]
+        mekki
         }
 
         [DisplayName("Level Up Art")]

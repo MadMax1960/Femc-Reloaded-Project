@@ -11,7 +11,9 @@ namespace p3rpc.femc
 		{
 			if (configuration.KyotoEventTrue == KyotoEventtype.ely)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Events", "Kyoto", "ely"));
-			// Add other Kyoto Event conditions if needed.
-		}
+            if (configuration.KyotoEventTrue == KyotoEventtype.mekki)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Events", "Kyoto", "Mekki"));
+            // Add other Kyoto Event conditions if needed.
+        }
 	}
 }
