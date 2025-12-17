@@ -126,7 +126,7 @@ namespace p3rpc.femc
 
             modName = _modConfig.ModName;
 			// Load Modules/assets
-			LoadEnabledAddons(unrealEssentials, ryo);
+			LoadEnabledAddons(unrealEssentials, ryo, toolKit);
 			InitializeModules();
 			_assetRedirector = new AssetRedirector(unrealNames, modName);
 			_assetRedirector.RedirectPlayerAssets();
@@ -142,7 +142,7 @@ namespace p3rpc.femc
 
 		}
 
-        private void LoadEnabledAddons(IUnrealEssentials unrealEssentials, IRyoApi ryo)
+        private void LoadEnabledAddons(IUnrealEssentials unrealEssentials, IRyoApi ryo, IToolkit toolKit)
 		{
 			try
 			{
@@ -160,7 +160,7 @@ namespace p3rpc.femc
                 CutinLoader.LoadCutinAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d cutin usms
                 GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the group event thing, its 2d art 
                 KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the kyoto event, it is also 2d art
-                Theo.LoadTheoAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
+                Theo.LoadTheoAssets(unrealEssentials, toolKit, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
                 Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
                 Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
                 HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Hot Spring Event
