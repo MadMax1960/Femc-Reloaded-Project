@@ -711,6 +711,12 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool TheodorefromAlvinandTheChipmunks { get; set; } = false; // soon this should be a whole thing, movies, bustups, etc 
 
+        [DisplayName("Deck Compatibility Switch")]
+        [Category("Testing")]
+        [Description("Test option to disable some ui components that seem to be unstable on Linux. Please help us test this my windows 11 refugees.")]
+        [DefaultValue(false)]
+        public bool DeckCompatibilitySwitch { get; set; } = false;
+
         // Dorm Swap
 
         [DisplayName("Test Dorm Room Swap and Hot Spring Event")]

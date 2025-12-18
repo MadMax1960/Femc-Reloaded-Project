@@ -188,9 +188,11 @@ namespace p3rpc.femc
 			_modRuntime.AddModule<UICommon>();
             _modRuntime.AddModule<FemcEquipment>();
             if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
-			if (_configuration.EnableCampMenu)
-			{
-				_modRuntime.AddModule<CampCommon>();
+            bool deckCompatibilitySwitch = _configuration.DeckCompatibilitySwitch;
+
+            if (_configuration.EnableCampMenu && !deckCompatibilitySwitch)
+            {
+                _modRuntime.AddModule<CampCommon>();
 				_modRuntime.AddModule<CampRoot>();
 				_modRuntime.AddModule<CampSkill>();
 				_modRuntime.AddModule<CampItem>();
@@ -222,8 +224,8 @@ namespace p3rpc.femc
 				_modRuntime.AddModule<MsgWindowSelectMind>();
 			}
 			if (_configuration.EnableInteractPrompt) _modRuntime.AddModule<MiscCheckDraw>();
-			if (_configuration.EnableMinimap)
-			{
+            if (_configuration.EnableMinimap && !deckCompatibilitySwitch)
+            {
 				_modRuntime.AddModule<Minimap>();
 				_modRuntime.AddModule<LocationSelect>();
 			}
@@ -241,8 +243,8 @@ namespace p3rpc.femc
             if (_configuration.EnableBacklog) _modRuntime.AddModule<Backlog>();
 			if (_configuration.EnableButtonPrompts) _modRuntime.AddModule<KeyHelp>();
 			if (_configuration.EnableGetItem) _modRuntime.AddModule<MiscGetItemDraw>();
-			if (_configuration.EnableTimeSkip)
-			{
+            if (_configuration.EnableTimeSkip && !deckCompatibilitySwitch)
+            {
 				_modRuntime.AddModule<DayChange>();
 				_modRuntime.AddModule<TimeChange>();
 			}
