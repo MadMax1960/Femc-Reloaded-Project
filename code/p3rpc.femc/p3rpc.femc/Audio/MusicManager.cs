@@ -79,6 +79,7 @@ namespace p3rpc.femc.Audio
                     {Path.Combine(path, "Reload\\link_25.cue"),_configuration.Moon},
                     {Path.Combine(path, "P3P\\link_25.cue"),_configuration.WayOfLifeP3P},
                     {Path.Combine(path, "P3D\\link_25.cue"),_configuration.WayOfLifeP3D},
+                    {Path.Combine(path, "RestlessArtist\\link_25.cue"),_configuration.RestlessWayofLife},
                 };
 				foreach (KeyValuePair<string, bool> do1m in dayout1music)
 				{
@@ -119,8 +120,10 @@ namespace p3rpc.femc.Audio
 					{Path.Combine(path, "Satella&GillStudio\\link_31.cue"),_configuration.SgDis},
 					{Path.Combine(path, "Reload\\link_31.cue"),_configuration.MasterTar},
 					{Path.Combine(path, "P3P\\link_31.cue"),_configuration.P3PDis},
-					{Path.Combine(path, "EidieK87\\link_31.cue"),_configuration.EidDis}
-				};
+					{Path.Combine(path, "EidieK87\\link_31.cue"),_configuration.EidDis},
+                    {Path.Combine(path, "RestlessArtist\\link_31.cue"),_configuration.RestlessDis},
+
+                };
 				foreach (KeyValuePair<string, bool> ds in disadvantagemusic)
 				{
 					if (ds.Value)
@@ -135,7 +138,8 @@ namespace p3rpc.femc.Audio
 					{Path.Combine(path, "Reload\\link_26.cue"),_configuration.MassDes},
                     {Path.Combine(path, "P3P\\link_26.cue"),_configuration.P3PNom},
                     {Path.Combine(path, "P3D\\link_26.cue"),_configuration.P3MidNomF},
-                    {Path.Combine(path, "EidieK87\\link_26.cue"),_configuration.EidNom}
+                    {Path.Combine(path, "EidieK87\\link_26.cue"),_configuration.EidNom},
+                    {Path.Combine(path, "RestlessArtist\\link_26.cue"),_configuration.RestlessNom}
                 };
 				foreach (KeyValuePair<string, bool> nm in normalmusic)
 				{

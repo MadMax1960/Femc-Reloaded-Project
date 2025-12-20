@@ -420,6 +420,13 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool EidNom { get; set; } = false;
 
+        [DisplayName("Wiping All Out Remix by Restless Artist")]
+        [Category("Battle Music - Normal")]
+        [Description("Enable Wiping All Out Remix by Restless Artist as advantage battle music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 32)]
+        [DefaultValue(false)]
+        public bool RestlessNom { get; set; } = false;
+
         [DisplayName("Mass Destruction -Reload-")]
         [Category("Battle Music - Normal")]
         [Description("Enable Mass Destruction -Reload-, which is used by default for normal battle music.\nMultiple songs can be chosen for randomization!")]
@@ -463,6 +470,13 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 54)]
         [DefaultValue(false)]
         public bool P3PDis { get; set; } = false;
+
+        [DisplayName("Restless Artist Danger Zone")]
+        [Category("Tartarus Boss Music")]
+        [Description("Enable Restless Artist's Danger Zone Tartarus boss battle music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 54)]
+        [DefaultValue(false)]
+        public bool RestlessDis { get; set; } = false;
 
         [DisplayName("Master of Tartarus -Reload-")]
         [Category("Tartarus Boss Music")]
@@ -537,6 +551,13 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 77)]
         [DefaultValue(false)]
         public bool Moon { get; set; } = true;
+
+        [DisplayName("A Way of Life (Restless Artist)")]
+        [Category("Daytime Music")]
+        [Description("Enable A Way of Life (Restless Artist).\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 78)]
+        [DefaultValue(false)]
+        public bool RestlessWayofLife { get; set; } = true;
 
         //  School Music - 1st semester
 
