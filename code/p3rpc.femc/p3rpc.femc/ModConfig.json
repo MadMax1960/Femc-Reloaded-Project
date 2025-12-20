@@ -2,7 +2,7 @@
   "ModId": "p3rpc.femc",
   "ModName": "Femc Project",
   "ModAuthor": "Femc Reloaded Team",
-  "ModVersion": "2.3.1",
+  "ModVersion": "2.4.0",
   "ModDescription": "This mod aims to readd the female protagonist Kotone Shiomi from Persona 3 Portable.",
   "ModDll": "p3rpc.femc.dll",
   "ModIcon": "Preview.png",
@@ -221,8 +221,7 @@
     "SharedScans.Reloaded",
     "UE.Toolkit.Reloaded",
     "Unreal.ObjectsEmitter.Reloaded",
-    "UnrealEssentials",
-    "Unreal.UE4SS.Reloaded"
+    "UnrealEssentials"
   ],
   "OptionalDependencies": [],
   "SupportedAppId": [
