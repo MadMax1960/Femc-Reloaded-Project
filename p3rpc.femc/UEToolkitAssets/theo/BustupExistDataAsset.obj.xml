@@ -1,0 +1,378 @@
+<UBustupExistDataAsset>
+  <Data>
+    <Item id="202">
+      <Faces>
+        <Item id="0">
+          <Clothes>
+            <Item id="6">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="900"/>
+              <EyePartsID value ="900"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="901">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="901"/>
+              <EyePartsID value ="901"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="902">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="902"/>
+              <EyePartsID value ="902"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="903">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="903"/>
+              <EyePartsID value ="903"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="904">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="904"/>
+              <EyePartsID value ="904"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="false"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+          </Clothes>
+        </Item>
+        <Item id="1">
+          <Clothes>
+            <Item id="6">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="900"/>
+              <EyePartsID value ="900"/>
+              <bEyeAnim value ="false"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="901">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="901"/>
+              <EyePartsID value ="901"/>
+              <bEyeAnim value ="false"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="902">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="902"/>
+              <EyePartsID value ="902"/>
+              <bEyeAnim value ="false"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="903">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="903"/>
+              <EyePartsID value ="903"/>
+              <bEyeAnim value ="false"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="904">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="904"/>
+              <EyePartsID value ="904"/>
+              <bEyeAnim value ="false"/>
+              <bMouthAnim value ="false"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+          </Clothes>
+        </Item>
+        <Item id="2">
+          <Clothes>
+            <Item id="6">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="900"/>
+              <EyePartsID value ="900"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="901">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="901"/>
+              <EyePartsID value ="901"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="902">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="902"/>
+              <EyePartsID value ="902"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="903">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="903"/>
+              <EyePartsID value ="903"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="904">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="904"/>
+              <EyePartsID value ="904"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="false"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+          </Clothes>
+        </Item>
+        <Item id="3">
+          <Clothes>
+            <Item id="6">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="900"/>
+              <EyePartsID value ="900"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="901">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="901"/>
+              <EyePartsID value ="901"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="902">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="902"/>
+              <EyePartsID value ="902"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="903">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="903"/>
+              <EyePartsID value ="903"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="904">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="904"/>
+              <EyePartsID value ="904"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="false"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+          </Clothes>
+        </Item>
+        <Item id="4">
+          <Clothes>
+            <Item id="6">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="900"/>
+              <EyePartsID value ="900"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="901">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="901"/>
+              <EyePartsID value ="901"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="902">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="902"/>
+              <EyePartsID value ="902"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="903">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="903"/>
+              <EyePartsID value ="903"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+            <Item id="904">
+              <Pose value="PoseA"/>
+              <EyePartsID value ="904"/>
+              <EyePartsID value ="904"/>
+              <bEyeAnim value ="true"/>
+              <bMouthAnim value ="true"/>
+              <InBetween value ="0"/>
+              <EyeX value="639.0"/>
+              <EyeY value="762.0"/>
+              <MouthX value="639.0"/>
+              <MouthY value="1264.0"/>
+              <BlushX value="639.0"/>
+              <BlushY value="1086.0"/>
+            </Item>
+          </Clothes>
+        </Item>
+      </Faces>
+    </Item>
+  </Data>
+</UBustupExistDataAsset>
