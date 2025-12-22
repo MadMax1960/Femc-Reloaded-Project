@@ -183,16 +183,16 @@ namespace p3rpc.femc
             _costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Outfit Loader")); // Folder with all the costume ymls
         }
 
-        private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death (Ivan is exempt from this) 
+		private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death (Ivan is exempt from this) 
 		{
 			_modRuntime.AddModule<UICommon>();
-            _modRuntime.AddModule<FemcEquipment>();
-            if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
-            bool deckCompatibilitySwitch = _configuration.DeckCompatibilitySwitch;
+			_modRuntime.AddModule<FemcEquipment>();
+			if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
+			bool deckCompatibilitySwitch = _configuration.DeckCompatibilitySwitch;
 
-            if (_configuration.EnableCampMenu && !deckCompatibilitySwitch)
-            {
-                _modRuntime.AddModule<CampCommon>();
+			if (_configuration.EnableCampMenu)
+			{
+				_modRuntime.AddModule<CampCommon>();
 				_modRuntime.AddModule<CampRoot>();
 				_modRuntime.AddModule<CampSkill>();
 				_modRuntime.AddModule<CampItem>();
@@ -200,14 +200,19 @@ namespace p3rpc.femc
 				_modRuntime.AddModule<CampPersona>();
 				_modRuntime.AddModule<CampStats>();
 				_modRuntime.AddModule<CampSocialLink>();
-                _modRuntime.AddModule<CampQuest>();
-                _modRuntime.AddModule<CampCalendar>();
-				_modRuntime.AddModule<CampSystem>();
-				_modRuntime.AddModule<SocialStats>();
-				_modRuntime.AddModule<Tutorial>();
-				_modRuntime.AddModule<MissingPerson>();
-                _modRuntime.AddModule<Requests>();
-            }
+				_modRuntime.AddModule<CampQuest>();
+				// Disable loading of these modules when Deck Compatibility is enabled,
+				// as they are consistently problematic and prone to crashes on Linux
+				if (!deckCompatibilitySwitch)
+				{
+					_modRuntime.AddModule<CampCalendar>();
+					_modRuntime.AddModule<CampSystem>();
+					_modRuntime.AddModule<SocialStats>();
+					_modRuntime.AddModule<Tutorial>();
+					_modRuntime.AddModule<MissingPerson>();
+					_modRuntime.AddModule<Requests>();
+				}
+			}
 			if (_configuration.EnableDateTimePanel) _modRuntime.AddModule<DateTimePanel>();
 			if (_configuration.EnableTextbox)
 			{
@@ -224,8 +229,8 @@ namespace p3rpc.femc
 				_modRuntime.AddModule<MsgWindowSelectMind>();
 			}
 			if (_configuration.EnableInteractPrompt) _modRuntime.AddModule<MiscCheckDraw>();
-            if (_configuration.EnableMinimap && !deckCompatibilitySwitch)
-            {
+			if (_configuration.EnableMinimap)
+			{
 				_modRuntime.AddModule<Minimap>();
 				_modRuntime.AddModule<LocationSelect>();
 			}
@@ -239,12 +244,12 @@ namespace p3rpc.femc
 			}
 			if (_configuration.EnableTownMap) _modRuntime.AddModule<TownMap>();
 			if (_configuration.EnablePartyPanel) _modRuntime.AddModule<PartyPanel>();
-            if (_configuration.EnableBattle) _modRuntime.AddModule<Battle>();
-            if (_configuration.EnableBacklog) _modRuntime.AddModule<Backlog>();
+			if (_configuration.EnableBattle) _modRuntime.AddModule<Battle>();
+			if (_configuration.EnableBacklog) _modRuntime.AddModule<Backlog>();
 			if (_configuration.EnableButtonPrompts) _modRuntime.AddModule<KeyHelp>();
 			if (_configuration.EnableGetItem) _modRuntime.AddModule<MiscGetItemDraw>();
-            if (_configuration.EnableTimeSkip && !deckCompatibilitySwitch)
-            {
+			if (_configuration.EnableTimeSkip)
+			{
 				_modRuntime.AddModule<DayChange>();
 				_modRuntime.AddModule<TimeChange>();
 			}
@@ -273,8 +278,8 @@ namespace p3rpc.femc
 			if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
 			if (_configuration.EnableItemList) _modRuntime.AddModule<ItemList>();
 			if (_configuration.EnableCommunity) _modRuntime.AddModule<Cmmu>();
-            _modRuntime.RegisterModules();
-        }
+			_modRuntime.RegisterModules();
+		}
 
 		#region Standard Overrides
 		public override void ConfigurationUpdated(Config configuration)
@@ -284,7 +289,7 @@ namespace p3rpc.femc
 			_configuration = configuration;
 			_logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
 			_modRuntime.UpdateConfiguration(configuration);
-        }
+		}
 		#endregion
 
 		#region For Exports, Serialization etc.
