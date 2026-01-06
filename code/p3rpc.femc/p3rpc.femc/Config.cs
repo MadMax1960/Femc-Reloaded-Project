@@ -2576,10 +2576,19 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CampConfigBgColor { get; set; } = ConfigColor.PersonaStatusSkillListBg;
 
         // public ConfigColor CampConfigUnk { get; set; } = new ConfigColor(0x8f, 0x65, 0x73, 0xff);
-        
+
         [DisplayName("Camp Configuration: Playlist Title Color")]
         public ConfigColor CampConfigPlistHeadColor { get; set; } = new ConfigColor(0x90, 0x46, 0x6c, 0xff);
-        
+
+        [DisplayName("Camp Equip: Unavailable Party Member Parallelogram")]
+        public ConfigColor EquipPMUnavailableParallelogram { get; set; } = new ConfigColor(0xB6, 0x3F, 0x68, 0xff);
+
+        [DisplayName("Camp Root: Main camp menu highlighted color 1")]
+        public ConfigColor CampRootHighlightedColor1 { get; set; } = ConfigColor.Blue;
+
+        [DisplayName("Camp Root: Main camp menu highlighted color 2")]
+        public ConfigColor CampRootHighlightedColor2 { get; set; } = ConfigColor.Blue;
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]

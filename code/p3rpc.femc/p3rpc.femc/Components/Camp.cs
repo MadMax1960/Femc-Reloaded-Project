@@ -131,16 +131,16 @@ namespace p3rpc.femc.Components
                     "use64",
                     "test al, al",
                     "jnz .grayHighlight",
-                    $"mov byte [rbp-0x7E], ${_context._config.CampHighlightedColor.R:X}",
-                    $"mov byte [rbp-0x7F], ${_context._config.CampHighlightedColor.G:X}",
-                    $"mov byte [rbp-0x80], ${_context._config.CampHighlightedColor.B:X}",
+                    $"mov byte [rbp-0x7E], ${_context._config.CampRootHighlightedColor1.R:X}",
+                    $"mov byte [rbp-0x7F], ${_context._config.CampRootHighlightedColor1.G:X}",
+                    $"mov byte [rbp-0x80], ${_context._config.CampRootHighlightedColor1.B:X}",
                     ".grayHighlight:"
                 };
                 _DrawHighlightedColor1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             _context._utils.SigScan(UCmpRootDraw_DrawHighlightedColor2_SIG, "UCmpRootDraw::DrawHighlightedColor2", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampHighlightedColor.ToU32ARGB())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.CampRootHighlightedColor2.ToU32ARGB())));
             });
 
             _context._utils.SigScan(UCmpRootDraw_DrawPartyPanelMissingHealthColor_SIG, "UCmpRootDraw::DrawPartyPanelMissingHealthColor", _context._utils.GetDirectAddress, addr =>
@@ -476,6 +476,8 @@ namespace p3rpc.femc.Components
         private string UCmpEquip_DotStatsSeparator1_SIG = "81 CD 00 90 46 36 40 84 F6";
         private string UCmpEquip_DotStatsSeparator2_SIG = "81 CD 00 90 46 36 45 0F 57 C0";
 
+        private string UCmpEquip_PartyMemberUnavailableParallelogram_SIG = "41 81 CC 00 79 38 1A";
+
         private IHook<UCmpEquipDraw_DrawEquipItemStatsNum> _drawStatsNum;
 
         private IAsmHook _DrawCircleShadow;
@@ -620,6 +622,11 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 2, _context._config.EquipDotsColor.ToU32IgnoreAlpha())));
             });
+
+            _context._utils.SigScan(UCmpEquip_PartyMemberUnavailableParallelogram_SIG, "UCmpEquipDraw::PartyMemberUnavailableParallelogram", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipPMUnavailableParallelogram.ToU32IgnoreAlpha())));
+            });
         }
 
         public override void Register()
@@ -633,7 +640,6 @@ namespace p3rpc.femc.Components
             var campSpr = (USprAsset*)_uiCommon._globalWorkGetUIResources()->GetAssetEntry(0x32);
             if (num > 999) num = 999;
             var midGray = new FSprColor(0x80, 0x80, 0x80, baseColor.A);
-            var lightGray = new FSprColor(0xb9, 0xb9, 0xb9, baseColor.A);
             var black = new FSprColor(0, 0, 0, baseColor.A);
             var white = new FSprColor(0xff, 0xff, 0xff, baseColor.A);
             var padColor = ConfigColor.ToFSprColorWithAlpha(_context._config.CampItemStatValuePadColor, baseColor.A);
@@ -641,12 +647,12 @@ namespace p3rpc.femc.Components
             var size = menuType == 0 ? 1f : 0.8f;
             var valueColor = menuType switch // 0*90*
             {
-                0 | 2 => a10 == 0 ? valColor : black,
+                0 or 2 => a10 == 0 ? valColor : black,
                 _ => white,
             };
             var paddingColor = menuType switch // *0*90
             {
-                0 | 2 => a10 == 0 ? padColor : midGray,
+                0 or 2 => a10 == 0 ? padColor : midGray,
                 _ => midGray,
             };
             var pos = new FVector2D(

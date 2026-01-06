@@ -121,7 +121,7 @@ namespace p3rpc.femc.Components
                 {
                     1 => 1 - (1 - fraction) * (1 - fraction),
                     2 => fraction * fraction,
-                    3 | 9 => (1 - (float)Math.Cos(fraction * 3.141593)) * 0.5f,
+                    3 or 9 => (1 - (float)Math.Cos(fraction * 3.141593)) * 0.5f,
                     4 => 1 - (1 - fraction) * (1 - fraction) * (1 - fraction),
                     5 => fraction * fraction * fraction,
                     7 => (float)Math.Sin(fraction),
