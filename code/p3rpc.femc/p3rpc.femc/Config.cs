@@ -2589,6 +2589,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp Root: Main camp menu highlighted color 2")]
         public ConfigColor CampRootHighlightedColor2 { get; set; } = ConfigColor.Blue;
 
+        [DisplayName("Persona Status: Equip bonus color")]
+        public ConfigColor PersonaStatusEquipBonusColor { get; set; } = ConfigColor.Green;
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
