@@ -45,6 +45,32 @@ namespace p3rpc.femc.HexEditing
                 offset += 0x200; // All curve blocks included are 0x200 long
             }
         }
+        public static void ApplyFemcMaterials(Config config, string modDirectory)
+        {
+
+            string filePath1 = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Common", "BaseMaterials", "MB_CH_CaBaOp.uasset");
+            //0x11ac
+
+            string filePath2 = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Common", "MasterMaterials", "MM_CH_Camp_OpMk.uasset");
+            //0x3e08
+
+            string filePath3 = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Player", "PC0051", "Models", "MI_PC0051_H000_00_CaBaOp.uasset");
+
+            HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
+
+            HexColorEditor.WriteColor(filePath1, 0x11ac, config.CampKotoneShadowColor2, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath2, 0x3e07, config.CampKotoneShadowColor, HexColorEditor.ColorOrder.RGB, type);
+
+            HexColorEditor.WriteColor(filePath3, 0xbd4, config.CampKotoneInnerShadowColor, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath3, 0xcfe, config.CampKotoneInnerShadowColor, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath3, 0xe28, config.CampKotoneInnerShadowColor, HexColorEditor.ColorOrder.RGB, type);
+        }
 
         private static void ApplyCampShards(Config config, string modDirectory)
         {
@@ -70,6 +96,7 @@ namespace p3rpc.femc.HexEditing
         {
             ApplyCampScreenshotFilter(config, modDirectory);
             ApplyCampShards(config, modDirectory);
+            ApplyFemcMaterials(config, modDirectory);
         }
     }
 
@@ -176,7 +203,7 @@ namespace p3rpc.femc.HexEditing
                 "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Blueprints", "UI", "Configuration", "BP_UIConfiguration.uasset");
 
-            HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGRA;
+            HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGR;
             // Updated to use BP_UIConfiguration from 1.0.10 (originally used 1.0.1 file)
             using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
             HexColorEditor.WriteBlueprintByteColor(stream, 0xc275, config.CampConfigBgColor, order);

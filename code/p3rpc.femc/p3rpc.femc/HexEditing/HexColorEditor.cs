@@ -208,10 +208,23 @@ namespace p3rpc.femc.HexEditing
             ColorOrder order = ColorOrder.BGRA)
         {
             // Their order is always BGR / BGRA
-            if (!order.Equals(ColorOrder.BGR) && !order.Equals(ColorOrder.BGRA))
-                throw new ArgumentException("Blueprint hardcoded colors must be either BGR or BGRA", nameof(order));
-            
-            var bytes = new byte[] { 0x24, color.B, 0x24, color.G, 0x24, color.R, 0x24, color.A };
+            if (!order.Equals(ColorOrder.BGR) && !order.Equals(ColorOrder.BGRA) && !order.Equals(ColorOrder.RGB))
+                throw new ArgumentException("Blueprint hardcoded colors must be either BGR or BGRA or RGB", nameof(order));
+            byte[] bytes;
+
+            if (order == ColorOrder.BGRA)
+            {
+                bytes = new byte[] { 0x24, color.B, 0x24, color.G, 0x24, color.R, 0x24, color.A };
+            }
+            if (order == ColorOrder.BGR)
+            {
+                bytes = new byte[] { 0x24, color.B, 0x24, color.G, 0x24, color.R };
+            }
+            else
+            {
+                bytes = new byte[] { 0x24, color.R, 0x24, color.G, 0x24, color.B };
+            }
+
             stream.Seek(offset, SeekOrigin.Begin);
             stream.Write(bytes, 0, bytes.Length);
         }

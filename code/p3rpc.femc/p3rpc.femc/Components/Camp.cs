@@ -1963,6 +1963,7 @@ namespace p3rpc.femc.Components
                 var f1 = _uiCommon._appCalcLerp(self->Field248, &v1, 1, 0);
                 var fy = y + f1;
                 var gWork = _uiCommon.GetUGlobalWorkEx();
+
                 var bgColor = gWork.GetCalendar()->TimeOfDay switch
                 {
                     ECldTimeZone.Night or ECldTimeZone.Shadow or ECldTimeZone.Midnight 
@@ -2077,7 +2078,7 @@ namespace p3rpc.femc.Components
             });
             _context._utils.SigScan(UCmpSystemDraw_DrawCurveColor_SIG, "UCmpSystemDraw::DrawCurveColor", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.TextBoxSpeakerNameTriangle.ToU32ARGB())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 7, _context._config.CampSystemCurveColor.ToU32ARGB())));
             });
             _context._utils.SigScan(UCmpSystemDraw_DrawFemcShadowColor1_SIG, "UCmpSystemDraw::DrawFemcShadowColor1", _context._utils.GetDirectAddress, addr =>
             {

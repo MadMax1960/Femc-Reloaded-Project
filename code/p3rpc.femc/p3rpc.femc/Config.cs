@@ -963,6 +963,11 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 212)]
         public ConfigColor TextBoxSpeakerNameTriangle { get; set; } = ConfigColor.TextBoxSpeakerNameTriangle;
 
+        [DisplayName("Text Box: Speaker Name Triangle Front Color")]
+        [Category("UI Colors")]
+        [Display(Order = 212)]
+        public ConfigColor TextBoxSpeakerNameTriangleFront { get; set; } = ConfigColor.Green;
+
         [DisplayName("Text Box: Speaker Name")]
         [Category("UI Colors")]
         [Display(Order = 213)]
@@ -1342,11 +1347,15 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Message Box Select Box Shadow Color")]
         [Category("UI Colors")]
         [Display(Order = 288)]
+        /*
         public ConfigColor MsgSimpleSelectBoxShadow { get; set; } = ConfigColor.MellodiColorDark1;
 
         [DisplayName("Message Box Shadow Color")]
         [Category("UI Colors")]
         [Display(Order = 289)]
+        */
+
+        //THAT BASTARD DOES NOTHING ARE YOU KIDDING
         public ConfigColor MsgSimpleSelectShadowEx { get; set; } = ConfigColor.TextBoxFrontFillColor;
 
         [DisplayName("Message Box Border Color")]
@@ -2099,7 +2108,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Town Map: Mini Location Centered Circle when changing selection")]
         public ConfigColor MiniLocationCircleColor { get; set; } = new ConfigColor(0xEB, 0x44, 0x7D, 0xFF);
-
+        
         [DisplayName("SaveLoad: In-game screenshot color filter curve keyframe 1")]
         public ConfigColor SaveLoadScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0x99, 0x25, 0x6B, 0xFF);
 
@@ -2126,7 +2135,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Camp Configuration: Light reflective material 2")]
         public ConfigColor CampConfigurationLightReflectiveColor2 { get; set; } = new ConfigColor(0xFF, 0x60, 0x92, 0xFF);
-
+        
         [DisplayName("SaveLoad: Gradient bottom top color")]
         public ConfigColor SaveLoadGradientBottomTopColor { get; set; } = new ConfigColor(0xB2, 0x22, 0x50, 0x00);
 
@@ -2138,7 +2147,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("SaveLoad: Gradient top bottom color")]
         public ConfigColor SaveLoadGradientTopBottomColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x6A, 0x00);
-
+        
         [DisplayName("Persona Status: Velvet Room in-game screenshot deep color filter")]
         public ConfigColor PersonaStatusDeepColorFilter { get; set; } = new ConfigColor(0x88, 0x00, 0x17, 0xA9);
 
@@ -2591,6 +2600,52 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Persona Status: Equip bonus color")]
         public ConfigColor PersonaStatusEquipBonusColor { get; set; } = ConfigColor.Green;
+
+        [DisplayName("Save Load: Highlighted color")]
+        public ConfigColor SaveLoadHighlightedOption { get; set; } = ConfigColor.Green;
+
+        [DisplayName("Save Load: Accent Color")]
+        public ConfigColor SaveLoadAccentColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Save Load: Slot box Color")]
+        public ConfigColor SaveLoadSlotBox { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Save Load: Corner triangle Color")]
+        public ConfigColor SaveLoadCornerTriangle { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Save Load: Unhighlighted number Color")]
+        public ConfigColor SaveLoadUnhighlightedNumber { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Save Load: Selected slot box Color")]
+        public ConfigColor SaveLoadSelectedSlotBox { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Save Load: Grey Color")]
+        public ConfigColor SaveLoadGrey { get; set; } = new ConfigColor(0x3F, 0x39, 0x39, 0xFF);
+
+        [DisplayName("Save Load: Scroll bar Color")]
+        public ConfigColor SaveLoadScrollBar { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Camp: System Curve Color")]
+        public ConfigColor CampSystemCurveColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Message Box Selection Background Fill Color")]
+        public ConfigColor MsgSimpleSelectBgFill { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Message Box Selection Background Main Fill Color")]
+        public ConfigColor MsgSimpleSelectBgMainColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+
+        [DisplayName("Camp: Kotone Shadow Color")]
+        public ConfigColor CampKotoneShadowColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+
+        [DisplayName("Camp: Kotone Shadow Color 2")]
+        public ConfigColor CampKotoneShadowColor2 { get; set; } = new ConfigColor(0xFF, 0x00, 0xFF, 0xFF);
+
+        [DisplayName("Camp: Kotone Inner Shadow Color")]
+        public ConfigColor CampKotoneInnerShadowColor { get; set; } = new ConfigColor(0xFF, 0x00, 0xFF, 0xFF);
+
+
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
