@@ -33,6 +33,8 @@ namespace p3rpc.femc
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "AOA", "AngieDaGorl"));
             else if (configuration.AOATrue == AOAType.StupidAle)
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "AOA", "StupidAle"));
+            else if (configuration.AOATrue == AOAType.cielbell)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "AOA", "cielbell"));
             // Add other AOA conditions if needed.
         }
 	}
