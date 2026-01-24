@@ -99,7 +99,8 @@ namespace p3rpc.femc.HexEditing
         /// <param name="filePath">Absolute path to the file to edit</param>
         /// <param name="offset">Offset in bytes where the color curve should be written</param>
         /// <param name="colorKeyframes">A dictionary (0s-1s time, color) that will be used to interpolate all colors of the curve</param>
-        public static void WriteColorCurve(string filePath, long offset, Dictionary<float, ConfigColor> colorKeyframes)
+        /// <param name="size">Size of the color curve, default is 64 since most of them are this long</param>
+        public static void WriteColorCurve(string filePath, long offset, Dictionary<float, ConfigColor> colorKeyframes, int size = 64)
         {
             if (colorKeyframes.Count < 2)
                 throw new ArgumentException("At least two keyframes are needed to create a color curve", nameof(colorKeyframes));
@@ -110,10 +111,11 @@ namespace p3rpc.femc.HexEditing
             using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
             stream.Seek(offset, SeekOrigin.Begin);
 
-            // These color curves have 64 colors
-            for (int i = 0; i < 64; i++)
+            // These color curves have "size" colors
+            float totalTime = (float) size - 1.0f;
+            for (int i = 0; i < size; i++)
             {
-                float actTime = i / 63.0f;
+                float actTime = i / totalTime;
 
                 for (int j = 0; j < sortedKeyFrames.Count - 1; j++)
                 {

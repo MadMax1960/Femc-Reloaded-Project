@@ -866,7 +866,7 @@ namespace p3rpc.femc.Components
                     var ef5 = UICommon.ProgressTrackFraction((equipBonus * paramStatSize + baseStatFloat) + ef1, 0, 99, 0);
                     var ef6 = UICommon.Lerp(-206, 213, ef5);
                     var ef7 = UICommon.Lerp(-211, 208, ef5);
-                    var equipStatBarColor = new FColor(0xff, 0xff, 0x6, 0x0);
+                    var equipStatBarColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusEquipBonusColor);
                     APersonaStatusDraw_DrawStatParamBar(self, statIconPos, Angle, equipStatBarColor, ef7, ef4, ef6, ef3);
                 }
                 // draw base stat

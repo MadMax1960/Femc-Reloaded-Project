@@ -477,6 +477,7 @@ namespace p3rpc.femc.Components
         private string UCmpEquip_DotStatsSeparator2_SIG = "81 CD 00 90 46 36 45 0F 57 C0";
 
         private string UCmpEquip_PartyMemberUnavailableParallelogram_SIG = "41 81 CC 00 79 38 1A";
+        private string UCmpEquip_PartyMemberUnavailableFontSelected_SIG = "0D 00 79 38 1A 84 C9";
 
         private IHook<UCmpEquipDraw_DrawEquipItemStatsNum> _drawStatsNum;
 
@@ -625,7 +626,11 @@ namespace p3rpc.femc.Components
 
             _context._utils.SigScan(UCmpEquip_PartyMemberUnavailableParallelogram_SIG, "UCmpEquipDraw::PartyMemberUnavailableParallelogram", _context._utils.GetDirectAddress, addr =>
             {
-                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipPMUnavailableParallelogram.ToU32IgnoreAlpha())));
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipPMUnavailableColor.ToU32IgnoreAlpha())));
+            });
+            _context._utils.SigScan(UCmpEquip_PartyMemberUnavailableFontSelected_SIG, "UCmpEquipDraw::PartyMemberUnavailableFontSelected", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.EquipPMUnavailableColor.ToU32IgnoreAlpha())));
             });
         }
 
@@ -2004,6 +2009,8 @@ namespace p3rpc.femc.Components
 
         private string UCmpSystemTutoDictDraw_DrawHighlightedColor_SIG = "40 88 7C 24 ?? 44 88 7C 24 ??";
 
+        private string UCmpSystemTutoDraw_DrawNoTutoBigNone_SIG = "44 88 B5 ?? ?? ?? ?? 0F 28 D7";
+        private string UCmpSystemTutoDraw_DrawNoTutoFont_SIG = "0D 00 EF DB 00";
         private string UCmpSystemTutoDraw_DrawTutoTopTogglerBG_SIG = "E8 ?? ?? ?? ?? F3 41 0F 10 86 ?? ?? ?? ?? 48 8D 54 24 ?? 66 41 0F 6E 8E ?? ?? ?? ??";
         private string UCmpSystemTutoDraw_LeftArrowRed1_SIG = "E8 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 28 D7 F3 0F 2C F8 41 0F 28 C3";
         private string UCmpSystemTutoDraw_LeftArrowGreen1_SIG = "E8 ?? ?? ?? ?? F3 0F 10 0D ?? ?? ?? ?? 0F 28 D7 F3 0F 2C D8 41 0F 28 C3";
@@ -2031,6 +2038,7 @@ namespace p3rpc.femc.Components
         private IAsmHook _getMenuColorNoSel;
         private IReverseWrapper<UCmpSystemDraw_GetMenuColorNoSelect> _getMenuColorNoSelWrapper;
 
+        private IAsmHook _drawNoTutoBigNone;
         private IAsmHook _drawTutoDictHighlightedColor;
 
         private IAsmHook _DrawTutoTopTogglerBG;
@@ -2122,6 +2130,22 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSystemStartFallingWordsColor.ToU32())));
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 6, _context._config.CampSystemEndFallingWordsColor.ToU32())));
+            });
+
+            _context._utils.SigScan(UCmpSystemTutoDraw_DrawNoTutoBigNone_SIG, "UCmpSystemTutoDraw::DrawNoTutoBigNone", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp + 0xb8], ${_context._config.CampSystemNoTutorialColor.B:X}",
+                    $"mov byte [rbp + 0xb9], ${_context._config.CampSystemNoTutorialColor.G:X}",
+                    $"mov byte [rbp + 0xba], ${_context._config.CampSystemNoTutorialColor.R:X}"
+                };
+                _drawNoTutoBigNone = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpSystemTutoDraw_DrawNoTutoFont_SIG, "UCmpSystemTutoDraw::DrawNoTutoFont", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.CampSystemNoTutorialColor.ToU32IgnoreAlpha())));
             });
             _context._utils.SigScan(UCmpSystemTutoDraw_DrawTutoTopTogglerBG_SIG, "UCmpSystemTutoDraw::DrawTutoTopTogglerBG", _context._utils.GetDirectAddress, addr =>
             {

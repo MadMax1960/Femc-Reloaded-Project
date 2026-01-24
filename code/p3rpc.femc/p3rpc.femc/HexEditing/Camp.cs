@@ -243,9 +243,81 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePath, 0xA50, config.FallingNineColor, HexColorEditor.ColorOrder.RGBA, type); // Original color #808CA3
         }
 
+        private static void ApplyTutorialDictionaryCardBackgrounds(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "UI", "Camp", "Tutorial", "Curve", "CA_Tutorial.uasset");
+
+            long offset = 0x6fc;
+            Dictionary<float, ConfigColor> colorKeyframes = new Dictionary<float, ConfigColor>();
+
+            // Battle Tab //
+            colorKeyframes.Add(0.0f, config.CampTutorialBattleKeyframe1); // Original color #000000
+            colorKeyframes.Add(0.6f, config.CampTutorialBattleKeyframe2); // Original color #00071D
+            colorKeyframes.Add(0.8f, config.CampTutorialBattleKeyframe3); // Original color #000A26
+            colorKeyframes.Add(1.0f, config.CampTutorialBattleKeyframe4); // Original color #000D6A
+
+            HexColorEditor.WriteColorCurve(filePath, offset, colorKeyframes, 256);
+            offset += 0x800;
+
+            // Fusion Tab (Combine) //
+            colorKeyframes = new Dictionary<float, ConfigColor>();
+
+            colorKeyframes.Add(0.0f, config.CampTutorialFusionKeyframe1); // Original color #000000
+            colorKeyframes.Add(0.4f, config.CampTutorialFusionKeyframe2); // Original color #170459
+            colorKeyframes.Add(0.5f, config.CampTutorialFusionKeyframe3); // Original color #190657
+            colorKeyframes.Add(1.0f, config.CampTutorialFusionKeyframe4); // Original color #33064C
+
+            HexColorEditor.WriteColorCurve(filePath, offset, colorKeyframes, 256);
+            offset += 0x800;
+
+            // Daily Life Tab (Daily) //
+            colorKeyframes = new Dictionary<float, ConfigColor>();
+
+            colorKeyframes.Add(0.0f, config.CampTutorialDailyKeyframe1); // Original color #000000
+            colorKeyframes.Add(0.3f, config.CampTutorialDailyKeyframe2); // Original color #04333D
+            colorKeyframes.Add(0.5f, config.CampTutorialDailyKeyframe3); // Original color #062E66
+            colorKeyframes.Add(1.0f, config.CampTutorialDailyKeyframe4); // Original color #462000
+
+            HexColorEditor.WriteColorCurve(filePath, offset, colorKeyframes, 256);
+            offset += 0x800;
+
+            // Dictionary SubMenu //
+            colorKeyframes = new Dictionary<float, ConfigColor>();
+
+            colorKeyframes.Add(0.0f, config.CampTutorialDictionaryKeyframe1); // Original color #000000
+            colorKeyframes.Add(0.7f, config.CampTutorialDictionaryKeyframe2); // Original color #000033
+            colorKeyframes.Add(1.0f, config.CampTutorialDictionaryKeyframe3); // Original color #001A7F
+
+            HexColorEditor.WriteColorCurve(filePath, offset, colorKeyframes, 256);
+            offset += 0x800;
+
+            // Dungeon Tab //
+            colorKeyframes = new Dictionary<float, ConfigColor>();
+
+            colorKeyframes.Add(0.0f, config.CampTutorialDungeonKeyframe1); // Original color #000000
+            colorKeyframes.Add(0.5f, config.CampTutorialDungeonKeyframe2); // Original color #000D29
+            colorKeyframes.Add(0.7f, config.CampTutorialDungeonKeyframe3); // Original color #001C39
+            colorKeyframes.Add(1.0f, config.CampTutorialDungeonKeyframe4); // Original color #00330D
+
+            HexColorEditor.WriteColorCurve(filePath, offset, colorKeyframes, 256);
+            offset += 0x800;
+
+            // System Tab //
+            colorKeyframes = new Dictionary<float, ConfigColor>();
+
+            colorKeyframes.Add(0.0f, config.CampTutorialSystemKeyframe1); // Original color #000000
+            colorKeyframes.Add(0.4f, config.CampTutorialSystemKeyframe2); // Original color #002040
+            colorKeyframes.Add(1.0f, config.CampTutorialSystemKeyframe3); // Original color #334099
+
+            HexColorEditor.WriteColorCurve(filePath, offset, colorKeyframes, 256);
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyMIFallingNine(config, modDirectory);
+            ApplyTutorialDictionaryCardBackgrounds(config, modDirectory);
         }
     }
 }

@@ -23,12 +23,15 @@ namespace p3rpc.femc.Components
         private string AitfMsgProgWindow_TUTRIALDraw_DrawBottomRightColor_SIG = "44 8B 45 ?? F3 44 0F 11 44 24 ??";
         private string AitfMsgProgWindow_TUTRIALDraw_Update_SIG = "80 B9 ?? ?? ?? ?? 00 0F 28 C1 F3 0F 58 81 ?? ?? ?? ?? 0F 28 D1";
         private string AtifMsgProgWindow_TUTRIALDraw_PictureBorder_SIG = "40 88 B4 24 ?? ?? ?? ?? E8 ?? ?? ?? ?? 44 89 F2";
+        private string AtifMsgProgWindow_TUTRIALDraw_TitleFontColor_SIG = "E8 ?? ?? ?? ?? 44 8B 75 ?? 89 45";
+
         private UICommon _uiCommon;
         private IHook<AitfMsgProgWindow_TUTRIALDraw_Update> _update;
         private IAsmHook _drawInfoTextColor;
         private IAsmHook _drawBottomRightColor;
         private IAsmHook _drawGekkoukanEmblem;
         private IAsmHook _drawPictureBorder;
+        private IAsmHook _drawTitleFontColor;
         //private IReverseWrapper<AitfMsgProgWindow_TUTRIALDraw_SetElementColor> _drawInfoTextColorWrapper;
         //private IReverseWrapper<AitfMsgProgWindow_TUTRIALDraw_SetElementColor> _drawBottomRightColorWrapper;
         public unsafe MsgWindowSystem(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
@@ -73,6 +76,17 @@ namespace p3rpc.femc.Components
                     $"mov dword [rsp + 0x160], {_context._config.MsgSystemPicBorderColor.ToU32ARGB()}",
                 };
                 _drawPictureBorder = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(AtifMsgProgWindow_TUTRIALDraw_TitleFontColor_SIG, "AtifMsgProgWindow_TUTRIALDraw::TitleFontColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.MsgSimpleSystemTutorialTitleFontColor.B:X}",
+                    $"mov dl, ${_context._config.MsgSimpleSystemTutorialTitleFontColor.G:X}",
+                    $"mov cl, ${_context._config.MsgSimpleSystemTutorialTitleFontColor.R:X}"
+                };
+                _drawTitleFontColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
         }
         public override void Register()
