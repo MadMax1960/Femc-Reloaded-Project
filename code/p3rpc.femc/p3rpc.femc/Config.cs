@@ -56,6 +56,8 @@ namespace p3rpc.femc.Configuration
         AngieDaGorl,
         [Display(Name = "StupidAle")]
         StupidAle,
+        [Display(Name = "cielbell")]
+        cielbell
         }
 
         [DisplayName("AOA Text Options")]
