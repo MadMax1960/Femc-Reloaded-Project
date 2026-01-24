@@ -158,7 +158,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "Anonymousfluffi")]
         Anonymousfluffi,
         [Display(Name = "WoodWhite")]
-        woodwhite
+        woodwhite,
+        [Display(Name = "Milky")]
+        Milky
         }
 
         [DisplayName("Cutin")]
