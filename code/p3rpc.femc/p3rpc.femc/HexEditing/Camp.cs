@@ -203,6 +203,7 @@ namespace p3rpc.femc.HexEditing
                 "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Blueprints", "UI", "Configuration", "BP_UIConfiguration.uasset");
 
+            // HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGRA;
             HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGR;
             // Updated to use BP_UIConfiguration from 1.0.10 (originally used 1.0.1 file)
             using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);

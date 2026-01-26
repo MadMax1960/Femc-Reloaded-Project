@@ -2589,8 +2589,8 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp Configuration: Playlist Title Color")]
         public ConfigColor CampConfigPlistHeadColor { get; set; } = new ConfigColor(0xE2, 0x41, 0x89, 0xFF);
 
-        [DisplayName("Camp Equip: Unavailable Party Member Parallelogram")]
-        public ConfigColor EquipPMUnavailableParallelogram { get; set; } = new ConfigColor(0x63, 0x27, 0x3E, 0xFF);
+        [DisplayName("Camp Equip: Unavailable Party Member Color")]
+        public ConfigColor EquipPMUnavailableColor { get; set; } = new ConfigColor(0x63, 0x27, 0x3E, 0xFF);
 
         [DisplayName("Camp Root: Main camp menu highlighted color 1")]
         public ConfigColor CampRootHighlightedColor1 { get; set; } = new ConfigColor(0x00, 0x5E, 0xFF, 0xFF);
@@ -2784,6 +2784,84 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Battle: Skill List Model Color")]
         public ConfigColor BtlSkillListModelColor { get; set; } = new ConfigColor(0xE3, 0x6B, 0x8F, 0xFF);
+
+        [DisplayName("Message Box Background Color")]
+        public ConfigColor MsgSimpleBgColor { get; set; } = new ConfigColor(0x23, 0x12, 0x19, 0xff);
+
+        [DisplayName("Message Box Unselected Text Color")]
+        public ConfigColor MsgSimpleUnselectedTextColor { get; set; } = new ConfigColor(0xfc, 0xf0, 0xf4, 0xff);
+
+        [DisplayName("System Message Tutorial Title Font Color")]
+        public ConfigColor MsgSimpleSystemTutorialTitleFontColor { get; set; } = new ConfigColor(0x26, 0x00, 0x10, 0xff);
+
+        [DisplayName("Camp System: No tutorial message font color")]
+        public ConfigColor CampSystemNoTutorialColor { get; set; } = new ConfigColor(0xff, 0xbd, 0xce, 0xff);
+
+        [DisplayName("Camp System: Tutorial Battle BG card keyframe 1")]
+        public ConfigColor CampTutorialBattleKeyframe1 { get; set; } = new ConfigColor(0x00, 0x00, 0x00, 0xff);
+
+        [DisplayName("Camp System: Tutorial Battle BG card keyframe 2")]
+        public ConfigColor CampTutorialBattleKeyframe2 { get; set; } = new ConfigColor(0x1d, 0x00, 0x0f, 0xff);
+
+        [DisplayName("Camp System: Tutorial Battle BG card keyframe 3")]
+        public ConfigColor CampTutorialBattleKeyframe3 { get; set; } = new ConfigColor(0x33, 0x00, 0x1a, 0xff);
+
+        [DisplayName("Camp System: Tutorial Battle BG card keyframe 4")]
+        public ConfigColor CampTutorialBattleKeyframe4 { get; set; } = new ConfigColor(0x3f, 0x03, 0x23, 0xff);
+
+        [DisplayName("Camp System: Tutorial Fusion BG card keyframe 1")]
+        public ConfigColor CampTutorialFusionKeyframe1 { get; set; } = new ConfigColor(0x00, 0x00, 0x00, 0xff);
+
+        [DisplayName("Camp System: Tutorial Fusion BG card keyframe 2")]
+        public ConfigColor CampTutorialFusionKeyframe2 { get; set; } = new ConfigColor(0x3f, 0x03, 0x23, 0xff);
+
+        [DisplayName("Camp System: Tutorial Fusion BG card keyframe 3")]
+        public ConfigColor CampTutorialFusionKeyframe3 { get; set; } = new ConfigColor(0x41, 0x05, 0x2a, 0xff);
+
+        [DisplayName("Camp System: Tutorial Fusion BG card keyframe 4")]
+        public ConfigColor CampTutorialFusionKeyframe4 { get; set; } = new ConfigColor(0x33, 0x06, 0x4c, 0xff);
+
+        [DisplayName("Camp System: Tutorial Daily BG card keyframe 1")]
+        public ConfigColor CampTutorialDailyKeyframe1 { get; set; } = new ConfigColor(0x00, 0x00, 0x00, 0xff);
+
+        [DisplayName("Camp System: Tutorial Daily BG card keyframe 2")]
+        public ConfigColor CampTutorialDailyKeyframe2 { get; set; } = new ConfigColor(0x9e, 0x08, 0x47, 0xff);
+
+        [DisplayName("Camp System: Tutorial Daily BG card keyframe 3")]
+        public ConfigColor CampTutorialDailyKeyframe3 { get; set; } = new ConfigColor(0x8c, 0x14, 0x4c, 0xff);
+
+        [DisplayName("Camp System: Tutorial Daily BG card keyframe 4")]
+        public ConfigColor CampTutorialDailyKeyframe4 { get; set; } = new ConfigColor(0x46, 0x20, 0x00, 0xff);
+
+        [DisplayName("Camp System: Tutorial Dictionary BG card keyframe 1")]
+        public ConfigColor CampTutorialDictionaryKeyframe1 { get; set; } = new ConfigColor(0x00, 0x00, 0x00, 0xff);
+
+        [DisplayName("Camp System: Tutorial Dictionary BG card keyframe 2")]
+        public ConfigColor CampTutorialDictionaryKeyframe2 { get; set; } = new ConfigColor(0x33, 0x00, 0x1e, 0xff);
+
+        [DisplayName("Camp System: Tutorial Dictionary BG card keyframe 3")]
+        public ConfigColor CampTutorialDictionaryKeyframe3 { get; set; } = new ConfigColor(0x7f, 0x00, 0x3d, 0xff);
+
+        [DisplayName("Camp System: Tutorial Dungeon BG card keyframe 1")]
+        public ConfigColor CampTutorialDungeonKeyframe1 { get; set; } = new ConfigColor(0x00, 0x00, 0x00, 0xff);
+
+        [DisplayName("Camp System: Tutorial Dungeon BG card keyframe 2")]
+        public ConfigColor CampTutorialDungeonKeyframe2 { get; set; } = new ConfigColor(0x29, 0x00, 0x15, 0xff);
+
+        [DisplayName("Camp System: Tutorial Dungeon BG card keyframe 3")]
+        public ConfigColor CampTutorialDungeonKeyframe3 { get; set; } = new ConfigColor(0x39, 0x00, 0x1b, 0xff);
+
+        [DisplayName("Camp System: Tutorial Dungeon BG card keyframe 4")]
+        public ConfigColor CampTutorialDungeonKeyframe4 { get; set; } = new ConfigColor(0x00, 0x33, 0x0d, 0xff);
+
+        [DisplayName("Camp System: Tutorial System BG card keyframe 1")]
+        public ConfigColor CampTutorialSystemKeyframe1 { get; set; } = new ConfigColor(0x00, 0x00, 0x00, 0xff);
+
+        [DisplayName("Camp System: Tutorial System BG card keyframe 2")]
+        public ConfigColor CampTutorialSystemKeyframe2 { get; set; } = new ConfigColor(0x40, 0x00, 0x1d, 0xff);
+
+        [DisplayName("Camp System: Tutorial System BG card keyframe 3")]
+        public ConfigColor CampTutorialSystemKeyframe3 { get; set; } = new ConfigColor(0x99, 0x33, 0x63, 0xff);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
