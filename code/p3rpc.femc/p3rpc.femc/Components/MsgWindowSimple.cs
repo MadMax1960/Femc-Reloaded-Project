@@ -217,7 +217,7 @@ namespace p3rpc.femc.Components
                             /*
                             ConfigColor.ToFSprColor(_context._config.TextBoxFrontFillColor) :
                             ConfigColor.ToFSprColor(_context._config.TextBoxFrontFillColor)
-                            ;
+                        ;
                              */
                             ConfigColor.ToFSprColor(_context._config.TextBoxSpeakerNameTriangleFront) :
                             ConfigColor.ToFSprColor(_context._config.TextBoxSpeakerNameTriangleFront)
@@ -417,9 +417,6 @@ namespace p3rpc.femc.Components
                         ListBoxFloats[visibleEntries, 3] * self->speechShadowMod.Y + 811, 0),
                     new FVector(UICommon.Lerp(0.777f, 1, posYTrack), ListBoxFloats[visibleEntries, 4] * self->speechShadowMod.Y, 1),
                     new FVector(_msgWindowCommon._messageBoxFloats1[0], _msgWindowCommon._messageBoxFloats1[1], _msgWindowCommon._messageBoxFloats1[2]),
-                    /*
-                    new FSprColor(0x12, 0x14, 0x23, (byte)(self->speechShadowOpacity * 255 * 0.9)),
-                     */
                     ConfigColor.ToFSprColorWithAlpha(_context._config.MsgSimpleBgColor, (byte)(self->speechShadowOpacity * 255 * 0.9)),
                     0x16);
 
@@ -427,15 +424,11 @@ namespace p3rpc.femc.Components
                     new FVector(self->speechShadowMod.X * 68 + speechShadowX, self->speechShadowMod.Y + 811, 0),
                     new FVector(self->speechShadowMod.X, self->speechShadowMod.Y, 1),
                     new FVector(_msgWindowCommon._messageBoxFloats1[0], _msgWindowCommon._messageBoxFloats1[1], _msgWindowCommon._messageBoxFloats1[2]),
-                    /*
-                    new FSprColor(0x12, 0x14, 0x23, (byte)(self->speechShadowOpacity * 255 * 0.9)),
-                     */
                     ConfigColor.ToFSprColorWithAlpha(_context._config.MsgSimpleBgColor, (byte)(self->speechShadowOpacity * 255 * 0.9)),
                     0x14);
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
                 _drawSelectMapBg(speechBgData, (nint)masker, 0, 0);
-                /*
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_One, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
                 _uiCommon._plgFunc1(&speechBgMain, (nint)masker, self->MsgPlg_, 0, 0);
@@ -445,14 +438,10 @@ namespace p3rpc.femc.Components
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_InverseDestAlpha,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
                 _drawSelectMapBg(speechBgData, (nint)masker, 0, 0);
-                 */
-                var bgFillColor = ConfigColor.ToFSprColorWithAlpha(_context._config.MsgSimpleSelectBgFill, (byte)(self->speechShadowOpacity * 255 * 0.4f));
+
                 var bgFillTexSprite = new SprDefStruct1(
-                    /*
-                    new FSprColor(0xd4, 0x15, 0x5f, (byte)(self->speechShadowOpacity * 255 * 0.4)),
-                     */
                     new FVector2D(speechShadowX - 243, 594), 0, 1.5f, 86.15f, 0,
-                    bgFillColor,
+                    new FSprColor(0xd4, 0x15, 0x5f, (byte)(self->speechShadowOpacity * 255 * 0.4)),
                     1, new FVector4(960, 540, 0, 1), 0, 0, 0, 1, 1, 0, 0);
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
@@ -468,7 +457,7 @@ namespace p3rpc.femc.Components
                 _uiCommon._plgFunc1(&speechBgTip, (nint)masker, self->MsgPlg_, 0, 0);
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
                     EUIBlendOperation.UI_BO_ReverseSubtract, EUIBlendFactor.UI_BF_One, EUIBlendFactor.UI_BF_One, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
-                
+
                 var bgFillPlg2 = new PlgDefStruct1(
                     new FVector(
                         ListBoxFloats[visibleEntries, 5] * self->speechShadowMod.X + speechShadowX,
