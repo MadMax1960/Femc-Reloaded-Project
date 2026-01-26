@@ -799,13 +799,13 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 157)]
         [DefaultValue(true)]
         public bool EnableBustup { get; set; } = true;
-
+        /*
         [DisplayName("Enable MessageScript")]
         [Category("UI Components")]
         [Display(Order = 158)]
         [DefaultValue(true)]
         public bool EnableMessageScript { get; set; } = true;
-
+        */
         [DisplayName("Enable Town Map")]
         [Category("UI Components")]
         [Display(Order = 159)]
@@ -1367,6 +1367,10 @@ namespace p3rpc.femc.Configuration
         [Category("UI Colors")]
         [Display(Order = 290)]
         public ConfigColor MsgSimpleSelectBorderColorEx { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
+
+        [DisplayName("Message Box Fill Color")]
+        [Category("UI Colors")]
+        public ConfigColor MsgSimpleFillColor { get; set; } = new ConfigColor(0xd4, 0x15, 0x5f, 0xFF);
 
         [DisplayName("System Message Light Color (Requires Restart)")]
         [Category("UI Colors")]
