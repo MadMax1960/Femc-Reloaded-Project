@@ -628,6 +628,10 @@ namespace p3rpc.femc.Components
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipPMUnavailableColor.ToU32IgnoreAlpha())));
             });
+            /*
+            _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.EquipPMUnavailableParallelogram.ToU32IgnoreAlpha())));
+             */
+
             _context._utils.SigScan(UCmpEquip_PartyMemberUnavailableFontSelected_SIG, "UCmpEquipDraw::PartyMemberUnavailableFontSelected", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, _context._config.EquipPMUnavailableColor.ToU32IgnoreAlpha())));
