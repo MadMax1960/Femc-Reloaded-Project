@@ -238,10 +238,11 @@ namespace p3rpc.femc
 			{
 				_modRuntime.AddModule<Bustup>();
 			}
+			/*
 			if (_configuration.EnableMessageScript)
 			{
 				_modRuntime.AddModule<MessageScript>();
-			}
+			}*/
 			if (_configuration.EnableTownMap) _modRuntime.AddModule<TownMap>();
 			if (_configuration.EnablePartyPanel) _modRuntime.AddModule<PartyPanel>();
 			if (_configuration.EnableBattle) _modRuntime.AddModule<Battle>();

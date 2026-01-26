@@ -432,8 +432,8 @@ namespace p3rpc.femc.Components
                 _drawSelectMapBg(speechBgData, (nint)masker, 0, 0);
                 
                 var bgFillTexSprite = new SprDefStruct1(
-                    new FVector2D(speechShadowX - 243, 594), 0, 1.5f, 86.15f, 0, 
-                    new FSprColor(0xd4, 0x15, 0x5f, (byte)(self->speechShadowOpacity * 255 * 0.4)), 
+                    new FVector2D(speechShadowX - 243, 594), 0, 1.5f, 86.15f, 0,
+                    ConfigColor.ToFSprColorWithAlpha(_context._config.MsgSimpleFillColor, (byte)(self->speechShadowOpacity * 255 * 0.4)),
                     1, new FVector4(960, 540, 0, 1), 0, 0, 0, 1, 1, 0, 0);
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_DestAlpha, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);

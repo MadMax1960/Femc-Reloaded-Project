@@ -210,10 +210,30 @@ namespace p3rpc.femc.HexEditing
             ColorOrder order = ColorOrder.BGRA)
         {
             // Their order is always BGR / BGRA
+            /*
             if (!order.Equals(ColorOrder.BGR) && !order.Equals(ColorOrder.BGRA))
                 throw new ArgumentException("Blueprint hardcoded colors must be either BGR or BGRA", nameof(order));
-            
+
             var bytes = new byte[] { 0x24, color.B, 0x24, color.G, 0x24, color.R, 0x24, color.A };
+            */
+
+            if (!order.Equals(ColorOrder.BGR) && !order.Equals(ColorOrder.BGRA) && !order.Equals(ColorOrder.RGB))
+                throw new ArgumentException("Blueprint hardcoded colors must be either BGR or BGRA or RGB", nameof(order));
+            byte[] bytes;
+
+            if (order == ColorOrder.BGRA)
+            {
+                bytes = new byte[] { 0x24, color.B, 0x24, color.G, 0x24, color.R, 0x24, color.A };
+            }
+            if (order == ColorOrder.BGR)
+            {
+                bytes = new byte[] { 0x24, color.B, 0x24, color.G, 0x24, color.R };
+            }
+            else
+            {
+                bytes = new byte[] { 0x24, color.R, 0x24, color.G, 0x24, color.B };
+            }
+
             stream.Seek(offset, SeekOrigin.Begin);
             stream.Write(bytes, 0, bytes.Length);
         }
@@ -226,7 +246,6 @@ namespace p3rpc.femc.HexEditing
             using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
             WriteBlueprintSplitColor(stream, offset, color, order);
         }
-        
         /// <param name="stream">FileStream to make edits to</param>
         /// <param name="offset">Offset in bytes where the BLUE component starts</param>
         /// <param name="color">New color value to be written</param>
@@ -253,6 +272,51 @@ namespace p3rpc.femc.HexEditing
                 stream.Seek(offset + 0x9F, SeekOrigin.Begin);
                 stream.WriteByte(color.A);
             }
+        }
+        public static void WriteBlueprintFloatColor(string filePath, long offset, ConfigColor color, ColorOrder order = ColorOrder.BGRA)
+        {
+            using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
+            WriteBlueprintFloatColor(stream, offset, color, order);
+        }
+
+        /// <param name="filePath">Absolute path to the file to edit</param>
+        /// <param name="offset">Offset in bytes where the BLUE component starts</param>
+        /// <param name="color">New color value to be written</param>
+        public static void WriteBlueprintFloatColor(FileStream stream, long offset, ConfigColor color, ColorOrder order = ColorOrder.BGR)
+        {
+            byte[] redBytes = BitConverter.GetBytes(color.R / 255f);
+            byte[] greenBytes = BitConverter.GetBytes(color.G / 255f);
+            byte[] blueBytes = BitConverter.GetBytes(color.B / 255f);
+
+            byte fSeparator = 0x1E;
+            byte[] bytes;
+
+            if (order == ColorOrder.BGR) // 15 bytes
+            {
+                bytes = new byte[]
+                {
+                    fSeparator,
+                    blueBytes[0], blueBytes[1], blueBytes[2], blueBytes[3],
+                    fSeparator,
+                    greenBytes[0], greenBytes[1], greenBytes[2], greenBytes[3],
+                    fSeparator,
+                    redBytes[0], redBytes[1], redBytes[2], redBytes[3]
+                };
+            }
+            else // 15 bytes RGB
+            {
+                bytes = new byte[]
+                {
+                    fSeparator,
+                    redBytes[0], redBytes[1], redBytes[2], redBytes[3],
+                    fSeparator,
+                    greenBytes[0], greenBytes[1], greenBytes[2], greenBytes[3],
+                    fSeparator,
+                    blueBytes[0], blueBytes[1], blueBytes[2], blueBytes[3],
+                };
+            }
+            stream.Seek(offset, SeekOrigin.Begin);
+            stream.Write(bytes, 0, bytes.Length);
         }
     }
 }
