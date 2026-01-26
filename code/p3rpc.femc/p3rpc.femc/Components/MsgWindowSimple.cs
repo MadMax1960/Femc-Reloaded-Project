@@ -125,7 +125,7 @@ namespace p3rpc.femc.Components
                 msgBoxBackColor.A = (byte)((1.0f - self->BgPieceTransparency) * self->Opacity * 255);
                 _uiCommon._plgFunc1(&msgBoxBack, itemMask, self->MsgPlg_, 0.0f, 0.0f);
                 _uiCommon._setBlendState(itemMask, 
-                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One,
+                    EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_One, 
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, drawStyleId);
 
                 _uiCommon._spriteMaskFunc2(itemMask, 0, 570, 1920, 1080, ConfigColor.ToFSprColor(_context.ColorBlack), drawStyleId);
@@ -527,6 +527,10 @@ namespace p3rpc.femc.Components
                 if (selBoxLength > 620) selBoxLength = 620;
                 _uiCommon._setBlendState((nint)masker, EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_SourceAlpha, EUIBlendFactor.UI_BF_InverseSourceAlpha,
                     EUIBlendOperation.UI_BO_Add, EUIBlendFactor.UI_BF_Zero, EUIBlendFactor.UI_BF_Zero, 0xf, *(int*)_uiCommon._ActiveDrawTypeId);
+                /*
+                _drawSelectText(self, selEntries, textEntries, &entryTL, &entryBR, textPos.X, textPos.Y, 
+                    new FSprColor(0xf0, 0xf3, 0xfc, (byte)(self->speechShadowOpacity * 255 * 0.9)), selTextCol, nonSelTextCol, selTexOffset, nonSelTexOffset);
+                 */
                 _drawSelectText(self, selEntries, textEntries, &entryTL, &entryBR, textPos.X, textPos.Y,
                     /*
                      new FSprColor(0xf0, 0xf3, 0xfc
