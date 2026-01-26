@@ -229,7 +229,7 @@ namespace p3rpc.femc.Components
             colorOut->SetColor(_context._config.CampMenuItemColorNoSel.ToU32());
             colorOut->A = (float)opacity / 255;
             return colorOut;
-            
+
         }
 
         private unsafe delegate FCampParamTableCommonRow* ACmpMainActor_GetCampParamTableCommon(ACmpMainActor* self);

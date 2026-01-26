@@ -795,13 +795,13 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 157)]
         [DefaultValue(true)]
         public bool EnableBustup { get; set; } = true;
-
+        /*
         [DisplayName("Enable MessageScript")]
         [Category("UI Components")]
         [Display(Order = 158)]
         [DefaultValue(true)]
         public bool EnableMessageScript { get; set; } = true;
-
+        */
         [DisplayName("Enable Town Map")]
         [Category("UI Components")]
         [Display(Order = 159)]
@@ -901,454 +901,454 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Mail Icon: Outer Color")]
         [Category("UI Colors")]
         [Display(Order = 200)]
-        public ConfigColor MailIconOuterCircleColorEx { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor MailIconOuterCircleColorEx { get; set; } = new ConfigColor(0x90, 0x21, 0x4D, 0xAF);
 
         [DisplayName("Mail Icon: Inner Color")]
         [Category("UI Colors")]
         [Display(Order = 201)]
-        public ConfigColor MailIconInnerCircleColorEx { get; set; } = ConfigColor.MailIconInnerColor;
+        public ConfigColor MailIconInnerCircleColorEx { get; set; } = new ConfigColor(0xFF, 0x5C, 0xA4, 0xFF);
 
         [DisplayName("Camp: High Color")]
         [Category("UI Colors")]
         [Display(Order = 202)]
-        public ConfigColor CampHighColor { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor CampHighColor { get; set; } = new ConfigColor(0xFF, 0x9B, 0xCE, 0xFF);
 
         [DisplayName("Camp: High Color Gradation")]
         [Category("UI Colors")]
         [Display(Order = 203)]
-        public ConfigColor CampHighColorGradation { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor CampHighColorGradation { get; set; } = new ConfigColor(0xE3, 0x96, 0xB9, 0xFF);
 
         [DisplayName("Camp: Middle Color")]
         [Category("UI Colors")]
         [Display(Order = 204)]
-        public ConfigColor CampMiddleColor { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor CampMiddleColor { get; set; } = new ConfigColor(0xE2, 0x5C, 0xA4, 0xFF);
 
         [DisplayName("Camp: Low Color")]
         [Category("UI Colors")]
         [Display(Order = 205)]
-        public ConfigColor CampLowColor { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor CampLowColor { get; set; } = new ConfigColor(0x9F, 0x1D, 0x91, 0xFF);
 
         [DisplayName("Date Time Panel: Top Text Color")]
         [Category("UI Colors")]
         [Display(Order = 206)]
-        public ConfigColor DateTimePanelTopTextColor { get; set; } = ConfigColor.DarkColor;
+        public ConfigColor DateTimePanelTopTextColor { get; set; } = new ConfigColor(0x50, 0x0A, 0x2E, 0xF5);
 
         [DisplayName("Date Time Panel: Bottom Text Color")]
         [Category("UI Colors")]
         [Display(Order = 207)]
-        public ConfigColor DateTimePanelBottomTextColor { get; set; } = ConfigColor.MidColor;
+        public ConfigColor DateTimePanelBottomTextColor { get; set; } = new ConfigColor(0xFF, 0xA2, 0x97, 0xFF);
 
         [DisplayName("Date Time Panel: Water Color")]
         [Category("UI Colors")]
         [Display(Order = 208)]
-        public ConfigColor DateTimePanelWaterColor { get; set; } = ConfigColor.DateTimeWaterColor;
+        public ConfigColor DateTimePanelWaterColor { get; set; } = new ConfigColor(0xFF, 0x5C, 0x94, 0xFF);
 
         [DisplayName("Text Box: Back Fill Color")]
         [Category("UI Colors")]
         [Display(Order = 209)]
-        public ConfigColor TextBoxBackFillColor { get; set; } = ConfigColor.TextBoxBackFillColor;
+        public ConfigColor TextBoxBackFillColor { get; set; } = new ConfigColor(0xE5, 0x46, 0x7D, 0xFF);
 
         [DisplayName("Text Box: Front Fill Color")]
         [Category("UI Colors")]
         [Display(Order = 210)]
-        public ConfigColor TextBoxFrontFillColor { get; set; } = ConfigColor.TextBoxFrontFillColor;
+        public ConfigColor TextBoxFrontFillColor { get; set; } = new ConfigColor(0x22, 0x00, 0x15, 0xFF);
 
         [DisplayName("Text Box: Front Fill Border Color")]
         [Category("UI Colors")]
         [Display(Order = 211)]
-        public ConfigColor TextBoxFrontBorderColor { get; set; } = ConfigColor.DarkColor;
+        public ConfigColor TextBoxFrontBorderColor { get; set; } = new ConfigColor(0xFA, 0x50, 0x8B, 0xFF);
 
         [DisplayName("Text Box: Speaker Name Triangle Color")]
         [Category("UI Colors")]
         [Display(Order = 212)]
-        public ConfigColor TextBoxSpeakerNameTriangle { get; set; } = ConfigColor.TextBoxSpeakerNameTriangle;
+        public ConfigColor TextBoxSpeakerNameTriangle { get; set; } = new ConfigColor(0x34, 0x06, 0x1C, 0xFF);
 
         [DisplayName("Text Box: Speaker Name Triangle Front Color")]
         [Category("UI Colors")]
         [Display(Order = 212)]
-        public ConfigColor TextBoxSpeakerNameTriangleFront { get; set; } = ConfigColor.Green;
+        public ConfigColor TextBoxSpeakerNameTriangleFront { get; set; } = new ConfigColor(0xEB, 0x46, 0x7F, 0xFF);
 
         [DisplayName("Text Box: Speaker Name")]
         [Category("UI Colors")]
         [Display(Order = 213)]
-        public ConfigColor TextBoxSpeakerName { get; set; } = ConfigColor.LightColor;
+        public ConfigColor TextBoxSpeakerName { get; set; } = new ConfigColor(0xFF, 0xE6, 0xBF, 0xFF);
 
         [DisplayName("Text Box: Left Haze Color")]
         [Category("UI Colors")]
         [Display(Order = 214)]
-        public ConfigColor TextBoxLeftHaze { get; set; } = ConfigColor.TextBoxLeftHaze;
+        public ConfigColor TextBoxLeftHaze { get; set; } = new ConfigColor(0x79, 0x07, 0x2A, 0xFF);
 
         [DisplayName("Mind Window: Outer Border")]
         [Category("UI Colors")]
         [Display(Order = 215)]
-        public ConfigColor MindWindowOuterBorderNew { get; set; } = UICommon.MindWindowOuterBorder;
+        public ConfigColor MindWindowOuterBorderNew { get; set; } = new ConfigColor(0xBE, 0x1C, 0x53, 0xFF);
 
         [DisplayName("Mind Window: Inner Color")]
         [Category("UI Colors")]
         [Display(Order = 216)]
-        public ConfigColor MindWindowInnerColorNew { get; set; } = UICommon.MindWindowInnerColor;
+        public ConfigColor MindWindowInnerColorNew { get; set; } = new ConfigColor(0x39, 0x03, 0x21, 0xFF);
 
         /*[DisplayName("Mind Window: Outer Haze")] i'm hardcoding this it's broken for too many people lol
          * [Category("UI Colors")]
          * [Display(Order = 217)]
-        public ConfigColor MindWindowOuterHazeEx { get; set; } = new ConfigColor(ConfigColor.MellodiColorLight3.R, ConfigColor.MellodiColorLight3.G, ConfigColor.MellodiColorLight3.B, 128);
+        public ConfigColor MindWindowOuterHazeEx { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0x80);
         */
 
         [DisplayName("Mind Window: Background Dots")]
         [Category("UI Colors")]
         [Display(Order = 218)]
-        public ConfigColor MindWindowBgDotsNew { get; set; } = UICommon.MindWindowOuterBorder;
+        public ConfigColor MindWindowBgDotsNew { get; set; } = new ConfigColor(0xA6, 0x06, 0x52, 0xFF);
 
         [DisplayName("Minimap: Place Name Background Color")]
         [Category("UI Colors")]
         [Display(Order = 219)]
-        public ConfigColor MinimapPlaceNameBgColor { get; set; } = ConfigColor.DarkColor;
+        public ConfigColor MinimapPlaceNameBgColor { get; set; } = new ConfigColor(0x73, 0x18, 0x3C, 0xF5);
 
         [DisplayName("Interact Prompt: Back Box Color")]
         [Category("UI Colors")]
         [Display(Order = 220)]
-        public ConfigColor CheckPromptBackBoxColorNew { get; set; } = UICommon.CheckPromptBgBox;
+        public ConfigColor CheckPromptBackBoxColorNew { get; set; } = new ConfigColor(0xFA, 0x50, 0x8B, 0xFF);
 
         [DisplayName("Interact Prompt: Front Box Base Color")]
         [Category("UI Colors")]
         [Display(Order = 221)]
-        public ConfigColor CheckPromptFrontBoxColorNew { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor CheckPromptFrontBoxColorNew { get; set; } = new ConfigColor(0x22, 0x00, 0x15, 0xFF);
 
         [DisplayName("Interact Prompt: Front Box Highlight Color")]
         [Category("UI Colors")]
         [Display(Order = 222)]
-        public ConfigColor CheckPromptFrontBoxColorHighNew { get; set; } = UICommon.CheckPromptFgBox;
+        public ConfigColor CheckPromptFrontBoxColorHighNew { get; set; } = new ConfigColor(0x61, 0x00, 0x2C, 0xFF);
 
         [DisplayName("Bustup: Shadow Color")]
         [Category("UI Colors")]
         [Display(Order = 223)]
-        public ConfigColor BustupShadowColor { get; set; } = ConfigColor.DarkColor;
+        public ConfigColor BustupShadowColor { get; set; } = new ConfigColor(0xD8, 0x39, 0x70, 0xFF);
 
         [DisplayName("Camp: Menu Item Color 1 (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 224)]
-        public ConfigColor CampMenuItemColor1 { get; set; } = ConfigColor.CampMenuItemColor1;
+        public ConfigColor CampMenuItemColor1 { get; set; } = new ConfigColor(0xFF, 0xED, 0xC9, 0xFF);
 
         [DisplayName("Camp: Menu Item Color 2 (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 225)]
-        public ConfigColor CampMenuItemColor2 { get; set; } = ConfigColor.CampMenuItemColor2;
+        public ConfigColor CampMenuItemColor2 { get; set; } = new ConfigColor(0xFF, 0xD7, 0x9D, 0xFF);
 
         [DisplayName("Camp: Menu Item Color 3 (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 226)]
-        public ConfigColor CampMenuItemColor3 { get; set; } = ConfigColor.CampMenuItemColor3;
+        public ConfigColor CampMenuItemColor3 { get; set; } = new ConfigColor(0xFF, 0xBA, 0x67, 0xFF);
 
         [DisplayName("Camp: Menu Item Color No Select (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 227)]
-        public ConfigColor CampMenuItemColorNoSel { get; set; } = ConfigColor.CampMenuItemColorNoSel;
+        public ConfigColor CampMenuItemColorNoSel { get; set; } = new ConfigColor(0xFF, 0xB2, 0x9E, 0xFF);
 
         [DisplayName("Camp: Skill Text Color")]
         [Category("UI Colors")]
         [Display(Order = 228)]
-        public ConfigColor CampSkillTextColor { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor CampSkillTextColor { get; set; } = new ConfigColor(0xFF, 0xE7, 0xAD, 0xFF);
 
         [DisplayName("Camp: Skill Text Color No Select")]
         [Category("UI Colors")]
         [Display(Order = 229)]
-        public ConfigColor CampSkillTextColorNoSel { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor CampSkillTextColorNoSel { get; set; } = new ConfigColor(0x3D, 0x03, 0x1C, 0xFF);
 
         [DisplayName("Camp: Skill Text Color Current Select")]
         [Category("UI Colors")]
         [Display(Order = 230)]
-        public ConfigColor CampSkillTextColorCurrSel { get; set; } = ConfigColor.MellodiColorDark2;
+        public ConfigColor CampSkillTextColorCurrSel { get; set; } = new ConfigColor(0x3D, 0x03, 0x1C, 0xFF);
 
         [DisplayName("Social Stats: Academics Circle Color")]
         [Category("UI Colors")]
         [Display(Order = 231)]
-        public ConfigColor SocialStatsCircleAcademicsColor { get; set; } = ConfigColor.SocialStatsAcademics;
+        public ConfigColor SocialStatsCircleAcademicsColor { get; set; } = new ConfigColor(0xA0, 0x0C, 0x42, 0xFF);
 
         [DisplayName("Social Stats: Charm Circle Color")]
         [Category("UI Colors")]
         [Display(Order = 232)]
-        public ConfigColor SocialStatsCircleCharmColor { get; set; } = ConfigColor.SocialStatsCharm;
+        public ConfigColor SocialStatsCircleCharmColor { get; set; } = new ConfigColor(0xFF, 0x8F, 0xEC, 0xFF);
 
         [DisplayName("Social Stats: Courage Circle Color")]
         [Category("UI Colors")]
         [Display(Order = 233)]
-        public ConfigColor SocialStatsCircleCourageColor { get; set; } = ConfigColor.SocialStatsCourage;
+        public ConfigColor SocialStatsCircleCourageColor { get; set; } = new ConfigColor(0xF5, 0x62, 0xA7, 0xFF);
 
         [DisplayName("Camp: Item Menu Character Top Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 234)]
-        public ConfigColor CampItemMenuCharacterTopColor { get; set; } = ConfigColor.DarkColor;
+        public ConfigColor CampItemMenuCharacterTopColor { get; set; } = new ConfigColor(0xDD, 0x76, 0x8C, 0xFF);
 
         [DisplayName("Camp: Item Menu Character Bottom Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 235)]
-        public ConfigColor CampItemMenuCharacterBottomColor { get; set; } = ConfigColor.DarkColor;
+        public ConfigColor CampItemMenuCharacterBottomColor { get; set; } = new ConfigColor(0x5B, 0x0C, 0x33, 0xFF);
 
         [DisplayName("Assist Message Box: Background Color")]
         [Category("UI Colors")]
         [Display(Order = 236)]
-        public ConfigColor MsgAssistBgColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor MsgAssistBgColor { get; set; } = new ConfigColor(0xFF, 0x4A, 0x77, 0xFF);
 
         [DisplayName("Town Map: Border Color")]
         [Category("UI Colors")]
         [Display(Order = 237)]
-        public ConfigColor TownMapBorderColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor TownMapBorderColor { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Town Map: Text Color")]
         [Category("UI Colors")]
         [Display(Order = 238)]
-        public ConfigColor TownMapTextColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor TownMapTextColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x85, 0xFF);
 
         [DisplayName("Camp Social Link: Light Color")]
         [Category("UI Colors")]
         [Display(Order = 239)]
-        public ConfigColor CampSocialLinkLight { get; set; } = ConfigColor.MellodiColorLight2;
+        public ConfigColor CampSocialLinkLight { get; set; } = new ConfigColor(0xFF, 0xE7, 0xAD, 0xFF);
 
         [DisplayName("Camp Social Link: Dark Color")]
         [Category("UI Colors")]
         [Display(Order = 240)]
-        public ConfigColor CampSocialLinkDark { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor CampSocialLinkDark { get; set; } = new ConfigColor(0x49, 0x04, 0x2E, 0xFF);
 
         [DisplayName("Camp Social Link: Desc BG")]
         [Category("UI Colors")]
         [Display(Order = 241)]
-        public ConfigColor CampSocialLinkDetailDescBg { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor CampSocialLinkDetailDescBg { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Camp Social Link: Desc Triangle")]
         [Category("UI Colors")]
         [Display(Order = 242)]
-        public ConfigColor CampSocialLinkDetailDescTriangle { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor CampSocialLinkDetailDescTriangle { get; set; } = new ConfigColor(0xE1, 0x2D, 0x69, 0xFF);
 
         [DisplayName("Camp Social Link: Desc Name")]
         [Category("UI Colors")]
         [Display(Order = 243)]
-        public ConfigColor CampSocialLinkDetailDescName { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor CampSocialLinkDetailDescName { get; set; } = new ConfigColor(0xFF, 0xE7, 0xAD, 0xFF);
 
         [DisplayName("Arcana Card Fall Color 1")]
         [Category("UI Colors")]
         [Display(Order = 244)]
-        public ConfigColor ArcanaCardFallColor1 { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor ArcanaCardFallColor1 { get; set; } = new ConfigColor(0xD6, 0x54, 0x8D, 0xFF);
 
         [DisplayName("Arcana Card Fall Color 2")]
         [Category("UI Colors")]
         [Display(Order = 245)]
-        public ConfigColor ArcanaCardFallColor2 { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor ArcanaCardFallColor2 { get; set; } = new ConfigColor(0xD6, 0x54, 0x8D, 0xFF);
 
         [DisplayName("Arcana Card Fall Color 3")]
         [Category("UI Colors")]
         [Display(Order = 246)]
-        public ConfigColor ArcanaCardFallColor3 { get; set; } = ConfigColor.MellodiColorMid3;
+        public ConfigColor ArcanaCardFallColor3 { get; set; } = new ConfigColor(0xD6, 0x54, 0x8D, 0xFF);
 
         [DisplayName("Camp Calendar: Sunday Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 247)]
-        public ConfigColor CampCalendarSundayColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor CampCalendarSundayColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);
 
         [DisplayName("Camp Calendar: Sunday Color 2 (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 248)]
-        public ConfigColor CampCalendarSundayColor2 { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor CampCalendarSundayColor2 { get; set; } = new ConfigColor(0xEE, 0x00, 0x00, 0xFF);
 
         [DisplayName("Camp Calendar: Text Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 249)]
-        public ConfigColor CampCalendarTextColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor CampCalendarTextColor { get; set; } = new ConfigColor(0x3D, 0x03, 0x1C, 0xFF);
 
         [DisplayName("Camp Calendar: Highlight Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 250)]
-        public ConfigColor CampCalendarHighlightColor { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor CampCalendarHighlightColor { get; set; } = new ConfigColor(0x46, 0xE7, 0xFF, 0xFF);
 
         [DisplayName("Camp Calendar: Part Time Job Background")]
         [Category("UI Colors")]
         [Display(Order = 251)]
-        public ConfigColor CampCalendarPartTimeJobBackground { get; set; } = ConfigColor.MellodiColorDark1;
+        public ConfigColor CampCalendarPartTimeJobBackground { get; set; } = new ConfigColor(0xB6, 0x3F, 0x67, 0xFF);
 
         [DisplayName("Party Panel Background Color")]
         [Category("UI Colors")]
         [Display(Order = 252)]
-        public ConfigColor PartyPanelBgColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor PartyPanelBgColor { get; set; } = new ConfigColor(0xE9, 0x57, 0x80, 0xFF);
 
         [DisplayName("Button Prompt Fill Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 253)]
-        public ConfigColor ButtonPromptHighlightColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor ButtonPromptHighlightColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Button Prompt Triangle Color")]
         [Category("UI Colors")]
         [Display(Order = 254)]
-        public ConfigColor ButtonPromptTriangleColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor ButtonPromptTriangleColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Back Log Blackboard Color")]
         [Category("UI Colors")]
         [Display(Order = 255)]
-        public ConfigColor BackLogBlackboardColor { get; set; } = ConfigColor.BackLogBlackBoard;
+        public ConfigColor BackLogBlackboardColor { get; set; } = new ConfigColor(0x09, 0x03, 0x09, 0xFF);
 
         [DisplayName("Back Log Haze Color")]
         [Category("UI Colors")]
         [Display(Order = 256)]
-        public ConfigColor BackLogGladationColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor BackLogGladationColor { get; set; } = new ConfigColor(0xFF, 0x4A, 0x77, 0xFF);
 
         [DisplayName("Back Log Blueboard Color")]
         [Category("UI Colors")]
         [Display(Order = 257)]
-        public ConfigColor BackLogBlueboardColorEx { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor BackLogBlueboardColorEx { get; set; } = new ConfigColor(0xFF, 0x4A, 0x77, 0xFF);
 
         [DisplayName("Back Log Title Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 258)]
-        public ConfigColor BackLogTitleColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor BackLogTitleColor { get; set; } = new ConfigColor(0xFF, 0x4A, 0x77, 0xFF);
 
         [DisplayName("Back Log Text/Icon Color Selected")]
         [Category("UI Colors")]
         [Display(Order = 259)]
-        public ConfigColor BackLogTexColorSelected { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor BackLogTexColorSelected { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
 
         [DisplayName("Back Log Text/Icon Color Unselected")]
         [Category("UI Colors")]
         [Display(Order = 260)]
-        public ConfigColor BackLogTexColorUnselectedEx { get; set; } = ConfigColor.MellodiColorDark1;
+        public ConfigColor BackLogTexColorUnselectedEx { get; set; } = new ConfigColor(0xB6, 0x3F, 0x67, 0xFF);
 
         [DisplayName("Location Select Background Color")]
         [Category("UI Colors")]
         [Display(Order = 261)]
-        public ConfigColor LocationSelectBgColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor LocationSelectBgColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x8F, 0xFF);
 
         [DisplayName("Location Select Marker Color")]
         [Category("UI Colors")]
         [Display(Order = 262)]
-        public ConfigColor LocationSelectMarkerColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor LocationSelectMarkerColor { get; set; } = new ConfigColor(0xFF, 0x4A, 0x94, 0xFF);
 
         [DisplayName("Location Select Selected Item Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 263)]
-        public ConfigColor LocationSelectSelColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor LocationSelectSelColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x95, 0xFF);
 
         [DisplayName("Time Skip Color")]
         [Category("UI Colors")]
         [Display(Order = 264)]
-        public ConfigColor TimeSkipColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor TimeSkipColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Next Day Band Color")]
         [Category("UI Colors")]
         [Display(Order = 265)]
-        public ConfigColor NextDayBandColor { get; set; } = ConfigColor.MellodiColorDark1;
+        public ConfigColor NextDayBandColor { get; set; } = new ConfigColor(0xB6, 0x3F, 0x67, 0xFF);
 
         [DisplayName("Next Day Text Color")]
         [Category("UI Colors")]
         [Display(Order = 266)]
-        public ConfigColor NextDayTextColor { get; set; } = ConfigColor.MellodiColorMid3;
+        public ConfigColor NextDayTextColor { get; set; } = new ConfigColor(0x62, 0xCD, 0x70, 0xFF);
 
         [DisplayName("Next Day Moon Shadow Color")]
         [Category("UI Colors")]
         [Display(Order = 267)]
-        public ConfigColor NextDayMoonShadowColor { get; set; } = ConfigColor.DayChangeMoonShadow;
+        public ConfigColor NextDayMoonShadowColor { get; set; } = new ConfigColor(0xA3, 0x26, 0x50, 0xFF);
 
         [DisplayName("Next Day Ripple")]
         [Category("UI Colors")]
         [Display(Order = 268)]
-        public ConfigColor NextDayRipple { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor NextDayRipple { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Shop Payment Color")]
         [Category("UI Colors")]
         [Display(Order = 269)]
-        public ConfigColor ShopPayColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor ShopPayColor { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
 
         [DisplayName("Shop Fill Color")]
         [Category("UI Colors")]
         [Display(Order = 270)]
-        public ConfigColor ShopFillColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor ShopFillColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Shop Shadow Color")]
         [Category("UI Colors")]
         [Display(Order = 271)]
-        public ConfigColor ShopShadowColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor ShopShadowColor { get; set; } = new ConfigColor(0xFF, 0x4A, 0x77, 0xFF);
 
         [DisplayName("Shop Payment Unselect Color")]
         [Category("UI Colors")]
         [Display(Order = 272)]
-        public ConfigColor ShopPayUnselColor { get; set; } = ConfigColor.MellodiColorMid4;
+        public ConfigColor ShopPayUnselColor { get; set; } = new ConfigColor(0xD4, 0x45, 0x92, 0xFF);
 
         [DisplayName("Get Item Background Mask Color")]
         [Category("UI Colors")]
         [Display(Order = 273)]
-        public ConfigColor GetItemBgMaskColor { get; set; } = ConfigColor.GetItemFillMask;
+        public ConfigColor GetItemBgMaskColor { get; set; } = new ConfigColor(0x54, 0x0D, 0x54, 0xFF);
 
         [DisplayName("Get Item Background Color")]
         [Category("UI Colors")]
         [Display(Order = 274)]
-        public ConfigColor GetItemBgColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor GetItemBgColor { get; set; } = new ConfigColor(0xFF, 0x4A, 0x8E, 0xFF);
 
         [DisplayName("Get Item Got Text Color")]
         [Category("UI Colors")]
         [Display(Order = 275)]
-        public ConfigColor GetItemGotTextColor { get; set; } = ConfigColor.GetItemGotTextColor;
+        public ConfigColor GetItemGotTextColor { get; set; } = new ConfigColor(0xFF, 0x4A, 0xFF, 0xFF);
 
         [DisplayName("Get Item Got Item Count Background")]
         [Category("UI Colors")]
         [Display(Order = 276)]
-        public ConfigColor GetItemCountBgColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor GetItemCountBgColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x9A, 0xFF);
 
         [DisplayName("Mind Select: Selected Text Color")]
         [Category("UI Colors")]
         [Display(Order = 277)]
-        public ConfigColor MindSelActiveTextColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor MindSelActiveTextColor { get; set; } = new ConfigColor(0xDE, 0x12, 0x74, 0xFF);
 
         [DisplayName("Mind Select Window Fill (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 278)]
-        public ConfigColor MindSelWindowFill { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor MindSelWindowFill { get; set; } = new ConfigColor(0x34, 0x06, 0x1C, 0xFF);
 
         [DisplayName("Mind Select Window Border (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 279)]
-        public ConfigColor MindSelWindowBorder { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor MindSelWindowBorder { get; set; } = new ConfigColor(0x34, 0x06, 0x1C, 0xFF);
 
         [DisplayName("Mind Select Dot Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 280)]
-        public ConfigColor MindSelectDotColor { get; set; } = ConfigColor.MindSelectDotColor;
+        public ConfigColor MindSelectDotColor { get; set; } = new ConfigColor(0x67, 0x00, 0x00, 0xFF);
 
         [DisplayName("Generic Select Character Backplate Color ")]
         [Category("UI Colors")]
         [Display(Order = 281)]
-        public ConfigColor GenericSelectCharacterBackplate { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor GenericSelectCharacterBackplate { get; set; } = new ConfigColor(0xFF, 0x58, 0x8A, 0xFF);
 
         [DisplayName("Generic Select List Color Morning")]
         [Category("UI Colors")]
         [Display(Order = 282)]
-        public ConfigColor GenericSelectListColorMorning { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor GenericSelectListColorMorning { get; set; } = new ConfigColor(0xFF, 0x4A, 0x88, 0xFF);
 
         [DisplayName("Generic Select List Color After School")]
         [Category("UI Colors")]
         [Display(Order = 283)]
-        public ConfigColor GenericSelectListColorAfterSchool { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor GenericSelectListColorAfterSchool { get; set; } = new ConfigColor(0xFF, 0x58, 0x8A, 0xFF);
 
         [DisplayName("Generic Select List Color Night")]
         [Category("UI Colors")]
         [Display(Order = 284)]
-        public ConfigColor GenericSelectListColorNight { get; set; } = ConfigColor.MellodiColorMid3;
+        public ConfigColor GenericSelectListColorNight { get; set; } = new ConfigColor(0xCD, 0x62, 0x90, 0xFF);
 
         [DisplayName("Generic Select Title Color")]
         [Category("UI Colors")]
         [Display(Order = 285)]
-        public ConfigColor GenericSelectTitle { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor GenericSelectTitle { get; set; } = new ConfigColor(0xFF, 0x58, 0x8A, 0xFF);
 
         [DisplayName("Generic Select Character Shadow (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 286)]
-        public ConfigColor GenericSelectCharacterShadow { get; set; } = ConfigColor.MellodiColorMid4;
+        public ConfigColor GenericSelectCharacterShadow { get; set; } = new ConfigColor(0xD4, 0x45, 0x92, 0xFF);
 
         [DisplayName("Message Box Select Text Color")]
         [Category("UI Colors")]
         [Display(Order = 287)]
-        public ConfigColor MsgSimpleSelectTextColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor MsgSimpleSelectTextColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x95, 0xFF);
 
         [DisplayName("Message Box Select Box Shadow Color")]
         [Category("UI Colors")]
         [Display(Order = 288)]
         /*
-        public ConfigColor MsgSimpleSelectBoxShadow { get; set; } = ConfigColor.MellodiColorDark1;
+        public ConfigColor MsgSimpleSelectBoxShadow { get; set; } = new ConfigColor(0xB6, 0x3F, 0x67, 0xFF);
 
         [DisplayName("Message Box Shadow Color")]
         [Category("UI Colors")]
@@ -1356,317 +1356,317 @@ namespace p3rpc.femc.Configuration
         */
 
         //THAT BASTARD DOES NOTHING ARE YOU KIDDING
-        public ConfigColor MsgSimpleSelectShadowEx { get; set; } = ConfigColor.TextBoxFrontFillColor;
+        public ConfigColor MsgSimpleSelectShadowEx { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Message Box Border Color")]
         [Category("UI Colors")]
         [Display(Order = 290)]
-        public ConfigColor MsgSimpleSelectBorderColorEx { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor MsgSimpleSelectBorderColorEx { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("System Message Light Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 291)]
-        public ConfigColor MsgSimpleSystemLightColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor MsgSimpleSystemLightColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x8A, 0xFF);
 
         [DisplayName("System Message Dark Color")]
         [Category("UI Colors")]
         [Display(Order = 292)]
-        public ConfigColor MsgSimpleSystemDarkColor { get; set; } = ConfigColor.MsgWindowSystemDark;
+        public ConfigColor MsgSimpleSystemDarkColor { get; set; } = new ConfigColor(0x2F, 0x00, 0x14, 0xFF);
 
         [DisplayName("System Message Dark Haze Color")]
         [Category("UI Colors")]
         [Display(Order = 293)]
-        public ConfigColor MsgSimpleSystemGradationColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor MsgSimpleSystemGradationColor { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Persona Status Skill List Background Top Left")]
         [Category("UI Colors")]
         [Display(Order = 294)]
-        public ConfigColor PersonaStatusSkillListBg { get; set; } = ConfigColor.PersonaStatusSkillListBg;
+        public ConfigColor PersonaStatusSkillListBg { get; set; } = new ConfigColor(0x2A, 0x00, 0x1D, 0xFF);
 
         [DisplayName("Persona Status Skill List Background Lower Line")]
         [Category("UI Colors")]
         [Display(Order = 295)]
-        public ConfigColor PersonaStatusSkillListBg2 { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor PersonaStatusSkillListBg2 { get; set; } = new ConfigColor(0xE9, 0x47, 0x7E, 0xFF);
 
         [DisplayName("Persona Status Skill List Checkerboard")]
         [Category("UI Colors")]
         [Display(Order = 296)]
-        public ConfigColor PersonaStatusSkillListCheckboardAlt { get; set; } = ConfigColor.PersonaStatusSkillListCheckboardAlt;
+        public ConfigColor PersonaStatusSkillListCheckboardAlt { get; set; } = new ConfigColor(0x55, 0x1F, 0x3F, 0xFF);
 
         [DisplayName("Persona Status Skill List Next Skill Color")]
         [Category("UI Colors")]
         [Display(Order = 297)]
-        public ConfigColor PersonaSkillListNextSkillColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor PersonaSkillListNextSkillColor { get; set; } = new ConfigColor(0xFB, 0x67, 0x96, 0xFF);
 
         [DisplayName("Persona Status Skill List Level Color")]
         [Category("UI Colors")]
         [Display(Order = 298)]
-        public ConfigColor PersonaSkillListNextLevelColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor PersonaSkillListNextLevelColor { get; set; } = new ConfigColor(0xFF, 0xE2, 0x89, 0xFF);
 
         [DisplayName("Persona Status Skill List Next Skill Name Color")]
         [Category("UI Colors")]
         [Display(Order = 299)]
-        public ConfigColor PersonaSkillListNextSkillInfoName { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor PersonaSkillListNextSkillInfoName { get; set; } = new ConfigColor(0xFF, 0xDD, 0x9B, 0xFF);
 
         [DisplayName("Persona Status Info Color")]
         [Category("UI Colors")]
         [Display(Order = 300)]
-        public ConfigColor PersonaStatusPlayerInfoColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor PersonaStatusPlayerInfoColor { get; set; } = new ConfigColor(0xFF, 0xF5, 0x9E, 0xFF);
 
         [DisplayName("Persona Status Info Selected Persona Color 1")]
         [Category("UI Colors")]
         [Display(Order = 301)]
-        public ConfigColor PersonaStatusInfoSelPersonaColor1 { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor PersonaStatusInfoSelPersonaColor1 { get; set; } = new ConfigColor(0xFF, 0xF5, 0x9E, 0xFF);
 
         [DisplayName("Persona Status Info Selected Persona Color 2")]
         [Category("UI Colors")]
         [Display(Order = 302)]
-        public ConfigColor PersonaStatusInfoSelPersonaColor2 { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor PersonaStatusInfoSelPersonaColor2 { get; set; } = new ConfigColor(0xE0, 0x68, 0x3F, 0xFF);
 
         [DisplayName("Persona Status Param Background Color")]
         [Category("UI Colors")]
         [Display(Order = 303)]
-        public ConfigColor PersonaStatusParamColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor PersonaStatusParamColor { get; set; } = new ConfigColor(0xF4, 0x6C, 0x79, 0xFF);
 
         [DisplayName("Persona Status Lore Title Color")]
         [Category("UI Colors")]
         [Display(Order = 304)]
-        public ConfigColor PersonaStatusCommentaryTitleColor { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor PersonaStatusCommentaryTitleColor { get; set; } = new ConfigColor(0xFF, 0xE2, 0x9E, 0xFF);
 
         [DisplayName("Persona Status Base Stat Color")]
         [Category("UI Colors")]
         [Display(Order = 305)]
-        public ConfigColor PersonaStatusBaseStat { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor PersonaStatusBaseStat { get; set; } = new ConfigColor(0xFF, 0xE2, 0x9E, 0xFF);
 
         [DisplayName("Persona Status Skill Affinity Outline Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 306)]
-        public ConfigColor PersonaStatusAttributeOutline { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor PersonaStatusAttributeOutline { get; set; } = new ConfigColor(0xE9, 0x47, 0x7E, 0xFF);
 
         [DisplayName("Network: Daily Action Sticky Note Background Color 1")]
         [Category("UI Colors")]
         [Display(Order = 307)]
-        public ConfigColor NetworkDailyActionStickyNoteBgColor1 { get; set; } = UICommon.NetStickyNoteBgColor1;
+        public ConfigColor NetworkDailyActionStickyNoteBgColor1 { get; set; } = new ConfigColor(0xD8, 0x3D, 0x76, 0xFF);
 
         [DisplayName("Network: Daily Action Sticky Note Background Color 2")]
         [Category("UI Colors")]
         [Display(Order = 308)]
-        public ConfigColor NetworkDailyActionStickyNoteBgColor2 { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor NetworkDailyActionStickyNoteBgColor2 { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Network: Daily Action Sticky Note Dotpoint Color 1")]
         [Category("UI Colors")]
         [Display(Order = 309)]
-        public ConfigColor NetworkDailyActionStickyNoteDotColor1 { get; set; } = ConfigColor.MellodiColorLight2;
+        public ConfigColor NetworkDailyActionStickyNoteDotColor1 { get; set; } = new ConfigColor(0xFE, 0x9D, 0xB6, 0xFF);
 
         [DisplayName("Network: Daily Action Sticky Note Dotpoint Color 2")]
         [Category("UI Colors")]
         [Display(Order = 310)]
-        public ConfigColor NetworkDailyActionStickyNoteDotColor2 { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NetworkDailyActionStickyNoteDotColor2 { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
 
         [DisplayName("Network: Daily Action Sticky Note Text Color 1")]
         [Category("UI Colors")]
         [Display(Order = 311)]
-        public ConfigColor NetworkDailyActionStickyNoteTextColor1 { get; set; } = UICommon.NetStickyNoteTextColor1;
+        public ConfigColor NetworkDailyActionStickyNoteTextColor1 { get; set; } = new ConfigColor(0xFF, 0xD1, 0xDC, 0xFF);
 
         [DisplayName("Network: Daily Action Sticky Note Text Color 2")]
         [Category("UI Colors")]
         [Display(Order = 312)]
-        public ConfigColor NetworkDailyActionStickyNoteTextColor2 { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor NetworkDailyActionStickyNoteTextColor2 { get; set; } = new ConfigColor(0xFF, 0xBD, 0xCE, 0xFF);
 
         [DisplayName("Network: Daily Action Blue Background Color")]
         [Category("UI Colors")]
         [Display(Order = 313)]
-        public ConfigColor NetworkDailyActionBlueBgColor { get; set; } = ConfigColor.MellodiColorMid4;
+        public ConfigColor NetworkDailyActionBlueBgColor { get; set; } = new ConfigColor(0xD4, 0x45, 0x92, 0xFF);
 
         [DisplayName("Network: Daily Action Network Icon Color")]
         [Category("UI Colors")]
         [Display(Order = 314)]
-        public ConfigColor NetworkDailyActionNetworkIcon { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor NetworkDailyActionNetworkIcon { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Simple Shop: Info Color")]
         [Category("UI Colors")]
         [Display(Order = 315)]
-        public ConfigColor SimpleShopInfoColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor SimpleShopInfoColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Cutin: Outer Highlight Color")]
         [Category("UI Colors")]
         [Display(Order = 316)]
-        public ConfigColor CutinOuterHighlight { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor CutinOuterHighlight { get; set; } = new ConfigColor(0xFF, 0x4A, 0x77, 0xFF);
 
         [DisplayName("Cutin: Emotion Gradient Color")]
         [Category("UI Colors")]
         [Display(Order = 317)]
-        public ConfigColor CutinEmotionGradient { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor CutinEmotionGradient { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
 
         [DisplayName("Cutin: Emotion Tint Color")]
         [Category("UI Colors")]
         [Display(Order = 318)]
-        public ConfigColor CutinEmotionTint { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor CutinEmotionTint { get; set; } = new ConfigColor(0xFF, 0x4A, 0x77, 0xFF);
 
         [DisplayName("Title Menu: Select Rectangle Color")]
         [Category("UI Colors")]
         [Display(Order = 319)]
-        public ConfigColor TitleMenuSelRectColor { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor TitleMenuSelRectColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Localization Staff Roll: Header Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 320)]
-        public ConfigColor LocalStaffRollHeader { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor LocalStaffRollHeader { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
 
         [DisplayName("Difficulty Selection Background")]
         [Category("UI Colors")]
         [Display(Order = 321)]
-        public ConfigColor DifficultySelectBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor DifficultySelectBgColor { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Wipe Background")]
         [Category("UI Colors")]
         [Display(Order = 322)]
-        public ConfigColor WipeBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor WipeBgColor { get; set; } = new ConfigColor(0x49, 0x04, 0x27, 0xFF);
 
         [DisplayName("Camp Equip: Item Stat Value Padding Color")]
         [Category("UI Colors")]
         [Display(Order = 323)]
-        public ConfigColor CampItemStatValuePadColor { get; set; } = ConfigColor.MellodiColorDark1;
+        public ConfigColor CampItemStatValuePadColor { get; set; } = new ConfigColor(0xBC, 0x81, 0x5D, 0xFF);
 
         [DisplayName("Camp Equip: Item Stat Value Padding Color")]
         [Category("UI Colors")]
         [Display(Order = 324)]
-        public ConfigColor CampItemStatValueValColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor CampItemStatValueValColor { get; set; } = new ConfigColor(0xFE, 0xE6, 0xAD, 0xFF);
 
         [DisplayName("Camp Equip: Overview List Type Color")]
         [Category("UI Colors")]
         [Display(Order = 325)]
-        public ConfigColor CampEquipOverviewListType { get; set; } = ConfigColor.MellodiColorMid3;
+        public ConfigColor CampEquipOverviewListType { get; set; } = new ConfigColor(0xF6, 0xCD, 0x95, 0xFF);
 
         [DisplayName("Camp Persona: Arcana Phrase Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 326)]
-        public ConfigColor CampPersonaArcanaPhraseColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor CampPersonaArcanaPhraseColor { get; set; } = new ConfigColor(0xFF, 0xF5, 0x9E, 0xFF);
 
         [DisplayName("Camp Persona: Name Color")]
         [Category("UI Colors")]
         [Display(Order = 327)]
-        public ConfigColor CampPersonaNameColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor CampPersonaNameColor { get; set; } = new ConfigColor(0xFF, 0xF5, 0x9E, 0xFF);
 
         [DisplayName("Camp Persona: Arcana Background Color")]
         [Category("UI Colors")]
         [Display(Order = 328)]
-        public ConfigColor CampPersonaArcanaBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor CampPersonaArcanaBgColor { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Camp Status: Kotone Line Color")]
         [Category("UI Colors")]
         [Display(Order = 329)]
-        public ConfigColor CampStatusKotoneLineColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor CampStatusKotoneLineColor { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
 
         [DisplayName("Camp Status: Inactive Party Member Background (Tartarus)")]
         [Category("UI Colors")]
         [Display(Order = 330)]
-        public ConfigColor CampStatusInactiveMemberBgTartarus { get; set; } = UICommon.InactivePartyMemberTartarusBG;
+        public ConfigColor CampStatusInactiveMemberBgTartarus { get; set; } = new ConfigColor(0x63, 0x27, 0x3E, 0xFF);
 
         [DisplayName("Camp Status: Inactive Member Details Pale Pink (Tartarus)")]
         [Category("UI Colors")]
         [Display(Order = 331)]
-        public ConfigColor CampStatusInactiveMemberDetailsPalePinkTartarus { get; set; } = UICommon.InactivePartyMemberPalePink;
+        public ConfigColor CampStatusInactiveMemberDetailsPalePinkTartarus { get; set; } = new ConfigColor(0xED, 0xC0, 0xDB, 0xFF);
 
         [DisplayName("Camp Status: Inactive Member Details Dark Pink (Tartarus)")]
         [Category("UI Colors")]
         [Display(Order = 332)]
-        public ConfigColor CampStatusInactiveMemberDetailsDarkPinkTartarus { get; set; } = UICommon.InactivePartyMemberDarkPink;
+        public ConfigColor CampStatusInactiveMemberDetailsDarkPinkTartarus { get; set; } = new ConfigColor(0x78, 0x19, 0x34, 0xFF);
 
         [DisplayName("Camp Status: Inactive Member HP Bar (Tartarus)")]
         [Category("UI Colors")]
         [Display(Order = 333)]
-        public ConfigColor CampStatusInactiveMemberHPBarTartarus { get; set; } = UICommon.InactivePartyMemberHPColor;
+        public ConfigColor CampStatusInactiveMemberHPBarTartarus { get; set; } = new ConfigColor(0x8B, 0x0D, 0x41, 0xFF);
 
         [DisplayName("Town Map: Location Details Background Tint")]
         [Category("UI Colors")]
         [Display(Order = 334)]
-        public ConfigColor TownMapLocationDetailsBgTint { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor TownMapLocationDetailsBgTint { get; set; } = new ConfigColor(0xFF, 0x58, 0x85, 0xFF);
 
         [DisplayName("Town Map: Location Details Top Left Bg")]
         [Category("UI Colors")]
         [Display(Order = 335)]
-        public ConfigColor TownMapLocationDetailsTopLeftBg { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor TownMapLocationDetailsTopLeftBg { get; set; } = new ConfigColor(0xFF, 0x4A, 0xA0, 0xFF);
 
         [DisplayName("Town Map: Location Details Top Left Text")]
         [Category("UI Colors")]
         [Display(Order = 336)]
-        public ConfigColor TownMapLocationDetailsTopLeftText { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor TownMapLocationDetailsTopLeftText { get; set; } = new ConfigColor(0xFF, 0x58, 0x9A, 0xFF);
 
         [DisplayName("Town Map: Selected Marker Outline")]
         [Category("UI Colors")]
         [Display(Order = 337)]
-        public ConfigColor TownMapSelectedMarkerOutline { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor TownMapSelectedMarkerOutline { get; set; } = new ConfigColor(0xFF, 0x4A, 0x77, 0xFF);
 
         [DisplayName("Social Stats: Stats Up Text")]
         [Category("UI Colors")]
         [Display(Order = 338)]
-        public ConfigColor SocialStatsUpText { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor SocialStatsUpText { get; set; } = new ConfigColor(0xFF, 0xE7, 0xAD, 0xFF);
 
         [DisplayName("Social Stats: Stat Up Pulse Circle Color")]
         [Category("UI Colors")]
         [Display(Order = 339)]
-        public ConfigColor SocialStatsPulseCircleColorMain { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor SocialStatsPulseCircleColorMain { get; set; } = new ConfigColor(0xFF, 0xE7, 0xAD, 0xFF);
 
         [DisplayName("Social Stats: Stat Up Pulse Circle Fade")]
         [Category("UI Colors")]
         [Display(Order = 340)]
-        public ConfigColor SocialStatsPulseCircleColorFade { get; set; } = ConfigColor.MellodiColorMid1;
+        public ConfigColor SocialStatsPulseCircleColorFade { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Assist Message Box: Text Background")]
         [Category("UI Colors")]
         [Display(Order = 341)]
-        public ConfigColor MsgAssistTextBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor MsgAssistTextBgColor { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Location Select: Map Background Color")]
         [Category("UI Colors")]
         [Display(Order = 342)]
-        public ConfigColor LocationSelMapBg { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor LocationSelMapBg { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Location Select: Map Label Color")]
         [Category("UI Colors")]
         [Display(Order = 343)]
-        public ConfigColor LocationSelMapLabel { get; set; } = UICommon.LocationSelectMapLabel;
+        public ConfigColor LocationSelMapLabel { get; set; } = new ConfigColor(0x1F, 0x11, 0x17, 0xFF);
 
         [DisplayName("System Message Picture Border Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 344)]
-        public ConfigColor MsgSystemPicBorderColor { get; set; } = ConfigColor.MellodiColorDark1;
+        public ConfigColor MsgSystemPicBorderColor { get; set; } = new ConfigColor(0xB6, 0x3F, 0x67, 0xFF);
 
         [DisplayName("Tutorial List Entry Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 345)]
-        public ConfigColor TutorialListEntryColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor TutorialListEntryColor { get; set; } = new ConfigColor(0xFF, 0xE4, 0xA3, 0xFF);
 
         [DisplayName("Tutorial List Background Color")]
         [Category("UI Colors")]
         [Display(Order = 346)]
-        public ConfigColor TutorialBgColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor TutorialBgColor { get; set; } = new ConfigColor(0x49, 0x04, 0x28, 0xFF);
 
         [DisplayName("Missing Person: Selected Person \"Last Sighted\" Color")]
         [Category("UI Colors")]
         [Display(Order = 347)]
-        public ConfigColor MissingLastSighted { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor MissingLastSighted { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
 
         [DisplayName("Missing Person: Page Background")]
         [Category("UI Colors")]
         [Display(Order = 348)]
-        public ConfigColor MissingPageBg { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor MissingPageBg { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Missing Person: Light Text Color")]
         [Category("UI Colors")]
         [Display(Order = 349)]
-        public ConfigColor MissingTextLight { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor MissingTextLight { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
 
         [DisplayName("Missing Person: Dark Text Color")]
         [Category("UI Colors")]
         [Display(Order = 350)]
-        public ConfigColor MissingTextDark { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor MissingTextDark { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Request/Missing Person: Sort by Triangle")]
         [Category("Ui Colors")]
         [Display(Order = 351)]
-        public ConfigColor MissingSortTriangle { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor MissingSortTriangle { get; set; } = new ConfigColor(0xFF, 0x86, 0x83, 0xFF);
 
 
         //silly edits
@@ -1674,230 +1674,230 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Waves Top A Color")]
         [Category("UI Colors")]
         [Display(Order = 352)]
-        public ConfigColor NamiTopAColor { get; set; } = ConfigColor.MellodiColorLight3;
-        
+        public ConfigColor NamiTopAColor { get; set; } = new ConfigColor(0xF4, 0xE2, 0xB6, 0xFF);
+
         [DisplayName("Camp: Waves Top B Color")]
         [Category("UI Colors")]
         [Display(Order = 353)]
-        public ConfigColor NamiTopBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiTopBColor { get; set; } = new ConfigColor(0xCD, 0xC9, 0xB7, 0xFF);
 
         [DisplayName("Camp: Waves Skill A Color")]
         [Category("UI Colors")]
         [Display(Order = 354)]
-        public ConfigColor NamiSkillAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiSkillAColor { get; set; } = new ConfigColor(0xFF, 0xE5, 0xA9, 0xFF);
 
         [DisplayName("Camp: Waves Skill B Color")]
         [Category("UI Colors")]
         [Display(Order = 355)]
-        public ConfigColor NamiSkillBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiSkillBColor { get; set; } = new ConfigColor(0xFF, 0xE5, 0xA9, 0xFF);
 
         [DisplayName("Camp: Waves Item A Color")]
         [Category("UI Colors")]
         [Display(Order = 356)]
-        public ConfigColor NamiItemAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiItemAColor { get; set; } = new ConfigColor(0xFF, 0xE5, 0xA9, 0xFF);
 
         [DisplayName("Camp: Waves Item B Color")]
         [Category("UI Colors")]
         [Display(Order = 357)]
-        public ConfigColor NamiItemBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiItemBColor { get; set; } = new ConfigColor(0xFF, 0xE5, 0xA9, 0xFF);
 
         [DisplayName("Camp: Waves Equip A Color")]
         [Category("UI Colors")]
         [Display(Order = 358)]
-        public ConfigColor NamiEquipAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiEquipAColor { get; set; } = new ConfigColor(0xF4, 0xE2, 0xB6, 0xFF);
 
         [DisplayName("Camp: Waves Equip B Color")]
         [Category("UI Colors")]
         [Display(Order = 359)]
-        public ConfigColor NamiEquipBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiEquipBColor { get; set; } = new ConfigColor(0xFD, 0xB3, 0x9D, 0xFF);
 
         [DisplayName("Camp: Waves Persona A Color")]
         [Category("UI Colors")]
         [Display(Order = 360)]
-        public ConfigColor NamiPersonaAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiPersonaAColor { get; set; } = new ConfigColor(0xFF, 0xE5, 0xA9, 0xFF);
 
         [DisplayName("Camp: Waves Persona B Color")]
         [Category("UI Colors")]
         [Display(Order = 361)]
-        public ConfigColor NamiPersonaBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiPersonaBColor { get; set; } = new ConfigColor(0xFF, 0xE5, 0xA9, 0xFF);
 
         [DisplayName("Camp: Waves Status A Color")]
         [Category("UI Colors")]
         [Display(Order = 362)]
-        public ConfigColor NamiStatusAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiStatusAColor { get; set; } = new ConfigColor(0xF4, 0xE2, 0xB6, 0xFF);
 
         [DisplayName("Camp: Waves Status B Color")]
         [Category("UI Colors")]
         [Display(Order = 363)]
-        public ConfigColor NamiStatusBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiStatusBColor { get; set; } = new ConfigColor(0xFD, 0xB3, 0x9D, 0xFF);
 
         [DisplayName("Camp: Waves Quest A Color")]
         [Category("UI Colors")]
         [Display(Order = 364)]
-        public ConfigColor NamiQuestAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiQuestAColor { get; set; } = new ConfigColor(0xF4, 0xE2, 0xB6, 0xFF);
 
         [DisplayName("Camp: Waves Quest B Color")]
         [Category("UI Colors")]
         [Display(Order = 365)]
-        public ConfigColor NamiQuestBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiQuestBColor { get; set; } = new ConfigColor(0xFD, 0xB3, 0x9D, 0xFF);
 
         [DisplayName("Camp: Waves Commu A Color")]
         [Category("UI Colors")]
         [Display(Order = 366)]
-        public ConfigColor NamiCommuAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiCommuAColor { get; set; } = new ConfigColor(0xF4, 0xE2, 0xB6, 0xFF);
 
         [DisplayName("Camp: Waves Commu B Color")]
         [Category("UI Colors")]
         [Display(Order = 367)]
-        public ConfigColor NamiCommuBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiCommuBColor { get; set; } = new ConfigColor(0xFD, 0xB3, 0x9D, 0xFF);
 
         [DisplayName("Camp: Waves Calendar A Color")]
         [Category("UI Colors")]
         [Display(Order = 368)]
-        public ConfigColor NamiCalendarAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiCalendarAColor { get; set; } = new ConfigColor(0xF4, 0xE2, 0xB6, 0xFF);
 
         [DisplayName("Camp: Waves Calendar B Color")]
         [Category("UI Colors")]
         [Display(Order = 369)]
-        public ConfigColor NamiCalendarBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiCalendarBColor { get; set; } = new ConfigColor(0xFD, 0xB3, 0x9D, 0xFF);
 
         [DisplayName("Camp: Waves System A Color")]
         [Category("UI Colors")]
         [Display(Order = 370)]
-        public ConfigColor NamiSystemAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiSystemAColor { get; set; } = new ConfigColor(0xFF, 0xE5, 0xA9, 0xFF);
 
         [DisplayName("Camp: Waves System B Color")]
         [Category("UI Colors")]
         [Display(Order = 371)]
-        public ConfigColor NamiSystemBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiSystemBColor { get; set; } = new ConfigColor(0xFF, 0xE5, 0xA9, 0xFF);
 
         [DisplayName("Camp: Waves Tutorial A Color")]
         [Category("UI Colors")]
         [Display(Order = 372)]
-        public ConfigColor NamiTutorialAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiTutorialAColor { get; set; } = new ConfigColor(0xF4, 0xE2, 0xB6, 0xFF);
 
         [DisplayName("Camp: Waves Tutorial B Color")]
         [Category("UI Colors")]
         [Display(Order = 373)]
-        public ConfigColor NamiTutorialBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiTutorialBColor { get; set; } = new ConfigColor(0xFF, 0xB7, 0x97, 0xFF);
 
         [DisplayName("Camp: Waves Config A Color")]
         [Category("UI Colors")]
         [Display(Order = 374)]
-        public ConfigColor NamiConfigAColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiConfigAColor { get; set; } = new ConfigColor(0xF4, 0xE2, 0xB6, 0xFF);
 
         [DisplayName("Camp: Waves Config B Color")]
         [Category("UI Colors")]
         [Display(Order = 375)]
-        public ConfigColor NamiConfigBColor { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor NamiConfigBColor { get; set; } = new ConfigColor(0xFF, 0xD3, 0xB5, 0xFF);
 
         // silly edits end
 
         [DisplayName("Camp: GradAUpColorHigh")]
         [Category("UI Colors")]
         [Display(Order = 376)]
-        public ConfigColor GradAUpColorHigh { get; set; } = ConfigColor.White;
+        public ConfigColor GradAUpColorHigh { get; set; } = new ConfigColor(0xFF, 0xFF, 0xFF, 0xFF);
 
         [DisplayName("Camp: GradBUpColorHigh")]
         [Category("UI Colors")]
         [Display(Order = 377)]
-        public ConfigColor GradBUpColorHigh { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor GradBUpColorHigh { get; set; } = new ConfigColor(0x64, 0xFF, 0x3B, 0xFF);
 
         [DisplayName("Camp: GradBDownColorHigh")]
         [Category("UI Colors")]
         [Display(Order = 378)]
-        public ConfigColor GradBDownColorHigh { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor GradBDownColorHigh { get; set; } = new ConfigColor(0xFF, 0xCE, 0xAA, 0xFF);
 
         [DisplayName("Camp: GradAUpColorMid")]
         [Category("UI Colors")]
         [Display(Order = 379)]
-        public ConfigColor GradAUpColorMid { get; set; } = ConfigColor.White;
+        public ConfigColor GradAUpColorMid { get; set; } = new ConfigColor(0xFF, 0xFF, 0xFF, 0xFF);
 
         [DisplayName("Camp: GradBUpColorMid")]
         [Category("UI Colors")]
         [Display(Order = 380)]
-        public ConfigColor GradBUpColorMid { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor GradBUpColorMid { get; set; } = new ConfigColor(0xFF, 0xEA, 0x00, 0xFF);
 
         [DisplayName("Camp: GradBDownColorMid")]
         [Category("UI Colors")]
         [Display(Order = 381)]
-        public ConfigColor GradBDownColorMid { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor GradBDownColorMid { get; set; } = new ConfigColor(0xFF, 0xD1, 0x00, 0xFF);
 
         [DisplayName("Camp: GradAUpColorLow")]
         [Category("UI Colors")]
         [Display(Order = 382)]
-        public ConfigColor GradAUpColorLow { get; set; } = ConfigColor.White;
+        public ConfigColor GradAUpColorLow { get; set; } = new ConfigColor(0xFF, 0xFF, 0xFF, 0xFF);
 
         [DisplayName("Camp: GradBUpColorLow")]
         [Category("UI Colors")]
         [Display(Order = 383)]
-        public ConfigColor GradBUpColorLow { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor GradBUpColorLow { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);
 
         [DisplayName("Camp: GradBDownColorLow")]
         [Category("UI Colors")]
         [Display(Order = 384)]
-        public ConfigColor GradBDownColorLow { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor GradBDownColorLow { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);
 
         [DisplayName("Camp: HeroCaptureBgColor")]
         [Category("UI Colors")]
         [Display(Order = 385)]
-        public ConfigColor HeroCaptureBgColor { get; set; } = ConfigColor.CampBgColor;
+        public ConfigColor HeroCaptureBgColor { get; set; } = new ConfigColor(0xE8, 0x64, 0xBC, 0xFF);
 
         // sillies
 
         [DisplayName("Missing Person: Shadows Femc and Chairs in Detail Color")]
-        public ConfigColor MissingDetailFemcChairsShadow { get; set; } = new ConfigColor(0x36, 0x0c, 0x18, 0xFF);
+        public ConfigColor MissingDetailFemcChairsShadow { get; set; } = new ConfigColor(0x36, 0x0C, 0x18, 0xFF);
 
         [DisplayName("Request: Back Card Color")]
-        public ConfigColor RequestBackCard { get; set; } = new ConfigColor(0x60, 0x00, 0x21, 0xFF);
+        public ConfigColor RequestBackCard { get; set; } = new ConfigColor(0x60, 0x00, 0x2A, 0xFF);
 
         [DisplayName("Request: Back Squares Color")]
-        public ConfigColor RequestBackSquares { get; set; } = new ConfigColor(0x38, 0x00, 0x10, 0xFF);
+        public ConfigColor RequestBackSquares { get; set; } = new ConfigColor(0x38, 0x00, 0x19, 0xFF);
 
         [DisplayName("Request: Back Card Detail Color")]
-        public ConfigColor RequestBackCardDetail { get; set; } = new ConfigColor(0x2e, 0x09, 0x17, 0xFF);
+        public ConfigColor RequestBackCardDetail { get; set; } = new ConfigColor(0x2E, 0x09, 0x19, 0xFF);
 
         [DisplayName("Request: Back Card Detail Right Down Solid Color")]
-        public ConfigColor RequestBackCardRightDownDetail { get; set; } = new ConfigColor(0x5d, 0x00, 0x20, 0xFF);
+        public ConfigColor RequestBackCardRightDownDetail { get; set; } = new ConfigColor(0x5D, 0x00, 0x2C, 0xFF);
 
-        [DisplayName("Camp: Quest shadows Femc and Chairs in Detail Color")] 
+        [DisplayName("Camp: Quest shadows Femc and Chairs in Detail Color")]
         public ConfigColor RequestDetailFemcChairsShadow { get; set; } = new ConfigColor(0x48, 0x11, 0x23, 0xFF);
 
         [DisplayName("Request: 'Task' Font Color")]
-        public ConfigColor RequestTaskFont { get; set; } = new ConfigColor(0xFF, 0x91, 0xb0, 0xFF);
+        public ConfigColor RequestTaskFont { get; set; } = new ConfigColor(0xFF, 0xC8, 0x91, 0xFF);
 
         [DisplayName("Request: Detail 'Request Details' Font Color")]
-        public ConfigColor RequestDetailsFont { get; set; } = new ConfigColor(0xFD, 0x9B, 0xb7, 0xFF);
+        public ConfigColor RequestDetailsFont { get; set; } = new ConfigColor(0xFF, 0xE7, 0xAD, 0xFF);
 
         [DisplayName("Request: Detail 'Complete' Tag Color")]
-        public ConfigColor RequestDetailCompleted { get; set; } = new ConfigColor(0x43, 0x0d, 0x1b, 0xFF);
+        public ConfigColor RequestDetailCompleted { get; set; } = new ConfigColor(0x43, 0x0D, 0x1B, 0xFF);
 
         [DisplayName("Request: Detail Background 'Complete' Tag Color")]
-        public ConfigColor RequestDetailBackgroundCompleted { get; set; } = new ConfigColor(0x8c, 0x09, 0x30, 0xFF);
+        public ConfigColor RequestDetailBackgroundCompleted { get; set; } = new ConfigColor(0x8C, 0x09, 0x3D, 0xFF);
 
         [DisplayName("Request: Detail 'Earned' Tag Color")]
-        public ConfigColor RequestDetailEarned { get; set; } = new ConfigColor(0xFF, 0x91, 0xb0, 0xFF);
+        public ConfigColor RequestDetailEarned { get; set; } = new ConfigColor(0xFF, 0xD3, 0x91, 0xFF);
 
         [DisplayName("Request: Detail Difficulty Rank Upper Part Color")]
-        public ConfigColor RequestDifficultyRankUp { get; set; } = new ConfigColor(0x17, 0x03, 0x0c, 0xFF);
+        public ConfigColor RequestDifficultyRankUp { get; set; } = new ConfigColor(0x17, 0x03, 0x0C, 0xFF);
 
         [DisplayName("Request: Detail Difficulty Rank Lower Part Color")]
-        public ConfigColor RequestDifficultyRankDown { get; set; } = new ConfigColor(0x41, 0x03, 0x20, 0xFF);
+        public ConfigColor RequestDifficultyRankDown { get; set; } = new ConfigColor(0x41, 0x03, 0x22, 0xFF);
 
         [DisplayName("Request: Detail Difficulty Butterfly Indicator Color")]
-        public ConfigColor RequestDifficultyIndicator { get; set; } = new ConfigColor(0x73, 0x0e, 0x38, 0xFF);
+        public ConfigColor RequestDifficultyIndicator { get; set; } = new ConfigColor(0x71, 0x0D, 0x3E, 0xFF);
 
         [DisplayName("Request: Detail Difficulty Font Color")]
-        public ConfigColor RequestDifficultyFont { get; set; } = new ConfigColor(0x71, 0x0d, 0x2b, 0xFF);
+        public ConfigColor RequestDifficultyFont { get; set; } = new ConfigColor(0x7D, 0x25, 0x36, 0xFF);
 
         [DisplayName("Request: Status Light Font, Tag Background and ! color in report quest icon")]
-        public ConfigColor RequestStatusFontTagBack { get; set; } = new ConfigColor(0xfc, 0x9a, 0xb6, 0xFF);
+        public ConfigColor RequestStatusFontTagBack { get; set; } = new ConfigColor(0xFF, 0xE7, 0xAD, 0xFF);
 
         [DisplayName("Request: Status Tag Font Color")]
-        public ConfigColor RequestStatusTagFont { get; set; } = new ConfigColor(0x68, 0x01, 0x08, 0xFF);
+        public ConfigColor RequestStatusTagFont { get; set; } = new ConfigColor(0x68, 0x01, 0x30, 0xFF);
 
         [DisplayName("Request: Status Tag Underlay Color")]
-        public ConfigColor RequestStatusTagUnderlay { get; set; } = new ConfigColor(0x6a, 0x00, 0x19, 0xFF);
+        public ConfigColor RequestStatusTagUnderlay { get; set; } = new ConfigColor(0x6A, 0x00, 0x34, 0xFF);
 
         [DisplayName("Social Stats: Musical Notes Color")]
         public ConfigColor MusicNotesColor { get; set; } = new ConfigColor(0xFF, 0x8F, 0xEC, 0xFF);
@@ -1906,10 +1906,10 @@ namespace p3rpc.femc.Configuration
         public ConfigColor PartyPanelMissingHealthSp { get; set; } = new ConfigColor(0x68, 0x01, 0x08, 0xFF);
 
         [DisplayName("Camp: Transition between menus color")]
-        public ConfigColor CampColorTransition { get; set; } = ConfigColor.MellodiColorLight3;
+        public ConfigColor CampColorTransition { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
 
         [DisplayName("Camp: Skill Card Sub Menu Background Color")]
-        public ConfigColor CampSkillCardBackground { get; set; } = new ConfigColor(0x78, 0x68, 0x6f, 0xFF);
+        public ConfigColor CampSkillCardBackground { get; set; } = new ConfigColor(0x78, 0x68, 0x6F, 0xFF);
 
         [DisplayName("Camp: Skill Card Sub Menu Frame Color")]
         public ConfigColor CampSkillCardFrame { get; set; } = new ConfigColor(0x65, 0x35, 0x48, 0xFF);
@@ -1918,34 +1918,34 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CampSkillCardFemc { get; set; } = new ConfigColor(0x21, 0x08, 0x12, 0xFF);
 
         [DisplayName("Camp: Femc Shadow Color")]
-        public ConfigColor CampFemcShadow { get; set; } = UICommon.FemcShadowColor;
+        public ConfigColor CampFemcShadow { get; set; } = new ConfigColor(0xB7, 0x9A, 0xA0, 0xFF);
 
         [DisplayName("Camp: Highlighted selection color high")]
-        public ConfigColor CampHighlightedColor { get; set; } = ConfigColor.Blue;
+        public ConfigColor CampHighlightedColor { get; set; } = new ConfigColor(0x32, 0xBE, 0xFF, 0xFF);
 
         [DisplayName("Camp: Highlighted selection color lower high")]
-        public ConfigColor CampHighlightedLowerColor { get; set; } = new ConfigColor(0x00, 0x00, 0xEE, 0xFF);
+        public ConfigColor CampHighlightedLowerColor { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0xFF);
 
         [DisplayName("Camp: Highlighted selection color middle (involves highlighted party member with lower high)")]
-        public ConfigColor CampHighlightedMidColor { get; set; } = new ConfigColor(0x00, 0x00, 0x6A, 0xFF);
+        public ConfigColor CampHighlightedMidColor { get; set; } = new ConfigColor(0x00, 0x00, 0x00, 0xFF);
 
         [DisplayName("Camp: Social Link Arcana selection color")]
-        public ConfigColor CampSocialLinkArcanaHighlightedColor { get; set; } = new ConfigColor(0x6d, 0x03, 0x0d, 0x7F);
+        public ConfigColor CampSocialLinkArcanaHighlightedColor { get; set; } = new ConfigColor(0x6D, 0x03, 0x0D, 0x7F);
 
         [DisplayName("Camp: System falling words starting color")]
-        public ConfigColor CampSystemStartFallingWordsColor { get; set; } = new ConfigColor(0x2B, 0x00, 0x00, 0xFF);
+        public ConfigColor CampSystemStartFallingWordsColor { get; set; } = new ConfigColor(0x86, 0x02, 0x4B, 0xFF);
 
         [DisplayName("Camp: System falling words end color")]
-        public ConfigColor CampSystemEndFallingWordsColor { get; set; } = new ConfigColor(0xA3, 0x20, 0x26, 0xFF);
+        public ConfigColor CampSystemEndFallingWordsColor { get; set; } = new ConfigColor(0xA6, 0x09, 0x6F, 0xFF);
 
         [DisplayName("Camp Equip: Square Background")]
-        public ConfigColor EquipSquareBack { get; set; } = ConfigColor.MellodiColorDark2;
+        public ConfigColor EquipSquareBack { get; set; } = new ConfigColor(0x49, 0x04, 0x2E, 0xFF);
 
         [DisplayName("Camp Equip: Menu title inside square color")]
-        public ConfigColor EquipTitleBackground { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor EquipTitleBackground { get; set; } = new ConfigColor(0x3B, 0x02, 0x25, 0xFF);
 
         [DisplayName("Camp Equip: 'Effect' font color in equipment description")]
-        public ConfigColor EquipEffectColor { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor EquipEffectColor { get; set; } = new ConfigColor(0x55, 0x1F, 0x3B, 0xFF);
 
         [DisplayName("Camp: In-game screenshot color filter curve keyframe 1")]
         public ConfigColor CampScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0x0C, 0x01, 0x05, 0xFF);
@@ -1981,19 +1981,19 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CampShardsKeyframe7 { get; set; } = new ConfigColor(0xED, 0x5F, 0x9D, 0xA9);
 
         [DisplayName("Camp: Quest shadows Femc and Chairs Color")]
-        public ConfigColor QuestFemcChairsShadow { get; set; } = new ConfigColor(0x58, 0x0F, 0x21, 0xFF);
+        public ConfigColor QuestFemcChairsShadow { get; set; } = new ConfigColor(0x58, 0x0F, 0x36, 0xFF);
 
         [DisplayName("Camp: Main Toggler Background Color")]
-        public ConfigColor MainToggler { get; set; } = new ConfigColor(0x2e, 0x09, 0x17, 0xFF);
+        public ConfigColor MainToggler { get; set; } = new ConfigColor(0x2E, 0x09, 0x17, 0xFF);
 
         [DisplayName("Camp: Secondary Toggler Background Color")]
-        public ConfigColor SecondaryToggler { get; set; } = new ConfigColor(0x2f, 0x12, 0x1E, 0xFF);
+        public ConfigColor SecondaryToggler { get; set; } = new ConfigColor(0x2F, 0x12, 0x1E, 0xFF);
 
         [DisplayName("Persona Status: Highlighted selection color")]
-        public ConfigColor PersonaStatusHighlightedColor { get; set; } = new ConfigColor(0x29, 0x00, 0xEA, 0x99);
+        public ConfigColor PersonaStatusHighlightedColor { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0x99);
 
         [DisplayName("Persona Status: Skill Card Skill Background color")]
-        public ConfigColor SkillCardSkillBg { get; set; } = new ConfigColor(0x66, 0x2b, 0x47, 0xFF);
+        public ConfigColor SkillCardSkillBg { get; set; } = new ConfigColor(0x66, 0x2B, 0x47, 0xFF);
 
         [DisplayName("Persona Status: Skill Card Selected Skill animation color")]
         public ConfigColor SkillCardSelectedSkillAnimation { get; set; } = new ConfigColor(0xD1, 0x62, 0x87, 0xFF);
@@ -2008,7 +2008,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor NoneSkillColor { get; set; } = new ConfigColor(0x9F, 0x83, 0x8C, 0xFF);
 
         [DisplayName("Persona Status: Selected skill font color")]
-        public ConfigColor SelectedSkillFontColor { get; set; } = ConfigColor.PersonaStatusSkillListBg;
+        public ConfigColor SelectedSkillFontColor { get; set; } = new ConfigColor(0x2A, 0x00, 0x12, 0xFF);
 
         [DisplayName("Persona Status: Skill swap selected skill shadow font color")]
         public ConfigColor SwapSkillShadowSelectedFontColor { get; set; } = new ConfigColor(0xFE, 0x9B, 0xB8, 0xFF);
@@ -2047,10 +2047,10 @@ namespace p3rpc.femc.Configuration
         public ConfigColor PersonaLvlUpSkillListNextSkillColor { get; set; } = new ConfigColor(0xFF, 0x7D, 0xA9, 0xFF);
 
         [DisplayName("Persona Status: Fusion top left corner numbers/result color")]
-        public ConfigColor FusionTopRightIndicatorColors { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor FusionTopRightIndicatorColors { get; set; } = new ConfigColor(0xFF, 0xBD, 0xCE, 0xFF);
 
         [DisplayName("Battle: Squares colors from battle result animation")]
-        public ConfigColor BtlResultSquaresColor { get; set; } = new ConfigColor(0xD1, 0x00, 0x3F, 0xFF);
+        public ConfigColor BtlResultSquaresColor { get; set; } = new ConfigColor(0xD1, 0x00, 0x5A, 0xFF);
 
         [DisplayName("Party Panel Femc Background Color")]
         public ConfigColor PartyPanelFemcBgColor { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0xFF);
@@ -2059,7 +2059,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor DataColumnColor { get; set; } = new ConfigColor(0x92, 0x72, 0x7B, 0xFF);
 
         [DisplayName("Request: Selected Sort By Column Title")]
-        public ConfigColor SelectedSortColumnTitle { get; set; } = new ConfigColor(0xFF, 0xD3, 0xFF, 0xFF);
+        public ConfigColor SelectedSortColumnTitle { get; set; } = new ConfigColor(0xFF, 0xF4, 0xE9, 0xFF);
 
         [DisplayName("Simple Shop: Highlighted Selection Color")]
         public ConfigColor SimpleShopHighlightedColor { get; set; } = new ConfigColor(0xED, 0x6D, 0x91, 0xFF);
@@ -2068,7 +2068,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor SimpleShopBlurFilterColor { get; set; } = new ConfigColor(0x68, 0x01, 0x08, 0xFF);
 
         [DisplayName("Simple Shop: Zero font color when selecting amount to buy")]
-        public ConfigColor SimpleShopZeroFontColor { get; set; } = ConfigColor.Red;
+        public ConfigColor SimpleShopZeroFontColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);
 
         [DisplayName("Simple Shop: Shadow color in buy menu")]
         public ConfigColor SimpleShopBuyShadowColor { get; set; } = new ConfigColor(0xEB, 0x44, 0x7D, 0xFF);
@@ -2108,19 +2108,19 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Town Map: Mini Location Centered Circle when changing selection")]
         public ConfigColor MiniLocationCircleColor { get; set; } = new ConfigColor(0xEB, 0x44, 0x7D, 0xFF);
-        
+
         [DisplayName("SaveLoad: In-game screenshot color filter curve keyframe 1")]
-        public ConfigColor SaveLoadScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0x99, 0x25, 0x6B, 0xFF);
+        public ConfigColor SaveLoadScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0x99, 0x25, 0x60, 0xFF);
 
         [DisplayName("SaveLoad: In-game screenshot color filter curve keyframe 2")]
-        public ConfigColor SaveLoadScreenshotFilterKeyframe2 { get; set; } = new ConfigColor(0xCC, 0x19, 0x8D, 0xFF);
+        public ConfigColor SaveLoadScreenshotFilterKeyframe2 { get; set; } = new ConfigColor(0xCC, 0x19, 0x6B, 0xFF);
 
         [DisplayName("SaveLoad: In-game screenshot color filter curve keyframe 3")]
-        public ConfigColor SaveLoadScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0xF2, 0x26, 0xA7, 0xFF);
+        public ConfigColor SaveLoadScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0xF2, 0x26, 0x86, 0xFF);
 
         [DisplayName("Mail: Open animation color")]
         public ConfigColor MailStartAnimationColor { get; set; } = new ConfigColor(0xC2, 0x00, 0x44, 0xFF);
-
+        /*
         [DisplayName("Battle Result: Left square color")]
         public ConfigColor BattleResultLeftSquare { get; set; } = new ConfigColor(0x6E, 0x03, 0x0E, 0xFF);
 
@@ -2129,75 +2129,75 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Battle Result: Font color in item count")]
         public ConfigColor BattleResultFontColor { get; set; } = new ConfigColor(0xFD, 0x9B, 0xB7, 0xFF);
-
+        */
         [DisplayName("Camp Configuration: Light reflective material 1")]
         public ConfigColor CampConfigurationLightReflectiveColor1 { get; set; } = new ConfigColor(0xFF, 0x2E, 0x70, 0xFF);
 
         [DisplayName("Camp Configuration: Light reflective material 2")]
         public ConfigColor CampConfigurationLightReflectiveColor2 { get; set; } = new ConfigColor(0xFF, 0x60, 0x92, 0xFF);
-        
+
         [DisplayName("SaveLoad: Gradient bottom top color")]
-        public ConfigColor SaveLoadGradientBottomTopColor { get; set; } = new ConfigColor(0xB2, 0x22, 0x50, 0x00);
+        public ConfigColor SaveLoadGradientBottomTopColor { get; set; } = new ConfigColor(0xB2, 0x22, 0x62, 0xFF);
 
         [DisplayName("SaveLoad: Gradient bottom color")]
-        public ConfigColor SaveLoadGradientBottomColor { get; set; } = new ConfigColor(0xB2, 0x22, 0x50, 0x28);
+        public ConfigColor SaveLoadGradientBottomColor { get; set; } = new ConfigColor(0xB2, 0x22, 0x62, 0xFF);
 
         [DisplayName("SaveLoad: Gradient top color")]
-        public ConfigColor SaveLoadGradientTopColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x62, 0x32);
+        public ConfigColor SaveLoadGradientTopColor { get; set; } = new ConfigColor(0xFF, 0xDE, 0x99, 0xFF);
 
         [DisplayName("SaveLoad: Gradient top bottom color")]
-        public ConfigColor SaveLoadGradientTopBottomColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x6A, 0x00);
-        
+        public ConfigColor SaveLoadGradientTopBottomColor { get; set; } = new ConfigColor(0xFF, 0x8C, 0xA8, 0xFF);
+
         [DisplayName("Persona Status: Velvet Room in-game screenshot deep color filter")]
-        public ConfigColor PersonaStatusDeepColorFilter { get; set; } = new ConfigColor(0x88, 0x00, 0x17, 0xA9);
+        public ConfigColor PersonaStatusDeepColorFilter { get; set; } = new ConfigColor(0xFF, 0x00, 0x58, 0xA9);
 
         [DisplayName("Persona Status: Velvet Room in-game screenshot medium strong color filter")]
-        public ConfigColor PersonaStatusMediumStrongColorFilter { get; set; } = new ConfigColor(0xDE, 0x00, 0x46, 0x00);
+        public ConfigColor PersonaStatusMediumStrongColorFilter { get; set; } = new ConfigColor(0x77, 0x00, 0x2F, 0xFF);
 
         [DisplayName("Persona Status: Velvet Room in-game screenshot soft strong color filter")]
-        public ConfigColor PersonaStatusSoftColorFilter { get; set; } = new ConfigColor(0x8B, 0x01, 0x51, 0x00);
+        public ConfigColor PersonaStatusSoftColorFilter { get; set; } = new ConfigColor(0x8B, 0x01, 0x2E, 0xFF);
 
         [DisplayName("Persona Status: Inheritance skill selection square color")]
-        public ConfigColor PersonaStatusInheritanceSquareColor { get; set; } = new ConfigColor(0x6E, 0x03, 0x0A, 0x00);
+        public ConfigColor PersonaStatusInheritanceSquareColor { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0x00);
 
         [DisplayName("Persona Status: Strip main color")]
-        public ConfigColor PersonaStatusStripColor { get; set; } = new ConfigColor(0xCC, 0x00, 0x4E, 0xFF);
+        public ConfigColor PersonaStatusStripColor { get; set; } = new ConfigColor(0xF4, 0x5A, 0x85, 0xFF);
 
         [DisplayName("Persona Status: Waves over the strip")]
-        public ConfigColor PersonaStatusWavesStripColor { get; set; } = new ConfigColor(0xE9, 0x00, 0x59, 0xFF);
+        public ConfigColor PersonaStatusWavesStripColor { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0xFF);
 
         [DisplayName("Persona Status: Master Material unknown color 1")]
-        public ConfigColor PersonaStatusMMUnk1 { get; set; } = new ConfigColor(0xAD, 0x00, 0x4F, 0xB2);
+        public ConfigColor PersonaStatusMMUnk1 { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0xB2);
 
         [DisplayName("Persona Status: Master Material unknown color 2")]
-        public ConfigColor PersonaStatusMMUnk2 { get; set; } = new ConfigColor(0xFD, 0x00, 0xA6, 0x00);
+        public ConfigColor PersonaStatusMMUnk2 { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0x00);
 
         [DisplayName("Persona Status: Master Material unknown color 3")]
-        public ConfigColor PersonaStatusMMUnk3 { get; set; } = new ConfigColor(0xAC, 0x00, 0x51, 0xFF);
+        public ConfigColor PersonaStatusMMUnk3 { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0xFF);
 
         [DisplayName("Persona Status: Master Material unknown color 4")]
-        public ConfigColor PersonaStatusMMUnk4 { get; set; } = new ConfigColor(0xFF, 0x00, 0x55, 0xFF);
+        public ConfigColor PersonaStatusMMUnk4 { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0xFF);
 
         [DisplayName("Quest: Elizabeth Quest Menu top gradient")]
-        public ConfigColor QuestElizabethTopGradient1 { get; set; } = new ConfigColor(0xAD, 0x00, 0x5B, 0xCC);
+        public ConfigColor QuestElizabethTopGradient1 { get; set; } = new ConfigColor(0xAD, 0x00, 0x2B, 0xCC);
 
         [DisplayName("Quest: Elizabeth Quest Menu bottom gradient")]
-        public ConfigColor QuestElizabethBottomGradient { get; set; } = new ConfigColor(0xAD, 0x00, 0x5E, 0x00);
+        public ConfigColor QuestElizabethBottomGradient { get; set; } = new ConfigColor(0xAD, 0x00, 0x37, 0x00);
 
         [DisplayName("Quest: Elizabeth Quest Menu additional top gradient")]
         public ConfigColor QuestElizabethTopGradient2 { get; set; } = new ConfigColor(0xC3, 0x04, 0x5D, 0x00);
 
         [DisplayName("Persona Status: In-game screenshot color filter curve keyframe 1")]
-        public ConfigColor PersonaStatusScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0xB3, 0x00, 0x4B, 0xFF);
+        public ConfigColor PersonaStatusScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0xB3, 0x00, 0x46, 0xFF);
 
         [DisplayName("Persona Status: In-game screenshot color filter curve keyframe 2")]
-        public ConfigColor PersonaStatusScreenshotFilterKeyframe2 { get; set; } = new ConfigColor(0xCC, 0x19, 0x73, 0xFF);
+        public ConfigColor PersonaStatusScreenshotFilterKeyframe2 { get; set; } = new ConfigColor(0xCC, 0x19, 0x43, 0xFF);
 
         [DisplayName("Persona Status: In-game screenshot color filter curve keyframe 3")]
-        public ConfigColor PersonaStatusScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0xD9, 0x99, 0xB0, 0xFF);
+        public ConfigColor PersonaStatusScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0xD9, 0x99, 0xA4, 0xFF);
 
         [DisplayName("Persona Status: In-game screenshot color filter curve keyframe 4")]
-        public ConfigColor PersonaStatusScreenshotFilterKeyframe4 { get; set; } = new ConfigColor(0xE5, 0xCC, 0xD6, 0xFF);
+        public ConfigColor PersonaStatusScreenshotFilterKeyframe4 { get; set; } = new ConfigColor(0xE5, 0xCC, 0xD2, 0xFF);
 
         [DisplayName("Camp: Dormitory Calendar in-game screenshot color filter curve keyframe 1")]
         public ConfigColor CampCalendarScreenshotFilterKeyframe1 { get; set; } = new ConfigColor(0xCC, 0x40, 0x6A, 0xFF);
@@ -2221,7 +2221,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CampMainMenuConfigScreenshotFilterKeyframe3 { get; set; } = new ConfigColor(0x99, 0x00, 0x47, 0xFF);
 
         [DisplayName("Camp: Configuration main menu in-game screenshot color filter curve keyframe 4")]
-        public ConfigColor CampMainMenuConfigScreenshotFilterKeyframe4 { get; set; } = new ConfigColor(0xCA, 0x73, 0xA0, 0xFF);
+        public ConfigColor CampMainMenuConfigScreenshotFilterKeyframe4 { get; set; } = new ConfigColor(0xCA, 0x73, 0x8F, 0xFF);
 
         [DisplayName("Battle: Party members silhouette rounded selection color")]
         public ConfigColor PartyMemberSilhouetteSelectionColor { get; set; } = new ConfigColor(0xFE, 0x9B, 0xB8, 0xFF);
@@ -2254,40 +2254,40 @@ namespace p3rpc.femc.Configuration
         public ConfigColor HighlightedSelectionColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x62, 0xFF);
 
         [DisplayName("Mail: Mail detail highlighted title color")]
-        public ConfigColor MailDetailTitleHighlightedColor { get; set; } = new ConfigColor(0xD4, 0x15, 0x5B, 0xFF);
+        public ConfigColor MailDetailTitleHighlightedColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x6A, 0xFF);
 
         [DisplayName("Mail: Mail detail highlighted title color when message prompt shows up")]
         public ConfigColor MailDetailDarkTitleHighlightedColor { get; set; } = new ConfigColor(0x80, 0x08, 0x2E, 0xFF);
 
         [DisplayName("Battle: Water caustic colors in skill/item list/guard menus")]
-        public ConfigColor BtlWaterCausticColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x62, 0xFF);
+        public ConfigColor BtlWaterCausticColor { get; set; } = new ConfigColor(0xFF, 0x00, 0x6A, 0xFF);
 
         [DisplayName("Battle: Highlighted selection color high")]
-        public ConfigColor BtlHighlightedColor { get; set; } = ConfigColor.Blue;
+        public ConfigColor BtlHighlightedColor { get; set; } = new ConfigColor(0x00, 0xF0, 0xFF, 0xFF);
 
         [DisplayName("Battle: Result level up left square color when leveling up")]
         public ConfigColor BtlResultLvlUpLeftSquareColor { get; set; } = new ConfigColor(0x3B, 0x02, 0x07, 0xFF);
 
         [DisplayName("Battle: Result level up large strip color")]
-        public ConfigColor BtlResultLvlUpLargeStripColor { get; set; } = new ConfigColor(0xFF, 0x10, 0x58, 0xFF);
+        public ConfigColor BtlResultLvlUpLargeStripColor { get; set; } = new ConfigColor(0xFF, 0x73, 0x98, 0xFF);
 
         [DisplayName("Battle: Result level up large strip shadow color")]
-        public ConfigColor BtlResultLvlUpLargeStripShadowColor { get; set; } = new ConfigColor(0x3E, 0x05, 0x05, 0xFF);
+        public ConfigColor BtlResultLvlUpLargeStripShadowColor { get; set; } = new ConfigColor(0x3E, 0x05, 0x0B, 0xFF);
 
         [DisplayName("Battle: Result level up large strip color")]
-        public ConfigColor BtlResultLvlUpShortStripColor { get; set; } = new ConfigColor(0x54, 0x03, 0x0B, 0xFF);
+        public ConfigColor BtlResultLvlUpShortStripColor { get; set; } = new ConfigColor(0x54, 0x03, 0x1D, 0xFF);
 
         [DisplayName("Battle: Result level up item number font color")]
-        public ConfigColor BtlResultLvlUpItemFontColor { get; set; } = new ConfigColor(0xA6, 0x24, 0x4D, 0xFF);
+        public ConfigColor BtlResultLvlUpItemFontColor { get; set; } = new ConfigColor(0xFF, 0xA2, 0x85, 0xFF);
 
         [DisplayName("Battle: Result level up item number 0 font color")]
-        public ConfigColor BtlResultLvlUpItemZeroFontColor { get; set; } = new ConfigColor(0xA1, 0x14, 0x3E, 0xFF);
+        public ConfigColor BtlResultLvlUpItemZeroFontColor { get; set; } = new ConfigColor(0xF7, 0x5D, 0x72, 0xFF);
 
         [DisplayName("Battle: Result femc level up persona arcana/lvl font color")]
-        public ConfigColor BtlResultFemcLvlUpPersonaSilhouetteColor { get; set; } = new ConfigColor(0x5F, 0x00, 0x00, 0xFF);
+        public ConfigColor BtlResultFemcLvlUpPersonaSilhouetteColor { get; set; } = new ConfigColor(0x5F, 0x00, 0x1C, 0xFF);
 
         [DisplayName("Battle: Result femc level up persona silhouette color")]
-        public ConfigColor BtlResultFemcLvlUpPersonaInfoFont { get; set; } = new ConfigColor(0xE3, 0x14, 0x51, 0xFF);
+        public ConfigColor BtlResultFemcLvlUpPersonaInfoFont { get; set; } = new ConfigColor(0xE3, 0x14, 0x65, 0xFF);
 
         [DisplayName("Social Link: Rank up background 3 middle/down color")]
         public ConfigColor CmmuRankUpBG3MiddownColor { get; set; } = new ConfigColor(0x21, 0x12, 0x2B, 0xFF);
@@ -2335,19 +2335,19 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CmmuRankUpMaxColor { get; set; } = new ConfigColor(0xB3, 0x52, 0x6D, 0xFF);
 
         [DisplayName("Persona Status Highlighted Line Color")]
-        public ConfigColor PersonaStatusHighlightedLine { get; set; } = new ConfigColor(0x2C, 0x00, 0xE9, 0xFF);
+        public ConfigColor PersonaStatusHighlightedLine { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0xFF);
 
         [DisplayName("Battle: Shuffle time card type font inside rectangle color")]
-        public ConfigColor ShuffleCardTypeFontColor { get; set; } = new ConfigColor(0x69, 0x00, 0x11, 0xFF);
+        public ConfigColor ShuffleCardTypeFontColor { get; set; } = new ConfigColor(0x69, 0x00, 0x39, 0xFF);
 
         [DisplayName("Battle: Shuffle time card type rectangle and owned rhomb color")]
-        public ConfigColor ShuffleCardTypeAndRhomb { get; set; } = new ConfigColor(0xFE, 0x9A, 0xB7, 0xFF);
+        public ConfigColor ShuffleCardTypeAndRhomb { get; set; } = new ConfigColor(0xFE, 0x9A, 0xB2, 0xFF);
 
         [DisplayName("Battle: Shuffle time owned font color")]
         public ConfigColor ShuffleOwnedFontColor { get; set; } = new ConfigColor(0x6B, 0x03, 0x13, 0xFF);
 
         [DisplayName("Battle: Shuffle time owned count number font color")]
-        public ConfigColor ShuffleOwnedCountFontColor { get; set; } = new ConfigColor(0x6B, 0x02, 0x13, 0xFF);
+        public ConfigColor ShuffleOwnedCountFontColor { get; set; } = new ConfigColor(0x8A, 0x0C, 0x39, 0xFF);
 
         [DisplayName("Battle: Shuffle time owned count left zero font color")]
         public ConfigColor ShuffleOwnedLeftZeroFontColor { get; set; } = new ConfigColor(0xFF, 0x7C, 0xA7, 0xFF);
@@ -2443,34 +2443,34 @@ namespace p3rpc.femc.Configuration
         public ConfigColor AccessIconColor3 { get; set; } = new ConfigColor(0x66, 0x05, 0x33, 0xFF);
 
         [DisplayName("Camp: Highlighted up/down arrows color")]
-        public ConfigColor HighlightedUpDownArrows { get; set; } = new ConfigColor(0x00, 0x7D, 0xEA, 0xFF);
+        public ConfigColor HighlightedUpDownArrows { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0xFF);
 
         [DisplayName("Camp: Compare menu circle BG")]
         public ConfigColor CampEquipCompareCircle { get; set; } = new ConfigColor(0x5F, 0x00, 0x20, 0xFF);
 
         [DisplayName("Camp: Compare menu femc shadow inside circle")]
-        public ConfigColor CampEquipCompareFemcShadowCircle { get; set; } = new ConfigColor(0x42, 0x07, 0x17, 0xFF);
+        public ConfigColor CampEquipCompareFemcShadowCircle { get; set; } = new ConfigColor(0xB0, 0x9C, 0xA2, 0xFF);
 
         [DisplayName("DayChange: Day change transition background color")]
         public ConfigColor DayChangeBGColor { get; set; } = new ConfigColor(0x27, 0x18, 0x1F, 0xFF);
 
         [DisplayName("Request: Report icon background color")]
-        public ConfigColor RequestReportBG { get; set; } = new ConfigColor(0xa3, 0x20, 0x28, 0xFF);
+        public ConfigColor RequestReportBG { get; set; } = new ConfigColor(0xA3, 0x20, 0x5F, 0xFF);
 
         [DisplayName("Camp: Quest chairs color")]
-        public ConfigColor RequestChairsColor { get; set; } = new ConfigColor(0x76, 0x01, 0x1C, 0xFF);
+        public ConfigColor RequestChairsColor { get; set; } = new ConfigColor(0x76, 0x01, 0x3D, 0xFF);
 
         [DisplayName("Camp: Status shards color")]
-        public ConfigColor StatusShardsColor { get; set; } = new ConfigColor(0xff, 0x1b, 0x6f, 0xFF);
+        public ConfigColor StatusShardsColor { get; set; } = new ConfigColor(0xDD, 0x63, 0x83, 0xFF);
 
         [DisplayName("Camp: Falling nine femc is grabbing in System")]
-        public ConfigColor FallingNineColor { get; set; } = new ConfigColor(0xa3, 0x80, 0x8A, 0xFF);
+        public ConfigColor FallingNineColor { get; set; } = new ConfigColor(0xA3, 0x80, 0x8A, 0xFF);
 
         [DisplayName("Camp: Skill menu gun color")]
-        public ConfigColor SkillGunColor { get; set; } = new ConfigColor(0x91, 0x56, 0x68, 0xFF);
+        public ConfigColor SkillGunColor { get; set; } = new ConfigColor(0xC5, 0x85, 0x85, 0xFF);
 
         [DisplayName("Camp: Stats Gekkoukan logo dark color")]
-        public ConfigColor StatsGekkoukanDark { get; set; } = new ConfigColor(0x9C, 0x6B, 0x84, 0xFF);
+        public ConfigColor StatsGekkoukanDark { get; set; } = new ConfigColor(0x9C, 0x6B, 0x79, 0xFF);
 
         [DisplayName("Camp: Stats title spinning font color")]
         public ConfigColor StatsFontColor { get; set; } = new ConfigColor(0xB5, 0xB4, 0xB4, 0xFF);
@@ -2485,7 +2485,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor StatusDetailMainBackground { get; set; } = new ConfigColor(0x46, 0x3D, 0x40, 0xFF);
 
         [DisplayName("Social Link: Check Social Link status when in field strip color")]
-        public ConfigColor CmmuStatusStrip { get; set; } = new ConfigColor(0x9F, 0x00, 0x3A, 0xFF);
+        public ConfigColor CmmuStatusStrip { get; set; } = new ConfigColor(0x9F, 0x00, 0x4B, 0xFF);
 
         [DisplayName("Camp: Status detail character shard BG shard gradation")]
         public ConfigColor StatusDetailBigShard { get; set; } = new ConfigColor(0x87, 0x6F, 0x7B, 0xFF);
@@ -2512,41 +2512,41 @@ namespace p3rpc.femc.Configuration
         public ConfigColor StatusDetailTransitionBGDark { get; set; } = new ConfigColor(0xC1, 0xB0, 0xB6, 0xFF);
 
         [DisplayName("Camp: Equip selection menu dots separator color")]
-        public ConfigColor EquipDotsColor { get; set; } = new ConfigColor(0x90, 0x36, 0x55, 0xFF);
+        public ConfigColor EquipDotsColor { get; set; } = new ConfigColor(0x90, 0x36, 0x68, 0xFF);
 
         [DisplayName("Camp: Calendar past day color")]
-        public ConfigColor CalendarPastDay { get; set; } = new ConfigColor(0xC8, 0x91, 0xA5, 0xFF);
+        public ConfigColor CalendarPastDay { get; set; } = new ConfigColor(0x90, 0x69, 0x76, 0xFF);
 
         [DisplayName("Camp: Calendar current selected day highlighted color")]
-        public ConfigColor CalendarHighlightedDay { get; set; } = new ConfigColor(0x07, 0x40, 0xFD, 0xFF);
+        public ConfigColor CalendarHighlightedDay { get; set; } = new ConfigColor(0x00, 0x97, 0xAD, 0xFF);
 
         [DisplayName("Camp: Calendar current highlighted job color")]
-        public ConfigColor CalendarHighlightedJob { get; set; } = new ConfigColor(0x00, 0x00, 0xF1, 0xFF);
+        public ConfigColor CalendarHighlightedJob { get; set; } = new ConfigColor(0x00, 0x4E, 0xFF, 0xFF);
 
         [DisplayName("Camp: Calendar job detail font color")]
-        public ConfigColor CalendarJobDetailFont { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor CalendarJobDetailFont { get; set; } = new ConfigColor(0xF7, 0xBD, 0xFF, 0xFF);
 
         [DisplayName("Camp: Item Effect tag background color")]
-        public ConfigColor CampItemEffectBG { get; set; } = ConfigColor.MellodiColorLight1;
+        public ConfigColor CampItemEffectBG { get; set; } = new ConfigColor(0xF7, 0xBD, 0xFF, 0xFF);
 
         [DisplayName("Camp: Item Effect font color")]
-        public ConfigColor CampItemEffectFont { get; set; } = ConfigColor.MellodiColorDark3;
+        public ConfigColor CampItemEffectFont { get; set; } = new ConfigColor(0x49, 0x04, 0x2D, 0xFF);
 
         [DisplayName("Camp: System Menu Item Color 1")]
         [Category("UI Colors")]
-        public ConfigColor CampMenuSystemItemColor1 { get; set; } = ConfigColor.CampMenuItemColor1;
+        public ConfigColor CampMenuSystemItemColor1 { get; set; } = new ConfigColor(0xFD, 0xDF, 0xA1, 0xFF);
 
         [DisplayName("Camp: System Menu Item Color 2")]
         [Category("UI Colors")]
-        public ConfigColor CampMenuSystemItemColor2 { get; set; } = ConfigColor.CampMenuItemColor2;
+        public ConfigColor CampMenuSystemItemColor2 { get; set; } = new ConfigColor(0xFF, 0xD7, 0x9D, 0xFF);
 
         [DisplayName("Camp: System Menu Item Color 3")]
         [Category("UI Colors")]
-        public ConfigColor CampMenuSystemItemColor3 { get; set; } = ConfigColor.CampMenuItemColor3;
+        public ConfigColor CampMenuSystemItemColor3 { get; set; } = new ConfigColor(0xFF, 0xBA, 0x67, 0xFF);
 
         [DisplayName("Camp: System Menu Item Color No Select")]
         [Category("UI Colors")]
-        public ConfigColor CampMenuSystemItemColorNoSel { get; set; } = ConfigColor.CampMenuItemColorNoSel;
+        public ConfigColor CampMenuSystemItemColorNoSel { get; set; } = new ConfigColor(0xFF, 0xB2, 0x9E, 0xFF);
 
         [DisplayName("Battle: Shift from strip color")]
         public ConfigColor ShiftFromColor { get; set; } = new ConfigColor(0xFF, 0x05, 0x13, 0xFF);
@@ -2558,66 +2558,66 @@ namespace p3rpc.femc.Configuration
         public ConfigColor ShiftToUpDownColor { get; set; } = new ConfigColor(0xFF, 0x5C, 0x49, 0xFF);
 
         [DisplayName("Camp Configuration: BGM Selection Text and Icon Color")]
-        public ConfigColor CampConfSelTexColor { get; set; } = ConfigColor.MellodiColorMid2;
-        
+        public ConfigColor CampConfSelTexColor { get; set; } = new ConfigColor(0xFF, 0xFC, 0x9F, 0xFF);
+
         [DisplayName("Camp Configuration: Option Current Setting Background Color")]
-        public ConfigColor CampConfOptFmtBgColor { get; set; } = new ConfigColor(0x1a, 0x0, 0x10, 0xFF);
-        
+        public ConfigColor CampConfOptFmtBgColor { get; set; } = new ConfigColor(0x1A, 0x00, 0x10, 0xFF);
+
         [DisplayName("Camp Configuration: Option Name Text Color")]
-        public ConfigColor CampConfSelNameColor { get; set; } = ConfigColor.MellodiColorMid2;
+        public ConfigColor CampConfSelNameColor { get; set; } = new ConfigColor(0xFF, 0xFC, 0x9F, 0xFF);
 
         [DisplayName("Camp Configuration: Key Configuration Inactive Option")]
-        public ConfigColor CampConfigControlSetInactive { get; set; } = ConfigColor.MellodiColorMid3;
-        
+        public ConfigColor CampConfigControlSetInactive { get; set; } = new ConfigColor(0xE0, 0x8E, 0x85, 0xFF);
+
         [DisplayName("Camp Configuration: Option Unselected Area")]
-        public ConfigColor CampConfigOptionUnselectedArea { get; set; } = new ConfigColor(0x8f, 0x2f, 0x4f, 0xff);
+        public ConfigColor CampConfigOptionUnselectedArea { get; set; } = new ConfigColor(0xE0, 0x8E, 0x85, 0xFF);
 
         [DisplayName("Camp Configuration: Boolean Unselected Area")]
-        public ConfigColor CampConfigBooleanUnselectedArea { get; set; } = ConfigColor.MellodiColorDark1;
-        
+        public ConfigColor CampConfigBooleanUnselectedArea { get; set; } = new ConfigColor(0xE0, 0x8E, 0x85, 0xFF);
+
         [DisplayName("Camp Configuration: Music Player Glow Color")]
-        public ConfigColor CampConfigMusicPlayerGlow { get; set; } = ConfigColor.MellodiColorMid2;
-        
+        public ConfigColor CampConfigMusicPlayerGlow { get; set; } = new ConfigColor(0xFF, 0xFC, 0x9F, 0xFF);
+
         [DisplayName("Camp Configuration: Top Description Text Color")]
-        public ConfigColor CampConfigTopDescColor { get; set; } = ConfigColor.MellodiColorMid2;
-        
+        public ConfigColor CampConfigTopDescColor { get; set; } = new ConfigColor(0xFF, 0xFC, 0x9F, 0xFF);
+
         [DisplayName("Camp Configuration: Background Color")]
-        public ConfigColor CampConfigBgColor { get; set; } = ConfigColor.PersonaStatusSkillListBg;
+        public ConfigColor CampConfigBgColor { get; set; } = new ConfigColor(0x55, 0x1E, 0x3F, 0xFF);
 
         // public ConfigColor CampConfigUnk { get; set; } = new ConfigColor(0x8f, 0x65, 0x73, 0xff);
 
         [DisplayName("Camp Configuration: Playlist Title Color")]
-        public ConfigColor CampConfigPlistHeadColor { get; set; } = new ConfigColor(0x90, 0x46, 0x6c, 0xff);
+        public ConfigColor CampConfigPlistHeadColor { get; set; } = new ConfigColor(0xE2, 0x41, 0x89, 0xFF);
 
         [DisplayName("Camp Equip: Unavailable Party Member Parallelogram")]
-        public ConfigColor EquipPMUnavailableParallelogram { get; set; } = new ConfigColor(0xB6, 0x3F, 0x68, 0xff);
+        public ConfigColor EquipPMUnavailableParallelogram { get; set; } = new ConfigColor(0x63, 0x27, 0x3E, 0xFF);
 
         [DisplayName("Camp Root: Main camp menu highlighted color 1")]
-        public ConfigColor CampRootHighlightedColor1 { get; set; } = ConfigColor.Blue;
+        public ConfigColor CampRootHighlightedColor1 { get; set; } = new ConfigColor(0x00, 0x5E, 0xFF, 0xFF);
 
         [DisplayName("Camp Root: Main camp menu highlighted color 2")]
-        public ConfigColor CampRootHighlightedColor2 { get; set; } = ConfigColor.Blue;
+        public ConfigColor CampRootHighlightedColor2 { get; set; } = new ConfigColor(0x00, 0x5E, 0xFF, 0xFF);
 
         [DisplayName("Persona Status: Equip bonus color")]
-        public ConfigColor PersonaStatusEquipBonusColor { get; set; } = ConfigColor.Green;
+        public ConfigColor PersonaStatusEquipBonusColor { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0xFF);
 
         [DisplayName("Save Load: Highlighted color")]
-        public ConfigColor SaveLoadHighlightedOption { get; set; } = ConfigColor.Green;
+        public ConfigColor SaveLoadHighlightedOption { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0xFF);
 
         [DisplayName("Save Load: Accent Color")]
-        public ConfigColor SaveLoadAccentColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor SaveLoadAccentColor { get; set; } = new ConfigColor(0xF2, 0xC9, 0x95, 0xFF);
 
         [DisplayName("Save Load: Slot box Color")]
-        public ConfigColor SaveLoadSlotBox { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor SaveLoadSlotBox { get; set; } = new ConfigColor(0x48, 0x04, 0x2D, 0xFF);
 
         [DisplayName("Save Load: Corner triangle Color")]
-        public ConfigColor SaveLoadCornerTriangle { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor SaveLoadCornerTriangle { get; set; } = new ConfigColor(0x36, 0x00, 0x21, 0xFF);
 
         [DisplayName("Save Load: Unhighlighted number Color")]
-        public ConfigColor SaveLoadUnhighlightedNumber { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor SaveLoadUnhighlightedNumber { get; set; } = new ConfigColor(0x5D, 0x0B, 0x34, 0xFF);
 
         [DisplayName("Save Load: Selected slot box Color")]
-        public ConfigColor SaveLoadSelectedSlotBox { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor SaveLoadSelectedSlotBox { get; set; } = new ConfigColor(0xF4, 0x3A, 0x75, 0xFF);
 
         [DisplayName("Save Load: Grey Color")]
         public ConfigColor SaveLoadGrey { get; set; } = new ConfigColor(0x3F, 0x39, 0x39, 0xFF);
@@ -2626,26 +2626,164 @@ namespace p3rpc.femc.Configuration
         public ConfigColor SaveLoadScrollBar { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Camp: System Curve Color")]
-        public ConfigColor CampSystemCurveColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor CampSystemCurveColor { get; set; } = new ConfigColor(0xAC, 0x27, 0xBF, 0xFF);
 
         [DisplayName("Message Box Selection Background Fill Color")]
-        public ConfigColor MsgSimpleSelectBgFill { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor MsgSimpleSelectBgFill { get; set; } = new ConfigColor(0xB5, 0x3C, 0x66, 0xFF);
 
         [DisplayName("Message Box Selection Background Main Fill Color")]
-        public ConfigColor MsgSimpleSelectBgMainColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor MsgSimpleSelectBgMainColor { get; set; } = new ConfigColor(0xFF, 0xAF, 0x00, 0xFF);
 
 
         [DisplayName("Camp: Kotone Shadow Color")]
-        public ConfigColor CampKotoneShadowColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor CampKotoneShadowColor { get; set; } = new ConfigColor(0xFF, 0xD4, 0xA0, 0xFF);
 
 
         [DisplayName("Camp: Kotone Shadow Color 2")]
-        public ConfigColor CampKotoneShadowColor2 { get; set; } = new ConfigColor(0xFF, 0x00, 0xFF, 0xFF);
+        public ConfigColor CampKotoneShadowColor2 { get; set; } = new ConfigColor(0xFF, 0xAD, 0x9D, 0xFF);
 
         [DisplayName("Camp: Kotone Inner Shadow Color")]
-        public ConfigColor CampKotoneInnerShadowColor { get; set; } = new ConfigColor(0xFF, 0x00, 0xFF, 0xFF);
+        public ConfigColor CampKotoneInnerShadowColor { get; set; } = new ConfigColor(0xFF, 0xDE, 0x8E, 0xFF);
 
 
+
+
+        [DisplayName("Battle: Fade Manager 1")]
+        public ConfigColor FadeManager1 { get; set; } = new ConfigColor(0xFF, 0x82, 0x91, 0xFF);
+
+        [DisplayName("Battle: Fade Manager 2")]
+        public ConfigColor FadeManager2 { get; set; } = new ConfigColor(0x22, 0xD7, 0xFA, 0xFF);
+
+        [DisplayName("Battle: Fade Manager 3")]
+        public ConfigColor FadeManager3 { get; set; } = new ConfigColor(0xCA, 0x08, 0x5E, 0xFF);
+
+        [DisplayName("Battle: Fade Manager 4")]
+        public ConfigColor FadeManager4 { get; set; } = new ConfigColor(0x02, 0x2E, 0x33, 0xFF);
+
+        [DisplayName("Battle: Fade Manager 5")]
+        public ConfigColor FadeManager5 { get; set; } = new ConfigColor(0xFF, 0x82, 0x91, 0xFF);
+
+        [DisplayName("Battle: Fade Manager 6")]
+        public ConfigColor FadeManager6 { get; set; } = new ConfigColor(0x57, 0x05, 0x2F, 0xFF);
+
+        [DisplayName("Battle: Fade Manager 7")]
+        public ConfigColor FadeManager7 { get; set; } = new ConfigColor(0xE3, 0x14, 0x55, 0xFF);
+
+
+        [DisplayName("Battle: Guard Top Left Text")]
+        public ConfigColor BtlGuardTopLeftText { get; set; } = new ConfigColor(0xAA, 0x0E, 0x53, 0xFF);
+
+        [DisplayName("Battle: Guard Bottom Right Text")]
+        public ConfigColor BtlGuardBottomRightText { get; set; } = new ConfigColor(0x64, 0x06, 0x38, 0xFF);
+
+        [DisplayName("Battle: Guard Misc")]
+        public ConfigColor BtlGuardMisc { get; set; } = new ConfigColor(0xAA, 0x0E, 0x53, 0xFF);
+
+        [DisplayName("Battle: Guard Top Left BG")]
+        public ConfigColor BtlGuardTopLeftBG { get; set; } = new ConfigColor(0xF3, 0x26, 0x6D, 0xFF);
+
+        [DisplayName("Battle: Guard Bottom Right BG")]
+        public ConfigColor BtlGuardBottomRightBG { get; set; } = new ConfigColor(0x89, 0x0A, 0x49, 0xFF);
+
+        [DisplayName("Battle: Encounter Wipe")]
+        public ConfigColor BtlEncountWipe { get; set; } = new ConfigColor(0xFF, 0x46, 0x77, 0xFF);
+
+        [DisplayName("Battle: Item List 1")]
+        public ConfigColor BtlItemList1 { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);
+
+        [DisplayName("Battle: Item List 2")]
+        public ConfigColor BtlItemList2 { get; set; } = new ConfigColor(0xFF, 0xFB, 0x00, 0xFF);
+
+        [DisplayName("Battle: Item List 3")]
+        public ConfigColor BtlItemList3 { get; set; } = new ConfigColor(0xB6, 0x19, 0x52, 0xFF);
+
+        [DisplayName("Battle: Item List 4")]
+        public ConfigColor BtlItemList4 { get; set; } = new ConfigColor(0xC7, 0x1F, 0x5C, 0xFF);
+
+        [DisplayName("Battle: Item List 5")]
+        public ConfigColor BtlItemList5 { get; set; } = new ConfigColor(0xFF, 0x73, 0x98, 0xFF);
+
+        [DisplayName("Battle: Item List Accent")]
+        public ConfigColor BtlItemListAccent { get; set; } = new ConfigColor(0xFF, 0xED, 0x8E, 0xFF);
+
+        [DisplayName("Battle: Item List Model Dark Color")]
+        public ConfigColor BtlItemModelDarkColor { get; set; } = new ConfigColor(0x94, 0x15, 0x43, 0xFF);
+
+        [DisplayName("Battle: Item List Model Light Color")]
+        public ConfigColor BtlItemModelLightColor { get; set; } = new ConfigColor(0xAC, 0x16, 0x4C, 0xFF);
+
+        [DisplayName("Battle: Promise Common 1")]
+        public ConfigColor BtlPromiseCommon1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Promise Common 2")]
+        public ConfigColor BtlPromiseCommon2 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Promise Common 3")]
+        public ConfigColor BtlPromiseCommon3 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Promise Common 4")]
+        public ConfigColor BtlPromiseCommon4 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Promise Common 5")]
+        public ConfigColor BtlPromiseCommon5 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Promise Common Highlight")]
+        public ConfigColor BtlPromiseCommonHighlight { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Result Level Up Top Exp BG Color")]
+        public ConfigColor BtlResultLvlUpTopExpBGColor { get; set; } = new ConfigColor(0x69, 0x08, 0x33, 0xFF);
+
+
+        [DisplayName("Battle: Result Level Up Top Item Number Color")]
+        public ConfigColor BtlResultLvlUpTopItemNumColor { get; set; } = new ConfigColor(0xFF, 0xB3, 0x7F, 0xFF);
+
+        [DisplayName("Battle: Result Level Up Top Item Number Dark Color")]
+        public ConfigColor BtlResultLvlUpTopItemNumColorDark { get; set; } = new ConfigColor(0xF6, 0x82, 0xAE, 0xFF);
+
+        [DisplayName("Battle: Result Level Up Parallelogram Color")]
+        public ConfigColor BtlResultLvlUpParallelogram { get; set; } = new ConfigColor(0xB6, 0x18, 0x52, 0xFF);
+
+        [DisplayName("Battle: Result Level Up Background Panel Color")]
+        public ConfigColor BtlResultLvlUpBgPanel { get; set; } = new ConfigColor(0xB3, 0x18, 0x51, 0xFF);
+
+        [DisplayName("Battle: Result Level Up Behind Background Panel Color")]
+        public ConfigColor BtlResultLvlUpBgBehindPanel { get; set; } = new ConfigColor(0xB6, 0x18, 0x52, 0xFF);
+
+        [DisplayName("Battle: Skill List Accent Color")]
+        public ConfigColor BtlSkillListAccentColor { get; set; } = new ConfigColor(0xFF, 0xED, 0x8E, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk1 { get; set; } = new ConfigColor(0x88, 0x12, 0x3F, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk2 { get; set; } = new ConfigColor(0x1F, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk3 { get; set; } = new ConfigColor(0xC1, 0x21, 0x66, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk4 { get; set; } = new ConfigColor(0xA8, 0x14, 0x46, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk5 { get; set; } = new ConfigColor(0x88, 0x0A, 0x49, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk6 { get; set; } = new ConfigColor(0xA3, 0x14, 0x44, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk7 { get; set; } = new ConfigColor(0x5C, 0x02, 0x34, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk8 { get; set; } = new ConfigColor(0xFF, 0x73, 0x9C, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk9 { get; set; } = new ConfigColor(0xFF, 0x73, 0x9C, 0xFF);
+
+        [DisplayName("Battle: Skill List Unknown Color")]
+        public ConfigColor BtlSkillListUnk10 { get; set; } = new ConfigColor(0xFF, 0x73, 0xD2, 0xFF);
+
+        [DisplayName("Battle: Skill List Model Color")]
+        public ConfigColor BtlSkillListModelColor { get; set; } = new ConfigColor(0xE3, 0x6B, 0x8F, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
