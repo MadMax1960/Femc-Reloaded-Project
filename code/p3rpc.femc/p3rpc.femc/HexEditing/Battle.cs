@@ -1,5 +1,6 @@
 ﻿using p3rpc.commonmodutils;
 using p3rpc.femc.Configuration;
+using Reloaded.Mod.Interfaces.Structs.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -460,6 +461,58 @@ namespace p3rpc.femc.HexEditing
 
         }
 
+        private static void ApplyBtlTheurgiaList(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "BP_BtlTheurgiaList.uasset");
+
+            HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGR;
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x218FC, config.BtlTheurgyUnk1, order); // red bullshit idk
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2259F, config.BtlTheurgyUnk1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22826, config.BtlTheurgyUnk1, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x21B44, config.BtlTheurgyUnk2, order); // personality description
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x21DCB, config.BtlTheurgyUnk2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22052, config.BtlTheurgyUnk2, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22318, config.BtlTheurgyUnk3, order); // top spark???
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2299A, config.BtlTheurgyUnk4, order); // unk
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2A9FD, config.BtlTheurgyUnk4, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2AF09, config.BtlTheurgyUnk4, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22F3B, config.BtlTheurgyUnk5, order); // theurgy description
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x23284, config.BtlTheurgyUnk6, order); // top bar highlight
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2350B, config.BtlTheurgyUnk7, order); // main bg colour
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2681D, config.BtlTheurgyUnk8, order); // theurgy persona shadow
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2780B, config.BtlTheurgyUnk8, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x26DFD, config.BtlTheurgyUnk9, order); //theurgy persona shadow secondary
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x27F4F, config.BtlTheurgyUnk9, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3E5B3, config.BtlTheurgyUnk10, order); // personality circle surrounding
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3EA94, config.BtlTheurgyUnk10, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3F422, config.BtlTheurgyUnk11, order); // personality circle bg
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x41409, config.BtlTheurgyUnk12, order); // personality title
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x427DF, config.BtlTheurgyUnk12, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x42C4C, config.BtlTheurgyUnk12, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4BB9C, config.BtlTheurgyUnk13, order); // model colour 1
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4bAC8, config.BtlTheurgyModelColour2, order); // model colour 2
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4BFA2, config.BtlTheurgyUnk14, order); // personality description text
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4C076, config.BtlTheurgyUnk15, order);
+
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyBPBtlSkillList(config, modDirectory);
@@ -475,6 +528,7 @@ namespace p3rpc.femc.HexEditing
             ApplyBPBtlGuard(config, modDirectory);
             ApplyBtlGuiEncountWipe(config, modDirectory);
             ApplyBtlPromiseCommon(config, modDirectory);
+            ApplyBtlTheurgiaList(config, modDirectory);
         }
     }
 }

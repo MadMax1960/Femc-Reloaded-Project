@@ -2875,6 +2875,55 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp System: Tutorial System BG card keyframe 3")]
         public ConfigColor CampTutorialSystemKeyframe3 { get; set; } = new ConfigColor(0x99, 0x33, 0x63, 0xff);
 
+
+        [DisplayName("Battle: Theurgy Unk 1")]
+        public ConfigColor BtlTheurgyUnk1 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 2")]
+        public ConfigColor BtlTheurgyUnk2 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 3")]
+        public ConfigColor BtlTheurgyUnk3 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 4")]
+        public ConfigColor BtlTheurgyUnk4 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 5")]
+        public ConfigColor BtlTheurgyUnk5 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 6")]
+        public ConfigColor BtlTheurgyUnk6 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 7")]
+        public ConfigColor BtlTheurgyUnk7 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 8")]
+        public ConfigColor BtlTheurgyUnk8 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 9")]
+        public ConfigColor BtlTheurgyUnk9 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 10")]
+        public ConfigColor BtlTheurgyUnk10 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 11")]
+        public ConfigColor BtlTheurgyUnk11 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 12")]
+        public ConfigColor BtlTheurgyUnk12 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 13")]
+        public ConfigColor BtlTheurgyUnk13 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 14")]
+        public ConfigColor BtlTheurgyUnk14 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Unk 15")]
+        public ConfigColor BtlTheurgyUnk15 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Theurgy Model Colour 2")]
+        public ConfigColor BtlTheurgyModelColour2 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
