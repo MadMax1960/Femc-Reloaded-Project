@@ -221,7 +221,18 @@ namespace p3rpc.femc.Components
             ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiTutorialBColor, _context._config.NamiTutorialBColor);
             ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiConfigAColor, _context._config.NamiConfigAColor);
             ConfigColor.SetColorIgnoreAlpha(ref return_value->NamiConfigBColor, _context._config.NamiConfigBColor);
-
+           
+            // character outline color (varies for each menu)
+            ConfigColor.SetColor(ref return_value->Edit_Root_FillColor, _context._config.EditRootFillColor);
+            ConfigColor.SetColor(ref return_value->Edit_Skill_FillColor, _context._config.EditSkillFillColor);
+            ConfigColor.SetColor(ref return_value->Edit_Item_FillColor, _context._config.EditItemFillColor);
+            ConfigColor.SetColor(ref return_value->Edit_Equip_FillColor, _context._config.EditEquipFillColor);
+            ConfigColor.SetColor(ref return_value->Edit_Status_FillColor, _context._config.EditStatusFillColor);
+            ConfigColor.SetColor(ref return_value->Edit_Quest_FillColor, _context._config.EditQuestFillColor);
+            ConfigColor.SetColor(ref return_value->Edit_Commu_FillColor, _context._config.EditCommuFillColor);
+            ConfigColor.SetColor(ref return_value->Edit_System_FillColor, _context._config.EditSystemFillColor);
+            ConfigColor.SetColor(ref return_value->Edit_Config_FillColor, _context._config.EditConfigFillColor);
+            
             return return_value;
         }
         private unsafe FLinearColor* UCmpRootDraw_DrawMenuItems_SetColorsNoSelImpl(byte opacity, FLinearColor* colorOut)

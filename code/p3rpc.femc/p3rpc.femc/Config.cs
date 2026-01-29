@@ -2875,6 +2875,33 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp System: Tutorial System BG card keyframe 3")]
         public ConfigColor CampTutorialSystemKeyframe3 { get; set; } = new ConfigColor(0x99, 0x33, 0x63, 0xff);
 
+        [DisplayName("Camp Root: Character Outline")]
+        public ConfigColor EditRootFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
+        
+        [DisplayName("Camp Skill: Character Outline")]
+        public ConfigColor EditSkillFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
+         
+        [DisplayName("Camp Item: Character Outline")]
+        public ConfigColor EditItemFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
+        
+        [DisplayName("Camp Equip: Character Outline")]
+        public ConfigColor EditEquipFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
+        
+        [DisplayName("Camp Status: Character Outline")]
+        public ConfigColor EditStatusFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
+        
+        [DisplayName("Camp Quest: Character Outline")]
+        public ConfigColor EditQuestFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
+        
+        [DisplayName("Camp Commu: Character Outline")]
+        public ConfigColor EditCommuFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
+        
+        [DisplayName("Camp System: Character Outline")]
+        public ConfigColor EditSystemFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
+        
+        [DisplayName("Camp Config: Character Outline")]
+        public ConfigColor EditConfigFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
+        
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
