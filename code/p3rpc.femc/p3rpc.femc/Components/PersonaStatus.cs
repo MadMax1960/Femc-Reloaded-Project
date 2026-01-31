@@ -928,9 +928,9 @@ namespace p3rpc.femc.Components
                     var personaHelpPos = self->TextLayoutDataTable->GetLayoutDataTableEntry(4); // DT_UILayout_PersonaStatusText
                     //var personaHelpRowOffset = self->TextPosRowLayoutDataTable->GetLayoutDataTableEntry(3); // crashes (nullptr) - layout table made at runtime from data table
                     var personaHelpRowOffset = _getTextPosRow(self, 3); // DT_UILayout_PersonaStatusTextPosRow 
-                    var loreDescShadowColor = ConfigColor.ToFColorBPWithAlpha(ConfigColor.MellodiColorDark1, loreTitleOpacity);
+                    var loreDescShadowColor = ConfigColor.ToFColorWithAlpha(ConfigColor.MellodiColorDark1, loreTitleOpacity);
                     _drawLoreDescription(fx + 5, fy + 2, 0, personaHelpPos->position.X, personaHelpPos->position.Y, loreDescShadowColor, self->pCurrentPersona->Id, self->baseObj.QueueId, 1, 0);
-                    var loreDescFgColor = ConfigColor.ToFColorBPWithAlpha(_context.ColorWhite, loreTitleOpacity);
+                    var loreDescFgColor = ConfigColor.ToFColorWithAlpha(_context.ColorWhite, loreTitleOpacity);
                     _drawLoreDescription(fx, fy, 0, personaHelpPos->position.X, personaHelpPos->position.Y, loreDescFgColor, self->pCurrentPersona->Id, self->baseObj.QueueId, 1, 0);
                 } else
                 {
