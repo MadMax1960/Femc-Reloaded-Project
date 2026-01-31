@@ -222,6 +222,7 @@ namespace p3rpc.femc
 				_modRuntime.AddModule<MsgWindowAssist>();
 				_modRuntime.AddModule<MsgWindowSystem>();
 				_modRuntime.AddModule<GenericSelect>();
+				_modRuntime.AddModule<EndGameSelections>();
 			}
 			if (_configuration.EnableMindMessageBox)
 			{
@@ -276,6 +277,7 @@ namespace p3rpc.femc
 				_modRuntime.AddModule<LocalizationStaffRoll>();
 				//_modRuntime.AddModule<StaffRoll>();
 			}
+			if (_configuration.EnableGuidance) _modRuntime.AddModule<Guidance>();
 			if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
 			if (_configuration.EnableItemList) _modRuntime.AddModule<ItemList>();
 			if (_configuration.EnableCommunity) _modRuntime.AddModule<Cmmu>();

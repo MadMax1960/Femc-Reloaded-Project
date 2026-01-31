@@ -13,7 +13,7 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    public class TownMap : ModuleBase<FemcContext>
+    public class TownMap : ModuleAsmInlineColorEdit<FemcContext>
     {
         // In AUITownMapActor::DrawTownMapUIInner
         private string AUITownMapActor_TownMapTextColor_SIG = "48 8D 54 24 ?? 89 44 24 ?? 48 8D 8F ?? ?? ?? ?? E8 ?? ?? ?? ??";
@@ -31,6 +31,9 @@ namespace p3rpc.femc.Components
         private string AUITownMap_LocationMiniIndicator_SIG = "E8 ?? ?? ?? ?? 45 33 C9 89 87 ?? ?? ?? ?? 48 8D 8F ?? ?? ?? ??";
         private string AUITownMap_LocationMiniIndicatorSubtleShadow_SIG = "E8 ?? ?? ?? ?? 41 B1 4C";
 
+        private string AUITownMap_LocationDetailsArrows_SIG = "E8 ?? ?? ?? ?? 48 8D 4E ?? 89 44 24 ?? E8";
+        private string AUITownMap_LocationDetailsGenericIconColor_SIG = "B1 60 E8 ?? ?? ?? ?? 89 85";
+
         private UICommon _uiCommon;
 
         private IAsmHook _townMapTextColor;
@@ -45,6 +48,7 @@ namespace p3rpc.femc.Components
         private IAsmHook _locationPreviewTaint;
         private IAsmHook _locationMiniIndicator;
         private IAsmHook _locationMiniIndicatorSubtleShadow;
+        private IAsmHook _locationDetailsArrows;
 
         private IReverseWrapper<AUITownMapActor_TownMapSetUICompColor> _townMapTextColorWrapper;
         private IReverseWrapper<AUITownMapActor_TownMapSetUICompColor> _townMapBorderColorWrapper;
@@ -169,7 +173,24 @@ namespace p3rpc.femc.Components
                 };
                 _locationMiniIndicatorSubtleShadow = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-    }
+            _context._utils.SigScan(AUITownMap_LocationDetailsArrows_SIG, "AUITownMap::LocationDetailsArrows", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov r8b, ${_context._config.TownMapHighlightedArrows.B:X}",
+                    $"mov dl, ${_context._config.TownMapHighlightedArrows.G:X}",
+                    $"mov cl, ${_context._config.TownMapHighlightedArrows.R:X}"
+                };
+                _locationDetailsArrows = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            // Unharcodes blue component being 0x60, this makes the icon render with the full sprite, unaltered colors
+            _context._utils.SigScan(AUITownMap_LocationDetailsGenericIconColor_SIG, "AUITownMap::LocationDetailsGenericIconColor", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 1, (byte) 0xff)));
+            });
+        }
         public override void Register()
         {
             _uiCommon = GetModule<UICommon>();
