@@ -744,11 +744,12 @@ namespace p3rpc.femc.Configuration
 
         // Dorm Swap
 
-        [DisplayName("Test Dorm Room Swap and Hot Spring Event")]
+        [DisplayName("Test Dorm Room Swap and Current Edited Events")]
         [Category("Testing")]
-        [Description("THIS LETS YOU TEST THE NEW DORM ROOM SWAP AND HOT SPRINGS EVENT, IT MIGHT BE VERY BROKEN.")]
+        [Description("This enables the dorm room swap as well as all the CURRENT edited events")]
         [DefaultValue(false)]
-        public bool TesticlesDorm { get; set; } = false; // yeah
+        public bool TesticlesEventsDorm { get; set; } = true; // yeah
+
 
         // UI Components
 
@@ -2877,46 +2878,43 @@ namespace p3rpc.femc.Configuration
 
 
         [DisplayName("Battle: Theurgy Unk 1")]
-        public ConfigColor BtlTheurgyUnk1 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgySpark1 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 2")]
-        public ConfigColor BtlTheurgyUnk2 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyPersonalityDescription { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 3")]
-        public ConfigColor BtlTheurgyUnk3 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
-
-        [DisplayName("Battle: Theurgy Unk 4")]
-        public ConfigColor BtlTheurgyUnk4 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgySpark2 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 5")]
-        public ConfigColor BtlTheurgyUnk5 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyDescription { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 6")]
-        public ConfigColor BtlTheurgyUnk6 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyBarHighlight { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 7")]
-        public ConfigColor BtlTheurgyUnk7 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyBGColour { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 8")]
-        public ConfigColor BtlTheurgyUnk8 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyPersonaShadow { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 9")]
-        public ConfigColor BtlTheurgyUnk9 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyPersonaShadow2 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 10")]
-        public ConfigColor BtlTheurgyUnk10 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyPersonalityCircleHighlight { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 11")]
-        public ConfigColor BtlTheurgyUnk11 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyPersonalityCircleBG { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 12")]
-        public ConfigColor BtlTheurgyUnk12 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyPersonalityTitle { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 13")]
-        public ConfigColor BtlTheurgyUnk13 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyModelColour1 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 14")]
-        public ConfigColor BtlTheurgyUnk14 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyPersonalityCircleDescription { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 15")]
         public ConfigColor BtlTheurgyUnk15 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
@@ -2950,7 +2948,96 @@ namespace p3rpc.femc.Configuration
         
         [DisplayName("Camp Config: Character Outline")]
         public ConfigColor EditConfigFillColor { get; set; } = new ConfigColor(0xff, 0xd7, 0x9d, 0xff);
-        
+
+
+        [DisplayName("Common: Universe Bustup Ambient Color")]
+        public ConfigColor BustupUniverseAmbientColor { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Common: Universe Bustup Light Color")]
+        public ConfigColor BustupUniverseLightColor { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+
+        [DisplayName("Battle: Top UI Unkown 1")]
+        public ConfigColor BtlTopUnk1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Top UI Main Circle Color")]
+        public ConfigColor BtlTopMainCircleColor { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Top UI Character Outline Color")]
+        public ConfigColor BtlTopCharOutlineColor { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Top UI Theurgy Circle Color")]
+        public ConfigColor BtlTopTheurgyCircleColor { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+        [DisplayName("Battle: Damage Text Color 1")]
+        public ConfigColor BtlGuiDamageTextColor1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Damage Text Color 2")]
+        public ConfigColor BtlGuiDamageTextColor2 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Damage Text Color 3")]
+        public ConfigColor BtlGuiDamageTextColor3 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+        [DisplayName("Battle: One More 1")]
+        public ConfigColor BtlGuiOneMoreColor1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+        [DisplayName("Battle: One More 2")]
+        public ConfigColor BtlGuiOneMoreColor2 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: One More 3")]
+        public ConfigColor BtlGuiOneMoreColor3 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+        [DisplayName("Battle: Rush 1")]
+        public ConfigColor BtlGuiRush1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Rush 2")]
+        public ConfigColor BtlGuiRush2 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+        [DisplayName("Battle: Skill Name 1")]
+        public ConfigColor BtlSkillName1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Skill Name 2")]
+        public ConfigColor BtlSkillName2 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Skill Name 3")]
+        public ConfigColor BtlSkillName3 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+        [DisplayName("Battle: Target Info 1")]
+        public ConfigColor BtlTargetInfo1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Target Info 2")]
+        public ConfigColor BtlTargetInfo2 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Target Info 3")]
+        public ConfigColor BtlTargetInfo3 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Target Info 4")]
+        public ConfigColor BtlTargetInfo4 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+        [DisplayName("Battle: Target Panel 1")]
+        public ConfigColor BtlTargetPanel1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Target Panel 2")]
+        public ConfigColor BtlTargetPanel2 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Target Panel 3")]
+        public ConfigColor BtlTargetPanel3 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Target Panel 4")]
+        public ConfigColor BtlTargetPanel4 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Target Panel 5")]
+        public ConfigColor BtlTargetPanel5 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]

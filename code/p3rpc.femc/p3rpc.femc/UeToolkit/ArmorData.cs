@@ -62,11 +62,6 @@ namespace p3rpc.femc.UeToolkit {
                         _context._utils.Log($"Game language is: {_actualGameLanguage}", System.Drawing.Color.Green);
                         string path = Path.Combine(_modLoader.GetDirectoryForModId(_modConfig.ModId), "UEToolkitAssets");
 
-                        if (_configuration.TesticlesDorm)
-                        {
-                            toolKit.AddObjectsPath(Path.Combine(path, "DormTest"));
-                        }
-
                         if (Directory.Exists(path))
                         {
                             //Add UEToolkit files via the API

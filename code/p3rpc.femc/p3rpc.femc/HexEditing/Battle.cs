@@ -127,7 +127,7 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2924E, config.BtlSkillListAccentColor, HexColorEditor.ColorOrder.BGR);
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x29712, config.BtlSkillListAccentColor, HexColorEditor.ColorOrder.BGR);
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x307A5, config.BtlSkillListAccentColor, HexColorEditor.ColorOrder.BGR);
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x334B0, config.BtlSkillListAccentColor, HexColorEditor.ColorOrder.BGR);
+            //HexColorEditor.WriteBlueprintSplitColor(filePath, 0x334B0, config.BtlSkillListAccentColor, HexColorEditor.ColorOrder.BGR);  fucking oops
 
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x28198, config.BtlSkillListUnk1, HexColorEditor.ColorOrder.BGR); // info glow
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x29BD6, config.BtlSkillListUnk2, HexColorEditor.ColorOrder.BGR); // 
@@ -208,6 +208,71 @@ namespace p3rpc.femc.HexEditing
 
             HexColorEditor.WriteColor(filePath, 0x13122, config.JyokyoHelpWindowIn2, HexColorEditor.ColorOrder.BGRA); // Original color #121423, aplha 0xBF
             HexColorEditor.WriteColor(filePath, 0x13157, config.JyokyoHelpColorGradation, HexColorEditor.ColorOrder.BGRA); // Original color #262840, aplha 0x66
+        }
+
+        private static void ApplyBPBtlGuiOneMore(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "Icon", "BP_BtlGuiOneMore.uasset");
+
+            HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGR;
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3F1C, config.BtlGuiOneMoreColor1);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4B89, config.BtlGuiOneMoreColor2);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5F69, config.BtlGuiOneMoreColor2);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5361, config.BtlGuiOneMoreColor3);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x59CF, config.BtlGuiOneMoreColor3);
+        }
+
+        private static void ApplyBPBtlGuiRush(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "Icon", "BP_BtlGuiRush.uasset");
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x9284, config.BtlGuiRush1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x95DC, config.BtlGuiRush2);
+        }
+
+        private static void ApplyBPBtlSkillNamePanel(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "Icon", "BP_BtlSkillNamePanel.uasset");
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x51F9, config.BtlSkillName1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5904, config.BtlSkillName2);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x5F31, config.BtlSkillName3);
+        }
+
+        private static void ApplyBPBtlTargetInfo(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "Icon", "BP_BtlTargetInfo.uasset");
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x12FF3, config.BtlTargetInfo1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x13279, config.BtlTargetInfo2);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x134FF, config.BtlTargetInfo3);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x137C4, config.BtlTargetInfo4);
+        }
+
+        private static void ApplyBPBtlTargetPanel(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "Icon", "BP_BtlTargetPanel.uasset");
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1FCAA, config.BtlTargetPanel1);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x202AD, config.BtlTargetPanel2);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x20985, config.BtlTargetPanel3);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x263B6, config.BtlTargetPanel4);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x27B02, config.BtlTargetPanel5);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x282E9, config.BtlTargetPanel5);
         }
 
         private static void ApplyBtlWaterCaustics(Config config, string modDirectory)
@@ -469,48 +534,107 @@ namespace p3rpc.femc.HexEditing
 
             HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGR;
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x218FC, config.BtlTheurgyUnk1, order); // red bullshit idk
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2259F, config.BtlTheurgyUnk1, order);
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22826, config.BtlTheurgyUnk1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x218FC, config.BtlTheurgySpark1, order); // red bullshit idk
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2259F, config.BtlTheurgySpark1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22826, config.BtlTheurgySpark1, order);
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x21B44, config.BtlTheurgyUnk2, order); // personality description
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x21DCB, config.BtlTheurgyUnk2, order);
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22052, config.BtlTheurgyUnk2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x21B44, config.BtlTheurgyPersonalityDescription, order); // personality description
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x21DCB, config.BtlTheurgyPersonalityDescription, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22052, config.BtlTheurgyPersonalityDescription, order);
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22318, config.BtlTheurgyUnk3, order); // top spark???
-
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22318, config.BtlTheurgySpark2, order); // top spark???
+            
+            /*
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2299A, config.BtlTheurgyUnk4, order); // unk
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2A9FD, config.BtlTheurgyUnk4, order);
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2AF09, config.BtlTheurgyUnk4, order);
+            */
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22F3B, config.BtlTheurgyDescription, order); // theurgy description
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22F3B, config.BtlTheurgyUnk5, order); // theurgy description
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x23284, config.BtlTheurgyBarHighlight, order); // top bar highlight
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x23284, config.BtlTheurgyUnk6, order); // top bar highlight
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2350B, config.BtlTheurgyBGColour, order); // main bg colour
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2350B, config.BtlTheurgyUnk7, order); // main bg colour
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2681D, config.BtlTheurgyPersonaShadow, order); // theurgy persona shadow
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2780B, config.BtlTheurgyPersonaShadow, order);
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2681D, config.BtlTheurgyUnk8, order); // theurgy persona shadow
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2780B, config.BtlTheurgyUnk8, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x26DFD, config.BtlTheurgyPersonaShadow2, order); //theurgy persona shadow secondary
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x27F4F, config.BtlTheurgyPersonaShadow2, order);
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x26DFD, config.BtlTheurgyUnk9, order); //theurgy persona shadow secondary
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x27F4F, config.BtlTheurgyUnk9, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3E5B3, config.BtlTheurgyPersonalityCircleHighlight, order); // personality circle surrounding
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3EA94, config.BtlTheurgyPersonalityCircleHighlight, order);
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3E5B3, config.BtlTheurgyUnk10, order); // personality circle surrounding
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3EA94, config.BtlTheurgyUnk10, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3F422, config.BtlTheurgyPersonalityCircleBG, order); // personality circle bg
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3F422, config.BtlTheurgyUnk11, order); // personality circle bg
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x41409, config.BtlTheurgyPersonalityTitle, order); // personality title
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x427DF, config.BtlTheurgyPersonalityTitle, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x42C4C, config.BtlTheurgyPersonalityTitle, order);
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x41409, config.BtlTheurgyUnk12, order); // personality title
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x427DF, config.BtlTheurgyUnk12, order);
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x42C4C, config.BtlTheurgyUnk12, order);
-
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4BB9C, config.BtlTheurgyUnk13, order); // model colour 1
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4BB9C, config.BtlTheurgyModelColour1, order); // model colour 1
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4bAC8, config.BtlTheurgyModelColour2, order); // model colour 2
 
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4BFA2, config.BtlTheurgyUnk14, order); // personality description text
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4BFA2, config.BtlTheurgyPersonalityCircleDescription, order); // personality description text
 
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4C076, config.BtlTheurgyUnk15, order);
 
+        }
+
+        private static void ApplyBtlTopUI(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "BP_BtlTopUI.uasset");
+
+            HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGR;
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x18F32, config.BtlTopUnk1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x19258, config.BtlTopUnk1, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2EC04, config.BtlTopMainCircleColor, order); // main circle
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2F277, config.BtlTopMainCircleColor, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x35F5C, config.BtlTopMainCircleColor, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2FD97, config.BtlTopCharOutlineColor, order); // moon dropback + model
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3040A, config.BtlTopCharOutlineColor, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x30A30, config.BtlTopCharOutlineColor, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x30CFA, config.BtlTopCharOutlineColor, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3188D, config.BtlTopCharOutlineColor, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x31F26, config.BtlTopCharOutlineColor, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x33093, config.BtlTopCharOutlineColor, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3E255, config.BtlTopCharOutlineColor, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x36430, config.BtlTopTheurgyCircleColor, order); // theurgy circle
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x582FA, config.BtlTopTheurgyCircleColor, order);
+        }
+
+        private static void ApplyBtlGuiDamage2(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "Icon", "BP_BtlGuiDamage2.uasset");
+
+            HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGR;
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1B63F, config.BtlGuiDamageTextColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1C627, config.BtlGuiDamageTextColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1D969, config.BtlGuiDamageTextColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x24333, config.BtlGuiDamageTextColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2531B, config.BtlGuiDamageTextColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2665D, config.BtlGuiDamageTextColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3E38C, config.BtlGuiDamageTextColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3F9EF, config.BtlGuiDamageTextColor1, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22147, config.BtlGuiDamageTextColor3, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x231E5, config.BtlGuiDamageTextColor3, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2AE3B, config.BtlGuiDamageTextColor3, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2BED9, config.BtlGuiDamageTextColor3, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1EA87, config.BtlGuiDamageTextColor2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1F8DC, config.BtlGuiDamageTextColor2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x20B25, config.BtlGuiDamageTextColor2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2777B, config.BtlGuiDamageTextColor2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x285D0, config.BtlGuiDamageTextColor2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x29819, config.BtlGuiDamageTextColor2, order);
         }
 
         public static void Apply(Config config, string modDirectory)
@@ -529,6 +653,13 @@ namespace p3rpc.femc.HexEditing
             ApplyBtlGuiEncountWipe(config, modDirectory);
             ApplyBtlPromiseCommon(config, modDirectory);
             ApplyBtlTheurgiaList(config, modDirectory);
+            ApplyBtlTopUI(config, modDirectory);
+            ApplyBtlGuiDamage2(config, modDirectory);
+            ApplyBPBtlGuiOneMore(config, modDirectory);
+            ApplyBPBtlGuiRush(config, modDirectory);
+            ApplyBPBtlSkillNamePanel(config, modDirectory);
+            ApplyBPBtlTargetInfo(config, modDirectory);
+            ApplyBPBtlTargetPanel(config, modDirectory);
         }
     }
 }

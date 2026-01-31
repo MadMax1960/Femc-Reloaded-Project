@@ -54,10 +54,32 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePath, 0xACC, config.AccessIconColor3, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT); // Original color #010183
         }
 
+        // this really shouldnt be here but whatever
+
+        private static void ApplyMBUIBustupUniverse(Config config, string modDirectory)
+        {
+            // this should not be here oops
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "UI", "Common", "2d", "BaseMaterials", "MB_UI_BustupUniverse.uasset");
+
+            HexColorEditor.WriteColor(filePath, 0x113A, config.BustupUniverseAmbientColor, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT);
+            HexColorEditor.WriteColor(filePath, 0x1264, config.BustupUniverseLightColor, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT);
+            /*
+            string filePathYko = Path.Combine(modDirectory,
+               "UnrealEssentials", "P3R", "Content", "Xrd777",
+               "UI", "Common", "2d", "BaseMaterials", "MB_UI_BustupUniverseYko.uasset");
+
+            HexColorEditor.WriteColor(filePath, 0x1294, config.BustupUniverseAmbientColorYko, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT);
+            HexColorEditor.WriteColor(filePath, 0x13be, config.BustupUniverseLightColorYko, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT);
+            */
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyMaleQuest(config, modDirectory);
             ApplyWalking(config, modDirectory);
+            ApplyMBUIBustupUniverse(config, modDirectory);
         }
     }
 }
