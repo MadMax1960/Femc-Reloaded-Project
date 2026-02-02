@@ -1,9 +1,11 @@
 ﻿using p3rpc.commonmodutils;
+using p3rpc.femc.Components;
 using p3rpc.femc.Configuration;
 using Reloaded.Mod.Interfaces.Structs.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -637,6 +639,37 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x29819, config.BtlGuiDamageTextColor2, order);
         }
 
+        private static void ApplyAdvantageMaterials(Config config, string modDirectory)
+        {
+            string filePathAdvantageBG = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777", 
+                "Battle", "UI", "Material", "MI_UI_D_Base_Advantage_BG.uasset"); //af4
+
+            string filePathLine = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Battle", "UI", "Material", "MI_UI_D_Base_Line.uasset");
+
+            string filePathSEESBG = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Battle", "UI", "Material", "MI_UI_D_Base_S_E_E_S_BG.uasset"); // 0xace
+
+            HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
+            HexColorEditor.WriteColor(filePathAdvantageBG, 0xAF4, config.BtlAdvantageBGColor, HexColorEditor.ColorOrder.RGBA, type);
+            HexColorEditor.WriteColor(filePathLine, 0xA76, config.BtlAdvantageLine, HexColorEditor.ColorOrder.RGBA, type);
+            HexColorEditor.WriteColor(filePathSEESBG, 0xACE, config.BtlAdvantageSEESBG, HexColorEditor.ColorOrder.RGBA, type);
+
+            /*
+             string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Player", "PC0051", "Models", "MI_PC0051_C002_03_CaFiOp.uasset");
+
+            HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
+
+            HexColorEditor.WriteColor(filePath, 0xA50, config.SkillGunColor, HexColorEditor.ColorOrder.RGBA, type); // Original color #566891
+        }
+        */
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyBPBtlSkillList(config, modDirectory);
@@ -660,6 +693,7 @@ namespace p3rpc.femc.HexEditing
             ApplyBPBtlSkillNamePanel(config, modDirectory);
             ApplyBPBtlTargetInfo(config, modDirectory);
             ApplyBPBtlTargetPanel(config, modDirectory);
+            ApplyAdvantageMaterials(config, modDirectory);
         }
     }
 }

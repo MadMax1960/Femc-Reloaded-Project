@@ -944,6 +944,11 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 207)]
         public ConfigColor DateTimePanelBottomTextColor { get; set; } = new ConfigColor(0xFF, 0xA2, 0x97, 0xFF);
 
+        [DisplayName("Date Time Panel: Bottom Text Color")]
+        [Category("UI Colors")]
+        [Display(Order = 207)]
+        public ConfigColor DateTimePanelBottomColor { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
         [DisplayName("Date Time Panel: Water Color")]
         [Category("UI Colors")]
         [Display(Order = 208)]
@@ -3036,6 +3041,29 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Battle: Target Panel 5")]
         public ConfigColor BtlTargetPanel5 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+        [DisplayName("Battle: Advantage BG Color")]
+        public ConfigColor BtlAdvantageBGColor { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Advantage Line Color")]
+        public ConfigColor BtlAdvantageLine { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Battle: Advantage SEES BG")]
+        public ConfigColor BtlAdvantageSEESBG { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+
+        [DisplayName("Field: Access Icon 00 Color 1")]
+        public ConfigColor AccessIconTalk00Color1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Field: Access Icon 00 Color 1")]
+        public ConfigColor AccessIconTalk00Color2 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Field: Access Icon 00 Color 1")]
+        public ConfigColor AccessIconTalk01Color1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
+
+        [DisplayName("Field: Access Icon 00 Color 1")]
+        public ConfigColor AccessIconTalk02Color1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
 
 
         /*[DisplayName("Draw Original Select Box")]
