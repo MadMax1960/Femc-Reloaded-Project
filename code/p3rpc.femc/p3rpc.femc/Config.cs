@@ -903,6 +903,11 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableCommunity { get; set; } = true;
 
+        [DisplayName("Enable Guidance")]
+        [Category("UI Components")]
+        [Display(Order = 175)]
+        [DefaultValue(true)]
+        public bool EnableGuidance { get; set; } = true;
 
         [DisplayName("Mail Icon: Outer Color")]
         [Category("UI Colors")]
@@ -3065,6 +3070,53 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Field: Access Icon 00 Color 1")]
         public ConfigColor AccessIconTalk02Color1 { get; set; } = new ConfigColor(0x00, 0xff, 0x00, 0xff);
 
+        [DisplayName("Town Map: Town Info detail highlighted arrows")]
+        public ConfigColor TownMapHighlightedArrows { get; set; } = ConfigColor.Blue;
+
+        [DisplayName("Camp: System Menu Item starting fade animation color")]
+        public ConfigColor CampSystemStartFadeColor { get; set; } = new ConfigColor(0x9f, 0x04, 0x38, 0xff);
+
+        [DisplayName("Guidance: Guidance elements main background color")]
+        public ConfigColor GuidanceMainBGColor { get; set; } = new ConfigColor(0x48, 0x44, 0x46, 0xff);
+
+        [DisplayName("Guidance: Guidance elements squared background color")]
+        public ConfigColor GuidanceSquareColor { get; set; } = new ConfigColor(0x72, 0x6c, 0x6e, 0xff);
+
+        [DisplayName("Guidance: Guidance exclamation glow color")]
+        public ConfigColor GuidanceExclamationGlowColor { get; set; } = new ConfigColor(0xff, 0x00, 0x6a, 0xff);
+
+        [DisplayName("Guidance: Guidance exclamation main color")]
+        public ConfigColor GuidanceExclamationMainColor { get; set; } = new ConfigColor(0xfc, 0xbb, 0xd6, 0xff);
+
+        [DisplayName("End Game Selections: First selection background glow color")]
+        public ConfigColor EndGameFirstGlowColor { get; set; } = new ConfigColor(0x8f, 0x00, 0x34, 0xff);
+
+        [DisplayName("End Game Selections: First selection font color")]
+        public ConfigColor EndGameFirstFontColor { get; set; } = new ConfigColor(0xff, 0x00, 0x62, 0xff);
+
+        [DisplayName("End Game Selections: First selection background color")]
+        public ConfigColor EndGameFirstBGColor { get; set; } = new ConfigColor(0xfc, 0xf0, 0xf6, 0xff);
+
+        [DisplayName("End Game Selections: Subs font tint before second selection 1")]
+        public ConfigColor EndGamePreSecondFontTint1 { get; set; } = new ConfigColor(0x97, 0x01, 0x38, 0xff);
+
+        [DisplayName("End Game Selections: Subs font tint before second selection 2")]
+        public ConfigColor EndGamePreSecondFontTint2 { get; set; } = new ConfigColor(0xb7, 0x01, 0x4a, 0xff);
+
+        [DisplayName("End Game Selections: Second selection glow color 1")]
+        public ConfigColor EndGameSecondGlowColor1 { get; set; } = new ConfigColor(0x9d, 0x3d, 0x62, 0xff);
+
+        [DisplayName("End Game Selections: Second selection glow color 2")]
+        public ConfigColor EndGameSecondGlowColor2 { get; set; } = new ConfigColor(0xcd, 0x00, 0x4b, 0xff);
+
+        [DisplayName("End Game Selections: Second selection font glow color 1")]
+        public ConfigColor EndGameSecondFontGlowColor1 { get; set; } = new ConfigColor(0xfe, 0x55, 0x96, 0xff);
+
+        [DisplayName("End Game Selections: Second selection font glow color 2")]
+        public ConfigColor EndGameSecondFontGlowColor2 { get; set; } = new ConfigColor(0xfe, 0x14, 0x6e, 0xff);
+
+        [DisplayName("End Game Selections: Second selection font glow color 3")]
+        public ConfigColor EndGameSecondFontGlowColor3 { get; set; } = new ConfigColor(0xff, 0x12, 0x75, 0xff);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
