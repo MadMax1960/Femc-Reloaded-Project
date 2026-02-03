@@ -54,6 +54,22 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePath, 0xACC, config.AccessIconColor3, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT); // Original color #010183
         }
 
+        private static void ApplyQuest(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "UI", "Field", "AccessIcon", "Materials", "MI_UI_AccessIcon_Quest_00.uasset");
+
+            HexColorEditor.WriteColor(filePath, 0xC54, config.AccessIconColor1, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT); // Original color #020318
+            HexColorEditor.WriteColor(filePath, 0xD7E, config.AccessIconColor2, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT); // Original color #0077B3
+
+            filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "UI", "Field", "AccessIcon", "Materials", "MI_UI_AccessIcon_Quest_01.uasset");
+
+            HexColorEditor.WriteColor(filePath, 0xABC, config.AccessIconColor3, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT); // Original color #010183
+        }
+
         private static void ApplyStudy(Config config, string modDirectory)
         {
             string filePath = Path.Combine(modDirectory,
@@ -181,6 +197,7 @@ namespace p3rpc.femc.HexEditing
             ApplyStudy(config, modDirectory);
             ApplyAccessIconListen(config, modDirectory);
             ApplyDormitoryLife(config, modDirectory);
+            ApplyQuest(config, modDirectory);
         }
     }
 }

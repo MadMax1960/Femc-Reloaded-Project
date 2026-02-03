@@ -637,6 +637,8 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2777B, config.BtlGuiDamageTextColor2, order);
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x285D0, config.BtlGuiDamageTextColor2, order);
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x29819, config.BtlGuiDamageTextColor2, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x137E8, config.BtlGuiDamageColor, order);
         }
 
         private static void ApplyAdvantageMaterials(Config config, string modDirectory)
@@ -670,6 +672,27 @@ namespace p3rpc.femc.HexEditing
         */
         }
 
+        private static void ApplyDUISituationHelp(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Field", "Dungeon", "UI", "BP_DUI_SituationHelp.uasset");
+
+            HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.RGB;
+
+            HexColorEditor.WriteBlueprintIDEKColor(filePath, 0x11B7, config.DUISituationHelp1, order);
+            HexColorEditor.WriteBlueprintIDEKColor(filePath, 0x2BD5, config.DUISituationHelp1, order);
+
+            HexColorEditor.WriteBlueprintIDEKColor(filePath, 0x14B2, config.DUISituationHelp2, order);
+            HexColorEditor.WriteBlueprintIDEKColor(filePath, 0x2ED0, config.DUISituationHelp2, order);
+
+            HexColorEditor.WriteBlueprintIDEKColor(filePath, 0x199D, config.DUISituationHelp3, order);
+            HexColorEditor.WriteBlueprintIDEKColor(filePath, 0x33BB, config.DUISituationHelp3, order);
+
+            HexColorEditor.WriteBlueprintIDEKColor(filePath, 0x1DA4, config.DUISituationHelp4, order);
+            HexColorEditor.WriteBlueprintIDEKColor(filePath, 0x37C2, config.DUISituationHelp4, order);
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyBPBtlSkillList(config, modDirectory);
@@ -694,6 +717,7 @@ namespace p3rpc.femc.HexEditing
             ApplyBPBtlTargetInfo(config, modDirectory);
             ApplyBPBtlTargetPanel(config, modDirectory);
             ApplyAdvantageMaterials(config, modDirectory);
+            ApplyDUISituationHelp(config, modDirectory);
         }
     }
 }

@@ -273,6 +273,32 @@ namespace p3rpc.femc.HexEditing
                 stream.WriteByte(color.A);
             }
         }
+        public static void WriteBlueprintIDEKColor(string filePath, long offset, ConfigColor color, ColorOrder order = ColorOrder.BGRA)
+        {
+            using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
+            WriteBlueprintIDEKColor(stream, offset, color, order);
+        }
+        /// <param name="stream">FileStream to make edits to</param>
+        /// <param name="offset">Offset in bytes where the BLUE component starts</param>
+        /// <param name="color">New color value to be written</param>
+        public static void WriteBlueprintIDEKColor(FileStream stream, long offset, ConfigColor color,
+            ColorOrder order = ColorOrder.RGB)
+        {
+            // Their order is always BGR / BGRA
+            if (!order.Equals(ColorOrder.RGB))
+                throw new ArgumentException("Blueprint hardcoded colors must be either RGB or RGBA", nameof(order));
+
+            byte[] bytes = new[] { color.R, color.G, color.B, color.A };
+
+            stream.Seek(offset, SeekOrigin.Begin);
+            stream.WriteByte(color.R);
+
+            stream.Seek(offset + 0x22, SeekOrigin.Begin);
+            stream.WriteByte(color.G);
+
+            stream.Seek(offset + 0x44, SeekOrigin.Begin);
+            stream.WriteByte(color.B);
+        }
         public static void WriteBlueprintFloatColor(string filePath, long offset, ConfigColor color, ColorOrder order = ColorOrder.BGRA)
         {
             using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
