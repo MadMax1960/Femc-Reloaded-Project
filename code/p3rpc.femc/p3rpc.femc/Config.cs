@@ -1058,7 +1058,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Menu Item Color No Select (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 227)]
-        public ConfigColor CampMenuItemColorNoSel { get; set; } = new ConfigColor(0xFF, 0xB2, 0x9E, 0xFF);
+        public ConfigColor CampMenuItemColorNoSel { get; set; } = new ConfigColor(0xF4, 0x84, 0x99, 0xFF);
 
         [DisplayName("Camp: Skill Text Color")]
         [Category("UI Colors")]
@@ -2566,7 +2566,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Camp: System Menu Item Color No Select")]
         [Category("UI Colors")]
-        public ConfigColor CampMenuSystemItemColorNoSel { get; set; } = new ConfigColor(0xFF, 0xB2, 0x9E, 0xFF);
+        public ConfigColor CampMenuSystemItemColorNoSel { get; set; } = new ConfigColor(0xF4, 0x84, 0x99, 0xFF);
 
         [DisplayName("Battle: Shift from strip color")]
         public ConfigColor ShiftFromColor { get; set; } = new ConfigColor(0xFF, 0x05, 0x13, 0xFF);
