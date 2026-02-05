@@ -545,7 +545,9 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22052, config.BtlTheurgyPersonalityDescription, order);
 
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22318, config.BtlTheurgySpark2, order); // top spark???
-            
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x22A6E, config.BtlTheurgyArrows, order);
+
             /*
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2299A, config.BtlTheurgyUnk4, order); // unk
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2A9FD, config.BtlTheurgyUnk4, order);
@@ -607,6 +609,8 @@ namespace p3rpc.femc.HexEditing
 
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x36430, config.BtlTopTheurgyCircleColor, order); // theurgy circle
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x582FA, config.BtlTopTheurgyCircleColor, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x4837E, config.BtlStupidCircleBehind, order);
         }
 
         private static void ApplyBtlGuiDamage2(Config config, string modDirectory)
@@ -639,6 +643,11 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x29819, config.BtlGuiDamageTextColor2, order);
 
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x137E8, config.BtlGuiDamageColor, order);
+
+
+            //HexColorEditor.WriteBlueprintSplitColor(filePath, 0x13B38, config.BtlGuiTotalDamageNumberDropshadowColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x13C0C, config.BtlGuiTotalDamageNumberDropshadowColor2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x168BD, config.BtlGuiTotalDamageColor, order);
         }
 
         private static void ApplyAdvantageMaterials(Config config, string modDirectory)

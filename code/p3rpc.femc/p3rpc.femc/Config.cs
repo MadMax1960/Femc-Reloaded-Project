@@ -3147,6 +3147,28 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Mail: Main Color 2")]
         public ConfigColor MailDrawColor2 { get; set; } = new ConfigColor(0xE0, 0x37, 0x70, 0xFF);
 
+
+
+        [DisplayName("Battle: Total Damage Color")]
+        public ConfigColor BtlGuiTotalDamageColor { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+
+        [DisplayName("Battle: Total Damage Number Dropshadow Color 1")]
+        public ConfigColor BtlGuiTotalDamageNumberDropshadowColor1 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+
+        [DisplayName("Battle: Total Damage Number Dropshadow Color 2")]
+        public ConfigColor BtlGuiTotalDamageNumberDropshadowColor2 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Battle: Stupid Circle")]
+        public ConfigColor BtlStupidCircleBehind { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+
+        [DisplayName("Battle: Stupid Circle")]
+        public ConfigColor BtlTheurgyArrows { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+
+
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
