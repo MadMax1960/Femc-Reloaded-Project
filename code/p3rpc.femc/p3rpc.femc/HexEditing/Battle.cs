@@ -647,7 +647,7 @@ namespace p3rpc.femc.HexEditing
 
             //HexColorEditor.WriteBlueprintSplitColor(filePath, 0x13B38, config.BtlGuiTotalDamageNumberDropshadowColor1, order);
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x13C0C, config.BtlGuiTotalDamageNumberDropshadowColor2, order);
-            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x168BD, config.BtlGuiTotalDamageColor, order);
+            //HexColorEditor.WriteBlueprintSplitColor(filePath, 0x168BD, config.BtlGuiTotalDamageColor, order);
         }
 
         private static void ApplyAdvantageMaterials(Config config, string modDirectory)

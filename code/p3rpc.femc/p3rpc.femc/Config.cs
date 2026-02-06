@@ -952,7 +952,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Date Time Panel: Bottom Text Color")]
         [Category("UI Colors")]
         [Display(Order = 207)]
-        public ConfigColor DateTimePanelBottomColor { get; set; } = new ConfigColor(0xFF, 0xA2, 0x97, 0xFF);
+        public ConfigColor DateTimePanelBottomColor { get; set; } = new ConfigColor(0xFF, 0x8B, 0x8B, 0xFF);
 
         [DisplayName("Date Time Panel: Water Color")]
         [Category("UI Colors")]
@@ -1058,7 +1058,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp: Menu Item Color No Select (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 227)]
-        public ConfigColor CampMenuItemColorNoSel { get; set; } = new ConfigColor(0xF4, 0x84, 0x99, 0xFF);
+        public ConfigColor CampMenuItemColorNoSel { get; set; } = new ConfigColor(0xFF, 0xB2, 0x9E, 0xFF);
 
         [DisplayName("Camp: Skill Text Color")]
         [Category("UI Colors")]
@@ -2566,7 +2566,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Camp: System Menu Item Color No Select")]
         [Category("UI Colors")]
-        public ConfigColor CampMenuSystemItemColorNoSel { get; set; } = new ConfigColor(0xF4, 0x84, 0x99, 0xFF);
+        public ConfigColor CampMenuSystemItemColorNoSel { get; set; } = new ConfigColor(0xFF, 0xB2, 0x9E, 0xFF);
 
         [DisplayName("Battle: Shift from strip color")]
         public ConfigColor ShiftFromColor { get; set; } = new ConfigColor(0xFF, 0x05, 0x13, 0xFF);
@@ -2715,7 +2715,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor BtlItemList1 { get; set; } = new ConfigColor(0xFF, 0x00, 0x00, 0xFF);
 
         [DisplayName("Battle: Item List 2")]
-        public ConfigColor BtlItemList2 { get; set; } = new ConfigColor(0xFF, 0xFB, 0x00, 0xFF);
+        public ConfigColor BtlItemList2 { get; set; } = new ConfigColor(0x00, 0xFF, 0x04, 0xFF);
 
         [DisplayName("Battle: Item List 3")]
         public ConfigColor BtlItemList3 { get; set; } = new ConfigColor(0xB6, 0x19, 0x52, 0xFF);
@@ -2927,7 +2927,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor BtlTheurgyPersonalityCircleDescription { get; set; } = new ConfigColor(0x85, 0x3D, 0x52, 0xFF);
 
         [DisplayName("Battle: Theurgy Unk 15")]
-        public ConfigColor BtlTheurgyUnk15 { get; set; } = new ConfigColor(0x17, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyUnk15 { get; set; } = new ConfigColor(0x00, 0xD6, 0xFF, 0xFF);
 
         [DisplayName("Battle: Theurgy Model Colour 2")]
         public ConfigColor BtlTheurgyModelColour2 { get; set; } = new ConfigColor(0xCC, 0x22, 0x60, 0xFF);
@@ -2951,13 +2951,13 @@ namespace p3rpc.femc.Configuration
         public ConfigColor EditQuestFillColor { get; set; } = new ConfigColor(0xE5, 0x5E, 0x84, 0xFF);
 
         [DisplayName("Camp Commu: Character Outline")]
-        public ConfigColor EditCommuFillColor { get; set; } = new ConfigColor(0xE5, 0x5E, 0x84, 0xFF);
+        public ConfigColor EditCommuFillColor { get; set; } = new ConfigColor(0xFF, 0x93, 0xB2, 0xFF);
 
         [DisplayName("Camp System: Character Outline")]
         public ConfigColor EditSystemFillColor { get; set; } = new ConfigColor(0xE5, 0x5E, 0x84, 0xFF);
 
         [DisplayName("Camp Config: Character Outline")]
-        public ConfigColor EditConfigFillColor { get; set; } = new ConfigColor(0x66, 0x28, 0x4F, 0xFF);
+        public ConfigColor EditConfigFillColor { get; set; } = new ConfigColor(0x81, 0x2C, 0x61, 0xFF);
 
 
         [DisplayName("Common: Universe Bustup Ambient Color")]
@@ -3148,24 +3148,24 @@ namespace p3rpc.femc.Configuration
         public ConfigColor MailDrawColor2 { get; set; } = new ConfigColor(0xE0, 0x37, 0x70, 0xFF);
 
 
-
+        /*
         [DisplayName("Battle: Total Damage Color")]
         public ConfigColor BtlGuiTotalDamageColor { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
 
 
         [DisplayName("Battle: Total Damage Number Dropshadow Color 1")]
         public ConfigColor BtlGuiTotalDamageNumberDropshadowColor1 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
-
+        */
 
         [DisplayName("Battle: Total Damage Number Dropshadow Color 2")]
-        public ConfigColor BtlGuiTotalDamageNumberDropshadowColor2 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlGuiTotalDamageNumberDropshadowColor2 { get; set; } = new ConfigColor(0x28, 0x02, 0x1B, 0xFF);
 
         [DisplayName("Battle: Stupid Circle")]
-        public ConfigColor BtlStupidCircleBehind { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlStupidCircleBehind { get; set; } = new ConfigColor(0xEC, 0x4F, 0x85, 0xFF);
 
 
         [DisplayName("Battle: Stupid Circle")]
-        public ConfigColor BtlTheurgyArrows { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        public ConfigColor BtlTheurgyArrows { get; set; } = new ConfigColor(0x00, 0xD6, 0xFF, 0xFF);
 
 
 
