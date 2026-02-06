@@ -19,7 +19,7 @@ namespace p3rpc.femc.Components
         private unsafe void UAgePanel_UpdateAgePanelParametersImpl(UAgePanel* self, float deltaTime)
         {
             ConfigColor.SetColor(ref self->TopColorNormal, _context._config.DateTimePanelTopTextColor);
-            ConfigColor.SetColor(ref self->BottomColorNormal, _context._config.DateTimePanelBottomTextColor);
+            ConfigColor.SetColor(ref self->BottomColorNormal, _context._config.DateTimePanelBottomColor);
             ConfigColor.SetColor(ref self->WaterColorNormal, _context._config.DateTimePanelWaterColor);
             _updateAgePanelParameters.OriginalFunction(self, deltaTime);
         }
@@ -30,7 +30,7 @@ namespace p3rpc.femc.Components
         private unsafe void UAgePanel_UpdateAgePanelParameters_EpAigisImpl(nativetypes.Interfaces.Astrea.UAgePanel* self, float deltaTime)
         {
             ConfigColor.SetColor(ref self->TopColorNormal, _context._config.DateTimePanelTopTextColor);
-            ConfigColor.SetColor(ref self->BottomColorNormal, _context._config.DateTimePanelBottomTextColor);
+            ConfigColor.SetColor(ref self->BottomColorNormal, _context._config.DateTimePanelBottomColor);
             ConfigColor.SetColor(ref self->WaterColorNormal, _context._config.DateTimePanelWaterColor);
             _updateAgePanelParametersEpAigis.OriginalFunction(self, deltaTime);
         }

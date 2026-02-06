@@ -62,6 +62,21 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePath, 0x270E5, config.MailRunningFigureColor, ColorOrder.BGRA);
             HexColorEditor.WriteColor(filePath, 0x267CB, config.MailDarkRunningFigureColor, ColorOrder.BGRA); // Original color #00003F
             HexColorEditor.WriteColor(filePath, 0x270B0, config.MailDarkRunningFigureColor, ColorOrder.BGRA);
+
+            HexColorEditor.WriteColor(filePath, 0x21EA1, config.MailDrawMainColor, ColorOrder.BGR);
+            HexColorEditor.WriteColor(filePath, 0x2323E, config.MailDrawMainColor, ColorOrder.BGR);
+            HexColorEditor.WriteColor(filePath, 0x232EF, config.MailDrawMainColor, ColorOrder.BGR);
+            HexColorEditor.WriteColor(filePath, 0x2349E, config.MailDrawMainColor, ColorOrder.BGR);
+            HexColorEditor.WriteColor(filePath, 0x236C9, config.MailDrawMainColor, ColorOrder.BGR);
+            HexColorEditor.WriteColor(filePath, 0x238F4, config.MailDrawMainColor, ColorOrder.BGR);
+            HexColorEditor.WriteColor(filePath, 0x23B3C, config.MailDrawMainColor, ColorOrder.BGR);
+            HexColorEditor.WriteColor(filePath, 0x23DD9, config.MailDrawMainColor, ColorOrder.BGR);
+            HexColorEditor.WriteColor(filePath, 0x24076, config.MailDrawMainColor, ColorOrder.BGR);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0xD003, config.MailDrawColor1, HexColorEditor.ColorOrder.BGR);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x13957, config.MailDrawColor2, HexColorEditor.ColorOrder.BGR);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x13BA6, config.MailDrawColor2, HexColorEditor.ColorOrder.BGR);
         }
 
         public static void Apply(Config config, string modDirectory)

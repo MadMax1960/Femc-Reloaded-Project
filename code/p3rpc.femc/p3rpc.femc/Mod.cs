@@ -164,7 +164,7 @@ namespace p3rpc.femc
                 Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
                 Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
                 HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Hot Spring Event
-                Testing.LoadTesticles(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
+                Testing.LoadTesticles(unrealEssentials, _modLoader, _modConfig, ryo, toolKit, _context, _configuration, _context._modLocation); // loads testes
 				HexEditing.CampCommon.Apply(_configuration, _context._modLocation);
                 HexEditing.SaveLoad.Apply(_configuration, _context._modLocation);
                 HexEditing.Mail.Apply(_configuration, _context._modLocation);
