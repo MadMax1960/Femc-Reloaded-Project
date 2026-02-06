@@ -2646,7 +2646,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor SaveLoadGrey { get; set; } = new ConfigColor(0x3F, 0x39, 0x39, 0xFF);
 
         [DisplayName("Save Load: Scroll bar Color")]
-        public ConfigColor SaveLoadScrollBar { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor SaveLoadScrollBar { get; set; } = new ConfigColor(0x69, 0x03, 0x36, 0xFF);
 
         [DisplayName("Camp: System Curve Color")]
         public ConfigColor CampSystemCurveColor { get; set; } = new ConfigColor(0xAC, 0x27, 0xBF, 0xFF);
