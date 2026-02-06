@@ -3147,15 +3147,8 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Mail: Main Color 2")]
         public ConfigColor MailDrawColor2 { get; set; } = new ConfigColor(0xE0, 0x37, 0x70, 0xFF);
 
-
-        /*
         [DisplayName("Battle: Total Damage Color")]
-        public ConfigColor BtlGuiTotalDamageColor { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
-
-
-        [DisplayName("Battle: Total Damage Number Dropshadow Color 1")]
-        public ConfigColor BtlGuiTotalDamageNumberDropshadowColor1 { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
-        */
+        public ConfigColor BtlGuiTotalDamageColor { get; set; } = new ConfigColor(0xFF, 0x38, 0x95, 0xFF);
 
         [DisplayName("Battle: Total Damage Number Dropshadow Color 2")]
         public ConfigColor BtlGuiTotalDamageNumberDropshadowColor2 { get; set; } = new ConfigColor(0x28, 0x02, 0x1B, 0xFF);
@@ -3168,6 +3161,17 @@ namespace p3rpc.femc.Configuration
         public ConfigColor BtlTheurgyArrows { get; set; } = new ConfigColor(0x00, 0xD6, 0xFF, 0xFF);
 
 
+        [DisplayName("Assist Message Box: SUPPORT font color")]
+        public ConfigColor MsgAssistSupportFontColor { get; set; } = new ConfigColor(0xEA, 0x17, 0x5D, 0xff);
+
+        [DisplayName("System Network Message: Network background icon")]
+        public ConfigColor MsgWindowSystemNetworkBgColor { get; set; } = new ConfigColor(0xC9, 0x00, 0x54, 0xff);
+
+        [DisplayName("Network: Daily Action Second Blue Background Color")]
+        public ConfigColor NetworkDailyActionSecondBlueBgColor { get; set; } = new ConfigColor(0x2E, 0x10, 0x1C, 0xE5);
+
+        [DisplayName("Social Stats: Musical Notes Background Color")]
+        public ConfigColor MusicNotesBgColor { get; set; } = new ConfigColor(0xFF, 0x1F, 0x75, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]

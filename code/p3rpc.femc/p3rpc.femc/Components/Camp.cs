@@ -1332,21 +1332,21 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"mov eax, 0x{rBitsDiff:X}", // Red interpolation
-                    "movd xmm1, eax",
-                    "mulss xmm1, xmm14",
-                    $"mov eax, 0x{rBits:X}",
-                    "movd xmm2, eax",
-                    "addss xmm1, xmm2",
-                    "cvttss2si eax, xmm1",
-
-                    $"mov ecx, 0x{gBitsDiff:X}", // Green interpolation
+                    $"mov ecx, 0x{rBitsDiff:X}", // Red interpolation
                     "movd xmm1, ecx",
                     "mulss xmm1, xmm14",
-                    $"mov ecx, 0x{gBits:X}",
+                    $"mov ecx, 0x{rBits:X}",
                     "movd xmm2, ecx",
                     "addss xmm1, xmm2",
                     "cvttss2si ecx, xmm1",
+
+                    $"mov edx, 0x{gBitsDiff:X}", // Green interpolation
+                    "movd xmm1, edx",
+                    "mulss xmm1, xmm14",
+                    $"mov edx, 0x{gBits:X}",
+                    "movd xmm2, edx",
+                    "addss xmm1, xmm2",
+                    "cvttss2si edx, xmm1",
 
                     $"mov r8d, 0x{bBitsDiff:X}", // Blue interpolation
                     "movd xmm1, r8d",
@@ -1372,21 +1372,21 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"mov eax, 0x{rBitsDiff:X}", // Red interpolation
-                    "movd xmm1, eax",
-                    "mulss xmm1, xmm14",
-                    $"mov eax, 0x{rBits:X}",
-                    "movd xmm2, eax",
-                    "addss xmm1, xmm2",
-                    "cvttss2si eax, xmm1",
-
-                    $"mov ecx, 0x{gBitsDiff:X}", // Green interpolation
+                    $"mov ecx, 0x{rBitsDiff:X}", // Red interpolation
                     "movd xmm1, ecx",
                     "mulss xmm1, xmm14",
-                    $"mov ecx, 0x{gBits:X}",
+                    $"mov ecx, 0x{rBits:X}",
                     "movd xmm2, ecx",
                     "addss xmm1, xmm2",
                     "cvttss2si ecx, xmm1",
+
+                    $"mov edx, 0x{gBitsDiff:X}", // Green interpolation
+                    "movd xmm1, edx",
+                    "mulss xmm1, xmm14",
+                    $"mov edx, 0x{gBits:X}",
+                    "movd xmm2, edx",
+                    "addss xmm1, xmm2",
+                    "cvttss2si edx, xmm1",
 
                     $"mov r8d, 0x{bBitsDiff:X}", // Blue interpolation
                     "movd xmm1, r8d",
@@ -1396,7 +1396,7 @@ namespace p3rpc.femc.Components
                     "addss xmm1, xmm2",
                     "cvttss2si r8d, xmm1",
                 };
-                _DrawQuestArrows1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+                _DrawQuestArrows2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
         }
         public override void Register()
