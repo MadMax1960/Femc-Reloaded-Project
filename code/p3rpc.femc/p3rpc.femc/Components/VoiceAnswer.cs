@@ -11,6 +11,7 @@ namespace p3rpc.femc.Components
     {
         private string AUIVoiceActionDraw_DrawDailyActionStickyNoteColors_SIG = "C7 44 24 ?? F0 E3 CD FF";
         private string AUIVoiceActionDraw_DrawBlueBoardColor_SIG = "C7 45 ?? C9 2F 00 FF E8 ?? ?? ?? ??";
+        private string AUIVoiceActionDraw_DrawBlueBoardColor2_SIG = "C7 45 ?? 2E 13 10 E5 C7 45 ?? 00 00 00 00";
         private string AUIVoiceActionDraw_DrawNetworkIconColor_SIG = "C7 45 ?? C9 2F 00 FF C7 45 ?? 00 00 00 00";
         private string AUIVoiceActionDraw_DrawNetworkIconSecondColor_SIG = "C7 45 ?? C9 2F 00 FF 74 ?? F3 0F 10 35 ?? ?? ?? ??";
         public unsafe VoiceAction(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
@@ -33,6 +34,10 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(AUIVoiceActionDraw_DrawBlueBoardColor_SIG, "AUIVoiceActionDraw::DrawBlueBoardColor", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.NetworkDailyActionBlueBgColor.ToU32ARGB())));
+            });
+            _context._utils.SigScan(AUIVoiceActionDraw_DrawBlueBoardColor2_SIG, "AUIVoiceActionDraw::DrawBlueBoardColor2", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.NetworkDailyActionSecondBlueBgColor.ToU32ARGB())));
             });
             _context._utils.SigScan(AUIVoiceActionDraw_DrawNetworkIconColor_SIG, "AUIVoiceActionDraw::DrawNetworkIconColor", _context._utils.GetDirectAddress, addr =>
             {

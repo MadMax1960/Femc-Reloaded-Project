@@ -20,6 +20,7 @@ namespace p3rpc.femc.Components
         private string UCmpHeroHumanStatusDraw_DrawStatUpRings_SIG = "44 88 64 24 ?? 0F 1F 84 ?? 00 00 00 00";
         private string UCmpHeroHumanStatusDraw_DrawStatUpMusicNote1_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 45 ?? 45 0F B6 C1 89 45 ?? B2 F6";
         private string UCmpHeroHumanStatusDraw_DrawStatUpMusicNote2_SIG = "E8 ?? ?? ?? ?? 41 B1 FF 89 85 ?? ?? ?? ?? 45 0F B6 C1 89 85 ?? ?? ?? ?? 41 0F B6 D1 41 0F B6 C9 E8 ?? ?? ?? ?? 41 B1 FF B2 F6";
+        private string UCmpHeroHumanStatusDraw_DrawStatUpMusicNoteBg_SIG = "E8 ?? ?? ?? ?? 89 87 ?? ?? ?? ?? 0F 57 C0";
         private string UCmpHeroHumanStatusDraw_DrawTriangleBG1_SIG = "C7 44 24 ?? FF 30 26 22";
         private string UCmpHeroHumanStatusDraw_DrawTriangleBG2_SIG = "C7 44 24 ?? 4C 30 26 22";
 
@@ -69,6 +70,19 @@ namespace p3rpc.femc.Components
                     $"mov r8b, ${_context._config.MusicNotesColor.B:X}",
                     $"mov dl, ${_context._config.MusicNotesColor.G:X}",
                     $"mov cl, ${_context._config.MusicNotesColor.R:X}"
+                };
+                _drawStatUpMusicNote2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UCmpHeroHumanStatusDraw_DrawStatUpMusicNoteBg_SIG, "UCmpHeroHumanStatusDraw::DrawStatUpMusicNoteBg", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    "jnz yellow_background",
+                    $"mov r8b, ${_context._config.MusicNotesBgColor.B:X}",
+                    $"mov dl, ${_context._config.MusicNotesBgColor.G:X}",
+                    $"mov cl, ${_context._config.MusicNotesBgColor.R:X}",
+                    "label yellow_background"
                 };
                 _drawStatUpMusicNote2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
