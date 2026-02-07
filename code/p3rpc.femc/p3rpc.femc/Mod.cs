@@ -173,6 +173,7 @@ namespace p3rpc.femc
                 HexEditing.Cmmu.Apply(_configuration, _context._modLocation);
                 HexEditing.Handwriting.Apply(_configuration, _context._modLocation);
                 HexEditing.Field.Apply(_configuration, _context._modLocation);
+                HexEditing.SocialStats.Apply(_configuration, _context._modLocation);
             }
 			catch (Exception ex)
 			{
