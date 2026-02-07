@@ -3157,7 +3157,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor BtlStupidCircleBehind { get; set; } = new ConfigColor(0xEC, 0x4F, 0x85, 0xFF);
 
 
-        [DisplayName("Battle: Stupid Circle")]
+        [DisplayName("Battle: Theurgy Arrows")]
         public ConfigColor BtlTheurgyArrows { get; set; } = new ConfigColor(0x00, 0xD6, 0xFF, 0xFF);
 
 
