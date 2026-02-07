@@ -703,6 +703,41 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteBlueprintIDEKColor(filePath, 0x37C2, config.DUISituationHelp4, order);
         }
 
+        private static void ApplyBtlStrategyInstruct(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Blueprints", "Battle", "GUI", "BP_BtlStrategyInstruct.uasset");
+
+            HexColorEditor.ColorOrder order = HexColorEditor.ColorOrder.BGR;
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1CA73, config.BtlStrategyInstructAccent, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1D00C, config.BtlStrategyInstructAccent, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1DA37, config.BtlStrategyInstructAccent, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x270B2, config.BtlStrategyInstructAccent, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x283B9, config.BtlStrategyInstructAccent, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2884A, config.BtlStrategyInstructAccent, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x319CE, config.BtlStrategyInstructAccent, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x397AF, config.BtlStrategyInstructAccent, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x1D5A5, config.BtlStrategyInstructColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x28CFA, config.BtlStrategyInstructColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x32277, config.BtlStrategyInstructColor1, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x32753, config.BtlStrategyInstructColor1, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2D0C3, config.BtlStrategyInstructColor2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2DA74, config.BtlStrategyInstructColor2, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2F354, config.BtlStrategyInstructColor2, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x3501B, config.BtlStrategyInstructColor3, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x35D72, config.BtlStrategyInstructColor3, order);
+
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2C205, config.BtlStrategyInstructColorHighlight, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x312E6, config.BtlStrategyInstructColorHighlight, order);
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x354DA, config.BtlStrategyInstructColorHighlight, order);
+
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyBPBtlSkillList(config, modDirectory);
@@ -728,6 +763,7 @@ namespace p3rpc.femc.HexEditing
             ApplyBPBtlTargetPanel(config, modDirectory);
             ApplyAdvantageMaterials(config, modDirectory);
             ApplyDUISituationHelp(config, modDirectory);
+            ApplyBtlStrategyInstruct(config, modDirectory);
         }
     }
 }
