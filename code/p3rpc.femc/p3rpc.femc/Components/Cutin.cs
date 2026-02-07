@@ -58,10 +58,13 @@ namespace p3rpc.femc.Components
 
         public unsafe void ACutinDraw_CutinDrawEmotionImpl(ACutInDraw* self, nint masker, int emotion)
         {
-            ConfigColor.SetColorIgnoreAlpha(ref self->EmotionGradientMain.ColorCornerTopLeft, _context._config.CutinEmotionGradient);
-            ConfigColor.SetColorIgnoreAlpha(ref self->EmotionGradientMain.ColorCornerTopRight, _context._config.CutinEmotionGradient);
-            ConfigColor.SetColorIgnoreAlpha(ref self->EmotionPlgTint.Color, _context._config.CutinEmotionTint);
-            ConfigColor.SetColorIgnoreAlpha(ref self->EmotionHighlight.color, _context._config.CutinEmotionGradient);
+            if (emotion == 1 || emotion == 3 || emotion == 6) // All emotion colors -> FF E1 41 B1 ?? 41 B0 F9
+            {
+                ConfigColor.SetColorIgnoreAlpha(ref self->EmotionGradientMain.ColorCornerTopLeft, _context._config.CutinEmotionGradient);
+                ConfigColor.SetColorIgnoreAlpha(ref self->EmotionGradientMain.ColorCornerTopRight, _context._config.CutinEmotionGradient);
+                ConfigColor.SetColorIgnoreAlpha(ref self->EmotionPlgTint.Color, _context._config.CutinEmotionTint);
+                ConfigColor.SetColorIgnoreAlpha(ref self->EmotionHighlight.color, _context._config.CutinEmotionGradient);
+            }
             _drawEmotion.OriginalFunction(self, masker, emotion);
         }
 
