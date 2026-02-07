@@ -644,10 +644,11 @@ namespace p3rpc.femc.HexEditing
 
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x137E8, config.BtlGuiDamageColor, order);
 
-
-            //HexColorEditor.WriteBlueprintSplitColor(filePath, 0x13B38, config.BtlGuiTotalDamageNumberDropshadowColor1, order);
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x13C0C, config.BtlGuiTotalDamageNumberDropshadowColor2, order);
-            //HexColorEditor.WriteBlueprintSplitColor(filePath, 0x168BD, config.BtlGuiTotalDamageColor, order);
+
+            HexColorEditor.WriteFloat(filePath, 0x45357, (float) config.BtlGuiTotalDamageColor.R / 255.0f); // Original color #00AEFF
+            HexColorEditor.WriteFloat(filePath, 0x45437, (float) config.BtlGuiTotalDamageColor.G / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0x45517, (float) config.BtlGuiTotalDamageColor.B / 255.0f);
         }
 
         private static void ApplyAdvantageMaterials(Config config, string modDirectory)

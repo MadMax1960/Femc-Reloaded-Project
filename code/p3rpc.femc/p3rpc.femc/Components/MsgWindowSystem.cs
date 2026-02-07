@@ -25,6 +25,8 @@ namespace p3rpc.femc.Components
         private string AtifMsgProgWindow_TUTRIALDraw_PictureBorder_SIG = "40 88 B4 24 ?? ?? ?? ?? E8 ?? ?? ?? ?? 44 89 F2";
         private string AtifMsgProgWindow_TUTRIALDraw_TitleFontColor_SIG = "E8 ?? ?? ?? ?? 44 8B 75 ?? 89 45";
 
+        private string AtifMsgProgWindow_NETWORKDraw_NetworkBgColor_SIG = "E8 ?? ?? ?? ?? 0F B6 86 ?? ?? ?? ?? 41 B1 05 88 44 24 ?? 41 B0 04 44 88 74 24";
+
         private UICommon _uiCommon;
         private IHook<AitfMsgProgWindow_TUTRIALDraw_Update> _update;
         private IAsmHook _drawInfoTextColor;
@@ -32,6 +34,7 @@ namespace p3rpc.femc.Components
         private IAsmHook _drawGekkoukanEmblem;
         private IAsmHook _drawPictureBorder;
         private IAsmHook _drawTitleFontColor;
+        private IAsmHook _drawNetworkBgColor;
         //private IReverseWrapper<AitfMsgProgWindow_TUTRIALDraw_SetElementColor> _drawInfoTextColorWrapper;
         //private IReverseWrapper<AitfMsgProgWindow_TUTRIALDraw_SetElementColor> _drawBottomRightColorWrapper;
         public unsafe MsgWindowSystem(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
@@ -87,6 +90,18 @@ namespace p3rpc.femc.Components
                     $"mov cl, ${_context._config.MsgSimpleSystemTutorialTitleFontColor.R:X}"
                 };
                 _drawTitleFontColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+
+            _context._utils.SigScan(AtifMsgProgWindow_NETWORKDraw_NetworkBgColor_SIG, "AtifMsgProgWindow_NETWORKDraw::NetworkBgColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x80], 0x{_context._config.MsgWindowSystemNetworkBgColor.B:X}",
+                    $"mov byte [rbp - 0x7f], 0x{_context._config.MsgWindowSystemNetworkBgColor.G:X}",
+                    $"mov byte [rbp - 0x7e], 0x{_context._config.MsgWindowSystemNetworkBgColor.R:X}",
+                };
+                _drawNetworkBgColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
         }
         public override void Register()
