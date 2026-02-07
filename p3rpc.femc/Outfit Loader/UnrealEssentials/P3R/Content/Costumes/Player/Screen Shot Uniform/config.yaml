@@ -11,3 +11,5 @@ hair:
 
 face:
   mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Face.uasset
+
+battle_physics: true
