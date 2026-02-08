@@ -203,8 +203,8 @@ namespace p3rpc.femc.Configuration
         [Description("The photos taken during the Kyoto trip.")]
         [Category("2D Options")]
         [Display(Order = 8)]
-        [DefaultValue(KyotoEventtype.ely)]
-        public KyotoEventtype KyotoEventTrue { get; set; } = KyotoEventtype.ely;
+        [DefaultValue(KyotoEventtype.mekki)]
+        public KyotoEventtype KyotoEventTrue { get; set; } = KyotoEventtype.mekki;
 
         public enum KyotoEventtype
         {
