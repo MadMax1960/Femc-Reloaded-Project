@@ -2610,10 +2610,10 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CampConfigPlistHeadColor { get; set; } = new ConfigColor(0xE2, 0x41, 0x89, 0xFF);
 
         [DisplayName("Camp Equip: Unavailable Party Member Color")]
-        public ConfigColor EquipPMUnavailableColor { get; set; } = new ConfigColor(0xB6, 0x3F, 0x68, 0xff);
+        public ConfigColor EquipPMUnavailableColor { get; set; } = new ConfigColor(0x63, 0x27, 0x3E, 0xFF);
 
         [DisplayName("Camp Equip: Unavailable Party Member Parallelogram")]
-        public ConfigColor EquipPMUnavailableParallelogram { get; set; } = new ConfigColor(0xB6, 0x3F, 0x68, 0xFF);
+        public ConfigColor EquipPMUnavailableParallelogram { get; set; } = new ConfigColor(0x63, 0x27, 0x3E, 0xFF);
 
         [DisplayName("Camp Root: Main camp menu highlighted color 1")]
         public ConfigColor CampRootHighlightedColor1 { get; set; } = new ConfigColor(0x00, 0xF9, 0xFF, 0xFF);
