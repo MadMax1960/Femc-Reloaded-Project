@@ -3173,6 +3173,24 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Social Stats: Musical Notes Background Color")]
         public ConfigColor MusicNotesBgColor { get; set; } = new ConfigColor(0xFF, 0x1F, 0x75, 0xFF);
 
+        [DisplayName("Battle: Strategy Instruct")]
+        public ConfigColor BtlStrategyInstructAccent { get; set; } = new ConfigColor(0xFF, 0xD3, 0x99, 0xFF);
+
+        [DisplayName("Battle: Strategy Instruct Color 1")]
+        public ConfigColor BtlStrategyInstructColor1 { get; set; } = new ConfigColor(0xB3, 0x18, 0x51, 0xFF);
+
+        [DisplayName("Battle: Strategy Instruct Color 2")]
+        public ConfigColor BtlStrategyInstructColor2 { get; set; } = new ConfigColor(0xB3, 0x18, 0x51, 0xFF);
+
+        [DisplayName("Battle: Strategy Instruct Color 3")]
+        public ConfigColor BtlStrategyInstructColor3 { get; set; } = new ConfigColor(0x66, 0x05, 0x39, 0xFF);
+
+        [DisplayName("Battle: Strategy Instruct Color Highlight")]
+        public ConfigColor BtlStrategyInstructColorHighlight { get; set; } = new ConfigColor(0x00, 0xC2, 0xFF, 0xFF);
+
+        [DisplayName("Social Stats: Musical Notes Background Color")]
+        public ConfigColor SocialStatsParticlesColor { get; set; } = new ConfigColor(0xFF, 0x36, 0x83, 0xFF);
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
