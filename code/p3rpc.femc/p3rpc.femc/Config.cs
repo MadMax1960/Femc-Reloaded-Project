@@ -512,7 +512,7 @@ namespace p3rpc.femc.Configuration
         [Description("Enable A Way Of Life -Reload- (Vocal Version) by MOSQ as the daytime music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 71)]
         [DefaultValue(true)]
-        public bool WayOfLife { get; set; } = false;
+        public bool WayOfLife { get; set; } = true;
 
         [DisplayName("A Way of Life cover by Jen")]
         [Category("Daytime Music")]
@@ -525,7 +525,7 @@ namespace p3rpc.femc.Configuration
         [Category("Daytime Music")]
         [Description("Enable A Way Of Life -Reload- (Vocal Version) by Super M Plush, MOSQ, Karma and cora\nas the daytime music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 73)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool WayLifeVocal { get; set; } = true;
 
         [DisplayName("A Way Of Life (P3P)")]
@@ -553,7 +553,7 @@ namespace p3rpc.femc.Configuration
         [Category("Daytime Music")]
         [Description("Enable When the Moon's Reaching Out Stars -Reload-, which is used by default for daytime music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 77)]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool Moon { get; set; } = true;
 
         [DisplayName("A Way of Life (Restless Artist)")]
@@ -561,7 +561,7 @@ namespace p3rpc.femc.Configuration
         [Description("Enable A Way of Life (Restless Artist).\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 78)]
         [DefaultValue(false)]
-        public bool RestlessWayofLife { get; set; } = true;
+        public bool RestlessWayofLife { get; set; } = false;
 
         //  School Music - 1st semester
 
@@ -569,15 +569,15 @@ namespace p3rpc.femc.Configuration
         [Category("School Music (1st semester)")]
         [Description("Enable Time (Reload Arrange) by MOSQ as the 1st semester school music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 80)]
-        [DefaultValue(false)]
-        public bool TimeSchool { get; set; } = false;
+        [DefaultValue(true)]
+        public bool TimeSchool { get; set; } = true;
 
         [DisplayName("Time -Reload- (Vocal Version) by GabiShy and MOSQ")]
         [Category("School Music (1st semester)")]
         [Description("Enable Time -Reload- (Vocal Version) by GabiShy and MOSQ as the 1st\nsemester school music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 81)]
-        [DefaultValue(true)]
-        public bool GabiTimeSchool { get; set; } = true;
+        [DefaultValue(false)]
+        public bool GabiTimeSchool { get; set; } = false;
 
         [DisplayName("Time (P3P)")]
         [Category("School Music (1st semester)")]
@@ -634,10 +634,10 @@ namespace p3rpc.femc.Configuration
 
 		[DisplayName("Time (Night Version) by MOSQ")]
 		[Category("Night Music")]
-        [Description("Enable Time (Night Version) by Mineformer as the night music.\nMultiple songs can be chosen for randomization!")]
+        [Description("Enable Time (Night Version) by Mosq as the night music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 100)]
-        [DefaultValue(false)]
-		public bool FemNight { get; set; } = false;
+        [DefaultValue(true)]
+		public bool FemNight { get; set; } = true;
 
 		[DisplayName("Time -Night- Vocal Version by GabiShy and MOSQ")]
         [Category("Night Music")]
@@ -664,8 +664,8 @@ namespace p3rpc.femc.Configuration
         [Category("Night Music")]
         [Description("Enable Moonlight by MOSQ as the night music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 106)]
-        [DefaultValue(false)]
-        public bool EsaComm { get; set; } = false;
+        [DefaultValue(true)]
+        public bool EsaComm { get; set; } = true;
 
         [DisplayName("Color Your Night")]
         [Category("Night Music")]
@@ -712,20 +712,20 @@ namespace p3rpc.femc.Configuration
         [Description("Decorate your dorm room with FEMC artwork made by the community!")]
         [Display(Order = 120)]
         [DefaultValue(false)]
-        public bool KotoneRoom { get; set; } = false;
+        public bool KotoneRoom { get; set; } = true;
 
         [DisplayName("Gregory House Apron")]
         [Category("Fun Stuff")]
         [Display(Order = 121)]
         [DefaultValue(false)]
-        public bool GregoryHouseRatPoisonDeliverySystem { get; set; } = false;
+        public bool GregoryHouseRatPoisonDeliverySystem { get; set; } = true;
 
         [DisplayName("Otome Arcade Game")]
         [Description("Changes the arcade game that raises charm to be gender swapped.")]
         [Category("Fun Stuff")]
         [Display(Order = 122)]
         [DefaultValue(false)]
-        public bool OtomeArcade { get; set; } = false;
+        public bool OtomeArcade { get; set; } = true;
 
         // Theo
 
@@ -734,20 +734,20 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Theodore to replace Elizabeth as FEMC's Velvet Room attendant.")]
         [Display(Order = 123)]
         [DefaultValue(false)]
-        public bool TheodorefromAlvinandTheChipmunks { get; set; } = false; // soon this should be a whole thing, movies, bustups, etc 
+        public bool TheodorefromAlvinandTheChipmunks { get; set; } = true; // soon this should be a whole thing, movies, bustups, etc 
 
         [DisplayName("Deck Compatibility Switch")]
         [Category("Testing")]
         [Description("Test option to disable some ui components that seem to be unstable on Linux. Please help us test this my windows 11 refugees.")]
         [DefaultValue(false)]
-        public bool DeckCompatibilitySwitch { get; set; } = false;
+        public bool DeckCompatibilitySwitch { get; set; } = true;
 
         // Dorm Swap
 
         [DisplayName("Test Dorm Room Swap and Current Edited Events")]
         [Category("Testing")]
         [Description("This enables the dorm room swap as well as all the CURRENT edited events")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool TesticlesEventsDorm { get; set; } = true; // yeah
 
 
@@ -1228,7 +1228,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Location Select Background Color")]
         [Category("UI Colors")]
         [Display(Order = 261)]
-        public ConfigColor LocationSelectBgColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x9F, 0xFF);
+        public ConfigColor LocationSelectBgColor { get; set; } = new ConfigColor(0x95, 0x21, 0x52, 0xFF);
 
         [DisplayName("Location Select Marker Color")]
         [Category("UI Colors")]
@@ -2505,7 +2505,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor StatusDetailMainBackground { get; set; } = new ConfigColor(0x46, 0x3D, 0x40, 0xFF);
 
         [DisplayName("Social Link: Check Social Link status when in field strip color")]
-        public ConfigColor CmmuStatusStrip { get; set; } = new ConfigColor(0x9F, 0x00, 0x4B, 0xFF);
+        public ConfigColor CmmuStatusStrip { get; set; } = new ConfigColor(0x99, 0x1B, 0x88, 0xFF);
 
         [DisplayName("Camp: Status detail character shard BG shard gradation")]
         public ConfigColor StatusDetailBigShard { get; set; } = new ConfigColor(0x87, 0x6F, 0x7B, 0xFF);
@@ -2610,10 +2610,10 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CampConfigPlistHeadColor { get; set; } = new ConfigColor(0xE2, 0x41, 0x89, 0xFF);
 
         [DisplayName("Camp Equip: Unavailable Party Member Color")]
-        public ConfigColor EquipPMUnavailableColor { get; set; } = new ConfigColor(0xB6, 0x3F, 0x68, 0xff);
+        public ConfigColor EquipPMUnavailableColor { get; set; } = new ConfigColor(0x63, 0x27, 0x3E, 0xFF);
 
         [DisplayName("Camp Equip: Unavailable Party Member Parallelogram")]
-        public ConfigColor EquipPMUnavailableParallelogram { get; set; } = new ConfigColor(0xB6, 0x3F, 0x68, 0xFF);
+        public ConfigColor EquipPMUnavailableParallelogram { get; set; } = new ConfigColor(0x63, 0x27, 0x3E, 0xFF);
 
         [DisplayName("Camp Root: Main camp menu highlighted color 1")]
         public ConfigColor CampRootHighlightedColor1 { get; set; } = new ConfigColor(0x00, 0xF9, 0xFF, 0xFF);
