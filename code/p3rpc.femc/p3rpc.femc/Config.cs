@@ -1228,7 +1228,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Location Select Background Color")]
         [Category("UI Colors")]
         [Display(Order = 261)]
-        public ConfigColor LocationSelectBgColor { get; set; } = new ConfigColor(0xFF, 0x58, 0x9F, 0xFF);
+        public ConfigColor LocationSelectBgColor { get; set; } = new ConfigColor(0x95, 0x21, 0x52, 0xFF);
 
         [DisplayName("Location Select Marker Color")]
         [Category("UI Colors")]
