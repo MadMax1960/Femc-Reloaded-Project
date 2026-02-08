@@ -560,7 +560,7 @@ namespace p3rpc.femc.Configuration
         [Category("Daytime Music")]
         [Description("Enable A Way of Life (Restless Artist).\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 78)]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool RestlessWayofLife { get; set; } = true;
 
         //  School Music - 1st semester
