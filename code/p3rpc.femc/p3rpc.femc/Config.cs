@@ -2505,7 +2505,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor StatusDetailMainBackground { get; set; } = new ConfigColor(0x46, 0x3D, 0x40, 0xFF);
 
         [DisplayName("Social Link: Check Social Link status when in field strip color")]
-        public ConfigColor CmmuStatusStrip { get; set; } = new ConfigColor(0x9F, 0x00, 0x4B, 0xFF);
+        public ConfigColor CmmuStatusStrip { get; set; } = new ConfigColor(0x99, 0x1B, 0x88, 0xFF);
 
         [DisplayName("Camp: Status detail character shard BG shard gradation")]
         public ConfigColor StatusDetailBigShard { get; set; } = new ConfigColor(0x87, 0x6F, 0x7B, 0xFF);
