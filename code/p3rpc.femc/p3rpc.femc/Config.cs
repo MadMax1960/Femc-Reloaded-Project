@@ -357,7 +357,7 @@ namespace p3rpc.femc.Configuration
 		[Description("Enable Pull The Trigger (P3P Arrange) as advantage battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 30)]
 		[DefaultValue(false)]
-		public bool KarmaAdv { get; set; } = true;
+		public bool KarmaAdv { get; set; } = false;
 
 		[DisplayName("Pull the Trigger -reload- by MOSQ")]
         [Category("Battle Music - Advantage")]
@@ -371,14 +371,14 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Pull The Trigger -reload- by EidieK87 as advantage battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 32)]
 		[DefaultValue(false)]
-		public bool EidAdv { get; set; } = true;
+		public bool EidAdv { get; set; } = false;
 
         [DisplayName("It's Going Down Now")]
         [Category("Battle Music - Advantage")]
         [Description("Enable It's Going Down Now, which is used by default for advantage battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 33)]
         [DefaultValue(false)]
-        public bool ItGoingDown { get; set; } = true;
+        public bool ItGoingDown { get; set; } = false;
 
         //  Battle Music - Normal
 
@@ -394,49 +394,49 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Wiping All Out -RELOADED- by Karma as normal battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 41)]
 		[DefaultValue(false)]
-		public bool KarmaNom { get; set; } = true;
+		public bool KarmaNom { get; set; } = false;
 
 		[DisplayName("Wiping All Out cover by Satella")]
         [Category("Battle Music - Normal")]
         [Description("Enable Wiping All Out by Satella and GillStudio as normal battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 42)]
 		[DefaultValue(false)]
-		public bool SgNom { get; set; } = true;
+		public bool SgNom { get; set; } = false;
 
         [DisplayName("Wiping All Out (P3P)")]
         [Category("Battle Music - Normal")]
         [Description("Enable the original Wiping All Out from P3P as normal battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 43)]
         [DefaultValue(false)]
-        public bool P3PNom { get; set; } = true;
+        public bool P3PNom { get; set; } = false;
 
         [DisplayName("Wiping All Out ATLUS Kozuka Remix")]
         [Category("Battle Music - Normal")]
         [Description("Enable Wiping All Out ATLUS Kozuka Remix from P3D as normal battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 44)]
         [DefaultValue(false)]
-        public bool P3MidNomF { get; set; } = true;
+        public bool P3MidNomF { get; set; } = false;
 
         [DisplayName("Wiping All Out by EidieK87")]
         [Category("Battle Music - Normal")]
         [Description("Enable Wiping All Out by by EidieK87 as normal battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 45)]
         [DefaultValue(false)]
-        public bool EidNom { get; set; } = true;
+        public bool EidNom { get; set; } = false;
 
         [DisplayName("Wiping All Out Remix by Restless Artist")]
         [Category("Battle Music - Normal")]
         [Description("Enable Wiping All Out Remix by Restless Artist as advantage battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 32)]
         [DefaultValue(false)]
-        public bool RestlessNom { get; set; } = true;
+        public bool RestlessNom { get; set; } = false;
 
         [DisplayName("Mass Destruction -Reload-")]
         [Category("Battle Music - Normal")]
         [Description("Enable Mass Destruction -Reload-, which is used by default for normal battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 46)]
         [DefaultValue(false)]
-        public bool MassDes { get; set; } = true;
+        public bool MassDes { get; set; } = false;
 
         //  Tartarus Boss Music
 
@@ -445,21 +445,21 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Danger Zone by GillStudio as Tartarus boss battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 50)]
 		[DefaultValue(false)]
-		public bool SgDis { get; set; } = true;
+		public bool SgDis { get; set; } = false;
 
         [DisplayName("Danger Zone remix by EidieK87")]
         [Category("Tartarus Boss Music")]
         [Description("Enable Danger Zone by EidieK87 as Tartarus boss battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 51)]
         [DefaultValue(false)]
-        public bool EidDis { get; set; } = true;
+        public bool EidDis { get; set; } = false;
 
         [DisplayName("Danger Zone -Reloaded- by Karma")]
         [Category("Tartarus Boss Music")]
         [Description("Enable Danger Zone -Reloaded- by Karma as Tartarus boss battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 52)]
 		[DefaultValue(false)]
-		public bool KarmaDis { get; set; } = true;
+		public bool KarmaDis { get; set; } = false;
 
 		[DisplayName("Danger Zone (Reload Arrange) by MOSQ")]
         [Category("Tartarus Boss Music")]
@@ -473,21 +473,21 @@ namespace p3rpc.femc.Configuration
         [Description("Enable the original Danger Zone from P3P as Tartarus boss battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 54)]
         [DefaultValue(false)]
-        public bool P3PDis { get; set; } = true;
+        public bool P3PDis { get; set; } = false;
 
         [DisplayName("Restless Artist Danger Zone")]
         [Category("Tartarus Boss Music")]
         [Description("Enable Restless Artist's Danger Zone Tartarus boss battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 54)]
         [DefaultValue(false)]
-        public bool RestlessDis { get; set; } = true;
+        public bool RestlessDis { get; set; } = false;
 
         [DisplayName("Master of Tartarus -Reload-")]
         [Category("Tartarus Boss Music")]
         [Description("Enable Master of Tartarus -Reload-, which is used by default for Tartarus boss battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 55)]
         [DefaultValue(false)]
-        public bool MasterTar { get; set; } = true;
+        public bool MasterTar { get; set; } = false;
 
         //  Special Boss Music
 
@@ -503,7 +503,7 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Soul Phrase -last battle- by Karma as the Nyx boss battle music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 63)]
         [DefaultValue(false)]
-        public bool SoulPK { get; set; } = true;
+        public bool SoulPK { get; set; } = false;
 
         //  Overworld Music
 
@@ -519,7 +519,7 @@ namespace p3rpc.femc.Configuration
         [Description("Enable A Way Of Life by Jen as the daytime music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 72)]
         [DefaultValue(false)]
-        public bool WayOfLifeJen { get; set; } = true;
+        public bool WayOfLifeJen { get; set; } = false;
 
         [DisplayName("A Way of Life -Reload- (Vocal Version) by Super M Plush, MOSQ, Karma, cora")]
         [Category("Daytime Music")]
@@ -533,21 +533,21 @@ namespace p3rpc.femc.Configuration
         [Description("Enable the original A Way Of Life from P3P as the daytime music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 74)]
         [DefaultValue(false)]
-        public bool WayOfLifeP3P { get; set; } = true;
+        public bool WayOfLifeP3P { get; set; } = false;
 
         [DisplayName("A Way Of Life -Deep inside my mind Remix-")]
         [Category("Daytime Music")]
         [Description("Enable A Way Of Life -Deep inside my mind Remix- from P3P as the daytime music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 75)]
         [DefaultValue(false)]
-        public bool WayOfLifeRemix { get; set; } = true;
+        public bool WayOfLifeRemix { get; set; } = false;
 
         [DisplayName("A Way Of Life ATLUS Kitajoh Remix")]
         [Category("Daytime Music")]
         [Description("Enable A Way Of Life ATLUS Kitajoh Remix from P3D as the daytime music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 76)]
         [DefaultValue(false)]
-        public bool WayOfLifeP3D { get; set; } = true;
+        public bool WayOfLifeP3D { get; set; } = false;
 
         [DisplayName("When the Moon's Reaching Out Stars -Reload-")]
         [Category("Daytime Music")]
@@ -561,7 +561,7 @@ namespace p3rpc.femc.Configuration
         [Description("Enable A Way of Life (Restless Artist).\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 78)]
         [DefaultValue(false)]
-        public bool RestlessWayofLife { get; set; } = true;
+        public bool RestlessWayofLife { get; set; } = false;
 
         //  School Music - 1st semester
 
@@ -577,28 +577,28 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Time -Reload- (Vocal Version) by GabiShy and MOSQ as the 1st\nsemester school music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 81)]
         [DefaultValue(false)]
-        public bool GabiTimeSchool { get; set; } = true;
+        public bool GabiTimeSchool { get; set; } = false;
 
         [DisplayName("Time (P3P)")]
         [Category("School Music (1st semester)")]
         [Description("Enable the original Time from P3P as the 1st semester school music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 82)]
         [DefaultValue(false)]
-        public bool TimeSchoolP3P { get; set; } = true;
+        public bool TimeSchoolP3P { get; set; } = false;
 
         [DisplayName("Time ATLUS Kitajoh Remix")]
         [Category("School Music (1st semester)")]
         [Description("Enable Time ATLUS Kitajoh Remix from P3D as the 1st semester school music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 83)]
         [DefaultValue(false)]
-        public bool TimeSchoolP3D { get; set; } = true;
+        public bool TimeSchoolP3D { get; set; } = false;
 
         [DisplayName("Want To Be Close -Reload-")]
         [Category("School Music (1st semester)")]
         [Description("Enable Want To Be Close -Reload-, which is used by default for  1st semester school music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 84)]
         [DefaultValue(false)]
-        public bool WantClose { get; set; } = true;
+        public bool WantClose { get; set; } = false;
 
         //  School Music - 2nd semester
 
@@ -614,21 +614,21 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Sun -Reload- by Mineformer as the 2nd semester school music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 91)]
         [DefaultValue(false)]
-        public bool SunMForm { get; set; } = true;
+        public bool SunMForm { get; set; } = false;
 
         [DisplayName("Sun (P3P)")]
         [Category("School Music (2nd semester)")]
         [Description("Enable the original Sun from P3P as the 1st semester school music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 92)]
         [DefaultValue(false)]
-        public bool SunP3P { get; set; } = true;
+        public bool SunP3P { get; set; } = false;
 
         [DisplayName("Changing Seasons -Reload-")]
         [Category("School Music (2nd semester)")]
         [Description("Enable Changing Seasons -Reload-, which is used by default for 1st semester school music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 93)]
         [DefaultValue(false)]
-        public bool Seasons { get; set; } = true;
+        public bool Seasons { get; set; } = false;
 
         //  Night Music
 
@@ -644,14 +644,14 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Time -Night- Vocal Version by GabiShy and MOSQ as the night music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 101)]
         [DefaultValue(false)]
-		public bool GabiFemNight { get; set; } = true;
+		public bool GabiFemNight { get; set; } = false;
 
         [DisplayName("Midnight Reverie by Mineformer")]
         [Category("Night Music")]
         [Description("Enable Midnight Reverie by Mineformer as the night music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 102)]
         [DefaultValue(false)]
-        public bool MidNight { get; set; } = true;
+        public bool MidNight { get; set; } = false;
 
         [DisplayName("Night Wanderer by MOSQ")]
         [Category("Night Music")]
@@ -672,7 +672,7 @@ namespace p3rpc.femc.Configuration
         [Description("Enable Color Your Night, the default night music.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 104)]
         [DefaultValue(false)]
-        public bool ColNight { get; set; } = true;
+        public bool ColNight { get; set; } = false;
 
         //  Event Music
 
@@ -688,14 +688,14 @@ namespace p3rpc.femc.Configuration
         [Description("Enable the original After School to be played during social link events.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 111)]
         [DefaultValue(false)]
-        public bool AfterSchoolP3P { get; set; } = true;
+        public bool AfterSchoolP3P { get; set; } = false;
 
         [DisplayName("Social Link Events 1: Joy")]
         [Category("Event Music")]
         [Description("Enable Joy, which is used by default for social link events.\nMultiple songs can be chosen for randomization!")]
         [Display(Order = 112)]
         [DefaultValue(false)]
-        public bool Joy { get; set; } = true;
+        public bool Joy { get; set; } = false;
 
         // Commented out for now but whenever new social link music is added, uncomment this (and change the file/folder names accordingly too)
         //[DisplayName("Social Link Events: Tender Feelings")]
