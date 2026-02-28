@@ -3191,6 +3191,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Social Stats: Musical Notes Background Color")]
         public ConfigColor SocialStatsParticlesColor { get; set; } = new ConfigColor(0xFF, 0x36, 0x83, 0xFF);
 
+        [DisplayName("Persona Status: Persona Stats Padding Color")]
+        public ConfigColor PersonaStatusStatsPaddingColor { get; set; } = new ConfigColor(0xF0, 0x75, 0xA5, 0xFF);
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
