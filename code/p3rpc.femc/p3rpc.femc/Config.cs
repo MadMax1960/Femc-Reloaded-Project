@@ -160,7 +160,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "WoodWhite")]
         woodwhite,
         [Display(Name = "Milky")]
-        Milky
+        Milky,
+        [Display(Name = "Makomeri")]
+        makomeri
         }
 
         [DisplayName("Cutin")]
