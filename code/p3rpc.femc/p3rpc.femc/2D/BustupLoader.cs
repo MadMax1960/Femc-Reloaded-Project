@@ -12,7 +12,7 @@ namespace p3rpc.femc
 			// Each condition corresponds to a different bustup folder.
 			if (configuration.BustupTrue == BustupType.Adrien)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Adrien"));
-            else if (configuration.BustupTrue == BustupType.Neptune)
+            else if (configuration.BustupTrue == BustupType.Adrien)
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Neptune"));
             else if (configuration.BustupTrue == BustupType.Ely)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Ely"));
