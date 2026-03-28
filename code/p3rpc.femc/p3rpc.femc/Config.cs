@@ -82,11 +82,13 @@ namespace p3rpc.femc.Configuration
         [Description("The character portrait used in textboxes.")]
         [Category("2D Options")]
         [Display(Order = 5)]
-        [DefaultValue(BustupType.Esa)]
-        public BustupType BustupTrue { get; set; } = BustupType.Esa;
+        [DefaultValue(BustupType.Adrien)]
+        public BustupType BustupTrue { get; set; } = BustupType.Adrien;
 
         public enum BustupType
         {
+        [Display(Name = "Adrien")]
+        Adrien,
         [Display(Name = "Neptune")]
         Neptune,
         [Display(Name = "Ely")]
