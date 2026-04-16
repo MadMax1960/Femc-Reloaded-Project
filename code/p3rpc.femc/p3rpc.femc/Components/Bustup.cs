@@ -1,24 +1,29 @@
 ﻿using p3rpc.commonmodutils;
 using p3rpc.nativetypes.Interfaces;
 using Reloaded.Hooks.Definitions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace p3rpc.femc.Components
 {
     public class Bustup : ModuleBase<FemcContext>
     {
-        private string UBustupObject_SetBustupShadowColor_SIG = "40 53 48 83 EC 30 F3 0F 10 05 ?? ?? ?? ?? 48 89 CB";
-        private string UBustupDraw_DrawBustup_SIG = "40 57 48 83 EC 60 48 8B F9 E8 ?? ?? ?? ?? 48 8B C8";
-        private string UBustupObject_DrawBustupShadow_SIG = "48 89 E0 53 48 81 EC C0 00 00 00";
+        private MultiSignature UBustupObject_SetBustupShadowColor_MS;
+        private string[] UBustupObject_SetBustupShadowColor_SIG = [
+            "40 53 48 83 EC 30 F3 0F 10 05 ?? ?? ?? ?? 48 89 CB",
+            "40 53 48 83 EC 30 F3 0F 10 05 ?? ?? ?? ?? 48 8B D9 F3 0F 10 1D ?? ?? ?? ??"
+        ];
+        private MultiSignature UBustupObject_DrawBustupShadow_MS;
+        private string[] UBustupObject_DrawBustupShadow_SIG = [
+            "48 89 E0 53 48 81 EC C0 00 00 00",
+            "48 8B C4 53 48 81 EC C0 00 00 00 F6 81 ?? ?? ?? ?? 01"
+        ];
         private string UBustupDraw_DrawBustupBottomLeftTriangle_SIG = "48 8B C4 48 81 EC C8 00 00 00 0F 29 78 ??";
-        private string UBustupObject_DrawBustupMain_SIG = "48 89 E0 57 48 81 EC C0 00 00 00";
+        private MultiSignature UBustupObject_DrawBustupMain_MS;
+        private string[] UBustupObject_DrawBustupMain_SIG = [
+            "48 89 E0 57 48 81 EC C0 00 00 00",
+            "48 8B C4 57 48 81 EC C0 00 00 00 F6 81 ?? ?? ?? ?? 01"
+        ];
 
         private UBustupObject_SetBustupShadowColor _setBustupShadowColor;
-        public IHook<UBustupDraw_DrawBustup> _drawBustup;
         public IHook<UBustupObject_DrawBustupShadow> _drawBustupShadow;
         public IHook<UBustupDraw_DrawBustupBottomLeftTriangle> _drawBustupBottomLeft;
         public UBustupObject_DrawBustupMain _drawBustupMain;
@@ -26,25 +31,30 @@ namespace p3rpc.femc.Components
         private UICommon _uiCommon;
         public unsafe Bustup(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
-            _context._utils.SigScan(UBustupObject_SetBustupShadowColor_SIG, "UBustupObject::SetBustupShadowColor", _context._utils.GetDirectAddress, addr => _setBustupShadowColor = _context._utils.MakeWrapper<UBustupObject_SetBustupShadowColor>(addr));
-            _context._utils.SigScan(UBustupObject_DrawBustupShadow_SIG, "UBustupObject::DrawBustupShadow", _context._utils.GetDirectAddress, addr => _drawBustupShadow = _context._utils.MakeHooker<UBustupObject_DrawBustupShadow>(UBustupObject_DrawBustupShadowImpl, addr));
-            _context._utils.SigScan(UBustupDraw_DrawBustupBottomLeftTriangle_SIG, "UBustupDraw::DrawBustupBottomLeftTriangle", _context._utils.GetDirectAddress, addr => _drawBustupBottomLeft = _context._utils.MakeHooker<UBustupDraw_DrawBustupBottomLeftTriangle>(UBustupDraw_DrawBustupBottomLeftTriangleImpl, addr));
-            _context._utils.SigScan(UBustupObject_DrawBustupMain_SIG, "UBustupDraw::DrawBustupMain", _context._utils.GetDirectAddress, addr => _drawBustupMain = _context._utils.MakeWrapper<UBustupObject_DrawBustupMain>(addr));
+            UBustupObject_SetBustupShadowColor_MS = new ();
+            _context._utils.MultiSigScan(UBustupObject_SetBustupShadowColor_SIG,
+                "UBustupObject::SetBustupShadowColor", _context._utils.GetDirectAddress,
+                addr => _setBustupShadowColor = _context._utils.MakeWrapper<UBustupObject_SetBustupShadowColor>(addr),
+                UBustupObject_SetBustupShadowColor_MS
+            );
+            UBustupObject_DrawBustupShadow_MS = new ();
+            _context._utils.MultiSigScan(UBustupObject_DrawBustupShadow_SIG,
+                "UBustupObject::DrawBustupShadow", _context._utils.GetDirectAddress,
+                addr => _drawBustupShadow = _context._utils.MakeHooker<UBustupObject_DrawBustupShadow>(UBustupObject_DrawBustupShadowImpl, addr),
+                UBustupObject_DrawBustupShadow_MS
+            );
+            _context._utils.SigScan(UBustupDraw_DrawBustupBottomLeftTriangle_SIG, "UBustupDraw::DrawBustupBottomLeftTriangle", _context._utils.GetDirectAddress, 
+                addr => _drawBustupBottomLeft = _context._utils.MakeHooker<UBustupDraw_DrawBustupBottomLeftTriangle>(UBustupDraw_DrawBustupBottomLeftTriangleImpl, addr));
+            UBustupObject_DrawBustupMain_MS = new ();
+            _context._utils.MultiSigScan(UBustupObject_DrawBustupMain_SIG,
+                "UBustupObject::DrawBustupMain", _context._utils.GetDirectAddress,
+                addr => _drawBustupMain = _context._utils.MakeWrapper<UBustupObject_DrawBustupMain>(addr),
+                UBustupObject_DrawBustupMain_MS
+            );
         }
 
-        public override void Register()
-        {
-            _uiCommon = GetModule<UICommon>();
-        }
-
-        public unsafe void UBustupDraw_DrawBustupImpl(UBustupDraw* self)
-        {
-            if (self->BustupObject_ != null)
-            {
-                _setBustupShadowColor(self->BustupObject_, 0xff, 0x0, 0x0);
-            }
-            _drawBustup.OriginalFunction(self);
-        }
+        public override void Register() => _uiCommon = GetModule<UICommon>();
+        
         public unsafe void UBustupObject_DrawBustupShadowImpl(UBustupObject* self, float x, float y, float a4, uint a5, float a6)
         {
             if ((self->FieldB0 & 1) != 0 && a4 > 0)
@@ -55,7 +65,7 @@ namespace p3rpc.femc.Components
             _drawBustupShadow.OriginalFunction(self, x, y, a4, a5, a6);
         }
 
-        public unsafe void UBustupDraw_DrawBustupBottomLeftTriangleImpl(nint a1, float offsetX, float offsetY, float rotY, float alpha, uint queueId)
+        public unsafe void UBustupDraw_DrawBustupBottomLeftTriangleImpl(UBustupDraw* self, float offsetX, float offsetY, float rotY, float alpha, uint queueId)
         {
             var uiResources = _uiCommon._globalWorkGetUIResources();
             if (uiResources != null)
@@ -77,9 +87,8 @@ namespace p3rpc.femc.Components
         }
 
         private unsafe delegate void UBustupObject_SetBustupShadowColor(UBustupObject* self, byte R, byte G, byte B);
-        public unsafe delegate void UBustupDraw_DrawBustup(UBustupDraw* self);
         public unsafe delegate void UBustupObject_DrawBustupShadow(UBustupObject* self, float x, float y, float a4, uint a5, float a6);
-        public unsafe delegate void UBustupDraw_DrawBustupBottomLeftTriangle(nint a1, float offsetX, float offsetY, float rotY, float alpha, uint queueId);
+        public unsafe delegate void UBustupDraw_DrawBustupBottomLeftTriangle(UBustupDraw* self, float offsetX, float offsetY, float rotY, float alpha, uint queueId);
         public unsafe delegate void UBustupObject_DrawBustupMain(UBustupObject* self, float x, float y, float a4, uint a5, float a6);
     }
 }
