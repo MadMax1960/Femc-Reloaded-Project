@@ -48,7 +48,7 @@ namespace p3rpc.femc.Components
         {
             _drawMinimapMS = new MultiSignature();
             _context._utils.MultiSigScan(
-                new string[] { AUIAccessInfoDraw_DrawMinimap_SIG_0, AUIAccessInfoDraw_DrawMinimap_SIG_1 },
+                [AUIAccessInfoDraw_DrawMinimap_SIG_0, AUIAccessInfoDraw_DrawMinimap_SIG_1],
                 "AUIAccessInfoDraw::DrawMinimap", _context._utils.GetDirectAddress,
                 addr => _drawMinimap = _context._utils.MakeHooker<AUIAccessInfoDraw_DrawMinimap>(AUIAccessInfoDraw_DrawMinimapImpl, addr),
                 _drawMinimapMS
@@ -99,14 +99,13 @@ namespace p3rpc.femc.Components
                     $"label whiteColor"
                 };
                 */
-                string[] function =
-                {
+                string[] function = [
                     "use64",
-                    $"cmp byte [rbp + 0x67], 0x0",
-                    $"jz whiteColor",
+                    "cmp byte [rbp + 0x67], 0x0",
+                    "jz whiteColor",
                     $"mov edi, {_context._config.LocationSelectSelColor.ToU32()}", // for marker
-                    $"label whiteColor"
-                };
+                    "label whiteColor"
+                ];
                 _selShortcutColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             _context._utils.SigScan(AUIAccessInfoDraw_DrawMinimapLabel_SIG, "UUILocationSelect::DrawLocationSelectTintColor", _context._utils.GetDirectAddress, addr =>

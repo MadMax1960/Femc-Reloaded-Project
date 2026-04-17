@@ -33,7 +33,10 @@ namespace p3rpc.femc.Components
         private string UUILocationSelect_DrawLocationSelect_SIG = "40 55 56 57 41 56 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 88 04 00 00";
 
         private string UUIMinimapDraw_DrawMinimapFieldInnerCircle_SIG = "E8 ?? ?? ?? ?? 0F 28 DE 89 86 ?? ?? ?? ??";
-        private string UUIMinimapDraw_DrawMinimapFieldOutterCircle_SIG = "E8 ?? ?? ?? ?? 44 0F 2F 2D ?? ?? ?? ??";
+        // Old signature (Steam 1.0.11: points to wrong function)
+        // private string UUIMinimapDraw_DrawMinimapFieldOutterCircle_SIG = "E8 ?? ?? ?? ?? 44 0F 2F 2D ?? ?? ?? ??";
+        private string UUIMinimapDraw_DrawMinimapFieldOutterCircle_SIG =
+            "E8 ?? ?? ?? ?? 44 0F 2F 2D ?? ?? ?? ?? 48 8B 9C 24 ?? ?? ?? ??";
         private string UUIMinimapDraw_DrawMinimapLocationsHighStrip_SIG = "E8 ?? ?? ?? ?? F3 0F 10 15 ?? ?? ?? ?? 41 B0 CD";
         private string UUIMinimapDraw_DrawMinimapLocationsLowerStrip_SIG = "E8 ?? ?? ?? ?? 44 0F 28 64 24 ?? 0F 28 BC 24 ?? ?? ?? ??";
 
@@ -53,6 +56,7 @@ namespace p3rpc.femc.Components
             if (_context.bIsAigis) _context._utils.SigScan(AUIAccessInfoDraw_UpdateMinimapState_SIG_EpAigis, "AUIAccessInfoDraw::UpdateMinimapState", _context._utils.GetDirectAddress, addr => _updateMinimapState_EpAigis = _context._utils.MakeHooker<AUIAccessInfoDraw_UpdateMinimapState_EpAigis>(AUIAccessInfoDraw_UpdateMinimapStateImpl_EpAigis, addr));
             else _context._utils.SigScan(AUIAccessInfoDraw_UpdateMinimapState_SIG, "AUIAccessInfoDraw::UpdateMinimapState", _context._utils.GetDirectAddress, addr => _updateMinimapState = _context._utils.MakeHooker<AUIAccessInfoDraw_UpdateMinimapState>(AUIAccessInfoDraw_UpdateMinimapStateImpl, addr));
 
+            // CHECKED: Steam 1.0.11
             _context._utils.SigScan(UUIMinimapDraw_DrawMinimapFieldInnerCircle_SIG, "UUIMinimapDraw::DrawMinimapFieldInnerCircle", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
