@@ -26,9 +26,9 @@ namespace p3rpc.femc.Components
         private string UGlobalWork_CheckDisappearEntryValid_SIG = "40 53 48 83 EC 20 E8 ?? ?? ?? ?? 48 8B D8 48 85 C0 74 ?? 83 78 ?? 00";
         private string UUIMissingPerson_DrawDetailsText_SIG = "40 55 53 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC C0 01 00 00 8B 9D ?? ?? ?? ??";
         private string UUIMissingPerson_DrawPersonName_SIG = "48 8B C4 55 48 8D 68 ?? 48 81 EC 60 01 00 00 0F 29 70 ??";
-        private string USprAsset_FUN_1413283d0_SIG = "48 89 5C 24 ?? 48 89 6C 24 ?? 57 48 83 EC 40 8B 42 ?? 48 8B E9";
-        private string USprAsset_FUN_14c0a15d0_SIG = "48 89 5C 24 ?? 48 89 6C 24 ?? 57 48 83 EC 40 8B 42 ?? 48 89 CD";
-        private string UUIMissingPerson_FUN_14142bb30_SIG = "E8 ?? ?? ?? ?? 48 8B D6 48 8D 8F ?? ?? ?? ?? E8 ?? ?? ?? ??";
+        private string USprAsset_FUN_1413283d0_SIG = "E8 ?? ?? ?? ?? F3 44 0F 10 1D ?? ?? ?? ?? 41 0F 28 C8";
+        private string USprAsset_FUN_14c0a15d0_SIG = "E8 ?? ?? ?? ?? 4C 8B 83 ?? ?? ?? ?? 48 8D 4C 24 ?? 66 0F 6E CE";
+        private string UUIMissingPerson_FUN_14142bb30_SIG = "E8 ?? ?? ?? ?? 48 8B D6 48 8D 8F ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8B D6";
 
         private string UUIMissingPerson_DrawCompleteText_SIG = "0F 57 DB F3 44 0F 11 44 24 ?? 4D 8B C6 89 45 ?? 48 8B D6 44 89 6D ?? 48 8D 4D ?? C7 45 ?? 00 00 38 C1 44 89 6D ?? E8 ?? ?? ?? ?? 41 0F 28 C4";
         private string UUIMissingPerson_DrawCompleteBg_SIG = "0F 57 DB F3 44 0F 11 44 24 ?? 4D 8B C6 89 45 ?? 48 8B D6 44 89 6D ?? 48 8D 4D ?? C7 45 ?? 00 00 38 C1 44 89 6D ?? E8 ?? ?? ?? ?? 44 38 AF ?? ?? ?? ??";
@@ -111,8 +111,8 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(UGlobalWork_CheckDisappearEntryValid_SIG, "UGlobalWork::CheckDisappearEntryValid", _context._utils.GetDirectAddress, addr => _checkDisappearValid = _context._utils.MakeWrapper<UGlobalWork_CheckDisappearEntryValid>(addr));
             _context._utils.SigScan(UUIMissingPerson_DrawPersonName_SIG, "UUIMissingPerson::DrawPersonName", _context._utils.GetDirectAddress, addr => _drawPersonName = _context._utils.MakeWrapper<UUIMissingPerson_DrawPersonName>(addr));
             _context._utils.SigScan(UUIMissingPerson_DrawDetailsText_SIG, "UUIMissingPerson::DrawDetailsText", _context._utils.GetDirectAddress, addr => _drawDetailsText = _context._utils.MakeWrapper<UUIMissingPerson_DrawDetailsText>(addr));
-            _context._utils.SigScan(USprAsset_FUN_1413283d0_SIG, "USprAsset::FUN_1413283d0", _context._utils.GetDirectAddress, addr => _fun1413283d0 = _context._utils.MakeWrapper<USprAsset_FUN_1413283d0>(addr));
-            _context._utils.SigScan(USprAsset_FUN_14c0a15d0_SIG, "USprAsset::FUN_14c0a15d0", _context._utils.GetDirectAddress, addr => _fun14c0a15d0 = _context._utils.MakeWrapper<USprAsset_FUN_1413283d0>(addr));
+            _context._utils.SigScan(USprAsset_FUN_1413283d0_SIG, "USprAsset::FUN_1413283d0", _context._utils.GetIndirectAddressShort, addr => _fun1413283d0 = _context._utils.MakeWrapper<USprAsset_FUN_1413283d0>(addr));
+            _context._utils.SigScan(USprAsset_FUN_14c0a15d0_SIG, "USprAsset::FUN_14c0a15d0", _context._utils.GetIndirectAddressShort, addr => _fun14c0a15d0 = _context._utils.MakeWrapper<USprAsset_FUN_1413283d0>(addr));
             _context._utils.SigScan(UUIMissingPerson_FUN_14142bb30_SIG, "UUIMissingPerson::FUN_1412bb30", _context._utils.GetIndirectAddressShort, addr => _fun14142bb30 = _context._utils.MakeWrapper<UUIMissingPerson_FUN_14142bb30>(addr));
 
             _context._utils.SigScan(UUIMissingPerson_CursorColor_SIG, "UUIMissingPerson::CursorColor", _context._utils.GetDirectAddress, addr =>
@@ -329,7 +329,6 @@ namespace p3rpc.femc.Components
             _uiCommon._spriteFunc1(&occupyText, masker, campSprite, 0, 0);
             _uiCommon._spriteFunc2(&lastSight, masker, campSprite, 0, 0);
             _uiCommon._spriteFunc2(&lastSightDot, masker, campSprite, 0, 0);
-
             if (self->MissingPersons.arr_num > 0)
             {
                 // draw scroll arrows
