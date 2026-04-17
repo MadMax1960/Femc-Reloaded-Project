@@ -122,7 +122,7 @@ public unsafe class Bitflags : ModuleAsmInlineColorEdit<FemcContext>
     }
 
     private readonly string UGlobalWork_GetBitflag_SIG =
-        "48 83 EC 78 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 44 24 ?? 48 8D 81 ?? ?? ?? ??";
+        "E8 ?? ?? ?? ?? 84 C0 0F 84 ?? ?? ?? ?? E8 ?? ?? ?? ?? B2 34";
     private delegate byte UGlobalWork_GetBitflag(UGlobalWork* GWork, int Flag);
     private IHook<UGlobalWork_GetBitflag>? _UGlobalWork_GetBitflag;
     private byte UGlobalWork_GetBitflagImpl(UGlobalWork* pWork, int Flag)
@@ -140,7 +140,7 @@ public unsafe class Bitflags : ModuleAsmInlineColorEdit<FemcContext>
         return Value.ToByte();
     }
 
-    private readonly string UGlobalWork_SetBitflag_SIG = "48 83 EC 78 48 8B 05 ?? ?? ?? ?? 48 31 E0";
+    private readonly string UGlobalWork_SetBitflag_SIG = "E8 ?? ?? ?? ?? FF C5 49 83 C7 28";
     private delegate void UGlobalWork_SetBitflag(UGlobalWork* GWork, int Flag, byte Value);
     private IHook<UGlobalWork_SetBitflag>? _UGlobalWork_SetBitflag;
     private void UGlobalWork_SetBitflagImpl(UGlobalWork* pWork, int Flag, byte Value)
@@ -172,9 +172,9 @@ public unsafe class Bitflags : ModuleAsmInlineColorEdit<FemcContext>
         _context._utils.SigScan(UGlobalWork_NameToBitflag_SIG, "UGlobalWork::NameToBitflag",
             _context._utils.GetDirectAddress, addr => _UGlobalWork_NameToBitflag = _context._utils.MakeHooker<UGlobalWork_NameToBitflag>(UGlobalWork_NameToBitflagImpl, addr));
         _context._utils.SigScan(UGlobalWork_GetBitflag_SIG, "UGlobalWork::GetBitflag",
-            _context._utils.GetDirectAddress, addr => _UGlobalWork_GetBitflag = _context._utils.MakeHooker<UGlobalWork_GetBitflag>(UGlobalWork_GetBitflagImpl, addr));
+            _context._utils.GetIndirectAddressShort, addr => _UGlobalWork_GetBitflag = _context._utils.MakeHooker<UGlobalWork_GetBitflag>(UGlobalWork_GetBitflagImpl, addr));
         _context._utils.SigScan(UGlobalWork_SetBitflag_SIG, "UGlobalWork::SetBitflag",
-            _context._utils.GetDirectAddress, addr => _UGlobalWork_SetBitflag = _context._utils.MakeHooker<UGlobalWork_SetBitflag>(UGlobalWork_SetBitflagImpl, addr));       
+            _context._utils.GetIndirectAddressShort, addr => _UGlobalWork_SetBitflag = _context._utils.MakeHooker<UGlobalWork_SetBitflag>(UGlobalWork_SetBitflagImpl, addr));       
     }
 
     public override void Register()

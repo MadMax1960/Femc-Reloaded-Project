@@ -19,10 +19,6 @@ using UnrealEssentials.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using IUnrealMemory = UE.Toolkit.Interfaces.IUnrealMemory;
 
-
-
-/// ok maybe p3rpc.femc.music.interfaces is required, but it's not in repo and randomization doesn't work leading me to believe they're connected, or randomization never worked idk
-
 namespace p3rpc.femc
 {
 	/// <summary>
