@@ -9,9 +9,11 @@ namespace p3rpc.femc
 	{
 		public static void LoadShardAssets(IUnrealEssentials unrealEssentials, Config configuration, string modLocation)
 		{
-			if (configuration.ShardTrue == ShardType.Esa)
-				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Shard", "Esa"));
-			else if (configuration.ShardTrue == ShardType.Ely)
+			if (configuration.ShardTrue == ShardType.Adrien)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Shard", "Adrien"));
+            else if (configuration.ShardTrue == ShardType.Esa)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Shard", "Esa"));
+            else if (configuration.ShardTrue == ShardType.Ely)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Shard", "Ely"));
 			else if (configuration.ShardTrue == ShardType.ElyAlt)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Shard", "ElyAlt"));

@@ -222,11 +222,13 @@ namespace p3rpc.femc.Configuration
         [Description("The character art used for the level up screen.")]
         [Category("2D Options")]
         [Display(Order = 9)]
-        [DefaultValue(LevelUpType.Esa)]
-        public LevelUpType LevelUpTrue { get; set; } = LevelUpType.Esa;
+        [DefaultValue(LevelUpType.Adrien)]
+        public LevelUpType LevelUpTrue { get; set; } = LevelUpType.Adrien;
 
         public enum LevelUpType
         {
+        [Display(Name = "Adrien")]
+        Adrien,
         [Display(Name = "Esa")]
         Esa,
         [Display(Name = "Ely")]
@@ -261,11 +263,13 @@ namespace p3rpc.femc.Configuration
         [Description("The character art used in the status menu.")]
         [Category("2D Options")]
         [Display(Order = 11)]
-        [DefaultValue(ShardType.Esa)]
-        public ShardType ShardTrue { get; set; } = ShardType.Esa;
+        [DefaultValue(ShardType.Adrien)]
+        public ShardType ShardTrue { get; set; } = ShardType.Adrien;
 
         public enum ShardType
         {
+        [Display(Name = "Adrien")]
+        Adrien,
         [Display(Name = "Esa")]
         Esa,
         [Display(Name = "Ely")]
