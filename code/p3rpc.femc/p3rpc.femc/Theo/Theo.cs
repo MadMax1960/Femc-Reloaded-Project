@@ -22,7 +22,7 @@ public static class Theo
         {
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Theo", "TheodorefromAlvinandTheChipmunks"));
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Theo", "cutin", "mekkipatman"));
-            unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Theo", "message"));
+            // unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Theo", "message")); stuff used to be here, commenting out for now
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Theo", "Bustup"));
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Theo", "Event"));
             ryo.AddAudioFolder(modLoader.GetDirectoryForModId(modConfig.ModId) + "/Theo/voice/Landon");
