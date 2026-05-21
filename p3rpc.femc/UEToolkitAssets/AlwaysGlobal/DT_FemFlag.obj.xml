@@ -1,0 +1,72 @@
+<DataTable row-struct="GWFlagType">
+    <!-- For Fuuka Full Moon Operation (June 8th), this flag is true if Akihiko is selected in Event_Main_120_140 -->
+    <Item id="FEM_FMO_FUUKA_SEL_AKIHIKO">
+        <Value value="0"/>
+        <Offset value="1610612736"/>
+    </Item>
+    <!-- Free flag, you're free to use this -->
+    <Item id="FEM_TEST_FLAG_1">
+        <Value value="1"/>
+        <Offset value="1610612736"/>
+    </Item>
+    <!-- Free flag, you're free to use this -->
+    <Item id="FEM_TEST_FLAG_2">
+        <Value value="2"/>
+        <Offset value="1610612736"/>
+    </Item>
+    <!-- Free flag, you're free to use this -->
+    <Item id="FEM_TEST_FLAG_3">
+        <Value value="3"/>
+        <Offset value="1610612736"/>
+    </Item>
+    <!-- Free flag, you're free to use this -->
+    <Item id="FEM_TEST_FLAG_4">
+        <Value value="4"/>
+        <Offset value="1610612736"/>
+    </Item>
+    <!-- Free flag, you're free to use this -->
+    <Item id="FEM_TEST_FLAG_5">
+        <Value value="5"/>
+        <Offset value="1610612736"/>
+    </Item>
+    <!-- Free flag, you're free to use this -->
+    <Item id="FEM_TEST_FLAG_6">
+        <Value value="6"/>
+        <Offset value="1610612736"/>
+    </Item>
+    <!-- Free flag, you're free to use this -->
+    <Item id="FEM_TEST_FLAG_7">
+        <Value value="7"/>
+        <Offset value="1610612736"/>
+    </Item>
+	<!-- For Ray -->
+    <Item id="FEM_TEST_Vincent_1">
+        <Value value="8"/>
+        <Offset value="1610612736"/>
+    </Item>
+	<!-- For Ray -->
+    <Item id="FEM_TEST_Vincent_2">
+        <Value value="9"/>
+        <Offset value="1610612736"/>
+    </Item>
+	<!-- For Ray -->
+    <Item id="FEM_TEST_Vincent_3">
+        <Value value="10"/>
+        <Offset value="1610612736"/>
+    </Item>
+	<!-- For Ray -->
+    <Item id="FEM_TEST_Vincent_4">
+        <Value value="11"/>
+        <Offset value="1610612736"/>
+    </Item>
+	<!-- For Ray -->
+    <Item id="FEM_TEST_Vincent_5">
+        <Value value="12"/>
+        <Offset value="1610612736"/>
+    </Item>
+	<!-- For Ray -->
+    <Item id="FEM_TEST_Vincent_Speak">
+        <Value value="13"/>
+        <Offset value="1610612736"/>
+    </Item>
+</DataTable>

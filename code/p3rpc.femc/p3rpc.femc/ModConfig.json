@@ -197,6 +197,15 @@
             "AssetFileName": "Mod.zip"
           },
           "ReleaseMetadataName": "P3R.UEToolkit.ReleaseMetadata.json"
+        },
+        "p3rpc.eventframework": {
+          "Config": {
+            "UserName": "Rirurin",
+            "RepositoryName": "riri.eventframework",
+            "UseReleaseTag": true,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "p3rpc.eventframework.ReleaseMetadata.json"
         }
       }
     },
@@ -210,6 +219,7 @@
   "IsUniversalMod": false,
   "ModDependencies": [
     "p3rpc.classconstructor",
+    "p3rpc.eventframework",
     "p3rpc.nativetypes",
     "P3R.CostumeFramework",
     "P3R.UEToolkit",
