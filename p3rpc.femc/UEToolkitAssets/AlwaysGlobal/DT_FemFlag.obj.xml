@@ -39,32 +39,32 @@
         <Value value="7"/>
         <Offset value="1610612736"/>
     </Item>
-	<!-- For Ray -->
+	<!-- Vincent Progress flag 1 -->
     <Item id="FEM_TEST_Vincent_1">
         <Value value="8"/>
         <Offset value="1610612736"/>
     </Item>
-	<!-- For Ray -->
+	<!-- Vincent Progress flag 2 -->
     <Item id="FEM_TEST_Vincent_2">
         <Value value="9"/>
         <Offset value="1610612736"/>
     </Item>
-	<!-- For Ray -->
+	<!-- Vincent Progress flag 3 -->
     <Item id="FEM_TEST_Vincent_3">
         <Value value="10"/>
         <Offset value="1610612736"/>
     </Item>
-	<!-- For Ray -->
+	<!-- Vincent Progress flag 4 -->
     <Item id="FEM_TEST_Vincent_4">
         <Value value="11"/>
         <Offset value="1610612736"/>
     </Item>
-	<!-- For Ray -->
+	<!-- Vincent Progress flag 5 -->
     <Item id="FEM_TEST_Vincent_5">
         <Value value="12"/>
         <Offset value="1610612736"/>
     </Item>
-	<!-- For Ray -->
+	<!-- Currently unused. until we figure out how speach bouble flags work. Vincent is doing some BP BS for the time being -->
     <Item id="FEM_TEST_Vincent_Speak">
         <Value value="13"/>
         <Offset value="1610612736"/>
