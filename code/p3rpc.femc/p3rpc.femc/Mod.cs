@@ -157,6 +157,7 @@ namespace p3rpc.femc
                 GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the group event thing, its 2d art 
                 KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the kyoto event, it is also 2d art
                 Theo.LoadTheoAssets(unrealEssentials, toolKit, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
+                CustomBustups.LoadCustomBustupsAssets(unrealEssentials, toolKit, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Custom Bustups
                 Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
                 Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
                 HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Hot Spring Event
