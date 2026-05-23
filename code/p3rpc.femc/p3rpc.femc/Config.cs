@@ -750,6 +750,15 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
         public bool DeckCompatibilitySwitch { get; set; } = true;
 
+        // Custom Bustups (Right now just Ryoji)
+
+        [DisplayName("Enable Custom Bustups (Ryoji)")]
+        [Category("2D Options")]
+        [Description("Enable front facing Ryoji bustups by Adrien.")]
+        [Display(Order = 124)]
+        [DefaultValue(false)]
+
+        public bool CustomBustups { get; set; } = true;
         // Dorm Swap
 
         [DisplayName("Test Dorm Room Swap and Current Edited Events")]
