@@ -1,0 +1,12 @@
+EventSublevels: [
+  {
+    EventBGLevels: [ 
+    "/Game/Xrd777/Maps/Field/F102/BG/LV_F102_102_001_BG",
+    "/Game/Xrd777/Maps/Field/F102/BG/LV_F102_102_004_BG",
+    "/Game/Xrd777/Maps/Field/F102/BG/LV_F102_102_002_BG",
+    "/Game/Xrd777/Maps/Field/F102/BG/LV_F102_102_003_BG"
+    ],
+    BGFieldSeasonSubLevel: "",
+    BGFieldSoundSubLevel: "/Game/Xrd777/Maps/Field/Sound/LV_F101_113_Sound"
+  }
+]

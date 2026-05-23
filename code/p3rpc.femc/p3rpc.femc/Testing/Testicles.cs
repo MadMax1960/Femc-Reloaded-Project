@@ -31,10 +31,7 @@ public class Testing
 
         string path = Path.Combine(modLoader.GetDirectoryForModId(modConfig.ModId), "UEToolkitAssets");
 
-        if (configuration.TesticlesEventsDorm)
-        {
-            toolKit.AddObjectsPath(Path.Combine(path, "DormTest"));
-        }
+       
 
     }
 }
