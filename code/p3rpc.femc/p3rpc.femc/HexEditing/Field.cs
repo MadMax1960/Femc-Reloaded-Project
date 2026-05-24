@@ -1,4 +1,5 @@
-﻿using p3rpc.femc.Configuration;
+﻿using p3rpc.commonmodutils;
+using p3rpc.femc.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -188,6 +189,47 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePath01, 0xAEC, config.AccessIconColor3, HexColorEditor.ColorOrder.RGB, HexColorEditor.ComponentType.FLOAT);
         }
 
+        private static void ApplyAssaultColors(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Effects", "Niagara", "Field", "NS_FX_Fld_AssaultRun_00.uasset");
+
+            Dictionary<float, (ConfigColor, float)> colorKeyframes = new Dictionary<float, (ConfigColor, float)>();
+            colorKeyframes.Add(0.0f, (config.Assault1Keyframe1, 60.0f)); // Original approx rgba #25BCFF00
+            colorKeyframes.Add(0.21f, (config.Assault1Keyframe2, 59.1f)); // Original approx rgba #24BCFF36
+            colorKeyframes.Add(0.32f, (config.Assault1Keyframe3, 19.6f)); // Original approx rgba #0046FF5B
+            colorKeyframes.Add(0.83f, (config.Assault1Keyframe4, 1.0f)); // Original approx rgba #00128CFF
+            colorKeyframes.Add(1.0f, (config.Assault1Keyframe5, 1.0f)); // Original approx rgba #00128C00
+
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x9A30, colorKeyframes, 128);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0xA699, colorKeyframes, 128);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0xAF3E, colorKeyframes, 128);
+
+            colorKeyframes = new Dictionary<float, (ConfigColor, float)>();
+            colorKeyframes.Add(0.0f, (config.Assault2Keyframe1, 5.0f)); // Original approx rgba #0F9AFF00
+            colorKeyframes.Add(0.21f, (config.Assault2Keyframe2, 4.74f)); // Original approx rgba #0E93FFFF
+            colorKeyframes.Add(0.61f, (config.Assault2Keyframe3, 2.42f)); // Original approx rgba #0247FFFF
+            colorKeyframes.Add(0.85f, (config.Assault2Keyframe4, 1.0f)); // Original approx rgba #00138D8D
+            colorKeyframes.Add(1.0f, (config.Assault2Keyframe5, 1.0f)); // Original approx rgba #00138D00
+
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x1032C, colorKeyframes, 108);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x10EAD, colorKeyframes, 108);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x11612, colorKeyframes, 108);
+
+            colorKeyframes = new Dictionary<float, (ConfigColor, float)>();
+            colorKeyframes.Add(0.0f, (config.AssaultBallsKeyframe1, 1.0f)); // Original approx rgba #59BAFFFF
+            colorKeyframes.Add(0.25f, (config.AssaultBallsKeyframe2, 2.0f)); // Original approx rgba #26EDFFFF
+            colorKeyframes.Add(0.5f, (config.AssaultBallsKeyframe3, 1.0f)); // Original approx rgba #0060FFFF
+            colorKeyframes.Add(0.75f, (config.AssaultBallsKeyframe45, 4.0f)); // Original approx rgba #0007FFFF
+            colorKeyframes.Add(1.0f, (config.AssaultBallsKeyframe45, 4.0f)); // Original approx rgba #0007FFFF
+
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x17BAA, colorKeyframes, 116);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x1849E, colorKeyframes, 116);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x18C2C, colorKeyframes, 116);
+        }
+
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyMaleQuest(config, modDirectory);
@@ -198,6 +240,7 @@ namespace p3rpc.femc.HexEditing
             ApplyAccessIconListen(config, modDirectory);
             ApplyDormitoryLife(config, modDirectory);
             ApplyQuest(config, modDirectory);
+            ApplyAssaultColors(config, modDirectory);
         }
     }
 }
