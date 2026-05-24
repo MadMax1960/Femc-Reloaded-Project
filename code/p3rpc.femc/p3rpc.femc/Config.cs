@@ -1190,7 +1190,7 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp Calendar: Highlight Color (Requires Restart)")]
         [Category("UI Colors")]
         [Display(Order = 250)]
-        public ConfigColor CampCalendarHighlightColor { get; set; } = new ConfigColor(0x46, 0xE7, 0xFF, 0xFF);
+        public ConfigColor CampCalendarHighlightColor { get; set; } = new ConfigColor(0xFF, 0x7E, 0xA2, 0xFF);
 
         [DisplayName("Camp Calendar: Part Time Job Background")]
         [Category("UI Colors")]
