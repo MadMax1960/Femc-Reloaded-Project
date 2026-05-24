@@ -835,10 +835,12 @@ namespace p3rpc.femc.Components
                 _uiCommon._drawSpr(&self->baseObj.drawer, statIconPosLayout.X, statIconPosLayout.Y, 0, &statIconFillCol, (uint)(i + 0x1ba), 1, 1, Angle, campSpr, EUI_DRAW_POINT.UI_DRAW_CENTER_CENTER, self->baseObj.QueueId);
                 var personaCombineStatGrowth = self->GetCombinePersonaStatGrowth(i);
                 var personaStatLevelColor = (baseLvl < baseAndNextLvl || personaCombineStatGrowth != 0) ? nextLevelColor : ConfigColor.ToFColorBP(_context.ColorWhite);
-                string personaStatLevelStr = $"{(int)baseStatDisplay}";
+                var personaStatPaddingColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusStatsPaddingColor);
+                string personaStatLevelStr = ((int)baseStatDisplay).ToString("D2");
                 for (int j = 0; j < personaStatLevelStr.Length; j++)
                 {
-                    _uiCommon._drawSpr(&self->baseObj.drawer, statIconPos.X - 64 + j * 40, statIconPos.Y - 12 - 8 * j, 0, &personaStatLevelColor,
+                    var personaStatColor = (j == 0 && personaStatLevelStr[j] == '0') ? personaStatPaddingColor : personaStatLevelColor;
+                    _uiCommon._drawSpr(&self->baseObj.drawer, statIconPos.X - 64 + j * 40, statIconPos.Y - 12 - 8 * j, 0, &personaStatColor,
                         (uint)(personaStatLevelStr[j] + 0x13a), 0.85f, 0.85f, Angle - 11.45f, campSpr, EUI_DRAW_POINT.UI_DRAW_LEFT_TOP, self->baseObj.QueueId);
                 }
                 var barShadowColor = ConfigColor.ToFColorBP(_context._config.PersonaStatusSkillListBg);

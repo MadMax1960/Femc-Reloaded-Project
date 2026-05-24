@@ -2075,7 +2075,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor PersonaFusionShadow { get; set; } = new ConfigColor(0x30, 0x10, 0x27, 0xFF);
 
         [DisplayName("Persona Status: Social Link Bonus color when choosing inheritance skills")]
-        public ConfigColor PersonaSocialLinkInheritance { get; set; } = new ConfigColor(0x6E, 0x03, 0x0A, 0xFF);
+        public ConfigColor PersonaSocialLinkInheritance { get; set; } = new ConfigColor(0x5E, 0x00, 0x0F, 0xFF);
 
         [DisplayName("Persona Status: Mutation animation strip colors")]
         public ConfigColor MutationStripColor { get; set; } = new ConfigColor(0xC6, 0x00, 0x35, 0xFF);
@@ -2195,7 +2195,7 @@ namespace p3rpc.femc.Configuration
         public ConfigColor PersonaStatusSoftColorFilter { get; set; } = new ConfigColor(0x8B, 0x01, 0x48, 0xFF);
 
         [DisplayName("Persona Status: Inheritance skill selection square color")]
-        public ConfigColor PersonaStatusInheritanceSquareColor { get; set; } = new ConfigColor(0x00, 0xD8, 0xFF, 0x00);
+        public ConfigColor PersonaStatusInheritanceSquareColor { get; set; } = new ConfigColor(0x5E, 0x00, 0xF, 0x00);
 
         [DisplayName("Persona Status: Strip main color")]
         public ConfigColor PersonaStatusStripColor { get; set; } = new ConfigColor(0xF4, 0x5A, 0x85, 0xFF);
@@ -2564,10 +2564,10 @@ namespace p3rpc.femc.Configuration
         public ConfigColor CalendarJobDetailFont { get; set; } = new ConfigColor(0xFF, 0xBD, 0xCE, 0xFF);
 
         [DisplayName("Camp: Item Effect tag background color")]
-        public ConfigColor CampItemEffectBG { get; set; } = new ConfigColor(0xFF, 0xBD, 0xCE, 0xFF);
+        public ConfigColor CampItemEffectBG { get; set; } = new ConfigColor(0xFF, 0xE7, 0xAD, 0xFF);
 
         [DisplayName("Camp: Item Effect font color")]
-        public ConfigColor CampItemEffectFont { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
+        public ConfigColor CampItemEffectFont { get; set; } = new ConfigColor(0x55, 0x1F, 0x3B, 0xFF);
 
         [DisplayName("Camp: System Menu Item Color 1")]
         [Category("UI Colors")]
@@ -3207,6 +3207,51 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Social Stats: Musical Notes Background Color")]
         public ConfigColor SocialStatsParticlesColor { get; set; } = new ConfigColor(0xFF, 0x36, 0x83, 0xFF);
+
+        [DisplayName("Persona Status: Persona Stats Padding Color")]
+        public ConfigColor PersonaStatusStatsPaddingColor { get; set; } = new ConfigColor(0xF0, 0x75, 0xA5, 0xFF);
+
+        [DisplayName("Field: Assault 1st Color keyframe 1")]
+        public ConfigColor Assault1Keyframe1 { get; set; } = new ConfigColor(0xFF, 0x25, 0x6E, 0x00);
+
+        [DisplayName("Field: Assault 1st Color keyframe 2")]
+        public ConfigColor Assault1Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x25, 0x66, 0x36);
+
+        [DisplayName("Field: Assault 1st Color keyframe 3")]
+        public ConfigColor Assault1Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x00, 0x55, 0x5B);
+
+        [DisplayName("Field: Assault 1st Color keyframe 4")]
+        public ConfigColor Assault1Keyframe4 { get; set; } = new ConfigColor(0x8C, 0x00, 0x1C, 0xFF);
+
+        [DisplayName("Field: Assault 1st Color keyframe 5")]
+        public ConfigColor Assault1Keyframe5 { get; set; } = new ConfigColor(0x8C, 0x00, 0x1C, 0x00);
+
+        [DisplayName("Field: Assault 2nd Color keyframe 1")]
+        public ConfigColor Assault2Keyframe1 { get; set; } = new ConfigColor(0xFF, 0x0F, 0x5F, 0x00);
+
+        [DisplayName("Field: Assault 2nd Color keyframe 2")]
+        public ConfigColor Assault2Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x0C, 0x5D, 0xFF);
+
+        [DisplayName("Field: Assault 2nd Color keyframe 3")]
+        public ConfigColor Assault2Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x02, 0x63, 0xFF);
+
+        [DisplayName("Field: Assault 2nd Color keyframe 4")]
+        public ConfigColor Assault2Keyframe4 { get; set; } = new ConfigColor(0x8D, 0x00, 0x1C, 0x8D);
+
+        [DisplayName("Field: Assault 2nd Color keyframe 5")]
+        public ConfigColor Assault2Keyframe5 { get; set; } = new ConfigColor(0x8D, 0x00, 0x1C, 0x00);
+
+        [DisplayName("Field: Assault Balls Color keyframe 1")]
+        public ConfigColor AssaultBallsKeyframe1 { get; set; } = new ConfigColor(0xFF, 0x59, 0x8E, 0xFF);
+
+        [DisplayName("Field: Assault Balls Color keyframe 2")]
+        public ConfigColor AssaultBallsKeyframe2 { get; set; } = new ConfigColor(0xFF, 0x26, 0x76, 0xFF);
+
+        [DisplayName("Field: Assault Balls Color keyframe 3")]
+        public ConfigColor AssaultBallsKeyframe3 { get; set; } = new ConfigColor(0xFF, 0x00, 0x59, 0xFF);
+
+        [DisplayName("Field: Assault Balls Color keyframe 4 and 5")]
+        public ConfigColor AssaultBallsKeyframe45 { get; set; } = new ConfigColor(0xFF, 0x00, 0x66, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
