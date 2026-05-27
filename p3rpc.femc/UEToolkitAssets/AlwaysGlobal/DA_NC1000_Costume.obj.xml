@@ -1,6 +1,6 @@
 <AppNpcCostume_DA>
 	<Unique>
-		<Item id="1069">
+		<Item id="1012">
 			<Costume>
 				<Mesh value="/Game/Xrd777/RayStuff/VincentTest/VincentBody.VincentBody"/>
 			</Costume>

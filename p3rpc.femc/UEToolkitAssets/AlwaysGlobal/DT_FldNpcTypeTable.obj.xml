@@ -1,7 +1,7 @@
 <DataTable row-struct="FldNpcCompTableRow">
   <Item id="NMT_069696">
 	<ModelType value="2"/>
-	<ModelTableID value="1069"/>
+	<ModelTableID value="1012"/>
 	<CharaBagON value="0"/>
 	<CharShoesID value="50"/>
 	<HairTexID value="-1"/>
