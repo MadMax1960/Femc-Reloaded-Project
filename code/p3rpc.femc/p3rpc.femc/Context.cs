@@ -1,7 +1,8 @@
 ﻿using p3rpc.classconstructor.Interfaces;
 using p3rpc.commonmodutils;
 using p3rpc.femc.Configuration;
-using Reloaded.Hooks.Definitions;
+using Reloaded.Hooks.ReloadedII.Interfaces;
+// using Reloaded.Hooks.Definitions;
 using Reloaded.Memory;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;

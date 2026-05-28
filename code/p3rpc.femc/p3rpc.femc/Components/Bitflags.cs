@@ -174,7 +174,7 @@ public unsafe class Bitflags : ModuleAsmInlineColorEdit<FemcContext>
         _context._utils.SigScan(UGlobalWork_GetBitflag_SIG, "UGlobalWork::GetBitflag",
             _context._utils.GetIndirectAddressShort, addr => _UGlobalWork_GetBitflag = _context._utils.MakeHooker<UGlobalWork_GetBitflag>(UGlobalWork_GetBitflagImpl, addr));
         _context._utils.SigScan(UGlobalWork_SetBitflag_SIG, "UGlobalWork::SetBitflag",
-            _context._utils.GetIndirectAddressShort, addr => _UGlobalWork_SetBitflag = _context._utils.MakeHooker<UGlobalWork_SetBitflag>(UGlobalWork_SetBitflagImpl, addr));       
+            x => _context._utils.GetAddressMayThunkAbsolute(_context._utils.GetIndirectAddressShort(x)), addr => _UGlobalWork_SetBitflag = _context._utils.MakeHooker<UGlobalWork_SetBitflag>(UGlobalWork_SetBitflagImpl, addr));       
     }
 
     public override void Register()
