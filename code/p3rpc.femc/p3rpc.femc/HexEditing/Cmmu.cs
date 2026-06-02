@@ -61,11 +61,43 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColorCurve(filePath, 0x56E, colorKeyframes);
         }
 
+        private static void ApplyBPUICmmMax(Config config, string modDirectory)
+        {
+            string filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Effects", "Niagara", "UI", "NS_FX_UI_CommuMax_00.ucas");
+
+            HexColorEditor.WriteFloat(filePath, 0x8832, (config.CmmuRankUpSparkles1.R) / 255.0f); // Original color #59BAFF
+            HexColorEditor.WriteFloat(filePath, 0x8836, (config.CmmuRankUpSparkles1.G) / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0x883A, (config.CmmuRankUpSparkles1.B) / 255.0f);
+
+            HexColorEditor.WriteFloat(filePath, 0xCBE7, ((config.CmmuRankUpSparkles2.R) / 255.0f) * 5.0f); // Original color #0057FF
+            HexColorEditor.WriteFloat(filePath, 0xCBEB, ((config.CmmuRankUpSparkles2.G) / 255.0f) * 5.0f);
+            HexColorEditor.WriteFloat(filePath, 0xCBEF, ((config.CmmuRankUpSparkles2.B) / 255.0f) * 5.0f);
+
+            HexColorEditor.WriteFloat(filePath, 0xF13B, (config.CmmuRankUpSparkles3.R) / 255.0f); // Original color #5900ff
+            HexColorEditor.WriteFloat(filePath, 0xF13F, (config.CmmuRankUpSparkles3.G) / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0xF143, (config.CmmuRankUpSparkles3.B) / 255.0f);
+
+            HexColorEditor.WriteFloat(filePath, 0xF147, ((config.CmmuRankUpSparkles4.R) / 255.0f) * 1.2f); // Original color #0057FF
+            HexColorEditor.WriteFloat(filePath, 0xF14B, ((config.CmmuRankUpSparkles4.G) / 255.0f) * 1.2f);
+            HexColorEditor.WriteFloat(filePath, 0xF14F, ((config.CmmuRankUpSparkles4.B) / 255.0f) * 1.2f);
+
+            HexColorEditor.WriteFloat(filePath, 0x16240, (config.CmmuRankUpSparkleTrails.R) / 255.0f); // Original color #5AE9FF
+            HexColorEditor.WriteFloat(filePath, 0x16244, (config.CmmuRankUpSparkleTrails.G) / 255.0f);
+            HexColorEditor.WriteFloat(filePath, 0x16248, (config.CmmuRankUpSparkleTrails.B) / 255.0f);
+
+            HexColorEditor.WriteFloat(filePath, 0x1A4D7, ((config.CmmuRankUpMovingSparkles.R) / 255.0f) * 1.2f); // Original color #00CCFF
+            HexColorEditor.WriteFloat(filePath, 0x1A4DB, ((config.CmmuRankUpMovingSparkles.G) / 255.0f) * 1.2f);
+            HexColorEditor.WriteFloat(filePath, 0x1A4DF, ((config.CmmuRankUpMovingSparkles.B) / 255.0f) * 1.2f);
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
             ApplyBPUICmmRankUpBG(config, modDirectory);
             ApplyBPUICmmRankUPAnim(config, modDirectory);
             ApplyRankUpColorCurve(config, modDirectory);
+            ApplyBPUICmmMax(config, modDirectory);
         }
     }
 }
