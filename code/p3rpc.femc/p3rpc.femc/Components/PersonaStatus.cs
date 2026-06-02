@@ -98,6 +98,11 @@ namespace p3rpc.femc.Components
         private string APersonaStatusDraw_LeftArrow_SIG = "C7 45 ?? 00 00 EE FF 48 8D 4D ??";
         private string APersonaStatusDraw_RightArrow_SIG = "C7 44 24 ?? 00 00 EE FF 48 8D 4C 24 ??";
 
+        private string APersonaStatusDraw_RegisteredStatsBg_SIG = "C7 45 ?? 4B 2E 2B FF";
+        private string APersonaStatusDraw_RegisteredStatsArrowsBg_SIG = "C7 45 ?? 7B 66 5A FF";
+        private string APersonaStatusDraw_RegisteredStatsButtonOutline_SIG = "C7 45 ?? 6E 58 4A FF";
+        private string APersonaStatusDraw_RegisteredStatsUnhighlightedFont1_SIG = "C6 45 ?? 74 48 89 44 24 ?? E8 ?? ?? ?? ?? 8B 83";
+        private string APersonaStatusDraw_RegisteredStatsUnhighlightedFont2_SIG = "C6 45 ?? 74 48 89 44 24 ?? E8 ?? ?? ?? ?? 48 8B 4D";
 
         //private static float[] PersonaInfoBgPoints = { 0, 0, 1270.5f, 0, 1732.5f, 0, 2310, 0, 0, 224, 1270.5f, 24, 1732.5f, 224, 2310, 224 };
         private unsafe float* PersonaInfoBgPoints;
@@ -145,6 +150,8 @@ namespace p3rpc.femc.Components
         private IAsmHook _NumbersTopLeftCornerDraw;
         private IAsmHook _ResultTopLeftCornerDraw;
         private IAsmHook _DotsTopLeftCornerDraw;
+        private IAsmHook _RegisteredStatsUnhighlightedFont1;
+        private IAsmHook _RegisteredStatsUnhighlightedFont2;
 
         private IHook<APersonaStatusDraw_DrawDefaultStatusParameterInner> _drawStatParam;
         private IHook<APersonaStatusDraw_DrawDefaultCommentary> _drawDefaultLore;
@@ -583,6 +590,41 @@ namespace p3rpc.femc.Components
             _context._utils.SigScan(APersonaStatusDraw_RightArrow_SIG, "APersonaStatusDraw::RightArrow", _context._utils.GetDirectAddress, addr =>
             {
                 _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 4, _context._config.CampHighlightedLowerColor.ToU32ARGB())));
+            });
+
+            _context._utils.SigScan(APersonaStatusDraw_RegisteredStatsBg_SIG, "APersonaStatusDraw::RegisteredStatsBg", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.RegisteredStatsBg.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_RegisteredStatsArrowsBg_SIG, "APersonaStatusDraw::RegisteredStatsArrowsBg", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.RegisteredStatsArrowsBg.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_RegisteredStatsButtonOutline_SIG, "APersonaStatusDraw::RegisteredStatsButtonOutline", _context._utils.GetDirectAddress, addr =>
+            {
+                _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)addr, addr => _context._memory.Write(addr + 3, _context._config.RegisteredStatsButtonOutline.ToU32ARGB())));
+            });
+            _context._utils.SigScan(APersonaStatusDraw_RegisteredStatsUnhighlightedFont1_SIG, "APersonaStatusDraw::RegisteredStatsUnhighlightedFont1", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x7e], {_context._config.RegisteredStatsUnhighlightedFont.R}",
+                    $"mov byte [rbp - 0x7f], {_context._config.RegisteredStatsUnhighlightedFont.G}",
+                    $"mov byte [rbp - 0x80], {_context._config.RegisteredStatsUnhighlightedFont.B}"
+                };
+                _RegisteredStatsUnhighlightedFont1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
+            });
+            _context._utils.SigScan(APersonaStatusDraw_RegisteredStatsUnhighlightedFont2_SIG, "APersonaStatusDraw::RegisteredStatsUnhighlightedFont2", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x7e], {_context._config.RegisteredStatsUnhighlightedFont.R}",
+                    $"mov byte [rbp - 0x7f], {_context._config.RegisteredStatsUnhighlightedFont.G}",
+                    $"mov byte [rbp - 0x80], {_context._config.RegisteredStatsUnhighlightedFont.B}"
+                };
+                _RegisteredStatsUnhighlightedFont2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteAfter).Activate();
             });
 
             _context._utils.SigScan(APersonaStatusDraw_GetSkillListBgColor_SIG, "APersonaStatusDraw::GetSkillListBgColor", _context._utils.GetDirectAddress, addr =>

@@ -435,6 +435,52 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteFloat(filePath, 0x5984, config.ShiftToUpDownColor.R / 255.0f);
             HexColorEditor.WriteFloat(filePath, 0x59B8, config.ShiftToUpDownColor.G / 255.0f);
             HexColorEditor.WriteFloat(filePath, 0x59C0, config.ShiftToUpDownColor.B / 255.0f);
+
+            filePath = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Effects", "Niagara", "Battle", "NS_FX_Btl_ShiftTo_01.uasset");
+
+            // Character highlighting
+            Dictionary<float, (ConfigColor, float)> colorKeyframes = new Dictionary<float, (ConfigColor, float)>();
+            ConfigColor firstHighlightColor = new ConfigColor(0x3B, 0x8E, 0x00, 0x4F);
+            ConfigColor secondHighlightColor = new ConfigColor(0xFD, 0xF8, 0x74, 0x87);
+            ConfigColor endHighlightColor = new ConfigColor(0xFF, 0xFF, 0xFF, 0x00);
+            colorKeyframes.Add(0.0f, (firstHighlightColor, 1.0f));
+            colorKeyframes.Add(0.283f, (secondHighlightColor, 1.0f));
+            colorKeyframes.Add(0.307f, (config.ShiftCharacterHighlightKeyframe1, 1.0f)); // Original approx rgba #34ACEFCC
+            colorKeyframes.Add(0.315f, (config.ShiftCharacterHighlightKeyframe2, 1.0f)); // Original approx rgba #1CA3FFCA
+            colorKeyframes.Add(1.0f, (endHighlightColor, 1.0f));
+
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x1B207, colorKeyframes, 128);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x1BE6F, colorKeyframes, 128);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x1C6F7, colorKeyframes, 128);
+
+            // Lines
+            ConfigColor firstLinesColor = new ConfigColor(0xFF, 0xD9, 0x00, 0xFF);
+            colorKeyframes = new Dictionary<float, (ConfigColor, float)>();
+            colorKeyframes.Add(0.0f, (firstLinesColor, 40.0f));
+            colorKeyframes.Add(0.039f, (config.ShiftLinesKeyframe1, 15.0f)); // Original approx rgba #00FF9EFF
+            colorKeyframes.Add(0.323f, (config.ShiftLinesKeyframe2, 12.6f)); // Original approx rgba #008EFFFF
+            colorKeyframes.Add(0.75f, (config.ShiftLinesKeyframe3, 14.762f)); // Original approx rgba #000FFFFF
+            colorKeyframes.Add(1.0f, (config.ShiftLinesKeyframe4, 15.0f)); // Original approx rgba #2600FFFF
+
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x21506, colorKeyframes, 128);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x22032, colorKeyframes, 128);
+            HexColorEditor.WriteFloatColorCurve(filePath, 0x22880, colorKeyframes, 128);
+
+            // Additional lines
+            // We will reverse where the color is set, in the script literals we'll set 1.0f and
+            // we'll instead color them through the shaderLUT to avoid messing with bytecode :pregtrueshi:
+            HexColorEditor.WriteFloat(filePath, 0x19F92, 1.0f);
+            HexColorEditor.WriteFloat(filePath, 0x19F96, 1.0f);
+
+            int[] offsets = { 0x15350, 0x15945, 0x15986 };
+            foreach (int offset in offsets)
+            {
+                HexColorEditor.WriteFloat(filePath, offset, (config.ShiftAdditionalLines.R / 255.0f) * 30.0f); // Original approx rgba #55ffffff
+                HexColorEditor.WriteFloat(filePath, offset + 4, (config.ShiftAdditionalLines.G / 255.0f) * 30.0f);
+                HexColorEditor.WriteFloat(filePath, offset + 8, (config.ShiftAdditionalLines.B / 255.0f) * 30.0f);
+            }
         }
 
         private static void ApplyBPBtlFadeManager(Config config, string modDirectory)

@@ -3212,13 +3212,13 @@ namespace p3rpc.femc.Configuration
         public ConfigColor PersonaStatusStatsPaddingColor { get; set; } = new ConfigColor(0xF0, 0x75, 0xA5, 0xFF);
 
         [DisplayName("Field: Assault 1st Color keyframe 1")]
-        public ConfigColor Assault1Keyframe1 { get; set; } = new ConfigColor(0xFF, 0x25, 0x6E, 0x00);
+        public ConfigColor Assault1Keyframe1 { get; set; } = new ConfigColor(0xFF, 0x00, 0x01, 0x00);
 
         [DisplayName("Field: Assault 1st Color keyframe 2")]
-        public ConfigColor Assault1Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x25, 0x66, 0x36);
+        public ConfigColor Assault1Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x00, 0x01, 0x36);
 
         [DisplayName("Field: Assault 1st Color keyframe 3")]
-        public ConfigColor Assault1Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x00, 0x55, 0x5B);
+        public ConfigColor Assault1Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x00, 0x04, 0x5B);
 
         [DisplayName("Field: Assault 1st Color keyframe 4")]
         public ConfigColor Assault1Keyframe4 { get; set; } = new ConfigColor(0x8C, 0x00, 0x1C, 0xFF);
@@ -3227,13 +3227,13 @@ namespace p3rpc.femc.Configuration
         public ConfigColor Assault1Keyframe5 { get; set; } = new ConfigColor(0x8C, 0x00, 0x1C, 0x00);
 
         [DisplayName("Field: Assault 2nd Color keyframe 1")]
-        public ConfigColor Assault2Keyframe1 { get; set; } = new ConfigColor(0xFF, 0x0F, 0x5F, 0x00);
+        public ConfigColor Assault2Keyframe1 { get; set; } = new ConfigColor(0xFF, 0x03, 0x13, 0x00);
 
         [DisplayName("Field: Assault 2nd Color keyframe 2")]
-        public ConfigColor Assault2Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x0C, 0x5D, 0xFF);
+        public ConfigColor Assault2Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x02, 0x13, 0xFF);
 
         [DisplayName("Field: Assault 2nd Color keyframe 3")]
-        public ConfigColor Assault2Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x02, 0x63, 0xFF);
+        public ConfigColor Assault2Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x01, 0x28, 0xFF);
 
         [DisplayName("Field: Assault 2nd Color keyframe 4")]
         public ConfigColor Assault2Keyframe4 { get; set; } = new ConfigColor(0x8D, 0x00, 0x1C, 0x8D);
@@ -3245,13 +3245,73 @@ namespace p3rpc.femc.Configuration
         public ConfigColor AssaultBallsKeyframe1 { get; set; } = new ConfigColor(0xFF, 0x59, 0x8E, 0xFF);
 
         [DisplayName("Field: Assault Balls Color keyframe 2")]
-        public ConfigColor AssaultBallsKeyframe2 { get; set; } = new ConfigColor(0xFF, 0x26, 0x76, 0xFF);
+        public ConfigColor AssaultBallsKeyframe2 { get; set; } = new ConfigColor(0xFF, 0x2F, 0x4D, 0xFF);
 
         [DisplayName("Field: Assault Balls Color keyframe 3")]
         public ConfigColor AssaultBallsKeyframe3 { get; set; } = new ConfigColor(0xFF, 0x00, 0x59, 0xFF);
 
         [DisplayName("Field: Assault Balls Color keyframe 4 and 5")]
-        public ConfigColor AssaultBallsKeyframe45 { get; set; } = new ConfigColor(0xFF, 0x00, 0x66, 0xFF);
+        public ConfigColor AssaultBallsKeyframe45 { get; set; } = new ConfigColor(0xFF, 0x00, 0x19, 0xFF);
+
+        [DisplayName("Field: Shift Character Highlighting 1")]
+        public ConfigColor ShiftCharacterHighlightKeyframe1 { get; set; } = new ConfigColor(0xF5, 0x8E, 0xBB, 0xCC);
+
+        [DisplayName("Field: Shift Character Highlighting 2")]
+        public ConfigColor ShiftCharacterHighlightKeyframe2 { get; set; } = new ConfigColor(0xFF, 0xA6, 0xC6, 0xCA);
+
+        [DisplayName("Field: Shift Lines keyframe 1")]
+        public ConfigColor ShiftLinesKeyframe1 { get; set; } = new ConfigColor(0xFF, 0x69, 0x69, 0xFF);
+
+        [DisplayName("Field: Shift Lines keyframe 2")]
+        public ConfigColor ShiftLinesKeyframe2 { get; set; } = new ConfigColor(0xFF, 0x09, 0x0D, 0xFF);
+
+        [DisplayName("Field: Shift Lines keyframe 3")]
+        public ConfigColor ShiftLinesKeyframe3 { get; set; } = new ConfigColor(0xFF, 0x05, 0x09, 0xFF);
+
+        [DisplayName("Field: Shift Lines keyframe 4")]
+        public ConfigColor ShiftLinesKeyframe4 { get; set; } = new ConfigColor(0xFF, 0x03, 0x07, 0x00);
+
+        [DisplayName("Field: Shift Additional Lines")]
+        public ConfigColor ShiftAdditionalLines { get; set; } = new ConfigColor(0xFF, 0x02, 0x04, 0xFF);
+
+        [DisplayName("Back Log: Unselected Ripple 1")]
+        public ConfigColor UnselectedRipple1 { get; set; } = new ConfigColor(0xD9, 0x75, 0x8D, 0xFF);
+
+        [DisplayName("Back Log: Unselected Ripple 2")]
+        public ConfigColor UnselectedRipple2 { get; set; } = new ConfigColor(0xBA, 0x65, 0x79, 0xFF);
+
+        [DisplayName("Back Log: Unselected Ripple 3")]
+        public ConfigColor UnselectedRipple3 { get; set; } = new ConfigColor(0xA3, 0x58, 0x6A, 0xFF);
+
+        [DisplayName("Persona Status: Velvet Room Registered Stats Background")]
+        public ConfigColor RegisteredStatsBg { get; set; } = new ConfigColor(0x4B, 0x2B, 0x35, 0xFF);
+
+        [DisplayName("Persona Status: Velvet Room Registered Stats Arrows Bg")]
+        public ConfigColor RegisteredStatsArrowsBg { get; set; } = new ConfigColor(0x7B, 0x5A, 0x64, 0xFF);
+
+        [DisplayName("Persona Status: Velvet Room Registered Stats Button Outline")]
+        public ConfigColor RegisteredStatsButtonOutline { get; set; } = new ConfigColor(0x6E, 0x4A, 0x54, 0xFF);
+
+        [DisplayName("Persona Status: Velvet Room Registered Unhighlighted Font")]
+        public ConfigColor RegisteredStatsUnhighlightedFont { get; set; } = new ConfigColor(0x94, 0x74, 0x7C, 0xFF);
+
+        [DisplayName("Social Link: SL Ranking Up Sparkles 1")]
+        public ConfigColor CmmuRankUpSparkles1 { get; set; } = new ConfigColor(0xFF, 0x59, 0x90, 0xFF);
+
+        [DisplayName("Social Link: SL Ranking Up Sparkles 2")]
+        public ConfigColor CmmuRankUpSparkles2 { get; set; } = new ConfigColor(0xFF, 0x0F, 0x17, 0xFF);
+
+        [DisplayName("Social Link: SL Ranking Up Sparkles 3")]
+        public ConfigColor CmmuRankUpSparkles3 { get; set; } = new ConfigColor(0x9E, 0x00, 0x10, 0xFF);
+
+        [DisplayName("Social Link: SL Ranking Up Sparkles 4")]
+        public ConfigColor CmmuRankUpSparkles4 { get; set; } = new ConfigColor(0xFF, 0x00, 0x55, 0xFF);
+
+        [DisplayName("Social Link: SL Ranking Up Sparkle Trails")]
+        public ConfigColor CmmuRankUpSparkleTrails { get; set; } = new ConfigColor(0xFF, 0x5A, 0x83, 0xFF);
+
+        [DisplayName("Social Link: SL Ranking Up Moving Sparkles")]
+        public ConfigColor CmmuRankUpMovingSparkles { get; set; } = new ConfigColor(0xFF, 0x66, 0x6E, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
