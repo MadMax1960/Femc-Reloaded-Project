@@ -36,6 +36,15 @@
     },
     "GitHubDependencies": {
       "IdToConfigMap": {
+        "p3rpc.classconstructor": {
+          "Config": {
+            "UserName": "Rirurin",
+            "RepositoryName": "p3rpc.classconstructor",
+            "UseReleaseTag": true,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "p3rpc.classconstructor.ReleaseMetadata.json"
+        },
         "p3rpc.nativetypes": {
           "Config": {
             "UserName": "Rirurin",
@@ -209,6 +218,7 @@
   },
   "IsUniversalMod": false,
   "ModDependencies": [
+    "p3rpc.classconstructor",
     "p3rpc.eventframework",
     "p3rpc.nativetypes",
     "P3R.CostumeFramework",
