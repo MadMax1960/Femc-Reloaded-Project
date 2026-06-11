@@ -3215,13 +3215,13 @@ namespace p3rpc.femc.Configuration
         public ConfigColor Assault1Keyframe1 { get; set; } = new ConfigColor(0xFF, 0x00, 0x01, 0x00);
 
         [DisplayName("Field: Assault 1st Color keyframe 2")]
-        public ConfigColor Assault1Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x00, 0x01, 0x36);
+        public ConfigColor Assault1Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x00, 0x16, 0x36);
 
         [DisplayName("Field: Assault 1st Color keyframe 3")]
-        public ConfigColor Assault1Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x00, 0x04, 0x5B);
+        public ConfigColor Assault1Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x00, 0x1A, 0x5B);
 
         [DisplayName("Field: Assault 1st Color keyframe 4")]
-        public ConfigColor Assault1Keyframe4 { get; set; } = new ConfigColor(0x8C, 0x00, 0x1C, 0xFF);
+        public ConfigColor Assault1Keyframe4 { get; set; } = new ConfigColor(0x8C, 0x00, 0x27, 0xFF);
 
         [DisplayName("Field: Assault 1st Color keyframe 5")]
         public ConfigColor Assault1Keyframe5 { get; set; } = new ConfigColor(0x8C, 0x00, 0x1C, 0x00);
@@ -3230,13 +3230,13 @@ namespace p3rpc.femc.Configuration
         public ConfigColor Assault2Keyframe1 { get; set; } = new ConfigColor(0xFF, 0x03, 0x13, 0x00);
 
         [DisplayName("Field: Assault 2nd Color keyframe 2")]
-        public ConfigColor Assault2Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x02, 0x13, 0xFF);
+        public ConfigColor Assault2Keyframe2 { get; set; } = new ConfigColor(0xFF, 0x02, 0x16, 0xFF);
 
         [DisplayName("Field: Assault 2nd Color keyframe 3")]
-        public ConfigColor Assault2Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x01, 0x28, 0xFF);
+        public ConfigColor Assault2Keyframe3 { get; set; } = new ConfigColor(0xFF, 0x01, 0x2A, 0xFF);
 
         [DisplayName("Field: Assault 2nd Color keyframe 4")]
-        public ConfigColor Assault2Keyframe4 { get; set; } = new ConfigColor(0x8D, 0x00, 0x1C, 0x8D);
+        public ConfigColor Assault2Keyframe4 { get; set; } = new ConfigColor(0x8D, 0x00, 0x20, 0x8D);
 
         [DisplayName("Field: Assault 2nd Color keyframe 5")]
         public ConfigColor Assault2Keyframe5 { get; set; } = new ConfigColor(0x8D, 0x00, 0x1C, 0x00);
