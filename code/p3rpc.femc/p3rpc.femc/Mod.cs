@@ -1,5 +1,4 @@
 ﻿using P3R.CostumeFramework.Interfaces;
-using p3rpc.classconstructor.Interfaces;
 using p3rpc.commonmodutils;
 using p3rpc.femc.Audio;
 using p3rpc.femc.Components;
@@ -14,6 +13,7 @@ using Ryo.Interfaces;
 using SharedScans.Interfaces;
 using System.Diagnostics;
 using Reloaded.Hooks.ReloadedII.Interfaces;
+using UE.Toolkit.Core.Types.Unreal.Factories;
 using UE.Toolkit.Interfaces;
 using UnrealEssentials.Interfaces;
 using static p3rpc.femc.Configuration.Config;
@@ -82,14 +82,15 @@ namespace p3rpc.femc
 			var sharedScans = GetDependency<ISharedScans>("Shared Scans");
 			Utils utils = new(startupScanner, _logger, _hooks, baseAddress, "Femc Project", System.Drawing.Color.Thistle, _configuration.DebugLogLevel);
 			var unrealEssentials = GetDependency<IUnrealEssentials>("Unreal Essentials");
-			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
-            var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
-			var uObjects = GetDependency<IUnrealObjects>("UE Toolkit (IUObjects)");
-            var toolKit = GetDependency<IToolkit>("UE Toolkit (IToolkit");
+            var unrealToolkit = GetDependency<IToolkit>("UE Toolkit (IToolkit)");
             var unrealMemory = GetDependency<IUnrealMemory>("UE Toolkit (IUnrealMemory)");
             var unrealNames = GetDependency<IUnrealNames>("UE Toolkit (IUnrealNames)");
             var unrealClasses = GetDependency<IUnrealClasses>("UE Toolkit (IUnrealClasses)");
             var unrealObjects = GetDependency<IUnrealObjects>("UE Toolkit (IUnrealObjects)");
+            var unrealStrings = GetDependency<IUnrealStrings>("UE Toolkit (IUnrealStrings)");
+            var unrealFactory = GetDependency<IUnrealFactory>("UE Toolkit (IUnrealFactory)");
+            var unrealState = GetDependency<IUnrealState>("UE Toolkit (IUnrealState)");
+            var unrealSpawning = GetDependency<IUnrealSpawning>("UE Toolkit (IUnrealSpawning)");
             _costumeApi = GetDependency<ICostumeApi>("Costume Framework");
 
 			var ryo = GetDependency<IRyoApi>("Ryo Framework");
@@ -115,14 +116,15 @@ namespace p3rpc.femc
 
             _context = new(
 	            baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), 
-	            utils, memory, sharedScans, classMethods, objectMethods, bIsAigis, unrealMemory, unrealClasses, unrealObjects);
+	            utils, memory, sharedScans, bIsAigis, unrealMemory, unrealClasses, unrealObjects, unrealStrings,
+	            unrealFactory, unrealState, unrealSpawning);
 			_modRuntime = new(_context);
 			_musicManager = new MusicManager(_modLoader, _modConfig, _configuration, ryo, _logger, _context);
-            _armorData = new(_modLoader, _modConfig, _configuration, uObjects, toolKit, _context);
+            _armorData = new(_modLoader, _modConfig, _configuration, unrealObjects, unrealToolkit, _context);
 
             modName = _modConfig.ModName;
 			// Load Modules/assets
-			LoadEnabledAddons(unrealEssentials, ryo, toolKit);
+			LoadEnabledAddons(unrealEssentials, ryo, unrealToolkit);
 			InitializeModules();
 			_assetRedirector = new AssetRedirector(unrealNames, modName);
 			_assetRedirector.RedirectPlayerAssets();
