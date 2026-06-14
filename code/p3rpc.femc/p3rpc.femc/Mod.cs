@@ -181,6 +181,12 @@ namespace p3rpc.femc
 			}
 
             unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector")); // this is femcs asset folder, all her assets go in here. If they are not in here, she will not load
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "AkinariSLComplete"));
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "DormHang"));
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "Hotsprings"));
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "LizDates"));
+            if (!_configuration.TheodorefromAlvinandTheChipmunks)
+                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "Theo Conflict"));
             _costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Outfit Loader")); // Folder with all the costume ymls
         }
 
