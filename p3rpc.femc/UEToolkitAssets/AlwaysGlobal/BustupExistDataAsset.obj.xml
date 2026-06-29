@@ -950,6 +950,64 @@
 						</Item>
 					</Clothes>
 				</Item>
+				<Item id="67"> <!-- neutral stare -->
+					<Clothes>
+						<Item id="6">
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="938.0"/>
+							<EyeY value="1059.0"/>
+							<MouthX value="938.0"/>
+							<MouthY value="1307.0"/>
+							<BlushX value="938.0"/>
+							<BlushY value="1173.0"/>
+							<SweatX value="1032.0"/>
+							<SweatY value="1267.0"/>
+							<OffsetX value="-100.0"/>
+							<OffsetY value="0"/>
+						</Item>
+						<Item id="52">
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="938.0"/>
+							<EyeY value="1059.0"/>
+							<MouthX value="938.0"/>
+							<MouthY value="1307.0"/>
+							<BlushX value="938.0"/>
+							<BlushY value="1173.0"/>
+							<SweatX value="1032.0"/>
+							<SweatY value="1267.0"/>
+							<OffsetX value="-100.0"/>
+							<OffsetY value="0"/>
+						</Item>
+						<Item id="159">
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="938.0"/>
+							<EyeY value="1059.0"/>
+							<MouthX value="938.0"/>
+							<MouthY value="1307.0"/>
+							<BlushX value="938.0"/>
+							<BlushY value="1173.0"/>
+							<SweatX value="1032.0"/>
+							<SweatY value="1267.0"/>
+							<OffsetX value="-100.0"/>
+							<OffsetY value="0"/>
+						</Item>
+					</Clothes>
+				</Item>
 				<Item id="69"> <!-- teeheeheee smiley -->
 					<Clothes>
 						<Item id="6"> <!--Normal-->
