@@ -13,6 +13,7 @@ using Ryo.Interfaces;
 using SharedScans.Interfaces;
 using System.Diagnostics;
 using Reloaded.Hooks.ReloadedII.Interfaces;
+using riri.eventframework.Interfaces;
 using UE.Toolkit.Core.Types.Unreal.Factories;
 using UE.Toolkit.Interfaces;
 using UnrealEssentials.Interfaces;
@@ -91,6 +92,7 @@ namespace p3rpc.femc
             var unrealFactory = GetDependency<IUnrealFactory>("UE Toolkit (IUnrealFactory)");
             var unrealState = GetDependency<IUnrealState>("UE Toolkit (IUnrealState)");
             var unrealSpawning = GetDependency<IUnrealSpawning>("UE Toolkit (IUnrealSpawning)");
+            var eventFramework = GetDependency<IEventFramework>("Event Framework");
             _costumeApi = GetDependency<ICostumeApi>("Costume Framework");
 
 			var ryo = GetDependency<IRyoApi>("Ryo Framework");
@@ -117,7 +119,7 @@ namespace p3rpc.femc
             _context = new(
 	            baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), 
 	            utils, memory, sharedScans, bIsAigis, unrealMemory, unrealClasses, unrealObjects, unrealStrings,
-	            unrealFactory, unrealState, unrealSpawning);
+	            unrealFactory, unrealState, unrealSpawning, eventFramework);
 			_modRuntime = new(_context);
 			_musicManager = new MusicManager(_modLoader, _modConfig, _configuration, ryo, _logger, _context);
             _armorData = new(_modLoader, _modConfig, _configuration, unrealObjects, unrealToolkit, _context);
@@ -162,7 +164,8 @@ namespace p3rpc.femc
                 CustomBustups.LoadCustomBustupsAssets(unrealEssentials, toolKit, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Custom Bustups
                 Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
                 Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
-                HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Hot Spring Event
+                HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, 
+	                _context._modLocation, _context._eventFramework); // loads Hot Spring Event
                 Testing.LoadTesticles(unrealEssentials, _modLoader, _modConfig, ryo, toolKit, _context, _configuration, _context._modLocation); // loads testes
 				HexEditing.CampCommon.Apply(_configuration, _context._modLocation);
                 HexEditing.SaveLoad.Apply(_configuration, _context._modLocation);
