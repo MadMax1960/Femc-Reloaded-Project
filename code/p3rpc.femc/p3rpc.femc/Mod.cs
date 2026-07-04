@@ -1,12 +1,10 @@
 ﻿using P3R.CostumeFramework.Interfaces;
-using p3rpc.classconstructor.Interfaces;
 using p3rpc.commonmodutils;
 using p3rpc.femc.Audio;
 using p3rpc.femc.Components;
 using p3rpc.femc.Configuration;
 using p3rpc.femc.Template;
 using p3rpc.femc.UeToolkit;
-using Reloaded.Hooks.Definitions;
 using Reloaded.Memory;
 using Reloaded.Memory.Sigscan.Definitions;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
@@ -14,14 +12,12 @@ using Reloaded.Mod.Interfaces;
 using Ryo.Interfaces;
 using SharedScans.Interfaces;
 using System.Diagnostics;
+using Reloaded.Hooks.ReloadedII.Interfaces;
+using UE.Toolkit.Core.Types.Unreal.Factories;
 using UE.Toolkit.Interfaces;
 using UnrealEssentials.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 using IUnrealMemory = UE.Toolkit.Interfaces.IUnrealMemory;
-
-
-
-/// ok maybe p3rpc.femc.music.interfaces is required, but it's not in repo and randomization doesn't work leading me to believe they're connected, or randomization never worked idk
 
 namespace p3rpc.femc
 {
@@ -66,10 +62,6 @@ namespace p3rpc.femc
 		private AssetRedirector _assetRedirector;
 		private readonly ICostumeApi _costumeApi;
 		private ArmorData _armorData;
-
-
-
-
         private string modName { get; set; }
 
 		public Mod(ModContext context)
@@ -90,12 +82,15 @@ namespace p3rpc.femc
 			var sharedScans = GetDependency<ISharedScans>("Shared Scans");
 			Utils utils = new(startupScanner, _logger, _hooks, baseAddress, "Femc Project", System.Drawing.Color.Thistle, _configuration.DebugLogLevel);
 			var unrealEssentials = GetDependency<IUnrealEssentials>("Unreal Essentials");
-			var classMethods = GetDependency<IClassMethods>("Class Constructor (Class Methods)");
-            var objectMethods = GetDependency<IObjectMethods>("Class Constructor (Object Methods)");
-			var uObjects = GetDependency<IUnrealObjects>("UE Toolkit (IUObjects)");
-            var toolKit = GetDependency<IToolkit>("UE Toolkit (IToolkit");
+            var unrealToolkit = GetDependency<IToolkit>("UE Toolkit (IToolkit)");
             var unrealMemory = GetDependency<IUnrealMemory>("UE Toolkit (IUnrealMemory)");
             var unrealNames = GetDependency<IUnrealNames>("UE Toolkit (IUnrealNames)");
+            var unrealClasses = GetDependency<IUnrealClasses>("UE Toolkit (IUnrealClasses)");
+            var unrealObjects = GetDependency<IUnrealObjects>("UE Toolkit (IUnrealObjects)");
+            var unrealStrings = GetDependency<IUnrealStrings>("UE Toolkit (IUnrealStrings)");
+            var unrealFactory = GetDependency<IUnrealFactory>("UE Toolkit (IUnrealFactory)");
+            var unrealState = GetDependency<IUnrealState>("UE Toolkit (IUnrealState)");
+            var unrealSpawning = GetDependency<IUnrealSpawning>("UE Toolkit (IUnrealSpawning)");
             _costumeApi = GetDependency<ICostumeApi>("Costume Framework");
 
 			var ryo = GetDependency<IRyoApi>("Ryo Framework");
@@ -119,14 +114,17 @@ namespace p3rpc.femc
                 }
             }
 
-            _context = new(baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), utils, memory, sharedScans, classMethods, objectMethods, bIsAigis);
+            _context = new(
+	            baseAddress, _configuration, _logger, startupScanner, _hooks, _modLoader.GetDirectoryForModId(_modConfig.ModId), 
+	            utils, memory, sharedScans, bIsAigis, unrealMemory, unrealClasses, unrealObjects, unrealStrings,
+	            unrealFactory, unrealState, unrealSpawning);
 			_modRuntime = new(_context);
 			_musicManager = new MusicManager(_modLoader, _modConfig, _configuration, ryo, _logger, _context);
-            _armorData = new(_modLoader, _modConfig, _configuration, uObjects, toolKit, _context);
+            _armorData = new(_modLoader, _modConfig, _configuration, unrealObjects, unrealToolkit, _context);
 
             modName = _modConfig.ModName;
 			// Load Modules/assets
-			LoadEnabledAddons(unrealEssentials, ryo, toolKit);
+			LoadEnabledAddons(unrealEssentials, ryo, unrealToolkit);
 			InitializeModules();
 			_assetRedirector = new AssetRedirector(unrealNames, modName);
 			_assetRedirector.RedirectPlayerAssets();
@@ -161,6 +159,7 @@ namespace p3rpc.femc
                 GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the group event thing, its 2d art 
                 KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the kyoto event, it is also 2d art
                 Theo.LoadTheoAssets(unrealEssentials, toolKit, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
+                CustomBustups.LoadCustomBustupsAssets(unrealEssentials, toolKit, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Custom Bustups
                 Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
                 Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
                 HotspringsLoader.LoadHotspringsAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Hot Spring Event
@@ -174,6 +173,7 @@ namespace p3rpc.femc
                 HexEditing.Handwriting.Apply(_configuration, _context._modLocation);
                 HexEditing.Field.Apply(_configuration, _context._modLocation);
                 HexEditing.SocialStats.Apply(_configuration, _context._modLocation);
+                HexEditing.Backlog.Apply(_configuration, _context._modLocation);
             }
 			catch (Exception ex)
 			{
@@ -181,6 +181,12 @@ namespace p3rpc.femc
 			}
 
             unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Redirector")); // this is femcs asset folder, all her assets go in here. If they are not in here, she will not load
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "AkinariSLComplete"));
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "DormHang"));
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "Hotsprings"));
+            unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "LizDates"));
+            if (!_configuration.TheodorefromAlvinandTheChipmunks)
+                unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "Theo Conflict"));
             _costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Outfit Loader")); // Folder with all the costume ymls
         }
 
@@ -282,6 +288,7 @@ namespace p3rpc.femc
 			if (_configuration.EnableWipe) _modRuntime.AddModule<Wipe>();
 			if (_configuration.EnableItemList) _modRuntime.AddModule<ItemList>();
 			if (_configuration.EnableCommunity) _modRuntime.AddModule<Cmmu>();
+			_modRuntime.AddModule<Bitflags>();
 			_modRuntime.RegisterModules();
 		}
 

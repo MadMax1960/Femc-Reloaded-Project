@@ -2,7 +2,7 @@
   "ModId": "p3rpc.femc",
   "ModName": "Femc Project",
   "ModAuthor": "Femc Reloaded Team",
-  "ModVersion": "2.5.0",
+  "ModVersion": "2.5.1",
   "ModDescription": "This mod aims to readd the female protagonist Kotone Shiomi from Persona 3 Portable.",
   "ModDll": "p3rpc.femc.dll",
   "ModIcon": "Preview.png",
@@ -36,15 +36,6 @@
     },
     "GitHubDependencies": {
       "IdToConfigMap": {
-        "p3rpc.classconstructor": {
-          "Config": {
-            "UserName": "Rirurin",
-            "RepositoryName": "p3rpc.classconstructor",
-            "UseReleaseTag": true,
-            "AssetFileName": "Mod.zip"
-          },
-          "ReleaseMetadataName": "p3rpc.classconstructor.ReleaseMetadata.json"
-        },
         "p3rpc.nativetypes": {
           "Config": {
             "UserName": "Rirurin",
@@ -197,6 +188,15 @@
             "AssetFileName": "Mod.zip"
           },
           "ReleaseMetadataName": "P3R.UEToolkit.ReleaseMetadata.json"
+        },
+        "p3rpc.eventframework": {
+          "Config": {
+            "UserName": "Rirurin",
+            "RepositoryName": "riri.eventframework",
+            "UseReleaseTag": true,
+            "AssetFileName": "Mod.zip"
+          },
+          "ReleaseMetadataName": "p3rpc.eventframework.ReleaseMetadata.json"
         }
       }
     },
@@ -209,7 +209,7 @@
   },
   "IsUniversalMod": false,
   "ModDependencies": [
-    "p3rpc.classconstructor",
+    "p3rpc.eventframework",
     "p3rpc.nativetypes",
     "P3R.CostumeFramework",
     "P3R.UEToolkit",

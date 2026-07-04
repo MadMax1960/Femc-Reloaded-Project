@@ -1,0 +1,128 @@
+<UBustupExistDataAsset>
+	<Data>
+		<Item id="221">
+			<Faces>
+				<Item id="0">
+					<Clothes>
+						<Item id="2">
+							<Pose value="PoseA"/>
+							<EyePartsID value="2"/>
+							<MouthPartsID value="2"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="718.0"/>
+							<EyeY value="1058.0"/>
+							<MouthX value="718.0"/>
+							<MouthY value="1296.0"/>
+							<BlushX value="0.0"/>
+							<BlushY value="0.0"/>
+							<SweatX value="1070.0"/>
+							<SweatY value="1251.0"/>
+						</Item>
+					</Clothes>
+				</Item>
+				<Item id="1">
+					<Clothes>
+						<Item id="2">
+							<Pose value="PoseA"/>
+							<EyePartsID value="2"/>
+							<MouthPartsID value="2"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="718.0"/>
+							<EyeY value="1058.0"/>
+							<MouthX value="718.0"/>
+							<MouthY value="1296.0"/>
+							<BlushX value="0.0"/>
+							<BlushY value="0.0"/>
+							<SweatX value="1070.0"/>
+							<SweatY value="1251.0"/>
+						</Item>
+					</Clothes>
+				</Item>
+				<Item id="2">
+					<Clothes>
+						<Item id="2">
+							<Pose value="PoseA"/>
+							<EyePartsID value="2"/>
+							<MouthPartsID value="2"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="718.0"/>
+							<EyeY value="1058.0"/>
+							<MouthX value="718.0"/>
+							<MouthY value="1296.0"/>
+							<BlushX value="0.0"/>
+							<BlushY value="0.0"/>
+							<SweatX value="1070.0"/>
+							<SweatY value="1251.0"/>
+						</Item>
+					</Clothes>
+				</Item>
+				<Item id="3">
+					<Clothes>
+						<Item id="2">
+							<Pose value="PoseA"/>
+							<EyePartsID value="2"/>
+							<MouthPartsID value="2"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="718.0"/>
+							<EyeY value="1058.0"/>
+							<MouthX value="718.0"/>
+							<MouthY value="1296.0"/>
+							<BlushX value="0.0"/>
+							<BlushY value="0.0"/>
+							<SweatX value="1070.0"/>
+							<SweatY value="1251.0"/>
+						</Item>
+					</Clothes>
+				</Item>
+				<Item id="4">
+					<Clothes>
+						<Item id="2">
+							<Pose value="PoseA"/>
+							<EyePartsID value="2"/>
+							<MouthPartsID value="2"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="718.0"/>
+							<EyeY value="1058.0"/>
+							<MouthX value="718.0"/>
+							<MouthY value="1296.0"/>
+							<BlushX value="0.0"/>
+							<BlushY value="0.0"/>
+							<SweatX value="1070.0"/>
+							<SweatY value="1251.0"/>
+						</Item>
+					</Clothes>
+				</Item>
+				<Item id="10">
+					<Clothes>
+						<Item id="2">
+							<Pose value="PoseB"/>
+							<EyePartsID value="2"/>
+							<MouthPartsID value="2"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="false"/>
+							<InBetween value="0"/>
+							<EyeX value="707.0"/>
+							<EyeY value="1163.0"/>
+							<MouthX value="0.0"/>
+							<MouthY value="0.0"/>
+							<BlushX value="0.0"/>
+							<BlushY value="0.0"/>
+							<SweatX value="1070.0"/>
+							<SweatY value="1251.0"/>
+						</Item>
+					</Clothes>
+				</Item>
+			</Faces>
+		</Item>
+	</Data>
+</UBustupExistDataAsset>

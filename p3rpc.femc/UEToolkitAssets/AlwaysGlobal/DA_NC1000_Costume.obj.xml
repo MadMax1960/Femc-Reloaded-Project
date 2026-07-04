@@ -1,0 +1,15 @@
+<AppNpcCostume_DA>
+	<Unique>
+		<Item id="1012">
+			<Costume>
+				<Mesh value="/Game/Xrd777/RayStuff/VincentTest/VincentBody.VincentBody"/>
+			</Costume>
+			<Hair>
+				<Mesh value="/Game/Xrd777/RayStuff/VincentTest/Vincenthair.Vincenthair"/>
+			</Hair>
+			<Face>
+				<Mesh value="/Game/Xrd777/RayStuff/VincentTest/VincentFace.VincentFace"/>
+			</Face>
+		</Item>
+	</Unique>
+</AppNpcCostume_DA>

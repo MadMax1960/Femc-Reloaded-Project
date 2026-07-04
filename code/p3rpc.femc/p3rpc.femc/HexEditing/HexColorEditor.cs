@@ -146,6 +146,57 @@ namespace p3rpc.femc.HexEditing
             }
         }
 
+        /// <param name="filePath">Absolute path to the file to edit</param>
+        /// <param name="offset">Offset in bytes where the color curve should be written</param>
+        /// <param name="colorKeyframes">A dictionary [0s-1s time, (color, saturated max color value (hardcoded))] that will be used to interpolate all colors of the curve</param>
+        /// <param name="size">Size of the color curve</param>
+        public static void WriteFloatColorCurve(string filePath, long offset, Dictionary<float, (ConfigColor, float)> colorKeyframes, int size)
+        {
+            if (colorKeyframes.Count < 2)
+                throw new ArgumentException("At least two keyframes are needed to create a color curve", nameof(colorKeyframes));
+
+            // Order keyframes just in case
+            var sortedKeyFrames = colorKeyframes.Keys.OrderBy(k => k).ToList();
+
+            using FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Write, FileShare.Read);
+            stream.Seek(offset, SeekOrigin.Begin);
+
+            // These color curves have "size" colors
+            float totalTime = (float)size - 1.0f;
+            for (int i = 0; i < size; i++)
+            {
+                float actTime = i / totalTime;
+
+                for (int j = 0; j < sortedKeyFrames.Count - 1; j++)
+                {
+                    float t1 = sortedKeyFrames[j];
+                    float t2 = sortedKeyFrames[j + 1];
+
+                    if (actTime >= t1 && actTime <= t2)
+                    {
+                        ConfigColor c1 = colorKeyframes[t1].Item1;
+                        ConfigColor c2 = colorKeyframes[t2].Item1;
+
+                        float t = (actTime - t1) / (t2 - t1);
+                        float maxColorComponent = colorKeyframes[t1].Item2 + t * (colorKeyframes[t2].Item2 - colorKeyframes[t1].Item2);
+
+                        // Interpolate current color relative to current time frame
+                        float r = ((c1.R + t * (c2.R - c1.R)) / 255.0f) * maxColorComponent;
+                        float g = ((c1.G + t * (c2.G - c1.G)) / 255.0f) * maxColorComponent;
+                        float b = ((c1.B + t * (c2.B - c1.B)) / 255.0f) * maxColorComponent;
+                        float a = (c1.A + t * (c2.A - c1.A)) / 255.0f;
+
+                        WriteFloat(stream, r);
+                        WriteFloat(stream, g);
+                        WriteFloat(stream, b);
+                        WriteFloat(stream, a);
+
+                        break;
+                    }
+                }
+            }
+        }
+
         public static void WriteHalf(Stream stream, Half value)
         {
             ushort bits = BitConverter.ToUInt16(BitConverter.GetBytes(value), 0);
@@ -180,6 +231,12 @@ namespace p3rpc.femc.HexEditing
         {
             byte[] floatComponentBytes = BitConverter.GetBytes(value);
             stream.Seek(offset, SeekOrigin.Begin);
+            stream.Write(floatComponentBytes, 0, floatComponentBytes.Length);
+        }
+
+        public static void WriteFloat(FileStream stream, float value)
+        {
+            byte[] floatComponentBytes = BitConverter.GetBytes(value);
             stream.Write(floatComponentBytes, 0, floatComponentBytes.Length);
         }
 

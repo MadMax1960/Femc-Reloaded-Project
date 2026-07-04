@@ -41,24 +41,26 @@ namespace p3rpc.femc.Components
         private string UMsgProcWindow_Simple_DrawCurrentSpeakerName_SIG = "E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 48 8D 8D ?? ?? ?? ?? F3 44 0F 58 0D ?? ?? ?? ??";
 
         private MultiSignature _DrawNextPageIndicatorMS;
-        private string UMsgProcWindow_Simple_DrawNextPageIndicator_SIG = "48 89 E0 48 89 70 ?? 57 48 81 EC B0 00 00 00";
-        private string UMsgProcWindow_Simple_DrawNextPageIndicator_EpAigis_SIG = "48 89 E0 48 89 58 ?? 56 48 81 EC B0 00 00 00 0F 29 70 ?? 48 89 D6";
+        private string[] UMsgProcWindow_Simple_DrawNextPageIndicator_SIG = [
+            "48 89 E0 48 89 70 ?? 57 48 81 EC B0 00 00 00",
+            "48 89 E0 48 89 58 ?? 56 48 81 EC B0 00 00 00 0F 29 70 ?? 48 89 D6",
+            "48 8B C4 48 89 58 ?? 56 48 81 EC B0 00 00 00 0F 29 70 ?? 48 8B F2"
+        ];
         public unsafe MsgWindowSimple(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
-            _context._utils.SigScan(UMsgProcWindow_Simple_DrawMessageBox_SIG, "UMsgProcWindow_Simple::DrawMessageBox", _context._utils.GetDirectAddress, addr => _drawMsgBoxSimple = _context._utils.MakeHooker<UMsgProcWindow_Simple_DrawMessageBox>(UMsgProcWindow_Simple_DrawMessageBoxImpl, addr));
-            _context._utils.SigScan(UMsgProcWindow_Simple_DrawMessageText_SIG, "UMsgProcWindow_Simple::DrawMessageText", _context._utils.GetDirectAddress, addr => _drawMessageText = _context._utils.MakeWrapper<IUIMethods.UMsgProcWindow_Simple_DrawMessageText>(addr));
+            _context._utils.SigScan(UMsgProcWindow_Simple_DrawMessageBox_SIG, "UMsgProcWindow_Simple::DrawMessageBox", _context._utils.GetDirectAddress, 
+                addr => _drawMsgBoxSimple = _context._utils.MakeHooker<UMsgProcWindow_Simple_DrawMessageBox>(UMsgProcWindow_Simple_DrawMessageBoxImpl, addr));
+            _context._utils.SigScan(UMsgProcWindow_Simple_DrawMessageText_SIG, "UMsgProcWindow_Simple::DrawMessageText", _context._utils.GetDirectAddress, 
+                addr => _drawMessageText = _context._utils.MakeWrapper<IUIMethods.UMsgProcWindow_Simple_DrawMessageText>(addr));
             //_context._sharedScans.CreateListener<IUIMethods.UMsgProcWindow_Simple_DrawMessageText>(addr => _context._utils.AfterSigScan(addr, _context._utils.GetDirectAddress, addr => _context._utils.MakeWrapper<IUIMethods.UMsgProcWindow_Simple_DrawMessageText>(addr)));
             //_context._utils.SigScan(UMsgProcWindow_Simple_DrawCurrentSpeakerName_SIG, "UMsgProcWindow_Simple::DrawCurrentSpeakerName", _context._utils.GetIndirectAddressShort, addr => _messageBoxFloats1 = (float*)addr);
-            _DrawNextPageIndicatorMS = new MultiSignature();
-            _context._utils.MultiSigScan(
-                new string[] { UMsgProcWindow_Simple_DrawNextPageIndicator_SIG, UMsgProcWindow_Simple_DrawNextPageIndicator_EpAigis_SIG },
+            _DrawNextPageIndicatorMS = new ();
+            _context._utils.MultiSigScan(UMsgProcWindow_Simple_DrawNextPageIndicator_SIG,
                 "UMsgProcWindow_Simple::DrawNextPageIndicator", _context._utils.GetDirectAddress,
                 addr => _drawNextPage = _context._utils.MakeWrapper<UMsgProcWindow_Simple_DrawNextPageIndicator>(addr),
                 _DrawNextPageIndicatorMS
             );
         }
-
-        // 48 89 E0 48 89 58 ?? 56 48 81 EC B0 00 00 00 0F 29 70 ?? 48 89 D6
 
         public override void Register()
         {
@@ -282,7 +284,7 @@ namespace p3rpc.femc.Components
     public class MsgWindowSelectSimple : ModuleBase<FemcContext>
     {
         private string UMsgProcWindow_Select_Simple_DrawListBox_SIG = "40 55 41 56 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 68 04 00 00";
-        private string USelItem_CopySelEntries_SIG = "48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 83 EC 20 8B 41 ?? 48 89 D3";
+        private string USelItem_CopySelEntries_SIG = "E8 ?? ?? ?? ?? 80 BF ?? ?? ?? ?? 02 75 ?? 3B 5C 24 ?? 7D ?? 3B 5C 24 ??";
         private string SelBoxStruct2_14105cd80_SIG = "4C 8B DC 56 41 56 48 81 EC 88 00 00 00 33 C0";
         private string LocationSelectParam1_DrawSelectMapBg_SIG = "E8 ?? ?? ?? ?? 33 C0 C7 44 24 ?? 24 00 00 00 C7 44 24 ?? 0F 00 00 00 45 33 C0";
         private string UMsgProcWindow_Select_Simple_DrawSelectText_SIG = "48 8B C4 48 89 58 ?? 48 89 70 ?? 55 57 41 54 41 56 41 57 48 8D A8 ?? ?? ?? ?? 48 81 EC 30 02 00 00";
@@ -313,7 +315,7 @@ namespace p3rpc.femc.Components
         public unsafe MsgWindowSelectSimple(FemcContext context, Dictionary<string, ModuleBase<FemcContext>> modules) : base(context, modules)
         {
             _context._utils.SigScan(UMsgProcWindow_Select_Simple_DrawListBox_SIG, "UMsgProcWindow_Select_Simple::DrawListBox", _context._utils.GetDirectAddress, addr => _drawListBox = _context._utils.MakeHooker<UMsgProcWindow_Select_Simple_DrawListBox>(UMsgProcWindow_Select_Simple_DrawListBoxImpl, addr));
-            _context._utils.SigScan(USelItem_CopySelEntries_SIG, "USelItem::CopySelEntries", _context._utils.GetDirectAddress, addr => _copySelEntries = _context._utils.MakeWrapper<UselItem_CopySelEntries>(addr));
+            _context._utils.SigScan(USelItem_CopySelEntries_SIG, "USelItem::CopySelEntries", _context._utils.GetIndirectAddressShort, addr => _copySelEntries = _context._utils.MakeWrapper<UselItem_CopySelEntries>(addr));
             _context._utils.SigScan(SelBoxStruct2_14105cd80_SIG, "SelBoxStruct2::FUN_14105cd80", _context._utils.GetDirectAddress, addr => _selBoxFunc1 = _context._utils.MakeWrapper<SelBoxStruct2_14105cd80>(addr));
             _context._utils.SigScan(LocationSelectParam1_DrawSelectMapBg_SIG, "LocationSelectParams1::DrawSelectMapBg", _context._utils.GetIndirectAddressShort, addr => _drawSelectMapBg = _context._utils.MakeWrapper<LocationSelectParam1_DrawSelectMapBg>(addr));
             _context._utils.SigScan(UMsgProcWindow_Select_Simple_DrawSelectText_SIG, "UMsgProcWindow_Select_Simple_::DrawSelectText", _context._utils.GetDirectAddress, addr => _drawSelectText = _context._utils.MakeWrapper<UMsgProcWindow_Select_Simple_DrawSelectText>(addr));

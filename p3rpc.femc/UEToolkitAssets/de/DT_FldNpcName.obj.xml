@@ -1,0 +1,7 @@
+<DataTable row-struct="FldNpcNameTableRow">
+  <Item id="KIN_00696969">
+      <Name value="Man Drinking Alone"/>
+	  <flag value=""/>
+	  <Name2 value=""/>
+  </Item>
+</DataTable>
