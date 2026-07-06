@@ -4,8 +4,8 @@
         <Value value="0"/>
         <Offset value="1610612736"/>
     </Item>
-    <!-- Free flag, you're free to use this -->
-    <Item id="FEM_TEST_FLAG_1">
+    <!-- Flag weather Femc will wear her Yukata for the summer festival -->
+    <Item id="FEM_YUKATA_FESTIVAL_FLAG">
         <Value value="1"/>
         <Offset value="1610612736"/>
     </Item>
