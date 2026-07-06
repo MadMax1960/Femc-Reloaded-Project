@@ -1,5 +1,169 @@
 <BustupExistDataAsset>
 	<Data>
+		<Item id="3"> <!-- Junpei -->
+			<Faces>
+				<Item id="30"> <!-- Expression 0 Bruised -->
+					<Clothes>
+						<Item id="1"> <!--Summer-->
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="789.0"/>
+							<EyeY value="1033.0"/>
+							<MouthX value="789.0"/>
+							<MouthY value="1281.0"/>
+							<BlushX value="761.0"/>
+							<BlushY value="1121.0"/>
+							<SweatX value="857.0"/>
+							<SweatY value="1240.0"/>
+							<OffsetX value="0"/>
+							<OffsetY value="0"/>
+						</Item>
+						<Item id="2"> <!--Winter-->
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="789.0"/>
+							<EyeY value="1033.0"/>
+							<MouthX value="789.0"/>
+							<MouthY value="1281.0"/>
+							<BlushX value="761.0"/>
+							<BlushY value="1121.0"/>
+							<SweatX value="857.0"/>
+							<SweatY value="1240.0"/>
+							<OffsetX value="0"/>
+							<OffsetY value="0"/>
+						</Item>
+					</Clothes>
+				</Item>
+				<Item id="31"> <!-- Expression 4 Bruised -->
+					<Clothes>
+						<Item id="1"> <!--Summer-->
+							<Pose value="PoseC"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="726.0"/>
+							<EyeY value="690.0"/>
+							<MouthX value="729.0"/>
+							<MouthY value="1158.0"/>
+							<BlushX value="702.0"/>
+							<BlushY value="1009.0"/>
+							<SweatX value="788.0"/>
+							<SweatY value="1139.0"/>
+							<OffsetX value="63"/>
+							<OffsetY value="32"/>
+						</Item>
+						<Item id="2"> <!--Winter-->
+							<Pose value="PoseC"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="726.0"/>
+							<EyeY value="690.0"/>
+							<MouthX value="729.0"/>
+							<MouthY value="1158.0"/>
+							<BlushX value="702.0"/>
+							<BlushY value="1009.0"/>
+							<SweatX value="788.0"/>
+							<SweatY value="1139.0"/>
+							<OffsetX value="63"/>
+							<OffsetY value="32"/>
+						</Item>
+					</Clothes>
+				</Item>
+				<Item id="32"> <!-- Expression 6 Bruised -->
+					<Clothes>
+						<Item id="1"> <!--Summer-->
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="false"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="789.0"/>
+							<EyeY value="1033.0"/>
+							<MouthX value="789.0"/>
+							<MouthY value="1281.0"/>
+							<BlushX value="761.0"/>
+							<BlushY value="1121.0"/>
+							<SweatX value="857.0"/>
+							<SweatY value="1240.0"/>
+							<OffsetX value="0"/>
+							<OffsetY value="0"/>
+						</Item>
+						<Item id="2"> <!--Winter-->
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="false"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="789.0"/>
+							<EyeY value="1033.0"/>
+							<MouthX value="789.0"/>
+							<MouthY value="1281.0"/>
+							<BlushX value="761.0"/>
+							<BlushY value="1121.0"/>
+							<SweatX value="857.0"/>
+							<SweatY value="1240.0"/>
+							<OffsetX value="0"/>
+							<OffsetY value="0"/>
+						</Item>
+					</Clothes>
+				</Item>
+				<Item id="33"> <!-- Expression 11 Bruised -->
+					<Clothes>
+						<Item id="1"> <!--Summer-->
+							<Pose value="PoseC"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="false"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="726.0"/>
+							<EyeY value="690.0"/>
+							<MouthX value="729.0"/>
+							<MouthY value="1158.0"/>
+							<BlushX value="702.0"/>
+							<BlushY value="1009.0"/>
+							<SweatX value="788.0"/>
+							<SweatY value="1139.0"/>
+							<OffsetX value="63"/>
+							<OffsetY value="32"/>
+						</Item>
+						<Item id="2"> <!--Winter-->
+							<Pose value="PoseC"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="false"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="726.0"/>
+							<EyeY value="690.0"/>
+							<MouthX value="729.0"/>
+							<MouthY value="1158.0"/>
+							<BlushX value="702.0"/>
+							<BlushY value="1009.0"/>
+							<SweatX value="788.0"/>
+							<SweatY value="1139.0"/>
+							<OffsetX value="63"/>
+							<OffsetY value="32"/>
+						</Item>
+					</Clothes>
+				</Item>
+			</Faces>
+		</Item>
 		<Item id="4"> <!-- Akihiko -->
 			<Faces>
 				<Item id="0"> <!-- PoseA -->
@@ -1032,6 +1196,50 @@
 				</Item>
 			</Faces>
 		</Item>
+		<Item id="102"> <!-- Hidetoshi -->
+			<Faces>
+				<Item id="4"> <!-- Shocked -->
+					<Clothes>
+						<Item id="1"> <!--Summer-->
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="653.0"/>
+							<EyeY value="756.0"/>
+							<MouthX value="653.0"/>
+							<MouthY value="1264.0"/>
+							<BlushX value="653.0"/>
+							<BlushY value="1115.0"/>
+							<SweatX value="995.0"/>
+							<SweatY value="187.0"/>
+							<OffsetX value="1"/>
+							<OffsetY value="0"/>
+						</Item>
+						<Item id="2"> <!--Winter-->
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="653.0"/>
+							<EyeY value="756.0"/>
+							<MouthX value="653.0"/>
+							<MouthY value="1264.0"/>
+							<BlushX value="653.0"/>
+							<BlushY value="1115.0"/>
+							<SweatX value="995.0"/>
+							<SweatY value="187.0"/>
+							<OffsetX value="1"/>
+							<OffsetY value="0"/>
+						</Item>
+					</Clothes>
+				</Item>
+			</Faces>
+		</Item>
 		<Item id="151"> <!-- Saori -->
 			<Faces>
 				<Item id="0"> <!-- normal -->
@@ -1202,6 +1410,64 @@
 							<BlushX value="716.0"/>
 							<BlushY value="1158.0"/>
 							<SweatX value="1047.0"/>
+							<SweatY value="1238.0"/>
+							<OffsetX value="0"/>
+							<OffsetY value="0"/>
+						</Item>
+					</Clothes>
+				</Item>
+				<Item id="69"> <!-- Teary Eyed Smile -->
+					<Clothes>
+						<Item id="1"> <!--Summer-->
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="673.0"/>
+							<EyeY value="1093.0"/>
+							<MouthX value="673.0"/>
+							<MouthY value="1333.0"/>
+							<BlushX value="716.0"/>
+							<BlushY value="1158.0"/>
+							<SweatX value="1057.0"/>
+							<SweatY value="1238.0"/>
+							<OffsetX value="0"/>
+							<OffsetY value="0"/>
+						</Item>
+						<Item id="2"> <!--Winter-->
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="673.0"/>
+							<EyeY value="1093.0"/>
+							<MouthX value="673.0"/>
+							<MouthY value="1333.0"/>
+							<BlushX value="716.0"/>
+							<BlushY value="1158.0"/>
+							<SweatX value="1057.0"/>
+							<SweatY value="1238.0"/>
+							<OffsetX value="0"/>
+							<OffsetY value="0"/>
+						</Item>
+						<Item id="6"> <!-- Casual -->
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="true"/>
+							<InBetween value="0"/>
+							<EyeX value="673.0"/>
+							<EyeY value="1093.0"/>
+							<MouthX value="673.0"/>
+							<MouthY value="1333.0"/>
+							<BlushX value="716.0"/>
+							<BlushY value="1158.0"/>
+							<SweatX value="1057.0"/>
 							<SweatY value="1238.0"/>
 							<OffsetX value="0"/>
 							<OffsetY value="0"/>
