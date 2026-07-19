@@ -5,6 +5,7 @@ using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Memory;
 using Reloaded.Memory.SigScan.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
+using riri.eventframework.Interfaces;
 using SharedScans.Interfaces;
 using UE.Toolkit.Core.Types.Unreal.Factories;
 using UE.Toolkit.Interfaces;
@@ -18,11 +19,13 @@ namespace p3rpc.femc
         public readonly ConfigColor ColorWhite = new ConfigColor(0xff, 0xff, 0xff, 0xff);
         public bool bIsAigis { get; init; }
         public bool bIsSteam { get; set; }
+        public IEventFramework _eventFramework;
 
         public FemcContext(long baseAddress, IConfigurable config, ILogger logger, IStartupScanner startupScanner, 
             IReloadedHooks hooks, string modLocation, Utils utils, Memory memory, ISharedScans sharedScans, 
             bool _bIsAigis, IUnrealMemory toolkitMemory, IUnrealClasses toolkitClasses, IUnrealObjects toolkitObjects,
-            IUnrealStrings toolkitStrings, IUnrealFactory toolkitFactory, IUnrealState toolkitState, IUnrealSpawning toolkitSpawning)
+            IUnrealStrings toolkitStrings, IUnrealFactory toolkitFactory, IUnrealState toolkitState, 
+            IUnrealSpawning toolkitSpawning, IEventFramework eventFramework)
             : base (baseAddress, config, logger, startupScanner, hooks, modLocation, utils, memory, sharedScans, 
                 toolkitStrings, toolkitObjects, toolkitMemory, toolkitClasses, toolkitFactory, toolkitState, toolkitSpawning) 
         {
@@ -32,6 +35,7 @@ namespace p3rpc.femc
             _toolkitMemory = toolkitMemory;
             _toolkitClasses = toolkitClasses;
             _toolkitObjects = toolkitObjects;
+            _eventFramework = eventFramework;
         }
 
         public override void OnConfigUpdated(IConfigurable newConfig) => _config = (Config)newConfig;
