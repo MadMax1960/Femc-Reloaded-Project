@@ -8,8 +8,8 @@ namespace p3rpc.femc
     {
         public static void LoadNaginataAssets(IUnrealEssentials unrealEssentials, Config configuration, string modLocation)
         {
-            if (configuration.NagiWeap)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "3d", "Nagitana"));
+            // if (configuration.NagiWeap)
+                // unrealEssentials.AddFromFolder(Path.Combine(modLocation, "3d", "Nagitana"));
         }
     }
 }
