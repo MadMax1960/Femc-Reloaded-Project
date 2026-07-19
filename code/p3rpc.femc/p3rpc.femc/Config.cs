@@ -322,12 +322,12 @@ namespace p3rpc.femc.Configuration
         KotoneBeanHair
         }
 
-        [DisplayName("Naginata Weapons")]
-        [Description("Changes FEMC's weapons from 1h swords to naginatas.")]
-        [Category("3D Options")]
-        [Display(Order = 14)]
-        [DefaultValue(true)]
-        public bool NagiWeap { get; set; } = true;
+        //[DisplayName("Naginata Weapons")]
+        //[Description("Changes FEMC's weapons from 1h swords to naginatas.")]
+        //[Category("3D Options")]
+       // [Display(Order = 14)]
+        //[DefaultValue(true)]
+        //public bool NagiWeap { get; set; } = true;
 
         // Voice
 
