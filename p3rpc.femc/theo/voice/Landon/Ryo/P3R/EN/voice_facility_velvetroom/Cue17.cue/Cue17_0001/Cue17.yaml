@@ -1,0 +1,5 @@
+acb_name: voice_facility_velvetroom
+cue_name: Cue17
+player_id: -1
+category_ids: [2, 9, 15]
+volume: 4
