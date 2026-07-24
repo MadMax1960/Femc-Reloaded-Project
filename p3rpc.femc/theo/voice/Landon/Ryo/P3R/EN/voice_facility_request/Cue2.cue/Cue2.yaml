@@ -1,0 +1,5 @@
+acb_name: voice_facility_request
+cue_name: Cue2
+player_id: -1
+category_ids: [2, 9, 15]
+volume: 3
