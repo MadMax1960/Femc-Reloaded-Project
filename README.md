@@ -2,7 +2,7 @@
 
 ![logo in Pink](img/readmelogo.png)
 
-Document language: [EN](README.md) | [RU](README.ru.md)
+Document language: [EN](README.md) | [RU](README.ru.md) | [JA](README.ja.md)
 
 _ⓒAtlus ⓒSega All Rights reserved. This mod is not associated with Sega or Atlus, read the full Readme before any contributions_
 
