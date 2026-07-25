@@ -31,7 +31,7 @@ _ⓒATLAS ⓒSEGA All Rights reserved.この MOD は SEGA や ATLAS とは一切
 
 **主要な 3D の貢献者**: dniwetamp、esablythe、raycooper
 
-**音声リード**: giowno、kindredtea、mosq
+**オーディオリード**: giowno、kindredtea、mosq
 
 **主要なコードの貢献**: rirurin、teolicht (Iván)
 
