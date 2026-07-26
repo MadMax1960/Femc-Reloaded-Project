@@ -2,7 +2,7 @@
 
 ![logo in Pink](img/readmelogo.png)
 
-Document language: [EN](README.md) | [RU](README.ru.md)
+Document language: [EN](README.md) | [RU](README.ru.md) | [JA](README.ja.md)
 
 _ⓒAtlus ⓒSega All Rights reserved. This mod is not associated with Sega or Atlus, read the full Readme before any contributions_
 
@@ -60,7 +60,7 @@ This project is a fan-made mod (modification) created as a homage to the Persona
 
 - **Not for Sale**: This mod does not, and will never, go up for sale. It’s just fans making something for fellow fans out of pure love for the original game, Persona 3, and its developers. Nothing monetary is being sought from it.
 
-- **License**: This project and all contents thereof are licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (BY-NC-SA 4.0). This means:
+- **License**: This project and all contents thereof are licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en). This means:
 
 - **Attribution (BY)**: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 
