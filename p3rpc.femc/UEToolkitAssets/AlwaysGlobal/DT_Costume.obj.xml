@@ -1,0 +1,110 @@
+<DataTable>
+	<Item id="SC151"> <!-- Saori -->
+		<CapsuleHalfHeight value="77"/>
+		
+		<MeshLocation>
+			<X value="0"/>
+			<Y value="0"/>
+			<Z value="-77"/>
+		</MeshLocation>
+		
+		<Anims>
+			<Item id="Common">/Game/Xrd777/Characters/Data/DataAsset/Sub/DA_SC0109_CommonAnim.DA_SC0109_CommonAnim</Item>
+			<Item id="Event">/Game/Xrd777/Characters/Data/DataAsset/Sub/DA_SC0109_EventAnim.DA_SC0109_EventAnim</Item>
+		</Anims>
+		
+		<FaceAnim value="/Game/Xrd777/Characters/Data/DataAsset/Sub/DA_SC0109_FaceAnim.DA_SC0109_FaceAnim"/>
+		
+		<Costumes>
+			<Item id="1">
+				<Base>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Skeleton.Saori_Skeleton"/>
+					<Anim value="/Game/Xrd777/Characters/Sub/SC0109/ABP_SC0109.ABP_SC0109_C"/>
+				</Base>
+				<Costume>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Summer_School.Saori_Summer_School"/>
+				</Costume>
+				<Hair>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Hair.Saori_Hair"/>
+				</Hair>
+				<Face>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Face.Saori_Face"/>
+				</Face>
+				<BagKeyID value="1"/>
+			</Item>
+			
+			<Item id="2">
+				<Base>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Skeleton.Saori_Skeleton"/>
+					<Anim value="/Game/Xrd777/Characters/Sub/SC0109/ABP_SC0109.ABP_SC0109_C"/>
+				</Base>
+				<Costume>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Winter_School.Saori_Winter_School"/>
+				</Costume>
+				<Hair>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Hair.Saori_Hair"/>
+				</Hair>
+				<Face>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Face.Saori_Face"/>
+				</Face>
+				<BagKeyID value="1"/>
+			</Item>
+			
+			<Item id="5">
+				<Base>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Skeleton.Saori_Skeleton"/>
+					<Anim value="/Game/Xrd777/Characters/Sub/SC0109/ABP_SC0109.ABP_SC0109_C"/>
+				</Base>
+				<Costume>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Casual.Saori_Casual"/>
+				</Costume>
+				<Hair>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Hair.Saori_Hair"/>
+				</Hair>
+				<Face>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Face.Saori_Face"/>
+				</Face>
+				<BagKeyID value="1"/>
+			</Item>
+			
+			<Item id="6">
+				<Base>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Skeleton.Saori_Skeleton"/>
+					<Anim value="/Game/Xrd777/Characters/Sub/SC0109/ABP_SC0109.ABP_SC0109_C"/>
+				</Base>
+				<Costume>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Casual.Saori_Casual"/>
+				</Costume>
+				<Hair>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Hair.Saori_Hair"/>
+				</Hair>
+				<Face>
+					<Mesh value="/Game/Xrd777/Characters/Sub/SC0151/Models/Saori_Face.Saori_Face"/>
+				</Face>
+				<BagKeyID value="1"/>
+			</Item>
+		</Costumes>
+		
+		<WeaponType value=""/>
+		
+		<BagType>
+			<Item id="1">
+				<Base value="/Game/Xrd777/Blueprints/Characters/Player/Bag/BP_AppCharBag_0109_000.BP_AppCharBag_0109_000_C"/>
+				<AttachSocketName value="Soc_L_AttachHand00_00"/>
+				<SetAnimSlotName value="Arms"/>
+				<AnimSeqs>
+					<Item id="EC_Stand">/Game/Xrd777/Characters/Sub/SC0109/AnmCommon/A_SC0109_CMA0056_ADDP_BagL.A_SC0109_CMA0056_ADDP_BagL</Item>
+				</AnimSeqs>
+			</Item>
+			<Item id="2">
+				<Base value="/Game/Xrd777/Blueprints/Characters/Player/Bag/BP_AppCharBag_0109_001.BP_AppCharBag_0109_001_C"/>
+				<AttachSocketName value="Soc_L_AttachHand00_00"/>
+				<SetAnimSlotName value="Arms"/>
+				<AnimSeqs>
+					<Item id="EC_Stand">/Game/Xrd777/Characters/Sub/SC0109/AnmCommon/A_SC0109_CMA0056_ADDP_BagL.A_SC0109_CMA0056_ADDP_BagL</Item>
+				</AnimSeqs>
+			</Item>
+		</BagType>
+		
+	</Item>
+</DataTable>
