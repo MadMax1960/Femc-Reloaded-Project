@@ -1642,7 +1642,7 @@ namespace p3rpc.femc.Components
         private string UUICmpCalendarDraw_JobDescriptionFontColor_SIG = "8B 44 24 ?? 41 0F 28 DA 0F 28 F0";
         private string UUICmpCalendarDraw_PastDayColor_SIG = "44 88 7D ?? 66 C7 45 ?? FF FF";
         private string UUICmpCalendarDraw_HighlightedDayColor_SIG = "41 0F 28 DA 41 0F 28 D0 66 0F 6E F0";
-        private string UUICmpCalendarDraw_HighlightedJobColor_SIG = "E8 ?? ?? ?? ?? B1 01 E8 ?? ?? ?? ?? 48 8B C8 48 89 45 ??";
+        private string UUICmpCalendarDraw_HighlightedJobColor_SIG = "48 89 44 24 ?? E8 ?? ?? ?? ?? B1 01";
         private string UUICmpCalendarDraw_CalendarJobDetailFontColor_SIG = "4C 8B B5 ?? ?? ?? ?? 8B 85 ?? ?? ?? ?? F3 0F 10 35 ?? ?? ?? ??";
 
         private IAsmHook _calendarSundayColor;
@@ -1908,17 +1908,6 @@ namespace p3rpc.femc.Components
                 };
                 _HighlightedDayColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
-            _context._utils.SigScan(UUICmpCalendarDraw_HighlightedJobColor_SIG, "UUICmpCalendarDraw::HighlightedJobColor", _context._utils.GetDirectAddress, addr =>
-            {
-                string[] function =
-                {
-                    "use64",
-                    $"mov byte [rbp - 0x80], 0x{_context._config.CalendarHighlightedJob.B:X}",
-                    $"mov byte [rbp - 0x7f], 0x{_context._config.CalendarHighlightedJob.G:X}",
-                    $"mov byte [rbp - 0x7e], 0x{_context._config.CalendarHighlightedJob.R:X}",
-                };
-                _HighlightedJobColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-            });
             _context._utils.SigScan(UUICmpCalendarDraw_CalendarJobDetailFontColor_SIG, "UUICmpCalendarDraw::CalendarJobDetailFontColor", _context._utils.GetDirectAddress, addr =>
             {
                 string[] function =
@@ -1931,6 +1920,17 @@ namespace p3rpc.femc.Components
                     "label gray_font"
                 };
                 _CalendarJobDetailFontColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
+            });
+            _context._utils.SigScan(UUICmpCalendarDraw_HighlightedJobColor_SIG, "UUICmpCalendarDraw::HighlightedJobColor", _context._utils.GetDirectAddress, addr =>
+            {
+                string[] function =
+                {
+                    "use64",
+                    $"mov byte [rbp - 0x80], 0x{_context._config.CalendarHighlightedJob.B:X}",
+                    $"mov byte [rbp - 0x7f], 0x{_context._config.CalendarHighlightedJob.G:X}",
+                    $"mov byte [rbp - 0x7e], 0x{_context._config.CalendarHighlightedJob.R:X}",
+                };
+                _HighlightedJobColor = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
         }
         public override void Register()

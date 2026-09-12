@@ -782,6 +782,7 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x312E6, config.BtlStrategyInstructColorHighlight, order);
             HexColorEditor.WriteBlueprintSplitColor(filePath, 0x354DA, config.BtlStrategyInstructColorHighlight, order);
 
+            HexColorEditor.WriteBlueprintSplitColor(filePath, 0x2D5BE, config.BtlStrategyTopCircleColor, order); // Original color #1620FF
         }
 
         public static void Apply(Config config, string modDirectory)
