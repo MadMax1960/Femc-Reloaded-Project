@@ -3313,6 +3313,24 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Social Link: SL Ranking Up Moving Sparkles")]
         public ConfigColor CmmuRankUpMovingSparkles { get; set; } = new ConfigColor(0xFF, 0x66, 0x6E, 0xFF);
 
+        [DisplayName("Town Map: Social Links/Linked Episodes/Hangouts/Koromaru walks logo color")]
+        public ConfigColor TownMapLogosColor { get; set; } = new ConfigColor(0xFF, 0xAD, 0xC0, 0xFF);
+
+        [DisplayName("Town Map: Title/Social Links/Linked Episodes/Hangouts/Koromaru walks names color")]
+        public ConfigColor TownMapNamesColor { get; set; } = new ConfigColor(0xFF, 0xAD, 0xC0, 0xFF);
+
+        [DisplayName("Town Map: Social Links Rank Up Card 1")]
+        public ConfigColor TownMapSLRankUpCard1 { get; set; } = new ConfigColor(0xFF, 0x5E, 0x82, 0xFF);
+
+        [DisplayName("Town Map: Social Links Rank Up Card 2")]
+        public ConfigColor TownMapSLRankUpCard2 { get; set; } = new ConfigColor(0xFF, 0x54, 0x88, 0xFF);
+
+        [DisplayName("Town Map: Social Links Rank Up Glow")]
+        public ConfigColor TownMapSLRankUpGlow { get; set; } = new ConfigColor(0xFF, 0x00, 0x55, 0xFF);
+
+        [DisplayName("Battle: Strategy Instruct Top Circle Color")]
+        public ConfigColor BtlStrategyTopCircleColor { get; set; } = new ConfigColor(0xB3, 0x49, 0x72, 0xFF);
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
