@@ -164,7 +164,19 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "Milky")]
         Milky,
         [Display(Name = "Makomeri")]
-        makomeri
+        makomeri,
+        [Display(Name = "Arizno")]
+        Arizno,
+        [Display(Name = "jvcl24")]
+        jvcl24,
+        [Display(Name = "Clover")]
+        Clover,
+        [Display(Name = "Revolvea")]
+        Revolvea,
+        [Display(Name = "Sodasorbet")]
+        Sodasorbet,
+        [Display(Name = "Kaia")]
+        Kaia,
         }
 
         [DisplayName("Cutin")]
@@ -240,8 +252,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "AngieDaGorl")]
         AngieDaGorl,
         [Display(Name = "samythecoolkid")]
-        samythecoolkid
-
+        samythecoolkid,
+        [Display(Name = "Arizno")]
+        Arizno
         }
 
         [DisplayName("Party Panel")]
@@ -285,7 +298,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "StupidAle")]
         StupidAle,
         [Display(Name = "samythecoolkid")]
-        samythecoolkid
+        samythecoolkid,
+        [Display(Name = "Arizno")]
+        Arizno
         }
 
         // 3D Options
@@ -438,6 +453,22 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 32)]
         [DefaultValue(false)]
         public bool RestlessNom { get; set; } = false;
+
+        [DisplayName("Wiping All Out (Reload Version) by RayisEpic1")]
+        [Category("Battle Music - Normal")]
+        [Description("Enable Wiping All Out (Reload Version) by RayisEpic1 as normal battle music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 47)]
+        [DefaultValue(true)]
+
+        public bool RayIsEpicNorm { get; set; } = false;
+
+        [DisplayName("Wiping All Out (Reload Version Instrumental) by RayisEpic1")]
+        [Category("Battle Music - Normal")]
+        [Description("Enable Wiping All Out (Reload Version Instrumental) by RayisEpic1 as normal battle music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 48)]
+        [DefaultValue(true)]
+
+        public bool RayIsEpicNormInst { get; set; } = false;
 
         [DisplayName("Mass Destruction -Reload-")]
         [Category("Battle Music - Normal")]
@@ -759,6 +790,7 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
 
         public bool CustomBustups { get; set; } = true;
+
         // Dorm Swap
 
         [DisplayName("Test Dorm Room Swap and Current Edited Events")]
@@ -767,8 +799,13 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool TesticlesEventsDorm { get; set; } = true; // yeah
 
+        // sunset screen
 
-        // UI Components
+        [DisplayName("Enable Sunset Title Screen")]
+        [Category("Misc")]
+        [Description("Enable Title Screen to have sunset themed lighting.")]
+        [DefaultValue(false)]
+        public bool EnableSunsetTitleScreen { get; set; } = false;
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -908,6 +945,8 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableBattle { get; set; } = true;
 
+        // Dorm Swap
+
         [DisplayName("Enable Item List")]
         [Category("UI Components")]
         [Display(Order = 173)]
@@ -925,6 +964,8 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 175)]
         [DefaultValue(true)]
         public bool EnableGuidance { get; set; } = true;
+
+        // UI Components
 
         [DisplayName("Mail Icon: Outer Color")]
         [Category("UI Colors")]
@@ -1020,12 +1061,6 @@ namespace p3rpc.femc.Configuration
         [Category("UI Colors")]
         [Display(Order = 216)]
         public ConfigColor MindWindowInnerColorNew { get; set; } = new ConfigColor(0x39, 0x03, 0x21, 0xFF);
-
-        /*[DisplayName("Mind Window: Outer Haze")] i'm hardcoding this it's broken for too many people lol
-         * [Category("UI Colors")]
-         * [Display(Order = 217)]
-        public ConfigColor MindWindowOuterHazeEx { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0x80);
-        */
 
         [DisplayName("Mind Window: Background Dots")]
         [Category("UI Colors")]
@@ -1380,15 +1415,6 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Message Box Select Box Shadow Color")]
         [Category("UI Colors")]
         [Display(Order = 288)]
-        /*
-        public ConfigColor MsgSimpleSelectBoxShadow { get; set; } = new ConfigColor(0xB6, 0x3F, 0x67, 0xFF);
-
-        [DisplayName("Message Box Shadow Color")]
-        [Category("UI Colors")]
-        [Display(Order = 289)]
-        */
-
-        //THAT BASTARD DOES NOTHING ARE YOU KIDDING
         public ConfigColor MsgSimpleSelectShadowEx { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Message Box Border Color")]
@@ -3330,6 +3356,103 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Battle: Strategy Instruct Top Circle Color")]
         public ConfigColor BtlStrategyTopCircleColor { get; set; } = new ConfigColor(0xB3, 0x49, 0x72, 0xFF);
+
+        [DisplayName("Title Bg Cloud1")]
+        public ConfigColor TitleBgCloud1 { get; set; } = new ConfigColor(0xFF, 0xA9, 0x75, 0xFF);
+
+        [DisplayName("Title Bg Cloud2")]
+        public ConfigColor TitleBgCloud2 { get; set; } = new ConfigColor(0xEC, 0x74, 0x4C, 0xFF);
+
+        [DisplayName("Title Bg Moon Age")]
+        public ConfigColor TitleBgMoonAge { get; set; } = new ConfigColor(0xFF, 0xCF, 0x38, 0xFF);
+
+        [DisplayName("Title Bg Moon Glow")]
+        public ConfigColor TitleBgMoonGlow { get; set; } = new ConfigColor(0xFF, 0xA9, 0x00, 0xFF);
+
+        [DisplayName("Title Map Filter Color1")]
+        public ConfigColor TitleMapFilterColor1 { get; set; } = new ConfigColor(0xFF, 0xA6, 0x56, 0xFF);
+
+        [DisplayName("Title Map Fog Color1")]
+        public ConfigColor TitleMapFogColor1 { get; set; } = new ConfigColor(0xFF, 0xA3, 0x39, 0xFF);
+
+        [DisplayName("Title Map B G Fog Color")]
+        public ConfigColor TitleMapBGFogColor { get; set; } = new ConfigColor(0xFF, 0x90, 0x00, 0xFF);
+
+        [DisplayName("Title Map Light Color")]
+        public ConfigColor TitleMapLightColor { get; set; } = new ConfigColor(0xFF, 0x8D, 0x19, 0xFF);
+
+        [DisplayName("Title Map Glow Color")]
+        public ConfigColor TitleMapGlowColor { get; set; } = new ConfigColor(0xFF, 0x7A, 0x03, 0xFF);
+
+        [DisplayName("Title Map Moon Shadow Color")]
+        public ConfigColor TitleMapMoonShadowColor { get; set; } = new ConfigColor(0xFF, 0x7E, 0x0B, 0xFF);
+
+        [DisplayName("Title Map Sun Color")]
+        public ConfigColor TitleMapSunColor { get; set; } = new ConfigColor(0xFF, 0xC1, 0x1F, 0xFF);
+
+        [DisplayName("Title Map Horizon Color")]
+        public ConfigColor TitleMapHorizonColor { get; set; } = new ConfigColor(0xFF, 0x30, 0xA6, 0xFF);
+
+        [DisplayName("Title Map Zenith Color")]
+        public ConfigColor TitleMapZenithColor { get; set; } = new ConfigColor(0xFF, 0x1F, 0x89, 0xFF);
+
+        [DisplayName("Title Map Cloud Color")]
+        public ConfigColor TitleMapCloudColor { get; set; } = new ConfigColor(0xFF, 0xA5, 0x75, 0xFF);
+
+        [DisplayName("Title Fill Color A_1")]
+        public ConfigColor TitleFillColorA_1 { get; set; } = new ConfigColor(0xB9, 0x27, 0x6B, 0xFF);
+
+        [DisplayName("Title Fill Color B_1")]
+        public ConfigColor TitleFillColorB_1 { get; set; } = new ConfigColor(0xFF, 0x4D, 0x85, 0xFF);
+
+        [DisplayName("Title Fill Color A_2")]
+        public ConfigColor TitleFillColorA_2 { get; set; } = new ConfigColor(0x30, 0x13, 0x42, 0xFF);
+
+        [DisplayName("Title Fill Color B_2")]
+        public ConfigColor TitleFillColorB_2 { get; set; } = new ConfigColor(0xFF, 0x4D, 0x85, 0xFF);
+
+        [DisplayName("Title Fill Color A_3")]
+        public ConfigColor TitleFillColorA_3 { get; set; } = new ConfigColor(0x49, 0x1E, 0x52, 0xFF);
+
+        [DisplayName("Title Fill Color B_3")]
+        [Category("UI Colors")]
+        public ConfigColor TitleFillColorB_3 { get; set; } = new ConfigColor(0x44, 0x1E, 0x58, 0xFF);
+
+        [DisplayName("Title Fill Color B_4")]
+        public ConfigColor TitleFillColorB_4 { get; set; } = new ConfigColor(0x65, 0x2F, 0x72, 0xFF);
+
+        [DisplayName("Title Fill Color B_5")]
+        public ConfigColor TitleFillColorB_5 { get; set; } = new ConfigColor(0x65, 0x2F, 0x72, 0xFF);
+
+        [DisplayName("Title Map Bg Level Color1")]
+        public ConfigColor TitleMapBgLevelColor1 { get; set; } = new ConfigColor(0xFF, 0xCC, 0x75, 0xFF);
+
+        [DisplayName("Title Map Bg Level Color2")]
+        public ConfigColor TitleMapBgLevelColor2 { get; set; } = new ConfigColor(0xFF, 0xCF, 0x7E, 0xFF);
+
+        [DisplayName("Title Bg Cloud Color")]
+        public ConfigColor TitleBgCloudColor { get; set; } = new ConfigColor(0xFF, 0xCA, 0x3D, 0xFF);
+
+        [DisplayName("Title Bg Overall Color")]
+        public ConfigColor TitleBgOverallColor { get; set; } = new ConfigColor(0xFF, 0x9B, 0xDA, 0xFF);
+
+        [DisplayName("Stupid Mat Title Color1")]
+        public ConfigColor StupidMatTitleColor1 { get; set; } = new ConfigColor(0xFF, 0xC0, 0xC8, 0xFF);
+
+        [DisplayName("Stupid Mat Title Color2")]
+        public ConfigColor StupidMatTitleColor2 { get; set; } = new ConfigColor(0xFF, 0xB5, 0xA7, 0xFF);
+
+        [DisplayName("Camp Persona Light Color")]
+        public ConfigColor CampPersonaLightColor { get; set; } = new ConfigColor(0xFF, 0x42, 0x8a, 0xFF);
+
+        [DisplayName("Camp Persona Light Color")]
+        public ConfigColor CampPersonaShadowColor { get; set; } = new ConfigColor(0xE6, 0x43, 0x80, 0xFF);
+
+        [DisplayName("Camp Persona Light Color")]
+        public ConfigColor CampPersonaHiLightColor { get; set; } = new ConfigColor(0xFF, 0x97, 0xB1, 0xFF);
+
+        [DisplayName("Camp Persona Light Color")]
+        public ConfigColor CampPersonaRimLightColor { get; set; } = new ConfigColor(0xFF, 0xE0, 0x50, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]

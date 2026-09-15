@@ -72,7 +72,7 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePath3, 0xe28, config.CampKotoneInnerShadowColor, HexColorEditor.ColorOrder.RGB, type);
         }
 
-        private static void ApplyCampShards(Config config, string modDirectory)
+        private static void ApplyCampShards(Config config, string modDirectory) // sharts
         {
             string filePath = Path.Combine(modDirectory,
                 "UnrealEssentials", "P3R", "Content", "Xrd777",

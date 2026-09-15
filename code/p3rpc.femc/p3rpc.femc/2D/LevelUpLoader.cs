@@ -23,6 +23,8 @@ namespace p3rpc.femc
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "LevelUp", "AngieDaGorl"));
             else if (configuration.LevelUpTrue == LevelUpType.samythecoolkid)
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "LevelUp", "samythecoolkid"));
+            else if (configuration.LevelUpTrue == LevelUpType.Arizno)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "LevelUp", "Arizno"));
             // Add other LevelUp conditions if needed.
         }
 	}
