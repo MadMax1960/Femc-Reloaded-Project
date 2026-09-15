@@ -3443,16 +3443,16 @@ namespace p3rpc.femc.Configuration
         public ConfigColor StupidMatTitleColor2 { get; set; } = new ConfigColor(0xFF, 0xB5, 0xA7, 0xFF);
 
         [DisplayName("Camp Persona Light Color")]
-        public ConfigColor CampPersonaLightColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor CampPersonaLightColor { get; set; } = new ConfigColor(0xFF, 0x42, 0x8a, 0xFF);
 
         [DisplayName("Camp Persona Light Color")]
-        public ConfigColor CampPersonaShadowColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor CampPersonaShadowColor { get; set; } = new ConfigColor(0xE6, 0x43, 0x80, 0xFF);
 
         [DisplayName("Camp Persona Light Color")]
-        public ConfigColor CampPersonaHiLightColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor CampPersonaHiLightColor { get; set; } = new ConfigColor(0xFF, 0x97, 0xB1, 0xFF);
 
         [DisplayName("Camp Persona Light Color")]
-        public ConfigColor CampPersonaRimLightColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor CampPersonaRimLightColor { get; set; } = new ConfigColor(0xFF, 0xE0, 0x50, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
