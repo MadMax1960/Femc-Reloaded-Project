@@ -173,9 +173,9 @@ namespace p3rpc.femc.Configuration
         Clover,
         [Display(Name = "Revolvea")]
         Revolvea,
-        [Display(Name = "Revolvea")]
+        [Display(Name = "Sodasorbet")]
         Sodasorbet,
-        [Display(Name = "Revolvea")]
+        [Display(Name = "Kaia")]
         Kaia,
         }
 
@@ -790,6 +790,7 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(false)]
 
         public bool CustomBustups { get; set; } = true;
+
         // Dorm Swap
 
         [DisplayName("Test Dorm Room Swap and Current Edited Events")]
@@ -798,12 +799,11 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool TesticlesEventsDorm { get; set; } = true; // yeah
 
-
-        // UI Components
+        // sunset screen
 
         [DisplayName("Enable Sunset Title Screen")]
-        [Category("UI Components")]
-        [Display(Order = 149)]
+        [Category("Misc")]
+        [Description("Enable Title Screen to have sunset themed lighting.")]
         [DefaultValue(false)]
         public bool EnableSunsetTitleScreen { get; set; } = false;
 
@@ -945,6 +945,8 @@ namespace p3rpc.femc.Configuration
         [DefaultValue(true)]
         public bool EnableBattle { get; set; } = true;
 
+        // Dorm Swap
+
         [DisplayName("Enable Item List")]
         [Category("UI Components")]
         [Display(Order = 173)]
@@ -962,6 +964,8 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 175)]
         [DefaultValue(true)]
         public bool EnableGuidance { get; set; } = true;
+
+        // UI Components
 
         [DisplayName("Mail Icon: Outer Color")]
         [Category("UI Colors")]
@@ -1057,12 +1061,6 @@ namespace p3rpc.femc.Configuration
         [Category("UI Colors")]
         [Display(Order = 216)]
         public ConfigColor MindWindowInnerColorNew { get; set; } = new ConfigColor(0x39, 0x03, 0x21, 0xFF);
-
-        /*[DisplayName("Mind Window: Outer Haze")] i'm hardcoding this it's broken for too many people lol
-         * [Category("UI Colors")]
-         * [Display(Order = 217)]
-        public ConfigColor MindWindowOuterHazeEx { get; set; } = new ConfigColor(0xFF, 0x89, 0xA6, 0x80);
-        */
 
         [DisplayName("Mind Window: Background Dots")]
         [Category("UI Colors")]
@@ -1417,15 +1415,6 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Message Box Select Box Shadow Color")]
         [Category("UI Colors")]
         [Display(Order = 288)]
-        /*
-        public ConfigColor MsgSimpleSelectBoxShadow { get; set; } = new ConfigColor(0xB6, 0x3F, 0x67, 0xFF);
-
-        [DisplayName("Message Box Shadow Color")]
-        [Category("UI Colors")]
-        [Display(Order = 289)]
-        */
-
-        //THAT BASTARD DOES NOTHING ARE YOU KIDDING
         public ConfigColor MsgSimpleSelectShadowEx { get; set; } = new ConfigColor(0x49, 0x04, 0x21, 0xFF);
 
         [DisplayName("Message Box Border Color")]
@@ -3350,64 +3339,106 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Social Link: SL Ranking Up Moving Sparkles")]
         public ConfigColor CmmuRankUpMovingSparkles { get; set; } = new ConfigColor(0xFF, 0x66, 0x6E, 0xFF);
 
+        [DisplayName("Town Map: Social Links/Linked Episodes/Hangouts/Koromaru walks logo color")]
+        public ConfigColor TownMapLogosColor { get; set; } = new ConfigColor(0xFF, 0xAD, 0xC0, 0xFF);
 
+        [DisplayName("Town Map: Title/Social Links/Linked Episodes/Hangouts/Koromaru walks names color")]
+        public ConfigColor TownMapNamesColor { get; set; } = new ConfigColor(0xFF, 0xAD, 0xC0, 0xFF);
 
+        [DisplayName("Town Map: Social Links Rank Up Card 1")]
+        public ConfigColor TownMapSLRankUpCard1 { get; set; } = new ConfigColor(0xFF, 0x5E, 0x82, 0xFF);
 
-        // TITLE TESTING
+        [DisplayName("Town Map: Social Links Rank Up Card 2")]
+        public ConfigColor TownMapSLRankUpCard2 { get; set; } = new ConfigColor(0xFF, 0x54, 0x88, 0xFF);
 
+        [DisplayName("Town Map: Social Links Rank Up Glow")]
+        public ConfigColor TownMapSLRankUpGlow { get; set; } = new ConfigColor(0xFF, 0x00, 0x55, 0xFF);
+
+        [DisplayName("Battle: Strategy Instruct Top Circle Color")]
+        public ConfigColor BtlStrategyTopCircleColor { get; set; } = new ConfigColor(0xB3, 0x49, 0x72, 0xFF);
+
+        [DisplayName("Title: Title Background Cloud 1")]
         public ConfigColor TitleBgCloud1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+
+        [DisplayName("Title: Title Background Cloud 2")]
         public ConfigColor TitleBgCloud2 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Background Moon Age")]
         public ConfigColor TitleBgMoonAge { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Background Moon Glow")]
         public ConfigColor TitleBgMoonGlow { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Filter Color 1")]
         public ConfigColor TitleMapFilterColor1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Background Fog Color 1")]
         public ConfigColor TitleMapFogColor1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Fog Color")]
         public ConfigColor TitleMapBGFogColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Light Color")]
         public ConfigColor TitleMapLightColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Glow Color")]
         public ConfigColor TitleMapGlowColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Moon Shadow Color")]
         public ConfigColor TitleMapMoonShadowColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Sun Color")]
         public ConfigColor TitleMapSunColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Horizon Color")]
         public ConfigColor TitleMapHorizonColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title zenith Color")]
         public ConfigColor TitleMapZenithColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Cloud Color")]
         public ConfigColor TitleMapCloudColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Character Fill Color A 1")]
         public ConfigColor TitleFillColorA_1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Character Fill Color B 1")]
         public ConfigColor TitleFillColorB_1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Character Fill Color A 2")]
         public ConfigColor TitleFillColorA_2 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Character Fill Color B 2")]
         public ConfigColor TitleFillColorB_2 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Character Fill Color A 3")]
         public ConfigColor TitleFillColorA_3 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Character Fill Color B 3")]
         public ConfigColor TitleFillColorB_3 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Character Fill Color B 4")]
         public ConfigColor TitleFillColorB_4 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Character Fill Color B 5")]
         public ConfigColor TitleFillColorB_5 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Background Level Color 1")]
         public ConfigColor TitleMapBgLevelColor1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Background Level Color 2")]
         public ConfigColor TitleMapBgLevelColor2 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Background Cloud Color")]
         public ConfigColor TitleBgCloudColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Background Overall Color")]
         public ConfigColor TitleBgOverallColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Stupid Material Color 1")]
         public ConfigColor StupidMatTitleColor1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
+        [DisplayName("Title: Title Stupid Material Color 1")]
         public ConfigColor StupidMatTitleColor2 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]

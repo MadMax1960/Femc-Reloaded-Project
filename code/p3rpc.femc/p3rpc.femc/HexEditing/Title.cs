@@ -1,6 +1,7 @@
 ﻿using p3rpc.commonmodutils;
 using p3rpc.femc.Components;
 using p3rpc.femc.Configuration;
+using Reloaded.Mod.Interfaces;
 using Reloaded.Mod.Interfaces.Structs.Enums;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using UE.Toolkit.Interfaces;
+using UnrealEssentials.Interfaces;
 
 namespace p3rpc.femc.HexEditing
 {
@@ -16,19 +19,19 @@ namespace p3rpc.femc.HexEditing
         private static void ApplyTitleMaterialsBG(Config config, string modDirectory)
         {
             string filePathCloud = Path.Combine(modDirectory,
-                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Field", "Resource", "TitleBG", "MI_Title_Cloud01.uasset");
 
             string filePathMoonAge = Path.Combine(modDirectory,
-                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Field", "Resource", "TitleBG", "MI_Title_MoonAge.uasset");
 
             string filePathMoonGlow = Path.Combine(modDirectory,
-                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Field", "Resource", "TitleBG", "MI_Title_MoonGlow.uasset");
 
             string filePathSkyClouds = Path.Combine(modDirectory,
-                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Field", "Resource", "TitleBG", "MI_Title_SkyClouds.uasset");
 
             HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
@@ -47,7 +50,7 @@ namespace p3rpc.femc.HexEditing
         private static void ApplyTitleMap(Config config, string modDirectory)
         {
             string filePath = Path.Combine(modDirectory,
-                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Maps", "Title", "LV_Title_Before.umap");
 
             HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
@@ -64,22 +67,43 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePath, 0x9DC7, config.TitleMapCloudColor, HexColorEditor.ColorOrder.RGB, type);
 
             string filePath2 = Path.Combine(modDirectory,
-                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Maps", "Title", "LV_Title_BG_Before.umap");
 
             HexColorEditor.WriteColor(filePath2, 0xB86, config.TitleMapBgLevelColor1, HexColorEditor.ColorOrder.RGB, type);
             HexColorEditor.WriteColor(filePath2, 0xBF8, config.TitleMapBgLevelColor2, HexColorEditor.ColorOrder.RGB, type);
 
             string stupidMat = Path.Combine(modDirectory,
-               "UnrealEssentials", "P3R", "Content", "Xrd777",
+               "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                "Environments", "MaterialInstance", "MI_EN_P_TitleFil.uasset");
 
-            HexColorEditor.WriteColor(stupidMat, 0x1124, config.StupidMatColor1, HexColorEditor.ColorOrder.RGB, type);
-            HexColorEditor.WriteColor(stupidMat, 0x124E, config.StupidMatColor2, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(stupidMat, 0x1124, config.StupidMatTitleColor1, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(stupidMat, 0x124E, config.StupidMatTitleColor2, HexColorEditor.ColorOrder.RGB, type);
         }
 
         private static void ApplySeesMaterials(Config config, string modDirectory)
         {
+            string filePathProtag1 = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Player", "PC0001", "Models", "MI_PC0001_C052_00_TiFiOpSp.uasset");
+
+            string filePathProtag2 = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Player", "PC0001", "Models", "MI_PC0001_C052_02_TiFiOpSp.uasset");
+
+            string filePathProtag3 = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Player", "PC0001", "Models", "MI_PC0001_H000_00_TiFiOp.uasset");
+
+            HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
+
+            HexColorEditor.WriteColor(filePathProtag1, 0xA48, config.TitleFillColorA_1, HexColorEditor.ColorOrder.RGB, type); // 00ADF9
+            HexColorEditor.WriteColor(filePathProtag1, 0xB72, config.TitleFillColorB_2, HexColorEditor.ColorOrder.RGB, type); // 00FDFF
+            HexColorEditor.WriteColor(filePathProtag2, 0xA48, config.TitleFillColorA_1, HexColorEditor.ColorOrder.RGB, type); // 00ADF9
+            HexColorEditor.WriteColor(filePathProtag3, 0x8CC, config.TitleFillColorA_1, HexColorEditor.ColorOrder.RGB, type); // 00ADF9
+
+            // ------------------------------------------------------------------------------------------------------------------------
+
             string filePathYukari1 = Path.Combine(modDirectory,
                 "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Characters", "Player", "PC0002", "Models", "MI_PC0002_C052_00_TiFiOpSp.uasset");
@@ -91,8 +115,6 @@ namespace p3rpc.femc.HexEditing
             string filePathYukari3 = Path.Combine(modDirectory,
                 "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Characters", "Player", "PC0002", "Models", "MI_PC0002_H000_00_TiFiOp.uasset");
-
-            HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
 
             HexColorEditor.WriteColor(filePathYukari1, 0xA48, config.TitleFillColorA_1, HexColorEditor.ColorOrder.RGB, type); // 00ADF9
             HexColorEditor.WriteColor(filePathYukari1, 0xB72, config.TitleFillColorB_1, HexColorEditor.ColorOrder.RGB, type); // 00FFFC
@@ -266,11 +288,25 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePathShinji3, 0x8CC, config.TitleFillColorA_2, HexColorEditor.ColorOrder.RGB, type); // 1448EA 
         }
 
+        public static void LoadSunsetTitleScreen(
+        IUnrealEssentials unrealEssentials,
+        IModLoader modLoader,
+        IModConfig modConfig,
+        Config configuration,
+        string modLocation)
+        {
+            if (configuration.EnableSunsetTitleScreen)
+            {
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "SunsetTitle", "UnrealEssentials"));
+                ApplyTitleMaterialsBG(configuration, modLocation);
+                ApplyTitleMap(configuration, modLocation);
+            }
+        }
+
         public static void Apply(Config config, string modDirectory)
         {
-            ApplyTitleMaterialsBG(config, modDirectory);
-            ApplyTitleMap(config, modDirectory);
             ApplySeesMaterials(config, modDirectory);
+
         }
     }
 }
