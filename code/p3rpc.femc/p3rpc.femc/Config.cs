@@ -164,7 +164,19 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "Milky")]
         Milky,
         [Display(Name = "Makomeri")]
-        makomeri
+        makomeri,
+        [Display(Name = "Arizno")]
+        Arizno,
+        [Display(Name = "jvcl24")]
+        jvcl24,
+        [Display(Name = "Clover")]
+        Clover,
+        [Display(Name = "Revolvea")]
+        Revolvea,
+        [Display(Name = "Revolvea")]
+        Sodasorbet,
+        [Display(Name = "Revolvea")]
+        Kaia,
         }
 
         [DisplayName("Cutin")]
@@ -240,8 +252,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "AngieDaGorl")]
         AngieDaGorl,
         [Display(Name = "samythecoolkid")]
-        samythecoolkid
-
+        samythecoolkid,
+        [Display(Name = "Arizno")]
+        Arizno
         }
 
         [DisplayName("Party Panel")]
@@ -285,7 +298,9 @@ namespace p3rpc.femc.Configuration
         [Display(Name = "StupidAle")]
         StupidAle,
         [Display(Name = "samythecoolkid")]
-        samythecoolkid
+        samythecoolkid,
+        [Display(Name = "Arizno")]
+        Arizno
         }
 
         // 3D Options
@@ -438,6 +453,22 @@ namespace p3rpc.femc.Configuration
         [Display(Order = 32)]
         [DefaultValue(false)]
         public bool RestlessNom { get; set; } = false;
+
+        [DisplayName("Wiping All Out (Reload Version) by RayisEpic1")]
+        [Category("Battle Music - Normal")]
+        [Description("Enable Wiping All Out (Reload Version) by RayisEpic1 as normal battle music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 47)]
+        [DefaultValue(true)]
+
+        public bool RayIsEpicNorm { get; set; } = false;
+
+        [DisplayName("Wiping All Out (Reload Version Instrumental) by RayisEpic1")]
+        [Category("Battle Music - Normal")]
+        [Description("Enable Wiping All Out (Reload Version Instrumental) by RayisEpic1 as normal battle music.\nMultiple songs can be chosen for randomization!")]
+        [Display(Order = 48)]
+        [DefaultValue(true)]
+
+        public bool RayIsEpicNormInst { get; set; } = false;
 
         [DisplayName("Mass Destruction -Reload-")]
         [Category("Battle Music - Normal")]
@@ -769,6 +800,12 @@ namespace p3rpc.femc.Configuration
 
 
         // UI Components
+
+        [DisplayName("Enable Sunset Title Screen")]
+        [Category("UI Components")]
+        [Display(Order = 149)]
+        [DefaultValue(false)]
+        public bool EnableSunsetTitleScreen { get; set; } = false;
 
         [DisplayName("Enable Mail Icon")]
         [Category("UI Components")]
@@ -3369,9 +3406,9 @@ namespace p3rpc.femc.Configuration
 
         public ConfigColor TitleBgOverallColor { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
-        public ConfigColor StupidMatColor1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor StupidMatTitleColor1 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
-        public ConfigColor StupidMatColor2 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
+        public ConfigColor StupidMatTitleColor2 { get; set; } = new ConfigColor(0xFF, 0xFF, 0x00, 0xFF);
 
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
