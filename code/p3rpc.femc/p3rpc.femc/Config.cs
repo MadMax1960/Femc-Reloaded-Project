@@ -346,6 +346,8 @@ namespace p3rpc.femc.Configuration
         MellodiSilly,
 		[Display(Name = "Lantana")]
         Lantana,
+		[Display(Name = "apri")]
+        apri,
         [Display(Name = "Japanese")]
         Japanese
         }
