@@ -18,10 +18,11 @@ namespace p3rpc.femc.HexEditing
     {
         private static void ApplyTitleMaterialsBG(Config config, string modDirectory)
         {
+            /*
             string filePathCloud = Path.Combine(modDirectory,
                 "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Field", "Resource", "TitleBG", "MI_Title_Cloud01.uasset");
-
+ 
             string filePathMoonAge = Path.Combine(modDirectory,
                 "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Field", "Resource", "TitleBG", "MI_Title_MoonAge.uasset");
@@ -29,7 +30,7 @@ namespace p3rpc.femc.HexEditing
             string filePathMoonGlow = Path.Combine(modDirectory,
                 "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Field", "Resource", "TitleBG", "MI_Title_MoonGlow.uasset");
-
+            
             string filePathSkyClouds = Path.Combine(modDirectory,
                 "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Field", "Resource", "TitleBG", "MI_Title_SkyClouds.uasset");
@@ -39,32 +40,45 @@ namespace p3rpc.femc.HexEditing
             HexColorEditor.WriteColor(filePathCloud, 0x1C74, config.TitleBgCloud1, HexColorEditor.ColorOrder.RGB, type);
             HexColorEditor.WriteColor(filePathCloud, 0x1D9E, config.TitleBgCloud2, HexColorEditor.ColorOrder.RGB, type);
 
-            HexColorEditor.WriteColor(filePathMoonAge, 0xE0C, config.TitleBgMoonAge, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePathMoonAge, 0xE0C, config.TitleBgMoonAge, HexColorEditor.ColorOrder.RGB, type);
 
-            HexColorEditor.WriteColor(filePathMoonGlow, 0x956, config.TitleBgMoonGlow, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePathMoonGlow, 0x956, config.TitleBgMoonGlow, HexColorEditor.ColorOrder.RGB, type);
 
             HexColorEditor.WriteColor(filePathSkyClouds, 0x15AA, config.TitleBgCloudColor, HexColorEditor.ColorOrder.RGB, type);
             HexColorEditor.WriteColor(filePathSkyClouds, 0x16D4, config.TitleBgOverallColor, HexColorEditor.ColorOrder.RGB, type);
+
+            */
         }
 
         private static void ApplyTitleMap(Config config, string modDirectory)
         {
+            /*
             string filePath = Path.Combine(modDirectory,
                 "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Maps", "Title", "LV_Title_Before.umap");
 
             HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
 
-            HexColorEditor.WriteColor(filePath, 0x895E, config.TitleMapFilterColor1, HexColorEditor.ColorOrder.RGB, type);
-            HexColorEditor.WriteColor(filePath, 0x89F3, config.TitleMapFogColor1, HexColorEditor.ColorOrder.RGB, type);
-            HexColorEditor.WriteColor(filePath, 0x8A34, config.TitleMapBGFogColor, HexColorEditor.ColorOrder.RGB, type);
-            HexColorEditor.WriteColor(filePath, 0x4533, config.TitleMapLightColor, HexColorEditor.ColorOrder.BGR, HexColorEditor.ComponentType.BYTE);
-            HexColorEditor.WriteColor(filePath, 0x77A3, config.TitleMapGlowColor, HexColorEditor.ColorOrder.BGR, type);
-            HexColorEditor.WriteColor(filePath, 0x819C, config.TitleMapMoonShadowColor, HexColorEditor.ColorOrder.RGB, type);
-            HexColorEditor.WriteColor(filePath, 0x991F, config.TitleMapSunColor, HexColorEditor.ColorOrder.RGB, type);
-            HexColorEditor.WriteColor(filePath, 0x9A49, config.TitleMapHorizonColor, HexColorEditor.ColorOrder.RGB, type);
-            HexColorEditor.WriteColor(filePath, 0x9B73, config.TitleMapZenithColor, HexColorEditor.ColorOrder.RGB, type);
-            HexColorEditor.WriteColor(filePath, 0x9DC7, config.TitleMapCloudColor, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePath, 0x895E, config.TitleMapFilterColor1, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath, 0x881E, config.TitleMapFilterColor1, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePath, 0x89F3, config.TitleMapFogColor1, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath, 0x888B, config.TitleMapFogColor1, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePath, 0x8A34, config.TitleMapBGFogColor, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath, 0x88CC, config.TitleMapBGFogColor, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePath, 0x4533, config.TitleMapLightColor, HexColorEditor.ColorOrder.BGR, HexColorEditor.ComponentType.BYTE);
+            HexColorEditor.WriteColor(filePath, 0x6B1F, config.TitleMapLightColor, HexColorEditor.ColorOrder.BGR, HexColorEditor.ComponentType.BYTE);
+            //HexColorEditor.WriteColor(filePath, 0x77A3, config.TitleMapGlowColor, HexColorEditor.ColorOrder.BGR, type);
+            HexColorEditor.WriteColor(filePath, 0x761A, config.TitleMapGlowColor, HexColorEditor.ColorOrder.BGR, type);
+            //HexColorEditor.WriteColor(filePath, 0x819C, config.TitleMapMoonShadowColor, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath, 0x8038, config.TitleMapMoonShadowColor, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePath, 0x991F, config.TitleMapSunColor, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath, 0x97D1, config.TitleMapSunColor, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePath, 0x9A49, config.TitleMapHorizonColor, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath, 0x98FB, config.TitleMapHorizonColor, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePath, 0x9B73, config.TitleMapZenithColor, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath, 0x9A25, config.TitleMapZenithColor, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePath, 0x9DC7, config.TitleMapCloudColor, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath, 0x9C79, config.TitleMapCloudColor, HexColorEditor.ColorOrder.RGB, type);
 
             string filePath2 = Path.Combine(modDirectory,
                 "SunsetTitle", "UnrealEssentials", "P3R", "Content", "Xrd777",
@@ -79,6 +93,7 @@ namespace p3rpc.femc.HexEditing
 
             HexColorEditor.WriteColor(stupidMat, 0x1124, config.StupidMatTitleColor1, HexColorEditor.ColorOrder.RGB, type);
             HexColorEditor.WriteColor(stupidMat, 0x124E, config.StupidMatTitleColor2, HexColorEditor.ColorOrder.RGB, type);
+            */
         }
 
         private static void ApplySeesMaterials(Config config, string modDirectory)
@@ -298,8 +313,8 @@ namespace p3rpc.femc.HexEditing
             if (configuration.EnableSunsetTitleScreen)
             {
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "SunsetTitle", "UnrealEssentials"));
-                ApplyTitleMaterialsBG(configuration, modLocation);
-                ApplyTitleMap(configuration, modLocation);
+                //ApplyTitleMaterialsBG(configuration, modLocation);
+                //ApplyTitleMap(configuration, modLocation);
             }
         }
 

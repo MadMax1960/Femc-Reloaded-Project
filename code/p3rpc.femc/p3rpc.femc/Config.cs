@@ -361,6 +361,8 @@ namespace p3rpc.femc.Configuration
         MellodiSilly,
 		[Display(Name = "Lantana")]
         Lantana,
+        [Display(Name = "Apri")]
+        Apri,
         [Display(Name = "Japanese")]
         Japanese
         }
@@ -3356,7 +3358,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Battle: Strategy Instruct Top Circle Color")]
         public ConfigColor BtlStrategyTopCircleColor { get; set; } = new ConfigColor(0xB3, 0x49, 0x72, 0xFF);
-
+        /*
         [DisplayName("Title Bg Cloud1")]
         public ConfigColor TitleBgCloud1 { get; set; } = new ConfigColor(0xFF, 0xA9, 0x75, 0xFF);
 
@@ -3398,7 +3400,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Title Map Cloud Color")]
         public ConfigColor TitleMapCloudColor { get; set; } = new ConfigColor(0xFF, 0xA5, 0x75, 0xFF);
-
+        */
         [DisplayName("Title Fill Color A_1")]
         public ConfigColor TitleFillColorA_1 { get; set; } = new ConfigColor(0xB9, 0x27, 0x6B, 0xFF);
 
@@ -3415,7 +3417,6 @@ namespace p3rpc.femc.Configuration
         public ConfigColor TitleFillColorA_3 { get; set; } = new ConfigColor(0x49, 0x1E, 0x52, 0xFF);
 
         [DisplayName("Title Fill Color B_3")]
-        [Category("UI Colors")]
         public ConfigColor TitleFillColorB_3 { get; set; } = new ConfigColor(0x44, 0x1E, 0x58, 0xFF);
 
         [DisplayName("Title Fill Color B_4")]
@@ -3423,7 +3424,7 @@ namespace p3rpc.femc.Configuration
 
         [DisplayName("Title Fill Color B_5")]
         public ConfigColor TitleFillColorB_5 { get; set; } = new ConfigColor(0x65, 0x2F, 0x72, 0xFF);
-
+        /*
         [DisplayName("Title Map Bg Level Color1")]
         public ConfigColor TitleMapBgLevelColor1 { get; set; } = new ConfigColor(0xFF, 0xCC, 0x75, 0xFF);
 
@@ -3442,6 +3443,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Stupid Mat Title Color2")]
         public ConfigColor StupidMatTitleColor2 { get; set; } = new ConfigColor(0xFF, 0xB5, 0xA7, 0xFF);
 
+        [DisplayName("Title BG Color 1 Test")]
+        public ConfigColor TitleBgColor1Test { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
+        */
         [DisplayName("Camp Persona Light Color")]
         public ConfigColor CampPersonaLightColor { get; set; } = new ConfigColor(0xFF, 0x42, 0x8a, 0xFF);
 
