@@ -153,7 +153,7 @@ namespace p3rpc.femc
                 NaginataLoader.LoadNaginataAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d weapons
                 AoaLoader.LoadAoaAssets(unrealEssentials, _configuration, _context._modLocation); // loads 2d aoa
                 AoaTextLoader.LoadAoaTextAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d aoa text thing on the side
-                BustupLoader.LoadBustups(unrealEssentials, _configuration, _context._modLocation); // loads 2d bustups
+                BustupLoader.LoadBustups(unrealEssentials, _configuration, _context._modLocation, toolKit); // loads 2d bustups
                 ShardLoader.LoadShardAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d shard, which is technially 3d
                 LevelUpLoader.LoadLevelUpAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d level up portraits
                 PartyPanelLoader.LoadPartyPanelAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d party panel
@@ -161,6 +161,7 @@ namespace p3rpc.femc
                 GroupEventLoader.LoadGroupEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the group event thing, its 2d art 
                 KyotoEventLoader.LoadKyotoEventAssets(unrealEssentials, _configuration, _context._modLocation); // loads the kyoto event, it is also 2d art
                 Theo.LoadTheoAssets(unrealEssentials, toolKit, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Theo
+				HexEditing.Title.LoadSunsetTitleScreen(unrealEssentials, _modLoader, _modConfig, _configuration, _context._modLocation);
                 CustomBustups.LoadCustomBustupsAssets(unrealEssentials, toolKit, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Custom Bustups
                 Saori.LoadSaoriAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Saori
                 Rio.LoadRioAssets(unrealEssentials, _modLoader, _modConfig, ryo, _configuration, _context._modLocation); // loads Rio
@@ -177,8 +178,9 @@ namespace p3rpc.femc
                 HexEditing.Field.Apply(_configuration, _context._modLocation);
                 HexEditing.SocialStats.Apply(_configuration, _context._modLocation);
                 HexEditing.Backlog.Apply(_configuration, _context._modLocation);
+                HexEditing.Title.Apply(_configuration, _context._modLocation);
             }
-			catch (Exception ex)
+            catch (Exception ex)
 			{
 				_context._utils.Log($"An error occured trying to read addons: \"{ex.Message}\"", System.Drawing.Color.Red);
 			}
@@ -199,7 +201,6 @@ namespace p3rpc.femc
 			_modRuntime.AddModule<FemcEquipment>();
 			if (_configuration.EnableMailIcon) _modRuntime.AddModule<MailIcon>();
 			bool deckCompatibilitySwitch = _configuration.DeckCompatibilitySwitch;
-
 			if (_configuration.EnableCampMenu)
 			{
 				_modRuntime.AddModule<CampCommon>();
