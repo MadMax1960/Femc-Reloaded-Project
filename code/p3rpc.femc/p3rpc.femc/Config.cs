@@ -177,6 +177,8 @@ namespace p3rpc.femc.Configuration
         Sodasorbet,
         [Display(Name = "Kaia")]
         Kaia,
+        [Display(Name = "AlmondFireflies")]
+        AlmondFireflies,
         }
 
         [DisplayName("Cutin")]
