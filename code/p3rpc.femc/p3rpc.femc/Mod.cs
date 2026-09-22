@@ -128,8 +128,9 @@ namespace p3rpc.femc
 			// Load Modules/assets
 			LoadEnabledAddons(unrealEssentials, ryo, unrealToolkit);
 			InitializeModules();
-			_assetRedirector = new AssetRedirector(unrealNames, modName);
-			_assetRedirector.RedirectPlayerAssets();
+			//_assetRedirector = new AssetRedirector(unrealNames, modName);
+			//_assetRedirector.RedirectPlayerAssets();
+			CostumeFrameworkFix.FixDefaultPlayerCostume(_modLoader, utils); // CF temp fix, delete when CF updates
 			_musicManager.GenerateMusicScript();
 		}
 
