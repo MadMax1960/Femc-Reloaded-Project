@@ -324,28 +324,6 @@ namespace p3rpc.femc.Configuration
         VeryFunnyAnims
         }
 
-        [DisplayName("Hair Options")]
-        [Description("The hair model used on FEMC.")]
-        [Category("3D Options")]
-        [Display(Order = 13)]
-        [DefaultValue(HairType.MudkipsHair)]
-        public HairType HairTrue { get; set; } = HairType.MudkipsHair;
-
-        public enum HairType
-        {
-        [Display(Name = "Default")]
-        MudkipsHair,
-        [Display(Name = "Kotone Bean")]
-        KotoneBeanHair
-        }
-
-        //[DisplayName("Naginata Weapons")]
-        //[Description("Changes FEMC's weapons from 1h swords to naginatas.")]
-        //[Category("3D Options")]
-       // [Display(Order = 14)]
-        //[DefaultValue(true)]
-        //public bool NagiWeap { get; set; } = true;
-
         // Voice
 
         [DisplayName("Voice Options")]

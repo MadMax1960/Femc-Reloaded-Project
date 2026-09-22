@@ -148,7 +148,6 @@ namespace p3rpc.femc
 			{
                 FunStuffLoader.LoadFunStuffAssets(unrealEssentials, _configuration, _context._modLocation); // loads fun stuff :true:
                 Voice.LoadVoiceAssets(_modLoader, _modConfig, _configuration, ryo); // loads voice options
-                HairLoader.LoadHairAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d hair
                 AnimLoader.LoadAnimAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d anim
                 NaginataLoader.LoadNaginataAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d weapons
                 AoaLoader.LoadAoaAssets(unrealEssentials, _configuration, _context._modLocation); // loads 2d aoa
@@ -193,6 +192,7 @@ namespace p3rpc.femc
             if (!_configuration.TheodorefromAlvinandTheChipmunks)
                 unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "Events", "Default", "Theo Conflict"));
             _costumeApi.AddCostumesFolder(_modConfig.ModId, Path.Combine(_context._modLocation, "Outfit Loader")); // Folder with all the costume ymls
+			//unrealEssentials.AddFromFolder(Path.Combine(_context._modLocation, "TempMakotoReplacer"));
         }
 
 		private void InitializeModules() // Rirurin's stuff, don't touch on penalty of death (Ivan is exempt from this) 
