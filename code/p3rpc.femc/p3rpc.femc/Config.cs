@@ -308,7 +308,7 @@ namespace p3rpc.femc.Configuration
         // 3D Options
 
         [DisplayName("Animations")]
-        [Description("Choose from a few animations.\n\nNote that some custom anims might not look correct if skeleton fix is enabled,\nsuch as the menu animations.")]
+        [Description("Choose from a few animations.\n\nNote that custom animations are a WIP and opt in.")]
         [Category("3D Options")]
         [Display(Order = 12)]
         [DefaultValue(AnimType.OriginalAnims)]
@@ -318,7 +318,7 @@ namespace p3rpc.femc.Configuration
         {
         [Display(Name = "Original Animations")]
         OriginalAnims,
-        [Display(Name = "Custom Animations")]
+        [Display(Name = " WIP Custom Animations")]
         CustomAnims,
         [Display(Name = "Very Funny Animations")]
         VeryFunnyAnims
