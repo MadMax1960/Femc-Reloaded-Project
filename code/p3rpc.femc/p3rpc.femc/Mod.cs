@@ -130,7 +130,7 @@ namespace p3rpc.femc
 			InitializeModules();
 			//_assetRedirector = new AssetRedirector(unrealNames, modName);
 			//_assetRedirector.RedirectPlayerAssets();
-			CostumeFrameworkFix.FixDefaultPlayerCostume(_modLoader, utils); // CF temp fix, delete when CF updates
+			//CostumeFrameworkFix.FixDefaultPlayerCostume(_modLoader, utils); // CF temp fix, delete when CF updates
 			_musicManager.GenerateMusicScript();
 		}
 
