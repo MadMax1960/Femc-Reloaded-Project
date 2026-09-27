@@ -25,8 +25,6 @@ namespace p3rpc.femc.Audio
                 ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "apri", "normal battle"));
             else if (configuration.VoiceTrue == VoiceType.Japanese)
                 ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "mellodi", "nothing lmao"));
-            else if (configuration.VoiceTrue == VoiceType.Apri)
-                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "apri", "apri"));
         }
     }
 }
