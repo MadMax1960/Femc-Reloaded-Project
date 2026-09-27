@@ -12,7 +12,7 @@ namespace p3rpc.femc.Audio
         {
             var basePath = modLoader.GetDirectoryForModId(modConfig.ModId);
 
-            if (configuration.bluehairandpronounce && configuration.VoiceTrue != VoiceType.Japanese)
+            if (configuration.bluehairandpronounce && configuration.VoiceTrue != VoiceType.MarinaInoue)
                 ryo.AddAudioFolder(Path.Combine(basePath, "Voice"));
 
             if (configuration.VoiceTrue == VoiceType.Mellodi)
@@ -23,8 +23,10 @@ namespace p3rpc.femc.Audio
                 ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "lantana", "normal battle"));
             else if (configuration.VoiceTrue == VoiceType.Apri)
                 ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "apri", "normal battle"));
-            else if (configuration.VoiceTrue == VoiceType.Japanese)
-                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "mellodi", "nothing lmao"));
+            else if (configuration.VoiceTrue == VoiceType.ApriJP)
+                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "Apri JP", "normal battle"));
+            else if (configuration.VoiceTrue == VoiceType.MarinaInoue)
+                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "Marina Inoue", "normal battle"));
         }
     }
 }
