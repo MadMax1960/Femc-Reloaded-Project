@@ -16,17 +16,17 @@ namespace p3rpc.femc.Audio
                 ryo.AddAudioFolder(Path.Combine(basePath, "Voice"));
 
             if (configuration.VoiceTrue == VoiceType.Mellodi)
-                ryo.AddAudioFolder(Path.Combine(basePath, "mellodi", "normal battle")); // if you ever wonder why event voices not loading, they're in a "events" folder, idk why they in there but I don't wanna touch
+                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "mellodi", "normal battle")); // if you ever wonder why event voices not loading, they're in a "events" folder, idk why they in there but I don't wanna touch
             else if (configuration.VoiceTrue == VoiceType.MellodiSilly)
-                ryo.AddAudioFolder(Path.Combine(basePath, "mellodi", "april fools"));
+                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "mellodi", "april fools"));
             else if (configuration.VoiceTrue == VoiceType.Lantana)
-                ryo.AddAudioFolder(Path.Combine(basePath, "lantana", "normal battle"));
+                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "lantana", "normal battle"));
             else if (configuration.VoiceTrue == VoiceType.Apri)
-                ryo.AddAudioFolder(Path.Combine(basePath, "apri", "normal battle"));
+                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "apri", "normal battle"));
             else if (configuration.VoiceTrue == VoiceType.Japanese)
-                ryo.AddAudioFolder(Path.Combine(basePath, "mellodi", "nothing lmao"));
+                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "mellodi", "nothing lmao"));
             else if (configuration.VoiceTrue == VoiceType.Apri)
-                ryo.AddAudioFolder(Path.Combine(basePath, "apri", "apri"));
+                ryo.AddAudioFolder(Path.Combine(basePath, "Voice", "femc", "apri", "apri"));
         }
     }
 }
