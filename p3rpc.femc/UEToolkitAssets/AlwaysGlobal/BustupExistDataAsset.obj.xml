@@ -122,7 +122,7 @@
 						</Item>
 					</Clothes>
 				</Item>
-				<Item id="33"> <!-- Expression 11 Bruised -->
+				<Item id="34"> <!-- Expression 11 Bruised -->
 					<Clothes>
 						<Item id="1"> <!--Summer-->
 							<Pose value="PoseC"/>
