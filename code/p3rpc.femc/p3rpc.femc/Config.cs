@@ -343,8 +343,10 @@ namespace p3rpc.femc.Configuration
         Lantana,
         [Display(Name = "Apri")]
         Apri,
-        [Display(Name = "Japanese")]
-        Japanese
+        [Display(Name = "Apri (Japanese)")]
+        ApriJP,
+        [Display(Name = "Marina Inoue")]
+        MarinaInoue,
         }
 
         [DisplayName("Gendered Audio")]
