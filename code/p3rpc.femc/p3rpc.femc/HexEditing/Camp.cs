@@ -62,14 +62,22 @@ namespace p3rpc.femc.HexEditing
                 "UnrealEssentials", "P3R", "Content", "Xrd777",
                 "Characters", "Player", "PC0051", "Models", "MI_PC0051_H000_00_CaBaOp.uasset");
 
+            string filePath4 = Path.Combine(modDirectory,
+                "UnrealEssentials", "P3R", "Content", "Xrd777",
+                "Characters", "Common", "BaseMaterials", "MB_CH_CaEyOp.uasset");
+
             HexColorEditor.ComponentType type = HexColorEditor.ComponentType.FLOAT;
 
             HexColorEditor.WriteColor(filePath1, 0x11ac, config.CampKotoneShadowColor2, HexColorEditor.ColorOrder.RGB, type);
+            //HexColorEditor.WriteColor(filePath2, 0x3DE3, config.CampKotoneShadowColorExtra, HexColorEditor.ColorOrder.RGB, type);
             HexColorEditor.WriteColor(filePath2, 0x3e07, config.CampKotoneShadowColor, HexColorEditor.ColorOrder.RGB, type);
 
             HexColorEditor.WriteColor(filePath3, 0xbd4, config.CampKotoneInnerShadowColor, HexColorEditor.ColorOrder.RGB, type);
             HexColorEditor.WriteColor(filePath3, 0xcfe, config.CampKotoneInnerShadowColor, HexColorEditor.ColorOrder.RGB, type);
             HexColorEditor.WriteColor(filePath3, 0xe28, config.CampKotoneInnerShadowColor, HexColorEditor.ColorOrder.RGB, type);
+
+            HexColorEditor.WriteColor(filePath4, 0x296B, config.CampKotoneShadowColorExtra, HexColorEditor.ColorOrder.RGB, type);
+            HexColorEditor.WriteColor(filePath4, 0x298F, config.CampKotoneShadowColorExtra, HexColorEditor.ColorOrder.RGB, type);
         }
 
         private static void ApplyCampShards(Config config, string modDirectory) // sharts

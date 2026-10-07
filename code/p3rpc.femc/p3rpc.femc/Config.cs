@@ -3440,6 +3440,9 @@ namespace p3rpc.femc.Configuration
         [DisplayName("Camp Persona Light Color")]
         public ConfigColor CampPersonaRimLightColor { get; set; } = new ConfigColor(0xFF, 0xE0, 0x50, 0xFF);
 
+        [DisplayName("Camp Kotone Shadow Color Extra")]
+        public ConfigColor CampKotoneShadowColorExtra { get; set; } = new ConfigColor(0xFF, 0xFF, 0xFF, 0xFF);
+
         /*[DisplayName("Draw Original Select Box")]
         [Category("Debug")]
         [Display(Order = 1)]
