@@ -189,6 +189,15 @@
           },
           "ReleaseMetadataName": "P3R.UEToolkit.ReleaseMetadata.json"
         },
+        "Unreal.UE4SS.Reloaded": {
+            "Config": {
+                "UserName": "MadMax1960",
+                "RepositoryName": "Unreal.UE4SS.Reloaded",
+                "UseReleaseTag": true,
+                "AssetFileName": "Mod.zip"
+            },
+            "ReleaseMetadataName": "Unreal.UE4SS.Reloaded.ReleaseMetadata.json"
+        },
         "p3rpc.eventframework": {
           "Config": {
             "UserName": "Rirurin",
@@ -221,6 +230,7 @@
     "SharedScans.Reloaded",
     "UE.Toolkit.Reloaded",
     "Unreal.ObjectsEmitter.Reloaded",
+    "Unreal.UE4SS.Reloaded",
     "UnrealEssentials"
   ],
   "OptionalDependencies": [],
