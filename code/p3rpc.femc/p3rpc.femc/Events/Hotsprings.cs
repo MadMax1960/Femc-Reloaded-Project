@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using p3rpc.femc.Configuration;
 using Reloaded.Mod.Interfaces;
+using riri.eventframework.Interfaces;
 using Ryo.Interfaces;
 using UnrealEssentials.Interfaces;
 
@@ -14,17 +15,18 @@ public static class HotspringsLoader
         IModConfig modConfig,
         IRyoApi ryo,
         Config configuration,
-        string modLocation)
+        string modLocation,
+        IEventFramework eventFramework
+        )
     {
         if (configuration.TesticlesEventsDorm)
         {
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Hotsprings"));
-            unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "DormHang"));
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Festival"));
-            unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "LizDates"));
-            unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "AkinariSLComplete"));
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Storytime"));
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "BeachEpisode"));
+            unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "FuukaFMO"));
+            eventFramework.AddFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "FuukaFMO"));
         }
 
         //if (configuration.TesticlesDorm)

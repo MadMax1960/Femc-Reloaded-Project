@@ -139,7 +139,9 @@ namespace p3rpc.femc.Audio
                     {Path.Combine(path, "P3P\\link_26.cue"),_configuration.P3PNom},
                     {Path.Combine(path, "P3D\\link_26.cue"),_configuration.P3MidNomF},
                     {Path.Combine(path, "EidieK87\\link_26.cue"),_configuration.EidNom},
-                    {Path.Combine(path, "RestlessArtist\\link_26.cue"),_configuration.RestlessNom}
+                    {Path.Combine(path, "RestlessArtist\\link_26.cue"),_configuration.RestlessNom},
+                    {Path.Combine(path, "RayIsEpic\\link_26.cue"),_configuration.RayIsEpicNorm},
+                    {Path.Combine(path, "RayIsEpicInst\\link_26.cue"),_configuration.RayIsEpicNormInst}
                 };
 				foreach (KeyValuePair<string, bool> nm in normalmusic)
 				{

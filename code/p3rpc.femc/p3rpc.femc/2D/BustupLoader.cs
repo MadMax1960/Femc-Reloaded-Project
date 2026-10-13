@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using p3rpc.femc.Configuration;
+using UE.Toolkit.Interfaces;
 using UnrealEssentials.Interfaces;
 using static p3rpc.femc.Configuration.Config;
 
@@ -7,14 +8,14 @@ namespace p3rpc.femc
 {
 	public static class BustupLoader
 	{
-		public static void LoadBustups(IUnrealEssentials unrealEssentials, Config configuration, string modLocation)
+		public static void LoadBustups(IUnrealEssentials unrealEssentials, Config configuration, string modLocation, IToolkit toolKit)
 		{
 			// Each condition corresponds to a different bustup folder.
 			if (configuration.BustupTrue == BustupType.Adrien)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Adrien"));
-            else if (configuration.BustupTrue == BustupType.Neptune)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Neptune"));
-            else if (configuration.BustupTrue == BustupType.Ely)
+			else if (configuration.BustupTrue == BustupType.Neptune)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Neptune"));
+			else if (configuration.BustupTrue == BustupType.Ely)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Ely"));
 			else if (configuration.BustupTrue == BustupType.Esa)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Esa"));
@@ -62,32 +63,49 @@ namespace p3rpc.femc
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "crezzstarAlt"));
 			else if (configuration.BustupTrue == BustupType.shiosakana)
 				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "shiosakana"));
-            else if (configuration.BustupTrue == BustupType.samythecoolkid)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "samythecoolkid"));
-            else if (configuration.BustupTrue == BustupType.Mixi_xiMi)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Mixi_xiMi"));
-            else if (configuration.BustupTrue == BustupType.StupidAle)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "stupidale"));
-            else if (configuration.BustupTrue == BustupType.Kiara)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Kiara"));
-            else if (configuration.BustupTrue == BustupType.Autumn)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Autumn"));
-            else if (configuration.BustupTrue == BustupType.p3pYuha)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "p3pYuha"));
-            else if (configuration.BustupTrue == BustupType.Maru)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Maru"));
-            else if (configuration.BustupTrue == BustupType.purpleoctogamer)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "purpleoctogamer"));
-            else if (configuration.BustupTrue == BustupType.purpleoctogamerAlt)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "purpleoctogamerAlt"));
-            else if (configuration.BustupTrue == BustupType.Anonymousfluffi)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Anonymousfluffi"));
-            else if (configuration.BustupTrue == BustupType.woodwhite)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "woodwhite"));
-            else if (configuration.BustupTrue == BustupType.Milky)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Milky"));
-            else if (configuration.BustupTrue == BustupType.makomeri)
-                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "makomeri"));
+			else if (configuration.BustupTrue == BustupType.samythecoolkid)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "samythecoolkid"));
+			else if (configuration.BustupTrue == BustupType.Mixi_xiMi)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Mixi_xiMi"));
+			else if (configuration.BustupTrue == BustupType.StupidAle)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "stupidale"));
+			else if (configuration.BustupTrue == BustupType.Kiara)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Kiara"));
+			else if (configuration.BustupTrue == BustupType.Autumn)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Autumn"));
+			else if (configuration.BustupTrue == BustupType.p3pYuha)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "p3pYuha"));
+			else if (configuration.BustupTrue == BustupType.Maru)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Maru"));
+			else if (configuration.BustupTrue == BustupType.purpleoctogamer)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "purpleoctogamer"));
+			else if (configuration.BustupTrue == BustupType.purpleoctogamerAlt)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "purpleoctogamerAlt"));
+			else if (configuration.BustupTrue == BustupType.Anonymousfluffi)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Anonymousfluffi"));
+			else if (configuration.BustupTrue == BustupType.woodwhite)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "woodwhite"));
+			else if (configuration.BustupTrue == BustupType.Milky)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Milky"));
+			else if (configuration.BustupTrue == BustupType.makomeri)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "makomeri"));
+			else if (configuration.BustupTrue == BustupType.AlmondFireflies)
+			{
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "AlmondFireflies"));
+				toolKit.AddObjectsPath(Path.Combine(modLocation, "UEToolkitAssets", "Bustup", "AlmondFireflies")); // this is the one exception cos of the bigger eyes okay NO MORE THAN THIS ONE PLEAASE
+			}
+			else if (configuration.BustupTrue == BustupType.Arizno)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Arizno"));
+			else if (configuration.BustupTrue == BustupType.jvcl24)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "jvcl24"));
+			else if (configuration.BustupTrue == BustupType.Clover)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Clover"));
+			else if (configuration.BustupTrue == BustupType.Revolvea)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Revolvea"));
+			else if (configuration.BustupTrue == BustupType.Sodasorbet)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Sodasorbet"));
+			else if (configuration.BustupTrue == BustupType.Kaia)
+				unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Bustup", "Kaia"));
         }
 	}
 }

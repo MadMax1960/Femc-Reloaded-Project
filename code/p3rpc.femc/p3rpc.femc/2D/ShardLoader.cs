@@ -27,6 +27,8 @@ namespace p3rpc.femc
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Shard", "StupidAle"));
             else if (configuration.ShardTrue == ShardType.samythecoolkid)
                 unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Shard", "samythecoolkid"));
+            else if (configuration.ShardTrue == ShardType.Arizno)
+                unrealEssentials.AddFromFolder(Path.Combine(modLocation, "2d", "Shard", "Arizno"));
             // Add other Shard conditions if needed.
         }
 	}

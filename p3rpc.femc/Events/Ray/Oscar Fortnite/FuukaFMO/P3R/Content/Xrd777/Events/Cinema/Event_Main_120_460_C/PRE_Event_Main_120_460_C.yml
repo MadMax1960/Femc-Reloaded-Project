@@ -1,0 +1,13 @@
+EventLevel: "/Game/Xrd777/Events/Cinema/Event_Main_120_460_C/LV_Event_Main_120_460_C"
+EventSublevels: [
+  {
+    EventBGLevels: [ 
+        "/Game/Xrd777/Maps/Field/F101/BG/LV_F101_112_001_BG"
+    ],
+    BGFieldSeasonSubLevel: "",
+    BGFieldSoundSubLevel: "/Game/Xrd777/Maps/Field/Sound/LV_F101_112_Sound"
+  }
+]
+LightScenarioSublevels: [
+  "/Game/Xrd777/Maps/Field/F101/BG/LV_F101_112_BG_Night_Only"
+]

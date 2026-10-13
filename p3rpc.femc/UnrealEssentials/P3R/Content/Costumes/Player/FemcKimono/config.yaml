@@ -1,0 +1,7 @@
+name: New Year's Kimono
+
+costume:
+  mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Kimono.uasset
+
+hair:
+  mesh_path: /Game/Xrd777/Characters/Player/FemC/Femc_Hair_Noclip.uasset

@@ -1,0 +1,28 @@
+<UBustupExistDataAsset>
+	<Data>
+		<Item id="1"> <!--makoto-->
+			<Faces>
+				<Item id="0">
+					<Clothes>
+						<Item id="0">
+							<Pose value="PoseA"/>
+							<EyePartsID value="900"/>
+							<MouthPartsID value="900"/>
+							<bEyeAnim value="true"/>
+							<bMouthAnim value="False"/>
+							<InBetween value="0"/>
+							<EyeX value="729.0"/>
+							<EyeY value="1108.0"/>
+							<MouthX value="668.0"/>
+							<MouthY value="1310.0"/>
+							<BlushX value="0.0"/>
+							<BlushY value="0.0"/>
+							<SweatX value="0.0"/>
+							<SweatY value="0.0"/>
+						</Item>
+					</Clothes>
+				</Item>
+			</Faces>
+		</Item>
+	</Data>
+</UBustupExistDataAsset>
