@@ -1,0 +1,10 @@
+<MailIncomingDataAsset>
+	<Data>
+		<Item id="376">
+			<SenderID value="5"/>
+			<MailBmdFileName value="/Game/Xrd777/UI/MailTitle/BMD_FuukaMail_Femc.BMD_FuukaMail_Femc"/>
+			<TitleLabelID value="1"/>
+			<BodyLabelID value="2"/>
+		</Item>
+	</Data>>
+</MailIncomingDataAsset>
