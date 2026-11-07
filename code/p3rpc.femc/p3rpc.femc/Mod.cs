@@ -150,6 +150,7 @@ namespace p3rpc.femc
                 FunStuffLoader.LoadFunStuffAssets(unrealEssentials, _configuration, _context._modLocation); // loads fun stuff :true:
                 Voice.LoadVoiceAssets(_modLoader, _modConfig, _configuration, ryo); // loads voice options
                 AnimLoader.LoadAnimAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d anim
+                HandsOutLoader.LoadHandsOutAssets(unrealEssentials, _configuration, _context._modLocation); // loads the bandaid fix I did for hands in pocket shit 
                 NaginataLoader.LoadNaginataAssets(unrealEssentials, _configuration, _context._modLocation); // loads 3d weapons
                 AoaLoader.LoadAoaAssets(unrealEssentials, _configuration, _context._modLocation); // loads 2d aoa
                 AoaTextLoader.LoadAoaTextAssets(unrealEssentials, _configuration, _context._modLocation); // loads the 2d aoa text thing on the side
