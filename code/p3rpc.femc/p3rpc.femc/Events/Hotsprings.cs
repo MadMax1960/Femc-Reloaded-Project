@@ -21,7 +21,6 @@ public static class HotspringsLoader
     {
         if (configuration.TesticlesEventsDorm)
         {
-            unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Hotsprings"));
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Festival"));
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "Storytime"));
             unrealEssentials.AddFromFolder(Path.Combine(modLocation, "Events", "Ray", "Oscar Fortnite", "BeachEpisode"));
