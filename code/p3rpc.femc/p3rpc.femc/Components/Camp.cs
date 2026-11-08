@@ -90,7 +90,6 @@ namespace p3rpc.femc.Components
         private IAsmHook _DrawHighlightedColor1;
         private IAsmHook _DrawPartyPanelMissingHealthColor;
         private IAsmHook _DrawPartyPanelMissingSpColor;
-        private IReverseWrapper<UCmpRootDraw_DrawMenuItems_SetColorsNoSel> _setMenuItemColorNoSelWrapper;
 
         private UICommon _uiCommon;
         private CampCommon _campCommon;
@@ -114,11 +113,14 @@ namespace p3rpc.femc.Components
                 string[] function =
                 {
                     "use64",
-                    $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UCmpRootDraw_DrawMenuItems_SetColorsNoSelImpl, out _setMenuItemColorNoSelWrapper)}",
-                    $"movups xmm0, dqword [rbp]"
-                    // hook takes up from 0x1412d1e6f to 0x1412d1e78 (jmp dest, so we're pretty squashed in)
+                    // RDX points to the native BGRA source; leave its alpha untouched.
+                    // Keep the original conversion call and following MOVUPS, including
+                    // the game's sRGB-to-linear conversion and opacity handling.
+                    $"mov byte [rdx], 0x{_context._config.CampMenuItemColorNoSel.B:X2}",
+                    $"mov byte [rdx + 1], 0x{_context._config.CampMenuItemColorNoSel.G:X2}",
+                    $"mov byte [rdx + 2], 0x{_context._config.CampMenuItemColorNoSel.R:X2}"
                 };
-                _setMenuItemColorNoSel = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.DoNotExecuteOriginal).Activate();
+                _setMenuItemColorNoSel = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
             });
             _context._utils.SigScan(UCmpRootDraw_MenuTransitionColor_SIG, "UCmpRootDraw::MenuTransitionColor", _context._utils.GetDirectAddress, addr =>
             {
@@ -235,18 +237,7 @@ namespace p3rpc.femc.Components
             
             return return_value;
         }
-        private unsafe FLinearColor* UCmpRootDraw_DrawMenuItems_SetColorsNoSelImpl(byte opacity, FLinearColor* colorOut)
-        {
-            colorOut->SetColor(_context._config.CampMenuItemColorNoSel.ToU32());
-            colorOut->A = (float)opacity / 255;
-            return colorOut;
-            
-        }
-
         private unsafe delegate FCampParamTableCommonRow* ACmpMainActor_GetCampParamTableCommon(ACmpMainActor* self);
-        // Cursed calling convention
-        [Function(new Register[] { FunctionAttribute.Register.rax, FunctionAttribute.Register.rcx }, FunctionAttribute.Register.rax, false)]
-        private unsafe delegate FLinearColor* UCmpRootDraw_DrawMenuItems_SetColorsNoSel(byte opacity, FLinearColor* colorOut);
     }
 
     public class CampSkill : ModuleAsmInlineColorEdit<FemcContext>
