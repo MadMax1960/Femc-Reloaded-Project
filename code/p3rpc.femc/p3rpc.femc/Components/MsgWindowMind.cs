@@ -14,7 +14,7 @@ using static Reloaded.Hooks.Definitions.X64.FunctionAttribute;
 
 namespace p3rpc.femc.Components
 {
-    public class MsgWindowMind : ModuleBase<FemcContext>
+    public class MsgWindowMind : ModuleAsmInlineColorEdit<FemcContext>
     {
         // (1.0.0, 1.0.1)
         private string UMsgProcWindow_Mind_DrawMessageBox_SIG_0 = "40 55 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 28 02 00 00";
@@ -24,10 +24,10 @@ namespace p3rpc.femc.Components
         private string UMsgProcWindow_Mind_DrawMessageBox_SIG_1 = "40 55 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 78 02 00 00"; 
         private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg1_SIG_1 = "4C 8B 87 ?? ?? ?? ?? 48 8D 4D ?? 41 0F 28 DF F3 44 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? F3 0F 10 05 ?? ?? ?? ??";
         private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg2_SIG_1 = "4C 8B 87 ?? ?? ?? ?? 48 8D 4D ?? 41 0F 28 DF F3 44 0F 11 7C 24 ?? 49 8B D6 89 45 ?? E8 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ??";
-        // (Episode Aigis)
+        // Episode Aigis-era executable (also used by the current base game).
         private string UMsgProcWindow_Mind_DrawMessageBox_SIG_EpAigis = "40 55 56 57 48 8D AC 24 ?? ?? ?? ?? 48 81 EC 20 02 00 00 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 45 ??";
-        private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg1_SIG_EpAigis = "4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 45 0F 57 C9";
-        private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg2_SIG_EpAigis = "4C 8B 86 ?? ?? ?? ?? 48 8D 4D ?? 0F 57 DB F3 44 0F 11 4C 24 ??";
+        private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg1_SIG_EpAigis = "41 B0 EE 0F 29 45 ?? 33 D2 F3 0F 10 05 ?? ?? ?? ?? 33 C9 F3 0F 11 45 ?? 41 0F 28 C7 F3 0F 5C 86 ?? ?? ?? ??";
+        private string UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg2_SIG_EpAigis = "41 B0 EE F3 0F 10 0D ?? ?? ?? ?? 33 D2 F3 0F 11 45 ?? 33 C9 41 0F 28 C7 F3 0F 11 4D ?? F3 0F 5C 86 ?? ?? ?? ??";
         private IHook<UMsgProcWindow_Mind_DrawMessageBox> _drawMessageBox;
         private IHook<UMsgProcWindow_Mind_DrawMessageBox_EpAigis> _drawMessageBoxEpAigis;
 
@@ -36,9 +36,6 @@ namespace p3rpc.femc.Components
 
         private IReverseWrapper<UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg> _drawMessageBoxLeftSpotBgWrapper1;
         private IReverseWrapper<UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg> _drawMessageBoxLeftSpotBgWrapper2;
-
-        private IReverseWrapper<UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg_EpAigis> _drawMessageBoxLeftSpotBgWrapper1_EpAigis;
-        private IReverseWrapper<UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg_EpAigis> _drawMessageBoxLeftSpotBgWrapper2_EpAigis;
 
         private UICommon _uiCommon;
 
@@ -54,24 +51,12 @@ namespace p3rpc.femc.Components
             if (_context.bIsAigis)
             {
                 _context._utils.SigScan(UMsgProcWindow_Mind_DrawMessageBox_SIG_EpAigis, "UMsgProcWindow_Mind::DrawMessageBox", _context._utils.GetDirectAddress, addr => _drawMessageBoxEpAigis = _context._utils.MakeHooker<UMsgProcWindow_Mind_DrawMessageBox_EpAigis>(UMsgProcWindow_Mind_DrawMessageBoxImpl_EpAigis, addr));
-                _context._utils.SigScan(UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg1_SIG_EpAigis, "UMsgProcWindow_Mind::DrawMessageBoxLeftSpotBg1", _context._utils.GetDirectAddress, addr =>
-                {
-                    string[] function =
-                        {
-                        "use64",
-                        $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBgImpl_EpAigis, out _drawMessageBoxLeftSpotBgWrapper1_EpAigis)}",
-                    };
-                    _drawMessageBoxLeftSpotBg1 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-                });
-                _context._utils.SigScan(UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg2_SIG_EpAigis, "UMsgProcWindow_Mind::DrawMessageBoxLeftSpotBg2", _context._utils.GetDirectAddress, addr =>
-                {
-                    string[] function =
-                        {
-                        "use64",
-                        $"{_context._hooks.Utilities.GetAbsoluteCallMnemonics(UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBgImpl_EpAigis, out _drawMessageBoxLeftSpotBgWrapper2_EpAigis)}",
-                    };
-                    _drawMessageBoxLeftSpotBg2 = _context._hooks.CreateAsmHook(function, addr, AsmHookBehaviour.ExecuteFirst).Activate();
-                });
+                _context._utils.SigScan(UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg1_SIG_EpAigis,
+                    "UMsgProcWindow_Mind::DrawMessageBoxLeftSpotBg1", _context._utils.GetDirectAddress,
+                    addr => PatchSpotColorArguments(addr, 7, 17));
+                _context._utils.SigScan(UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg2_SIG_EpAigis,
+                    "UMsgProcWindow_Mind::DrawMessageBoxLeftSpotBg2", _context._utils.GetDirectAddress,
+                    addr => PatchSpotColorArguments(addr, 11, 18));
             } else
             {
                 _context._utils.MultiSigScan(
@@ -111,6 +96,24 @@ namespace p3rpc.femc.Components
             }
         }
 
+        private void PatchSpotColorArguments(long address, int greenOffset, int redOffset)
+        {
+            // The current executable builds each dot color with the native
+            // FSprColor constructor. Patch its RGB byte arguments instead of
+            // calling managed code mid-function (unsafe under Proton).
+            // Keep R9B's native opacity calculation, including the distinct
+            // alpha multiplier for each layer. Registered writes keep live
+            // configuration updates working without installing a detour.
+            _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)address,
+                addr => _context._memory.Write(addr + 2, _context._config.MindWindowBgDotsNew.B)));
+            _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)address,
+                addr => _context._memory.Write(addr + (nuint)greenOffset,
+                    (ushort)(0xB2 | (_context._config.MindWindowBgDotsNew.G << 8)))));
+            _asmMemWrites.Add(new AddressToMemoryWrite(_context._memory, (nuint)address,
+                addr => _context._memory.Write(addr + (nuint)redOffset,
+                    (ushort)(0xB1 | (_context._config.MindWindowBgDotsNew.R << 8)))));
+        }
+
         public override void Register()
         {
             _uiCommon = GetModule<UICommon>();
@@ -145,19 +148,10 @@ namespace p3rpc.femc.Components
             return configColorRaw;
         }
 
-        private unsafe FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBgImpl_EpAigis(nativetypes.Interfaces.Astrea.UMsgProcWindow_Mind* self)
-        {
-            var configColorRaw = ConfigColor.ToFSprColor(_context._config.MindWindowBgDotsNew);
-            configColorRaw.A = (byte)((1.0 - self->leftSpotBgOpacity2) * 102 * self->leftSpotBgOpacity1);
-            return configColorRaw;
-        }
-
         private unsafe delegate void UMsgProcWindow_Mind_DrawMessageBox(UMsgProcWindow_Mind* self);
         private unsafe delegate void UMsgProcWindow_Mind_DrawMessageBox_EpAigis(nativetypes.Interfaces.Astrea.UMsgProcWindow_Mind* self);
         [Function(new Register[] { FunctionAttribute.Register.rdi }, FunctionAttribute.Register.rax, false)]
         private unsafe delegate FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg(UMsgProcWindow_Mind* self);
-        [Function(new Register[] { FunctionAttribute.Register.rsi }, FunctionAttribute.Register.rax, false)]
-        private unsafe delegate FSprColor UMsgProcWindow_Mind_DrawMessageBoxLeftSpotBg_EpAigis(nativetypes.Interfaces.Astrea.UMsgProcWindow_Mind* self);
     }
 
     public class MsgWindowSelectMind : ModuleAsmInlineColorEdit<FemcContext>
