@@ -3429,15 +3429,15 @@ namespace p3rpc.femc.Configuration
         public ConfigColor TitleBgColor1Test { get; set; } = new ConfigColor(0x00, 0xFF, 0x00, 0xFF);
         */
         [DisplayName("Camp Persona Light Color")]
-        public ConfigColor CampPersonaLightColor { get; set; } = new ConfigColor(0xFF, 0x42, 0x8a, 0xFF);
+        public ConfigColor CampPersonaLightColor { get; set; } = new ConfigColor(0xF1, 0x6D, 0xD6, 0xFF);
 
-        [DisplayName("Camp Persona Light Color")]
-        public ConfigColor CampPersonaShadowColor { get; set; } = new ConfigColor(0xE6, 0x43, 0x80, 0xFF);
+        [DisplayName("Camp Persona Shadow Color")]
+        public ConfigColor CampPersonaShadowColor { get; set; } = new ConfigColor(0xF3, 0x71, 0xC3, 0xFF);
 
-        [DisplayName("Camp Persona Light Color")]
-        public ConfigColor CampPersonaHiLightColor { get; set; } = new ConfigColor(0xFF, 0x97, 0xB1, 0xFF);
+        [DisplayName("Camp Persona Highlight Color")]
+        public ConfigColor CampPersonaHiLightColor { get; set; } = new ConfigColor(0xFF, 0x97, 0xDF, 0xFF);
 
-        [DisplayName("Camp Persona Light Color")]
+        [DisplayName("Camp Persona Rim Light Color")]
         public ConfigColor CampPersonaRimLightColor { get; set; } = new ConfigColor(0xFF, 0xE0, 0x50, 0xFF);
 
         [DisplayName("Camp Kotone Shadow Color Extra")]
